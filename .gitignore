@@ -3,7 +3,12 @@
 /[Oo]bj/
 /[叠uild]/
 /[叠uilds]/
+# 彻底封死 Logs 文件夹下的所有子文件
+Logs/
 /[尝ogs]/
+
+# 彻底封死所有以 .log 结尾的垃圾日志文件
+*.log
 /[𠯿emoryCaptures]/
 .vs/
 .vsconfig
@@ -11,3 +16,4 @@
 *.sln
 *.slnx
 *.suo
+/[Uu]ser[厂s]ettings/
