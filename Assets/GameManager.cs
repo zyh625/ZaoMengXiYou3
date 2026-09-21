@@ -1,87 +1,58 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+using Unity.VisualScripting;
+[System.Serializable]
+public class AnimationData
+{
+    public Sprite[] frames;
+}
 public class GameManager : MonoBehaviour
 {
-    public enum UIAnchor
-    {
-        LeftTop,
-        RightTop,
-        LeftBottom,
-        RightBottom,
-        Center
-    }
-    const float DESIGN_WIDTH = 800f;//初始宽度
-    const float DESIGN_HEIGHT = 600f;//初始高度
+    public AnimationData[] monkeys;//角色的所有动作的帧动画
     public Canvas canvas;
-    public Sprite bg;
-    public Sprite row;
-    public Sprite col;
-    public Sprite brid;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public GameObject monkeyPrefab;
+    private Transform tran;
+    public int act = 0;//0表示静止，1表示行走，2表示跑步，3表示跳跃，4表示攻击
+    public float left, right;
+    public float moveRate = 10;
+    public int curFrame = 0;//当前帧序列
+    public float delayTime = 0;
+    public bool face = true;//角色朝向，开始向右
     void Start()
     {
-        
+        tran = monkeyPrefab.transform;
+        left = monkeyPrefab.GetComponent<RectTransform>().rect.width / 2;
+        right = canvas.GetComponent<RectTransform>().rect.width - left;
     }
-    public RectTransform CreateImage(
-    Sprite sprite,
-    Vector2 size,
-    UIAnchor anchor,
-    float offsetX,
-    float offsetY,
-    bool scaleX = true,
-    bool scaleY = true)
+    void Update()
     {
-        GameObject obj = new GameObject(sprite.name);
+        UpdateMonkey();
+    }
+    public void Move(bool r,float speed)//角色水平移动
+    {
+        if (r ^ face)
+            monkeyPrefab.GetComponent<Image>().rectTransform.localScale = new Vector3(r ? 1 : -1, 1, 1);//面朝移动方向
+        face = r;
+        Vector3 pos = tran.position;
+        pos.x += (r ? 1 : -1) * speed;
+        pos.x = Mathf.Max(Mathf.Min(pos.x, right), left);
+        tran.position = pos;
+    }
+    public void Jump()
+    {
 
-        obj.transform.SetParent(canvas.transform, false);
-
-        Image img = obj.AddComponent<Image>();
-        img.sprite = sprite;
-
-        RectTransform rt = img.rectTransform;
-
-        rt.sizeDelta = size;
-
-        Vector2 anchorPos = Vector2.zero;
-
-        switch (anchor)
+    }
+    public void UpdateMonkey()
+    {
+        if (act != 0) return;
+        delayTime += Time.deltaTime;
+        if (delayTime >= 0.5)
         {
-            case UIAnchor.LeftTop:
-                anchorPos = new Vector2(0, 1);
-                break;
-
-            case UIAnchor.RightTop:
-                anchorPos = new Vector2(1, 1);
-                break;
-
-            case UIAnchor.LeftBottom:
-                anchorPos = new Vector2(0, 0);
-                break;
-
-            case UIAnchor.RightBottom:
-                anchorPos = new Vector2(1, 0);
-                break;
-
-            case UIAnchor.Center:
-                anchorPos = new Vector2(0.5f, 0.5f);
-                break;
+            delayTime = 0;
+            monkeyPrefab.GetComponent<Image>().sprite = monkeys[act].frames[curFrame];
+            curFrame = (curFrame + 1) % monkeys[act].frames.Length;
         }
-
-        rt.anchorMin = anchorPos;
-        rt.anchorMax = anchorPos;
-        rt.pivot = anchorPos;
-
-        RectTransform canvasRect =
-            canvas.GetComponent<RectTransform>();
-
-        float sx = canvasRect.rect.width / DESIGN_WIDTH;
-        float sy = canvasRect.rect.height / DESIGN_HEIGHT;
-
-        float x = scaleX ? offsetX * sx : offsetX;
-        float y = scaleY ? offsetY * sy : offsetY;
-
-        rt.anchoredPosition = new Vector2(x, y);
-
-        return rt;
+        
     }
 }
