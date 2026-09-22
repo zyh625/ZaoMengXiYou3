@@ -16,8 +16,14 @@ public class GameManager : MonoBehaviour
     private SpriteRenderer sr;//角色精灵
     public Rigidbody2D rb;//角色的重力系统
 
+    public GameObject[] ground;//地面和最高层的地板
+    public Camera cam;//相机
+    private Transform camTran;
+    private float camY;
+    private float deltaY;//相机能达到的最高高度
+    private float topY;
+
     public int act = 0;//0表示静止，1表示行走，2表示跑步，3表示普通跳跃，4表示二连跳跃，5表示攻击
-    public float moveRate = 10;
     public int curFrame = 0;//当前帧序列
     public float delayTime = 0;
     public bool face = true;//角色朝向，开始向右
@@ -27,14 +33,20 @@ public class GameManager : MonoBehaviour
         tran = monkeyPrefab.transform;
         sr = monkeyPrefab.GetComponent<SpriteRenderer>();
         rb = monkeyPrefab.GetComponent<Rigidbody2D>();
+        camTran = cam.transform;
+        camY = camTran.position.y;
+        deltaY = ground[1].transform.position.y + camY - ground[0].transform.position.y;
+        Debug.Log(deltaY);
         float halfSr = sr.bounds.size.x / 2;
         float halfCm = Camera.main.orthographicSize * Camera.main.aspect;
         left = halfSr - halfCm;
         right = -left;
+        topY = ground[1].transform.position.y + ground[1].GetComponent<SpriteRenderer>().bounds.size.y / 2 + halfSr;
     }
     void Update()
     {
         UpdateMonkey();
+        UpdateBg();
     }
     public void Move(bool r,float speed)//角色水平移动
     {
@@ -54,7 +66,7 @@ public class GameManager : MonoBehaviour
     }
     public void UpdateMonkey()
     {
-        if (act >2||act==0) return;
+        if (act >2) return;
         delayTime += Time.deltaTime;
         if (delayTime >= 0.5)
         {
@@ -63,5 +75,24 @@ public class GameManager : MonoBehaviour
             curFrame = (curFrame + 1) % monkeys[act].frames.Length;
         }
         
+    }
+    public void UpdateBg()
+    {
+        if (camY >= deltaY) return;
+        if (tran.position.y > ground[1].transform.position.y&&camY<deltaY)
+        {
+            camY += 0.01f;
+            Vector3 pos = camTran.position;
+            pos.y = camY;
+            camTran.position = pos;
+            return;
+        }
+        if (tran.position.y >camY)//角色保持在相机中心
+        {
+            camY = tran.position.y;
+            Vector3 pos = camTran.position;
+            pos.y = camY;
+            camTran.position = pos;
+        }
     }
 }

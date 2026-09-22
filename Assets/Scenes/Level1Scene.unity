@@ -2266,7 +2266,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   monkeys:
-  - frames: []
+  - frames:
+    - {fileID: 1267445066309324381, guid: 1ed8867c0b48c704eac827cdc45cbb7a, type: 3}
+    - {fileID: 1759953200, guid: 1ed8867c0b48c704eac827cdc45cbb7a, type: 3}
+    - {fileID: -1655530424, guid: 1ed8867c0b48c704eac827cdc45cbb7a, type: 3}
+    - {fileID: -1223690283, guid: 1ed8867c0b48c704eac827cdc45cbb7a, type: 3}
+    - {fileID: 1523580728, guid: 1ed8867c0b48c704eac827cdc45cbb7a, type: 3}
+    - {fileID: 1834158491, guid: 1ed8867c0b48c704eac827cdc45cbb7a, type: 3}
+    - {fileID: -2086827497, guid: 1ed8867c0b48c704eac827cdc45cbb7a, type: 3}
+    - {fileID: 86573114, guid: 1ed8867c0b48c704eac827cdc45cbb7a, type: 3}
+    - {fileID: -1697391829, guid: 1ed8867c0b48c704eac827cdc45cbb7a, type: 3}
+    - {fileID: 766101862, guid: 1ed8867c0b48c704eac827cdc45cbb7a, type: 3}
+    - {fileID: -776746607, guid: 1ed8867c0b48c704eac827cdc45cbb7a, type: 3}
+    - {fileID: 386985310, guid: 1ed8867c0b48c704eac827cdc45cbb7a, type: 3}
+    - {fileID: -800275251, guid: 1ed8867c0b48c704eac827cdc45cbb7a, type: 3}
+    - {fileID: 2004000177, guid: 1ed8867c0b48c704eac827cdc45cbb7a, type: 3}
+    - {fileID: -1701477884, guid: 1ed8867c0b48c704eac827cdc45cbb7a, type: 3}
+    - {fileID: 561911648, guid: 1ed8867c0b48c704eac827cdc45cbb7a, type: 3}
   - frames:
     - {fileID: -8296385383580801948, guid: a0ca42e7c012de64c978f1b30b399fe7, type: 3}
     - {fileID: 3218353051568008401, guid: a0ca42e7c012de64c978f1b30b399fe7, type: 3}
@@ -2303,8 +2319,11 @@ MonoBehaviour:
     - {fileID: -6854862752865071187, guid: 6439b1e3c6e59244fa05895dfcc832e7, type: 3}
   monkeyPrefab: {fileID: 1963501933}
   rb: {fileID: 0}
+  ground:
+  - {fileID: 1222389601}
+  - {fileID: 95529541}
+  cam: {fileID: 519420031}
   act: 0
-  moveRate: 10
   curFrame: 0
   delayTime: 0
   face: 1
@@ -3905,7 +3924,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -3966,7 +3985,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 2779023822413464520, guid: af9e017621bbb49438f8bb65b57a7d85, type: 3}
+  m_Sprite: {fileID: 1267445066309324381, guid: 1ed8867c0b48c704eac827cdc45cbb7a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3985,7 +4004,7 @@ Transform:
   m_GameObject: {fileID: 1963501933}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.2, y: -3.51, z: 0}
+  m_LocalPosition: {x: -4.99, y: -3.2, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4025,17 +4044,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.06514716, y: 0.108578205}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.17, y: 2.27}
+    oldSize: {x: 3, y: 3.33}
     newSize: {x: 2.17, y: 2.27}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.17, y: 2.27}
+  m_Size: {x: 2.691177, y: 3.2689214}
   m_EdgeRadius: 0
 --- !u!1 &2023905167
 GameObject:
