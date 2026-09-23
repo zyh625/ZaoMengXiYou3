@@ -20,7 +20,9 @@ public class GameManager : MonoBehaviour
     public Camera cam;//相机
     private Transform camTran;
     private float camY;
-    private float deltaY;//相机能达到的最高高度
+    private float deltaY;//相机中心到
+    private float maxY;//相机能达到的最高高度
+    private float minY;//起始位置
     private float topY;
 
     public int act = 0;//0表示静止，1表示行走，2表示跑步，3表示普通跳跃，4表示二连跳跃，5表示攻击
@@ -35,8 +37,9 @@ public class GameManager : MonoBehaviour
         rb = monkeyPrefab.GetComponent<Rigidbody2D>();
         camTran = cam.transform;
         camY = camTran.position.y;
-        deltaY = ground[1].transform.position.y + camY - ground[0].transform.position.y;
-        Debug.Log(deltaY);
+        deltaY = camY - ground[0].transform.position.y;
+        maxY = deltaY + ground[1].transform.position.y;
+        minY = camTran.position.y;
         float halfSr = sr.bounds.size.x / 2;
         float halfCm = Camera.main.orthographicSize * Camera.main.aspect;
         left = halfSr - halfCm;
@@ -78,8 +81,8 @@ public class GameManager : MonoBehaviour
     }
     public void UpdateBg()
     {
-        if (camY >= deltaY) return;
-        if (tran.position.y > ground[1].transform.position.y&&camY<deltaY)
+        if (camY >= maxY) return;
+        if (tran.position.y > topY&&camY<maxY)
         {
             camY += 0.01f;
             Vector3 pos = camTran.position;
@@ -87,12 +90,16 @@ public class GameManager : MonoBehaviour
             camTran.position = pos;
             return;
         }
-        if (tran.position.y >camY)//角色保持在相机中心
+        if (tran.position.y >camY||(tran.position.y < camY && camY > minY))//角色往上跳或往下掉
         {
-            camY = tran.position.y;
-            Vector3 pos = camTran.position;
-            pos.y = camY;
-            camTran.position = pos;
+            Trace();
         }
+    }
+    public void Trace()//相机跟随角色
+    {
+        camY = tran.position.y;
+        Vector3 pos = camTran.position;
+        pos.y = camY;
+        camTran.position = pos;
     }
 }

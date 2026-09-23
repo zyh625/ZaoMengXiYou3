@@ -1,37 +1,10 @@
 fileFormatVersion: 2
-guid: 21537b7bdc50c4e459dbd3b5a6aa5e28
+guid: 3d24e777f273afe4a915ad9ce270b5db
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4588609830735071187
-    second: enemy_300_bul_300001.pvr_0
-  - first:
-      213: -4948916589118259659
-    second: enemy_300_bul_300001.pvr_1
-  - first:
-      213: -5748951205788399305
-    second: enemy_300_bul_300001.pvr_2
-  - first:
-      213: -197466914043566826
-    second: enemy_300_bul_300001.pvr_3
-  - first:
-      213: -6496351411054070755
-    second: enemy_300_bul_300001.pvr_4
-  - first:
-      213: 4959744038394359646
-    second: enemy_300_bul_300001.pvr_5
-  - first:
-      213: -2405876374096933109
-    second: enemy_300_bul_300001.pvr_6
-  - first:
-      213: -2606299747286433891
-    second: enemy_300_bul_300001.pvr_7
-  - first:
-      213: -1331766920463143478
-    second: enemy_300_bul_300001.pvr_8
-  - first:
-      213: -5946879670965847908
-    second: enemy_300_bul_300001.pvr_9
+      213: -5601868173345232987
+    second: total_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -127,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: enemy_300_bul_300001.pvr_0
+      name: total_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 450
-        width: 162
-        height: 60
+        x: 46
+        y: 925
+        width: 233
+        height: 260
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,206 +115,338 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3d744dd54540eaf30800000000000000
-      internalID: 4588609830735071187
+      spriteID: 5a7e039839a2242b0800000000000000
+      internalID: -5601868173345232987
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemy_300_bul_300001.pvr_1
+      name: total_1
       rect:
         serializedVersion: 2
-        x: 172
-        y: 356
-        width: 80
-        height: 154
+        x: 362
+        y: 924
+        width: 241
+        height: 262
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 53e719a259ae15bb0800000000000000
-      internalID: -4948916589118259659
+      spriteID: a2061e2475987b748a7866de309ca4a9
+      internalID: -1988424826
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemy_300_bul_300001.pvr_2
+      name: total_2
       rect:
         serializedVersion: 2
-        x: 4
-        y: 391
-        width: 139
-        height: 54
+        x: 683
+        y: 926
+        width: 228
+        height: 258
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 739cdeb665f9730b0800000000000000
-      internalID: -5748951205788399305
+      spriteID: fb269fad43b37104cbcbac60e4ec0f4b
+      internalID: 1721710837
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemy_300_bul_300001.pvr_3
+      name: total_3
       rect:
         serializedVersion: 2
-        x: 3
-        y: 332
-        width: 139
-        height: 54
+        x: 986
+        y: 925
+        width: 233
+        height: 261
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6156a8d43e4724df0800000000000000
-      internalID: -197466914043566826
+      spriteID: b0a5ab99a194bbb4695a10dd6c71249d
+      internalID: -556199395
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemy_300_bul_300001.pvr_4
+      name: total_4
       rect:
         serializedVersion: 2
-        x: 147
-        y: 219
-        width: 75
-        height: 131
+        x: 49
+        y: 629
+        width: 230
+        height: 261
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d14b3009fc258d5a0800000000000000
-      internalID: -6496351411054070755
+      spriteID: 3d08a10295d26d644b24bb522f2ddee9
+      internalID: 1971157064
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemy_300_bul_300001.pvr_5
+      name: total_5
       rect:
         serializedVersion: 2
-        x: 3
-        y: 253
-        width: 131
-        height: 74
+        x: 365
+        y: 626
+        width: 248
+        height: 266
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e5f6b51dcec84d440800000000000000
-      internalID: 4959744038394359646
+      spriteID: 78f240e93f50c284fbd600c3d22500a2
+      internalID: -1570897050
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemy_300_bul_300001.pvr_6
+      name: total_6
       rect:
         serializedVersion: 2
-        x: 2
-        y: 201
-        width: 116
-        height: 48
+        x: 673
+        y: 626
+        width: 255
+        height: 264
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b0f82744f2c9c9ed0800000000000000
-      internalID: -2405876374096933109
+      spriteID: eb4f1f09dd7f18549aa89f7ef625cabe
+      internalID: -1134605967
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemy_300_bul_300001.pvr_7
+      name: total_7
       rect:
         serializedVersion: 2
-        x: 120
-        y: 167
-        width: 116
-        height: 48
+        x: 991
+        y: 626
+        width: 248
+        height: 265
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d9f3dc8403094dbd0800000000000000
-      internalID: -2606299747286433891
+      spriteID: 15c2b89be5a124e449dd86dde95ee4ca
+      internalID: 1040672073
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemy_300_bul_300001.pvr_8
+      name: total_8
       rect:
         serializedVersion: 2
-        x: 3
-        y: 132
-        width: 109
-        height: 67
+        x: 59
+        y: 336
+        width: 223
+        height: 261
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: acdad26ba0d948de0800000000000000
-      internalID: -1331766920463143478
+      spriteID: 668816cfa35d2b1459526ea59a272dbc
+      internalID: -9976460
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemy_300_bul_300001.pvr_9
+      name: total_9
       rect:
         serializedVersion: 2
-        x: 2
-        y: 20
-        width: 67
-        height: 109
+        x: 372
+        y: 333
+        width: 236
+        height: 264
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c98b61a7270787da0800000000000000
-      internalID: -5946879670965847908
+      spriteID: 199874a9b9761b048baffeea8c1ac6c3
+      internalID: 2003783286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: total_10
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 329
+        width: 208
+        height: 266
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a7cb75eef2440745b9342d4867b1cd0
+      internalID: 450225087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: total_11
+      rect:
+        serializedVersion: 2
+        x: 996
+        y: 334
+        width: 238
+        height: 263
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0ff1c69c14d9da428050e7de4258b08
+      internalID: -644584722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: total_12
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 61
+        width: 256
+        height: 222
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80cc2c82f79adcf4b9f33af555cab39d
+      internalID: -931897051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: total_13
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 66
+        width: 268
+        height: 215
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c1ce976624401d469db44ba4bd2f248
+      internalID: 765032212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: total_14
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 68
+        width: 263
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc2b6d533ae5dfe439cf6334f10cafea
+      internalID: 1045466242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: total_15
+      rect:
+        serializedVersion: 2
+        x: 976
+        y: 64
+        width: 261
+        height: 212
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d260cdd9a5c05d943b8c83a67a709a0e
+      internalID: -2031941421
       vertices: []
       indices: 
       edges: []
@@ -350,7 +455,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 186edec22efa1184a88eeba523f21479
+    spriteID: 9072b7eb15c4a1740bd78c6e2b111ec6
     internalID: 0
     vertices: []
     indices: 
@@ -362,16 +467,22 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      enemy_300_bul_300001.pvr_0: 4588609830735071187
-      enemy_300_bul_300001.pvr_1: -4948916589118259659
-      enemy_300_bul_300001.pvr_2: -5748951205788399305
-      enemy_300_bul_300001.pvr_3: -197466914043566826
-      enemy_300_bul_300001.pvr_4: -6496351411054070755
-      enemy_300_bul_300001.pvr_5: 4959744038394359646
-      enemy_300_bul_300001.pvr_6: -2405876374096933109
-      enemy_300_bul_300001.pvr_7: -2606299747286433891
-      enemy_300_bul_300001.pvr_8: -1331766920463143478
-      enemy_300_bul_300001.pvr_9: -5946879670965847908
+      total_0: -5601868173345232987
+      total_1: -1988424826
+      total_10: 450225087
+      total_11: -644584722
+      total_12: -931897051
+      total_13: 765032212
+      total_14: 1045466242
+      total_15: -2031941421
+      total_2: 1721710837
+      total_3: -556199395
+      total_4: 1971157064
+      total_5: -1570897050
+      total_6: -1134605967
+      total_7: 1040672073
+      total_8: -9976460
+      total_9: 2003783286
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
