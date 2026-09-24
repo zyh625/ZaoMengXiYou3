@@ -19,8 +19,6 @@ public class Level1Enemy : MonoBehaviour
 {
     public GameObject birdEnemy;//第一关小怪预制体
     public GameObject boss;//第一关boss
-    public GameObject player;//角色
-    private Transform tran;//角色位置，用于敌人的追踪
     public BirdAct[] birdFrames;//0飞行，1攻击，2受击，3死亡
 
     private Bird[] birds;//鸟怪实例
@@ -30,7 +28,6 @@ public class Level1Enemy : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        tran = player.transform;
         birds = new Bird[10];//最多同时出现10只小怪
         for (int i = 0; i < 10; i++) birds[i] = new Bird();
     }
@@ -52,7 +49,7 @@ public class Level1Enemy : MonoBehaviour
         creat += Time.deltaTime;
         if (creat >= 6f)//每6秒生成一个鸟怪
         {
-            Vector2 pos = tran.position;
+            Vector2 pos = Player.tran.position;
             pos.x += Random.Range(-3f, 3f);
             pos.y += 5f;
             InitBird(pos);
@@ -64,14 +61,14 @@ public class Level1Enemy : MonoBehaviour
             {
                 if (birds[i].act == 0)
                 {
-                    Vector2 dir = tran.position - birds[i].tran.position;
+                    Vector2 dir = Player.tran.position - birds[i].tran.position;
                     dir.Normalize();
                     birds[i].tran.position += (Vector3)dir * 2f * Time.deltaTime;
                 }
                 birds[i].time += Time.deltaTime;
                 if (birds[i].time > 0.5f)//更新帧动画
                 {
-                    birds[i].r = birds[i].tran.position.x <= tran.position.x;
+                    birds[i].r = birds[i].tran.position.x <= Player.tran.position.x;
                     if (birds[i].r != birds[i].face)
                     {
                         birds[i].bird.GetComponent<SpriteRenderer>().flipX = !birds[i].r;
