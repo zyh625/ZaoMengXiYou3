@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public SpriteRenderer sr;//角色精灵
     public Rigidbody2D rb;//角色的重力系统
 
-    public static float halfSr { get; private set; }//所有脚本可用但不可修改
+    public static float HalfSr { get; private set; }//所有脚本可用但不可修改
 
     public int act = 0;//0表示静止，1表示行走，2表示跑步，3-6分别表示1到4段攻击，7表示普通跳跃，8表示二连跳跃，
     public int curFrame = 0;//当前帧序列
@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
         tran = monkeyPrefab.transform;
         sr = monkeyPrefab.GetComponent<SpriteRenderer>();
         rb = monkeyPrefab.GetComponent<Rigidbody2D>();
-        halfSr = sr.bounds.size.x / 2;
+        HalfSr = sr.bounds.size.x / 2;
     }
     
     void Update()
@@ -74,7 +74,7 @@ public class Player : MonoBehaviour
     }
     public void OnAttack(InputAction.CallbackContext ctx)
     {
-        if (!ctx.performed) return;
+        if (!ctx.performed) return;//松开K键才算一次攻击
 
         InitMonkey(nextAttack);
         nextAttack = nextAttack == 6 ? 3 : nextAttack + 1;
@@ -83,17 +83,22 @@ public class Player : MonoBehaviour
     {
         if (act > 6) return;
         delayTime += Time.deltaTime;
+        if (delayTime >= 0.1f && act >= 3 && act <= 6)
+        {
+            InitDelay();
+            if (curFrame == 0) InitMonkey(0);
+        }
         if (delayTime >= 0.2)
         {
-            delayTime = 0;
-            sr.sprite = monkeys[act].frames[curFrame];
-            curFrame = (curFrame + 1) % monkeys[act].frames.Length;
-            if (act>=3 && curFrame == 0)
-            {
-                InitMonkey(0);
-            }
+            InitDelay();
         }
 
+    }
+    public void InitDelay()
+    {
+        delayTime = 0;
+        sr.sprite = monkeys[act].frames[curFrame];
+        curFrame = (curFrame + 1) % monkeys[act].frames.Length;
     }
     public void Move(bool r, float speed)//角色水平移动
     {

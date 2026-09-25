@@ -1724,9 +1724,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 256cc5cfe54b50c438d710316179017b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Camera
+  bossPrefab: {fileID: 8951138776209949823, guid: 182aa724b6afe3940a4d31daffbea3b1, type: 3}
   ground:
   - {fileID: 1222389601}
   - {fileID: 95529541}
+  - {fileID: 516268189}
   cam: {fileID: 519420031}
 --- !u!4 &517710698
 Transform:
@@ -2955,19 +2957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c950229c4aad7148a870f86f59314a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Level1Enemy
-  birdEnemy: {fileID: 7007277539994529739, guid: 79a9313582015bc45be5ba3975146be0, type: 3}
-  boss: {fileID: 904240649}
-  birdFrames:
-  - frames:
-    - {fileID: 5352286359449648278, guid: 5a0650e66dd85fe4fa09c4daf0909699, type: 3}
-    - {fileID: 1925381187, guid: 5a0650e66dd85fe4fa09c4daf0909699, type: 3}
-    - {fileID: -1405014885, guid: 5a0650e66dd85fe4fa09c4daf0909699, type: 3}
-    - {fileID: -1656128344, guid: 5a0650e66dd85fe4fa09c4daf0909699, type: 3}
-    - {fileID: 349367729, guid: 5a0650e66dd85fe4fa09c4daf0909699, type: 3}
-    - {fileID: 1942521919, guid: 5a0650e66dd85fe4fa09c4daf0909699, type: 3}
-    - {fileID: -1955925968, guid: 5a0650e66dd85fe4fa09c4daf0909699, type: 3}
-    - {fileID: 511048368, guid: 5a0650e66dd85fe4fa09c4daf0909699, type: 3}
-  flyDis: 0.03
+  bird: {fileID: 4319281388145980228, guid: 79a9313582015bc45be5ba3975146be0, type: 3}
 --- !u!4 &1264052047
 Transform:
   m_ObjectHideFlags: 0
@@ -4586,7 +4576,6 @@ MonoBehaviour:
     - {fileID: 5407164698605751720, guid: ae0e13d63e848bf43a249956acc2e732, type: 3}
     - {fileID: -2978437386786773068, guid: ae0e13d63e848bf43a249956acc2e732, type: 3}
     - {fileID: 8855121072507666952, guid: ae0e13d63e848bf43a249956acc2e732, type: 3}
-    - {fileID: -584496305276438258, guid: ae0e13d63e848bf43a249956acc2e732, type: 3}
     - {fileID: 6420136936686048148, guid: ae0e13d63e848bf43a249956acc2e732, type: 3}
     - {fileID: -135176011581626376, guid: ae0e13d63e848bf43a249956acc2e732, type: 3}
     - {fileID: -8282437041194695644, guid: ae0e13d63e848bf43a249956acc2e732, type: 3}
@@ -4601,7 +4590,6 @@ MonoBehaviour:
     - {fileID: 869763437, guid: 2a9128a707aa7bf46adcf648e7fad600, type: 3}
     - {fileID: -466164488, guid: 2a9128a707aa7bf46adcf648e7fad600, type: 3}
     - {fileID: -283626610, guid: 2a9128a707aa7bf46adcf648e7fad600, type: 3}
-    - {fileID: 57792155, guid: 2a9128a707aa7bf46adcf648e7fad600, type: 3}
     - {fileID: -1720230078, guid: 2a9128a707aa7bf46adcf648e7fad600, type: 3}
     - {fileID: -310517222, guid: 2a9128a707aa7bf46adcf648e7fad600, type: 3}
   monkeyPrefab: {fileID: 1963501933}
