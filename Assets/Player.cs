@@ -6,8 +6,9 @@ public class Player : MonoBehaviour
     public AnimationData[] monkeys;//角色的所有动作的帧动画
     public GameObject monkeyPrefab;//预先创建好的角色实例
     public static Transform tran;//角色位置
-    public SpriteRenderer sr;//角色精灵
-    public Rigidbody2D rb;//角色的重力系统
+    private SpriteRenderer sr;//角色精灵
+    private Rigidbody2D rb;//角色的重力系统
+    public GameObject AttackHit;//角色的攻击碰撞箱
 
     public static float HalfSr { get; private set; }//所有脚本可用但不可修改
 
@@ -22,13 +23,16 @@ public class Player : MonoBehaviour
     Vector2 priInput;//用于判断上次按下的按键是否和这次一样
     float speed = 0.003f;
     int jumped = 0;//检测跳跃次数
-    private int nextAttack = 3;//下一次攻击动作，按3、4、5、6循环
+    private float lastAttack = -1f;//上次攻击的事件
+    private int priAttack = 3;//上次攻击的招式
+    public static float attack = 10f;//攻击力
     void Awake()
     {
         tran = monkeyPrefab.transform;
         sr = monkeyPrefab.GetComponent<SpriteRenderer>();
         rb = monkeyPrefab.GetComponent<Rigidbody2D>();
         HalfSr = sr.bounds.size.x / 2;
+        AttackHit.SetActive(false);
     }
     
     void Update()
@@ -75,15 +79,20 @@ public class Player : MonoBehaviour
     public void OnAttack(InputAction.CallbackContext ctx)
     {
         if (!ctx.performed) return;//松开K键才算一次攻击
-
-        InitMonkey(nextAttack);
-        nextAttack = nextAttack == 6 ? 3 : nextAttack + 1;
+        AttackHit.SetActive(true);//开启攻击判定
+        if (lastAttack == -1 || Time.time - lastAttack > 1.5f)//长时间未攻击，从第一招开始
+            priAttack = 3;
+        else
+            priAttack = (priAttack == 6) ? 3 : priAttack + 1;
+        InitMonkey(priAttack);
+        lastAttack = Time.time;
+        Debug.Log(act);
     }
     public void UpdateMonkey()
     {
         if (act > 6) return;
         delayTime += Time.deltaTime;
-        if (delayTime >= 0.1f && act >= 3 && act <= 6)
+        if (delayTime >= 0.05f && act >= 3 && act <= 6)//攻击更新
         {
             InitDelay();
             if (curFrame == 0) InitMonkey(0);
@@ -105,6 +114,9 @@ public class Player : MonoBehaviour
         if (r != face)
         {
             sr.flipX = !r;
+            Vector2 p = AttackHit.transform.localPosition;
+            p.x = -p.x;
+            AttackHit.transform.localPosition = p;
             face = r;
         }
         Vector3 pos = tran.position;
@@ -118,6 +130,7 @@ public class Player : MonoBehaviour
     }
     public void InitMonkey(int k)//切换角色状态，当前帧序列变为0
     {
+        if (k < 3 || k > 6) AttackHit.SetActive(false);//非攻击状态直接取消判定
         act = k;
         curFrame = 0;
         delayTime = 0f;
