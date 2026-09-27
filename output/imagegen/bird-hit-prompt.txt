@@ -1,0 +1,27 @@
+Generated using built-in image_gen.
+
+Use case: illustration-story. Create ONE complete 16-frame 2D hit-reaction sprite sheet for the EXACT bird enemy in reference1 birdEnemy.png. Reference2 birdFly.png defines exact character pixel scale and visual rendering details. The subject is an armored FLYING BIRD, not a humanoid: adapt the user's standing hit-reaction biomechanics to its original horizontal hovering posture and bird torso/neck/wings/tail. Never give it human arms, legs, hair or clothing. First and last poses match reference1 precisely at the reference2 scale: long charcoal tail extending left, small orange armored torso and dark oval shoulder piece, layered silver feathers, silver helmet surrounding orange head, hooked orange beak pointing right, red eye, tiny tucked dark talons. Crisp black outlined flat shaded 2D sprite illustration. Preserve exact head/body ratio, helmet design, beak shape, feather design, colors and identity.
+
+CANVAS: exactly 1792x1792 pixels. Exactly 4 columns x 4 rows, 448x448 equal rectangular cells. Exactly 16 complete poses, chronological left to right top to bottom. Character original neutral beak-to-tail rendered length roughly 350 pixels, matching reference2 whose sheet is about 1770px wide with four birds per row. Preserve this physical scale and head size through all poses. Do not inflate bird to fill large cells: extra vertical cell space accommodates recoil. True transparent RGBA background, no grid borders, numbers, text, ground, shadows, scenery or effects. One bird per cell, full feathers/tail/beak and tear fully inside cell with comfortable transparent padding. Uniform cell alignment and fixed local torso/hip pivot at (224,224), no whole-character translation or scale jitter. Keep facing RIGHT throughout.
+
+ANIMATION: frontal invisible hit causes the bird's front torso and head to recoil backward and UPWARD, beak gradually pointing toward upper right. Rotate articulated torso around rear body pivot with neck/head follow-through, wings and tail subtly counterbalance, not rigid whole-image rotation. Bird remains hovering in its original location, no jump, fall, spin, turning away, trajectory or attack. One continuous impact and recovery, not a wingbeat cycle. No extra characters or objects.
+
+FRAME PLAN:
+1 original normal horizontal neutral flying silhouette of reference1, red eye.
+2 immediate impact, shoulders tense, head starts up, surprised red eye.
+3 front torso tilts UP/back 8 degrees, eye beginning to lose red iris.
+4 recoil 15 degrees, visible eye completely SOLID WHITE with black outline and NO pupil or iris, one tiny round solid white tear bead at OUTER eye corner.
+5 recoil 25 degrees, head tilted up, white eye + bead.
+6 recoil 35 degrees, beak diagonally up/right, white eye + bead.
+7 recoil 42 degrees, tail and wings subtly counterbalance, white eye + bead.
+8 PEAK recoil 45 degrees, head raised and beak distinctly toward upper right, white eye + bead.
+9 hold near 45 degrees with slight reduced tension, white eye + bead.
+10 recover 35 degrees, head lowers, white eye + bead.
+11 recover 25 degrees, white eye + bead.
+12 recover 15 degrees, eye begins restoring red.
+13 recover 8 degrees, original red eye mostly restored, tear completely gone.
+14 original almost-horizontal posture, original red eye restored.
+15 subtle settling of wing/tail/head toward exact neutral.
+16 EXACT same normal original horizontal pose, expression and silhouette as frame1.
+
+Important: in side view preserve only the eye naturally visible in reference; don't add another eye. Tear is exactly ONE tiny perfectly round opaque white bead with thin dark outline touching outer eye corner, distinct from white eye, about 5-7px diameter. Not sweat streak, floating particle, glow, elongated teardrop or giant orb. White eye frames 4-11 must be clearly legible and absolutely no red iris/pupil remains. Helmet and beak stay attached and anatomically coherent throughout. Preserve equipment, no shape changes or detached parts. Smooth easing in recoil and recovery, subtle tail/wing feather follow-through. Exactly same body scale, no cropped feathers, no overlaps, no motion blur, ghosting, extra wings, duplicated poses within cells or extra limbs. Match reference artwork faithfully; no redesign or perspective drift.

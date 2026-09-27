@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2459832944854416063}
   - component: {fileID: 4319281388145980228}
   - component: {fileID: 3448969687010592660}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BirdEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.15, y: -8.25, z: 0}
-  m_LocalScale: {x: 0.55, y: 0.55, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,12 +83,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 5352286359449648278, guid: 5a0650e66dd85fe4fa09c4daf0909699, type: 3}
+  m_Sprite: {fileID: 1104750260857598262, guid: 8f20f9c2d0a75ea44bae662e468d8881, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.16, y: 0.48}
+  m_Size: {x: 3.54, y: 1.31}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -105,16 +105,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f86f56e44f7640a4eb4ba837835f860a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bird
+  playerUp: {fileID: 0}
   birdFrames:
   - frames:
-    - {fileID: 5352286359449648278, guid: 5a0650e66dd85fe4fa09c4daf0909699, type: 3}
-    - {fileID: 1925381187, guid: 5a0650e66dd85fe4fa09c4daf0909699, type: 3}
-    - {fileID: -1405014885, guid: 5a0650e66dd85fe4fa09c4daf0909699, type: 3}
-    - {fileID: -1656128344, guid: 5a0650e66dd85fe4fa09c4daf0909699, type: 3}
-    - {fileID: 349367729, guid: 5a0650e66dd85fe4fa09c4daf0909699, type: 3}
-    - {fileID: 1942521919, guid: 5a0650e66dd85fe4fa09c4daf0909699, type: 3}
-    - {fileID: -1955925968, guid: 5a0650e66dd85fe4fa09c4daf0909699, type: 3}
-    - {fileID: 511048368, guid: 5a0650e66dd85fe4fa09c4daf0909699, type: 3}
+    - {fileID: 1104750260857598262, guid: 8f20f9c2d0a75ea44bae662e468d8881, type: 3}
+    - {fileID: 1678779745521519413, guid: 8f20f9c2d0a75ea44bae662e468d8881, type: 3}
+    - {fileID: 1745918808444246952, guid: 8f20f9c2d0a75ea44bae662e468d8881, type: 3}
+    - {fileID: -5773276280522931959, guid: 8f20f9c2d0a75ea44bae662e468d8881, type: 3}
+    - {fileID: -8879644887609228779, guid: 8f20f9c2d0a75ea44bae662e468d8881, type: 3}
+    - {fileID: 1195917187071067388, guid: 8f20f9c2d0a75ea44bae662e468d8881, type: 3}
+    - {fileID: -274349144855471239, guid: 8f20f9c2d0a75ea44bae662e468d8881, type: 3}
+    - {fileID: -3149227476546905435, guid: 8f20f9c2d0a75ea44bae662e468d8881, type: 3}
+    - {fileID: 5482193621282969209, guid: 8f20f9c2d0a75ea44bae662e468d8881, type: 3}
+    - {fileID: -5189493944655715393, guid: 8f20f9c2d0a75ea44bae662e468d8881, type: 3}
+    - {fileID: 7405472676069607498, guid: 8f20f9c2d0a75ea44bae662e468d8881, type: 3}
+    - {fileID: 2115662755219256017, guid: 8f20f9c2d0a75ea44bae662e468d8881, type: 3}
+    - {fileID: -8712240210428476723, guid: 8f20f9c2d0a75ea44bae662e468d8881, type: 3}
+    - {fileID: -5920229299387914652, guid: 8f20f9c2d0a75ea44bae662e468d8881, type: 3}
+    - {fileID: 736615223287886387, guid: 8f20f9c2d0a75ea44bae662e468d8881, type: 3}
+    - {fileID: 6737627536801199964, guid: 8f20f9c2d0a75ea44bae662e468d8881, type: 3}
+  - frames:
+    - {fileID: -6575155442670577657, guid: 6a726cc436ca85f48a5d416bf94e7d76, type: 3}
+    - {fileID: 7999869540972775793, guid: 6a726cc436ca85f48a5d416bf94e7d76, type: 3}
+    - {fileID: 5215668301194588577, guid: 6a726cc436ca85f48a5d416bf94e7d76, type: 3}
+    - {fileID: 3526768618792124950, guid: 6a726cc436ca85f48a5d416bf94e7d76, type: 3}
+    - {fileID: 9072046372330289395, guid: 6a726cc436ca85f48a5d416bf94e7d76, type: 3}
+    - {fileID: -5586505995330394046, guid: 6a726cc436ca85f48a5d416bf94e7d76, type: 3}
+    - {fileID: 847569836346864287, guid: 6a726cc436ca85f48a5d416bf94e7d76, type: 3}
+    - {fileID: -8384089236834026498, guid: 6a726cc436ca85f48a5d416bf94e7d76, type: 3}
+    - {fileID: -3026729269006751705, guid: 6a726cc436ca85f48a5d416bf94e7d76, type: 3}
+    - {fileID: 4515228660658877445, guid: 6a726cc436ca85f48a5d416bf94e7d76, type: 3}
+    - {fileID: 4382481102083336363, guid: 6a726cc436ca85f48a5d416bf94e7d76, type: 3}
+    - {fileID: 4610742172668591418, guid: 6a726cc436ca85f48a5d416bf94e7d76, type: 3}
+    - {fileID: -3017327873661572342, guid: 6a726cc436ca85f48a5d416bf94e7d76, type: 3}
+    - {fileID: -4273664914529132799, guid: 6a726cc436ca85f48a5d416bf94e7d76, type: 3}
+    - {fileID: 8648844768301514205, guid: 6a726cc436ca85f48a5d416bf94e7d76, type: 3}
+    - {fileID: -4556295768944590427, guid: 6a726cc436ca85f48a5d416bf94e7d76, type: 3}
+  - frames:
+    - {fileID: -4693172855784471415, guid: d880245afa451b74484ecc9b92e93c3d, type: 3}
+    - {fileID: 6682864347109925972, guid: d880245afa451b74484ecc9b92e93c3d, type: 3}
+    - {fileID: -8287263793893346743, guid: d880245afa451b74484ecc9b92e93c3d, type: 3}
+    - {fileID: -624235066098215293, guid: d880245afa451b74484ecc9b92e93c3d, type: 3}
+    - {fileID: -6330584240876202380, guid: d880245afa451b74484ecc9b92e93c3d, type: 3}
+    - {fileID: -6680164155227825440, guid: d880245afa451b74484ecc9b92e93c3d, type: 3}
+    - {fileID: -1884475604829484629, guid: d880245afa451b74484ecc9b92e93c3d, type: 3}
+    - {fileID: 3803295294043530293, guid: d880245afa451b74484ecc9b92e93c3d, type: 3}
+    - {fileID: -4820394769635839188, guid: d880245afa451b74484ecc9b92e93c3d, type: 3}
+    - {fileID: -8069396409264559087, guid: d880245afa451b74484ecc9b92e93c3d, type: 3}
+    - {fileID: -6234600061903630307, guid: d880245afa451b74484ecc9b92e93c3d, type: 3}
+    - {fileID: 2421647620415480917, guid: d880245afa451b74484ecc9b92e93c3d, type: 3}
+    - {fileID: 8127771730548028362, guid: d880245afa451b74484ecc9b92e93c3d, type: 3}
+    - {fileID: -3728819383587008756, guid: d880245afa451b74484ecc9b92e93c3d, type: 3}
+    - {fileID: 8046782047165309495, guid: d880245afa451b74484ecc9b92e93c3d, type: 3}
+    - {fileID: -7902615642751544324, guid: d880245afa451b74484ecc9b92e93c3d, type: 3}
 --- !u!61 &3448969687010592660
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -153,8 +196,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.74, y: 1.54}
-    newSize: {x: 1.16, y: 0.48}
+    oldSize: {x: 3.54, y: 1.31}
+    newSize: {x: 3.54, y: 1.31}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

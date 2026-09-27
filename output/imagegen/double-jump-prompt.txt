@@ -1,0 +1,26 @@
+Use case: illustration-story. Create a production 2D Unity sprite sheet using the three attached reference images. Reference 1 stand.png defines exact character identity and art style. Reference 2 jumped.png defines matching airborne first and final poses. Reference 3 jump.png defines pixel scale: original reference sheet is 1254x1254 with 4x4 sprites, head roughly 160 pixels wide, airborne figure roughly 260 pixels tall. Target canvas 1280x1280, exactly 4 columns x 4 rows, equal 320x320 cells, exactly 16 complete sprites read left-to-right top-to-bottom. Transparent RGBA background, empty transparent gutters, no borders or drawn grid, no numbers or text.
+
+Animate a SECOND-STAGE DOUBLE JUMP, one complete 360 degree FORWARD SOMERSAULT in the screen's vertical plane. Facing screen right, rotation is clockwise as viewed on screen. This is an end-over-end forward roll with visibly upside-down head below feet halfway; never a yaw spin around the standing axis. Fix the center of rotation at the same local center of EVERY cell with no upward/downward trajectory or lateral translation. Preserve the SAME physical pixel scale and head/body/limb proportions through the rotation; natural tuck can change the projected bounding height, but no character scaling or zoom.
+
+Detailed 16-frame progression with continuous clockwise body angles:
+1 reference 2 original airborne pose 0 degrees.
+2 same airborne pose, subtle anticipation 0 degrees.
+3 compress torso and tuck legs, lean forward 8 degrees.
+4 tighter gathering pose 20 degrees.
+5 upper body leads and legs follow 45 degrees.
+6 initiate faster tucked roll 80 degrees.
+7 horizontal forward tuck 115 degrees.
+8 diagonally inverted tuck 150 degrees.
+9 fully upside-down 190 degrees, head below hips, boots above.
+10 continue inverted tuck 230 degrees.
+11 finish final quadrant 270 degrees, head towards left, boots towards right.
+12 begin opening 305 degrees.
+13 extend to regain original stance 335 degrees.
+14 settle airborne 350 degrees.
+15 recovered 360 degrees.
+16 same pose and placement as frame 1 and reference 2, 360 degrees.
+Angles indicate rigid orientation of the overall body within the image plane; limbs articulate naturally. All 16 frames airborne, no grounded or landing feet. Strong anticipation, energetic initiation, continuous readable rotation, controlled deceleration. Staff held securely throughout and rotates together with the body, never detached, entirely within each cell.
+
+Preserve reference character exactly: chibi Sun Wukong, huge brown-haired head, golden circlet with square spiral detail, cream face and red/gold eyes, yellow sleeveless tunic with charcoal diagonal trim, black wrapped forearms, turquoise thin belt, leopard skin waist flap, red trousers, charcoal boots, red staff with gold tips. Same crisp black outlined flat 2D cartoon shading and same asymmetric side-facing design, no redesign, no 3D, no perspective drift. Small head follow-through, coordinated limbs, subtle clothing motion. Strict consistent anatomy, only two arms two legs one staff each sprite. No extra objects, effects, motion lines, scenery, shadows, blurry silhouettes, cropping or overlapping cells. All pixels outside sprites genuinely transparent. Match reference 3 physical sprite scale in every frame; preserve volume.
+
+Generated with built-in image_gen. Follow-up correction requested clockwise rotation continuity for frames 10-13 while preserving other cells, scale, character design and transparency.
