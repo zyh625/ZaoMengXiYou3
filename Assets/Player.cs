@@ -12,11 +12,11 @@ public class Player : MonoBehaviour
     public static Transform tran;//角色位置
     private SpriteRenderer sr;//角色精灵
     private Rigidbody2D rb;//角色的重力系统
-    public GameObject AttackHit;//角色的攻击碰撞箱
+    public GameObject[] AttackHit = new GameObject[2];//角色的左右攻击碰撞箱
 
     public static float HalfSr { get; private set; }//所有脚本可用但不可修改
 
-    public int act = 0;//0表示静止，1表示行走，2表示跑步，3-6分别表示1到4段攻击，7表示起跳过程，8表示落地过程，9表示起跳到空中,10表示二连跳，11表示受击，12空中定格帧动画
+    public int act = 0;//0表示静止，1表示行走，2表示跑步，3-6分别表示1到4段攻击，7表示起跳过程，8表示落地过程，9表示起跳到空中,10表示二连跳，11表示受击，12空中定格帧动画,13空中攻击
     public int curFrame = 0;//当前帧序列
     public float delayTime = 0;
     public bool face = true;//角色朝向，开始向右
@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         HalfSr = sr.bounds.size.x / 2;
-        AttackHit.SetActive(false);
+        
     }
     private void FixedUpdate()
     {
@@ -131,21 +131,25 @@ public class Player : MonoBehaviour
     {
         if (ctx.performed)
         {
-            AttackHit.SetActive(true);//开启攻击判定
+            if (isFlying)
+            {
+                JumpAttack();
+                return;
+            }
             if (lastAttack == -1 || Time.time - lastAttack > 1.5f)//长时间未攻击，从第一招开始
                 priAttack = 3;
             else
                 priAttack = (priAttack == 6) ? 3 : priAttack + 1;
             InitMonkey(priAttack);
+            InitAttackBox(true); //开启攻击判定
             lastAttack = Time.time;
-            Debug.Log(act);
         }
     }
     public void UpdateMonkey()
     {
         if (act == 12) return;
         delayTime += Time.deltaTime;
-        if (delayTime >= 0.05f && act >= 3 && act <= 6)//攻击更新
+        if (delayTime >= 0.04f && ((act >= 3 && act <= 6)||act==13))//攻击更新
         {
             InitDelay();
             if (curFrame == 0) InitMonkey(isFlying ? 12 : 0);
@@ -175,9 +179,6 @@ public class Player : MonoBehaviour
         if (r != face)
         {
             sr.flipX = !r;
-            Vector2 p = AttackHit.transform.localPosition;
-            p.x = -p.x;
-            AttackHit.transform.localPosition = p;
             face = r;
         }
         Vector3 pos = tran.position;
@@ -191,11 +192,28 @@ public class Player : MonoBehaviour
     }
     public void InitMonkey(int k)//切换角色状态，当前帧序列变为0
     {
-        if (k < 3 || k > 6) AttackHit.SetActive(false);//非攻击状态直接取消判定
+        if ((k < 3 || k > 6) && k != 13) InitAttackBox(false);//非攻击状态直接取消判定
         if (k == 10) Jump();//空中二连跳直接获得向上的速度
         act = k;
         curFrame = 0;
         delayTime = 0f;
         sr.sprite = monkeys[k].frames[0];
+    }
+    public void InitAttackBox(bool b)//关闭碰撞箱
+    {
+        if (b)
+        {
+            AttackHit[face ? 1 : 0].SetActive(true);
+            if (act == 5) AttackHit[face ? 0 : 1].SetActive(true);
+            else AttackHit[face ? 0 : 1].SetActive(false);
+            return;
+        }
+        AttackHit[0].SetActive(false);
+        AttackHit[1].SetActive(false);
+    }
+    private void JumpAttack()//跳跃过程中攻击
+    {
+        InitMonkey(13);
+        InitAttackBox(true);
     }
 }
