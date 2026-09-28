@@ -4232,7 +4232,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 0.9
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -4483,22 +4483,22 @@ MonoBehaviour:
     - {fileID: -2743457837318539261, guid: ed58cc44ecd88584b8e652b1f517bddf, type: 3}
     - {fileID: -9213669759836412338, guid: ed58cc44ecd88584b8e652b1f517bddf, type: 3}
   - frames:
-    - {fileID: 1255624280, guid: db352bd39e7f49ebab565663b8861de8, type: 3}
-    - {fileID: -1867854150, guid: db352bd39e7f49ebab565663b8861de8, type: 3}
-    - {fileID: -2090654191, guid: db352bd39e7f49ebab565663b8861de8, type: 3}
-    - {fileID: -1144403288, guid: db352bd39e7f49ebab565663b8861de8, type: 3}
-    - {fileID: 1115991682, guid: db352bd39e7f49ebab565663b8861de8, type: 3}
-    - {fileID: 1905175192, guid: db352bd39e7f49ebab565663b8861de8, type: 3}
-    - {fileID: -1877562156, guid: db352bd39e7f49ebab565663b8861de8, type: 3}
-    - {fileID: 908034693, guid: db352bd39e7f49ebab565663b8861de8, type: 3}
-    - {fileID: -469494850, guid: db352bd39e7f49ebab565663b8861de8, type: 3}
-    - {fileID: 1120416002, guid: db352bd39e7f49ebab565663b8861de8, type: 3}
-    - {fileID: 55896854, guid: db352bd39e7f49ebab565663b8861de8, type: 3}
-    - {fileID: -1174959167, guid: db352bd39e7f49ebab565663b8861de8, type: 3}
-    - {fileID: -673048546, guid: db352bd39e7f49ebab565663b8861de8, type: 3}
-    - {fileID: -1788726973, guid: db352bd39e7f49ebab565663b8861de8, type: 3}
-    - {fileID: 1661198336, guid: db352bd39e7f49ebab565663b8861de8, type: 3}
-    - {fileID: 2118641541, guid: db352bd39e7f49ebab565663b8861de8, type: 3}
+    - {fileID: 2943770825191874051, guid: 8a312a7a1e0830442bcd085659512a4c, type: 3}
+    - {fileID: -7281662909314068251, guid: 8a312a7a1e0830442bcd085659512a4c, type: 3}
+    - {fileID: 7414051014256516412, guid: 8a312a7a1e0830442bcd085659512a4c, type: 3}
+    - {fileID: 2855838395241879167, guid: 8a312a7a1e0830442bcd085659512a4c, type: 3}
+    - {fileID: 8468610849222888830, guid: 8a312a7a1e0830442bcd085659512a4c, type: 3}
+    - {fileID: -8541314348769748800, guid: 8a312a7a1e0830442bcd085659512a4c, type: 3}
+    - {fileID: -627732867094519840, guid: 8a312a7a1e0830442bcd085659512a4c, type: 3}
+    - {fileID: -2052380497730097840, guid: 8a312a7a1e0830442bcd085659512a4c, type: 3}
+    - {fileID: 5452379489500820694, guid: 8a312a7a1e0830442bcd085659512a4c, type: 3}
+    - {fileID: 8520566260163969846, guid: 8a312a7a1e0830442bcd085659512a4c, type: 3}
+    - {fileID: -1910263772697767825, guid: 8a312a7a1e0830442bcd085659512a4c, type: 3}
+    - {fileID: 659643608335880933, guid: 8a312a7a1e0830442bcd085659512a4c, type: 3}
+    - {fileID: -882560418714985536, guid: 8a312a7a1e0830442bcd085659512a4c, type: 3}
+    - {fileID: 5741351296965310723, guid: 8a312a7a1e0830442bcd085659512a4c, type: 3}
+    - {fileID: -4710977845037874720, guid: 8a312a7a1e0830442bcd085659512a4c, type: 3}
+    - {fileID: -2031287254676535423, guid: 8a312a7a1e0830442bcd085659512a4c, type: 3}
   - frames:
     - {fileID: 4281637774074219296, guid: 949c34c3160b45347b92b6bdf1ef7b8e, type: 3}
     - {fileID: -7862396843884538191, guid: 949c34c3160b45347b92b6bdf1ef7b8e, type: 3}

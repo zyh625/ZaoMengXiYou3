@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Utilities;
 public class Player : MonoBehaviour
 {
     [SerializeField] private LayerMask groundLayer;
@@ -32,6 +31,7 @@ public class Player : MonoBehaviour
     private int priAttack = 3;//上次攻击的招式
     public static float attack = 10f;//攻击力
     private bool isFlying = false;//是否处于跳跃状态
+    private bool nextAttack = false;//短时间内是否按下第二次攻击
     void Awake()
     {
         Attacked = transform.Find("Attacked").gameObject;
@@ -47,8 +47,8 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        bool wasGround = isGround;
-        isGround = CheckGround();
+        bool wasGround = isGround;//前一瞬间是否触地
+        isGround = CheckGround();//当前是否触地
         if (!wasGround && isGround && isFlying && act != 7)//由未落地到落地的瞬间，之前按下了K键而且当前不是起跳下蹲的过程
         {
             jumped = 0;
@@ -114,7 +114,7 @@ public class Player : MonoBehaviour
     public void OnJump(InputAction.CallbackContext ctx)
     {
         if (!ctx.performed || jumped >= 2) return;
-        if (isGround)
+        if (isGround||jumped==0)
         {
             jumped = 1;
             isFlying = true;
@@ -131,28 +131,26 @@ public class Player : MonoBehaviour
     {
         if (ctx.performed)
         {
-            if (isFlying)
-            {
-                JumpAttack();
-                return;
-            }
-            if (lastAttack == -1 || Time.time - lastAttack > 1.5f)//长时间未攻击，从第一招开始
-                priAttack = 3;
-            else
-                priAttack = (priAttack == 6) ? 3 : priAttack + 1;
-            InitMonkey(priAttack);
-            InitAttackBox(true); //开启攻击判定
-            lastAttack = Time.time;
+            RequestAttack();
         }
     }
     public void UpdateMonkey()
     {
         if (act == 12) return;
         delayTime += Time.deltaTime;
-        if (delayTime >= 0.04f && ((act >= 3 && act <= 6)||act==13))//攻击更新
+        if (delayTime >= 0.04f && IsAttacking())//攻击更新
         {
             InitDelay();
-            if (curFrame == 0) InitMonkey(isFlying ? 12 : 0);
+            if (curFrame == 5) InitAttackBox(true);//第6帧开启碰撞箱
+            else if (curFrame == 12) InitAttackBox(false);
+            if (nextAttack && (curFrame >= 12 || curFrame == 0)) NextAttack();
+            if (curFrame == 0)
+            {
+                nextAttack = false;
+                if (isFlying) InitMonkey(12);
+                else RestoreGroundAction();
+            }
+            return;
         }
         if (delayTime >= 0.02f&&(act==7||act==9||act==10))//起跳或二连跳动画，播放一遍
         {
@@ -163,6 +161,7 @@ public class Player : MonoBehaviour
                 InitMonkey(act == 7 ? 9 : 12);
                 return;
             }
+            return;
         }
         if (delayTime >= 0.2)
             InitDelay();
@@ -188,18 +187,18 @@ public class Player : MonoBehaviour
     }
     public void Jump()
     {
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, 10f);
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, 7f);//速度偏低，加速度偏低，让滞空时间较长
     }
     public void InitMonkey(int k)//切换角色状态，当前帧序列变为0
     {
-        if ((k < 3 || k > 6) && k != 13) InitAttackBox(false);//非攻击状态直接取消判定
-        if (k == 10) Jump();//空中二连跳直接获得向上的速度
         act = k;
         curFrame = 0;
         delayTime = 0f;
         sr.sprite = monkeys[k].frames[0];
+        InitAttackBox(false);
+        if (k == 10) Jump();//空中二连跳直接获得向上的速度
     }
-    public void InitAttackBox(bool b)//关闭碰撞箱
+    public void InitAttackBox(bool b)//开关左右两侧碰撞箱
     {
         if (b)
         {
@@ -211,9 +210,36 @@ public class Player : MonoBehaviour
         AttackHit[0].SetActive(false);
         AttackHit[1].SetActive(false);
     }
-    private void JumpAttack()//跳跃过程中攻击
+    private void RequestAttack()//检测是否短时间内连按，最多响应两次，1.5秒未攻击重新出招
     {
-        InitMonkey(13);
-        InitAttackBox(true);
+        if (!IsAttacking())
+        {
+            nextAttack = false;
+            if (isFlying) InitMonkey(13);
+            else
+            {
+                if (lastAttack == -1 || Time.time - lastAttack > 1.5f)//长时间未攻击，从第一招开始
+                    priAttack = 3;
+                else
+                    priAttack = (priAttack == 6) ? 3 : priAttack + 1;
+                InitMonkey(priAttack);
+                lastAttack = Time.time;
+            }
+            return;
+        }
+        if (curFrame >= 5)//攻击阶段，可存储一次攻击
+            nextAttack = true;
+        if (curFrame >= 12 && nextAttack)
+            NextAttack();
+    }
+    private void NextAttack()
+    {
+        if (act == 13) InitMonkey(13);//空中连按，重新播放空斩的帧动画
+        else InitMonkey(act == 6 ? 3 : act + 1);
+        nextAttack = false;
+    }
+    private bool IsAttacking()
+    {
+        return (act >= 3 && act <= 6) || act == 13;
     }
 }
