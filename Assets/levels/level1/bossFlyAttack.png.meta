@@ -1,0 +1,523 @@
+fileFormatVersion: 2
+guid: fa651048965cb8742a3981523b6a8fcc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2261721984569073744
+    second: bossFlyAttack_0
+  - first:
+      213: 1317312483136642859
+    second: bossFlyAttack_1
+  - first:
+      213: 9012007414349438898
+    second: bossFlyAttack_2
+  - first:
+      213: -2060979069756225503
+    second: bossFlyAttack_3
+  - first:
+      213: -336437429575730691
+    second: bossFlyAttack_4
+  - first:
+      213: -6149543302307150647
+    second: bossFlyAttack_5
+  - first:
+      213: 2584723021428089130
+    second: bossFlyAttack_6
+  - first:
+      213: 3392197841316170797
+    second: bossFlyAttack_7
+  - first:
+      213: -5538723133220132175
+    second: bossFlyAttack_8
+  - first:
+      213: -7207442448785906800
+    second: bossFlyAttack_9
+  - first:
+      213: -8225119681646602548
+    second: bossFlyAttack_10
+  - first:
+      213: -5475182877481273568
+    second: bossFlyAttack_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: bossFlyAttack_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 798
+        width: 369
+        height: 147
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0506eee6920436f10800000000000000
+      internalID: 2261721984569073744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossFlyAttack_1
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 798
+        width: 366
+        height: 203
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2f1c8759b8084210800000000000000
+      internalID: 1317312483136642859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossFlyAttack_2
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 796
+        width: 363
+        height: 212
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bf1c75eef4111d70800000000000000
+      internalID: 9012007414349438898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossFlyAttack_21
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 554
+        width: 376
+        height: 175
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1284aa1a47ee563e0800000000000000
+      internalID: -2060979069756225503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossFlyAttack_28
+      rect:
+        serializedVersion: 2
+        x: 1155
+        y: 296
+        width: 365
+        height: 229
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df93ef8b0fbb45bf0800000000000000
+      internalID: -336437429575730691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossFlyAttack_24
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 548
+        width: 367
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c4891fb2fe68aaa0800000000000000
+      internalID: -6149543302307150647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossFlyAttack_25
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 289
+        width: 374
+        height: 197
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a21eefeb4e7ced320800000000000000
+      internalID: 2584723021428089130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossFlyAttack_27
+      rect:
+        serializedVersion: 2
+        x: 779
+        y: 247
+        width: 340
+        height: 253
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2c4f7bc6f1831f20800000000000000
+      internalID: 3392197841316170797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossFlyAttack_29
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 76
+        width: 368
+        height: 151
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1baec2fd7a08223b0800000000000000
+      internalID: -5538723133220132175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossFlyAttack_30
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 34
+        width: 362
+        height: 164
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0936b0d87450afb90800000000000000
+      internalID: -7207442448785906800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossFlyAttack_31
+      rect:
+        serializedVersion: 2
+        x: 774
+        y: 16
+        width: 369
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc651646a318add80800000000000000
+      internalID: -8225119681646602548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossFlyAttack_32
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 77
+        width: 363
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0277d638e2e3404b0800000000000000
+      internalID: -5475182877481273568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossFlyAttack_20
+      rect:
+        serializedVersion: 2
+        x: 1158
+        y: 797
+        width: 363
+        height: 219
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37b49a761f017354b9b3fd7afbd775a1
+      internalID: -916823730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossFlyAttack_22
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 550
+        width: 375
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 264864821d67596429e7411e013601ab
+      internalID: 1339055241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossFlyAttack_23
+      rect:
+        serializedVersion: 2
+        x: 778
+        y: 516
+        width: 364
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03a3e28a2c57b244da63f707029f4a8e
+      internalID: -1187050277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossFlyAttack_26
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 258
+        width: 354
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9524fde7823cdf745910a73eb57493b0
+      internalID: -1328243465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 4a9ebc861925b4243a26ac7020bed9f7
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      bossFlyAttack_0: 2261721984569073744
+      bossFlyAttack_1: 1317312483136642859
+      bossFlyAttack_2: 9012007414349438898
+      bossFlyAttack_20: -916823730
+      bossFlyAttack_21: -2060979069756225503
+      bossFlyAttack_22: 1339055241
+      bossFlyAttack_23: -1187050277
+      bossFlyAttack_24: -6149543302307150647
+      bossFlyAttack_25: 2584723021428089130
+      bossFlyAttack_26: -1328243465
+      bossFlyAttack_27: 3392197841316170797
+      bossFlyAttack_28: -336437429575730691
+      bossFlyAttack_29: -5538723133220132175
+      bossFlyAttack_30: -7207442448785906800
+      bossFlyAttack_31: -8225119681646602548
+      bossFlyAttack_32: -5475182877481273568
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

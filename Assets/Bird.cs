@@ -11,19 +11,14 @@ public class Bird : MonoBehaviour
     private bool r = true;
     private bool face = true;
     private SpriteRenderer sr;//鸟怪的精灵
-    private Collider2D col;//鸟怪的碰撞箱
     public AnimationData[] birdFrames;//0飞行，1攻击，2受击，3死亡
     private float blood = 50f;
     private float waitTime = 10f;//攻击冷却时间
     private float lastAttack = -1f;
-    private Vector3 attackStart;
-    private Vector3 attackTarget;
-    private float attackTimer;
-
-    private const float AttackFrameTime = 0.1f;
-    private const int PrepareFrames = 3;
-    private const int ForwardFrames = 5;
-    private const int ReturnFrames = 5;
+    private Vector2 startPlace;//攻击起始点
+    private Vector2 direct;//攻击目标点的单位方向向量
+    private float speed = 10f;//移动速度
+    public GameObject player;//攻击到的玩家
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -32,7 +27,10 @@ public class Bird : MonoBehaviour
     {
         if (other.CompareTag("ReadyAttack")&&act!=1&&(lastAttack==-1||Time.time-lastAttack>waitTime)&&Player.tran.position.y+Player.HalfSr<=transform.position.y)
         {
-            Debug.Log("readytoattack");
+            InitEnemy(1);
+            startPlace= transform.position;
+            direct = (Vector2)Player.tran.position - startPlace;
+            direct.Normalize();
         }
     }
     public void InitBird(Vector2 pos)
@@ -51,10 +49,12 @@ public class Bird : MonoBehaviour
         time += Time.deltaTime;
         if (act == 0)//追击玩家
             Act0();
-        else if (act == 1)
+        else if (act == 1)//攻击玩家
             Act1();
         else if (act == 2)//受击，只播放一遍
             Act2();
+        else if (act == 3)//死亡。只播放一遍
+            Act3();
     }
     private void InitBird()
     {
@@ -67,14 +67,13 @@ public class Bird : MonoBehaviour
         sr.sprite = birdFrames[act].frames[curFrame];
         curFrame = (curFrame + 1) % birdFrames[act].frames.Length;
         time = 0f;
-        if (act == 2 && curFrame == 0)
-            InitEnemy(0);
     }
     public void TakeDamage(float damage)
     {
         blood -= damage;
         if (blood <= 0f)
         {
+            InitEnemy(3);
             Die();
             return;
         }
@@ -84,8 +83,12 @@ public class Bird : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
-    private void InitEnemy(int a)
+    private void InitEnemy(int a)//转变状态
     {
+        if (act == 1)
+        {
+            transform.position = (Vector3)startPlace;//回到攻击的起始位置
+        }
         act = a;
         curFrame = 0;
         time = 0;
@@ -103,6 +106,7 @@ public class Bird : MonoBehaviour
         }
         else//小概率随机飞行
         {
+            Debug.Log("fuck");
             dir = new Vector2(Random.Range(-5f, 5f), Random.Range(-5f, 5f));
         }
         dir.Normalize();
@@ -111,11 +115,23 @@ public class Bird : MonoBehaviour
     }
     private void Act1()//攻击
     {
-
+        transform.position += ((curFrame <= 7) ? 1 : -1) * speed * Time.deltaTime * (Vector3)direct;//前8帧冲向玩家，后8帧退回原地
+        if (time >= 0.01f) InitBird();
+        if (curFrame == 0) InitEnemy(0);
+        else if (curFrame == 7)
+        {
+            Player.wasAttacked = true;
+            Player.attackedDirect = new Vector2(direct.x >= 0 ? 1 : -1, 0);
+        }
     }
     private void Act2()//受击
     {
-
-        if (time >= 0.01f) InitBird();
+        if (time >= 0.03f) InitBird();
+        if (curFrame == 0) InitEnemy(0);
+    }
+    private void Act3()//死亡
+    {
+        if (time >= 0.02f) InitBird();
+        if (curFrame == 0) Die();
     }
 }

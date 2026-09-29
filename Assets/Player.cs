@@ -32,6 +32,11 @@ public class Player : MonoBehaviour
     public static float attack = 10f;//攻击力
     private bool isFlying = false;//是否处于跳跃状态
     private bool nextAttack = false;//短时间内是否按下第二次攻击
+    private float boostEnergy = 0f;//无双状态的能量条
+    private bool boost = false;//是否开启无双
+    public static bool wasAttacked = false;//当前被攻击了
+    public static Vector2 attackedDirect;//被攻击时击退单位方向向量
+    public float backSpeed = 2f;
     void Awake()
     {
         Attacked = transform.Find("Attacked").gameObject;
@@ -86,6 +91,15 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
+        if (wasAttacked)
+        {
+            wasAttacked = false;
+            InitMonkey(11);
+        }
+        if (act == 11 && (curFrame >= 5 && curFrame <= 11)&&!boost)//被击退
+        {
+            tran.position += backSpeed * Time.deltaTime * (Vector3)attackedDirect;
+        }
         if (input.x != 0)
         {
             Move(input.x > 0, speed);
@@ -113,7 +127,7 @@ public class Player : MonoBehaviour
     }
     public void OnJump(InputAction.CallbackContext ctx)
     {
-        if (!ctx.performed || jumped >= 2) return;
+        if (!ctx.performed || jumped >= 2 || act == 7) return;
         if (isGround||jumped==0)
         {
             jumped = 1;
@@ -134,6 +148,18 @@ public class Player : MonoBehaviour
             RequestAttack();
         }
     }
+    public void OnBoost(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed&&boostEnergy>=100f)//开启无双
+        {
+            boost = true;
+            if (act==11)//当前处于受击状态，直接恢复
+            {
+                if (isFlying) InitMonkey(12);
+                else RestoreGroundAction();
+            }
+        }
+    }
     public void UpdateMonkey()
     {
         if (act == 12) return;
@@ -147,8 +173,7 @@ public class Player : MonoBehaviour
             if (curFrame == 0)
             {
                 nextAttack = false;
-                if (isFlying) InitMonkey(12);
-                else RestoreGroundAction();
+                RestoreAct();
             }
             return;
         }
@@ -157,10 +182,19 @@ public class Player : MonoBehaviour
             InitDelay();
             if (curFrame == 0)
             {
-                if (act == 7) Jump();
-                InitMonkey(act == 7 ? 9 : 12);
-                return;
+                if (act == 7)
+                {
+                    Jump(); InitMonkey(9);
+                }
+                else RestoreAct();
             }
+            return;
+        }
+        if (delayTime >= 0.04f & (act == 11))//受击动画
+        {
+            InitDelay();
+            if (curFrame == 0)
+                RestoreAct();
             return;
         }
         if (delayTime >= 0.2)
@@ -232,14 +266,19 @@ public class Player : MonoBehaviour
         if (curFrame >= 12 && nextAttack)
             NextAttack();
     }
-    private void NextAttack()
+    private void NextAttack()//进行下一次攻击
     {
         if (act == 13) InitMonkey(13);//空中连按，重新播放空斩的帧动画
         else InitMonkey(act == 6 ? 3 : act + 1);
         nextAttack = false;
     }
-    private bool IsAttacking()
+    private bool IsAttacking()//检查是否处于攻击状态
     {
         return (act >= 3 && act <= 6) || act == 13;
+    }
+    private void RestoreAct()
+    {
+        if (isFlying) InitMonkey(12);
+        else RestoreGroundAction();
     }
 }

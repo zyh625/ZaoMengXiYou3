@@ -3,14 +3,7 @@ using UnityEngine;
 public class Boss1 : MonoBehaviour
 {
     public static Boss1 Instance { get; private set; }
-   /* private int curFrame = 0;
-    private float time = 0;
-    private int act = 0;
-    private bool r = true;
-    private bool face = true;
-    private SpriteRenderer sr;//boos的精灵
-    public AnimationData[] birdFrames;//0待机，1行走，2攻击，3受击，4死亡
-    private float blood = 2000f;*/
+    public AnimationData[] birdFrames;//0待机，1行走，2攻击招式一，3攻击招式二，4站立受击，5站立死亡，6切换飞行，7飞行，8飞行攻击，9飞行受击，10飞行死亡
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,4 +15,5 @@ public class Boss1 : MonoBehaviour
     {
         
     }
+
 }

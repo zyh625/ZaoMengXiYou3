@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.15, y: -8.25, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -105,7 +105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f86f56e44f7640a4eb4ba837835f860a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bird
-  playerUp: {fileID: 0}
   birdFrames:
   - frames:
     - {fileID: 1104750260857598262, guid: 8f20f9c2d0a75ea44bae662e468d8881, type: 3}
@@ -158,6 +157,23 @@ MonoBehaviour:
     - {fileID: -3728819383587008756, guid: d880245afa451b74484ecc9b92e93c3d, type: 3}
     - {fileID: 8046782047165309495, guid: d880245afa451b74484ecc9b92e93c3d, type: 3}
     - {fileID: -7902615642751544324, guid: d880245afa451b74484ecc9b92e93c3d, type: 3}
+  - frames:
+    - {fileID: 6863818558861765773, guid: 7091ba74f6a45c74db9a41535168d278, type: 3}
+    - {fileID: 4015307514295110229, guid: 7091ba74f6a45c74db9a41535168d278, type: 3}
+    - {fileID: 621473395052633602, guid: 7091ba74f6a45c74db9a41535168d278, type: 3}
+    - {fileID: -4108854730593202224, guid: 7091ba74f6a45c74db9a41535168d278, type: 3}
+    - {fileID: 6512065806472476028, guid: 7091ba74f6a45c74db9a41535168d278, type: 3}
+    - {fileID: 4735718712605950876, guid: 7091ba74f6a45c74db9a41535168d278, type: 3}
+    - {fileID: -4077932717776028190, guid: 7091ba74f6a45c74db9a41535168d278, type: 3}
+    - {fileID: 6768723111199326774, guid: 7091ba74f6a45c74db9a41535168d278, type: 3}
+    - {fileID: 817780612653972584, guid: 7091ba74f6a45c74db9a41535168d278, type: 3}
+    - {fileID: 5533892793295067988, guid: 7091ba74f6a45c74db9a41535168d278, type: 3}
+    - {fileID: 8315860736814175497, guid: 7091ba74f6a45c74db9a41535168d278, type: 3}
+    - {fileID: -5757372654974487310, guid: 7091ba74f6a45c74db9a41535168d278, type: 3}
+    - {fileID: -491704823836802018, guid: 7091ba74f6a45c74db9a41535168d278, type: 3}
+    - {fileID: -6168036914074710359, guid: 7091ba74f6a45c74db9a41535168d278, type: 3}
+    - {fileID: -2581194453728711151, guid: 7091ba74f6a45c74db9a41535168d278, type: 3}
+  player: {fileID: 0}
 --- !u!61 &3448969687010592660
 BoxCollider2D:
   m_ObjectHideFlags: 0
