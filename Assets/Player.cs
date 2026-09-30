@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public static Transform tran;//角色位置
     private SpriteRenderer sr;//角色精灵
     private Rigidbody2D rb;//角色的重力系统
+    public static Collider2D col;//角色自身的碰撞箱
     public GameObject[] AttackHit = new GameObject[2];//角色的左右攻击碰撞箱
 
     public static float HalfSr { get; private set; }//所有脚本可用但不可修改
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
     public float delayTime = 0;
     public bool face = true;//角色朝向，开始向右
     public static GameObject Attacked,Attacked1;//鸟怪聚集地
+    public static Collider2D box, box1;//聚集地的碰撞箱
 
     float lastPressTime = -1;
     float doublePressTime = 0.3f;
@@ -34,13 +36,14 @@ public class Player : MonoBehaviour
     private bool nextAttack = false;//短时间内是否按下第二次攻击
     private float boostEnergy = 0f;//无双状态的能量条
     private bool boost = false;//是否开启无双
-    public static bool wasAttacked = false;//当前被攻击了
     public static Vector2 attackedDirect;//被攻击时击退单位方向向量
-    public float backSpeed = 2f;
+    private float blood = 200f;//角色血量
+    public float backSpeed = 3f;
     void Awake()
     {
-        Attacked = transform.Find("Attacked").gameObject;
-        Attacked1 = transform.Find("Attacked(1)").gameObject;
+        col = GetComponent<Collider2D>();
+        Attacked = transform.Find("Attacked").gameObject;box=Attacked.GetComponent<Collider2D>();
+        Attacked1 = transform.Find("Attacked(1)").gameObject;box1=Attacked1.GetComponent<Collider2D>();
         groundFilter = new ContactFilter2D();
         groundFilter.SetLayerMask(groundLayer);
         groundFilter.useTriggers = false;
@@ -91,11 +94,6 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        if (wasAttacked)
-        {
-            wasAttacked = false;
-            InitMonkey(11);
-        }
         if (act == 11 && (curFrame >= 5 && curFrame <= 11)&&!boost)//被击退
         {
             tran.position += backSpeed * Time.deltaTime * (Vector3)attackedDirect;
@@ -280,5 +278,14 @@ public class Player : MonoBehaviour
     {
         if (isFlying) InitMonkey(12);
         else RestoreGroundAction();
+    }
+    public void TakeDamage(float a)//检测到被攻击了
+    {
+        blood-=a;
+        if (blood <= 0f)
+        {
+            Debug.Log("die");
+        }
+        InitMonkey(11);
     }
 }

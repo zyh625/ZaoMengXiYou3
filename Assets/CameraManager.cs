@@ -61,6 +61,7 @@ public class CameraManager : MonoBehaviour
     private IEnumerator BeginBoss()
     {
         yield return new WaitForSeconds(6f);//等待6秒boss现身
+        Boss1.alive = true;
         Instantiate(bossPrefab, bossPos, Quaternion.identity);
         Debug.Log("boss");
     }
