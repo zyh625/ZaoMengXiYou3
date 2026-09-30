@@ -116,22 +116,31 @@ public class Bird : MonoBehaviour
     private void Act1()//攻击
     {
         transform.position += ((curFrame <= 7) ? 1 : -1) * speed * Time.deltaTime * (Vector3)direct;//前8帧冲向玩家，后8帧退回原地
-        if (time >= 0.01f) InitBird();
-        if (curFrame == 0) InitEnemy(0);
-        else if (curFrame == 7)
+        if (time >= 0.01f)
         {
-            Player.wasAttacked = true;
-            Player.attackedDirect = new Vector2(direct.x >= 0 ? 1 : -1, 0);
+            InitBird();
+            if (curFrame == 0) InitEnemy(0);
+            else if (curFrame == 7)
+            {
+                Player.wasAttacked = true;
+                Player.attackedDirect = new Vector2(direct.x >= 0 ? 1 : -1, 0);
+            }
         }
     }
     private void Act2()//受击
     {
-        if (time >= 0.03f) InitBird();
-        if (curFrame == 0) InitEnemy(0);
+        if (time >= 0.03f)
+        {
+            InitBird();
+            if (curFrame == 0) InitEnemy(0);
+        }
     }
     private void Act3()//死亡
     {
-        if (time >= 0.02f) InitBird();
-        if (curFrame == 0) Die();
+        if (time >= 0.02f)
+        {
+            InitBird();
+            if (curFrame == 0) Die();
+        }
     }
 }

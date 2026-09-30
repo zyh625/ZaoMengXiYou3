@@ -10,7 +10,10 @@ public class CameraManager : MonoBehaviour
     public GameObject[] ground;//地面和最高层的地板
     public Camera cam;//相机
     private Transform camTran;
-    private float camY;
+    private bool bossReady = false;//已经准备开始boss战
+    private bool enterBoss = false;//是否进入boss的战斗场地
+    [SerializeField] private float riseSpeed = 3f;//上移速度
+    private float camY;//角色当前坐标y值
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,25 +33,27 @@ public class CameraManager : MonoBehaviour
 
     public void UpdateBg()
     {
-        if (camY >= maxY) return;
-        if (Player.tran.position.y > topY && camY < maxY)
+        if (bossReady) return;
+        if (Player.tran.position.y >= topY)
+            enterBoss = true;
+        if (enterBoss)
         {
-            camY += 0.01f;
+            camY = Mathf.MoveTowards(camY, maxY, riseSpeed * Time.deltaTime);
             Vector3 pos = camTran.position;
             pos.y = camY;
             camTran.position = pos;
             if (camY >= maxY)
+            {
+                bossReady = true;
                 StartCoroutine(BeginBoss());
+            }
             return;
         }
-        if (Player.tran.position.y > camY || (Player.tran.position.y < camY && camY > minY))//角色往上跳或往下掉
-        {
-            Trace();
-        }
+        Trace();
     }
     public void Trace()//相机跟随角色
     {
-        camY = Player.tran.position.y;
+        camY = Mathf.Clamp(Player.tran.position.y, minY, maxY);
         Vector3 pos = camTran.position;
         pos.y = camY;
         camTran.position = pos;
