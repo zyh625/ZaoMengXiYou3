@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 using UnityEngine;
 
 
-public class Bird : MonoBehaviour
+public class Bird : MonoBehaviour, IDamageable
 {
     private int curFrame = 0;
     private float time = 0;
@@ -23,12 +23,31 @@ public class Bird : MonoBehaviour
     private Collider2D attackCol;
     public static float attack = 2f;//鸟怪攻击力
     [SerializeField] private float backSpeed = 5f;//被击退的速度
+    private Player player;
+    private bool damageActive = false;//是否处于有效攻击帧
+    private bool hasHit = false;//是否已经命中
+
+
+
     void Start()
     {
         attackCol = attackBox.GetComponent<Collider2D>();
+        player = Player.tran.GetComponent<Player>();
         birdCol = GetComponent<Collider2D>();
         sr = GetComponent<SpriteRenderer>();
-        attackBox.SetActive(false);
+    }
+    private void CheckHit()
+    {
+        if (hasHit) return;//没到有效攻击帧或已经攻击了
+        Physics2D.SyncTransforms();
+        ColliderDistance2D result = attackCol.Distance(Player.col);
+        if (!result.isValid || !result.isOverlapped) return;//无效重叠或未重叠
+        hasHit = true;
+        damageActive = false;
+        Player.attackedDirect = r;//击退方向与攻击方向一致
+        player.TakeDamage(attack);
+        Debug.Log("attacked");
+
     }
     public void InitBird(Vector2 pos)//初始化鸟怪
     {
@@ -52,6 +71,8 @@ public class Bird : MonoBehaviour
             Act2();
         else if (act == 3)//死亡。只播放一遍
             Act3();
+        if (damageActive)
+            CheckHit();
     }
     private void InitBird()//更新鸟怪帧动画
     {
@@ -71,7 +92,6 @@ public class Bird : MonoBehaviour
         if (blood <= 0f)
         {
             InitEnemy(3);
-            Die();
             return;
         }
         InitEnemy(2);
@@ -84,13 +104,16 @@ public class Bird : MonoBehaviour
     private void InitEnemy(int a)//转变状态
     {
         if (act == 1)
-        {
             transform.position = (Vector3)startPlace;//回到攻击的起始位置
-        }
         act = a;
         curFrame = 0;
         time = 0;
         sr.sprite = birdFrames[act].frames[0];
+        if (act == 0)
+        {
+            lastAttack = Time.time;//攻击冷却开始
+            hasHit = false;
+        }
     }
     private void Act0()//飞行
     {
@@ -98,8 +121,8 @@ public class Bird : MonoBehaviour
         Vector2 dir;
         if (r <= 6)//大概率追击玩家
         {
-            Vector2 v1 = Player.Attacked.transform.position - transform.position;
-            Vector2 v2 = Player.Attacked1.transform.position - transform.position;
+            Vector2 v1 = Player.box.bounds.center - transform.position;
+            Vector2 v2 = Player.box1.bounds.center - transform.position;
             dir = ((v1.magnitude < v2.magnitude) ? v1 : v2);
         }
         else//小概率随机飞行
@@ -128,10 +151,7 @@ public class Bird : MonoBehaviour
             else if (curFrame == 4)//开启攻击碰撞箱
                 InitBox(true);
             else if (curFrame == 13)//攻击结束
-            {
                 InitBox(false);
-                lastAttack = Time.time;//攻击冷却开始
-            }
         }
     }
     private void Act2()//受击
@@ -158,9 +178,9 @@ public class Bird : MonoBehaviour
     }
     private void InitBox(bool flag)//控制鸟怪的攻击碰撞箱的开关
     {
+        damageActive = flag;
         Vector2 pos=attackCol.offset;
         pos.x = Mathf.Abs(pos.x) * (r ? 1f : -1f);
         attackCol.offset= pos;
-        attackBox.SetActive(flag);
     }
 }

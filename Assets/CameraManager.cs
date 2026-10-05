@@ -29,6 +29,8 @@ public class CameraManager : MonoBehaviour
         topY = ground[1].transform.position.y + ground[1].GetComponent<SpriteRenderer>().bounds.size.y / 2 + Player.HalfSr;
         bossPos = ground[2].transform.position;
         bossPos.y += ground[2].GetComponent<SpriteRenderer>().bounds.size.y / 2 + bossPrefab.GetComponent<SpriteRenderer>().bounds.size.y / 2;
+        top = topY + 600f;
+        bottom = ground[0].transform.position.y;
     }
 
     public void UpdateBg()
@@ -63,6 +65,5 @@ public class CameraManager : MonoBehaviour
         yield return new WaitForSeconds(6f);//等待6秒boss现身
         Boss1.alive = true;
         Instantiate(bossPrefab, bossPos, Quaternion.identity);
-        Debug.Log("boss");
     }
 }

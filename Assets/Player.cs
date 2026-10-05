@@ -12,14 +12,13 @@ public class Player : MonoBehaviour
     private SpriteRenderer sr;//角色精灵
     private Rigidbody2D rb;//角色的重力系统
     public static Collider2D col;//角色自身的碰撞箱
-    public GameObject[] AttackHit = new GameObject[2];//角色的左右攻击碰撞箱
 
     public static float HalfSr { get; private set; }//所有脚本可用但不可修改
 
     public int act = 0;//0表示静止，1表示行走，2表示跑步，3-6分别表示1到4段攻击，7表示起跳过程，8表示落地过程，9表示起跳到空中,10表示二连跳，11表示受击，12空中定格帧动画,13空中攻击
     public int curFrame = 0;//当前帧序列
     public float delayTime = 0;
-    public bool face = true;//角色朝向，开始向右
+    public bool face = true;//角色朝向是否向右
     public static GameObject Attacked,Attacked1;//鸟怪聚集地
     public static Collider2D box, box1;//聚集地的碰撞箱
 
@@ -36,12 +35,16 @@ public class Player : MonoBehaviour
     private bool nextAttack = false;//短时间内是否按下第二次攻击
     private float boostEnergy = 0f;//无双状态的能量条
     private bool boost = false;//是否开启无双
-    public static Vector2 attackedDirect;//被攻击时击退单位方向向量
+    public static bool attackedDirect;//被攻击时击退方向是否为右
     private float blood = 200f;//角色血量
-    public float backSpeed = 3f;
+    private float backSpeed = 3f;//被击退的移速
+    private bool isAttacking = false;//处在有效攻击帧
+    public GameObject[] AttackHit;
+    private Collider2D[] attackBox = new Collider2D[2];
     void Awake()
     {
         col = GetComponent<Collider2D>();
+        for (int i = 0; i < 2; i++) attackBox[i] = AttackHit[i].GetComponent<Collider2D>();
         Attacked = transform.Find("Attacked").gameObject;box=Attacked.GetComponent<Collider2D>();
         Attacked1 = transform.Find("Attacked(1)").gameObject;box1=Attacked1.GetComponent<Collider2D>();
         groundFilter = new ContactFilter2D();
@@ -53,6 +56,7 @@ public class Player : MonoBehaviour
         HalfSr = sr.bounds.size.x / 2;
         
     }
+    
     private void FixedUpdate()
     {
         bool wasGround = isGround;//前一瞬间是否触地
@@ -95,16 +99,15 @@ public class Player : MonoBehaviour
     void Update()
     {
         if (act == 11 && (curFrame >= 5 && curFrame <= 11)&&!boost)//被击退
-        {
-            tran.position += backSpeed * Time.deltaTime * (Vector3)attackedDirect;
-        }
+            Move(attackedDirect, backSpeed);
         if (input.x != 0)
-        {
             Move(input.x > 0, speed);
-        }
+        if (isAttacking&&act!=5)//招式三左右两侧都攻击，不需要更新
+            InitAttackBox(true);//重复开关，角色可能在攻击过程中转向
     }
     public void OnMove(InputAction.CallbackContext ctx)
     {
+        if(act==11)return;
         input = ctx.ReadValue<Vector2>();
         if (ctx.started)
         {
@@ -125,7 +128,7 @@ public class Player : MonoBehaviour
     }
     public void OnJump(InputAction.CallbackContext ctx)
     {
-        if (!ctx.performed || jumped >= 2 || act == 7) return;
+        if (!ctx.performed || jumped >= 2 || act == 7 || act == 11) return;
         if (isGround||jumped==0)
         {
             jumped = 1;
@@ -141,6 +144,7 @@ public class Player : MonoBehaviour
     }
     public void OnAttack(InputAction.CallbackContext ctx)
     {
+        if (act == 11) return;//受击状态不能攻击
         if (ctx.performed)
         {
             RequestAttack();
@@ -219,7 +223,7 @@ public class Player : MonoBehaviour
     }
     public void Jump()
     {
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, 7f);//速度偏低，加速度偏低，让滞空时间较长
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, 15f);//速度偏低，加速度偏低，让滞空时间较长
     }
     public void InitMonkey(int k)//切换角色状态，当前帧序列变为0
     {
@@ -230,17 +234,11 @@ public class Player : MonoBehaviour
         InitAttackBox(false);
         if (k == 10) Jump();//空中二连跳直接获得向上的速度
     }
-    public void InitAttackBox(bool b)//开关左右两侧碰撞箱
+    public void InitAttackBox(bool b)//控制攻击碰撞箱
     {
-        if (b)
-        {
-            AttackHit[face ? 1 : 0].SetActive(true);
-            if (act == 5) AttackHit[face ? 0 : 1].SetActive(true);
-            else AttackHit[face ? 0 : 1].SetActive(false);
-            return;
-        }
-        AttackHit[0].SetActive(false);
-        AttackHit[1].SetActive(false);
+        isAttacking = b;
+        attackBox[face ? 1 : 0].gameObject.SetActive(b);//控制当前朝向的碰撞箱
+        attackBox[face ? 0 : 1].gameObject.SetActive(b && (act == 5 ? b : !b));//控制对侧碰撞箱
     }
     private void RequestAttack()//检测是否短时间内连按，最多响应两次，1.5秒未攻击重新出招
     {
