@@ -8,7 +8,7 @@ public class PlayerHit : MonoBehaviour
     {
         hitEnemies.Clear();
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         IDamageable enemy = other.GetComponentInParent<IDamageable>();
         if (enemy == null) return;//不是敌人

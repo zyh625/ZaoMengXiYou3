@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Boss1 : MonoBehaviour,IDamageable
@@ -28,9 +29,9 @@ public class Boss1 : MonoBehaviour,IDamageable
     private float lastAttack = -1f;//上一次攻击时间
     private float blood = 1000f;//血量
     private float beginIdel = 0;//开始待机的时间
-    private float waitIdel = 2f;//最长待机时间
-    [SerializeField] private float moveSpeed = 3f;//移速
-    [SerializeField] private float attackSpeed = 8f;//招式一向前突刺和复原的速度
+    private float waitIdel = 2.5f;//最长待机时间
+    [SerializeField] private float moveSpeed = 2f;//移速
+    [SerializeField] private float attackSpeed = 7f;//招式一向前突刺和复原的速度
     private Vector2 attackDirect= Vector2.zero;
     private int act = 0; //0待机，1行走，2攻击招式一，3攻击招式二，4站立受击，5站立死亡，6切换飞行，7飞行，8飞行攻击，9飞行受击，10飞行死亡
     [SerializeField] private float attackOneDis = 5f;//近战触发距离
@@ -38,9 +39,18 @@ public class Boss1 : MonoBehaviour,IDamageable
     private Vector2 ballBeginPlace;//刚开始光球相对于boss的位置
     private float attackOneY;//近战触发y值
     private bool hasHit = false;//是否攻击到
+    private static bool attackedDirect = true;//被击退的方向是否为右边
+    [SerializeField] private float attackedSpeed = 4f;//被击退的速度
+    private float beginWalk;//开始走路的时刻
+    private float waitWalk = 5f;//最长连续行走时间
+    [SerializeField] private float upSpeed = 7f;//上升的速度
+    public GameObject ball2;
+    public static int engry = 0;//怒气值，达到100切换至飞行形态,怒气值越高攻击越强
+    private Vector2 ball2BeginPlace;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        ball2BeginPlace = ball2.transform.localPosition;
         ballBeginPlace = Ball.transform.localPosition;
         player=Player.tran.GetComponent<Player>();
         attackOneCol = attackOneBox.GetComponent<Collider2D>();
@@ -50,6 +60,8 @@ public class Boss1 : MonoBehaviour,IDamageable
     }
     void Update()
     {
+        if (act < 6 && engry >= 100)
+            InitBoss(6);
         curTime += Time.deltaTime;
         switch (act)
         {
@@ -69,18 +81,18 @@ public class Boss1 : MonoBehaviour,IDamageable
     }
     private void Act0()//待机
     {
-        if (Time.time - beginIdel >= waitIdel)
-            CheckState();
+        if (Time.time - beginIdel >= waitIdel&&!CheckAttackOne()&&!CheckAttackTwo())
+            InitBoss(1);
         else if (curTime >= idelF)
             InitDelay();
     }
     private void Act1()//行走
     {
-        Vector2 dir = new Vector2((Player.tran.position.x<=transform.position.x)?-1f:1f, 0);
-        transform.position += moveSpeed * Time.deltaTime * (Vector3)dir;
-        if (CheckAttack())
-            return;
-        if (curTime >= moveF)
+        BossMove(Player.tran.position.x >= transform.position.x, moveSpeed);
+        if (CheckAttackOne()) return;//每次都检查是否在近战攻击范围内
+        if (Time.time - beginWalk >= waitWalk&& !CheckAttackTwo())
+            InitBoss(0);
+        else if (curTime >= moveF)
             InitDelay();
     }
     private void Act2()//招式一
@@ -90,7 +102,6 @@ public class Boss1 : MonoBehaviour,IDamageable
         else if (curFrame >= 11)//回到起始点
         {
             transform.position -= attackSpeed * Time.deltaTime * (Vector3)attackDirect;
-            hasHit = false;
         }
         else//判断是否攻击到玩家
         {
@@ -98,7 +109,7 @@ public class Boss1 : MonoBehaviour,IDamageable
             if (!hasHit && attackOneCol.Distance(Player.box).isOverlapped)
             {
                 hasHit = true;//已经攻击过了
-                player.TakeDamage(attackOne);
+                player.TakeDamage(attackOne*(1+engry/100));
                 Player.attackedDirect = r;//boss朝哪边攻击，玩家被击退向哪边
             }
         }
@@ -111,6 +122,8 @@ public class Boss1 : MonoBehaviour,IDamageable
             {
                 InitBox(false);
                 lastAttack = Time.time;
+                if (!hasHit) engry += 10;//未击中，怒气值增加
+                hasHit = false;
             }
             else if (curFrame == 0)//攻击完全结束
                 InitBoss(0);
@@ -130,23 +143,93 @@ public class Boss1 : MonoBehaviour,IDamageable
                 InitBoss(0);
         }
     }
-    private void Act4() { }
-    private void Act5() { }
-    private void Act6() { }
-    private void Act7() { }
-    private void Act8() { }
-    private void Act9() { }
-    private void Act10() { }
-    private void CheckState()//待机一段时间后检查是否切换状态
+    private void Act4()//站立受击
     {
-        if (CheckAttack())//检测到攻击
-            return;
-        InitBoss(1);//切换至行走
+        if (curFrame >= 4 && curFrame <= 12)
+            BossMove(attackedDirect, attackedSpeed);
+        if (curTime >= attackedF)
+        {
+            InitDelay();
+            if (curFrame == 0)//受击结束
+                InitBoss(0);
+        }
+    }
+    private void Act5()//站立死亡
+    {
+        if (curTime >= dieF)
+        {
+            InitDelay();
+            if (curFrame == 0)//boss死亡，游戏结束
+            {
+                gameObject.SetActive(false);
+            }
+        }
+    }
+    private void Act6()//切换飞行
+    {
+        if (curFrame >= 4 && curFrame <= 10)
+            BossUp(true, upSpeed);
+        if (curTime >= changeF)
+        {
+            InitDelay();
+            if (curFrame == 0)
+                InitBoss(7);
+        }
+    }
+    private void Act7()//飞行
+    {
+        BossMove(r, moveSpeed * 2f);
+        if(CheckFlyAttack())
+        {
+            InitBoss(8);return;
+        }
+        BossUp(UnityEngine.Random.Range(0, 20f) < 10f, upSpeed*0.1f);//小幅度上下飞行
+        if (curTime >= flyF)
+        {
+            InitDelay();
+        }
+    }
+    private void Act8()//飞行攻击
+    {
+        if (curTime >= flyAttackF)
+        {
+            InitDelay();
+            if (curFrame == 11)
+            {
+                InitBall();
+                lastAttack = Time.time;
+            }
+            else if (curFrame==0)
+                InitBoss(7);
+        }
+    }
+    private void Act9()//飞行受击
+    {
+        if (curFrame >= 4 && curFrame <= 10)
+            BossMove(attackedDirect, moveSpeed);
+        if (curTime >= flyAttackedF)
+        {
+            InitDelay();
+            if (curFrame == 0)
+                InitBoss(7);
+        }
+    }
+    private void Act10()//飞行死亡
+    {
+        if (curTime >= flyDieF)
+        {
+            InitDelay();
+            if(curFrame == 0)
+            {
+                gameObject.SetActive(false);
+            }
+        }
     }
 
     private void InitBall()//初始化攻击光球
     {
         Vector2 pos = ballBeginPlace;
+        if (act == 8) pos = ball2BeginPlace;
         pos.x *= r ? -1 : 1;//初始boss朝向左
         Ball.transform.localPosition = pos;
         Ball.SetActive(true);
@@ -167,8 +250,12 @@ public class Boss1 : MonoBehaviour,IDamageable
     {
         if (a == 0)
             beginIdel = Time.time;
+        else if (a == 1)
+            beginWalk = Time.time;
         else if (a == 2)
             attackDirect.x = r ? 1f : -1f;
+        else if (a == 4 && act == 6)//蓄力上升过程被打断,怒气值归零
+            engry = 0;
         act = a;
         curFrame = 0;
         curTime = 0f;
@@ -180,20 +267,30 @@ public class Boss1 : MonoBehaviour,IDamageable
         offset.x = Mathf.Abs(offset.x) * (r ? 1 : -1);
         attackOneCol.offset = offset;
     }
-    private bool CheckAttack()//是否符合招式一、二的出招条件
+    private bool CheckAttackOne()//是否满足招式一出招条件
     {
-        if ((lastAttack == -1 || Time.time - lastAttack > waitAttack)&& CheckY()&&Mathf.Abs(transform.position.x - Player.tran.position.x) <=attackOneDis)
+        if((lastAttack == -1 || Time.time - lastAttack > waitAttack) && CheckY() && Mathf.Abs(transform.position.x - Player.tran.position.x) <= attackOneDis)
         {
-            InitBoss(2);//招式一
+            InitBoss(2);
             return true;
         }
-        if ((lastAttack == -1 || Time.time - lastAttack > 1.5f*waitAttack) &&CheckY() && Mathf.Abs(transform.position.x - Player.tran.position.x) > attackOneDis)
+        return false;  
+    }
+    private bool CheckAttackTwo()//是否满足招式二出招条件
+    {
+        if ((lastAttack == -1 || Time.time - lastAttack > 1.5f * waitAttack) && CheckY() && Mathf.Abs(transform.position.x - Player.tran.position.x) > attackOneDis)
         {
-            if (Random.Range(0f, 5f) <= 2.5f)//一半概率远程攻击，一半概率行走
+            if (UnityEngine.Random.Range(0f, 5f) <= 2.5f)//一半概率远程攻击，一半概率行走
                 return false;
             InitBoss(3);//招式二
             return true;
         }
+        return false;
+    }
+    private bool CheckFlyAttack()//是否满足空中攻击的条件
+    {
+        if (lastAttack == -1 || Time.time - lastAttack > waitAttack * 1.5f)
+            return true;
         return false;
     }
     private bool CheckY()
@@ -202,8 +299,25 @@ public class Boss1 : MonoBehaviour,IDamageable
     }
     public void TakeDamage(float damage)
     {
+        Debug.Log("bossAttacked");
+        attackedDirect = Player.tran.position.x <= transform.position.x;//在boss左边就往右击退
         blood-=damage;
-        if(blood <= 0)
-            act = act < 5 ? 5 : 10;
+        engry += 3;
+        if (blood <= 0)//死亡
+            InitBoss(act <= 6 ? 5 : 10);
+        else//受击
+            InitBoss(act <= 6 ? 4 : 9);
+    }
+    private void BossMove(bool face,float speed)
+    {
+        Vector2 pos = transform.position;
+        pos.x += (face ? 1f : -1f) * speed * Time.deltaTime;//boss可以被击退出界
+        transform.position= pos;
+    }
+    private void BossUp(bool up,float speed)
+    {
+        Vector2 pos = transform.position;
+        pos.y += (up ? 1 : -1) * speed * Time.deltaTime;
+        transform.position = pos;
     }
 }

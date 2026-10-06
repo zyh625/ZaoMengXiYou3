@@ -46,8 +46,6 @@ public class Bird : MonoBehaviour, IDamageable
         damageActive = false;
         Player.attackedDirect = r;//击退方向与攻击方向一致
         player.TakeDamage(attack);
-        Debug.Log("attacked");
-
     }
     public void InitBird(Vector2 pos)//初始化鸟怪
     {
@@ -88,6 +86,7 @@ public class Bird : MonoBehaviour, IDamageable
     }
     public void TakeDamage(float damage)
     {
+        Debug.Log("birdAttacked");
         blood -= damage;
         if (blood <= 0f)
         {

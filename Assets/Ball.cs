@@ -4,7 +4,7 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float boomF = 0.02f;
+    [SerializeField] private float boomF = 0.01f;
     [SerializeField] private float traceF = 0.05f;
     private float attack = 20f;
     public Sprite[] boom;//爆炸帧动画
@@ -41,7 +41,7 @@ public class Ball : MonoBehaviour
     {
         if (hasHit) return;
         if (!other.CompareTag("Player")) return;
-        player.TakeDamage(attack);
+        player.TakeDamage(attack * (1 + Boss1.engry / 100));
         hasHit = true;
         trail = false;
         curTime = 0;
@@ -56,7 +56,10 @@ public class Ball : MonoBehaviour
             if (curTime >= traceF)
             {
                 if (transform.position.x < left || transform.position.x > right||transform.position.y<CameraManager.bottom||transform.position.y>CameraManager.top)
+                {
                     gameObject.SetActive(false);//超出边界
+                    Boss1.engry += 10;//攻击被躲避，怒气值增加
+                }
                 curTime = 0;
                 sr.sprite = trace[curFrame];
                 curFrame = (curFrame + 1) % trace.Length;

@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
+    [SerializeField] private float jumpSpeed = 7f;//起跳瞬间的速度
     [SerializeField] private LayerMask groundLayer;
     private bool isGround;//判断角色当前是否接触地面、
     private ContactFilter2D groundFilter;
@@ -100,15 +101,15 @@ public class Player : MonoBehaviour
     {
         if (act == 11 && (curFrame >= 5 && curFrame <= 11)&&!boost)//被击退
             Move(attackedDirect, backSpeed);
-        if (input.x != 0)
+        if (act!=11&&input.x != 0)
             Move(input.x > 0, speed);
         if (isAttacking&&act!=5)//招式三左右两侧都攻击，不需要更新
             InitAttackBox(true);//重复开关，角色可能在攻击过程中转向
     }
     public void OnMove(InputAction.CallbackContext ctx)
     {
-        if(act==11)return;
         input = ctx.ReadValue<Vector2>();
+        if (act == 11) return;
         if (ctx.started)
         {
             if (!isFlying)InitMonkey(1);
@@ -171,7 +172,11 @@ public class Player : MonoBehaviour
             InitDelay();
             if (curFrame == 5) InitAttackBox(true);//第6帧开启碰撞箱
             else if (curFrame == 12) InitAttackBox(false);
-            if (nextAttack && (curFrame >= 12 || curFrame == 0)) NextAttack();
+            if (nextAttack && (curFrame >= 12 || curFrame == 0))
+            {
+                NextAttack();
+                return;
+            }
             if (curFrame == 0)
             {
                 nextAttack = false;
@@ -223,7 +228,7 @@ public class Player : MonoBehaviour
     }
     public void Jump()
     {
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, 15f);//速度偏低，加速度偏低，让滞空时间较长
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpSpeed);//速度偏低，加速度偏低，让滞空时间较长
     }
     public void InitMonkey(int k)//切换角色状态，当前帧序列变为0
     {
@@ -279,6 +284,7 @@ public class Player : MonoBehaviour
     }
     public void TakeDamage(float a)//检测到被攻击了
     {
+        Debug.Log("playerAttacked");
         blood-=a;
         if (blood <= 0f)
         {

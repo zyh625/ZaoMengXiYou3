@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3861766184825966326}
   - component: {fileID: 8883103366126604637}
-  - component: {fileID: 1464526667136899136}
   m_Layer: 7
   m_Name: attack1
   m_TagString: Untagged
@@ -79,18 +78,37 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.4, y: 2}
   m_EdgeRadius: 0
---- !u!114 &1464526667136899136
-MonoBehaviour:
+--- !u!1 &1211756887141174087
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 96882207221745433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2c58495f2fe79b43b6e75b5f760b93e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BossHitOne
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 664116770728627284}
+  m_Layer: 7
+  m_Name: Ball_2Place
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &664116770728627284
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211756887141174087}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.813, y: -1.087, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4807009512369417813}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3698579611274582323
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,11 +138,12 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.61476, y: 9.78091, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3861766184825966326}
   - {fileID: 1361938483854346207}
+  - {fileID: 664116770728627284}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8951138776209949823
@@ -242,7 +261,23 @@ MonoBehaviour:
     - {fileID: 5330536933776828754, guid: 59b6d8614284d8f43bb33022c9b9e016, type: 3}
     - {fileID: -6175564300907191368, guid: 59b6d8614284d8f43bb33022c9b9e016, type: 3}
     - {fileID: -2828246220519728979, guid: 59b6d8614284d8f43bb33022c9b9e016, type: 3}
-  - frames: []
+  - frames:
+    - {fileID: -3362427176441495830, guid: 6b047fbf3c3434d45ab5a1d577ccf6e2, type: 3}
+    - {fileID: -1233679837903364217, guid: 6b047fbf3c3434d45ab5a1d577ccf6e2, type: 3}
+    - {fileID: -8107489535394468509, guid: 6b047fbf3c3434d45ab5a1d577ccf6e2, type: 3}
+    - {fileID: 7586923477886759825, guid: 6b047fbf3c3434d45ab5a1d577ccf6e2, type: 3}
+    - {fileID: -4014921319882278959, guid: 6b047fbf3c3434d45ab5a1d577ccf6e2, type: 3}
+    - {fileID: 2540035615946956393, guid: 6b047fbf3c3434d45ab5a1d577ccf6e2, type: 3}
+    - {fileID: 473636630, guid: 6b047fbf3c3434d45ab5a1d577ccf6e2, type: 3}
+    - {fileID: -1061939649, guid: 6b047fbf3c3434d45ab5a1d577ccf6e2, type: 3}
+    - {fileID: -1946527553, guid: 6b047fbf3c3434d45ab5a1d577ccf6e2, type: 3}
+    - {fileID: -269834592, guid: 6b047fbf3c3434d45ab5a1d577ccf6e2, type: 3}
+    - {fileID: -845441494546212921, guid: 6b047fbf3c3434d45ab5a1d577ccf6e2, type: 3}
+    - {fileID: -6858977246421412542, guid: 6b047fbf3c3434d45ab5a1d577ccf6e2, type: 3}
+    - {fileID: -4616511286264131907, guid: 6b047fbf3c3434d45ab5a1d577ccf6e2, type: 3}
+    - {fileID: -6140735706631233421, guid: 6b047fbf3c3434d45ab5a1d577ccf6e2, type: 3}
+    - {fileID: -8869310912296958626, guid: 6b047fbf3c3434d45ab5a1d577ccf6e2, type: 3}
+    - {fileID: -1514516739, guid: 6b047fbf3c3434d45ab5a1d577ccf6e2, type: 3}
   - frames:
     - {fileID: -4337708981580926086, guid: d8d79c1510fc44c45b2cacadf94d49ec, type: 3}
     - {fileID: -2308817373887004571, guid: d8d79c1510fc44c45b2cacadf94d49ec, type: 3}
@@ -327,6 +362,9 @@ MonoBehaviour:
   moveSpeed: 1
   attackSpeed: 5
   attackOneDis: 5
+  attackedSpeed: 4
+  upSpeed: 4
+  ball2: {fileID: 1211756887141174087}
 --- !u!212 &6777168856751528953
 SpriteRenderer:
   serializedVersion: 2
