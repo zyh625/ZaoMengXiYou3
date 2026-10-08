@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class Bird : MonoBehaviour, IDamageable
@@ -13,6 +14,8 @@ public class Bird : MonoBehaviour, IDamageable
     private SpriteRenderer sr;//鸟怪的精灵
     public AnimationData[] birdFrames;//0飞行，1攻击，2受击，3死亡
     private Collider2D birdCol;//鸟怪自身的碰撞箱
+    [SerializeField] private Image HP;
+    private float beginBlood = 50f;//初始血量
     private float blood = 50f;
     private float waitTime = 6f;//攻击冷却时间
     private float lastAttack = -1f;
@@ -26,9 +29,6 @@ public class Bird : MonoBehaviour, IDamageable
     private Player player;
     private bool damageActive = false;//是否处于有效攻击帧
     private bool hasHit = false;//是否已经命中
-
-
-
     void Start()
     {
         attackCol = attackBox.GetComponent<Collider2D>();
@@ -86,8 +86,10 @@ public class Bird : MonoBehaviour, IDamageable
     }
     public void TakeDamage(float damage)
     {
+        if (act == 3) return;
         Debug.Log("birdAttacked");
-        blood -= damage;
+        blood = Mathf.Max(blood - damage, 0);
+        HP.fillAmount = blood / beginBlood;
         if (blood <= 0f)
         {
             InitEnemy(3);

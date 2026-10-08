@@ -1,5 +1,7 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float jumpSpeed = 7f;//起跳瞬间的速度
@@ -16,7 +18,7 @@ public class Player : MonoBehaviour
 
     public static float HalfSr { get; private set; }//所有脚本可用但不可修改
 
-    public int act = 0;//0表示静止，1表示行走，2表示跑步，3-6分别表示1到4段攻击，7表示起跳过程，8表示落地过程，9表示起跳到空中,10表示二连跳，11表示受击，12空中定格帧动画,13空中攻击
+    public int act = 0;//0表示静止，1表示行走，2表示跑步，3-6分别表示1到4段攻击，7表示起跳过程，8表示落地过程，9表示起跳到空中,10表示二连跳，11表示受击，12空中定格帧动画,13空中攻击，14死亡
     public int curFrame = 0;//当前帧序列
     public float delayTime = 0;
     public bool face = true;//角色朝向是否向右
@@ -37,11 +39,16 @@ public class Player : MonoBehaviour
     private float boostEnergy = 0f;//无双状态的能量条
     private bool boost = false;//是否开启无双
     public static bool attackedDirect;//被攻击时击退方向是否为右
+    private float beginBlood = 200f;//初始血量
     private float blood = 200f;//角色血量
     private float backSpeed = 3f;//被击退的移速
     private bool isAttacking = false;//处在有效攻击帧
     public GameObject[] AttackHit;
     private Collider2D[] attackBox = new Collider2D[2];
+    [SerializeField] private TextMeshProUGUI bloodUI;//血量槽展示数值
+    [SerializeField] private Image HP;//血量
+    [SerializeField] private Image MP;//蓝量
+    [SerializeField] private Image XP;//经验值
     void Awake()
     {
         col = GetComponent<Collider2D>();
@@ -55,7 +62,7 @@ public class Player : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         HalfSr = sr.bounds.size.x / 2;
-        
+        bloodUI.SetText(blood.ToString() + "/" + beginBlood.ToString());
     }
     
     private void FixedUpdate()
@@ -197,7 +204,17 @@ public class Player : MonoBehaviour
             }
             return;
         }
-        if (delayTime >= 0.04f & (act == 11))//受击动画
+        if (delayTime >= 0.02f && act == 14)//死亡帧动画
+        {
+            InitDelay();
+            if (curFrame == 0)//角色死亡删除角色
+            {
+                gameObject.SetActive(false);
+                //播放失败动画，返回主菜单
+                return;
+            }
+        }
+        if (delayTime >= 0.04f && act == 11)//受击动画
         {
             InitDelay();
             if (curFrame == 0)
@@ -284,11 +301,16 @@ public class Player : MonoBehaviour
     }
     public void TakeDamage(float a)//检测到被攻击了
     {
+        if (act == 14) return;//当前已经死亡，正在播放帧动画，直接返回
         Debug.Log("playerAttacked");
-        blood-=a;
+        blood = Mathf.Max(blood - a, 0);
+        bloodUI.SetText(blood.ToString() + "/" + beginBlood.ToString());//更新血量展示
+        HP.fillAmount = blood / beginBlood;
         if (blood <= 0f)
         {
             Debug.Log("die");
+            InitMonkey(14);
+            return;
         }
         InitMonkey(11);
     }

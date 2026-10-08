@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ public class CameraManager : MonoBehaviour
     private bool enterBoss = false;//是否进入boss的战斗场地
     [SerializeField] private float riseSpeed = 3f;//上移速度
     private float camY;//角色当前坐标y值
+    [SerializeField] private ChangeBlood CB;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -64,6 +66,8 @@ public class CameraManager : MonoBehaviour
     {
         yield return new WaitForSeconds(6f);//等待6秒boss现身
         Boss1.alive = true;
-        Instantiate(bossPrefab, bossPos, Quaternion.identity);
+        Boss1 boss=Instantiate(bossPrefab, bossPos, Quaternion.identity);//boss出现
+        CB.ShowUI();//血条显示
+        boss.Initialize(CB);
     }
 }

@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Boss1 : MonoBehaviour,IDamageable
 {
     private SpriteRenderer sr;//boss的精灵
@@ -26,8 +26,9 @@ public class Boss1 : MonoBehaviour,IDamageable
     private int curFrame = 0;//当前帧序列
     private float waitAttack = 6f;//普攻攻击间隔，远程攻击*1.5
     public static float attackOne = 18f;//招式一攻击力
+    private float beginBlood = 1000f;//初始血量
     private float lastAttack = -1f;//上一次攻击时间
-    private float blood = 1000f;//血量
+    private float blood = 1000f;//当前血量
     private float beginIdel = 0;//开始待机的时间
     private float waitIdel = 2.5f;//最长待机时间
     [SerializeField] private float moveSpeed = 2f;//移速
@@ -47,6 +48,7 @@ public class Boss1 : MonoBehaviour,IDamageable
     public GameObject ball2;
     public static int engry = 0;//怒气值，达到100切换至飞行形态,怒气值越高攻击越强
     private Vector2 ball2BeginPlace;
+    private ChangeBlood CCB;//更新血量
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -299,14 +301,18 @@ public class Boss1 : MonoBehaviour,IDamageable
     }
     public void TakeDamage(float damage)
     {
+        if (act == 5 || act == 10) return;
         Debug.Log("bossAttacked");
         attackedDirect = Player.tran.position.x <= transform.position.x;//在boss左边就往右击退
-        blood-=damage;
+        blood = Mathf.Max(blood - damage, 0);
+        CCB.UpdateBlood(blood, beginBlood);
         engry += 3;
         if (blood <= 0)//死亡
+        {
             InitBoss(act <= 6 ? 5 : 10);
-        else//受击
-            InitBoss(act <= 6 ? 4 : 9);
+            return;
+        }
+        InitBoss(act <= 6 ? 4 : 9);
     }
     private void BossMove(bool face,float speed)
     {
@@ -319,5 +325,9 @@ public class Boss1 : MonoBehaviour,IDamageable
         Vector2 pos = transform.position;
         pos.y += (up ? 1 : -1) * speed * Time.deltaTime;
         transform.position = pos;
+    }
+    public void Initialize(ChangeBlood CB)
+    {
+        CCB = CB;
     }
 }
