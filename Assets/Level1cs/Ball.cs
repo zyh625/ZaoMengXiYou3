@@ -41,7 +41,7 @@ public class Ball : MonoBehaviour
     {
         if (hasHit) return;
         if (!other.CompareTag("Player")) return;
-        player.TakeDamage(attack * (1 + Boss1.engry / 100));
+        player.TakeDamage(attack * (1 + Boss1.engry / 100f));
         hasHit = true;
         trail = false;
         curTime = 0;
@@ -58,7 +58,7 @@ public class Ball : MonoBehaviour
                 if (transform.position.x < left || transform.position.x > right||transform.position.y<CameraManager.bottom||transform.position.y>CameraManager.top)
                 {
                     gameObject.SetActive(false);//超出边界
-                    Boss1.engry += 10;//攻击被躲避，怒气值增加
+                    Boss1.engry += 10f;//攻击被躲避，怒气值增加
                 }
                 curTime = 0;
                 sr.sprite = trace[curFrame];

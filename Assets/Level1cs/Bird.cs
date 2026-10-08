@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,8 +27,15 @@ public class Bird : MonoBehaviour, IDamageable
     private Player player;
     private bool damageActive = false;//是否处于有效攻击帧
     private bool hasHit = false;//是否已经命中
+    [SerializeField] private float fadeDuration = 1.5f;//血条ui淡出需要的时间
+    [SerializeField] private float seeDuration = 3.5f;//受击后血条显示的时间
+    private float lastAttackedTime = -1f;//上次受击的时间
+    private bool isMissing = false;//血条ui当前是否正在逐渐消失
+    private bool isShowing= false;//血条ui当前是否正在逐渐消失
+    private float missTime;//开始消失的时刻
     void Start()
     {
+        HP.gameObject.SetActive(false);
         attackCol = attackBox.GetComponent<Collider2D>();
         player = Player.tran.GetComponent<Player>();
         birdCol = GetComponent<Collider2D>();
@@ -60,6 +65,7 @@ public class Bird : MonoBehaviour, IDamageable
     // Update is called once per frame
     void Update()
     {
+        UpdateUI();
         time += Time.deltaTime;
         if (act == 0)//追击玩家
             Act0();
@@ -71,6 +77,31 @@ public class Bird : MonoBehaviour, IDamageable
             Act3();
         if (damageActive)
             CheckHit();
+    }
+    private void UpdateUI()
+    {
+        if (isShowing && Time.time - lastAttackedTime >= seeDuration)
+        {
+            isShowing = false;
+            isMissing = true;
+            missTime= Time.time;
+        }
+        else if (isMissing)
+        {
+            float alpha = Mathf.Max(1f - Mathf.Clamp01((Time.time - missTime) / fadeDuration), 0f);
+            SetAlpha(alpha);
+            if (alpha <= 0f)
+            {
+                isMissing = false;
+                HP.gameObject.SetActive(false);
+            }
+        }
+    }
+    private void SetAlpha(float alpha)
+    {
+        Color color = HP.color;
+        color.a = alpha;
+        HP.color = color;
     }
     private void InitBird()//更新鸟怪帧动画
     {
@@ -87,7 +118,13 @@ public class Bird : MonoBehaviour, IDamageable
     public void TakeDamage(float damage)
     {
         if (act == 3) return;
-        Debug.Log("birdAttacked");
+        if (!isShowing)
+        {
+            SetAlpha(1f);
+            HP.gameObject.SetActive(true);
+            isShowing = true;
+        }
+        lastAttackedTime = Time.time;
         blood = Mathf.Max(blood - damage, 0);
         HP.fillAmount = blood / beginBlood;
         if (blood <= 0f)
@@ -100,6 +137,7 @@ public class Bird : MonoBehaviour, IDamageable
     void Die()
     {
         Level1Enemy.curBirds--;
+        player.UpdateXP(5f);
         gameObject.SetActive(false);
     }
     private void InitEnemy(int a)//转变状态

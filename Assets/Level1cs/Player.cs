@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -34,8 +35,10 @@ public class Player : MonoBehaviour
     private float lastAttack = -1f;//上次攻击的事件
     private int priAttack = 3;//上次攻击的招式
     public static float attack = 10f;//攻击力
+    private float beginAttack = 10f;//初始攻击力
     private bool isFlying = false;//是否处于跳跃状态
     private bool nextAttack = false;//短时间内是否按下第二次攻击
+    private float boostFull = 100f;//无双能量最大值
     private float boostEnergy = 0f;//无双状态的能量条
     private bool boost = false;//是否开启无双
     public static bool attackedDirect;//被攻击时击退方向是否为右
@@ -43,12 +46,23 @@ public class Player : MonoBehaviour
     private float blood = 200f;//角色血量
     private float backSpeed = 3f;//被击退的移速
     private bool isAttacking = false;//处在有效攻击帧
+    private float mp = 150f;
+    private float beginMP = 150f;
+    private float xp = 0f;
+    private float beginXP = 100f;
     public GameObject[] AttackHit;
     private Collider2D[] attackBox = new Collider2D[2];
-    [SerializeField] private TextMeshProUGUI bloodUI;//血量槽展示数值
+    [SerializeField] private TextMeshProUGUI HPUI;//血量槽展示数值
+    [SerializeField] private TextMeshProUGUI MPUI;//血量槽展示数值
+    [SerializeField] private TextMeshProUGUI XPUI;//血量槽展示数值
     [SerializeField] private Image HP;//血量
     [SerializeField] private Image MP;//蓝量
     [SerializeField] private Image XP;//经验值
+    [SerializeField] private Image Boost;
+    [SerializeField] private Image BoostFull;
+    [SerializeField] private float deltaBoost = 10f;//每次攻击增加的能量
+    [SerializeField] private float boostTime = 10f;//无双时间持续多久
+    [SerializeField] private float boostReduce = 0.01f;//能量逐渐衰减
     void Awake()
     {
         col = GetComponent<Collider2D>();
@@ -62,7 +76,9 @@ public class Player : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         HalfSr = sr.bounds.size.x / 2;
-        bloodUI.SetText(blood.ToString() + "/" + beginBlood.ToString());
+        HPUI.SetText(blood.ToString() + "/" + beginBlood.ToString());
+        MPUI.SetText(mp.ToString() + "/" + beginMP.ToString());
+        XPUI.SetText(xp.ToString() + "/" + beginXP.ToString());
     }
     
     private void FixedUpdate()
@@ -106,10 +122,11 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
+        if (boostEnergy < boostFull && boostEnergy >= 0.1f) UpdateBoost(false);
         if (act == 11 && (curFrame >= 5 && curFrame <= 11)&&!boost)//被击退
             Move(attackedDirect, backSpeed);
-        if (act!=11&&input.x != 0)
-            Move(input.x > 0, speed);
+        if (act != 11 && input.x != 0)
+            Move(input.x > 0, (boost ? 1.25f : 1f) * speed);//无双加速
         if (isAttacking&&act!=5)//招式三左右两侧都攻击，不需要更新
             InitAttackBox(true);//重复开关，角色可能在攻击过程中转向
     }
@@ -162,6 +179,10 @@ public class Player : MonoBehaviour
     {
         if (ctx.performed&&boostEnergy>=100f)//开启无双
         {
+            Debug.Log("boost");
+            attack *= 2.5f;
+            BoostFull.gameObject.SetActive(false);
+            UpdateBoost(false);
             boost = true;
             if (act==11)//当前处于受击状态，直接恢复
             {
@@ -302,16 +323,43 @@ public class Player : MonoBehaviour
     public void TakeDamage(float a)//检测到被攻击了
     {
         if (act == 14) return;//当前已经死亡，正在播放帧动画，直接返回
-        Debug.Log("playerAttacked");
         blood = Mathf.Max(blood - a, 0);
-        bloodUI.SetText(blood.ToString() + "/" + beginBlood.ToString());//更新血量展示
+        HPUI.SetText(blood.ToString() + "/" + beginBlood.ToString());//更新血量展示
         HP.fillAmount = blood / beginBlood;
         if (blood <= 0f)
         {
-            Debug.Log("die");
             InitMonkey(14);
             return;
         }
-        InitMonkey(11);
+        if(!boost)InitMonkey(11);//非无双状态，受击动画
+    }
+    public void UpdateBoost(bool flag)//更新无双状态
+    {
+        if (flag&&!boost)
+        {
+            boostEnergy = Mathf.Min(boostFull, boostEnergy + deltaBoost);
+            if (boostEnergy == boostFull)
+            {
+                BoostFull.gameObject.SetActive(true);//无双准备就绪
+                return;
+            }
+        }
+        else//一直都在缓慢减少
+        {
+            if (boost) boostEnergy = Mathf.Max(0f, boostFull - boostTime * Time.deltaTime);//无双状态能量衰减加快
+            else boostEnergy = Mathf.Max(0f, boostEnergy - boostReduce*Time.deltaTime);
+            if (boostEnergy < 0.1f)
+            {
+                attack = beginAttack;
+                boost = false;//取消无双状态
+            }
+        }
+        Boost.fillAmount = boostEnergy / boostFull;
+    }
+    public void UpdateXP(float exp)//击杀敌人增加经验
+    {
+        xp += exp;
+        XPUI.SetText(xp.ToString() + "/" + beginXP.ToString());
+        XP.fillAmount = xp / beginXP;
     }
 }

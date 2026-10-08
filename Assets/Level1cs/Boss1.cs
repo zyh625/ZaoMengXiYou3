@@ -46,7 +46,7 @@ public class Boss1 : MonoBehaviour,IDamageable
     private float waitWalk = 5f;//最长连续行走时间
     [SerializeField] private float upSpeed = 7f;//上升的速度
     public GameObject ball2;
-    public static int engry = 0;//怒气值，达到100切换至飞行形态,怒气值越高攻击越强
+    public static float engry = 0;//怒气值，达到100切换至飞行形态,怒气值越高攻击越强
     private Vector2 ball2BeginPlace;
     private ChangeBlood CCB;//更新血量
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -62,7 +62,7 @@ public class Boss1 : MonoBehaviour,IDamageable
     }
     void Update()
     {
-        if (act < 6 && engry >= 100)
+        if (act < 6&&act!=5 && engry >= 100f)
             InitBoss(6);
         curTime += Time.deltaTime;
         switch (act)
@@ -111,7 +111,7 @@ public class Boss1 : MonoBehaviour,IDamageable
             if (!hasHit && attackOneCol.Distance(Player.box).isOverlapped)
             {
                 hasHit = true;//已经攻击过了
-                player.TakeDamage(attackOne*(1+engry/100));
+                player.TakeDamage(attackOne*(1f+engry/100f));
                 Player.attackedDirect = r;//boss朝哪边攻击，玩家被击退向哪边
             }
         }
@@ -124,7 +124,7 @@ public class Boss1 : MonoBehaviour,IDamageable
             {
                 InitBox(false);
                 lastAttack = Time.time;
-                if (!hasHit) engry += 10;//未击中，怒气值增加
+                if (!hasHit) engry += 10f;//未击中，怒气值增加
                 hasHit = false;
             }
             else if (curFrame == 0)//攻击完全结束
@@ -302,11 +302,10 @@ public class Boss1 : MonoBehaviour,IDamageable
     public void TakeDamage(float damage)
     {
         if (act == 5 || act == 10) return;
-        Debug.Log("bossAttacked");
         attackedDirect = Player.tran.position.x <= transform.position.x;//在boss左边就往右击退
         blood = Mathf.Max(blood - damage, 0);
         CCB.UpdateBlood(blood, beginBlood);
-        engry += 3;
+        engry += 3f;
         if (blood <= 0)//死亡
         {
             InitBoss(act <= 6 ? 5 : 10);

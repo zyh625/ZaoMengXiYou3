@@ -4758,7 +4758,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.01
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -5561,7 +5561,19 @@ MonoBehaviour:
     m_ActionId: adca9580-03bb-4962-aca3-d26fc8a84226
     m_ActionName: 'Player/Attack[/Keyboard/j]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1963501940}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: OnBoost
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 27b79be5-976c-425d-ac68-b3a03cf40e13
     m_ActionName: 'Player/Boost[/Keyboard/space]'
   m_NeverAutoSwitchControlSchemes: 0
@@ -5948,10 +5960,17 @@ MonoBehaviour:
   AttackHit:
   - {fileID: 2091058988}
   - {fileID: 910132702}
-  bloodUI: {fileID: 2054853044}
+  HPUI: {fileID: 2054853044}
+  MPUI: {fileID: 1776267813}
+  XPUI: {fileID: 301735964}
   HP: {fileID: 194296307}
   MP: {fileID: 768306120}
   XP: {fileID: 1785822512}
+  Boost: {fileID: 1855151081}
+  BoostFull: {fileID: 512372401}
+  deltaBoost: 5
+  boostTime: 10
+  boostReduce: 4
 --- !u!1 &2020855744
 GameObject:
   m_ObjectHideFlags: 0
