@@ -3,8 +3,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
+    private int myLevel = 1;//当前等级
     [SerializeField] private float jumpSpeed = 7f;//起跳瞬间的速度
     [SerializeField] private LayerMask groundLayer;
     private bool isGround;//判断角色当前是否接触地面、
@@ -34,8 +36,8 @@ public class Player : MonoBehaviour
     int jumped = 0;//检测跳跃次数
     private float lastAttack = -1f;//上次攻击的事件
     private int priAttack = 3;//上次攻击的招式
-    public static float attack = 10f;//攻击力
-    private float beginAttack = 10f;//初始攻击力
+    public static float attack = 10f;//当前攻击力
+    [SerializeField]private float beginAttack = 10f;//初始攻击力
     private bool isFlying = false;//是否处于跳跃状态
     private bool nextAttack = false;//短时间内是否按下第二次攻击
     private float boostFull = 100f;//无双能量最大值
@@ -48,23 +50,23 @@ public class Player : MonoBehaviour
     private bool isAttacking = false;//处在有效攻击帧
     private float mp = 150f;
     private float beginMP = 150f;
-    private float xp = 0f;
-    private float beginXP = 100f;
+    public float xp = 0;
+    public float beginXP = 100f;
     public GameObject[] AttackHit;
     private Collider2D[] attackBox = new Collider2D[2];
-    [SerializeField] private TextMeshProUGUI HPUI;//血量槽展示数值
-    [SerializeField] private TextMeshProUGUI MPUI;//血量槽展示数值
-    [SerializeField] private TextMeshProUGUI XPUI;//血量槽展示数值
-    [SerializeField] private Image HP;//血量
-    [SerializeField] private Image MP;//蓝量
-    [SerializeField] private Image XP;//经验值
+    public StatusBarUI HP, MP, XP;
     [SerializeField] private Image Boost;
     [SerializeField] private Image BoostFull;
     [SerializeField] private float deltaBoost = 10f;//每次攻击增加的能量
     [SerializeField] private float boostTime = 10f;//无双时间持续多久
     [SerializeField] private float boostReduce = 0.01f;//能量逐渐衰减
+    [SerializeField] private Exit exit;
+    private Collider2D exitCol;
     void Awake()
     {
+        PlayerLoad();
+        exitCol = exit.GetComponent<Collider2D>();
+        attack = beginAttack;
         col = GetComponent<Collider2D>();
         for (int i = 0; i < 2; i++) attackBox[i] = AttackHit[i].GetComponent<Collider2D>();
         Attacked = transform.Find("Attacked").gameObject;box=Attacked.GetComponent<Collider2D>();
@@ -76,9 +78,9 @@ public class Player : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         HalfSr = sr.bounds.size.x / 2;
-        HPUI.SetText(blood.ToString() + "/" + beginBlood.ToString());
-        MPUI.SetText(mp.ToString() + "/" + beginMP.ToString());
-        XPUI.SetText(xp.ToString() + "/" + beginXP.ToString());
+        HP.UpdateValue(blood, beginBlood);
+        MP.UpdateValue(mp, beginMP);
+        XP.UpdateValue(xp, beginXP);
     }
     
     private void FixedUpdate()
@@ -122,7 +124,7 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        if (boostEnergy < boostFull && boostEnergy >= 0.1f) UpdateBoost(false);
+        if (boost||(boostEnergy < boostFull && boostEnergy >= 0.1f)) UpdateBoost(false);
         if (act == 11 && (curFrame >= 5 && curFrame <= 11)&&!boost)//被击退
             Move(attackedDirect, backSpeed);
         if (act != 11 && input.x != 0)
@@ -179,9 +181,7 @@ public class Player : MonoBehaviour
     {
         if (ctx.performed&&boostEnergy>=100f)//开启无双
         {
-            Debug.Log("boost");
             attack *= 2.5f;
-            BoostFull.gameObject.SetActive(false);
             UpdateBoost(false);
             boost = true;
             if (act==11)//当前处于受击状态，直接恢复
@@ -189,6 +189,15 @@ public class Player : MonoBehaviour
                 if (isFlying) InitMonkey(12);
                 else RestoreGroundAction();
             }
+        }
+    }
+    public void OnDrawOut(InputAction.CallbackContext ctx)//胜利后按下“W”键，退出当前关卡
+    {
+        if (ctx.performed && exit.gameObject.activeSelf &&col.Distance(exitCol).isOverlapped)//符合退出的条件
+        {
+            PlayerSave();
+            SceneManager.LoadScene("VictoryScene");
+            return;
         }
     }
     public void UpdateMonkey()
@@ -324,8 +333,7 @@ public class Player : MonoBehaviour
     {
         if (act == 14) return;//当前已经死亡，正在播放帧动画，直接返回
         blood = Mathf.Max(blood - a, 0);
-        HPUI.SetText(blood.ToString() + "/" + beginBlood.ToString());//更新血量展示
-        HP.fillAmount = blood / beginBlood;
+        HP.UpdateValue(blood, beginBlood);
         if (blood <= 0f)
         {
             InitMonkey(14);
@@ -335,19 +343,17 @@ public class Player : MonoBehaviour
     }
     public void UpdateBoost(bool flag)//更新无双状态
     {
-        if (flag&&!boost)
+        if (flag)
         {
+            if(boost)return;
             boostEnergy = Mathf.Min(boostFull, boostEnergy + deltaBoost);
             if (boostEnergy == boostFull)
-            {
                 BoostFull.gameObject.SetActive(true);//无双准备就绪
-                return;
-            }
         }
         else//一直都在缓慢减少
         {
-            if (boost) boostEnergy = Mathf.Max(0f, boostFull - boostTime * Time.deltaTime);//无双状态能量衰减加快
-            else boostEnergy = Mathf.Max(0f, boostEnergy - boostReduce*Time.deltaTime);
+            if (boost) boostEnergy = Mathf.Max(0f, boostEnergy - boostTime * Time.deltaTime);//无双状态能量衰减加快
+            else boostEnergy = Mathf.Max(0f, boostEnergy - boostReduce * Time.deltaTime);
             if (boostEnergy < 0.1f)
             {
                 attack = beginAttack;
@@ -356,10 +362,20 @@ public class Player : MonoBehaviour
         }
         Boost.fillAmount = boostEnergy / boostFull;
     }
-    public void UpdateXP(float exp)//击杀敌人增加经验
+    private void PlayerSave()
     {
-        xp += exp;
-        XPUI.SetText(xp.ToString() + "/" + beginXP.ToString());
-        XP.fillAmount = xp / beginXP;
+        SaveData data = new()
+        {
+            exp = xp
+        };
+        SaveSystem.Save(data);
+    }
+    private void PlayerLoad()
+    {
+        SaveData data = SaveSystem.Load();
+        if (data == null)
+            xp = 0;
+        else
+            xp = data.exp;
     }
 }

@@ -163,6 +163,8 @@ public class Boss1 : MonoBehaviour,IDamageable
             InitDelay();
             if (curFrame == 0)//boss死亡，游戏结束
             {
+                player.xp += 20f;
+                player.XP.UpdateValue(player.xp, player.beginXP);
                 gameObject.SetActive(false);
             }
         }
@@ -223,6 +225,8 @@ public class Boss1 : MonoBehaviour,IDamageable
             InitDelay();
             if(curFrame == 0)
             {
+                player.xp += 20f;
+                player.XP.UpdateValue(player.xp, player.beginXP);
                 gameObject.SetActive(false);
             }
         }

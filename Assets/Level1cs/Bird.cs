@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class Bird : MonoBehaviour, IDamageable
 {
+    [SerializeField] private float initBlood = 50f;//初始血量
     private int curFrame = 0;
     private float time = 0;
     private int act = 0;
@@ -13,16 +14,18 @@ public class Bird : MonoBehaviour, IDamageable
     public AnimationData[] birdFrames;//0飞行，1攻击，2受击，3死亡
     private Collider2D birdCol;//鸟怪自身的碰撞箱
     [SerializeField] private Image HP;
-    private float beginBlood = 50f;//初始血量
-    private float blood = 50f;
-    private float waitTime = 6f;//攻击冷却时间
+    private float beginBlood = 50f;//普通初始血量
+    private float blood = 50f;//普通当前血量
+    [SerializeField]private float initWaitTime=6f;//初始攻击冷却时间
+    private float waitTime = 6f;//当前攻击冷却时间
     private float lastAttack = -1f;
     private Vector2 startPlace;//攻击起始点
     private Vector2 direct;//攻击目标点的单位方向向量
     private float speed = 16f;//攻击的移动速度
     public GameObject attackBox;//攻击碰撞箱
     private Collider2D attackCol;
-    public static float attack = 2f;//鸟怪攻击力
+    [SerializeField] private float initAttack = 2f;//初始攻击力
+    public static float attack = 2f;//当前鸟怪攻击力
     [SerializeField] private float backSpeed = 5f;//被击退的速度
     private Player player;
     private bool damageActive = false;//是否处于有效攻击帧
@@ -33,6 +36,15 @@ public class Bird : MonoBehaviour, IDamageable
     private bool isMissing = false;//血条ui当前是否正在逐渐消失
     private bool isShowing= false;//血条ui当前是否正在逐渐消失
     private float missTime;//开始消失的时刻
+    [SerializeField] private Image Trophy;//精英怪才有王冠
+    private bool isBoost = false;//是否是精英怪
+    private Vector3 trophyLocate;//王冠相对主体的位置
+    private Vector3 trophyScale;//朝向
+    private bool missTrophy = false;//当前是否正在让王冠逐渐消失
+    private float startMissTrophy;//开始消失的时刻
+    [SerializeField] private float trophyDuration = 1f;//消失持续时长
+    [SerializeField] private GameObject splitTrophy;//提供反转后的王冠相对位置
+    private Vector3 splitLocate;//反转后的相对位置
     void Start()
     {
         HP.gameObject.SetActive(false);
@@ -40,6 +52,9 @@ public class Bird : MonoBehaviour, IDamageable
         player = Player.tran.GetComponent<Player>();
         birdCol = GetComponent<Collider2D>();
         sr = GetComponent<SpriteRenderer>();
+        trophyLocate = Trophy.rectTransform.localPosition;
+        trophyScale = Trophy.rectTransform.localScale;
+        splitLocate = splitTrophy.GetComponent<RectTransform>().localPosition;
     }
     private void CheckHit()
     {
@@ -55,10 +70,23 @@ public class Bird : MonoBehaviour, IDamageable
     public void InitBird(Vector2 pos)//初始化鸟怪
     {
         transform.position = pos;
-        blood = 50f;
+        waitTime = initWaitTime;
+        attack = initAttack;
+        blood = initBlood;
         act = 0;
         curFrame = 0;
         time = 0f;
+        if (Random.Range(0f, 10f)>=7.5f)//概率变成精英怪
+        {
+            SetAlpha(1f, Trophy);//避免之前隐藏过王冠
+            Trophy.gameObject.SetActive(true);
+            missTrophy = false;
+            isBoost = true;
+            blood *= 2f;
+            attack *= 1.5f;
+            waitTime *= 0.8f;//血量提高，攻击力提高攻击间隔缩短
+        }
+        beginBlood = blood;
         gameObject.SetActive(true);
     }
 
@@ -89,25 +117,37 @@ public class Bird : MonoBehaviour, IDamageable
         else if (isMissing)
         {
             float alpha = Mathf.Max(1f - Mathf.Clamp01((Time.time - missTime) / fadeDuration), 0f);
-            SetAlpha(alpha);
+            SetAlpha(alpha,HP);
             if (alpha <= 0f)
             {
                 isMissing = false;
                 HP.gameObject.SetActive(false);
             }
         }
+        if (isBoost&&missTrophy)//检查是否正在让王冠逐渐消失
+        {
+            float alpha = Mathf.Max(1f, Mathf.Clamp01((Time.time - startMissTrophy) / trophyDuration), 0f);
+            SetAlpha(alpha, Trophy);
+            if (alpha <= 0f)
+            {
+                isBoost = false;
+                missTrophy = false;
+                Trophy.gameObject.SetActive(false);
+            }
+        }
     }
-    private void SetAlpha(float alpha)
+    private void SetAlpha(float alpha,Image img)
     {
-        Color color = HP.color;
+        Color color = img.color;
         color.a = alpha;
-        HP.color = color;
+        img.color = color;
     }
     private void InitBird()//更新鸟怪帧动画
     {
         r = transform.position.x <= Player.tran.position.x;
         if (r != face)
         {
+            if (isBoost) SplitTrophy();
             sr.flipX = !r;
             face = r;
         }
@@ -115,21 +155,28 @@ public class Bird : MonoBehaviour, IDamageable
         curFrame = (curFrame + 1) % birdFrames[act].frames.Length;
         time = 0f;
     }
+    private void SplitTrophy()
+    {
+        trophyScale.x = -trophyScale.x;
+        Trophy.rectTransform.localScale = trophyScale;
+        Trophy.rectTransform.localPosition = r ? trophyLocate : splitLocate;
+    }
     public void TakeDamage(float damage)
     {
         if (act == 3) return;
         if (!isShowing)
         {
-            SetAlpha(1f);
+            SetAlpha(1f,HP);
             HP.gameObject.SetActive(true);
             isShowing = true;
         }
         lastAttackedTime = Time.time;
         blood = Mathf.Max(blood - damage, 0);
         HP.fillAmount = blood / beginBlood;
-        if (blood <= 0f)
+        if (blood <= 0f)//死亡
         {
             InitEnemy(3);
+
             return;
         }
         InitEnemy(2);
@@ -137,7 +184,8 @@ public class Bird : MonoBehaviour, IDamageable
     void Die()
     {
         Level1Enemy.curBirds--;
-        player.UpdateXP(5f);
+        player.xp += 5f;
+        player.XP.UpdateValue(player.xp, player.beginXP);
         gameObject.SetActive(false);
     }
     private void InitEnemy(int a)//转变状态
