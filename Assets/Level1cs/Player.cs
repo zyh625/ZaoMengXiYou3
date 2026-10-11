@@ -4,9 +4,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Security.Cryptography;
 public class Player : MonoBehaviour
 {
+    [SerializeField] private float beginHP = 50f, beginMP = 50f, beginXP = 10f, beginAttack = 10f;//一级原始数值
+    [SerializeField] private int maxLevel = 80;//最高等级
     private int myLevel = 1;//当前等级
+    private int curLevel;//当前关卡
     [SerializeField] private float jumpSpeed = 7f;//起跳瞬间的速度
     [SerializeField] private LayerMask groundLayer;
     private bool isGround;//判断角色当前是否接触地面、
@@ -36,22 +40,21 @@ public class Player : MonoBehaviour
     int jumped = 0;//检测跳跃次数
     private float lastAttack = -1f;//上次攻击的事件
     private int priAttack = 3;//上次攻击的招式
-    public static float attack = 10f;//当前攻击力
-    [SerializeField]private float beginAttack = 10f;//初始攻击力
+
     private bool isFlying = false;//是否处于跳跃状态
     private bool nextAttack = false;//短时间内是否按下第二次攻击
     private float boostFull = 100f;//无双能量最大值
     private float boostEnergy = 0f;//无双状态的能量条
     private bool boost = false;//是否开启无双
     public static bool attackedDirect;//被攻击时击退方向是否为右
-    private float beginBlood = 200f;//初始血量
-    private float blood = 200f;//角色血量
     private float backSpeed = 3f;//被击退的移速
     private bool isAttacking = false;//处在有效攻击帧
-    private float mp = 150f;
-    private float beginMP = 150f;
-    public float xp = 0;
-    public float beginXP = 100f;
+    private float hp, mp, xp;//当前角色数值
+    public static float attack;
+    private float curHP, curMP, curXP, curAttack;//当前等级对应的数值
+    [SerializeField] private float deltaHP = 30f, deltaMP = 20f, deltaXP = 30f, deltaAttack = 5f;//每升一级增加的数值
+
+    [SerializeField] private float boostMultiplier = 1.9f;//无双增加的攻击倍率
     public GameObject[] AttackHit;
     private Collider2D[] attackBox = new Collider2D[2];
     public StatusBarUI HP, MP, XP;
@@ -61,12 +64,17 @@ public class Player : MonoBehaviour
     [SerializeField] private float boostTime = 10f;//无双时间持续多久
     [SerializeField] private float boostReduce = 0.01f;//能量逐渐衰减
     [SerializeField] private Exit exit;
+    [SerializeField] private Image level1, level2;//等级显示
     private Collider2D exitCol;
+    private SaveData data;
+    private float costTime = 0f;//总耗时
+    private float lastTime = 0f;//开始计时的时刻
     void Awake()
     {
+        lastTime = Time.time;
+        data = MainMenu.instance.data;
         PlayerLoad();
         exitCol = exit.GetComponent<Collider2D>();
-        attack = beginAttack;
         col = GetComponent<Collider2D>();
         for (int i = 0; i < 2; i++) attackBox[i] = AttackHit[i].GetComponent<Collider2D>();
         Attacked = transform.Find("Attacked").gameObject;box=Attacked.GetComponent<Collider2D>();
@@ -78,9 +86,10 @@ public class Player : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         HalfSr = sr.bounds.size.x / 2;
-        HP.UpdateValue(blood, beginBlood);
-        MP.UpdateValue(mp, beginMP);
-        XP.UpdateValue(xp, beginXP);
+        HP.UpdateValue(hp, curHP);
+        MP.UpdateValue(mp, curMP);
+        XP.UpdateValue(xp, curXP);
+        UpdateLevel();
     }
     
     private void FixedUpdate()
@@ -181,7 +190,7 @@ public class Player : MonoBehaviour
     {
         if (ctx.performed&&boostEnergy>=100f)//开启无双
         {
-            attack *= 2.5f;
+            attack *= boostMultiplier;
             UpdateBoost(false);
             boost = true;
             if (act==11)//当前处于受击状态，直接恢复
@@ -195,7 +204,7 @@ public class Player : MonoBehaviour
     {
         if (ctx.performed && exit.gameObject.activeSelf &&col.Distance(exitCol).isOverlapped)//符合退出的条件
         {
-            PlayerSave();
+            PlayerSave(true);
             SceneManager.LoadScene("VictoryScene");
             return;
         }
@@ -332,9 +341,9 @@ public class Player : MonoBehaviour
     public void TakeDamage(float a)//检测到被攻击了
     {
         if (act == 14) return;//当前已经死亡，正在播放帧动画，直接返回
-        blood = Mathf.Max(blood - a, 0);
-        HP.UpdateValue(blood, beginBlood);
-        if (blood <= 0f)
+        hp = Mathf.Max(hp - a, 0);
+        HP.UpdateValue(hp,curHP);
+        if (hp <= 0f)
         {
             InitMonkey(14);
             return;
@@ -356,26 +365,79 @@ public class Player : MonoBehaviour
             else boostEnergy = Mathf.Max(0f, boostEnergy - boostReduce * Time.deltaTime);
             if (boostEnergy < 0.1f)
             {
-                attack = beginAttack;
+                attack = curAttack;
                 boost = false;//取消无双状态
             }
         }
         Boost.fillAmount = boostEnergy / boostFull;
     }
-    private void PlayerSave()
+    private void PlayerSave(bool pass)
     {
-        SaveData data = new()
-        {
-            exp = xp
-        };
-        SaveSystem.Save(data);
+        data.costTime = (int)(costTime + Time.time - lastTime);
+        data.exp = xp;
+        data.playerLevel = myLevel;
+        if (curLevel == data.level && pass) data.level++;
+        if (pass) data.playerState = (int)(hp / curHP);
+        data.mvp = 0;//先默认为猴
+        SaveSystem.Save();
     }
     private void PlayerLoad()
     {
-        SaveData data = SaveSystem.Load();
-        if (data == null)
-            xp = 0;
-        else
-            xp = data.exp;
+        xp = data.exp;
+        myLevel= data.playerLevel;
+        curXP = beginXP + (myLevel - 1) * deltaXP;
+        curHP = beginHP + (myLevel - 1) * deltaHP;
+        curMP = beginMP + (myLevel - 1) * deltaMP;
+        curAttack = beginAttack + (myLevel - 1) * deltaAttack;
+        curLevel = data.curLevel;
+        hp = curHP;
+        mp = curMP;
+        attack = curAttack;
+    }
+    public void UpdateExp(float exp)
+    {
+        if (myLevel == maxLevel && xp == curXP) return;//满级不更新
+        xp += exp;
+        if (xp >= curXP)
+            UpdateLevel();
+        XP.UpdateValue(xp, curXP);
+    }
+    private void UpdateLevel()//更新玩家等级
+    {
+        if (xp < curXP)
+        {
+            UpdateLevelUI();
+            level2.gameObject.SetActive(true);
+            return;
+        }
+        while (myLevel<maxLevel&&xp >= curXP)
+        {
+            xp -= curXP;
+            myLevel++;
+            curXP += deltaXP;
+            curHP += deltaHP;
+            curMP += deltaMP;
+            curAttack+= deltaAttack;
+        }
+        hp = curHP;
+        mp = curMP;//升级后状态回满
+        attack = curAttack * (boost ?  boostMultiplier: 1f);
+        if (myLevel >= maxLevel)
+        {
+            myLevel = maxLevel;
+            xp = Mathf.Min(xp, curXP);
+        }
+        MP.UpdateValue(mp, curMP);
+        HP.UpdateValue(hp, curHP);
+        UpdateLevelUI();
+    }
+    private void UpdateLevelUI()
+    {
+        if (myLevel >= 10)
+        {
+            level1.sprite = Font.GetSprite(myLevel / 10);//等级的十位
+            level2.gameObject.SetActive(true);
+        }
+        level2.sprite = Font.GetSprite(myLevel % 10);//等级的个位
     }
 }

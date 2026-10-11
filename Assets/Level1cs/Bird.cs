@@ -184,8 +184,7 @@ public class Bird : MonoBehaviour, IDamageable
     void Die()
     {
         Level1Enemy.curBirds--;
-        player.xp += 5f;
-        player.XP.UpdateValue(player.xp, player.beginXP);
+        player.UpdateExp(5f);
         gameObject.SetActive(false);
     }
     private void InitEnemy(int a)//转变状态
