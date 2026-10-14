@@ -6,7 +6,7 @@ using System;
 
 public class MenuButton : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI inputName;
+    [SerializeField] TMP_InputField inputName;
     [SerializeField] TextMeshProUGUI[] fileInformantion;//存档信息
     [SerializeField] private GameObject CreatFile;//创建存档界面，输入昵称
     [SerializeField] private GameObject selectUI;//存档界面
@@ -28,8 +28,8 @@ public class MenuButton : MonoBehaviour
             if (data != null)
             {
                 haveFile[i] = true;
-                string s = data.name + "\n" + data.lastPlayYear + "/" + data.lastPlayMonth + "/" + data.lastPlayDay;
-                fileInformantion[i].SetText(s);
+                fileButtons[i].gameObject.SetActive(true);
+                fileInformantion[i].SetText(data.name + "\n" + data.date);
             }
             else
             {
@@ -49,12 +49,13 @@ public class MenuButton : MonoBehaviour
         buttons[0].gameObject.SetActive(false);
         buttons[1].gameObject.SetActive(false);
         selectUI.SetActive(false);
+        Return();
     }
     public void EnsureCover()//确定覆盖存档
     {
         if (fileIndex == -1) return;
         if (!haveFile[fileIndex])//如果本来为空，直接创建存档
-            CreatFile.gameObject.SetActive(true);
+            CreatFile.SetActive(true);
         else
             coverUI.SetActive(true);
     }
@@ -70,7 +71,6 @@ public class MenuButton : MonoBehaviour
     }
     public void ClickFile(int num)
     {
-        Debug.Log(num);
         if (fileIndex == -1)
         {
             Color c = fileButtons[num].image.color;
@@ -104,7 +104,7 @@ public class MenuButton : MonoBehaviour
     {
         fileButtons[fileIndex].gameObject.SetActive(false);
         SaveSystem.Delete(fileIndex);
-        StartGame();
+        CreatFile.SetActive(true);
     }
     public void AboutGame()//关于游戏
     {
@@ -112,41 +112,49 @@ public class MenuButton : MonoBehaviour
     }
     public  void ExitGame()//退出游戏
     {
-        SaveSystem.Save();
         Application.Quit();
     }
     public void StartGame()
     {
         if (!haveFile[fileIndex])
         {
-            name = inputName.text;
-            if (name.Length == 0 || name.Length > 12)
+            string n = inputName.text;
+            if (n.Length == 0 || n.Length > 12)
             {
-                inputName.SetText("Your name's length should be in range[1,12]!");
+                //警告
                 return;
             }
-            else if (CheckName(name))
+            else if (CheckName(n))
             {
-                inputName.SetText("You have used this name! Fuck you.");
+                //警告
                 return;
             }
-            MainMenu.instance.SelectFile(fileIndex, name);
+            GameSession.instance.SelectFile(fileIndex, n);
         }
         else 
-            MainMenu.instance.SelectFile(fileIndex, "");
+            GameSession.instance.SelectFile(fileIndex, "");
+        GameSession.instance.priScene = "ManuScene";
         SceneManager.LoadScene("MapScene");
     }
     private void TurnOn(bool b)
     {
-        for(int i = 0; i < 6; i++)
-            fileButtons[i].gameObject.SetActive(b);
+        for (int i = 0; i < 6; i++)
+            if (!haveFile[i]) fileButtons[i].gameObject.SetActive(b);
     }
-    private bool CheckName(string name)
+    private bool CheckName(string n)
     {
         for(int i = 0; i < 6; i++)
         {
-            if (haveFile[i] && SaveSystem.Load(i).name == name) return true;
+            if (haveFile[i] && SaveSystem.Load(i).name == n) return true;
         }
         return false;
+    }
+    private void Return()
+    {
+        if (fileIndex == -1) return;
+        Color c = fileButtons[fileIndex].image.color;
+        c.a = alpha * 0.5f;
+        fileButtons[fileIndex].image.color = c;
+        fileIndex = -1;
     }
 }

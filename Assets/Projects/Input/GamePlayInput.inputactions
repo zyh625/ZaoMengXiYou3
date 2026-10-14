@@ -1,0 +1,239 @@
+{
+    "version":  1,
+    "name":  "GamePlayInput",
+    "maps":  [
+                 {
+                     "name":  "Player",
+                     "id":  "8ba12e90-73fc-447f-bb89-90fd5949f6f2",
+                     "actions":  [
+                                     {
+                                         "name":  "Move",
+                                         "type":  "Value",
+                                         "id":  "5024a6d3-a4e4-4e0c-8252-09b5ea124fe6",
+                                         "expectedControlType":  "Axis",
+                                         "processors":  "",
+                                         "interactions":  "",
+                                         "initialStateCheck":  true
+                                     },
+                                     {
+                                         "name":  "Jump",
+                                         "type":  "Button",
+                                         "id":  "ba58f2c9-5d96-4c88-a1f5-a438de99198f",
+                                         "expectedControlType":  "Button",
+                                         "processors":  "",
+                                         "interactions":  "",
+                                         "initialStateCheck":  false
+                                     },
+                                     {
+                                         "name":  "Attack",
+                                         "type":  "Button",
+                                         "id":  "f74a3619-8dc5-49a5-99a1-fda04827930e",
+                                         "expectedControlType":  "Button",
+                                         "processors":  "",
+                                         "interactions":  "",
+                                         "initialStateCheck":  false
+                                     },
+                                     {
+                                         "name":  "Boost",
+                                         "type":  "Button",
+                                         "id":  "46d49970-bd39-4788-873f-5bb2b6384ec6",
+                                         "expectedControlType":  "Button",
+                                         "processors":  "",
+                                         "interactions":  "",
+                                         "initialStateCheck":  false
+                                     },
+                                     {
+                                         "name":  "SkillOne",
+                                         "type":  "Button",
+                                         "id":  "f89c14e5-7d42-484f-836c-a722229e28d6",
+                                         "expectedControlType":  "Button",
+                                         "processors":  "",
+                                         "interactions":  "",
+                                         "initialStateCheck":  false
+                                     },
+                                     {
+                                         "name":  "SkillTwo",
+                                         "type":  "Button",
+                                         "id":  "31dfd115-8368-4ff1-9064-b2a6aabed500",
+                                         "expectedControlType":  "Button",
+                                         "processors":  "",
+                                         "interactions":  "",
+                                         "initialStateCheck":  false
+                                     },
+                                     {
+                                         "name":  "SkillThree",
+                                         "type":  "Button",
+                                         "id":  "d6775904-abe3-49f7-b411-f871fc2bba78",
+                                         "expectedControlType":  "Button",
+                                         "processors":  "",
+                                         "interactions":  "",
+                                         "initialStateCheck":  false
+                                     },
+                                     {
+                                         "name":  "PreviousCharacter",
+                                         "type":  "Button",
+                                         "id":  "fc952c73-e1cf-4216-b38b-992464750574",
+                                         "expectedControlType":  "Button",
+                                         "processors":  "",
+                                         "interactions":  "",
+                                         "initialStateCheck":  false
+                                     },
+                                     {
+                                         "name":  "NextCharacter",
+                                         "type":  "Button",
+                                         "id":  "cee2f4ec-d971-4853-8a1c-935389bbcf9e",
+                                         "expectedControlType":  "Button",
+                                         "processors":  "",
+                                         "interactions":  "",
+                                         "initialStateCheck":  false
+                                     },
+                                     {
+                                         "name":  "Interact",
+                                         "type":  "Button",
+                                         "id":  "4a7b9865-0758-44b6-a7de-d8ce078bd930",
+                                         "expectedControlType":  "Button",
+                                         "processors":  "",
+                                         "interactions":  "",
+                                         "initialStateCheck":  false
+                                     }
+                                 ],
+                     "bindings":  [
+                                      {
+                                          "name":  "Horizontal",
+                                          "id":  "3b4c012a-ff4e-4715-998d-d2f094c7d917",
+                                          "path":  "1DAxis",
+                                          "interactions":  "",
+                                          "processors":  "",
+                                          "groups":  "",
+                                          "action":  "Move",
+                                          "isComposite":  true,
+                                          "isPartOfComposite":  false
+                                      },
+                                      {
+                                          "name":  "negative",
+                                          "id":  "0e1d1eb5-9531-4dc5-9103-d83c0cc70f96",
+                                          "path":  "\u003cKeyboard\u003e/a",
+                                          "interactions":  "",
+                                          "processors":  "",
+                                          "groups":  "",
+                                          "action":  "Move",
+                                          "isComposite":  false,
+                                          "isPartOfComposite":  true
+                                      },
+                                      {
+                                          "name":  "positive",
+                                          "id":  "0e90c0f7-6d4a-4a99-a823-bd9dd0214f24",
+                                          "path":  "\u003cKeyboard\u003e/d",
+                                          "interactions":  "",
+                                          "processors":  "",
+                                          "groups":  "",
+                                          "action":  "Move",
+                                          "isComposite":  false,
+                                          "isPartOfComposite":  true
+                                      },
+                                      {
+                                          "name":  "",
+                                          "id":  "3a14a264-5d36-48aa-a6d1-ea5debb2ac5d",
+                                          "path":  "\u003cKeyboard\u003e/k",
+                                          "interactions":  "",
+                                          "processors":  "",
+                                          "groups":  "",
+                                          "action":  "Jump",
+                                          "isComposite":  false,
+                                          "isPartOfComposite":  false
+                                      },
+                                      {
+                                          "name":  "",
+                                          "id":  "ac1c4913-ea86-4ae3-8a81-b49b51fa5c25",
+                                          "path":  "\u003cKeyboard\u003e/j",
+                                          "interactions":  "",
+                                          "processors":  "",
+                                          "groups":  "",
+                                          "action":  "Attack",
+                                          "isComposite":  false,
+                                          "isPartOfComposite":  false
+                                      },
+                                      {
+                                          "name":  "",
+                                          "id":  "9ab72b5d-bd22-4f9a-911e-c6fcb0c31583",
+                                          "path":  "\u003cKeyboard\u003e/space",
+                                          "interactions":  "",
+                                          "processors":  "",
+                                          "groups":  "",
+                                          "action":  "Boost",
+                                          "isComposite":  false,
+                                          "isPartOfComposite":  false
+                                      },
+                                      {
+                                          "name":  "",
+                                          "id":  "9007ee6f-88cb-4f02-acbd-e75c8a5b9d7f",
+                                          "path":  "\u003cKeyboard\u003e/u",
+                                          "interactions":  "",
+                                          "processors":  "",
+                                          "groups":  "",
+                                          "action":  "SkillOne",
+                                          "isComposite":  false,
+                                          "isPartOfComposite":  false
+                                      },
+                                      {
+                                          "name":  "",
+                                          "id":  "3a7addcb-f57b-47e0-9cc1-ee7f96d44b22",
+                                          "path":  "\u003cKeyboard\u003e/i",
+                                          "interactions":  "",
+                                          "processors":  "",
+                                          "groups":  "",
+                                          "action":  "SkillTwo",
+                                          "isComposite":  false,
+                                          "isPartOfComposite":  false
+                                      },
+                                      {
+                                          "name":  "",
+                                          "id":  "a1134ce8-ea30-4869-942e-22c0fdcbd6ad",
+                                          "path":  "\u003cKeyboard\u003e/o",
+                                          "interactions":  "",
+                                          "processors":  "",
+                                          "groups":  "",
+                                          "action":  "SkillThree",
+                                          "isComposite":  false,
+                                          "isPartOfComposite":  false
+                                      },
+                                      {
+                                          "name":  "",
+                                          "id":  "7f7ae577-9881-4a96-a305-048f669c393e",
+                                          "path":  "\u003cKeyboard\u003e/q",
+                                          "interactions":  "",
+                                          "processors":  "",
+                                          "groups":  "",
+                                          "action":  "PreviousCharacter",
+                                          "isComposite":  false,
+                                          "isPartOfComposite":  false
+                                      },
+                                      {
+                                          "name":  "",
+                                          "id":  "89aa84ba-d7ce-46bd-b211-2d20a1660958",
+                                          "path":  "\u003cKeyboard\u003e/e",
+                                          "interactions":  "",
+                                          "processors":  "",
+                                          "groups":  "",
+                                          "action":  "NextCharacter",
+                                          "isComposite":  false,
+                                          "isPartOfComposite":  false
+                                      },
+                                      {
+                                          "name":  "",
+                                          "id":  "4e88d745-9355-4b65-a627-cb83447da3a9",
+                                          "path":  "\u003cKeyboard\u003e/w",
+                                          "interactions":  "",
+                                          "processors":  "",
+                                          "groups":  "",
+                                          "action":  "Interact",
+                                          "isComposite":  false,
+                                          "isPartOfComposite":  false
+                                      }
+                                  ]
+                 }
+             ],
+    "controlSchemes":  [
+
+                       ]
+}

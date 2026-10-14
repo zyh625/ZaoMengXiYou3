@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
     void Awake()
     {
         lastTime = Time.time;
-        data = MainMenu.instance.data;
+        data = GameSession.instance.data;
         PlayerLoad();
         exitCol = exit.GetComponent<Collider2D>();
         col = GetComponent<Collider2D>();
@@ -205,6 +205,7 @@ public class Player : MonoBehaviour
         if (ctx.performed && exit.gameObject.activeSelf &&col.Distance(exitCol).isOverlapped)//符合退出的条件
         {
             PlayerSave(true);
+            GameSession.instance.priScene = "Level" + curLevel.ToString() + "Scene";
             SceneManager.LoadScene("VictoryScene");
             return;
         }
@@ -378,7 +379,7 @@ public class Player : MonoBehaviour
         data.playerLevel = myLevel;
         if (curLevel == data.level && pass) data.level++;
         if (pass) data.playerState = (int)(hp * 100f / curHP);
-        data.mvp = 0;//先默认为猴
+        data.mvp = 0;//默认为猴
     }
     private void PlayerLoad()
     {
