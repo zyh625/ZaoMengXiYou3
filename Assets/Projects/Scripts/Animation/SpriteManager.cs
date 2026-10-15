@@ -30,6 +30,7 @@ public class SpriteManager : MonoBehaviour
         sr.sprite = current.sprites[0];
         curTime = 0;
     }
+    public void ChangeSpriteFace(bool right) => sr.flipX = !right;
 
     private void Update()
     {

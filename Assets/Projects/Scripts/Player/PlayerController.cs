@@ -19,12 +19,43 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpriteData ComboAttackOne;
     [SerializeField] private SpriteData ComboAttackTwo;
     [Header("引用其他组件")]
-    [SerializeField] private SpriteManager SM;
-    private PlayerState state = PlayerState.Idle;//当前状态,初始为待机
+    private SpriteManager SM;
+    private InputReader IR;
+    private PlayerMovement PM;
+    
+    private PlayerState state;//当前状态,初始为待机
     public PlayerState State() => state;
     void Awake()
     {
-        SetState(PlayerState.Idle);
+        SM = GetComponentInChildren<SpriteManager>();
+        IR = GetComponent<InputReader>();
+        PM= GetComponent<PlayerMovement>();
+    }
+    private void Start()
+    {
+        state = PlayerState.Idle;
+        SM.ChangeState(Idle);
+    }
+    private void OnEnable()
+    {
+        IR.JumpPressed += PM.OnJump;
+        IR.MovePressed += PM.OnMove;
+    }
+    private void OnDisable()
+    {
+        IR.JumpPressed -= PM.OnJump;
+        IR.MovePressed -= PM.OnMove;
+    }
+    private void FixedUpdate()
+    {
+        SM.ChangeSpriteFace(PM.FaceRight);
+        switch (PM.Step())
+        {
+            case 0:break;
+            case 1:SetState(PlayerState.Walk); break;
+            case 2:SetState(PlayerState.JumpOne);break;
+            case 3:SetState(PlayerState.JumpTwo);break;
+        }
     }
 
     private void SetState(PlayerState next)
@@ -34,7 +65,7 @@ public class PlayerController : MonoBehaviour
         switch (state)
         {
             case PlayerState.Idle:SM.ChangeState(Idle);break;
-            case PlayerState.Walk:SM.ChangeState(Walk);break;
+            case PlayerState.Walk:SM.ChangeState(Walk); break;
             case PlayerState.Run:SM.ChangeState(Run);break;
             case PlayerState.JumpOne:SM.ChangeState(JumpOne);break;
             case PlayerState.JumpTwo:SM.ChangeState(JumpTwo);break;
