@@ -1349,6 +1349,22 @@ MonoBehaviour:
     sprites: []
     loop: 0
     fps: 0
+  Drop:
+    sprites: []
+    loop: 0
+    fps: 0
+  Rise:
+    sprites: []
+    loop: 0
+    fps: 0
+  Land:
+    sprites: []
+    loop: 0
+    fps: 0
+  RiseAttack:
+    sprites: []
+    loop: 0
+    fps: 0
 --- !u!114 &484499409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1365,6 +1381,12 @@ MonoBehaviour:
   runSpeed: 8
   upSpeed: 10
   doubleMoveGap: 0.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  minNormalY: 0.6
+  LandedThisFrame: 0
+  JumpedThisFrame: 0
 --- !u!114 &484499410
 MonoBehaviour:
   m_ObjectHideFlags: 0

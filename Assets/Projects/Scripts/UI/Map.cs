@@ -13,11 +13,12 @@ public class Map : MonoBehaviour
     [SerializeField] private GameObject handBook;
     private bool isSaving = false;
     private float beginSave = 0f;
+    private GameSession instance;
     private void Start()
     {
         beginAlpha = saveSucess.color.a;
-        data = GameSession.instance.data;
-        for(int i = 0; i < data.level; i++)
+        instance = GameSession.instance;
+        for(int i = 0; i < instance.maxLevel; i++)
         {
             buttons[i].gameObject.SetActive(true);//开启已经通关的关卡和下一关
         }
@@ -42,7 +43,7 @@ public class Map : MonoBehaviour
     }
     public void Skills()//学习技能按键
     {
-        GameSession.instance.priScene = "MapScene";
+        instance.priScene = "MapScene";
         SceneManager.LoadScene("SkillScene");
     }
     public void HandBook()//图鉴按键
@@ -55,7 +56,7 @@ public class Map : MonoBehaviour
     }
     public void Back()//返回主菜单按键，不保存
     {
-        GameSession.instance.priScene = "MapScene";
+        instance.priScene = "MapScene";
         SceneManager.LoadScene("MenuScene");
     }
     public void Save()//保存游戏按键
@@ -67,9 +68,9 @@ public class Map : MonoBehaviour
     }
     public void EnterLevel(int level)//进入游戏的按键
     {
-        data.curLevel= level;
+        instance.battle.curLevel= level;
         string sceneName = "Level" + level.ToString() + "Scene";
-        GameSession.instance.priScene = "MapScene";
+        instance.priScene = "MapScene";
         SceneManager.LoadScene(sceneName);
     }
 }

@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 [System.Serializable]
 public class SpriteData
@@ -15,7 +16,7 @@ public class SpriteManager : MonoBehaviour
     [SerializeField] private SpriteRenderer sr;
     private float curTime = 0f;
     private bool isEnd = false;//当前是否到达最后一帧且不循环播放
-    public bool IsFinished() => isEnd;
+    public bool IsFinished => isEnd;
     private void Awake()
     {
         sr = sr == null ? GetComponent<SpriteRenderer>() : sr;
@@ -43,6 +44,7 @@ public class SpriteManager : MonoBehaviour
                 idx %= current.sprites.Length;
             else
             {
+                sr.sprite = current.sprites[current.sprites.Length - 1];//统一播放最后一帧
                 isEnd = true;
                 return;
             }

@@ -46,12 +46,14 @@ public class InputReader : MonoBehaviour
         switchNextButton = playerMap.FindAction("SwitchNext", true);
         interactButton = playerMap.FindAction("Interact", true);
         quickDownButton = playerMap.FindAction("QuickDown", true);
+    }
+    private void OnEnable()
+    {
+        playerMap?.Enable();
         moveButton.performed += OnMove;
         moveButton.canceled += OnMove;
         jumpButton.performed += OnJump;
-
     }
-    private void OnEnable() => playerMap?.Enable();
     private void OnDisable()
     {
         playerMap?.Disable();

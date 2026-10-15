@@ -17,4 +17,8 @@ public enum PlayerState
     Die,
     ComboAttackOne,
     ComboAttackTwo,
+    Drop,
+    Rise,
+    Land,
+    RiseAttack
 }

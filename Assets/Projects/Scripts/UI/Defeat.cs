@@ -6,21 +6,21 @@ public class Defeat : MonoBehaviour
 {
     [SerializeField] private Image[] times;
     [SerializeField] private Image[] process;
-    private SaveData data;
+    private GameSession instance;
     private void Start()
     {
-        data = GameSession.instance.data;
+        instance = GameSession.instance;
         SetTime();
-        if (data.curLevel >= 10)
+        if (instance.battle.curLevel >= 10)
         {
-            process[0].sprite = Font.GetSprite(data.curLevel / 10);
+            process[0].sprite = Font.GetSprite(instance.battle.curLevel / 10);
             process[0].gameObject.SetActive(true);
         }
-        process[1].sprite = Font.GetSprite(data.curLevel % 10);
+        process[1].sprite = Font.GetSprite(instance.battle.curLevel % 10);
     }
     private void SetTime()
     {
-        int t = data.costTime;
+        int t = instance.battle.costTime;
         int h = Mathf.Min(99, t / 3600);//最大99小时
         int m = (t % 3600) / 60;
         int s = t % 60;
@@ -33,13 +33,13 @@ public class Defeat : MonoBehaviour
     }
     public void BackToMap()//返回地图
     {
-        GameSession.instance.priScene="DefeatScene";
+        instance.priScene="DefeatScene";
         SceneManager.LoadScene("MapScene");
     }
     public void TryAgain()//重新挑战
     {
-        GameSession.instance.priScene = "DefeatScene";
-        string sceneName = "Level" + data.curLevel.ToString() + "Scene";
+        instance.priScene = "DefeatScene";
+        string sceneName = "Level" + instance.battle.curLevel.ToString() + "Scene";
         SceneManager.LoadScene(sceneName);
     }
 }

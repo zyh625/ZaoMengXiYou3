@@ -1,10 +1,11 @@
+using System.Security.Cryptography;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System.Security.Cryptography;
+using UnityEngine.TextCore.Text;
+using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float beginHP = 50f, beginMP = 50f, beginXP = 10f, beginAttack = 10f;//一级原始数值
@@ -66,13 +67,13 @@ public class Player : MonoBehaviour
     [SerializeField] private Exit exit;
     [SerializeField] private Image level1, level2;//等级显示
     private Collider2D exitCol;
-    private SaveData data;
+    private GameSession instance;
     private float costTime = 0f;//总耗时
     private float lastTime = 0f;//开始计时的时刻
     void Awake()
     {
         lastTime = Time.time;
-        data = GameSession.instance.data;
+        instance = GameSession.instance;
         PlayerLoad();
         exitCol = exit.GetComponent<Collider2D>();
         col = GetComponent<Collider2D>();
@@ -374,22 +375,26 @@ public class Player : MonoBehaviour
     }
     private void PlayerSave(bool pass)
     {
-        data.costTime = (int)(costTime + Time.time - lastTime);
-        data.exp = xp;
-        data.playerLevel = myLevel;
-        if (curLevel == data.level && pass) data.level++;
-        if (pass) data.playerState = (int)(hp * 100f / curHP);
-        data.mvp = 0;//默认为猴
+        instance.battle.costTime = (int)(costTime + Time.time - lastTime);
+        var wuKong = GameSession.instance.data
+    .GetPlayer(PlayerId.WuKong);
+        wuKong.exp = xp;
+        wuKong.playerLevel = myLevel;
+        if (curLevel == instance.maxLevel && pass) instance.maxLevel++;
+        if (pass) instance.battle.playerState = (int)(hp * 100f / curHP);
+        instance.battle.mvp = 0;//默认为猴
     }
     private void PlayerLoad()
     {
-        xp = data.exp;
-        myLevel= data.playerLevel;
+        var wuKong = GameSession.instance.data
+.GetPlayer(PlayerId.WuKong);
+        xp = wuKong.exp;
+        myLevel= wuKong.playerLevel;
         curXP = beginXP + (myLevel - 1) * deltaXP;
         curHP = beginHP + (myLevel - 1) * deltaHP;
         curMP = beginMP + (myLevel - 1) * deltaMP;
         curAttack = beginAttack + (myLevel - 1) * deltaAttack;
-        curLevel = data.curLevel;
+        curLevel = instance.battle.curLevel;
         hp = curHP;
         mp = curMP;
         attack = curAttack;

@@ -8,18 +8,18 @@ public class VictoryControl : MonoBehaviour
     [SerializeField] private Image[] states;//最多两个数字，过关状态百分之多少
     [SerializeField] private Image head;//谁是MVP展示谁
     [SerializeField] private Sprite[] heads;//师徒4人的头像
-    private SaveData data;
+    private GameSession instance;
     private void Start()
     {
         SaveSystem.Save();//每次胜利都自动保存
-        data = GameSession.instance.data;
+        instance = GameSession.instance;
         SetTime();
         SetState();
         SetMVP();
     }
     private void SetTime()
     {
-        int t = data.costTime;
+        int t = instance.battle.costTime;
         int h = Mathf.Min(99, t / 3600);//最大99小时
         int m = (t % 3600) / 60;
         int s = t % 60;
@@ -32,13 +32,13 @@ public class VictoryControl : MonoBehaviour
     }
     private void SetState()
     {
-        states[0].sprite = Font.GetSprite(data.playerState / 10);
-        states[1].sprite = Font.GetSprite(data.playerState % 10);
-        if (data.playerState >= 10) states[0].gameObject.SetActive(true);
+        states[0].sprite = Font.GetSprite(instance.battle.playerState / 10);
+        states[1].sprite = Font.GetSprite(instance.battle.playerState % 10);
+        if (instance.battle.playerState >= 10) states[0].gameObject.SetActive(true);
     }
     private void SetMVP()
     {
-        head.sprite = heads[data.mvp];
+        head.sprite = heads[instance.battle.mvp];
     }
     public void BackToMap()
     {
@@ -47,8 +47,8 @@ public class VictoryControl : MonoBehaviour
     }
     public void NextLevel()
     {
-        data.curLevel++;
-        string sceneName = "Level" + data.curLevel.ToString() + "Scene";
+        instance.battle.curLevel++;
+        string sceneName = "Level" + instance.battle.curLevel.ToString() + "Scene";
         GameSession.instance.priScene = "VictoryScene";
         SceneManager.LoadScene(sceneName);
     }

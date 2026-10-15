@@ -6,7 +6,7 @@ public static class SaveSystem
     public static string path = Application.persistentDataPath;
     public static void Save()
     {
-        string p = path + "/save" + GameSession.instance.data.file.ToString() + ".json";
+        string p = path + "/save" + GameSession.instance.curFile.ToString() + ".json";
         File.WriteAllText(p, JsonUtility.ToJson(GameSession.instance.data));
     }
     public static SaveData Load(int num)
