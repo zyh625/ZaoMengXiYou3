@@ -53,6 +53,7 @@ public class InputReader : MonoBehaviour
         moveButton.performed += OnMove;
         moveButton.canceled += OnMove;
         jumpButton.performed += OnJump;
+        attackButton.performed += OnAttack;
     }
     private void OnDisable()
     {
@@ -60,14 +61,14 @@ public class InputReader : MonoBehaviour
         moveButton.performed -= OnMove;
         moveButton.canceled -= OnMove;
         jumpButton.performed -= OnJump;
+        attackButton.performed-= OnAttack;
     }
 
     private void OnMove(InputAction.CallbackContext ctx) => MovePressed?.Invoke(ctx);
     private void OnJump(InputAction.CallbackContext ctx) => JumpPressed?.Invoke();
+    private void OnAttack(InputAction.CallbackContext ctx) => AttackPressed?.Invoke();
     private void Update()
     {
-        if (attackButton.WasPressedThisFrame())
-            AttackPressed.Invoke();
         if (boostButton.WasPressedThisFrame())
             BoostPressed.Invoke();
         if (skillOneButton.WasPressedThisFrame())

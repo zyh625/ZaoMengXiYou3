@@ -1,4 +1,3 @@
-using System.Linq;
 using UnityEngine;
 [System.Serializable]
 public class SpriteData
@@ -17,6 +16,8 @@ public class SpriteManager : MonoBehaviour
     private float curTime = 0f;
     private bool isEnd = false;//当前是否到达最后一帧且不循环播放
     public bool IsFinished => isEnd;
+    private int idx;
+    public int CurFrame => idx;
     private void Awake()
     {
         sr = sr == null ? GetComponent<SpriteRenderer>() : sr;
@@ -30,6 +31,7 @@ public class SpriteManager : MonoBehaviour
         isEnd = false;
         sr.sprite = current.sprites[0];
         curTime = 0;
+        idx = 0;
     }
     public void ChangeSpriteFace(bool right) => sr.flipX = !right;
 
@@ -37,7 +39,7 @@ public class SpriteManager : MonoBehaviour
     {
         if (current == null || isEnd) return;
         curTime += Time.deltaTime;
-        int idx = Mathf.FloorToInt(curTime * Mathf.Max(1f, current.fps));
+        idx = Mathf.FloorToInt(curTime * Mathf.Max(1f, current.fps));
         if (idx >= current.sprites.Length)
         {
             if (current.loop)

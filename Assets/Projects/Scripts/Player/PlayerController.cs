@@ -1,5 +1,5 @@
+using System.Collections.Generic;
 using UnityEngine;
-
 public class PlayerController : MonoBehaviour
 {
     [Header("动作帧素材")]
@@ -26,14 +26,18 @@ public class PlayerController : MonoBehaviour
     private SpriteManager SM;
     private InputReader IR;
     private PlayerMovement PM;
+    private PlayerCombat PC;
+    private Dictionary<PlayerState, StateRule> rules;
     
-    private PlayerState state;//当前状态,初始为待机
+    [SerializeField]private PlayerState state;//当前状态,初始为待机
     public PlayerState State() => state;
     void Awake()
     {
         SM = GetComponentInChildren<SpriteManager>();
         IR = GetComponent<InputReader>();
         PM= GetComponent<PlayerMovement>();
+        PC = GetComponent<PlayerCombat>();
+        rules = GetComponent<StatePriority>().rules;
     }
     private void Start()
     {
@@ -44,28 +48,33 @@ public class PlayerController : MonoBehaviour
     {
         IR.JumpPressed += PM.OnJump;
         IR.MovePressed += PM.OnMove;
+        IR.AttackPressed += PC.OnAttack;
     }
     private void OnDisable()
     {
         IR.JumpPressed -= PM.OnJump;
         IR.MovePressed -= PM.OnMove;
+        IR.AttackPressed -= PC.OnAttack;
     }
-    private void FixedUpdate()//检查状态按优先级,空中动作>攻击>地面动作
+    private void FixedUpdate()//检查状态按优先级,高不可被低打断
     {
+        PM.CheckIsGround();
         SM.ChangeSpriteFace(PM.FaceRight);
-        PM.Step();
-        if (PM.JumpedThisFrame)//跳跃前摇，不响应攻击
+        PM.CheckMove();
+        PM.CheckJump();
+        if (PM.JumpedThisFrame)//跳跃，优先级中等
         {
-            SetState(PM.HasJumped==1?PlayerState.JumpOne:PlayerState.JumpTwo);
             PM.JumpedThisFrame = false;
+            if (PC.IsAttacking) PC.DisruptAttack();
+            SetState(PM.HasJumped == 1 ? PlayerState.JumpOne : PlayerState.JumpTwo);
             return;
         }
+        if (AirMotionProcessing()) return;
         int airState = PM.AirState();
-        if (airState!=0)//下落或上升过程，之后添加上升攻击
+        if (airState!=0)//下落或上升过程,优先级中下,只有上升可攻击
         {
-            bool jumpStart = state == PlayerState.JumpTwo || state == PlayerState.JumpOne;
-            if (jumpStart && !SM.IsFinished) return;
-            SetState(airState > 0 ? PlayerState.Rise : PlayerState.Drop);
+            SetState(airState < 0 ? PlayerState.Drop : PC.attackRequest ? PlayerState.RiseAttack : PlayerState.Rise);
+            PC.attackRequest = false;
             return;
         }
         if(PM.LandedThisFrame)//落地前摇，不响应攻击
@@ -74,7 +83,13 @@ public class PlayerController : MonoBehaviour
                 ? PlayerState.Run : PlayerState.Walk);
             return;
         }
-        //if(SM.IsFinished)//播放完，等添加了攻击再写
+        if (PC.NormalAttack())//普通攻击，优先级中下
+        {
+            SetState(PC.CurAttack == 0 ? PlayerState.AttackOne : PC.CurAttack == 1
+                ? PlayerState.AttackTwo : PlayerState.AttackThree);
+            return;
+        }
+        if (AttackProcessing()) return;
         SetState(!PM.IsMoving ? PlayerState.Idle : PM.RunRequest
                 ? PlayerState.Run : PlayerState.Walk);
     }
@@ -106,5 +121,19 @@ public class PlayerController : MonoBehaviour
             case PlayerState.RiseAttack:SM.ChangeState(RiseAttack);break;
         }
     }
-
+    private bool AirMotionProcessing()
+    {
+        return (state == PlayerState.JumpTwo ||
+            state == PlayerState.JumpOne || state == PlayerState.RiseAttack)
+               && !SM.IsFinished;
+    }
+    private bool AttackProcessing()
+    {
+        if(SM.IsFinished&&PC.IsAttacking)
+        {
+            PC.DisruptAttack();
+            return false;
+        }
+        return PC.IsAttacking;
+    }
 }

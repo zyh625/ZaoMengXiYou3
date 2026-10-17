@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public int HasJumped => hasJumped;
     private bool runRequest;//是否申请转换为跑步
     public bool RunRequest => runRequest;
-    [SerializeField, Min(0.2f)] private float doubleMoveGap = 0.5f;//两次按下移动键事件间隔
+    [SerializeField, Min(0.2f)] private float doubleMoveGap = 0.3f;//两次按下移动键事件间隔
     private float lastLeft = -1f;//上次按下A键的时间
     public float LastLeft => lastLeft;
     private float lastRight = -1f;//上次按下D键的时间
@@ -59,17 +59,25 @@ public class PlayerMovement : MonoBehaviour
         moveDirect = dir;
         right = dir > 0;
     }
-    public void Step()
+    public void CheckMove()
+    {
+        Vector2 velocity = body.linearVelocity;
+        velocity.x = moveDirect == 0f ? 0f :
+            ((right ? 1f : -1f) * (runRequest ? runSpeed : walkSpeed));
+        body.linearVelocity=velocity;
+    }
+    public void CheckIsGround()
     {
         bool wasGround = isGround;
         isGround = CheckGround();
         LandedThisFrame = isGround && !wasGround;
         if (LandedThisFrame) hasJumped = 0;
-        Vector2 velocity = body.linearVelocity;
-        velocity.x = moveDirect == 0f ? 0f :
-            ((right ? 1f : -1f) * (runRequest ? runSpeed : walkSpeed));
+    }
+    public void CheckJump()
+    {
         if (jumpRequest)
         {
+            Vector2 velocity = body.linearVelocity;
             jumpRequest = false;
             if (hasJumped < 2)
             {
@@ -78,8 +86,8 @@ public class PlayerMovement : MonoBehaviour
                 JumpedThisFrame = true;
                 isGround = false;
             }
-        } 
-        body.linearVelocity=velocity;
+            body.linearVelocity = velocity;
+        }
     }
     private bool CheckGround()
     {
