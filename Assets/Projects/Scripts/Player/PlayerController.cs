@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private InputReader IR;
     private PlayerMovement PM;
     private PlayerCombat PC;
+    private PlayerInteract PI;
     private Dictionary<PlayerState, StateRule> rules;
     
     [SerializeField]private PlayerState state;//当前状态,初始为待机
@@ -37,6 +38,7 @@ public class PlayerController : MonoBehaviour
         IR = GetComponent<InputReader>();
         PM= GetComponent<PlayerMovement>();
         PC = GetComponent<PlayerCombat>();
+        PI= GetComponent<PlayerInteract>();
         rules = GetComponent<StatePriority>().rules;
     }
     private void Start()
@@ -49,32 +51,38 @@ public class PlayerController : MonoBehaviour
         IR.JumpPressed += PM.OnJump;
         IR.MovePressed += PM.OnMove;
         IR.AttackPressed += PC.OnAttack;
+        IR.InteractPressed += PI.OnInteract;
     }
     private void OnDisable()
     {
         IR.JumpPressed -= PM.OnJump;
         IR.MovePressed -= PM.OnMove;
         IR.AttackPressed -= PC.OnAttack;
+        IR.InteractPressed -= PI.OnInteract;
     }
     private void FixedUpdate()//检查状态按优先级,高不可被低打断
     {
         PM.CheckIsGround();
         SM.ChangeSpriteFace(PM.FaceRight);
-        PM.CheckMove();
         PM.CheckJump();
-        if (PM.JumpedThisFrame)//跳跃，优先级中等
+        int airState = PM.AirState();
+        PM.CheckMove(PlayerState.ComboAttackTwo == state, airState != 0);
+        if (PM.JumpedThisFrame)//跳跃，优先级中上
         {
             PM.JumpedThisFrame = false;
-            if (PC.IsAttacking) PC.DisruptAttack();
             SetState(PM.HasJumped == 1 ? PlayerState.JumpOne : PlayerState.JumpTwo);
             return;
         }
-        if (AirMotionProcessing()) return;
-        int airState = PM.AirState();
-        if (airState!=0)//下落或上升过程,优先级中下,只有上升可攻击
+        if (AirProcessing()) return;
+        if (airState!=0)//下落或上升过程,优先级中等,只有上升可攻击
         {
-            SetState(airState < 0 ? PlayerState.Drop : PC.attackRequest ? PlayerState.RiseAttack : PlayerState.Rise);
-            PC.attackRequest = false;
+            if (airState < 0)
+            {
+                SetState(PlayerState.Drop);
+                return;
+            }
+            PC.CheckAttack();
+            SetState( PC.AttackThisFrame ? PlayerState.RiseAttack : PlayerState.Rise);
             return;
         }
         if(PM.LandedThisFrame)//落地前摇，不响应攻击
@@ -83,15 +91,28 @@ public class PlayerController : MonoBehaviour
                 ? PlayerState.Run : PlayerState.Walk);
             return;
         }
-        if (PC.NormalAttack())//普通攻击，优先级中下
+        if (state == PlayerState.Land && !SM.IsFinished) return;//落地优先级中等
+        if (state == PlayerState.ComboAttackTwo && IR.AttackHeld&&PM.IsMoving)
+            return;//按住攻击和移动就可以一直循环直到被高优先级的状态打断
+        if (state == PlayerState.ComboAttackOne && !SM.IsFinished) return;
+        PC.CheckAttack();
+        if (PM.IsMoving)//移动、组合技戳棍优先级中下
         {
-            SetState(PC.CurAttack == 0 ? PlayerState.AttackOne : PC.CurAttack == 1
+            SetState(PC.AttackThisFrame?PlayerState.ComboAttackTwo:
+                PM.RunRequest ? PlayerState.Run : PlayerState.Walk);
+            return;
+        }
+        if (PC.AttackThisFrame)//上挑优先级中下，普攻中下下
+        {
+            if (PI.IsInteracting())
+                SetState(PlayerState.ComboAttackOne);
+            else
+                SetState(PC.CurAttack == 0 ? PlayerState.AttackOne : PC.CurAttack == 1
                 ? PlayerState.AttackTwo : PlayerState.AttackThree);
             return;
         }
         if (AttackProcessing()) return;
-        SetState(!PM.IsMoving ? PlayerState.Idle : PM.RunRequest
-                ? PlayerState.Run : PlayerState.Walk);
+        SetState(PlayerState.Idle);//待机优先级最次
     }
 
     private void SetState(PlayerState next)
@@ -121,19 +142,22 @@ public class PlayerController : MonoBehaviour
             case PlayerState.RiseAttack:SM.ChangeState(RiseAttack);break;
         }
     }
-    private bool AirMotionProcessing()
+    private bool AirProcessing()//空中动作过程
     {
         return (state == PlayerState.JumpTwo ||
             state == PlayerState.JumpOne || state == PlayerState.RiseAttack)
                && !SM.IsFinished;
     }
-    private bool AttackProcessing()
+    private bool AttackProcessing()//普通攻击过程
     {
-        if(SM.IsFinished&&PC.IsAttacking)
-        {
-            PC.DisruptAttack();
+        if (SM.IsFinished)
             return false;
-        }
-        return PC.IsAttacking;
+        return IsAttacking();
+    }
+    private bool IsAttacking()
+    {
+        return state == PlayerState.AttackOne ||
+            state == PlayerState.AttackTwo ||
+            state == PlayerState.AttackThree;
     }
 }

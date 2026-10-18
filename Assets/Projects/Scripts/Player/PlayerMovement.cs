@@ -4,7 +4,8 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float walkSpeed = 5f, runSpeed = 8f;
+    [SerializeField] private float walkSpeed = 5f, runSpeed = 8f, comboSpeed = 2f;
+    [SerializeField] private float flySlow = 0.7f;
     [SerializeField] private float upSpeed = 10f;
     private bool jumpRequest;
     private int hasJumped = 0;//最多二连跳
@@ -59,11 +60,12 @@ public class PlayerMovement : MonoBehaviour
         moveDirect = dir;
         right = dir > 0;
     }
-    public void CheckMove()
+    public void CheckMove(bool combo,bool fly)
     {
         Vector2 velocity = body.linearVelocity;
-        velocity.x = moveDirect == 0f ? 0f :
-            ((right ? 1f : -1f) * (runRequest ? runSpeed : walkSpeed));
+        velocity.x = (moveDirect == 0f ? 0f :
+            (right ? 1f : -1f) * (combo ? comboSpeed :
+            runRequest ? runSpeed : walkSpeed)) * (fly ? flySlow : 1f);
         body.linearVelocity=velocity;
     }
     public void CheckIsGround()

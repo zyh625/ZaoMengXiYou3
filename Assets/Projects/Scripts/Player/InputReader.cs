@@ -24,6 +24,8 @@ public class InputReader : MonoBehaviour
     private InputAction skillOneButton, skillTwoButton, skillThreeButton;
     private InputAction switchPriButton, switchNextButton;
     private InputAction interactButton, quickDownButton;
+    public bool AttackHeld => attackButton != null
+        && attackButton.IsPressed();
 
 
 

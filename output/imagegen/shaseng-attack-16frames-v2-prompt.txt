@@ -1,0 +1,78 @@
+Generated with the built-in image_gen tool. No CLI fallback was used.
+References: character portrait and original 4x4 idle sprite atlas provided by the user.
+
+INITIAL GENERATION
+Use case: identity-preserve / game sprite animation.
+Create ONE production-ready transparent PNG sprite sheet of Sha Seng performing a throwing-and-recalling attack, using the TWO attached images as references. Image 1 is the character identity and weapon detail reference. Image 2 is the STRICT style, palette, proportions, sprite scale, line work, and 4 by 4 layout reference. This is a new attack animation of EXACTLY THE SAME character, not a redesign.
+
+OUTPUT: one 4-column by 4-row sprite atlas, EXACTLY 16 full-body frames, chronological order left to right, top to bottom. Aim for 1440 x 1088 pixels, with 360 x 272 pixel equal-sized cells. Each character must have the same apparent height (roughly 250-260px), head-to-body ratio and fine line weight as the sprites of image 2. Lock the feet to the same baseline and the pelvis to a consistent position within each cell, allowing only small natural anticipation/follow-through movement. Do not shrink individual frames to fit poses. Entire character and the entire held weapon must remain INSIDE each cell, with a little padding; no clipping, overlap, grid lines, captions, frame numbers, or borders. Actual RGBA transparent background everywhere outside the painted sprite, not solid black and not a painted checkerboard.
+
+IDENTITY AND EXACT APPEARANCE: preserve the reference's oversized blue spiky head/hair with the same silhouette, amber-gold circlet and upward golden crescent on the front/right, long pointed ear on the left, three small blue ear ornaments, peach skin, red forehead swirl, stern half-lidded eye, tiny mouth/chin stitches, blue and green neck beads, teal cyan striped sleeves, dark teal armor edges, cyan angular chest plates and belt, deep green pants/shoes. Match the muted saturated 2D Flash-game colors, original thin dark outlines, flat cel-shading, small highlights and texture of image 2. No different costume, new features, new colors, exaggerated expressions, realism, 3D lighting or thick sticker borders. All frames face RIGHT, the same three-quarter side view and same camera.
+
+WEAPON: the very same long straight dark teal/cyan double-ended crescent monk spade from the references. Large broad SILVER axe/spade crescent blade on the RIGHT end, smaller thin SILVER crescent on the LEFT end, cyan collars and grip, constant proportions and blade shapes whenever visible. Do not replace it with a spear, shovel with a rectangular blade, or a one-ended axe. No detached flying weapon anywhere in the sheet.
+
+CRITICAL VISIBILITY RULE: show a complete held weapon in frames 1,2,3,4,5,6. Frames 7,8,9,10,11 must contain ABSOLUTELY NO part of a weapon: no handle, crescent, floating weapon, weapon ghost, projectile, or trailing spade. The throw has gone offscreen. Frame 12 is the FIRST return frame, show the full weapon now clearly caught/held in his extended hand. Show weapon in frames 12,13,14,15,16. This timing is essential.
+
+EXACT ANIMATION, one pose per equal cell:
+ROW 1, frames 1-4: gradually raise the spade toward shoulder level and draw the gripping hands slightly backward to wind up.
+1 (row1 col1): neutral starting stance closely matching image 2's original weapon-holding idle pose, spade held diagonally across waist/body, right blade a little higher.
+2 (row1 col2): hands lift toward chest; spade moving toward horizontal; slight backward body lean.
+3 (row1 col3): spade almost horizontal just below shoulder height, elbows bend backward a little more.
+4 (row1 col4): maximum anticipation, spade horizontal around shoulder height, gripping hands drawn slightly behind the shoulder, feet planted and body gently twisted back. Keep both weapon ends fully visible.
+
+ROW 2, frames 5-8: four successive phases of one forceful forward throw to the RIGHT.
+5 (row2 col1): hip and shoulder begin driving forward, spade still securely in hands at shoulder height, hands accelerate toward screen right.
+6 (row2 col2): most forceful extension/lunge, hands and held spade thrust forward, last frame with contact before release; weapon fully visible and within this cell.
+7 (row2 col3): RELEASE just occurred, spade has left the character and is now completely offscreen/invisible; open forward hand and forward-leaning follow-through; NO WEAPON.
+8 (row2 col4): follow-through settles, body still slightly forward, throwing arm starts rising to prepare recall; NO WEAPON.
+
+ROW 3, frames 9-12: summon with ONE arm stretched straight forward toward the RIGHT; the other hand stays naturally near his waist/body.
+9 (row3 col1): straighten the summoning arm forward at shoulder height, open palm/fingers reaching right; NO WEAPON.
+10 (row3 col2): summoning arm fully straight at shoulder height, focused poised fingers; NO WEAPON.
+11 (row3 col3): hold that straight forward reach, fingers beginning to close in anticipation; NO WEAPON.
+12 (row3 col4): catch/recall completed: the WHOLE spade reappears in the outstretched hand at shoulder height, fingers visibly gripping the shaft. Full silver blades at both ends. No loose second weapon.
+
+ROW 4, frames 13-16: smooth four-frame recovery to the initial stance while holding the spade.
+13 (row4 col1): elbow bends and spade draws back toward torso, shoulder relaxes.
+14 (row4 col2): both hands return to normal hold, lower spade toward chest/waist and relax the forward lean.
+15 (row4 col3): almost neutral, spade at original slight upward-right diagonal, feet and body settling.
+16 (row4 col4): restored starting neutral pose, matching frame 1 closely enough for a seamless loop.
+
+ANIMATION QUALITY: smooth continuous progression of shoulder, elbow, wrist, torso and weight shift; arms must stay anatomically attached; no extra hands; maintain identical identity, head size, palette and weapon design in all 16 frames. Do not repeat the reference drinking idle animation. NO CUP in any frame. No background, ground, shadows outside sprites, glow, particles, impact effects, motion streaks, text or watermark.
+
+REFINEMENT 1
+Edit Image 1, the just-generated Sha Seng 16-frame attack atlas. Image 2 is the original idle atlas, supplied ONLY to preserve the exact art style, palette, proportions and weapon design. Preserve the successful sixteen attack poses and their order, character identity, thin line work, costume detail, scale, 4x4 layout and actual transparent alpha.
+
+Targeted final correction: make the weapon placement, visibility and cell containment mechanically consistent. Work with a STRICT 4 by 4 equal-cell grid and a canvas whose width and height are each divisible by 4, preferably EXACTLY 1440 x 1088 pixels (each cell 360 x 272). There must be a little transparent space between adjacent cells; artwork must NOT cross a cell boundary. Keep the full character and full held weapon inside its OWN cell, at the same character scale as Image 2. Do not draw the grid.
+
+The weapon must always have BOTH original silver ends: small thin crescent at its left end and large broad spade crescent at its right end, connected by the long straight dark teal shaft with cyan collars, constant original proportions. Some current sprites incorrectly lose the small crescent or push their weapon into the next cell. Fix these while keeping the rest unchanged:
+- In frames 2,3,4 gradually bring the shaft to HORIZONTAL shoulder height, then slightly draw the hands backward. By frame 4 the shaft is level, the arms are bent and drawn backward, ready to throw.
+- Frames 5 and 6 (row 2, columns 1 and 2): restore the COMPLETE weapon, including the small LEFT crescent. These are the wind-through and final powerful forward thrust, weapon still firmly held. Keep both ends strictly within each frame cell; no cropped rear end, no crescent going into a neighboring frame. Total weapon width should match the original reference's roughly 310-325px so it fits within a 360px cell. Preserve strong shoulder/elbow/body progression into the release.
+- Frames 7,8,9,10,11: preserve ABSOLUTELY NO weapon or weapon pieces, shafts, detached projectiles, ghosts, effects or streaks. The weapon is entirely offscreen.
+- Frame 12 (row 3, column 4): the complete weapon reappears CAUGHT IN THE ONE OUTSTRETCHED FORWARD HAND at shoulder level. Make the small LEFT crescent, shaft and large RIGHT crescent fully visible WITHIN THIS CELL; the small crescent must not trespass into frame 11. The other hand is naturally near his waist. Keep the recall arm straight forward.
+- Frames 13,14,15,16: preserve the gradual recovery with the complete weapon. Make frame 16's neutral body, hands, feet and diagonal held-weapon pose closely match frame 1 for loop continuity.
+
+Do not change the successful no-weapon timing. Exactly 16 whole-body Sha Seng sprites in reading order: windup 1-4, throw 5-8 (release 7), one-handed recall 9-12 (caught 12), recovery 13-16. All face screen RIGHT, same head size, same fixed ground baseline within each cell. No cups, extra hands, extra characters, text, numbers, labels, outlines around the sheet, background or ground. Genuinely transparent PNG, no black background and no painted checkerboard.
+
+REFINEMENT 2
+Precisely edit this transparent 4x4 Sha Seng attack sprite sheet, preserving its exact art style, palette, sprite size and all 16 poses. This is a surgical repair to weapon geometry, not a redesign. Keep the feet alignment, character details, and the chronological order.
+
+Fix the held weapons in row TWO columns ONE and TWO (animation frames 5 and 6). Each must be a COMPLETE double-ended crescent monk spade, with a small silver crescent visible at the LEFT end of its long teal shaft and a large broad silver crescent at the RIGHT end. Currently these poses only show the front half. Draw the small rear silver crescent at the left of the character's elbow, extend the teal pole behind his body to connect it, and keep the pole horizontal at shoulder level. The same rigid pole passes behind the sleeves/body where necessary. Shorten/position the weapon to fit WITHIN ITS OWN COLUMN, with the right blade at least 10 pixels away from the column's right edge. The row TWO column ONE right blade must move LEFT by about 55 pixels so it does not enter column two. Keep the hands gripping the corrected shaft.
+
+Also fit the COMPLETE weapon in row THREE column FOUR (frame 12) within that column: move its left crescent RIGHT by about 30 pixels while retaining the right crescent within the right edge, so the entire weapon stays with that sprite. This is the catch: ONLY the extended forward hand is gripping the weapon, the other hand is at his waist, not gripping. Keep his extended arm straight forward.
+
+Keep row TWO columns THREE and FOUR and row THREE columns ONE, TWO and THREE COMPLETELY UNARMED. Those FIVE consecutive sprites must have no pole, no blade, no projectile, no ghost weapon or motion effects. Weapons visible only in frames 1-6 and 12-16.
+
+Maintain a regular four-column four-row sprite layout with full-body sprites. Restore a tiny transparent gutter around each cell so no sprite part crosses into a neighbor; canvas width and height must each be divisible by 4. Keep the reference's original sprite scale of about 250-260px character height, without enlarging the characters. Prefer 1440x1088 canvas, 360x272 cells. No text, frame numbers, grid lines, background, cups or new elements. Preserve the genuine alpha transparency.
+
+REFINEMENT 3
+Make ONLY ONE localized correction to this 4x4 transparent attack sprite sheet: FRAME 12, which is ROW 3 COLUMN 4, the rightmost sprite in the third row. This is a one-handed weapon catch. It currently has TWO hands gripping the teal shaft. Keep the farther-forward hand (the round hand toward the RIGHT at roughly x=1280, y=710) gripping the shaft at the end of his straight outstretched arm. REMOVE the second gripping hand near his chest (the round hand toward the LEFT at roughly x=1175, y=715). Redraw that LEFT/rear arm so it bends DOWN and the relaxed hand rests beside his waist, matching the relaxed hand positions in frames 9-11. The complete double-ended monk spade stays in the one straight forward hand at shoulder height, with small silver left crescent, teal shaft and large silver right crescent all fully visible in this cell. No floating hands or extra limbs.
+
+Preserve all other FIFTEEN sprites exactly as they are: their shapes, positions, outlines, faces, costumes, sizes, weapons, timing and transparency. In particular preserve completely empty hands/no weapon in frames 7,8,9,10,11. Do not add text, effects, grid or background. Preserve the 4x4 atlas and transparent PNG alpha.
+
+FINAL REFINEMENT
+LOCAL ADDITION ONLY. Keep this transparent 4x4 sprite atlas completely unchanged EXCEPT for completing the rear end of the weapon in FRAME 12 (ROW THREE, COLUMN FOUR). This sprite is correctly catching the weapon with ONE forward hand, with the other hand down by his waist. Preserve both arms/hands exactly in that pose. Its weapon is missing the silver SMALL LEFT CRESCENT and rear teal shaft. ADD those missing pieces. The weapon must be the same complete DOUBLE-ENDED crescent monk spade seen in frames 5 and 6.
+
+Precise location in the approximately 1440x1090 atlas: add a small thin silver crescent at approximately (1100, 712), just to the LEFT of this frame-12 character's shoulder, opening toward screen LEFT; give it the same silver gray flat shading and thin black line as the small blade in frame 6. Connect the crescent's right-center to the EXISTING teal shaft passing horizontally in front of his upper chest and extending to the forward grip. The added shaft should run approximately from x=1115 to x=1200 at y=712, behind the upper arm/body where occluded. The entire small crescent must stay to the RIGHT of x=1085, strictly within this last column. Keep the existing broad silver RIGHT blade and the existing forward hand unchanged. This addition restores the original long double-ended weapon without adding another gripping hand.
+
+Do NOT alter any other pixel regions unnecessarily. Preserve the fully unarmed sprites 7,8,9,10,11 with absolutely no weapon. Preserve all 16 poses, original color palette, outlines, scale, 4x4 order, and actual transparent alpha. No new background, text, borders, labels, effects or extra limbs.
