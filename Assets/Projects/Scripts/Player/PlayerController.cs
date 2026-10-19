@@ -1,5 +1,8 @@
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
+using zmxy.GamePlay;
+[RequireComponent(typeof(BoxCollider2D))]
 public class PlayerController : MonoBehaviour
 {
     [Header("动作帧素材")]
@@ -28,7 +31,9 @@ public class PlayerController : MonoBehaviour
     private PlayerMovement PM;
     private PlayerCombat PC;
     private PlayerInteract PI;
+    [SerializeField]private CameraManager CM;
     private Dictionary<PlayerState, StateRule> rules;
+    private float deltaHalf;//人物相对于相机中心的最大偏移距离
     
     [SerializeField]private PlayerState state;//当前状态,初始为待机
     public PlayerState State() => state;
@@ -43,6 +48,8 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
+        deltaHalf = CM.CameraHalf - 
+            GetComponent<BoxCollider2D>().bounds.size.x / 2;
         state = PlayerState.Idle;
         SM.ChangeState(Idle);
     }
@@ -52,6 +59,9 @@ public class PlayerController : MonoBehaviour
         IR.MovePressed += PM.OnMove;
         IR.AttackPressed += PC.OnAttack;
         IR.InteractPressed += PI.OnInteract;
+        IR.SkillOnePressed += PC.OnSkill;
+        IR.SkillTwoPressed += PC.OnSkill;
+        IR.SkillThreePressed += PC.OnSkill;
     }
     private void OnDisable()
     {
@@ -59,14 +69,29 @@ public class PlayerController : MonoBehaviour
         IR.MovePressed -= PM.OnMove;
         IR.AttackPressed -= PC.OnAttack;
         IR.InteractPressed -= PI.OnInteract;
+        IR.SkillOnePressed -= PC.OnSkill;
+        IR.SkillTwoPressed -= PC.OnSkill;
+        IR.SkillThreePressed -= PC.OnSkill;
     }
     private void FixedUpdate()//检查状态按优先级,高不可被低打断
     {
-        PM.CheckIsGround();
+        if (PC.SkillRequest)
+        {
+            PC.SkillRequest = false;
+            PM.Skilled();
+            int skill = PC.Skilled;
+            SetState(skill == 1 ? PlayerState.SkillOne : skill == 2 ?
+                PlayerState.SkillTwo : PlayerState.SkillThree);
+            return;
+        }
+        PM.CheckMove(PlayerState.ComboAttackTwo == state, PM.AirState() != 0,
+            PC.Skilled, CM.CameraCenter - deltaHalf, CM.CameraCenter + deltaHalf);
+        CM.UpdateCamera(PM.bodyX - CM.CameraCenter);
+        if (SkillProcessing()) return;
         SM.ChangeSpriteFace(PM.FaceRight);
+        PM.CheckIsGround();
         PM.CheckJump();
         int airState = PM.AirState();
-        PM.CheckMove(PlayerState.ComboAttackTwo == state, airState != 0);
         if (PM.JumpedThisFrame)//跳跃，优先级中上
         {
             PM.JumpedThisFrame = false;
@@ -159,5 +184,21 @@ public class PlayerController : MonoBehaviour
         return state == PlayerState.AttackOne ||
             state == PlayerState.AttackTwo ||
             state == PlayerState.AttackThree;
+    }
+    private bool SkillProcessing()
+    {
+        if (SM.IsFinished&&IsSkilling())
+        {
+            PC.Skilled = -1;
+            PM.HasSkilled();
+            return false;
+        }
+        return IsSkilling();
+    }
+    private bool IsSkilling()
+    {
+        return state == PlayerState.SkillOne ||
+            state == PlayerState.SkillTwo ||
+            state == PlayerState.SkillThree;
     }
 }

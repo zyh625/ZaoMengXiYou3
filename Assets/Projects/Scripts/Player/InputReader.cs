@@ -12,7 +12,7 @@ public class InputReader : MonoBehaviour
 
     public event Action<InputAction.CallbackContext> MovePressed;
     public event Action JumpPressed, AttackPressed, BoostPressed;
-    public event Action SkillOnePressed, SkillTwoPressed, SkillThreePressed;
+    public event Action <int>SkillOnePressed, SkillTwoPressed, SkillThreePressed;
     public event Action SwitchPriPressed;//切换上一个角色
     public event Action SwitchNextPressed;//切换下一个角色
     public event Action InteractPressed;//W，从出口出去
@@ -56,6 +56,9 @@ public class InputReader : MonoBehaviour
         moveButton.canceled += OnMove;
         jumpButton.performed += OnJump;
         attackButton.performed += OnAttack;
+        skillOneButton.performed += OnSkillOne;
+        skillTwoButton.performed += OnSkillTwo;
+        skillThreeButton.performed += OnSkillThree;
     }
     private void OnDisable()
     {
@@ -64,21 +67,25 @@ public class InputReader : MonoBehaviour
         moveButton.canceled -= OnMove;
         jumpButton.performed -= OnJump;
         attackButton.performed-= OnAttack;
+        skillOneButton.performed -= OnSkillOne;
+        skillTwoButton.performed -= OnSkillTwo;
+        skillThreeButton.performed -= OnSkillThree;
     }
 
     private void OnMove(InputAction.CallbackContext ctx) => MovePressed?.Invoke(ctx);
     private void OnJump(InputAction.CallbackContext ctx) => JumpPressed?.Invoke();
     private void OnAttack(InputAction.CallbackContext ctx) => AttackPressed?.Invoke();
+    private void OnSkillOne(InputAction.CallbackContext ctx) => 
+        SkillOnePressed?.Invoke(1);
+    private void OnSkillTwo(InputAction.CallbackContext ctx) =>
+        SkillTwoPressed?.Invoke(2);
+    private void OnSkillThree(InputAction.CallbackContext ctx) =>
+        SkillThreePressed?.Invoke(3);
+
     private void Update()
     {
         if (boostButton.WasPressedThisFrame())
             BoostPressed.Invoke();
-        if (skillOneButton.WasPressedThisFrame())
-            SkillOnePressed.Invoke();
-        if (skillTwoButton.WasPressedThisFrame())
-            SkillTwoPressed.Invoke();
-        if (skillThreeButton.WasPressedThisFrame())
-            SkillThreePressed.Invoke();
         if (switchPriButton.WasPressedThisFrame())
             SwitchPriPressed.Invoke();
         if (switchNextButton.WasPressedThisFrame())

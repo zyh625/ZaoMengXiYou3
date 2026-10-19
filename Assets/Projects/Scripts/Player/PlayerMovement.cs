@@ -4,7 +4,9 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float walkSpeed = 5f, runSpeed = 8f, comboSpeed = 2f;
+    [SerializeField]
+    private float walkSpeed = 5f, runSpeed = 8f,
+        comboSpeed = 2f, skillOneSpeed;
     [SerializeField] private float flySlow = 0.7f;
     [SerializeField] private float upSpeed = 10f;
     private bool jumpRequest;
@@ -22,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
     private int moveDirect = 0;
     public bool IsMoving => moveDirect != 0;
     private Rigidbody2D body;
-    private BoxCollider2D playerBox;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField]private float minNormalY;//与竖直向上的最小夹角
     private ContactFilter2D groundFilter;
@@ -30,10 +31,11 @@ public class PlayerMovement : MonoBehaviour
     private bool isGround = true;//当前是否在地面上
     public bool LandedThisFrame = false;
     public bool JumpedThisFrame = false;
+    public float bodyX => body.position.x;
+    private bool skillFaceRight;
     private void Start()
     {
         body=GetComponent<Rigidbody2D>();
-        playerBox = GetComponent<BoxCollider2D>();
         groundFilter = new ContactFilter2D();
         groundFilter.SetLayerMask(groundLayer);
         groundFilter.useTriggers = false;
@@ -60,12 +62,29 @@ public class PlayerMovement : MonoBehaviour
         moveDirect = dir;
         right = dir > 0;
     }
-    public void CheckMove(bool combo,bool fly)
+    public void CheckMove(bool combo,bool fly,int skill,float minX,float maxX)
     {
+        if (moveDirect != 0f) right = moveDirect > 0;
+        float dt = Time.deltaTime;
         Vector2 velocity = body.linearVelocity;
-        velocity.x = (moveDirect == 0f ? 0f :
-            (right ? 1f : -1f) * (combo ? comboSpeed :
-            runRequest ? runSpeed : walkSpeed)) * (fly ? flySlow : 1f);
+        if (skill == 1)
+            velocity.x = (skillFaceRight ? 1f : -1f) * skillOneSpeed;
+        else if (skill == 3)
+        {
+
+        }
+        else if (moveDirect == 0f || skill == 2)
+        {
+            velocity.x = 0f;
+            body.linearVelocity = velocity;
+            return;
+        }
+        else
+            velocity.x = (right ? 1f : -1f) * (combo ? comboSpeed :
+                runRequest ? runSpeed : walkSpeed) * (fly ? flySlow : 1f);
+        float predictX = Mathf.Clamp(velocity.x * dt + body.position.x,
+            minX, maxX);
+        velocity.x = (predictX - body.position.x) / dt;
         body.linearVelocity=velocity;
     }
     public void CheckIsGround()
@@ -77,6 +96,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void CheckJump()
     {
+        JumpedThisFrame = false;
         if (jumpRequest)
         {
             Vector2 velocity = body.linearVelocity;
@@ -114,5 +134,13 @@ public class PlayerMovement : MonoBehaviour
         if (body != null) body.linearVelocity = Vector2.zero;
         isGround = true;
         hasJumped = 0;
+    }
+    public void Skilled()
+    {
+        skillFaceRight = right;
+    }
+    public void HasSkilled()
+    {
+        right = skillFaceRight;
     }
 }
