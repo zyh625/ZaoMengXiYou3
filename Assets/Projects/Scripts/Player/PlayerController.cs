@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
         IR.SkillOnePressed += PC.OnSkill;
         IR.SkillTwoPressed += PC.OnSkill;
         IR.SkillThreePressed += PC.OnSkill;
+        IR.QuickDownPressed += PM.OnQuickDown;
     }
     private void OnDisable()
     {
@@ -72,71 +73,107 @@ public class PlayerController : MonoBehaviour
         IR.SkillOnePressed -= PC.OnSkill;
         IR.SkillTwoPressed -= PC.OnSkill;
         IR.SkillThreePressed -= PC.OnSkill;
+        IR.QuickDownPressed -= PM.OnQuickDown;
     }
     private void FixedUpdate()//检查状态按优先级,高不可被低打断
     {
+        PM.CheckIsGround();
         if (PC.SkillRequest)
         {
             PC.SkillRequest = false;
             PM.Skilled();
             int skill = PC.Skilled;
+            if (skill == 3) SM.ChangeSkillThree(true);
+            AttackOver(); ComboOver();RiseOver();//打断普攻、组合技和空中攻击
             SetState(skill == 1 ? PlayerState.SkillOne : skill == 2 ?
                 PlayerState.SkillTwo : PlayerState.SkillThree);
             return;
         }
-        PM.CheckMove(PlayerState.ComboAttackTwo == state, PM.AirState() != 0,
-            PC.Skilled, CM.CameraCenter - deltaHalf, CM.CameraCenter + deltaHalf);
+        if (PM.AirState() == 0 && SM.SkillThreeCur == 2) SM.SkillThreeCur = 3;
+        PM.CheckMove(PlayerState.ComboAttackTwo == state, PC.Skilled,
+            SM.SkillThreeCur, CM.CameraCenter - deltaHalf, CM.CameraCenter + deltaHalf);
         CM.UpdateCamera(PM.bodyX - CM.CameraCenter);
-        if (SkillProcessing()) return;
+        if (SkillProcessing())
+        {
+            if (SM.SkillOpen(PC.Skilled)) PC.OpenSkillBox(PM.SkillFaceRight);
+            if (SM.SkillShut(PC.Skilled)) PC.ShutSkillBox();
+            return;
+        }
         SM.ChangeSpriteFace(PM.FaceRight);
-        PM.CheckIsGround();
         PM.CheckJump();
         int airState = PM.AirState();
         if (PM.JumpedThisFrame)//跳跃，优先级中上
         {
             PM.JumpedThisFrame = false;
+            AttackOver(); ComboOver(); RiseOver();//打断普攻、组合技和空中攻击
             SetState(PM.HasJumped == 1 ? PlayerState.JumpOne : PlayerState.JumpTwo);
             return;
         }
         if (AirProcessing()) return;
-        if (airState!=0)//下落或上升过程,优先级中等,只有上升可攻击
+        if (RiseAttackProcessing())
         {
-            if (airState < 0)
-            {
-                SetState(PlayerState.Drop);
-                return;
-            }
+            if (SM.RiseOpen) PC.OpenRiseBox(PM.FaceRight);
+            if (SM.RiseShut) PC.ShutRiseBox();
+            return;
+        }
+        if (airState!=0)//下落或上升过程,优先级中等,空中可攻击
+        {
+            AttackOver(); ComboOver();//打断普攻和组合技
             PC.CheckAttack();
-            SetState( PC.AttackThisFrame ? PlayerState.RiseAttack : PlayerState.Rise);
+            if (PC.AttackThisFrame) SetState(PlayerState.RiseAttack);
+            else SetState(airState > 0 ? PlayerState.Rise : PlayerState.Drop);
             return;
         }
         if(PM.LandedThisFrame)//落地前摇，不响应攻击
         {
+            AttackOver();ComboOver();//打断普攻和组合技
             SetState(!PM.IsMoving ? PlayerState.Land : PM.RunRequest 
                 ? PlayerState.Run : PlayerState.Walk);
             return;
         }
         if (state == PlayerState.Land && !SM.IsFinished) return;//落地优先级中等
-        if (state == PlayerState.ComboAttackTwo && IR.AttackHeld&&PM.IsMoving)
-            return;//按住攻击和移动就可以一直循环直到被高优先级的状态打断
-        if (state == PlayerState.ComboAttackOne && !SM.IsFinished) return;
+        if (ComboProcessing())
+        {
+            if (SM.ComboOpen(PC.Comboed)) PC.OpenComboBox(PM.FaceRight);
+            if (SM.ComboShut(PC.Comboed)) PC.ShutComboBox();
+            return;
+        }
         PC.CheckAttack();
         if (PM.IsMoving)//移动、组合技戳棍优先级中下
         {
-            SetState(PC.AttackThisFrame?PlayerState.ComboAttackTwo:
-                PM.RunRequest ? PlayerState.Run : PlayerState.Walk);
+            AttackOver();//打断普攻
+            if (PC.AttackThisFrame)
+            {
+                PC.AttackThisFrame = false;
+                PC.Comboed = 2;
+                SetState(PlayerState.ComboAttackTwo);
+            }
+            else SetState(PM.RunRequest ? PlayerState.Run : PlayerState.Walk);
             return;
         }
         if (PC.AttackThisFrame)//上挑优先级中下，普攻中下下
         {
+            PC.AttackThisFrame = false;
             if (PI.IsInteracting())
+            {
+                PC.Comboed = 1;
+                AttackOver();//打断普攻
                 SetState(PlayerState.ComboAttackOne);
+            }
             else
-                SetState(PC.CurAttack == 0 ? PlayerState.AttackOne : PC.CurAttack == 1
+            {
+                PC.NormalAttack();
+                SetState(PC.Attacked == 1 ? PlayerState.AttackOne : PC.Attacked == 2
                 ? PlayerState.AttackTwo : PlayerState.AttackThree);
+            }
             return;
         }
-        if (AttackProcessing()) return;
+        if (AttackProcessing())
+        {
+            if (SM.AttackOpen(PC.Attacked)) PC.OpenAttackBox(PM.FaceRight);
+            if (SM.AttackShut(PC.Attacked)) PC.ShutAttackBox();
+            return;
+        }
         SetState(PlayerState.Idle);//待机优先级最次
     }
 
@@ -170,27 +207,46 @@ public class PlayerController : MonoBehaviour
     private bool AirProcessing()//空中动作过程
     {
         return (state == PlayerState.JumpTwo ||
-            state == PlayerState.JumpOne || state == PlayerState.RiseAttack)
-               && !SM.IsFinished;
+            state == PlayerState.JumpOne) && !SM.IsFinished;
+    }
+    private bool RiseAttackProcessing()
+    {
+        if (SM.IsFinished && state == PlayerState.RiseAttack)
+        {
+            RiseOver();
+            return false;
+        }
+        return state == PlayerState.RiseAttack;
+    }
+    private void RiseOver()
+    {
+        PC.ShutRiseBox();
     }
     private bool AttackProcessing()//普通攻击过程
     {
-        if (SM.IsFinished)
+        if (SM.IsFinished && IsAttacking())
+        {
+            AttackOver();
             return false;
+        }
         return IsAttacking();
-    }
+    }   
     private bool IsAttacking()
     {
         return state == PlayerState.AttackOne ||
             state == PlayerState.AttackTwo ||
             state == PlayerState.AttackThree;
     }
+    private void AttackOver()
+    {
+        PC.ShutAttackBox();
+        PC.Attacked = -1;
+    }
     private bool SkillProcessing()
     {
         if (SM.IsFinished&&IsSkilling())
         {
-            PC.Skilled = -1;
-            PM.HasSkilled();
+            SkillOver();
             return false;
         }
         return IsSkilling();
@@ -200,5 +256,27 @@ public class PlayerController : MonoBehaviour
         return state == PlayerState.SkillOne ||
             state == PlayerState.SkillTwo ||
             state == PlayerState.SkillThree;
+    }
+    private void SkillOver()
+    {
+        SM.ChangeSkillThree(false);
+        PC.ShutSkillBox();
+        PC.Skilled = -1;
+        PM.HasSkilled();
+    }
+    private bool ComboProcessing()
+    {
+        if ((SM.IsFinished && PlayerState.ComboAttackOne==state)
+            ||(PlayerState.ComboAttackTwo==state&&(!IR.AttackHeld||!PM.IsMoving)))
+        {
+            ComboOver();
+            return false;
+        }
+        return state == PlayerState.ComboAttackOne || state == PlayerState.ComboAttackTwo;
+    }
+    private void ComboOver()
+    {
+        PC.ShutComboBox();
+        PC.Comboed = -1;
     }
 }

@@ -7,7 +7,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float walkSpeed = 5f, runSpeed = 8f,
         comboSpeed = 2f, skillOneSpeed;
-    [SerializeField] private float flySlow = 0.7f;
+    [SerializeField] private float flySlow = 0.7f, quickDown = 1.3f;
+    [SerializeField] private float skillThreeHorizon,
+        skillThreeUp,skillThreeDown;//空斩的移动阶段的速度
     [SerializeField] private float upSpeed = 10f;
     private bool jumpRequest;
     private int hasJumped = 0;//最多二连跳
@@ -33,12 +35,21 @@ public class PlayerMovement : MonoBehaviour
     public bool JumpedThisFrame = false;
     public float bodyX => body.position.x;
     private bool skillFaceRight;
+    public bool SkillFaceRight => skillFaceRight;
+    private bool quickDowning = false;
+    private float beginGravity;
     private void Start()
     {
         body=GetComponent<Rigidbody2D>();
         groundFilter = new ContactFilter2D();
         groundFilter.SetLayerMask(groundLayer);
         groundFilter.useTriggers = false;
+        beginGravity = body.gravityScale;
+    }
+    public void OnQuickDown()
+    {
+        if (isGround) return;
+        quickDowning=true;
     }
     public void OnJump()
     {
@@ -62,18 +73,26 @@ public class PlayerMovement : MonoBehaviour
         moveDirect = dir;
         right = dir > 0;
     }
-    public void CheckMove(bool combo,bool fly,int skill,float minX,float maxX)
+    public void CheckMove(bool combo,int skill,int skillThreeState,float minX,float maxX)
     {
         if (moveDirect != 0f) right = moveDirect > 0;
         float dt = Time.deltaTime;
         Vector2 velocity = body.linearVelocity;
+        if (!isGround && quickDowning)
+        {
+            body.gravityScale *= quickDown;
+            quickDowning = false;
+        }
         if (skill == 1)
             velocity.x = (skillFaceRight ? 1f : -1f) * skillOneSpeed;
+        else if (skill == 2)
+            velocity = Vector2.zero;
         else if (skill == 3)
         {
-
+            velocity = Vector2.zero;
+            SkillThreeMove(skillThreeState);
         }
-        else if (moveDirect == 0f || skill == 2)
+        else if (moveDirect == 0f)
         {
             velocity.x = 0f;
             body.linearVelocity = velocity;
@@ -81,11 +100,18 @@ public class PlayerMovement : MonoBehaviour
         }
         else
             velocity.x = (right ? 1f : -1f) * (combo ? comboSpeed :
-                runRequest ? runSpeed : walkSpeed) * (fly ? flySlow : 1f);
+                runRequest ? runSpeed : walkSpeed) * (isGround ? 1f : flySlow);
         float predictX = Mathf.Clamp(velocity.x * dt + body.position.x,
             minX, maxX);
         velocity.x = (predictX - body.position.x) / dt;
         body.linearVelocity=velocity;
+    }
+    private void SkillThreeMove(int state)
+    {
+        if (state == 1 || state == 3) return;
+        Vector2 dir = new((skillFaceRight ? 1f : -1f) * skillThreeHorizon,
+            state == 0 ? skillThreeUp : -skillThreeDown);
+        body.position += Time.fixedDeltaTime * dir;
     }
     public void CheckIsGround()
     {
@@ -100,6 +126,7 @@ public class PlayerMovement : MonoBehaviour
         if (jumpRequest)
         {
             Vector2 velocity = body.linearVelocity;
+            body.gravityScale = beginGravity;
             jumpRequest = false;
             if (hasJumped < 2)
             {

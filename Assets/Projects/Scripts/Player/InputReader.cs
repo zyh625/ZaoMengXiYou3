@@ -59,6 +59,7 @@ public class InputReader : MonoBehaviour
         skillOneButton.performed += OnSkillOne;
         skillTwoButton.performed += OnSkillTwo;
         skillThreeButton.performed += OnSkillThree;
+        quickDownButton.performed += OnQuickDown;
     }
     private void OnDisable()
     {
@@ -70,6 +71,7 @@ public class InputReader : MonoBehaviour
         skillOneButton.performed -= OnSkillOne;
         skillTwoButton.performed -= OnSkillTwo;
         skillThreeButton.performed -= OnSkillThree;
+        quickDownButton.performed -= OnQuickDown;
     }
 
     private void OnMove(InputAction.CallbackContext ctx) => MovePressed?.Invoke(ctx);
@@ -81,6 +83,7 @@ public class InputReader : MonoBehaviour
         SkillTwoPressed?.Invoke(2);
     private void OnSkillThree(InputAction.CallbackContext ctx) =>
         SkillThreePressed?.Invoke(3);
+    private void OnQuickDown(InputAction.CallbackContext ctx) => QuickDownPressed?.Invoke();
 
     private void Update()
     {
@@ -92,7 +95,5 @@ public class InputReader : MonoBehaviour
             SwitchNextPressed.Invoke();
         if (interactButton.WasPressedThisFrame())
             InteractPressed.Invoke();
-        if (quickDownButton.WasPressedThisFrame())
-            QuickDownPressed.Invoke();
     }
 }
