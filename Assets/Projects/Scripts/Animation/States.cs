@@ -22,3 +22,7 @@ public enum PlayerState
     Land,
     RiseAttack
 }
+public enum EnemyState
+{
+    Idle, Walk, Die, AttackOne,AttackTwo,Attacked
+}

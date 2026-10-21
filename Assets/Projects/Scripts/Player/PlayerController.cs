@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     private PlayerMovement PM;
     private PlayerCombat PC;
     private PlayerInteract PI;
+    private Health PH;
     [SerializeField]private CameraManager CM;
     private Dictionary<PlayerState, StateRule> rules;
     private float deltaHalf;//人物相对于相机中心的最大偏移距离
@@ -45,6 +46,7 @@ public class PlayerController : MonoBehaviour
         PC = GetComponent<PlayerCombat>();
         PI= GetComponent<PlayerInteract>();
         rules = GetComponent<StatePriority>().rules;
+        PH = GetComponent<Health>();
     }
     private void Start()
     {
@@ -77,26 +79,38 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()//检查状态按优先级,高不可被低打断
     {
+        if (DieProcessing()) return;
+        if (PH.Dead||PH.Attacked)//可连续受击
+        {
+            AttackOver(); ComboOver(); RiseOver();SkillOver();//打断所有
+            PH.AttackedEnd();
+            SetState(PH.Dead ? PlayerState.Die : PlayerState.Attacked);
+            return;
+        }
+        if (AttackedProcessing()) return;
         PM.CheckIsGround();
         if (PC.SkillRequest)
         {
             PC.SkillRequest = false;
             PM.Skilled();
             int skill = PC.Skilled;
-            if (skill == 3) SM.ChangeSkillThree(true);
             AttackOver(); ComboOver();RiseOver();//打断普攻、组合技和空中攻击
             SetState(skill == 1 ? PlayerState.SkillOne : skill == 2 ?
                 PlayerState.SkillTwo : PlayerState.SkillThree);
             return;
         }
-        if (PM.AirState() == 0 && SM.SkillThreeCur == 2) SM.SkillThreeCur = 3;
+        if (PM.AirState() == 0 && PC.SkillThreeCur == 2)
+        {
+            SM.Resume();
+            PC.SkillThreeCur = 3;
+        }
         PM.CheckMove(PlayerState.ComboAttackTwo == state, PC.Skilled,
-            SM.SkillThreeCur, CM.CameraCenter - deltaHalf, CM.CameraCenter + deltaHalf);
+            PC.SkillThreeCur, CM.CameraCenter - deltaHalf, CM.CameraCenter + deltaHalf);
         CM.UpdateCamera(PM.bodyX - CM.CameraCenter);
         if (SkillProcessing())
         {
-            if (SM.SkillOpen(PC.Skilled)) PC.OpenSkillBox(PM.SkillFaceRight);
-            if (SM.SkillShut(PC.Skilled)) PC.ShutSkillBox();
+            if (PC.SkillOpen(SM.CurFrame,PC.Skilled)) PC.OpenSkillBox(PM.SkillFaceRight);
+            if (PC.SkillShut(SM.CurFrame,PC.Skilled)) PC.ShutSkillBox();
             return;
         }
         SM.ChangeSpriteFace(PM.FaceRight);
@@ -112,8 +126,8 @@ public class PlayerController : MonoBehaviour
         if (AirProcessing()) return;
         if (RiseAttackProcessing())
         {
-            if (SM.RiseOpen) PC.OpenRiseBox(PM.FaceRight);
-            if (SM.RiseShut) PC.ShutRiseBox();
+            if (PC.RiseOpen(SM.CurFrame)) PC.OpenRiseBox(PM.FaceRight);
+            if (PC.RiseShut(SM.CurFrame)) PC.ShutRiseBox();
             return;
         }
         if (airState!=0)//下落或上升过程,优先级中等,空中可攻击
@@ -134,8 +148,8 @@ public class PlayerController : MonoBehaviour
         if (state == PlayerState.Land && !SM.IsFinished) return;//落地优先级中等
         if (ComboProcessing())
         {
-            if (SM.ComboOpen(PC.Comboed)) PC.OpenComboBox(PM.FaceRight);
-            if (SM.ComboShut(PC.Comboed)) PC.ShutComboBox();
+            if (PC.ComboOpen(SM.CurFrame,PC.Comboed)) PC.OpenComboBox(PM.FaceRight);
+            if (PC.ComboShut(SM.CurFrame,PC.Comboed)) PC.ShutComboBox();
             return;
         }
         PC.CheckAttack();
@@ -153,11 +167,11 @@ public class PlayerController : MonoBehaviour
         }
         if (PC.AttackThisFrame)//上挑优先级中下，普攻中下下
         {
+            AttackOver();//打断普攻
             PC.AttackThisFrame = false;
             if (PI.IsInteracting())
             {
                 PC.Comboed = 1;
-                AttackOver();//打断普攻
                 SetState(PlayerState.ComboAttackOne);
             }
             else
@@ -170,8 +184,8 @@ public class PlayerController : MonoBehaviour
         }
         if (AttackProcessing())
         {
-            if (SM.AttackOpen(PC.Attacked)) PC.OpenAttackBox(PM.FaceRight);
-            if (SM.AttackShut(PC.Attacked)) PC.ShutAttackBox();
+            if (PC.AttackOpen(SM.CurFrame,PC.Attacked)) PC.OpenAttackBox(PM.FaceRight);
+            if (PC.AttackShut(SM.CurFrame,PC.Attacked)) PC.ShutAttackBox();
             return;
         }
         SetState(PlayerState.Idle);//待机优先级最次
@@ -179,7 +193,7 @@ public class PlayerController : MonoBehaviour
 
     private void SetState(PlayerState next)
     {
-        if (state == next) return;
+        if (state == next && next != PlayerState.Attacked) return;
         state = next;
         switch (state)
         {
@@ -244,12 +258,22 @@ public class PlayerController : MonoBehaviour
     }
     private bool SkillProcessing()
     {
-        if (SM.IsFinished&&IsSkilling())
+        if (IsSkilling())
         {
-            SkillOver();
-            return false;
+            if (PC.Skilled == 3)
+            {
+                PC.CheckSkillThree(SM.CurFrame);
+                if (PC.SkillThreeCur == 2)
+                    SM.Pause();
+            }
+            if (SM.IsFinished)
+            {
+                SkillOver();
+                return false;
+            }
+            return true;
         }
-        return IsSkilling();
+        return false;
     }
     private bool IsSkilling()
     {
@@ -259,7 +283,7 @@ public class PlayerController : MonoBehaviour
     }
     private void SkillOver()
     {
-        SM.ChangeSkillThree(false);
+        PC.SkillThreeCur = 0;
         PC.ShutSkillBox();
         PC.Skilled = -1;
         PM.HasSkilled();
@@ -278,5 +302,25 @@ public class PlayerController : MonoBehaviour
     {
         PC.ShutComboBox();
         PC.Comboed = -1;
+    }
+    private bool DieProcessing()
+    {
+        if (state != PlayerState.Die) return false;
+        if (SM.IsFinished)
+        {
+            gameObject.SetActive(false);
+            //游戏失败
+        }
+        return true;
+    }
+    private bool AttackedProcessing()
+    {
+        if (state != PlayerState.Attacked) return false;
+        if (SM.IsFinished)
+        {
+            PC.SkillRequest = false;//清空期间所有低优先级的请求
+            return false;
+        }
+        return true;
     }
 }

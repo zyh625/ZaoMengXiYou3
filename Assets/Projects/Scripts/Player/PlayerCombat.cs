@@ -7,6 +7,21 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private BoxCollider2D[] SkillBoxes;//技能攻击箱
     [SerializeField] private BoxCollider2D[] ComboBoxes;//组合技攻击箱
 
+
+    [SerializeField] private int[] ComboOpenIdx, ComboShutIdx, AttackOpenIdx, AttackShutIdx
+        , SkillOpenIdx, SkillShutIdx;
+    [SerializeField] private int RiseOpenIdx, RiseShutIdx, SkillThreeGroundOpenIdx;
+    public bool ComboOpen(int idx,int k) => idx >= ComboOpenIdx[k] && idx < ComboShutIdx[k];
+    public bool ComboShut(int idx, int k) => idx >= ComboShutIdx[k];
+    public bool AttackOpen(int idx, int k) => idx >= AttackOpenIdx[k] && idx < AttackShutIdx[k];
+    public bool AttackShut(int idx, int k) => idx >= AttackShutIdx[k];
+    public bool SkillOpen(int idx, int k) => idx >= SkillOpenIdx[k] && idx < SkillShutIdx[k];
+    public bool SkillShut(int idx, int k) => Skilled == 3 ? (idx >= SkillShutIdx[k]
+        && idx < SkillThreeGroundOpenIdx) : idx >= SkillShutIdx[k];
+    public bool RiseOpen(int idx) => idx >= RiseOpenIdx && idx < RiseShutIdx;
+    public bool RiseShut(int idx) => idx >= RiseShutIdx;
+
+
     private bool attackRequest = false;//请求攻击
     private float attackPri = -1f;//最多保存一次攻击
     private float attackCur = -1f;//最近一次按下攻击的时间
@@ -21,6 +36,10 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private float attackMemory = 1.2f;//攻击连招保存
     public int Skilled = -1;
     public bool SkillRequest = false;
+    [SerializeField] private int[] SkillThreeState;//到第几帧换阶段，整个运动过程类似尖三角
+    public int SkillThreeCur = 0;//当前为技能三的哪一阶段，起跳->攻击->下落->起立
+    private int skillThreeAttackIdx = -1;
+    [SerializeField]private float skillThreeGroundRatio=1.5f;
     public void OnAttack()
     {
         attackRequest = true;
@@ -60,6 +79,7 @@ public class PlayerCombat : MonoBehaviour
     public void OnSkill(int k)
     {
         if (Skilled != -1 || SkillRequest) return;
+        skillThreeAttackIdx = -1;
         Skilled = k;
         SkillRequest = true;
     }
@@ -69,7 +89,7 @@ public class PlayerCombat : MonoBehaviour
     }
     public void ShutAttackBox()
     {
-        if (Comboed!=-1&&AttackBox.gameObject.activeSelf)
+        if (AttackBox.gameObject.activeSelf)
             AttackBox.gameObject.SetActive(false);
     }
     public void OpenComboBox(bool r)
@@ -106,5 +126,43 @@ public class PlayerCombat : MonoBehaviour
         box.offset= offset;
         if (!box.gameObject.activeSelf)
             box.gameObject.SetActive(true);
+    }
+    public void CheckSkillThree(int idx)
+    {
+        if (idx > SkillThreeGroundOpenIdx + 1) return;
+        if (SkillThreeCur == 0 && idx >= SkillThreeState[0] + 1)
+            SkillThreeCur = 1;
+        else if (SkillThreeCur == 1)
+        {
+            if (idx >= SkillThreeState[1] + 1) SkillThreeCur = 2;
+            else if (idx != skillThreeAttackIdx)//斩击动画按帧叠加
+            {
+                skillThreeAttackIdx = idx;
+                SkillBoxes[3].GetComponent<PlayerAttackBox>().UpdateAttack();
+            }
+        }
+        else if (SkillThreeCur == 2 && idx >= SkillThreeState[2] + 1) SkillThreeCur = 3;
+        if (SkillThreeCur == 3 && idx >= SkillThreeGroundOpenIdx
+            && skillThreeAttackIdx< SkillThreeGroundOpenIdx)
+        {
+            PlayerAttackBox box = SkillBoxes[3].GetComponent<PlayerAttackBox>();
+            if (skillThreeAttackIdx < SkillThreeGroundOpenIdx)
+            {
+                box.gameObject.SetActive(true);
+                box.ChangeAttack(skillThreeGroundRatio);
+            }
+            skillThreeAttackIdx = idx;
+            box.UpdateAttack();
+        }
+        if(SkillThreeCur == 3 && idx >= SkillThreeGroundOpenIdx + 1
+            && skillThreeAttackIdx< SkillThreeGroundOpenIdx+1)//只开启一帧
+        {
+            SkillBoxes[3].GetComponent<PlayerAttackBox>().gameObject.SetActive(false);
+            skillThreeAttackIdx = idx;
+        }
+    }
+    public void UpdateBoost()//攻击到敌人，增加无双能量
+    {
+
     }
 }

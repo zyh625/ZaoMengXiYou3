@@ -141,7 +141,7 @@ public class PlayerMovement : MonoBehaviour
     private bool CheckGround()
     {
         float y = body.linearVelocityY;
-        if (y > 0.1f)
+        if (Mathf.Abs(y) > 0.1f)
             return false;
         int count = body.GetContacts(groundFilter, contacts);
         for(int i = 0; i < count; i++)
