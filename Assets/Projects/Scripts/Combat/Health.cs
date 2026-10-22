@@ -1,5 +1,3 @@
-using System;
-using System.Security.Cryptography;
 using UnityEngine;
 
 public class Health : MonoBehaviour,IDamage
@@ -12,10 +10,9 @@ public class Health : MonoBehaviour,IDamage
     public bool AttackedEnd() => attacked = false;
     [SerializeField]private bool attackedUp = false;
     public bool AttackedUp => attackedUp;
-    [SerializeField] private Transform target;
-    public float DeltaX => target.position.x - transform.position.x;
-    private bool attackedFaceRight;
-    public bool AttackedFaceRight => attackedFaceRight;
+    private Transform target;
+    public float DeltaX => target != null ? target.position.x - transform.position.x : 0f;
+    public bool AttackedRight => DeltaX <= 0f;//向右边击退
     void Start()
     {
         curBlood = beginBlood;
@@ -24,10 +21,10 @@ public class Health : MonoBehaviour,IDamage
     {
         die = false;attacked = false;attackedUp = false;
     }
-    public void TakeDamage(float damage)
+    public void TakeDamage(Transform tran,float damage)
     {
         if (die) return;
-        attackedFaceRight = DeltaX >= 0f;
+        target = tran;
         attackedUp = damage < 0;
         damage = Mathf.Abs(damage);
         curBlood = Mathf.Max(0f, curBlood - damage);

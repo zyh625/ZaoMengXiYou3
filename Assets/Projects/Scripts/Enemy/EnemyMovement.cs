@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    private Rigidbody2D body;
+    protected Rigidbody2D body;
     [SerializeField] private float moveSpeed, backSpeed, upSpeed, slowSpeed;//各种速度
     [SerializeField] private float minNormalY;
     private ContactFilter2D groundFilter;
@@ -12,15 +12,17 @@ public class EnemyMovement : MonoBehaviour
     private bool isGround;
     public bool IsGround => isGround;
     public bool LandedThisFrame = false;
+    [SerializeField] Transform player;
+    public float DeltaX => player.position.x - transform.position.x;
 
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
     }
-    public void Move(bool r,bool slow)
+    public void Move(bool slow)
     {
         Vector2 velocity = body.linearVelocity;
-        velocity.x = (slow ? slowSpeed : moveSpeed) * (r ? 1f : -1f);
+        velocity.x = (slow ? slowSpeed : moveSpeed) * (DeltaX > 0f ? 1f : -1f);
         body.linearVelocity= velocity;
     }
     public void AttackedMove(bool r,bool up)

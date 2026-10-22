@@ -32,7 +32,8 @@ public class PlayerController : MonoBehaviour
     private PlayerCombat PC;
     private PlayerInteract PI;
     private Health PH;
-    [SerializeField]private CameraManager CM;
+    private CameraManager CM;
+    [SerializeField] private BoxCollider2D checkAttacked;
     private Dictionary<PlayerState, StateRule> rules;
     private float deltaHalf;//人物相对于相机中心的最大偏移距离
     
@@ -47,6 +48,7 @@ public class PlayerController : MonoBehaviour
         PI= GetComponent<PlayerInteract>();
         rules = GetComponent<StatePriority>().rules;
         PH = GetComponent<Health>();
+        CM = Camera.main.GetComponent<CameraManager>();
     }
     private void Start()
     {
@@ -84,33 +86,31 @@ public class PlayerController : MonoBehaviour
         {
             AttackOver(); ComboOver(); RiseOver();SkillOver();//打断所有
             PH.AttackedEnd();
+            if (PH.Dead) PM.Stop();
+            else PM.AttackedMove(PH.AttackedRight);
             SetState(PH.Dead ? PlayerState.Die : PlayerState.Attacked);
             return;
         }
+        CM.UpdateCamera(PM.bodyX - CM.CameraCenter);
+        PM.LimitedRange(CM.CameraCenter - deltaHalf, CM.CameraCenter + deltaHalf);
         if (AttackedProcessing()) return;
         PM.CheckIsGround();
-        if (PC.SkillRequest)
+        PM.CheckMove(PlayerState.ComboAttackTwo == state, PC.Skilled,
+    PC.SkillThreeCur);
+        if (SkillProcessing())
         {
-            PC.SkillRequest = false;
+            if (PC.SkillOpen(SM.CurFrame, PC.Skilled)) PC.OpenSkillBox(PM.SkillFaceRight);
+            if (PC.SkillShut(SM.CurFrame, PC.Skilled)) PC.ShutSkillBox();
+            if (PC.Skilled != 2) CheckImmune();
+            return;
+        }
+        if (PC.Skilled!=-1)
+        {
             PM.Skilled();
             int skill = PC.Skilled;
             AttackOver(); ComboOver();RiseOver();//打断普攻、组合技和空中攻击
             SetState(skill == 1 ? PlayerState.SkillOne : skill == 2 ?
                 PlayerState.SkillTwo : PlayerState.SkillThree);
-            return;
-        }
-        if (PM.AirState() == 0 && PC.SkillThreeCur == 2)
-        {
-            SM.Resume();
-            PC.SkillThreeCur = 3;
-        }
-        PM.CheckMove(PlayerState.ComboAttackTwo == state, PC.Skilled,
-            PC.SkillThreeCur, CM.CameraCenter - deltaHalf, CM.CameraCenter + deltaHalf);
-        CM.UpdateCamera(PM.bodyX - CM.CameraCenter);
-        if (SkillProcessing())
-        {
-            if (PC.SkillOpen(SM.CurFrame,PC.Skilled)) PC.OpenSkillBox(PM.SkillFaceRight);
-            if (PC.SkillShut(SM.CurFrame,PC.Skilled)) PC.ShutSkillBox();
             return;
         }
         SM.ChangeSpriteFace(PM.FaceRight);
@@ -264,11 +264,19 @@ public class PlayerController : MonoBehaviour
             {
                 PC.CheckSkillThree(SM.CurFrame);
                 if (PC.SkillThreeCur == 2)
+                {
                     SM.Pause();
+                    if (PM.AirState() == 0)
+                    {
+                        SM.Resume();
+                        PC.SkillThreeCur = 3;
+                    }
+                }
             }
             if (SM.IsFinished)
             {
                 SkillOver();
+                PM.HasSkilled();
                 return false;
             }
             return true;
@@ -286,7 +294,7 @@ public class PlayerController : MonoBehaviour
         PC.SkillThreeCur = 0;
         PC.ShutSkillBox();
         PC.Skilled = -1;
-        PM.HasSkilled();
+        PC.SkillEnd();
     }
     private bool ComboProcessing()
     {
@@ -318,9 +326,19 @@ public class PlayerController : MonoBehaviour
         if (state != PlayerState.Attacked) return false;
         if (SM.IsFinished)
         {
-            PC.SkillRequest = false;//清空期间所有低优先级的请求
+            PC.Skilled = -1;//清空期间所有低优先级的请求
+            PM.Stop();
             return false;
         }
         return true;
+    }
+    private void CheckImmune()
+    {
+        int immune = PC.CheckInvincible(SM.CurFrame);
+        if (immune == 0 || immune == 3) return;
+        if (immune == 1)
+            checkAttacked.gameObject.SetActive(false);
+        else
+            checkAttacked.gameObject.SetActive(true);
     }
 }

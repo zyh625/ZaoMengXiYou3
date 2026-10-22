@@ -3,12 +3,13 @@ namespace zmxy.GamePlay
 {
     public class CameraManager : MonoBehaviour
     {
-        [SerializeField] private Camera _camera;
+        private Camera _camera;
         [SerializeField] private Transform[] cameraEdgeLeft;
         [SerializeField] private Transform[] cameraEdgeRight;
         public float CameraCenter => _camera.transform.position.x;//摄像机中心
         public float CameraHalf=>_camera.orthographicSize * _camera.aspect;
         private float edgeL, edgeR;
+        private void Awake() => _camera = GetComponent<Camera>();
         private void Start()
         {
             edgeL = cameraEdgeLeft[0].position.x;

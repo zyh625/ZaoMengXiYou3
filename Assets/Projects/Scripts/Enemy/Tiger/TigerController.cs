@@ -9,9 +9,11 @@ public class TigerController : MonoBehaviour
         Attacked, Die;
     private SpriteManager SM;
     private Health TH;
-    private EnemyMovement TM;
+    private TigerMovement TM;
+    private EnemyCombat TC;
     [SerializeField] private EnemyState state;
     [SerializeField] private float stopDistance;
+    [SerializeField] private BoxCollider2D attackedBox;
     
     private bool boost = false;
     private bool slow = false;
@@ -19,7 +21,8 @@ public class TigerController : MonoBehaviour
     {
         SM=GetComponentInChildren<SpriteManager>();
         TH = GetComponent<Health>();
-        TM = GetComponent<EnemyMovement>();
+        TM = GetComponent<TigerMovement>();
+        TC = GetComponent<EnemyCombat>();
     }
     void Start()
     {
@@ -31,15 +34,15 @@ public class TigerController : MonoBehaviour
         if (DieProcessing()) return;
         if (TH.Dead)
         {
-            TM.Stop();
+            TM.Stop();AttackOver();
             SetState(EnemyState.Die);
             return;
         }
  
         if(!boost&&TH.Attacked)
         {
-            TH.AttackedEnd();
-            TM.AttackedMove(!TH.AttackedFaceRight, TH.AttackedUp);
+            TH.AttackedEnd();AttackOver();
+            TM.AttackedMove(TH.AttackedRight, TH.AttackedUp);
             SetState(EnemyState.Attacked);
             return;
         }
@@ -47,11 +50,27 @@ public class TigerController : MonoBehaviour
         TM.CheckIsGround();
         if (TM.AirState() != 0)//空中什么也做不了
         {
+            AttackOver();
             SetState(EnemyState.Idle);
             return;
         }
-        float dis = TH.DeltaX;
-        //攻击
+        if (AttackProcessing())
+        {
+            if (TC.AttackOpen(SM.CurFrame)) TC.AttackBegin();
+            if (TC.AttackShut(SM.CurFrame)) TC.AttackEnd();
+            if (TC.Attack == 1) CheckAttackTwoLunge();
+            return;
+        }
+        TC.CheckAttack();
+        float dis = TM.DeltaX;
+        if (TC.AttackReady)
+        {
+            TC.HasAtatck(dis > 0f);TM.Stop();
+            SetState(TC.AttackRequest[0] ? EnemyState.AttackOne : EnemyState.AttackTwo);
+            return;
+        }
+        SM.ChangeSpriteFace(dis > 0f);
+        TC.ChangeCheckBox(dis > 0f);
         if (Mathf.Abs(dis) <= stopDistance)//靠近玩家停止
         {
             TM.Stop();
@@ -59,8 +78,7 @@ public class TigerController : MonoBehaviour
             return;
         }
         SetState(EnemyState.Walk);
-        SM.ChangeSpriteFace(dis > 0f);
-        TM.Move(dis > 0, slow);
+        TM.Move(slow);
     }
     private void SetState(EnemyState next)
     {
@@ -92,4 +110,30 @@ public class TigerController : MonoBehaviour
         }
         return true;
     }
+    private bool AttackProcessing()
+    {
+        if (TC.Attack == -1) return false;
+        if (SM.IsFinished)
+        {
+            AttackOver();
+            return false;
+        }
+        return true;
+    }
+    private void AttackOver()
+    {
+        TC.AttackEnd();
+        TC.AttackOver();
+        TM.AttackTwoEnd();
+    }
+    private void CheckAttackTwoLunge()
+    {
+        int curState = TM.CheckAttackTwoMove(SM.CurFrame);
+        if (curState == 0 || curState == 3) return;
+        if (curState == 1)
+            attackedBox.gameObject.SetActive(false);
+        else if (curState == 2)
+            attackedBox.gameObject.SetActive(true);
+    }
+
 }

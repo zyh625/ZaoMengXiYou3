@@ -4,7 +4,7 @@ public class SpriteData
 {
     public Sprite[] sprites;
     public bool loop;//帧动画是否循环
-    [Min(1f)] public float fps;//每秒播放几帧
+    [Min(0f)] public float fps;//每秒播放几帧
 
 }
 [RequireComponent(typeof(SpriteRenderer))]

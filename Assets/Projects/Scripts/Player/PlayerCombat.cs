@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
@@ -35,11 +34,18 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private float attackDelay = 0.7f;//攻击间隔
     [SerializeField] private float attackMemory = 1.2f;//攻击连招保存
     public int Skilled = -1;
-    public bool SkillRequest = false;
     [SerializeField] private int[] SkillThreeState;//到第几帧换阶段，整个运动过程类似尖三角
     public int SkillThreeCur = 0;//当前为技能三的哪一阶段，起跳->攻击->下落->起立
     private int skillThreeAttackIdx = -1;
     [SerializeField]private float skillThreeGroundRatio=1.5f;
+    private bool attackedRequest=false;
+    public bool AttackedRequest => attackedRequest;
+    private int invincibleState = 0;
+    public void SkillEnd() => invincibleState = 0;
+    private bool SkillThreeBoxHasShut = true;
+    [SerializeField] private int Skill1ImmuneBegin, Skill1ImmuneEnd, Skill3ImmuneBegin, Skill3ImmuneEnd;
+    private PlayerAttackBox skillThreeBox;
+    private void Start() => skillThreeBox = SkillBoxes[3].GetComponent<PlayerAttackBox>();
     public void OnAttack()
     {
         attackRequest = true;
@@ -78,42 +84,29 @@ public class PlayerCombat : MonoBehaviour
     }
     public void OnSkill(int k)
     {
-        if (Skilled != -1 || SkillRequest) return;
+        if (Skilled != -1) return;
         skillThreeAttackIdx = -1;
         Skilled = k;
-        SkillRequest = true;
     }
-    public void OpenAttackBox(bool r)
-    {
-        OpenBox(AttackBox, r);
-    }
+    public void OpenAttackBox(bool r) => OpenBox(AttackBox, r);
     public void ShutAttackBox()
     {
         if (AttackBox.gameObject.activeSelf)
             AttackBox.gameObject.SetActive(false);
     }
-    public void OpenComboBox(bool r)
-    {
-        OpenBox(ComboBoxes[Comboed], r);
-    }
+    public void OpenComboBox(bool r) => OpenBox(ComboBoxes[Comboed], r);
     public void ShutComboBox()
     {
         if (Comboed!=-1&&ComboBoxes[Comboed].gameObject.activeSelf)
             ComboBoxes[Comboed].gameObject.SetActive(false);
     }
-    public void OpenSkillBox(bool r)
-    {
-        OpenBox(SkillBoxes[Skilled], r);
-    }
+    public void OpenSkillBox(bool r) => OpenBox(SkillBoxes[Skilled], r);
     public void ShutSkillBox()
     {
         if (Skilled!=-1&&SkillBoxes[Skilled].gameObject.activeSelf)
             SkillBoxes[Skilled].gameObject.SetActive(false);
     }
-    public void OpenRiseBox(bool r)
-    {
-        OpenBox(RiseBox, r);
-    }
+    public void OpenRiseBox(bool r) => OpenBox(RiseBox, r);
     public void ShutRiseBox()
     {
         if (RiseBox.gameObject.activeSelf)
@@ -129,7 +122,6 @@ public class PlayerCombat : MonoBehaviour
     }
     public void CheckSkillThree(int idx)
     {
-        if (idx > SkillThreeGroundOpenIdx + 1) return;
         if (SkillThreeCur == 0 && idx >= SkillThreeState[0] + 1)
             SkillThreeCur = 1;
         else if (SkillThreeCur == 1)
@@ -145,21 +137,36 @@ public class PlayerCombat : MonoBehaviour
         if (SkillThreeCur == 3 && idx >= SkillThreeGroundOpenIdx
             && skillThreeAttackIdx< SkillThreeGroundOpenIdx)
         {
-            PlayerAttackBox box = SkillBoxes[3].GetComponent<PlayerAttackBox>();
             if (skillThreeAttackIdx < SkillThreeGroundOpenIdx)
             {
-                box.gameObject.SetActive(true);
-                box.ChangeAttack(skillThreeGroundRatio);
+                skillThreeBox.gameObject.SetActive(true);
+                skillThreeBox.ChangeAttack(skillThreeGroundRatio);
+                SkillThreeBoxHasShut = false;
             }
             skillThreeAttackIdx = idx;
-            box.UpdateAttack();
+            skillThreeBox.UpdateAttack();
         }
         if(SkillThreeCur == 3 && idx >= SkillThreeGroundOpenIdx + 1
-            && skillThreeAttackIdx< SkillThreeGroundOpenIdx+1)//只开启一帧
+            && skillThreeAttackIdx< SkillThreeGroundOpenIdx+1&&!SkillThreeBoxHasShut)//只开启一帧
         {
-            SkillBoxes[3].GetComponent<PlayerAttackBox>().gameObject.SetActive(false);
+            skillThreeBox.gameObject.SetActive(false);
             skillThreeAttackIdx = idx;
+            SkillThreeBoxHasShut = true;
         }
+    }
+
+    public int CheckInvincible(int idx)
+    {
+        if (invincibleState == 0 && ((Skilled == 1 && idx >= Skill1ImmuneBegin)
+            || (Skilled == 3 && idx >= Skill3ImmuneBegin)))
+            invincibleState = 1;
+        else if (invincibleState == 1 && ((Skilled == 1 && idx >= Skill1ImmuneEnd)
+            || (Skilled == 3 && idx >= Skill3ImmuneEnd)))
+            invincibleState = 2;
+        else if (invincibleState == 2 && ((Skilled == 1 && idx > Skill1ImmuneEnd)
+            || (Skilled == 3 && idx > Skill3ImmuneEnd)))
+            invincibleState = 3;
+        return invincibleState;
     }
     public void UpdateBoost()//攻击到敌人，增加无双能量
     {

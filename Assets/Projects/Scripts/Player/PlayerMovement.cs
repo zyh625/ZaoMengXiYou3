@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     private float walkSpeed = 5f, runSpeed = 8f,
-        comboSpeed = 2f, skillOneSpeed;
+        comboSpeed = 2f, skillOneSpeed, backSpeed;
     [SerializeField] private float flySlow = 0.7f, quickDown = 1.3f;
     [SerializeField] private float skillThreeHorizon,
         skillThreeUp,skillThreeDown;//空斩的移动阶段的速度
@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     public bool SkillFaceRight => skillFaceRight;
     private bool quickDowning = false;
     private float beginGravity;
+    [SerializeField]private int backStartIdx, backEndIdx;//被击退对应的下标
     private void Start()
     {
         body=GetComponent<Rigidbody2D>();
@@ -73,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
         moveDirect = dir;
         right = dir > 0;
     }
-    public void CheckMove(bool combo,int skill,int skillThreeState,float minX,float maxX)
+    public void CheckMove(bool combo,int skill,int skillThreeState)
     {
         if (moveDirect != 0f) right = moveDirect > 0;
         float dt = Time.deltaTime;
@@ -101,11 +102,10 @@ public class PlayerMovement : MonoBehaviour
         else
             velocity.x = (right ? 1f : -1f) * (combo ? comboSpeed :
                 runRequest ? runSpeed : walkSpeed) * (isGround ? 1f : flySlow);
-        float predictX = Mathf.Clamp(velocity.x * dt + body.position.x,
-            minX, maxX);
-        velocity.x = (predictX - body.position.x) / dt;
         body.linearVelocity=velocity;
     }
+    public void LimitedRange(float minX, float maxX) => body.position = new Vector2(
+        Mathf.Clamp(body.position.x, minX, maxX), body.position.y);
     private void SkillThreeMove(int state)
     {
         if (state == 1 || state == 3) return;
@@ -162,12 +162,9 @@ public class PlayerMovement : MonoBehaviour
         isGround = true;
         hasJumped = 0;
     }
-    public void Skilled()
-    {
-        skillFaceRight = right;
-    }
-    public void HasSkilled()
-    {
-        right = skillFaceRight;
-    }
+    public void Skilled() => skillFaceRight = right;
+    public void HasSkilled() => right = skillFaceRight;
+    public void Stop() => body.linearVelocity = new Vector2(0f, body.linearVelocityY);
+    public void AttackedMove(bool r) => body.linearVelocity = new
+        Vector2(backSpeed * (r ? 1f : -1f), body.linearVelocityY);
 }
