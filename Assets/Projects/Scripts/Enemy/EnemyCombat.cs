@@ -17,7 +17,8 @@ public class EnemyCombat : MonoBehaviour
     public int Attack => curAttack;
     public void AttackOver() => curAttack = -1;
     public bool AttackReady => AttackRequest[0]||AttackRequest[1];
-    private void Start()
+    public bool AttackFaceRight;
+    private void Awake()
     {
         CheckAttackBoxes[0] = CheckAttackLogic[0].GetComponent<BoxCollider2D>();
         CheckAttackBoxes[1] = CheckAttackLogic[1].GetComponent<BoxCollider2D>();
@@ -38,6 +39,7 @@ public class EnemyCombat : MonoBehaviour
         int i = AttackRequest[0] ? 0 : 1;
         curAttack = i;
         lastAttack[i] = Time.time;
+        AttackFaceRight = r;
         ChangeBoxFace(AttackBoxes[i], r);
     }
     public void AttackBegin()

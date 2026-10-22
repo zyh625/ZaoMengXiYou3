@@ -34,8 +34,8 @@ public class PlayerController : MonoBehaviour
     private Health PH;
     private CameraManager CM;
     [SerializeField] private BoxCollider2D checkAttacked;
-    private Dictionary<PlayerState, StateRule> rules;
     private float deltaHalf;//人物相对于相机中心的最大偏移距离
+    public float DeltaHalf => deltaHalf;
     
     [SerializeField]private PlayerState state;//当前状态,初始为待机
     public PlayerState State() => state;
@@ -46,14 +46,12 @@ public class PlayerController : MonoBehaviour
         PM= GetComponent<PlayerMovement>();
         PC = GetComponent<PlayerCombat>();
         PI= GetComponent<PlayerInteract>();
-        rules = GetComponent<StatePriority>().rules;
         PH = GetComponent<Health>();
         CM = Camera.main.GetComponent<CameraManager>();
+        deltaHalf = CM.CameraHalf - GetComponent<BoxCollider2D>().bounds.size.x / 2;
     }
     private void Start()
     {
-        deltaHalf = CM.CameraHalf - 
-            GetComponent<BoxCollider2D>().bounds.size.x / 2;
         state = PlayerState.Idle;
         SM.ChangeState(Idle);
     }
@@ -84,7 +82,7 @@ public class PlayerController : MonoBehaviour
         if (DieProcessing()) return;
         if (PH.Dead||PH.Attacked)//可连续受击
         {
-            AttackOver(); ComboOver(); RiseOver();SkillOver();//打断所有
+            AttackOver(); ComboOver(); RiseOver();SkillOver(); PM.AllowJump(false);//打断所有
             PH.AttackedEnd();
             if (PH.Dead) PM.Stop();
             else PM.AttackedMove(PH.AttackedRight);
@@ -94,6 +92,15 @@ public class PlayerController : MonoBehaviour
         CM.UpdateCamera(PM.bodyX - CM.CameraCenter);
         PM.LimitedRange(CM.CameraCenter - deltaHalf, CM.CameraCenter + deltaHalf);
         if (AttackedProcessing()) return;
+        if (PC.Skilled!=-1&& !IsSkilling())
+        {
+            PM.Skilled();
+            int skill = PC.Skilled;
+            AttackOver(); ComboOver();RiseOver();PM.AllowJump(false);//打断普攻、组合技和空中攻击,不响应跳跃
+            SetState(skill == 1 ? PlayerState.SkillOne : skill == 2 ?
+                PlayerState.SkillTwo : PlayerState.SkillThree);
+            return;
+        }
         PM.CheckIsGround();
         PM.CheckMove(PlayerState.ComboAttackTwo == state, PC.Skilled,
     PC.SkillThreeCur);
@@ -102,15 +109,6 @@ public class PlayerController : MonoBehaviour
             if (PC.SkillOpen(SM.CurFrame, PC.Skilled)) PC.OpenSkillBox(PM.SkillFaceRight);
             if (PC.SkillShut(SM.CurFrame, PC.Skilled)) PC.ShutSkillBox();
             if (PC.Skilled != 2) CheckImmune();
-            return;
-        }
-        if (PC.Skilled!=-1)
-        {
-            PM.Skilled();
-            int skill = PC.Skilled;
-            AttackOver(); ComboOver();RiseOver();//打断普攻、组合技和空中攻击
-            SetState(skill == 1 ? PlayerState.SkillOne : skill == 2 ?
-                PlayerState.SkillTwo : PlayerState.SkillThree);
             return;
         }
         SM.ChangeSpriteFace(PM.FaceRight);
@@ -295,6 +293,7 @@ public class PlayerController : MonoBehaviour
         PC.ShutSkillBox();
         PC.Skilled = -1;
         PC.SkillEnd();
+        checkAttacked.gameObject.SetActive(true);
     }
     private bool ComboProcessing()
     {

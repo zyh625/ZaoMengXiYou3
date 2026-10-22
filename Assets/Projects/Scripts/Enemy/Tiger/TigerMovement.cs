@@ -9,13 +9,14 @@ public class TigerMovement : EnemyMovement
     public int EndLunge => endLunge;
     private int curState = 0;
     public void AttackTwoEnd() => curState = 0;
+    public bool AttackFaceRight;
     public int CheckAttackTwoMove(int idx)
     {
         if (idx >= startLunge && curState == 0)
         {
             curState = 1;
             Vector2 velocity = body.linearVelocity;
-            velocity.x = (DeltaX > 0f ? 1f : -1f) * attackTwoSpeed;
+            velocity.x = (AttackFaceRight ? 1f : -1f) * attackTwoSpeed;
             body.linearVelocity = velocity;
         }
         else if (idx >= endLunge && curState == 1)

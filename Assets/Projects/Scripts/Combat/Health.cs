@@ -13,13 +13,10 @@ public class Health : MonoBehaviour,IDamage
     private Transform target;
     public float DeltaX => target != null ? target.position.x - transform.position.x : 0f;
     public bool AttackedRight => DeltaX <= 0f;//向右边击退
-    void Start()
-    {
-        curBlood = beginBlood;
-    }
     void OnEnable()
     {
         die = false;attacked = false;attackedUp = false;
+        curBlood = beginBlood;
     }
     public void TakeDamage(Transform tran,float damage)
     {
@@ -28,7 +25,6 @@ public class Health : MonoBehaviour,IDamage
         attackedUp = damage < 0;
         damage = Mathf.Abs(damage);
         curBlood = Mathf.Max(0f, curBlood - damage);
-        Debug.Log(curBlood);
         UpdateBloodUI();
         if (curBlood == 0f)
         {

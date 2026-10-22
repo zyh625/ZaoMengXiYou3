@@ -14,17 +14,18 @@ public class TigerController : MonoBehaviour
     [SerializeField] private EnemyState state;
     [SerializeField] private float stopDistance;
     [SerializeField] private BoxCollider2D attackedBox;
+    public float TigerHalf => GetComponent<BoxCollider2D>().bounds.size.x / 2;
     
     private bool boost = false;
     private bool slow = false;
     void Awake()
     {
-        SM=GetComponentInChildren<SpriteManager>();
+        SM = GetComponent<SpriteManager>();
         TH = GetComponent<Health>();
         TM = GetComponent<TigerMovement>();
         TC = GetComponent<EnemyCombat>();
     }
-    void Start()
+    void OnEnable()
     {
         SetState(EnemyState.Idle);
         SM.ChangeState(Idle);
@@ -61,11 +62,11 @@ public class TigerController : MonoBehaviour
             if (TC.Attack == 1) CheckAttackTwoLunge();
             return;
         }
-        TC.CheckAttack();
         float dis = TM.DeltaX;
+        TC.CheckAttack();
         if (TC.AttackReady)
         {
-            TC.HasAtatck(dis > 0f);TM.Stop();
+            TC.HasAtatck(dis > 0f);TM.Stop();TM.AttackFaceRight = dis > 0f;
             SetState(TC.AttackRequest[0] ? EnemyState.AttackOne : EnemyState.AttackTwo);
             return;
         }
@@ -125,6 +126,7 @@ public class TigerController : MonoBehaviour
         TC.AttackEnd();
         TC.AttackOver();
         TM.AttackTwoEnd();
+        attackedBox.gameObject.SetActive(true);
     }
     private void CheckAttackTwoLunge()
     {
@@ -134,6 +136,11 @@ public class TigerController : MonoBehaviour
             attackedBox.gameObject.SetActive(false);
         else if (curState == 2)
             attackedBox.gameObject.SetActive(true);
+    }
+    public void ChangeFace(bool r)
+    {
+        SM.ChangeSpriteFace(!r);//默认朝左
+        TC.ChangeCheckBox(r);
     }
 
 }

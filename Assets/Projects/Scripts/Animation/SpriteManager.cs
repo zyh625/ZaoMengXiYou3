@@ -21,6 +21,7 @@ public class SpriteManager : MonoBehaviour
     private bool paused = false;
     public void Pause()=>paused= true;
     public void Resume() => paused = false;
+    public float spriteHalf => sr.bounds.size.x / 2;
 
     private void Awake()
     {

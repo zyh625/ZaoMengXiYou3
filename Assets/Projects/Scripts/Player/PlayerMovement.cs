@@ -38,8 +38,15 @@ public class PlayerMovement : MonoBehaviour
     public bool SkillFaceRight => skillFaceRight;
     private bool quickDowning = false;
     private float beginGravity;
+    private bool isQuickDowning = false;
     [SerializeField]private int backStartIdx, backEndIdx;//被击退对应的下标
-    private void Start()
+    private bool allowJump = true;
+    public void AllowJump(bool flag)
+    {
+        if (flag) jumpRequest = false;
+        allowJump = flag;
+    }
+    private void Awake()
     {
         body=GetComponent<Rigidbody2D>();
         groundFilter = new ContactFilter2D();
@@ -52,10 +59,7 @@ public class PlayerMovement : MonoBehaviour
         if (isGround) return;
         quickDowning=true;
     }
-    public void OnJump()
-    {
-        jumpRequest = true;
-    }
+    public void OnJump() => jumpRequest = allowJump;
     public void OnMove(InputAction.CallbackContext ctx)
     {
         float value = ctx.ReadValue<float>();
@@ -79,10 +83,11 @@ public class PlayerMovement : MonoBehaviour
         if (moveDirect != 0f) right = moveDirect > 0;
         float dt = Time.deltaTime;
         Vector2 velocity = body.linearVelocity;
-        if (!isGround && quickDowning)
+        if (!isGround && quickDowning&&!isQuickDowning)
         {
             body.gravityScale *= quickDown;
             quickDowning = false;
+            isQuickDowning = true;
         }
         if (skill == 1)
             velocity.x = (skillFaceRight ? 1f : -1f) * skillOneSpeed;
@@ -130,6 +135,7 @@ public class PlayerMovement : MonoBehaviour
             jumpRequest = false;
             if (hasJumped < 2)
             {
+                QuickDownRecover();
                 velocity.y = upSpeed;
                 hasJumped++;
                 JumpedThisFrame = true;
@@ -147,7 +153,10 @@ public class PlayerMovement : MonoBehaviour
         for(int i = 0; i < count; i++)
         {
             if (contacts[i].normal.y >= minNormalY)
+            {
+                QuickDownRecover();
                 return true; //接触面的法向量超出最小y向量
+            }
         }
         return false;
     }
@@ -167,4 +176,11 @@ public class PlayerMovement : MonoBehaviour
     public void Stop() => body.linearVelocity = new Vector2(0f, body.linearVelocityY);
     public void AttackedMove(bool r) => body.linearVelocity = new
         Vector2(backSpeed * (r ? 1f : -1f), body.linearVelocityY);
+    private void QuickDownRecover()
+    {
+        quickDowning = false;
+        isQuickDowning = false;
+        body.gravityScale = beginGravity;
+    }
+    public void ClearJump() => jumpRequest = false;
 }

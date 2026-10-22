@@ -12,7 +12,7 @@ public class EnemyMovement : MonoBehaviour
     private bool isGround;
     public bool IsGround => isGround;
     public bool LandedThisFrame = false;
-    [SerializeField] Transform player;
+    private Transform player;
     public float DeltaX => player.position.x - transform.position.x;
 
     void Start()
@@ -65,4 +65,5 @@ public class EnemyMovement : MonoBehaviour
         if (body != null) body.linearVelocity = Vector2.zero;
         isGround = true;
     }
+    public void SetTarget(Transform tran) => player = tran;
 }

@@ -146,15 +146,13 @@ public class PlayerCombat : MonoBehaviour
             skillThreeAttackIdx = idx;
             skillThreeBox.UpdateAttack();
         }
-        if(SkillThreeCur == 3 && idx >= SkillThreeGroundOpenIdx + 1
-            && skillThreeAttackIdx< SkillThreeGroundOpenIdx+1&&!SkillThreeBoxHasShut)//只开启一帧
+        if(SkillThreeCur == 3 && idx >= SkillThreeGroundOpenIdx + 1&& !SkillThreeBoxHasShut)//只开启一帧
         {
             skillThreeBox.gameObject.SetActive(false);
             skillThreeAttackIdx = idx;
             SkillThreeBoxHasShut = true;
         }
     }
-
     public int CheckInvincible(int idx)
     {
         if (invincibleState == 0 && ((Skilled == 1 && idx >= Skill1ImmuneBegin)
