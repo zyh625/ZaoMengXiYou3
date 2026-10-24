@@ -22,10 +22,17 @@ public class SpriteManager : MonoBehaviour
     public void Pause()=>paused= true;
     public void Resume() => paused = false;
     public float spriteHalf => sr.bounds.size.x / 2;
+    private SpriteOutlineController outline;
 
     private void Awake()
     {
         sr = sr == null ? GetComponent<SpriteRenderer>() : sr;
+        outline=GetComponent<SpriteOutlineController>();
+    }
+    private void OnEnable()
+    {
+        if (outline != null)
+            outline.SetOutline(false);//开始时关闭红色描边
     }
 
     public void ChangeState(SpriteData newSd)
@@ -59,4 +66,11 @@ public class SpriteManager : MonoBehaviour
         }
         sr.sprite= current.sprites[idx];
     }
+    public void SetAngry(bool flag)
+    {
+        if (outline != null)
+            outline.SetOutline(flag);
+    }
+    public void SetRed() => outline.SetOutlineColor(Color.red);
+    public void SetYellow() => outline.SetOutlineColor(Color.yellow);
 }

@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
     private bool allowJump = true;
     public void AllowJump(bool flag)
     {
-        if (flag) jumpRequest = false;
+        if (!flag) jumpRequest = false;
         allowJump = flag;
     }
     private void Awake()

@@ -273,6 +273,7 @@ GameObject:
   - component: {fileID: 4526159299838902535}
   - component: {fileID: 7385226655740497723}
   - component: {fileID: 8532198019557323159}
+  - component: {fileID: 3642220009931477372}
   m_Layer: 11
   m_Name: Visual
   m_TagString: Untagged
@@ -321,7 +322,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 8bac6e24a00ea8e44bd70531b27ae228, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -342,7 +343,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_MaskInteraction: 0
   m_Sprite: {fileID: 5249984582747128811, guid: fcbb2e9a866c1894cb4845080d8cbd96, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -367,6 +368,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpriteManager
   sr: {fileID: 7385226655740497723}
+--- !u!114 &3642220009931477372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3267536099097334166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8133119d52b67742ae9eb793a2b2d2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteOutlineController
 --- !u!1 &4060810627522325961
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,7 +566,7 @@ MonoBehaviour:
     - {fileID: -6854862752865071187, guid: 6439b1e3c6e59244fa05895dfcc832e7, type: 3}
     - {fileID: 9202457461379119610, guid: 6439b1e3c6e59244fa05895dfcc832e7, type: 3}
     loop: 1
-    fps: 5
+    fps: 24
   JumpOne:
     sprites:
     - {fileID: 4281637774074219296, guid: 949c34c3160b45347b92b6bdf1ef7b8e, type: 3}

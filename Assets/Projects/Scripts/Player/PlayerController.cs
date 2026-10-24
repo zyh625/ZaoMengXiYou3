@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField]private PlayerState state;//当前状态,初始为待机
     public PlayerState State() => state;
+    public bool PressedInteract => PI.IsInteracting();
     void Awake()
     {
         SM = GetComponentInChildren<SpriteManager>();
@@ -275,6 +276,7 @@ public class PlayerController : MonoBehaviour
             {
                 SkillOver();
                 PM.HasSkilled();
+                PM.AllowJump(true);
                 return false;
             }
             return true;
@@ -327,6 +329,7 @@ public class PlayerController : MonoBehaviour
         {
             PC.Skilled = -1;//清空期间所有低优先级的请求
             PM.Stop();
+            PM.AllowJump(true);
             return false;
         }
         return true;

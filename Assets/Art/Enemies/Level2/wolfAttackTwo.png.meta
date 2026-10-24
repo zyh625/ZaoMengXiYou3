@@ -47,6 +47,9 @@ TextureImporter:
   - first:
       213: 2055175664185162748
     second: wolfAttackTwo_14
+  - first:
+      213: 651379561326916713
+    second: wolfAttackTwo_15
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -90,12 +93,12 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -117,7 +120,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -130,7 +133,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -146,11 +149,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 779
-        width: 385
-        height: 243
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 816
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.483146067, y: 0.481617647}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -167,12 +170,12 @@ TextureImporter:
       name: wolfAttackTwo_1
       rect:
         serializedVersion: 2
-        x: 411
-        y: 773
-        width: 374
-        height: 195
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 445
+        y: 816
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.456179775, y: 0.591911765}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -189,12 +192,12 @@ TextureImporter:
       name: wolfAttackTwo_2
       rect:
         serializedVersion: 2
-        x: 800
-        y: 765
-        width: 369
-        height: 202
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 890
+        y: 816
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.442696629, y: 0.599264706}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -211,12 +214,12 @@ TextureImporter:
       name: wolfAttackTwo_3
       rect:
         serializedVersion: 2
-        x: 1200
-        y: 779
-        width: 303
-        height: 235
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1335
+        y: 816
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.48988764, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -234,11 +237,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 216
-        width: 1536
-        height: 552
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 544
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.458426966, y: 0.507352941}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -255,12 +258,12 @@ TextureImporter:
       name: wolfAttackTwo_5
       rect:
         serializedVersion: 2
-        x: 800
-        y: 753
-        width: 7
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 445
+        y: 544
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.471910112, y: 0.470588235}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -277,12 +280,12 @@ TextureImporter:
       name: wolfAttackTwo_6
       rect:
         serializedVersion: 2
-        x: 1120
-        y: 522
-        width: 416
-        height: 250
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 890
+        y: 544
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.498876404, y: 0.507352941}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -299,12 +302,12 @@ TextureImporter:
       name: wolfAttackTwo_7
       rect:
         serializedVersion: 2
-        x: 0
-        y: 415
-        width: 5
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1335
+        y: 544
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.530337079, y: 0.488970588}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -321,12 +324,12 @@ TextureImporter:
       name: wolfAttackTwo_8
       rect:
         serializedVersion: 2
-        x: 206
-        y: 225
-        width: 19
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 272
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.474157303, y: 0.496323529}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -343,12 +346,12 @@ TextureImporter:
       name: wolfAttackTwo_9
       rect:
         serializedVersion: 2
-        x: 403
-        y: 17
-        width: 368
-        height: 236
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 445
+        y: 272
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.460674157, y: 0.470588235}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -365,12 +368,12 @@ TextureImporter:
       name: wolfAttackTwo_10
       rect:
         serializedVersion: 2
-        x: 776
-        y: 15
-        width: 364
-        height: 233
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 890
+        y: 272
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.458426966, y: 0.503676471}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -387,12 +390,12 @@ TextureImporter:
       name: wolfAttackTwo_11
       rect:
         serializedVersion: 2
-        x: 1006
-        y: 245
-        width: 11
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1335
+        y: 272
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.48988764, y: 0.580882353}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -409,12 +412,12 @@ TextureImporter:
       name: wolfAttackTwo_12
       rect:
         serializedVersion: 2
-        x: 1148
-        y: 12
-        width: 371
-        height: 234
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 0
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.460674157, y: 0.555147059}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -431,12 +434,12 @@ TextureImporter:
       name: wolfAttackTwo_13
       rect:
         serializedVersion: 2
-        x: 0
-        y: 11
-        width: 401
-        height: 212
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 445
+        y: 0
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.476404494, y: 0.492647059}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -453,12 +456,12 @@ TextureImporter:
       name: wolfAttackTwo_14
       rect:
         serializedVersion: 2
-        x: 214
-        y: 209
-        width: 9
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 890
+        y: 0
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.494382022, y: 0.492647059}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -467,6 +470,28 @@ TextureImporter:
       bones: []
       spriteID: cfbb8c6b063758c10800000000000000
       internalID: 2055175664185162748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolfAttackTwo_15
+      rect:
+        serializedVersion: 2
+        x: 1335
+        y: 0
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.516853933, y: 0.492647059}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6e5ecf72be24a6fb1b99316036bef7d
+      internalID: 651379561326916713
       vertices: []
       indices: 
       edges: []
@@ -487,11 +512,6 @@ TextureImporter:
     nameFileIdTable:
       wolfAttackTwo_0: -8713344638143488759
       wolfAttackTwo_1: 15176511986246591
-      wolfAttackTwo_10: 343142020500128705
-      wolfAttackTwo_11: 1369075142307524898
-      wolfAttackTwo_12: -1122860663831170248
-      wolfAttackTwo_13: 564407004263924186
-      wolfAttackTwo_14: 2055175664185162748
       wolfAttackTwo_2: -6982234925813404572
       wolfAttackTwo_3: 1588503649388022897
       wolfAttackTwo_4: -4546188341355765377
@@ -500,6 +520,12 @@ TextureImporter:
       wolfAttackTwo_7: 4185038618163209980
       wolfAttackTwo_8: 333033160949146757
       wolfAttackTwo_9: 6215255091303808460
+      wolfAttackTwo_10: 343142020500128705
+      wolfAttackTwo_11: 1369075142307524898
+      wolfAttackTwo_12: -1122860663831170248
+      wolfAttackTwo_13: 564407004263924186
+      wolfAttackTwo_14: 2055175664185162748
+      wolfAttackTwo_15: 651379561326916713
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

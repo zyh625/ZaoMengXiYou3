@@ -26,3 +26,7 @@ public enum EnemyState
 {
     Idle, Walk, Die, AttackOne,AttackTwo,Attacked
 }
+public enum TitanState
+{
+    Idle,Walk,Lunge,Boost,Attack,Attacked,Die,Tremor
+}
