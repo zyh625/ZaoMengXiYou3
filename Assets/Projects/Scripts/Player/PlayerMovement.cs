@@ -1,16 +1,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    private float walkSpeed = 5f, runSpeed = 8f,
-        comboSpeed = 2f, skillOneSpeed, backSpeed;
-    [SerializeField] private float flySlow = 0.7f, quickDown = 1.3f;
-    [SerializeField] private float skillThreeHorizon,
-        skillThreeUp,skillThreeDown;//空斩的移动阶段的速度
-    [SerializeField] private float upSpeed = 10f;
+    [SerializeField] private float walkSpeed = 5f, runSpeed = 8f, backSpeed;//走路、跑步、被击退的速度
+    [SerializeField] private float flySlow = 0.7f, quickDown = 1.3f;//空中的水平移速降低，按S下降加快
+    [SerializeField] private float upSpeed = 10f;//跳跃获得的速度
+    [SerializeField] private int maxJumpTime = 2;//最多连跳的次数
     private bool jumpRequest;
     private int hasJumped = 0;//最多二连跳
     public int HasJumped => hasJumped;
@@ -21,11 +17,11 @@ public class PlayerMovement : MonoBehaviour
     public float LastLeft => lastLeft;
     private float lastRight = -1f;//上次按下D键的时间
     public float LastRight => lastRight;
-    private bool right = true;//当前是否朝向右边
+    protected bool right = true;//当前是否朝向右边
     public bool FaceRight => right;
-    private int moveDirect = 0;
+    protected int moveDirect = 0;
     public bool IsMoving => moveDirect != 0;
-    private Rigidbody2D body;
+    protected Rigidbody2D body;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField]private float minNormalY;//与竖直向上的最小夹角
     private ContactFilter2D groundFilter;
@@ -34,8 +30,6 @@ public class PlayerMovement : MonoBehaviour
     public bool LandedThisFrame = false;
     public bool JumpedThisFrame = false;
     public float bodyX => body.position.x;
-    private bool skillFaceRight;
-    public bool SkillFaceRight => skillFaceRight;
     private bool quickDowning = false;
     private float beginGravity;
     private bool isQuickDowning = false;
@@ -46,6 +40,11 @@ public class PlayerMovement : MonoBehaviour
         if (!flag) jumpRequest = false;
         allowJump = flag;
     }
+    public virtual void CheckComboMove(int combo) => CheckNormalHorizonMove();
+    public virtual void CheckSkillMove(int skill, int state) => CheckNormalHorizonMove();
+    public virtual void Skilled() { }
+    public virtual void HasSkilled() { }
+
     private void Awake()
     {
         body=GetComponent<Rigidbody2D>();
@@ -53,6 +52,19 @@ public class PlayerMovement : MonoBehaviour
         groundFilter.SetLayerMask(groundLayer);
         groundFilter.useTriggers = false;
         beginGravity = body.gravityScale;
+    }
+    private void OnEnable()
+    {
+        body.gravityScale = beginGravity;
+        hasJumped = 0;
+        jumpRequest = false;
+        allowJump = true;
+    }
+    private void OnDisable()
+    {
+        if (body != null) body.linearVelocity = Vector2.zero;
+        isGround = true;
+        hasJumped = 0;
     }
     public void OnQuickDown()
     {
@@ -78,46 +90,34 @@ public class PlayerMovement : MonoBehaviour
         moveDirect = dir;
         right = dir > 0;
     }
-    public void CheckMove(bool combo,int skill,int skillThreeState)
+    protected void UpdateDirect()
     {
-        if (moveDirect != 0f) right = moveDirect > 0;
-        float dt = Time.deltaTime;
+        if (moveDirect != 0)
+            right = moveDirect > 0;
+    }
+    protected void MoveWithInput(float speed)
+    {
+        UpdateDirect();
         Vector2 velocity = body.linearVelocity;
-        if (!isGround && quickDowning&&!isQuickDowning)
+        velocity.x = moveDirect == 0 ? 0f :
+            (right ? speed : -speed) * (isGround ? 1f : flySlow);
+        body.linearVelocity = velocity;
+    }
+    public void CheckNormalHorizonMove()=>
+        MoveWithInput(runRequest ? runSpeed : walkSpeed);
+    protected void SetHorizonSpeed(float speed) => body.linearVelocity = new
+        (speed, body.linearVelocityY);
+    public void CheckQuickDown()
+    {
+        if (!isGround && quickDowning && !isQuickDowning)
         {
             body.gravityScale *= quickDown;
             quickDowning = false;
             isQuickDowning = true;
         }
-        if (skill == 1)
-            velocity.x = (skillFaceRight ? 1f : -1f) * skillOneSpeed;
-        else if (skill == 2)
-            velocity = Vector2.zero;
-        else if (skill == 3)
-        {
-            velocity = Vector2.zero;
-            SkillThreeMove(skillThreeState);
-        }
-        else if (moveDirect == 0f)
-        {
-            velocity.x = 0f;
-            body.linearVelocity = velocity;
-            return;
-        }
-        else
-            velocity.x = (right ? 1f : -1f) * (combo ? comboSpeed :
-                runRequest ? runSpeed : walkSpeed) * (isGround ? 1f : flySlow);
-        body.linearVelocity=velocity;
     }
     public void LimitedRange(float minX, float maxX) => body.position = new Vector2(
         Mathf.Clamp(body.position.x, minX, maxX), body.position.y);
-    private void SkillThreeMove(int state)
-    {
-        if (state == 1 || state == 3) return;
-        Vector2 dir = new((skillFaceRight ? 1f : -1f) * skillThreeHorizon,
-            state == 0 ? skillThreeUp : -skillThreeDown);
-        body.position += Time.fixedDeltaTime * dir;
-    }
     public void CheckIsGround()
     {
         bool wasGround = isGround;
@@ -133,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
             Vector2 velocity = body.linearVelocity;
             body.gravityScale = beginGravity;
             jumpRequest = false;
-            if (hasJumped < 2)
+            if (hasJumped < maxJumpTime)
             {
                 QuickDownRecover();
                 velocity.y = upSpeed;
@@ -165,14 +165,7 @@ public class PlayerMovement : MonoBehaviour
         if (isGround) return 0;
         return body.linearVelocityY > 0.1f ? 1 : -1;
     }
-    private void OnDisable()
-    {
-        if (body != null) body.linearVelocity = Vector2.zero;
-        isGround = true;
-        hasJumped = 0;
-    }
-    public void Skilled() => skillFaceRight = right;
-    public void HasSkilled() => right = skillFaceRight;
+
     public void Stop() => body.linearVelocity = new Vector2(0f, body.linearVelocityY);
     public void AttackedMove(bool r) => body.linearVelocity = new
         Vector2(backSpeed * (r ? 1f : -1f), body.linearVelocityY);
