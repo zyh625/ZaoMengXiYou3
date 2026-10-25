@@ -3,13 +3,12 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField]
-    private SpriteData Idle, Walk, AttackOne, AttackTwo,
-        Attacked, Die;
+    private SpriteData Idle, Walk,Attacked, Die;
     protected SpriteManager SM;
     private EnemyMovement EM;
-    private Health TH;
-    private EnemyCombat TC;
-    [SerializeField] private EnemyState state;
+    protected Health EH;
+    protected EnemyCombat EC;
+    [SerializeField] protected EnemyState state;
     [SerializeField] private float stopDistance;
     [SerializeField] protected BoxCollider2D attackedBox;
     [SerializeField] private int specialAttack;
@@ -17,36 +16,54 @@ public class EnemyController : MonoBehaviour
     protected virtual void Awake()
     {
         SM = GetComponentInChildren<SpriteManager>(true);
-        TH = GetComponent<Health>();
+        EH = GetComponent<Health>();
         EM = GetComponent<EnemyMovement>();
-        TC = GetComponent<EnemyCombat>();
+        EC = GetComponent<EnemyCombat>();
     }
-    void OnEnable()
+    protected virtual void OnEnable()
     {
         SetState(EnemyState.Idle);
         SM.ChangeState(Idle);
     }
-    protected virtual void SpecialAttackOver() { }
-    protected virtual void CheckSpecial() { }
-    protected virtual void SpecialAttackSet(float dis) { }
+    protected virtual void SpecialAttackOver() { }//特殊攻击结束
+    protected virtual void CheckSpecialAttack() { }//检查当前是否为特殊攻击
+    protected virtual void SpecialAttackSet(float dis) { }//特殊攻击设置
+    protected virtual bool SkillBoost=> false;//增益型技能，不能与愤怒叠加
+    protected virtual void SkillSet() { }//技能设置
+    protected virtual void CheckSkillBoostLose() { }//检查当前增益型技能是否失效
+    protected virtual void CheckSkill() { }//检查当前技能阶段对应技能效果
+    protected virtual bool SkillReady => false;//当前是否可以释放技能
     private void FixedUpdate()
     {
         if (DieProcessing()) return;
-        if (TH.Dead)
+        if (EH.Dead)
         {
             EM.Stop(); AttackOver();
             SetState(EnemyState.Die);
             return;
         }
-        if (TC.AngryRequest)
+        if (EC.AngryRequest&&!SkillBoost)
             ObtainAngry();
-        if (TC.Angry && TC.AngryEnd)
+        if (EC.Angry && EC.AngryEnd)
             LoseAngry();
-        if (!TH.Boost && TH.Attacked)
+        CheckSkill();
+        if (SkillReady)
         {
-            TH.AttackedEnd(); AttackOver();
-            TC.UpdateAngry();
-            EM.AttackedMove(TH.AttackedRight, TH.AttackedUp);
+            SkillSet(); AttackOver();EM.Stop();
+            SetState(EnemyState.Skill);
+            return;
+        }
+        if (SkillProcessing())
+        {
+            CheckSkill();//技能效果
+            return;
+        }
+        CheckSkillBoostLose();
+        if (!EH.Boost && EH.Attacked)//当前无免控且受击
+        {
+            EH.AttackedEnd(); AttackOver();
+            EC.UpdateAngry();
+            EM.AttackedMove(EH.AttackedRight, EH.AttackedUp);
             SetState(EnemyState.Attacked);
             return;
         }
@@ -58,23 +75,24 @@ public class EnemyController : MonoBehaviour
             SetState(EnemyState.Idle);
             return;
         }
-        if (AttackProcessing())
+        if (AttackProcessing())//攻击期间
         {
-            if (TC.AttackOpen(SM.CurFrame)) TC.AttackBegin();
-            if (TC.AttackShut(SM.CurFrame)) TC.AttackEnd();
-            if (TC.Attack == specialAttack) CheckSpecial();
+            if (EC.AttackOpen(SM.CurFrame)) EC.AttackBegin();
+            if (EC.AttackShut(SM.CurFrame)) EC.AttackEnd();
+            if (EC.Attack == specialAttack) CheckSpecialAttack();//特殊攻击，无敌帧等
             return;
         }
         float dis = EM.DeltaX;
-        TC.CheckAttack();
-        if (TC.AttackReady())
+        EC.CheckAttack();
+        if (EC.AttackReady())//满足攻击条件
         {
-            TC.HasAtatck(dis > 0f); EM.Stop(); SpecialAttackSet(dis);
-            SetState(TC.AttackRequest[0] ? EnemyState.AttackOne : EnemyState.AttackTwo);
+            EC.HasAtatck(dis > 0f); EM.Stop(); SpecialAttackSet(dis);
+            SM.ChangeSpriteFace(dis > 0f);
+            SetState(EnemyState.Attacking);
             return;
         }
         SM.ChangeSpriteFace(dis > 0f);
-        TC.ChangeCheckBox(dis > 0f);
+        EC.ChangeCheckBox(dis > 0f);
         if (Mathf.Abs(dis) <= stopDistance)//靠近玩家停止
         {
             EM.Stop();
@@ -82,31 +100,34 @@ public class EnemyController : MonoBehaviour
             return;
         }
         SetState(EnemyState.Walk);
-        EM.Move(TH.Slow);
+        EM.Move(EH.Slow);
     }
+    protected virtual void HandleAttack(int attack) { }
+    protected virtual void HandleSkill() { }
     private void SetState(EnemyState next)
     {
-        if (next == state && (state != EnemyState.Attacked)) return;
+        if (next == state && state!=EnemyState.Attacking
+            && state != EnemyState.Attacked) return;
         state = next;
         switch (state)
         {
             case EnemyState.Idle: SM.ChangeState(Idle); break;
             case EnemyState.Walk: SM.ChangeState(Walk); break;
-            case EnemyState.AttackOne: SM.ChangeState(AttackOne); break;
-            case EnemyState.AttackTwo: SM.ChangeState(AttackTwo); break;
+            case EnemyState.Attacking:HandleAttack(EC.Attack);break;
             case EnemyState.Attacked: SM.ChangeState(Attacked); break;
             case EnemyState.Die: SM.ChangeState(Die); break;
+            case EnemyState.Skill:HandleSkill();break;
         }
     }
-    private bool DieProcessing()
+    private bool DieProcessing()//死亡过程中
     {
         if (state != EnemyState.Die) return false;
         if (SM.IsFinished) gameObject.SetActive(false);
         return true;
     }
-    private bool AttackedProcessing()
+    private bool AttackedProcessing()//受击过程
     {
-        if (TH.Boost || state != EnemyState.Attacked) return false;
+        if (EH.Boost || state != EnemyState.Attacked) return false;
         if (SM.IsFinished)
         {
             EM.Stop();
@@ -114,41 +135,48 @@ public class EnemyController : MonoBehaviour
         }
         return true;
     }
-    private bool AttackProcessing()
+    protected virtual void SpecialOver() { }
+    private bool AttackProcessing()//攻击过程
     {
-        if (TC.Attack == -1) return false;
+        if (EC.Attack == -1) return false;
         if (SM.IsFinished)
         {
             AttackOver();
+            SpecialOver();
             return false;
         }
         return true;
     }
-    private void AttackOver()
+    protected void AttackOver()//攻击结束
     {
-        TC.AttackEnd();
-        TC.AttackOver();
+        EC.AttackEnd();
+        EC.AttackOver();
         SpecialAttackOver();
-        attackedBox.gameObject.SetActive(true);
     }
-
-    public void ChangeFace(bool r)
+    private void ObtainAngry()//愤怒增益
     {
-        SM.ChangeSpriteFace(!r);//默认朝左
-        TC.ChangeCheckBox(r);
-    }
-    private void ObtainAngry()
-    {
-        TC.AngryRequest = false;
-        TC.Boost();
+        EC.AngryRequest = false;
+        EC.Boost();
         SM.SetRed();
         SM.SetAngry(true);
         EM.Boost();
     }
-    private void LoseAngry()
+    private void LoseAngry()//愤怒结束
     {
-        TC.BoostOver();
+        EC.AngryRequest = false;//愤怒过程积累怒气无效
+        EC.BoostOver();
         SM.SetAngry(false);
         EM.ReturnSpeed();
     }
+    private bool SkillProcessing()
+    {
+        if(state!=EnemyState.Skill) return false;
+        if (SM.IsFinished)
+        {
+            SkillOver();
+            return false;
+        }
+        return true;
+    }
+    protected virtual void SkillOver() { }
 }

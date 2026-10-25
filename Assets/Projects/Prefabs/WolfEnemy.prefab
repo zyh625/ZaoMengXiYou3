@@ -374,46 +374,6 @@ MonoBehaviour:
     - {fileID: 363588208777123067, guid: 5329ecc61516d0a4798b76028d959df7, type: 3}
     loop: 1
     fps: 12
-  AttackOne:
-    sprites:
-    - {fileID: -2235164916964070328, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
-    - {fileID: -3752031697093632910, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
-    - {fileID: -8928027680344015417, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
-    - {fileID: -1812723229190285822, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
-    - {fileID: -8395402699903474760, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
-    - {fileID: -5024704793152458604, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
-    - {fileID: 1071281792842844429, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
-    - {fileID: -4589982125590346227, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
-    - {fileID: 1852483257811371567, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
-    - {fileID: 1985559665633978776, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
-    - {fileID: -8014259847875615693, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
-    - {fileID: -6334293543504550301, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
-    - {fileID: 8273073554034278552, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
-    - {fileID: -6394354405367690826, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
-    - {fileID: 8086434791622520243, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
-    - {fileID: 1688728416394507264, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
-    loop: 0
-    fps: 20
-  AttackTwo:
-    sprites:
-    - {fileID: -8713344638143488759, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
-    - {fileID: 15176511986246591, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
-    - {fileID: -6982234925813404572, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
-    - {fileID: 1588503649388022897, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
-    - {fileID: -4546188341355765377, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
-    - {fileID: 7923677718376280131, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
-    - {fileID: 3988237888152488740, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
-    - {fileID: 4185038618163209980, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
-    - {fileID: 333033160949146757, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
-    - {fileID: 6215255091303808460, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
-    - {fileID: 343142020500128705, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
-    - {fileID: 1369075142307524898, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
-    - {fileID: -1122860663831170248, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
-    - {fileID: 564407004263924186, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
-    - {fileID: 2055175664185162748, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
-    - {fileID: 651379561326916713, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
-    loop: 0
-    fps: 18
   Attacked:
     sprites:
     - {fileID: -3540762577484686366, guid: 06313c11a2849784d95e44fceef8ce6d, type: 3}
@@ -455,9 +415,49 @@ MonoBehaviour:
     loop: 0
     fps: 16
   state: 0
-  stopDistance: 0.8
+  stopDistance: 1
   attackedBox: {fileID: 3355974508128090400}
   specialAttack: 1
+  AttackOne:
+    sprites:
+    - {fileID: -2235164916964070328, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
+    - {fileID: -3752031697093632910, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
+    - {fileID: -8928027680344015417, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
+    - {fileID: -1812723229190285822, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
+    - {fileID: -8395402699903474760, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
+    - {fileID: -5024704793152458604, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
+    - {fileID: 1071281792842844429, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
+    - {fileID: -4589982125590346227, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
+    - {fileID: 1852483257811371567, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
+    - {fileID: 1985559665633978776, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
+    - {fileID: -8014259847875615693, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
+    - {fileID: -6334293543504550301, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
+    - {fileID: 8273073554034278552, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
+    - {fileID: -6394354405367690826, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
+    - {fileID: 8086434791622520243, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
+    - {fileID: 1688728416394507264, guid: da303efa51b76a84bbb3b503d0583c27, type: 3}
+    loop: 0
+    fps: 20
+  AttackTwo:
+    sprites:
+    - {fileID: -8713344638143488759, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
+    - {fileID: 15176511986246591, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
+    - {fileID: -6982234925813404572, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
+    - {fileID: 1588503649388022897, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
+    - {fileID: -4546188341355765377, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
+    - {fileID: 7923677718376280131, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
+    - {fileID: 3988237888152488740, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
+    - {fileID: 4185038618163209980, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
+    - {fileID: 333033160949146757, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
+    - {fileID: 6215255091303808460, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
+    - {fileID: 343142020500128705, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
+    - {fileID: 1369075142307524898, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
+    - {fileID: -1122860663831170248, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
+    - {fileID: 564407004263924186, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
+    - {fileID: 2055175664185162748, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
+    - {fileID: 651379561326916713, guid: 90b634a03879d864dba8455051fc00d4, type: 3}
+    loop: 0
+    fps: 18
 --- !u!114 &2385127664463431208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,11 +471,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WolfMovement
   moveSpeed: 1.2
-  backSpeed: 5
+  backSpeed: 3.5
   upSpeed: 6
   slowSpeed: 1
   boostRatio: 2
   minNormalY: 0.6
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   LandedThisFrame: 0
   lungeSpeed: 10
   startLunge: 4

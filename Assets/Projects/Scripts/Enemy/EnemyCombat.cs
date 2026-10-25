@@ -26,7 +26,7 @@ public class EnemyCombat : MonoBehaviour
     public bool AngryRequest = false;
     private float lastAngry = -1f;
     public bool AngryEnd=> (Time.time - lastAngry) >= angryDuration;
-    public bool AttackReady()
+    public bool AttackReady()//是否能攻击
     {
         for(int i=0;i<attackNum;i++)
             if (AttackRequest[i])return true;
@@ -55,22 +55,19 @@ public class EnemyCombat : MonoBehaviour
         {
             AttackBoxes[i].gameObject.SetActive(false);
             enemyAttackBoxes[i].ReturnBegin();
+            curAttackDelay[i] = attackDelay[i];
             lastAttack[i] = Time.time;//开始都进入冷却，给玩家反应时间
             AttackRequest[i] = false;
         }
     }
-    public void CheckAttack()
+    public void CheckAttack()//检查当前是否满足攻击条件
     {
         if (Attack != -1) return;
         for (int i = 0; i < attackNum; i++)
-            AttackRequest[i] = CheckBox(i);
-    }
-    private bool CheckBox(int i)
-    {
-        return CheckAttackLogic[i].PlayerIn &&
+            AttackRequest[i] = CheckAttackLogic[i].PlayerIn &&
             Time.time - lastAttack[i] >= curAttackDelay[i];
     }
-    public void HasAtatck(bool r)
+    public void HasAtatck(bool r)//成功攻击
     {
         int cur = -1;
         for(int i=0; i<attackNum; i++)
@@ -83,17 +80,17 @@ public class EnemyCombat : MonoBehaviour
         AttackFaceRight = r;
         ChangeBoxFace(AttackBoxes[cur], r);
     }
-    public void AttackBegin()
+    public void AttackBegin()//开始有效攻击
     {
         if (!AttackBoxes[curAttack].gameObject.activeSelf)
             AttackBoxes[curAttack].gameObject.SetActive(true);
     }
-    public void AttackEnd()
+    public void AttackEnd()//有效攻击结束
     {
         if (curAttack!=-1&&AttackBoxes[curAttack].gameObject.activeSelf)
             AttackBoxes[curAttack].gameObject.SetActive(false);
     }
-    public void ChangeCheckBox(bool r)
+    public void ChangeCheckBox(bool r)//改变检查箱方向
     {
         for (int i = 0; i < attackNum; i++)
             ChangeBoxFace(CheckAttackBoxes[i], r);
@@ -115,7 +112,7 @@ public class EnemyCombat : MonoBehaviour
             AngryRequest = true;
         }
     }
-    public void Boost()
+    public void Boost()//愤怒模式
     {
         lastAngry = Time.time;
         angry = true;
@@ -125,7 +122,7 @@ public class EnemyCombat : MonoBehaviour
             curAttackDelay[i] *= delayRatio;
         }
     }
-    public void BoostOver()
+    public void BoostOver()//愤怒模式结束
     {
         angry = false;
         for (int i = 0; i < attackNum; i++)

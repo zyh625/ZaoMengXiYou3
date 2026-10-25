@@ -896,6 +896,9 @@ MonoBehaviour:
   slowSpeed: 1
   boostRatio: 1.6
   minNormalY: 0.6
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   LandedThisFrame: 0
   attackTwoSpeed: 10
   startLunge: 6

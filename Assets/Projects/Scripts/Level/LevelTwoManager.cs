@@ -4,6 +4,7 @@ using zmxy.GamePlay;
 
 public class LevelTwoManager : MonoBehaviour
 {
+    [SerializeField] private UIManager ui;
     [SerializeField] private int curWave = 0;
     [SerializeField] private CameraManager CM;
     [SerializeField] private int[] leftEnemyMax, rightEnemyMax;
@@ -189,6 +190,8 @@ public class LevelTwoManager : MonoBehaviour
             (tran.position.x, createY);
         curPlayer.gameObject.SetActive(true);
         playerInNextWave = true;
+        ui.SetPlayer(curPlayer);
+        ui.InitPlayer();
     }
     private void InitEnemies()
     {

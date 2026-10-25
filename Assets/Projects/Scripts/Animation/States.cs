@@ -22,11 +22,11 @@ public enum PlayerState
     Land,
     RiseAttack
 }
-public enum EnemyState
-{
-    Idle, Walk, Die, AttackOne,AttackTwo,Attacked
-}
 public enum TitanState
 {
     Idle,Walk,Lunge,Boost,Attack,Attacked,Die,Tremor
+}
+public enum EnemyState
+{
+    Idle, Walk, Die, Attacking, Attacked,Skill
 }

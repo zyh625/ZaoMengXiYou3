@@ -4,6 +4,8 @@ public class Health : MonoBehaviour,IDamage
 {
     [SerializeField] private float beginBlood;
     [SerializeField]private float curBlood;
+    public float BeginBlood => beginBlood;
+    public float CurBlood => curBlood;
     private bool die, attacked;
     public bool Dead => die;
     public bool Attacked => attacked;

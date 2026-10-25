@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     private PlayerInteract PI;
     private Health PH;
     private CameraManager CM;
+    private PlayerUI UI;
     [SerializeField] private BoxCollider2D checkAttacked;
     private float deltaHalf;//人物相对于相机中心的最大偏移距离
     public float DeltaHalf => deltaHalf;
@@ -48,6 +49,7 @@ public class PlayerController : MonoBehaviour
         PC = GetComponent<PlayerCombat>();
         PI= GetComponent<PlayerInteract>();
         PH = GetComponent<Health>();
+        UI = GetComponent<PlayerUI>();
         CM = Camera.main.GetComponent<CameraManager>();
         deltaHalf = CM.CameraHalf - GetComponent<BoxCollider2D>().bounds.size.x / 2;
     }
@@ -86,7 +88,11 @@ public class PlayerController : MonoBehaviour
             AttackOver(); ComboOver(); RiseOver();SkillOver(); PM.AllowJump(false);//打断所有
             PH.AttackedEnd();
             if (PH.Dead) PM.Stop();
-            else PM.AttackedMove(PH.AttackedRight);
+            else
+            {
+                UI.UpdateHP(PH.CurBlood, PH.BeginBlood);
+                PM.AttackedMove(PH.AttackedRight);
+            }
             SetState(PH.Dead ? PlayerState.Die : PlayerState.Attacked);
             return;
         }

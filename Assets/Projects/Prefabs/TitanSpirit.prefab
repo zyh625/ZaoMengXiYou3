@@ -306,6 +306,7 @@ MonoBehaviour:
   boostRatio: 2
   boostDuration: 8
   attackedBox: {fileID: 4409679433834577535}
+  specialAttack: 1
   bloodRatio:
   - 0.75
   - 0.45
@@ -374,6 +375,9 @@ MonoBehaviour:
   slowSpeed: 1
   boostRatio: 2
   minNormalY: 0.6
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   LandedThisFrame: 0
   lungeDuration: 8
   lungeSpeed: 14
