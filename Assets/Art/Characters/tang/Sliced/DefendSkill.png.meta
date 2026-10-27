@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: 08a2731960b659f79a81261e10608866
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: DefendSkill_01
+  - first:
+      213: 21300002
+    second: DefendSkill_02
+  - first:
+      213: 21300004
+    second: DefendSkill_03
+  - first:
+      213: 21300006
+    second: DefendSkill_04
+  - first:
+      213: 21300008
+    second: DefendSkill_05
+  - first:
+      213: 21300010
+    second: DefendSkill_06
+  - first:
+      213: 21300012
+    second: DefendSkill_07
+  - first:
+      213: 21300014
+    second: DefendSkill_08
+  - first:
+      213: 21300016
+    second: DefendSkill_09
+  - first:
+      213: 21300018
+    second: DefendSkill_10
+  - first:
+      213: 21300020
+    second: DefendSkill_11
+  - first:
+      213: 21300022
+    second: DefendSkill_12
+  - first:
+      213: 21300024
+    second: DefendSkill_13
+  - first:
+      213: 21300026
+    second: DefendSkill_14
+  - first:
+      213: 21300028
+    second: DefendSkill_15
+  - first:
+      213: 21300030
+    second: DefendSkill_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 9
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DefendSkill_01
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 950
+        width: 311
+        height: 312
+      alignment: 9
+      pivot: {x: 0.4903536977, y: 0.5032051282}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bca70ceb75758edaada9308b4d857c8
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DefendSkill_02
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 950
+        width: 311
+        height: 312
+      alignment: 9
+      pivot: {x: 0.4935691318, y: 0.5128205128}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 165040fb6377548798f577f383dbfe55
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DefendSkill_03
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 950
+        width: 311
+        height: 312
+      alignment: 9
+      pivot: {x: 0.5048231511, y: 0.5112179487}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 079cb49e05315d0c98726329fb775146
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DefendSkill_04
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 950
+        width: 311
+        height: 312
+      alignment: 9
+      pivot: {x: 0.5032154341, y: 0.5016025641}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c95233cd4735d0a864cecb21be62d30
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DefendSkill_05
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 634
+        width: 311
+        height: 312
+      alignment: 9
+      pivot: {x: 0.4951768489, y: 0.5016025641}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 582a2c56991a5971aa8b72168ab18ecb
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DefendSkill_06
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 634
+        width: 311
+        height: 312
+      alignment: 9
+      pivot: {x: 0.4935691318, y: 0.5032051282}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1855e5e9b1b7577eb5806ae3909d1166
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DefendSkill_07
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 634
+        width: 311
+        height: 312
+      alignment: 9
+      pivot: {x: 0.5000000000, y: 0.4983974359}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca39b1b442535e18b4e2dfbe7f2d8218
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DefendSkill_08
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 634
+        width: 311
+        height: 312
+      alignment: 9
+      pivot: {x: 0.5064308682, y: 0.5016025641}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aae47b93c6d05e4b8e1db8fa3826f1da
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DefendSkill_09
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 318
+        width: 311
+        height: 312
+      alignment: 9
+      pivot: {x: 0.4935691318, y: 0.5000000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c130ece4650055f69d9c6d09012ab9b6
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DefendSkill_10
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 318
+        width: 311
+        height: 312
+      alignment: 9
+      pivot: {x: 0.4951768489, y: 0.5000000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9931cec20f0a5f238857f8d2c5b59857
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DefendSkill_11
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 318
+        width: 311
+        height: 312
+      alignment: 9
+      pivot: {x: 0.5048231511, y: 0.5016025641}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a75aea88efe59f7859383b9260bd0b5
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DefendSkill_12
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 318
+        width: 311
+        height: 312
+      alignment: 9
+      pivot: {x: 0.5048231511, y: 0.5000000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dab54a909afe5ce5a01a5c770da13a0b
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DefendSkill_13
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 311
+        height: 312
+      alignment: 9
+      pivot: {x: 0.4919614148, y: 0.5032051282}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55eb1cc8a26a560e9acda64cc14b0d1c
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DefendSkill_14
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 2
+        width: 311
+        height: 312
+      alignment: 9
+      pivot: {x: 0.4935691318, y: 0.5032051282}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5a6071abcb05efdb4b8a801f805340d
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DefendSkill_15
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 2
+        width: 311
+        height: 312
+      alignment: 9
+      pivot: {x: 0.4967845659, y: 0.5032051282}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56cfa40184c75e4db7f85628f756573a
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DefendSkill_16
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 2
+        width: 311
+        height: 312
+      alignment: 9
+      pivot: {x: 0.5032154341, y: 0.5016025641}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de16f50510515d4eb453a09cf28c462f
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      DefendSkill_01: 21300000
+      DefendSkill_02: 21300002
+      DefendSkill_03: 21300004
+      DefendSkill_04: 21300006
+      DefendSkill_05: 21300008
+      DefendSkill_06: 21300010
+      DefendSkill_07: 21300012
+      DefendSkill_08: 21300014
+      DefendSkill_09: 21300016
+      DefendSkill_10: 21300018
+      DefendSkill_11: 21300020
+      DefendSkill_12: 21300022
+      DefendSkill_13: 21300024
+      DefendSkill_14: 21300026
+      DefendSkill_15: 21300028
+      DefendSkill_16: 21300030
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

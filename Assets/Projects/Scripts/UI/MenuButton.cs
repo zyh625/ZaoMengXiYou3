@@ -104,6 +104,7 @@ public class MenuButton : MonoBehaviour
     {
         fileButtons[fileIndex].gameObject.SetActive(false);
         SaveSystem.Delete(fileIndex);
+        haveFile[fileIndex] = false;//覆盖后按新存档读取输入昵称，不能仍当作已存在的旧档进入
         CreatFile.SetActive(true);
     }
     public void AboutGame()//关于游戏

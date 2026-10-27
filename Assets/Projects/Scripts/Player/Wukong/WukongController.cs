@@ -48,7 +48,7 @@ public class WukongController : PlayerController
             if (WC.SkillThreeCur == 2)
             {
                 SM.Pause();
-                if (WM.AirState() == 0)
+                if (WM.AirState() == 0 || WM.MovementBlocked)
                 {
                     SM.Resume();
                     WC.SkillThreeCur = 3;
@@ -57,11 +57,12 @@ public class WukongController : PlayerController
         }
     }
     protected override bool ComboEnd => (WC.Comboed == 1 && SM.IsFinished)
-        || (WC.Comboed == 2 && (!WM.IsMoving || !IR.AttackHeld));
+        || (WC.Comboed == 2 && (!WM.WantsMove || !IR.AttackHeld));
     protected override bool TryComboAttack()
     {
-        if (WM.IsMoving&&WC.AttackThisFrame)
+        if (WM.WantsMove&&WC.AttackThisFrame)
         {
+            if (!WC.TryBeginCombo(2)) return false;
             WC.AttackThisFrame = false;
             WC.Comboed = 2;
             SetState(PlayerState.ComboAttack);
@@ -69,6 +70,7 @@ public class WukongController : PlayerController
         }
         if (PI.IsInteracting() && WC.AttackThisFrame)
         {
+            if (!WC.TryBeginCombo(1)) return false;
             WC.AttackThisFrame = false;
             WC.Comboed = 1;
             SetState(PlayerState.ComboAttack);

@@ -17,6 +17,7 @@ public class InputReader : MonoBehaviour
     public event Action SwitchNextPressed;//切换下一个角色
     public event Action InteractPressed;//W，从出口出去
     public event Action QuickDownPressed;//S,从空中快速下降
+    public event Action QuickDownReleased;//S松开，供需要持续按住的组合技结束使用
     private InputActionAsset curInputAction;//输入系统实例
     private InputActionMap playerMap;
     private InputAction moveButton, jumpButton;
@@ -24,13 +25,19 @@ public class InputReader : MonoBehaviour
     private InputAction skillOneButton, skillTwoButton, skillThreeButton;
     private InputAction switchPriButton, switchNextButton;
     private InputAction interactButton, quickDownButton;
+    private ActorStatus status;//冻结时舍弃操作事件，不在恢复后补放之前按过的攻击和技能
+    public float MoveValue => moveButton != null ? moveButton.ReadValue<float>() : 0f;//解冻后读取实际仍按住的移动轴，不重新触发一次按下事件
+    private bool ActionsBlocked => status != null && status.BlocksActions;
+    private bool MovementBlocked => status != null && status.BlocksMovement;
     public bool AttackHeld => attackButton != null
         && attackButton.IsPressed();
+    public bool QuickDownHeld => quickDownButton != null && quickDownButton.IsPressed();//读取Action，保持支持改键
 
 
 
     private void Awake()
     {
+        status = GetComponent<Health>()?.Status;
         if (inputAction == null)
         {
             Debug.Log("无输入系统"); return;
@@ -60,6 +67,7 @@ public class InputReader : MonoBehaviour
         skillTwoButton.performed += OnSkillTwo;
         skillThreeButton.performed += OnSkillThree;
         quickDownButton.performed += OnQuickDown;
+        quickDownButton.canceled += OnQuickDownReleased;
     }
     private void OnDisable()
     {
@@ -72,28 +80,55 @@ public class InputReader : MonoBehaviour
         skillTwoButton.performed -= OnSkillTwo;
         skillThreeButton.performed -= OnSkillThree;
         quickDownButton.performed -= OnQuickDown;
+        quickDownButton.canceled -= OnQuickDownReleased;
     }
 
-    private void OnMove(InputAction.CallbackContext ctx) => MovePressed?.Invoke(ctx);
-    private void OnJump(InputAction.CallbackContext ctx) => JumpPressed?.Invoke();
-    private void OnAttack(InputAction.CallbackContext ctx) => AttackPressed?.Invoke();
-    private void OnSkillOne(InputAction.CallbackContext ctx) => 
-        SkillOnePressed?.Invoke(1);
-    private void OnSkillTwo(InputAction.CallbackContext ctx) =>
-        SkillTwoPressed?.Invoke(2);
-    private void OnSkillThree(InputAction.CallbackContext ctx) =>
-        SkillThreePressed?.Invoke(3);
-    private void OnQuickDown(InputAction.CallbackContext ctx) => QuickDownPressed?.Invoke();
+    private void OnMove(InputAction.CallbackContext ctx)
+    {
+        if (!ActionsBlocked) MovePressed?.Invoke(ctx);
+    }
+    private void OnJump(InputAction.CallbackContext ctx)
+    {
+        if (!MovementBlocked) JumpPressed?.Invoke();
+    }
+    private void OnAttack(InputAction.CallbackContext ctx)
+    {
+        if (!ActionsBlocked) AttackPressed?.Invoke();
+    }
+    private void OnSkillOne(InputAction.CallbackContext ctx)
+    {
+        if (!ActionsBlocked) SkillOnePressed?.Invoke(1);
+    }
+    private void OnSkillTwo(InputAction.CallbackContext ctx)
+    {
+        if (!ActionsBlocked) SkillTwoPressed?.Invoke(2);
+    }
+    private void OnSkillThree(InputAction.CallbackContext ctx)
+    {
+        if (!ActionsBlocked) SkillThreePressed?.Invoke(3);
+    }
+    private void OnQuickDown(InputAction.CallbackContext ctx)
+    {
+        if (!MovementBlocked) QuickDownPressed?.Invoke();
+    }
+    private void OnQuickDownReleased(InputAction.CallbackContext ctx) => QuickDownReleased?.Invoke();
 
     private void Update()
     {
+        if (ActionsBlocked) return;
         if (boostButton.WasPressedThisFrame())
-            BoostPressed.Invoke();
+            BoostPressed?.Invoke();
         if (switchPriButton.WasPressedThisFrame())
-            SwitchPriPressed.Invoke();
+        {
+            SwitchPriPressed?.Invoke();
+            return;//换人可能已停用当前对象，不再继续处理旧角色本帧的输入
+        }
         if (switchNextButton.WasPressedThisFrame())
-            SwitchNextPressed.Invoke();
+        {
+            SwitchNextPressed?.Invoke();
+            return;
+        }
         if (interactButton.WasPressedThisFrame())
-            InteractPressed.Invoke();
+            InteractPressed?.Invoke();
     }
 }

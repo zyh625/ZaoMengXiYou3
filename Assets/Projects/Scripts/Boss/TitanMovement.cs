@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TitanMovement : EnemyMovement
+public class TitanMovement : EnemyMovement, IEnemyArenaBounds
 {
     [SerializeField] private float lungeDuration,lungeSpeed;//来回冲刺，限定时间和速度
     private float edgeL, edgeR;
@@ -26,6 +26,7 @@ public class TitanMovement : EnemyMovement
     {
         edgeL= left; edgeR= right;
     }
+    public void SetArenaBounds(float left, float right) => SetEdge(left, right);//通用关卡通过接口注入边界，保留原SetEdge入口
     private void Lunge()
     {
         Vector2 velocity = body.linearVelocity;

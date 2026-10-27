@@ -22,6 +22,7 @@ public class EnemyCombat : MonoBehaviour
     [SerializeField] private float angryFull, angryRatio,deltaAngry,angryDuration,delayRatio;//怒气总量，愤怒状态下的攻击增益
     [SerializeField]private float curAngry;
     private bool angry = false;
+    private ActorStatus status;//融化只在真正开始一招时推进，不把碰撞检测或按帧伤害当成额外攻击
     public bool Angry => angry;
     public bool AngryRequest = false;
     private float lastAngry = -1f;
@@ -35,6 +36,7 @@ public class EnemyCombat : MonoBehaviour
     public bool AttackFaceRight;
     private void Awake()
     {
+        status = GetComponent<Health>()?.Status;
         attackNum = AttackBoxes.Length;
         lastAttack = new float[attackNum];
         AttackRequest = new bool[attackNum];
@@ -62,6 +64,11 @@ public class EnemyCombat : MonoBehaviour
     }
     public void CheckAttack()//检查当前是否满足攻击条件
     {
+        if (status != null && status.BlocksActions)
+        {
+            ClearAttackRequests();
+            return;
+        }
         if (Attack != -1) return;
         for (int i = 0; i < attackNum; i++)
             AttackRequest[i] = CheckAttackLogic[i].PlayerIn &&
@@ -69,16 +76,23 @@ public class EnemyCombat : MonoBehaviour
     }
     public void HasAtatck(bool r)//成功攻击
     {
+        if (status != null && status.BlocksActions) return;
         int cur = -1;
         for(int i=0; i<attackNum; i++)
             if (AttackRequest[i])
             {
                 cur = i;break;
             }
+        if (cur < 0) return;//不存在有效请求时不提交招式，也不消耗融化帧
         curAttack = cur;
         lastAttack[cur] = Time.time;
         AttackFaceRight = r;
         ChangeBoxFace(AttackBoxes[cur], r);
+        status?.NotifyAttackStarted();
+    }
+    public void ClearAttackRequests()//冰冻中丢弃尚未开始的旧攻击请求，融化后重新按实际距离判断
+    {
+        if (AttackRequest != null) Array.Clear(AttackRequest, 0, AttackRequest.Length);
     }
     public void AttackBegin()//开始有效攻击
     {

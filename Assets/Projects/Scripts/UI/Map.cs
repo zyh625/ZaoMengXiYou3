@@ -10,15 +10,15 @@ public class Map : MonoBehaviour
     [SerializeField] private Image saveSucess;
     [SerializeField] private float saveDuration = 2f;//"保存游戏"逐渐消失
     [SerializeField] private float saveKeep = 2f;//"保存游戏"先一直显示
-    [SerializeField] private GameObject handBook;
+    [SerializeField] private GameObject handBook, skills;
     private bool isSaving = false;
     private float beginSave = 0f;
     private GameSession instance;
     private void Start()
     {
         beginAlpha = saveSucess.color.a;
-        instance = GameSession.instance;
-        for(int i = 0; i < instance.maxLevel; i++)
+        instance = GameSession.EnsureSession();
+        for(int i = 0; buttons != null && i < Mathf.Min(instance.maxLevel, buttons.Length); i++)
         {
             buttons[i].gameObject.SetActive(true);//开启已经通关的关卡和下一关
         }
@@ -41,19 +41,9 @@ public class Map : MonoBehaviour
             saveSucess.color = c;
         }
     }
-    public void Skills()//学习技能按键
-    {
-        instance.priScene = "MapScene";
-        SceneManager.LoadScene("SkillScene");
-    }
-    public void HandBook()//图鉴按键
-    {
-        handBook.SetActive(true);
-    }
-    public void BackToMap()//返回地图
-    {
-        handBook.SetActive(false);
-    }
+    public void Skills() => skills.SetActive(true);
+    public void HandBook()=>handBook.SetActive(true);
+    public void BackToMap()=>handBook.SetActive(false);
     public void Back()//返回主菜单按键，不保存
     {
         instance.priScene = "MapScene";

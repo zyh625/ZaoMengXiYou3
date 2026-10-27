@@ -10,6 +10,7 @@ public class WukongMovement : PlayerMovement
     public override void CheckSkillMove(int skill,int state)
     {
         UpdateDirect();//与重构前一样更新输入方向，技能运动和攻击箱仍使用skillFaceRight锁定方向
+        if (HoldStatusPosition()) return;//融化时烈焰闪、空斩仍走原技能阶段，但不能写入速度或直接挪动刚体
         Vector2 velocity = body.linearVelocity;
         switch (skill)
         {

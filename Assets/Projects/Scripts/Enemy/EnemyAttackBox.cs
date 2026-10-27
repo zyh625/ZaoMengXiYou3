@@ -11,6 +11,6 @@ public class EnemyAttackBox : AttackBox
         if (!hitEnemies.Add(player)) return;
         if (EC != null)
             EC.UpdateAngry();
-        player.TakeDamage(EC.GetComponent<Transform>(), curAttack);
+        player.TakeDamage(CreateDamageInfo(EC != null ? EC.transform : transform.root));
     }
 }
