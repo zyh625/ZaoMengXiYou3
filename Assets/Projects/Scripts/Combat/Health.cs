@@ -1,6 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//普通控制受霸体限制，强控制（冰冻、抓取、携带等）只受无敌、死亡和对象可用性限制。
+public enum ControlStrength
+{
+    Ordinary,
+    Strong
+}
+
 [RequireComponent(typeof(ActorStatus))]
 public class Health : MonoBehaviour,IDamage
 {
@@ -12,8 +19,9 @@ public class Health : MonoBehaviour,IDamage
     private ActorStatus status;//生命与通用状态共用一次命中结算，新人物自动拥有状态组件
     public ActorStatus Status => status != null ? status : status = GetComponent<ActorStatus>();
     public event System.Action<float, float> HealthChanged;//真实血量变化时通知界面，参数为当前血量和上限
+    public event System.Action<DamageInfo, float> DamageReceived;//真实扣血后通知本次伤害及实际扣血量，霸体也会收到，无敌拒绝的命中不会收到
     public event System.Action<DamageInfo> Died;//本次生命只通知一次死亡，并保留致死来源与命中数据
-    public event System.Action DebuffsCleared;//移动、攻击等组件可各自清理自己的负面效果，无需互相引用
+    public event System.Action DebuffsCleared;//所有负面状态组件统一订阅：清计时、解除自己来源的控制与属性，不移除其他正面增益
     public event System.Action<DamageInfo> InvincibleHit;//有效攻击被无敌挡住时通知精准抵挡，周期扣血与反伤不触发
     private bool die, attacked;
     public bool Dead => die;
@@ -36,7 +44,7 @@ public class Health : MonoBehaviour,IDamage
     public bool AttackedRight => DeltaX <= 0f;//向右边击退
     private bool slow = false;//当前是否被减速
     public bool Slow => slow;
-    private bool boost = false;//当前是否免控
+    private bool boost = false;//旧接口的普通霸体：只免受击反应和晕眩，不免冰冻或抓取
     public void SetBoost(bool flag)=>boost=flag;
     public bool Boost
     {
@@ -48,6 +56,8 @@ public class Health : MonoBehaviour,IDamage
             return false;
         }
     }
+    public bool CanReceiveControl(ControlStrength strength = ControlStrength.Ordinary)//以后新增控制也使用统一分级规则，不在技能中重复判断霸体
+        => isActiveAndEnabled && !die && !IsInvincible && (strength == ControlStrength.Strong || !Boost);
     public float ratio => curBlood / beginBlood;
     private bool preserveForSwitch;//仅玩家换人时保留生命值；敌人对象池仍在启用时正常重置
     private readonly Dictionary<Object, float> damageMultipliers = new();//按来源叠乘伤害倍率，各增益独立移除
@@ -139,7 +149,7 @@ public class Health : MonoBehaviour,IDamage
     }
     public void ApplyNextHitVulnerability(Object source, float bonus, float duration)//下一次有效伤害增伤，重复施加同来源只刷新
     {
-        if (source == null || die) return;
+        if (source == null || die || IsInvincible || !isActiveAndEnabled) return;
         if (bonus <= 0f || duration <= 0f)
         {
             nextHitVulnerabilities.Remove(source);
@@ -149,6 +159,8 @@ public class Health : MonoBehaviour,IDamage
     }
     public void ClearDebuffs()//无双开启时清除易伤、减速等负面效果，保留圣盾、领域等正面增益
     {
+        AttackedEnd();//统一驱散入口也清除尚未处理的受击、击退和击飞请求
+        target = null;
         slow = false;
         nextHitVulnerabilities.Clear();
         ClearPoison();
@@ -233,6 +245,8 @@ public class Health : MonoBehaviour,IDamage
         }
         else if (!damage.IsPeriodic) AttackedEnd();//毒素不清除另一笔真实攻击尚未处理的受击请求
         if (curBlood != previousBlood) HealthChanged?.Invoke(curBlood, beginBlood);
+
+        if (curBlood < previousBlood) DamageReceived?.Invoke(damage, previousBlood - curBlood);
 
         if (!die && !damage.IsReflected && !damage.IsPeriodic && damage.Effects != null)
             foreach (AttackEffect effect in damage.Effects)

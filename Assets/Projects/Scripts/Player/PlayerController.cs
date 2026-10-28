@@ -192,13 +192,6 @@ public class PlayerController : MonoBehaviour
     private void CheckStatePriority()//检查状态按优先级,高不可被低打断，所有角色共用这一条执行顺序
     {
         if (DieProcessing()) return;
-        if (!PH.Dead && status != null && status.BlocksActions)
-        {
-            OnStatusChanged();
-            SM.Pause();
-            status.EnforcePosition();
-            return;//死亡仍最高，冰冻则先于空格、受击动画和所有主动动作
-        }
         if (!PH.Dead && PB.ConsumeRequest() && state == PlayerState.Attacked)
         {
             PC.ClearRequests();//与受击自然结束一样，丢弃受击期间未生效的低优先级输入
@@ -209,6 +202,13 @@ public class PlayerController : MonoBehaviour
             if (recoveredAirState > 0) SetState(PlayerState.Rise);
             else if (recoveredAirState < 0) SetState(PlayerState.Drop);
             else SetState(!PM.IsMoving ? PlayerState.Idle : PM.RunRequest ? PlayerState.Run : PlayerState.Walk);
+        }
+        if (!PH.Dead && status != null && status.BlocksActions)
+        {
+            OnStatusChanged();
+            SM.Pause();
+            status.EnforcePosition();
+            return;//先允许成功开启无双解除异常；未能开启时仍禁止冰冻中的其他行为
         }
         if (PH.Dead||PH.Attacked)//可连续受击
         {
@@ -363,6 +363,7 @@ public class PlayerController : MonoBehaviour
     }
     protected virtual void HandleJump() => SM.ChangeState(PM.HasJumped == 1 ? JumpOne : JumpTwo);
     protected virtual void HandleNormalAttack() => SM.ChangeState(PC.GetAction($"NormalAttack{PC.Attacked}").animation);
+    protected virtual void HandleRiseAttack() => SM.ChangeState(RiseAttack);//空中攻击进入独立入口，子类可在此重置本轮投射物的发射机会
     protected virtual void HandleComboAttack() => SM.ChangeState(PC.GetAction($"ComboAttack{PC.Comboed}").animation);
     protected virtual void HandleSkill() => SM.ChangeState(PC.GetAction($"Skill{PC.Skilled}").animation);
 
@@ -382,8 +383,9 @@ public class PlayerController : MonoBehaviour
     protected void SetState(PlayerState next)
     {
         int nextAction = GetStateAction(next);//即将进入的状态所对应的具体动作编号
-        //普攻进入入口代表新一次攻击，唐僧只有NormalAttack1也必须重新播放，不能被同状态判断吞掉。
-        if (state == next && next != PlayerState.Attacked && next != PlayerState.NormalAttack && stateAction == nextAction) return;
+        //普通与空中攻击进入入口都代表新一次攻击，即使只有同一招，也必须重新播放本轮动画。
+        if (state == next && next != PlayerState.Attacked && next != PlayerState.NormalAttack
+            && next != PlayerState.RiseAttack && stateAction == nextAction) return;
         state = next;
         stateAction = nextAction;
         switch (state)
@@ -400,7 +402,7 @@ public class PlayerController : MonoBehaviour
             case PlayerState.Drop:SM.ChangeState(Drop);break;
             case PlayerState.Rise:SM.ChangeState(Rise);break;
             case PlayerState.Land:SM.ChangeState(Land);break;
-            case PlayerState.RiseAttack:SM.ChangeState(RiseAttack);break;
+            case PlayerState.RiseAttack:HandleRiseAttack();break;
         }
         if (next == PlayerState.NormalAttack) PC.NotifyAttackStarted($"NormalAttack{PC.Attacked}");
         else if (next == PlayerState.ComboAttack) PC.NotifyAttackStarted($"ComboAttack{PC.Comboed}");

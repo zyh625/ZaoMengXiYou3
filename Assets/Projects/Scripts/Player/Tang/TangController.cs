@@ -21,6 +21,12 @@ public class TangController : PlayerController
         combat.BeginNormalAttack();
     }
 
+    protected override void HandleRiseAttack()//每次真正进入空中攻击动画，只开启本轮一次发射机会
+    {
+        base.HandleRiseAttack();
+        combat.BeginRiseAttack();
+    }
+
     protected override void StartSkill()
     {
         base.StartSkill();
@@ -52,6 +58,8 @@ public class TangController : PlayerController
         if (combat == null || movement == null) return;
         if (state == PlayerState.NormalAttack)
             combat.CheckNormalAttack(SM.CurFrame, movement.FaceRight);
+        else if (state == PlayerState.RiseAttack)
+            combat.CheckRiseAttack(SM.CurFrame, movement.FaceRight);
         else if (state == PlayerState.Skill && (combat.Skilled == 2 || combat.Skilled == 3))
             combat.CheckSkillEffect(SM.CurFrame, movement.FaceRight);
     }

@@ -18,15 +18,28 @@ public class EnemyCombat : MonoBehaviour
     private int attackNum;
     private int curAttack = -1;
     public int Attack => curAttack;
-    public void AttackOver() => curAttack = -1;
+    private bool attackWindowOpened, attackHitReported;//一整招只结算一次命中或落空，重复碰撞和冲刺转向不重复累计
+    public virtual float DamageMultiplier => 1f;//攻击加成在真正命中时读取，攻击箱重新开启也不会丢失
+    protected virtual bool UsesAnger => true;//普通小怪保留原怒气；Boss基类默认关闭，具体Boss自行扩展特殊状态
+    public void AttackOver(bool completed = false)//正常播完才结算落空，受击或控制打断不当成玩家躲避
+    {
+        if (curAttack < 0) return;
+        int finishedAttack = curAttack;
+        bool missed = completed && attackWindowOpened && !attackHitReported;
+        curAttack = -1;
+        attackWindowOpened = attackHitReported = false;
+        if (missed) OnAttackMissed(finishedAttack);
+    }
+    protected virtual void OnAttackHit(int attack) { }//子类可记录完整一招的首次有效命中
+    protected virtual void OnAttackMissed(int attack) { }//子类可记录有攻击窗口却完整落空的一招
     [SerializeField] private float angryFull, angryRatio,deltaAngry,angryDuration,delayRatio;//怒气总量，愤怒状态下的攻击增益
     [SerializeField]private float curAngry;
     private bool angry = false;
     private ActorStatus status;//融化只在真正开始一招时推进，不把碰撞检测或按帧伤害当成额外攻击
-    public bool Angry => angry;
+    public bool Angry => UsesAnger && angry;
     public bool AngryRequest = false;
     private float lastAngry = -1f;
-    public bool AngryEnd=> (Time.time - lastAngry) >= angryDuration;
+    public bool AngryEnd=> UsesAnger && (Time.time - lastAngry) >= angryDuration;
     public bool AttackReady()//是否能攻击
     {
         for(int i=0;i<attackNum;i++)
@@ -34,7 +47,7 @@ public class EnemyCombat : MonoBehaviour
         return false;
     }
     public bool AttackFaceRight;
-    private void Awake()
+    protected virtual void Awake()
     {
         status = GetComponent<Health>()?.Status;
         attackNum = AttackBoxes.Length;
@@ -50,9 +63,12 @@ public class EnemyCombat : MonoBehaviour
             curAttackDelay[i] = attackDelay[i];
         }
     }
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         angry = false;
+        curAttack = -1;
+        attackWindowOpened = attackHitReported = false;
+        if (!UsesAnger) AngryRequest = false;
         for(int i = 0; i < attackNum; i++)
         {
             AttackBoxes[i].gameObject.SetActive(false);
@@ -85,6 +101,7 @@ public class EnemyCombat : MonoBehaviour
             }
         if (cur < 0) return;//不存在有效请求时不提交招式，也不消耗融化帧
         curAttack = cur;
+        attackWindowOpened = attackHitReported = false;
         lastAttack[cur] = Time.time;
         AttackFaceRight = r;
         ChangeBoxFace(AttackBoxes[cur], r);
@@ -96,8 +113,16 @@ public class EnemyCombat : MonoBehaviour
     }
     public void AttackBegin()//开始有效攻击
     {
+        if (curAttack < 0) return;
+        attackWindowOpened = true;
         if (!AttackBoxes[curAttack].gameObject.activeSelf)
             AttackBoxes[curAttack].gameObject.SetActive(true);
+    }
+    public void ReportAttackHit(EnemyAttackBox attackBox)//实际扣血后才确认命中，无敌挡住或同一招重复命中不重复通知
+    {
+        if (curAttack < 0 || attackHitReported || enemyAttackBoxes[curAttack] != attackBox) return;
+        attackHitReported = true;
+        OnAttackHit(curAttack);
     }
     public void AttackEnd()//有效攻击结束
     {
@@ -117,8 +142,9 @@ public class EnemyCombat : MonoBehaviour
     }
     public void ChangeAttackBox(bool r) => ChangeBoxFace(AttackBoxes[curAttack], r);
     public void UpdateAttack() => enemyAttackBoxes[curAttack].UpdateAttack();//此时可以再次对玩家造成伤害
-    public void UpdateAngry()//攻击、受击增加怒气
+    public virtual void UpdateAngry()//攻击、受击增加怒气
     {
+        if (!UsesAnger) return;
         curAngry += deltaAngry;
         if (curAngry >= angryFull)
         {
@@ -128,6 +154,7 @@ public class EnemyCombat : MonoBehaviour
     }
     public void Boost()//愤怒模式
     {
+        if (!UsesAnger) return;
         lastAngry = Time.time;
         angry = true;
         for (int i = 0; i < attackNum; i++)
@@ -138,11 +165,21 @@ public class EnemyCombat : MonoBehaviour
     }
     public void BoostOver()//愤怒模式结束
     {
+        if (!UsesAnger) return;
         angry = false;
         for (int i = 0; i < attackNum; i++)
         {
             enemyAttackBoxes[i].ReturnBegin(); 
             curAttackDelay[i] = attackDelay[i];
         }
+    }
+    public void ResetAllAttackCooldowns()//所有招式从此刻重新计算完整冷却，并清掉已准备好的旧请求
+    {
+        for (int i = 0; i < attackNum; i++)
+        {
+            lastAttack[i] = Time.time;
+            curAttackDelay[i] = attackDelay[i];
+        }
+        ClearAttackRequests();
     }
 }

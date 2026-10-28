@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 5804191365804309771}
   - component: {fileID: 721026002003}
   - component: {fileID: 381027001}
+  - component: {fileID: 728102900001}
   m_Layer: 11
   m_Name: TitanSpirit
   m_TagString: Untagged
@@ -313,6 +314,7 @@ MonoBehaviour:
   - 0.75
   - 0.45
   - 0.1
+  skillCooldown: 10
 --- !u!61 &8244158712673735814
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -384,6 +386,7 @@ MonoBehaviour:
   lungeDuration: 8
   lungeSpeed: 14
   AttackFaceRight: 0
+  rageMoveMultiplier: 1.3
 --- !u!114 &4220270715921572395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,9 +396,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3160951888307286059}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 175a84f32cea35340ae226cc6995c576, type: 3}
+  m_Script: {fileID: 11500000, guid: 16f94220312a466a8bffa3581cbbeec2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyCombat
+  m_EditorClassIdentifier: Assembly-CSharp::TitanCombat
   AttackBoxes:
   - {fileID: 5773804774202314169}
   - {fileID: 7815624288173128768}
@@ -419,6 +422,13 @@ MonoBehaviour:
   curAngry: 0
   AngryRequest: 0
   AttackFaceRight: 0
+  rageFull: 100
+  rageOnHit: 5
+  rageOnMiss: 8
+  rageOnDamaged: 10
+  rageDuration: 8
+  rageAttackMultiplier: 1.3
+  rage: 0
 --- !u!114 &6016555859644171021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1192,3 +1202,22 @@ MonoBehaviour:
   frozenDuration: 2
   meltFrameInterval: 1
   frozenDamageMultiplier: 1.5
+--- !u!114 &728102900001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3160951888307286059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bfbf237d2074e2da9f1808626d90fe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActorBoostTrail
+  bodyRenderer: {fileID: 1978585071845675765}
+  trailMaterial: {fileID: 2100000, guid: 57e97ad083884ca6b7c0874eab10368f, type: 2}
+  trailColor: {r: 0, g: 0, b: 0, a: 0.16}
+  afterimageDuration: 0.2
+  minimumMoveSpeed: 0.03
+  prewarmCount: 16
+  sortingOffset: -1

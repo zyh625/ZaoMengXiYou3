@@ -49,6 +49,7 @@ public class EnemyController : MonoBehaviour
     protected virtual void CheckSpecialAttack() { }//检查当前是否为特殊攻击
     protected virtual void SpecialAttackSet(float dis) { }//特殊攻击设置
     protected virtual bool SkillBoost=> false;//增益型技能，不能与愤怒叠加
+    protected virtual bool UsesAnger => true;//小怪保留通用愤怒；Boss由专属控制器选择自己的特殊状态
     protected virtual void SkillSet() { }//技能设置
     protected virtual void CheckSkillBoostLose() { }//检查当前增益型技能是否失效
     protected virtual void CheckSkill() { }//检查当前技能阶段对应技能效果
@@ -81,9 +82,9 @@ public class EnemyController : MonoBehaviour
             EH.AttackedEnd();//保留伤害结算，不积压释放后的击退请求。
             return;
         }
-        if (EC.AngryRequest&&!SkillBoost)
+        if (UsesAnger && EC.AngryRequest&&!SkillBoost)
             ObtainAngry();
-        if (EC.Angry && EC.AngryEnd)
+        if (UsesAnger && EC.Angry && EC.AngryEnd)
             LoseAngry();
         CheckSkill();
         if (SkillReady)
@@ -102,7 +103,7 @@ public class EnemyController : MonoBehaviour
         {
             bool back = EH.AttackedBack, up = EH.AttackedUp;//两个方向分别保存，清除请求后不丢失本次命中效果
             EH.AttackedEnd(); AttackOver();
-            EC.UpdateAngry();
+            if (UsesAnger) EC.UpdateAngry();
             EM.AttackedMove(EH.AttackedRight, back, up);//反伤两个方向均为false，只停水平移动并播放受击动画
             SetState(EnemyState.Attacked);
             return;
@@ -204,7 +205,7 @@ public class EnemyController : MonoBehaviour
         }
         else ReleaseControlPose();
     }
-    private void SetState(EnemyState next)
+    protected void SetState(EnemyState next)
     {
         if (next == state && state!=EnemyState.Attacking
             && state != EnemyState.Attacked) return;
@@ -241,16 +242,16 @@ public class EnemyController : MonoBehaviour
         if (EC.Attack == -1) return false;
         if (SM.IsFinished)
         {
-            AttackOver();
+            AttackOver(true);
             SpecialOver();
             return false;
         }
         return true;
     }
-    protected void AttackOver()//攻击结束
+    protected void AttackOver(bool completed = false)//完整出招才结算躲开，受击和控制打断不算未命中
     {
         EC.AttackEnd();
-        EC.AttackOver();
+        EC.AttackOver(completed);
         SpecialAttackOver();
     }
     private void ObtainAngry()//愤怒增益

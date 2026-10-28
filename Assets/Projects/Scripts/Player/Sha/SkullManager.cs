@@ -65,6 +65,7 @@ public class SkullManager : MonoBehaviour//沙僧的麻痹药剂预制体
     private void FixedUpdate()
     {
         if (!running) return;
+        if (!BattleRun.IsRunning) { StopEffect(); return; }//终局后下一轮物理步不得再弹跳或叠毒，统一池在渲染帧末收尾
         if (Time.time - lastTime >= maxExistTime || maxUsedTime > 0 && usedTime >= maxUsedTime)
         {
             StopEffect();

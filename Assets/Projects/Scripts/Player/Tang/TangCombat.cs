@@ -3,8 +3,11 @@ using UnityEngine;
 public class TangCombat : PlayerCombat
 {
     [SerializeField, Min(0)] private int normalAttackFrame = 9;//动作第10帧发射，下标从0开始；帧跳过时也只补发一次
+    [SerializeField, Min(0)] private int riseAttackFrame = 10;//空中攻击在动作第11帧发射，动画跨过此帧时也只补发一次
+    [SerializeField] private Vector2 riseAttackSpawnOffset = new(2.2f, 0.2f);//相对唐僧根节点的世界偏移，朝左时只反转X
     private PlayerManager effectManager;//场景角色管理器注入，普攻投射物不放在唐僧本体下面
     private bool normalAttackReleased;//同一轮攻击只发射一次，不按渲染帧重复生成
+    private bool riseAttackReleased;//空中与地面攻击各自记录发射，互相打断或重新出招不串用旧标记
     private Health health;//施法开始与同步帧时都检查受击、死亡，打断当帧不能补放技能效果
     private TangController controller;//输入时拒绝受击、死亡状态，避免瞬发技能越过限制
     private ProtectionManager protection;//技能一完全由独立护罩管理持续时间和精准抵挡
@@ -31,6 +34,8 @@ public class TangCombat : PlayerCombat
 
     public void BeginNormalAttack() => normalAttackReleased = false;//只在真正切入本轮普通攻击动画时重置
 
+    public void BeginRiseAttack() => riseAttackReleased = false;//只在真正切入本轮空中攻击动画时重置
+
     public void CheckNormalAttack(int frame, bool right)//动画已经换到有效帧后检查，提前受击、冰冻或换人均不能补发
     {
         if (normalAttackReleased || frame < normalAttackFrame || Attacked != 1 || effectManager == null) return;
@@ -39,6 +44,16 @@ public class TangCombat : PlayerCombat
             || controller == null || controller.State() != PlayerState.NormalAttack) return;
         normalAttackReleased = true;
         effectManager.SpawnTangNormalAttack(transform, right);
+    }
+
+    public void CheckRiseAttack(int frame, bool right)//复用普攻的能量波及对象池，受击或提前换人后不补发
+    {
+        if (riseAttackReleased || frame < riseAttackFrame || effectManager == null) return;
+        if (!isActiveAndEnabled || health == null || health.Dead || health.Attacked
+            || health.Status != null && health.Status.BlocksActions
+            || controller == null || controller.State() != PlayerState.RiseAttack) return;
+        riseAttackReleased = true;
+        effectManager.SpawnTangNormalAttack(transform, right, riseAttackSpawnOffset);
     }
 
     public override void OnSkill(int k)//金蝉护体瞬发无本体动作，另外两招沿用公共施法流程
@@ -95,6 +110,7 @@ public class TangCombat : PlayerCombat
     private void OnDied(DamageInfo damage)
     {
         normalAttackReleased = true;//死亡当帧先取消尚未发出的普攻，不等待控制器下一次状态判断
+        riseAttackReleased = true;//空中攻击未到有效帧时也不留下待发射请求
         StopSkillEffects();
         protection?.CloseProtection();
     }
@@ -102,6 +118,7 @@ public class TangCombat : PlayerCombat
     protected override void OnDisable()//换出和场景关闭立即清理自己创建的效果，不残留永久免伤
     {
         normalAttackReleased = true;//仅取消本体尚未生成的投射物，已发出的由PlayerManager继续管理
+        riseAttackReleased = true;//换出人物后取消尚未发出的空中能量波
         if (health != null) health.Died -= OnDied;
         StopSkillEffects();
         protection?.CloseProtection();

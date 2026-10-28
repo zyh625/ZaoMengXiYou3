@@ -12,7 +12,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private ShaController Sha;//沙僧加入前后切换名单，允许复用场景实例或填预制体
     [SerializeField] private TangController Tang;//唐僧与其他角色一样创建一次，换出后保留自己的资源和冷却
     [SerializeField] private PlayerId[] switchOrder = { PlayerId.WuKong, PlayerId.BaJie, PlayerId.Sha, PlayerId.Tang };//E沿此顺序循环，Q反向；以后可从玩家设置传入新顺序
-    [SerializeField] private YieldManager yieldManager;//可填场景领域实例或Field预制体，换人时保持独立存在
+    [SerializeField] private YieldManager yieldManager;//领域预制体模板，每次施法从独立对象池取得实例
     [Header("独立技能特效预制体")]
     [SerializeField] private SkullManager skull;//麻痹药剂，由管理器按需创建并复用
     [SerializeField] private BoomerangManager boomerang;//回风摄魂，独立于施法角色存活
@@ -24,11 +24,16 @@ public class PlayerManager : MonoBehaviour
     [SerializeField, Min(0f)] private float poisonDuration = 5f, poisonDamagePerStack = 1f;//两种施毒技能共用同一中毒参数
     [SerializeField] private LayerMask effectGroundLayers = 64;//领域只投放到实际地面
     [SerializeField, Min(0.1f)] private float groundSearchDistance = 30f;//空中施法时寻找脚下地面的最大距离
+    [SerializeField, Min(0)] private int effectPrewarmCount = 2;//每种独立特效开局预先缓存的数量，全部占用时继续按需扩容
     private Transform effectsRoot;//所有独立技能效果的共同容器，不随角色停用
-    private readonly List<SkullManager> skulls = new();//分别复用各技能的空闲实例
-    private readonly List<BoomerangManager> boomerangs = new();
-    private readonly List<QuicksandManager> quicksands = new();
-    private readonly List<TangNormalAttackManager> tangNormalAttacks = new();//每次攻击可拥有独立飞行实例，命中或超距停用后复用
+    private Transform inactiveEffectsRoot;//仅用于安全创建实例，避免刚实例化就播放或影响场景中的角色
+    private readonly PrefabPool<YieldManager> yields = new();//每份八戒领域独立保留位置、寿命与减伤来源
+    private readonly PrefabPool<SkullManager> skulls = new();//分别复用各技能的空闲实例
+    private readonly PrefabPool<BoomerangManager> boomerangs = new();
+    private readonly PrefabPool<QuicksandManager> quicksands = new();
+    private readonly PrefabPool<TangNormalAttackManager> tangNormalAttacks = new();//飞行和爆炸中的能量波不被下一次普攻占用
+    private Vector2 yieldHeight;//保存模板的世界Y和Z，领域池的父容器位置不改变原来的地面高度
+    private bool effectsActive;//终局只统一清理一次，不在伤害回调中同步修改特效正在遍历的目标集合
     private WukongController wukong;
     private BajieController bajie;
     private ShaController sha;//只保留一个实例，换出后保留血量、法力与技能冷却
@@ -72,6 +77,7 @@ public class PlayerManager : MonoBehaviour
     {
         BindInput(null);
         BindHealth(null);
+        StopEffects();
     }
 
     //由关卡在Start中传入出生点，此时场景相机已完成Awake。
@@ -104,13 +110,8 @@ public class PlayerManager : MonoBehaviour
             tang.GetComponent<TangCombat>().SetEffectManager(this);//角色只报告发射时机，不自行创建或持有场景投射物
         }
         ApplySwitchOrder(switchOrder);//漏填、重复或未配置的角色不会使实际可切换名单丢失成员
-        if (yieldManager != null)
-        {
-            if (!yieldManager.gameObject.scene.IsValid()) yieldManager = Instantiate(yieldManager);//其他关卡可直接使用预制体
-            yieldManager.transform.SetParent(GetEffectsRoot(), true);//领域与投射物由同一个管理器持有
-            yieldManager.SetPlayerManager(this);//预制体不能保存场景引用，创建角色时统一注入
-        }
-        bajie.GetComponent<BajieCombat>().SetYieldManager(yieldManager);
+        InitEffectPools();//五种独立效果都从模板预热，不再只创建一份八戒领域
+        bajie.GetComponent<BajieCombat>().SetEffectManager(this);
         foreach (PlayerController player in players)
         {
             player.transform.SetParent(characters.transform, true);
@@ -245,6 +246,7 @@ public class PlayerManager : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (effectsActive && !BattleRun.IsRunning) StopEffects();//等本帧伤害回调结束再撤销携带、减速和领域保护
         if (!defeatRequested || defeatLoaded) return;
         defeatLoaded = true;
         LastBattleScene = SceneManager.GetActiveScene().name;
@@ -267,20 +269,63 @@ public class PlayerManager : MonoBehaviour
         return effectsRoot;
     }
 
-    private T GetEffect<T>(T prefab, List<T> pool) where T : MonoBehaviour
+    private Transform GetInactiveEffectsRoot()//与活动特效同属管理器，始终停用，只承接实例创建过程
+    {
+        if (inactiveEffectsRoot != null) return inactiveEffectsRoot;
+        GameObject container = new("EffectPoolCreation");
+        container.transform.SetParent(GetEffectsRoot(), false);
+        container.SetActive(false);
+        inactiveEffectsRoot = container.transform;
+        return inactiveEffectsRoot;
+    }
+
+    private void InitEffectPools()//字段继续引用原预制体，运行实例由池持有，场景中不会出现未释放就显示的领域
+    {
+        if (yieldManager != null) yieldHeight = new Vector2(yieldManager.transform.position.y, yieldManager.transform.position.z);
+        HideSceneTemplate(yieldManager);
+        HideSceneTemplate(skull);
+        HideSceneTemplate(boomerang);
+        HideSceneTemplate(quicksand);
+        HideSceneTemplate(tangNormalAttack);
+        Transform activeRoot = GetEffectsRoot();
+        Transform inactiveRoot = GetInactiveEffectsRoot();
+        yields.Prewarm(yieldManager, effectPrewarmCount, activeRoot, inactiveRoot);
+        skulls.Prewarm(skull, effectPrewarmCount, activeRoot, inactiveRoot);
+        boomerangs.Prewarm(boomerang, effectPrewarmCount, activeRoot, inactiveRoot);
+        quicksands.Prewarm(quicksand, effectPrewarmCount, activeRoot, inactiveRoot);
+        tangNormalAttacks.Prewarm(tangNormalAttack, effectPrewarmCount, activeRoot, inactiveRoot);
+    }
+
+    private static void HideSceneTemplate(MonoBehaviour template)//兼容旧关卡填写场景对象，模板本身不作为活动效果反复覆盖
+    {
+        if (template != null && template.gameObject.scene.IsValid()) template.gameObject.SetActive(false);
+    }
+
+    private T GetEffect<T>(T prefab, PrefabPool<T> pool) where T : MonoBehaviour
     {
         if (prefab == null)
         {
             Debug.LogError($"PlayerManager未配置{typeof(T).Name}预制体", this);
             return null;
         }
-        foreach (T effect in pool)
-            if (effect != null && !effect.gameObject.activeSelf) return effect;
-        T created = Instantiate(prefab, GetEffectsRoot());
-        created.gameObject.SetActive(false);
-        pool.Add(created);
-        return created;
+        T effect = pool.Get(prefab, GetEffectsRoot(), GetInactiveEffectsRoot());
+        effectsActive = true;
+        return effect;
     }
+
+    public void StopEffects()//换人不调用此入口；仅终局、管理器禁用或明确退出当前战斗时归还全部实例
+    {
+        yields.ReleaseAll();
+        skulls.ReleaseAll();
+        boomerangs.ReleaseAll();
+        quicksands.ReleaseAll();
+        tangNormalAttacks.ReleaseAll();
+        effectsActive = false;
+    }
+
+    private bool CanSpawnEffect(Transform caster)//战斗结束后不接受新释放，当前人物死亡与禁用也不能继续生成
+        => initialized && isActiveAndEnabled && !defeatRequested && BattleRun.IsRunning
+            && caster != null && caster.gameObject.activeInHierarchy;
 
     private static Vector2 EffectPosition(Transform caster, Vector2 offset, bool right)//以实际人物碰撞箱中心定位，兼容角色大小差异
     {
@@ -301,7 +346,7 @@ public class PlayerManager : MonoBehaviour
 
     public void SpawnSkull(Transform caster, bool right)
     {
-        if (caster == null || defeatRequested) return;
+        if (!CanSpawnEffect(caster)) return;
         SkullManager effect = GetEffect(skull, skulls);
         if (effect == null) return;
         SetEffectSorting(effect, caster);
@@ -310,7 +355,7 @@ public class PlayerManager : MonoBehaviour
 
     public void SpawnBoomerang(Transform caster, bool right)
     {
-        if (caster == null || defeatRequested) return;
+        if (!CanSpawnEffect(caster)) return;
         BoomerangManager effect = GetEffect(boomerang, boomerangs);
         if (effect == null) return;
         SetEffectSorting(effect, caster);
@@ -319,7 +364,7 @@ public class PlayerManager : MonoBehaviour
 
     public void SpawnQuicksand(Transform caster)//脚下有地面才生成，领域本身不会跟着角色移动
     {
-        if (caster == null || defeatRequested) return;
+        if (!CanSpawnEffect(caster)) return;
         BoxCollider2D body = caster.GetComponent<BoxCollider2D>();
         Vector2 origin = body != null ? (Vector2)body.bounds.center : (Vector2)caster.position;
         RaycastHit2D ground = Physics2D.Raycast(origin, Vector2.down, groundSearchDistance, effectGroundLayers);
@@ -331,13 +376,26 @@ public class PlayerManager : MonoBehaviour
     }
 
     public void SpawnTangNormalAttack(Transform caster, bool right)//一轮普攻仅由唐僧Combat在有效帧调用一次
+        => SpawnTangNormalAttack(caster, right, tangNormalAttackSpawnOffset);
+
+    public void SpawnTangNormalAttack(Transform caster, bool right, Vector2 spawnOffset)//空中攻击可传入自己的偏移，仍复用同一个能量波对象池
     {
-        if (caster == null || !caster.gameObject.activeInHierarchy || defeatRequested) return;
+        if (!CanSpawnEffect(caster)) return;
         TangNormalAttackManager effect = GetEffect(tangNormalAttack, tangNormalAttacks);
         if (effect == null) return;
         SetEffectSorting(effect, caster);
         Vector2 position = (Vector2)caster.position + new Vector2(
-            right ? tangNormalAttackSpawnOffset.x : -tangNormalAttackSpawnOffset.x, tangNormalAttackSpawnOffset.y);
+            right ? spawnOffset.x : -spawnOffset.x, spawnOffset.y);
         effect.Launch(caster, position, right);//Launch只设置位置与朝向，不改变预制体已经调好的缩放
+    }
+
+    public void SpawnYield(Transform caster)//每次技能三都取得独立领域，旧领域保持原位置和到期时间
+    {
+        if (!CanSpawnEffect(caster)) return;
+        YieldManager effect = GetEffect(yieldManager, yields);
+        if (effect == null) return;
+        effect.transform.position = new Vector3(caster.position.x, yieldHeight.x, yieldHeight.y);
+        effect.SetPlayerManager(this);
+        effect.OpenYield(caster.position.x);
     }
 }

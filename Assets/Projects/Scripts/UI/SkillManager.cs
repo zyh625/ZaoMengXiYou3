@@ -84,7 +84,11 @@ public class SkillManager : MonoBehaviour
         ShowCurrentPanel();
         RefreshButtons();
     }
-    public void PressBack() => gameObject.SetActive(false);
+    public void PressBack()//战斗中从技能菜单返回时恢复游戏，地图中关闭面板则不改变未保存数据
+    {
+        gameObject.SetActive(false);
+        GamePause.Resume();
+    }
 
     public void Learn(int skillNumber)//以后新面板也可以直接通过Inspector绑定技能编号1、2、3
     {
@@ -96,7 +100,7 @@ public class SkillManager : MonoBehaviour
         TryUpgrade((PlayerId)curCharactor, skillNumber);
     }
 
-    public bool TryLearn(PlayerId player, int skillNumber)//购买成功后立即保存，失败时金币和技能等级都不改变
+    public bool TryLearn(PlayerId player, int skillNumber)//购买只更新当前会话，统一由地图保存按钮或胜败结算写入存档
     {
         bool learned = GameSession.EnsureSession().TryLearnSkill(player, skillNumber);
         RefreshButtons();

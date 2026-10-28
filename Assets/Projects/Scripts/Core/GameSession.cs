@@ -74,6 +74,25 @@ public class GameSession : MonoBehaviour
         curFile = -1;
     }
 
+    public void DiscardUnsavedProgress()//返回主菜单只读恢复上次存档，丢弃本次未保存的金币、技能、经验和关卡进度
+    {
+        if (instance != null && instance != this)
+        {
+            instance.DiscardUnsavedProgress();//菜单里的重复会话组件不能覆盖跨场景的实际会话
+            return;
+        }
+        string savedName = HasSelectedFile && data != null ? data.name : string.Empty;//新建但尚未保存的槽只恢复初始数据
+        SaveData saved = HasSelectedFile ? SaveSystem.Load(curFile) : null;
+        data = saved ?? SaveData.CreatNew(savedName);
+        data.Normalize();
+        maxLevel = data.gameLevel;
+        battle = new BattleData();
+        priScene = string.Empty;
+        BattleRun.Cancel();//放弃本轮统计而不触发胜利、失败或自动保存
+        ClearSelectedFile();//返回选档后必须重新选择槽位，不能沿用旧授权误写文件
+        NotifyDataChanged();
+    }
+
     public bool TryLearnSkill(PlayerId id, int skillNumber, int cost)//保留旧入口，实际价格统一读取等级配置，避免界面传入过期价格
         => TryLearnSkill(id, skillNumber);
 
@@ -86,7 +105,7 @@ public class GameSession : MonoBehaviour
         int cost = progression.GetLevelData(id, skillNumber, 1).goldCost;//第一等级的价格就是学习费用
         if (player == null || player.GetSkillLevel(skillNumber) != 0 || !save.TrySpendGold(cost)) return false;
         player.SetSkillLevel(skillNumber, 1);
-        SaveSystem.Save();
+        //学习先留在当前会话，只有地图主动保存或关卡胜败才写盘。
         NotifyDataChanged();
         return true;
     }
@@ -106,7 +125,7 @@ public class GameSession : MonoBehaviour
         int cost = progression.GetLevelData(id, skillNumber, level + 1).goldCost;//升级按钮展示并扣除即将升到的那一级的价格
         if (!save.TrySpendGold(cost)) return false;
         player.SetSkillLevel(skillNumber, level + 1);
-        SaveSystem.Save();
+        //升级与扣金币一起暂存，返回主菜单时可完整恢复上次存档。
         NotifyDataChanged();
         return true;
     }

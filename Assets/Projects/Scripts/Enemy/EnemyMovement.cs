@@ -31,7 +31,7 @@ public class EnemyMovement : MonoBehaviour
     private bool freezeConstraintsSaved;//物理步内也锁住位置，避免被冻结的敌人被碰撞挤走
     private RigidbodyConstraints2D savedConstraints;//冻结结束时恢复原本的旋转和位置约束
     public bool IsStunned => health != null && !health.Boost && HasActiveStun();//不把过期或免控中的来源算作有效眩晕
-    public bool IsCarried => carryOwner != null && health != null && !health.Boost;//携带接管是否仍然有效
+    public bool IsCarried => carryOwner != null && health != null && !health.Dead;//携带属于强控制，普通霸体不能让已经被抓住的敌人脱离
     private readonly Dictionary<Object, QuicksandMotion> quicksands = new();//多个流沙分别维护自己的减速和拉力
     private readonly struct QuicksandMotion//横向移动统一缩放一次，拉力是固定速度而不是加速度
     {
@@ -76,7 +76,7 @@ public class EnemyMovement : MonoBehaviour
         curSlowSpeed = slowSpeed;
         if (health != null) health.DebuffsCleared += ClearControlDebuffs;
     }
-    //按来源施加眩晕；霸体免控，无敌拒绝本次施加，死亡始终优先。
+    //按来源施加普通晕眩；霸体可拒绝，无敌拒绝所有控制，死亡始终优先。
     public void Stun(Object source, float duration = 2f)
     {
         if (source == null || duration <= 0f || !CanApplyControl()) return;
@@ -90,7 +90,7 @@ public class EnemyMovement : MonoBehaviour
         controller?.HoldControlPose();
     }
 
-    public bool HasStun(Object source)//冰阵只记录真正被自己冻住的敌人，不把免控敌人当成碎裂伤害目标
+    public bool HasStun(Object source)//仅查询本来源的普通晕眩，冰冻使用ActorStatus独立的强控入口
         => source != null && isActiveAndEnabled && health != null && !health.Dead && !health.Boost
             && stuns.TryGetValue(source, out float expiresAt) && Time.time < expiresAt;
 
@@ -100,10 +100,10 @@ public class EnemyMovement : MonoBehaviour
         if (freezeWasActive && !HasActiveStun() && !IsCarried && body != null)
             ResumeAfterFreeze();
     }
-    //回程携带同样暂停敌人行动，但允许拥有者持续更新被冻结敌人的位置。
+    //回程携带是强控制，不被普通霸体拒绝；冰块已有位置锁时仍由冰冻优先。
     public void BeginCarry(Object owner, Vector2 position)
     {
-        if (owner == null || !CanApplyControl() || MovementBlocked || (carryOwner != null && carryOwner != owner)) return;
+        if (owner == null || !CanApplyControl(ControlStrength.Strong) || MovementBlocked || (carryOwner != null && carryOwner != owner)) return;
         carryOwner = owner;
         carryTarget = position;
         freezeWasActive = true;
@@ -114,7 +114,7 @@ public class EnemyMovement : MonoBehaviour
     public void UpdateCarryTarget(Object owner, Vector2 position)//只有当前携带者能更新终点
     {
         if (carryOwner != owner || owner == null) return;
-        if (health != null && (health.Dead || health.Boost))
+        if (health != null && health.Dead)
         {
             EndCarry(owner);
             return;
@@ -141,8 +141,8 @@ public class EnemyMovement : MonoBehaviour
     }
     //只读查询不更新落地边沿标记，多个技能查询不会吞掉LandedThisFrame。
     public bool IsOnGroundNow() => body != null && CheckGround();
-    private bool CanApplyControl()//新增控制效果共用既有免控、无敌规则，不改变原有八戒吸附
-        => body != null && CanReceiveHit && !health.Boost;
+    private bool CanApplyControl(ControlStrength strength = ControlStrength.Ordinary)//还要遵守敌人现有受击箱的无敌开关
+        => body != null && CanReceiveHit && health.CanReceiveControl(strength);
     private bool HasActiveStun()//来源可能已销毁，命中后的眩晕仍保留到自己的结束时刻
     {
         foreach (KeyValuePair<Object, float> stun in stuns)
@@ -204,18 +204,11 @@ public class EnemyMovement : MonoBehaviour
         }
         else BeginSuctionFall();
     }
-    private void ClearControlDebuffs()//无双清除眩晕、携带及流沙，不清除生命组件记录的正面增益
-    {
-        stuns.Clear();
-        carryOwner = null;
-        quicksands.Clear();
-        if (freezeWasActive) ResumeAfterFreeze();
-        RemoveAppliedFieldVelocity();
-    }
+    private void ClearControlDebuffs() => ClearExternalControl();//驱散同时解除普通晕眩、抓取、吸附与流沙，恢复重力和本来源位置锁
     //同一次吸附只打断敌人一次；不同释放者不能改写正在生效的吸附。
     public void BeginSuction(Object owner, Vector2 target, float speed)
     {
-        if (owner == null || !isActiveAndEnabled || MovementBlocked || (health != null && health.Dead)) return;
+        if (owner == null || !CanApplyControl(ControlStrength.Strong) || MovementBlocked) return;//吸附按强控制处理，霸体仍可被吸，但无敌拒绝
         if (externalControl == ExternalControlState.Suction && suctionOwner != owner) return;
         if (externalControl == ExternalControlState.None && !freezeWasActive && controller != null)
             controller.InterruptForSuction();
@@ -269,8 +262,7 @@ public class EnemyMovement : MonoBehaviour
         RemoveExpiredStuns();
         if (health != null && health.Boost)
         {
-            stuns.Clear();//已有免控生效时立即解除新增控制，原八戒吸附规则保持不变
-            carryOwner = null;
+            stuns.Clear();//霸体只移除普通晕眩；携带、抓取和吸附继续由原拥有者控制
         }
         if (carryOwner != null && carryOwner is Behaviour carry && !carry.isActiveAndEnabled) carryOwner = null;
         if (carryOwner != null)
@@ -357,6 +349,7 @@ public class EnemyMovement : MonoBehaviour
         if (body != null) body.gravityScale = savedGravity;
         gravitySaved = false;
     }
+    protected virtual float MoveSpeedMultiplier => 1f;//子类增益复用移动入口，保持小怪原有速度与减速逻辑
     public void Move(bool slow)
     {
         if (MovementBlocked)
@@ -365,7 +358,7 @@ public class EnemyMovement : MonoBehaviour
             return;
         }
         Vector2 velocity = body.linearVelocity;
-        velocity.x = (slow ? curSlowSpeed : curMoveSpeed) * (DeltaX > 0f ? 1f : -1f);
+        velocity.x = (slow ? curSlowSpeed : curMoveSpeed) * MoveSpeedMultiplier * (DeltaX > 0f ? 1f : -1f);
         body.linearVelocity= velocity;
     }
     public void AttackedMove(bool r,bool up)

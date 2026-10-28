@@ -46,12 +46,12 @@ public class Map : MonoBehaviour
     public void BackToMap()=>handBook.SetActive(false);
     public void Back()//返回主菜单按键，不保存
     {
-        instance.priScene = "MapScene";
+        instance.DiscardUnsavedProgress();//与设置中的返回主菜单一致，放弃未手动保存的本次修改
         SceneManager.LoadScene("MenuScene");
     }
     public void Save()//保存游戏按键
     {
-        SaveSystem.Save();
+        if (!SaveSystem.TrySave()) return;//只有真正写盘成功才显示保存成功，未选档直跑不误报
         saveSucess.gameObject.SetActive(true);
         isSaving = true;
         beginSave = Time.time;

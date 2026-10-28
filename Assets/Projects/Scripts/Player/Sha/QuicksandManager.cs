@@ -50,6 +50,7 @@ public class QuicksandManager : MonoBehaviour
     private void FixedUpdate()
     {
         if (!running) return;
+        if (!BattleRun.IsRunning) { StopEffect(); return; }//结束的战斗不再增加毒层或继续牵引敌人
         if (Time.time - launchedAt >= duration)
         {
             StopEffect();

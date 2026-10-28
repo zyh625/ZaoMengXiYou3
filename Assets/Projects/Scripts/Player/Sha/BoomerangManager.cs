@@ -51,12 +51,14 @@ public class BoomerangManager : MonoBehaviour
     private void FixedUpdate()
     {
         if (!running) return;
+        if (!BattleRun.IsRunning) { StopEffect(); return; }//终局后释放自己携带的敌人并归还池
         Vector2 position = transform.position;
         Vector2 destination = returning ? origin : origin + Vector2.right * (faceRight ? travelDistance : -travelDistance);
         float speed = returning ? returnSpeed : flySpeed;
         Vector2 next = Vector2.MoveTowards(position, destination, Mathf.Max(0.01f, speed) * Time.fixedDeltaTime);
         transform.position = new Vector3(next.x, origin.y, transform.position.z);
         HitPath(position, next);
+        if (!BattleRun.IsRunning) { StopEffect(); return; }//反伤等同步事件可能在本次命中时结束战斗
         if (returning) MoveEnemies();
         if ((next - destination).sqrMagnitude > 0.000001f) return;
         if (!returning) BeginReturn();
@@ -75,6 +77,7 @@ public class BoomerangManager : MonoBehaviour
         foreach (EnemyMovement enemy in EnemyMovement.ActiveEnemies) enemies.Add(enemy);
         foreach (EnemyMovement enemy in enemies)
         {
+            if (!BattleRun.IsRunning) break;//终局后不继续处理快照中的其他敌人，避免结算结束仍产生伤害
             if (!ShaEffectUtility.CanBeHit(enemy)
                 || (hitEnemies.Contains(enemy) && hitLifeVersions.TryGetValue(enemy, out int version) && version == enemy.LifeVersion)
                 || !ShaEffectUtility.SegmentHits(enemy, from, to, hitRadius)) continue;
@@ -84,8 +87,8 @@ public class BoomerangManager : MonoBehaviour
             if (!health.IsInvincible)
             {
                 float previousBlood = health.CurBlood;
-                float multiplier = combat != null ? combat.AttackMultiplier : 1f;
-                health.TakeDamage(new DamageInfo(caster, damage * multiplier, true, false));
+                health.TakeDamage(combat != null ? combat.CreateAttackDamage(damage, true, false, source: caster)
+                    : new DamageInfo(caster, damage, true, false));//每名敌人每次真实命中只判定一次暴击
                 if (combat != null && health.CurBlood < previousBlood) combat.UpdateBoost();
             }
             if (returning) CarryEnemy(enemy);
@@ -111,7 +114,7 @@ public class BoomerangManager : MonoBehaviour
         }
         if (enemy.IsCarried) return;
         Health health = enemy.GetComponent<Health>();
-        if (health.Boost || health.IsInvincible) return;//免控敌人照常受伤，但不会被回旋镖拖走
+        if (!health.CanReceiveControl(ControlStrength.Strong)) return;//携带属于强控，普通霸体不免疫；无敌和死亡仍拒绝
         Vector2 position = enemy.transform.position;
         enemy.BeginCarry(this, position);//携带期间由敌人系统冻结受击帧、重力和自主移动
         if (enemy.IsCarried && enemy.LifeVersion == version)
@@ -142,7 +145,7 @@ public class BoomerangManager : MonoBehaviour
                 continue;
             }
             Health health = enemy.GetComponent<Health>();
-            if (health.Boost || health.IsInvincible)
+            if (!health.CanReceiveControl(ControlStrength.Strong))
             {
                 enemy.EndCarry(this);
                 removed.Add(enemy);

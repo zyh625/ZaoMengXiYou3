@@ -6,6 +6,7 @@ using zmxy.GamePlay;
 public abstract class LevelManager : MonoBehaviour
 {
     [SerializeField] protected UIManager ui;
+    [SerializeField] protected BossUI bossUI;//共用Boss血条，具体特殊状态由所挂的BossUI子类管理
     [SerializeField] protected PlayerManager playerManager;//角色创建与切换的统一入口
     [SerializeField] protected LevelEnemyManager enemyManager;//小怪对象池和Boss实例的管理者
     [SerializeField] protected int curWave = 0;
@@ -52,6 +53,7 @@ public abstract class LevelManager : MonoBehaviour
     protected virtual void Start()
     {
         ResolveSceneReferences();
+        if (bossUI != null) bossUI.PrepareForBattle();//初始隐藏面板，满血、空特殊状态槽
         BindPlayerManager();
         if (!ValidateConfiguration(out string error))
         {
@@ -74,6 +76,7 @@ public abstract class LevelManager : MonoBehaviour
             StopForInvalidConfiguration($"{GetType().Name}未能创建Boss，请检查敌人管理器的Boss预制体和出生点");
             return;
         }
+        BindBossUI();//对象池中的实际Boss创建完后再绑定，仍等待正式出生才显示
         InitExit();
         initialized = true;
         OnPlayerChanged(curPlayer);
@@ -178,6 +181,7 @@ public abstract class LevelManager : MonoBehaviour
             curBoss.gameObject.SetActive(true);
             bossBorn = true;
             BattleRun.SetBoss(curBoss.GetComponent<Health>());
+            if (bossUI != null) bossUI.SetVisible(true);
         }
     }
     protected virtual void CheckEnemyBorn()
@@ -201,6 +205,10 @@ public abstract class LevelManager : MonoBehaviour
         playerInNextWave = true;
     }
     protected virtual void InitEnemies() => enemyManager.InitEnemies(CM, curPlayer.transform, playerManager);
+    protected virtual void BindBossUI()//未来关卡可替换BossUI子类，不需要在通用流程判断Boss类型
+    {
+        if (bossUI != null) bossUI.BindBoss(curBoss != null ? curBoss.GetComponent<Health>() : null);
+    }
     protected virtual void InitExit()
     {
         curExit = Instantiate(exit);
@@ -225,6 +233,8 @@ public abstract class LevelManager : MonoBehaviour
     public void ResolveSceneReferences()//共享预制体只保存内部引用，场景之间的管理器在启动时连接；已填写的引用保持原样
     {
         if (ui == null) ui = FindFirstObjectByType<UIManager>();
+        if (bossUI == null && ui != null) bossUI = ui.GetComponentInChildren<BossUI>(true);
+        if (bossUI == null) bossUI = FindFirstObjectByType<BossUI>(FindObjectsInactive.Include);//面板默认关闭，普通查找会漏掉
         if (playerManager == null) playerManager = FindFirstObjectByType<PlayerManager>();
         if (CM == null && Camera.main != null) CM = Camera.main.GetComponent<CameraManager>();
         if (enemyManager == null) enemyManager = GetComponent<LevelEnemyManager>();

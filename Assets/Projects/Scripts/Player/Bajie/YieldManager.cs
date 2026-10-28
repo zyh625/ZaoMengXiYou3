@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [DefaultExecutionOrder(200)]//角色完成移动和跳跃判断后，再更新领域效果
@@ -18,12 +19,15 @@ public class YieldManager : MonoBehaviour
     private SpriteManager protectedSprite;//描边跟随角色当前帧图像
     private bool protectionApplied;//只在获得和失去效果时更新生命组件
     private PlayerManager boundPlayerManager;//记录已经订阅的管理器，运行时注入和重新启用不会重复订阅
+    private static readonly Dictionary<SpriteManager, HashSet<YieldManager>> outlineSources = new();//同一角色可同时接受多个领域的黄色描边
+    private SpriteManager outlinedSprite;//记录本领域实际登记过的描边对象，回收时只撤销自己的来源
     public bool YieldOpened => Yield && isActiveAndEnabled && SM != null &&
         SM.gameObject.activeInHierarchy && yieldRenderer != null && yieldRenderer.enabled;
     private float lastYield= -1f;
     private bool Yield = false;
     private void OnEnable()
     {
+        ClearProtection();//池中重新启用先清除上一轮记录，不把旧角色的领域来源带入新一轮
         ResolveVisual();
         SetVisualActive(false);
         Yield = false;
@@ -54,22 +58,28 @@ public class YieldManager : MonoBehaviour
     {
         if (!gameObject.activeSelf) gameObject.SetActive(true);
         ResolveVisual();
-        if (SM == null || yieldRenderer == null) return;
+        if (SM == null || yieldRenderer == null || yield == null || yield.sprites == null || yield.sprites.Length == 0)
+        {
+            StopEffect();//配置不完整也归还对象池，不留下持续占用的无效实例
+            return;
+        }
         Vector3 pos = transform.position;
         pos.x = x;
         transform.position = pos;
         SetVisualActive(true);
-        if (yield != null) yield.loop = true;
+        yield.loop = true;
         SM.ChangeState(yield);
         lastYield = Time.time;
         Yield = true;
         RefreshProtection();
+        if (duration <= 0f) StopEffect();//零持续时间不留下直到下一物理步的临时减伤
     }
     private void FixedUpdate()
     {
-        if (Yield && Time.time - lastYield > duration)
+        if (Yield && Time.time - lastYield >= duration)
         {
-            CloseYield();
+            StopEffect();
+            return;
         }
         if (Yield) RefreshProtection();
     }
@@ -87,7 +97,7 @@ public class YieldManager : MonoBehaviour
         if (SM != null && yieldRenderer == null) yieldRenderer = SM.GetComponent<SpriteRenderer>();
     }
 
-    private void SetVisualActive(bool active)//显示组件可以与管理器同物体，关闭领域时不能停用根物体
+    private void SetVisualActive(bool active)//显示组件可以与管理器同物体；根物体的回收统一交给StopEffect
     {
         if (SM != null)
         {
@@ -140,28 +150,67 @@ public class YieldManager : MonoBehaviour
             protectedHealth.SetDamageMultiplier(this, damageMultiplier);
             protectionApplied = true;
         }
-        if (protectedSprite != null && protectedSprite.GetComponent<SpriteOutlineController>() != null)
+        RefreshOutline();
+    }
+
+    private void RefreshOutline()//所有仍然生效的领域共同持有描边，一个领域退出不能关闭另一个领域的提示
+    {
+        if (protectedSprite == null || protectedSprite.GetComponent<SpriteOutlineController>() == null) return;
+        if (outlinedSprite != protectedSprite)
         {
-            protectedSprite.SetYellow();
-            protectedSprite.SetAngry(true);
+            ClearOutline();
+            if (!outlineSources.TryGetValue(protectedSprite, out HashSet<YieldManager> sources))
+            {
+                sources = new HashSet<YieldManager>();
+                outlineSources.Add(protectedSprite, sources);
+            }
+            sources.Add(this);
+            outlinedSprite = protectedSprite;
         }
+        protectedSprite.SetYellow();
+        protectedSprite.SetAngry(true);
+    }
+
+    private void ClearOutline()//最后一个领域来源离开时才关闭角色描边，换人和池回收同样走这里
+    {
+        SpriteManager previousSprite = outlinedSprite;
+        outlinedSprite = null;
+        if (ReferenceEquals(previousSprite, null)) return;
+        if (outlineSources.TryGetValue(previousSprite, out HashSet<YieldManager> sources))
+        {
+            sources.Remove(this);
+            if (sources.Count > 0) return;
+            outlineSources.Remove(previousSprite);
+        }
+        if (previousSprite != null) previousSprite.SetAngry(false);
     }
 
     //仅清理领域自己施加的增益，不改动其他角色状态。
     private void ClearProtection()
     {
-        if (!protectionApplied) return;
-        if (protectedHealth != null) protectedHealth.RemoveDamageMultiplier(this);
-        if (protectedSprite != null) protectedSprite.SetAngry(false);
+        if (protectionApplied && protectedHealth != null) protectedHealth.RemoveDamageMultiplier(this);
+        ClearOutline();
         protectionApplied = false;
     }
 
-    //关闭图像而保留场景中的领域管理器，便于下一次施法重新开启。
+    //清除这一轮领域自身的数据，OnDisable调用时不递归切换根物体。
     private void CloseYield()
     {
         ClearProtection();
         Yield = false;
         lastYield = -1f;
         SetVisualActive(false);
+        protectedPlayer = null;
+        protectedMovement = null;
+        protectedBody = null;
+        protectedCollider = null;
+        protectedHealth = null;
+        protectedSprite = null;
+    }
+
+    public void StopEffect()//领域结束后停用整实例归还对象池，不影响其他仍生效的领域
+    {
+        CloseYield();
+        if (gameObject.activeSelf) gameObject.SetActive(false);
     }
 }

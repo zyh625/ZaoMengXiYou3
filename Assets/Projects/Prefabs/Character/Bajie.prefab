@@ -789,6 +789,7 @@ GameObject:
   - component: {fileID: 721026001002}
   - component: {fileID: 7261026002002}
   - component: {fileID: 381027001}
+  - component: {fileID: 728102810002}
   m_Layer: 11
   m_Name: Bajie
   m_TagString: Untagged
@@ -1203,6 +1204,8 @@ MonoBehaviour:
   reflectionTapGap: 0.3
   reflectionRatio: 1
   reflectionDamageMultiplier: 0.9
+  criticalChance: 0
+  criticalMultiplier: 2
 --- !u!114 &3322502010145320315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1457,9 +1460,11 @@ MonoBehaviour:
   boostReduce: 0.01
   boostTime: 10
   bajieDamageMultiplier: 0.5
-  shaMoveMultiplier: 1.25
-  tangAttackMultiplier: 1.9
+  tangAttackMultiplier: 1.2
   boostEnergy: 0
+  moveMultiplier: 1.3
+  wukongCriticalChance: 0.3
+  shaSuperArmor: 1
 --- !u!114 &381027001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1477,3 +1482,22 @@ MonoBehaviour:
   frozenDuration: 2
   meltFrameInterval: 1
   frozenDamageMultiplier: 1.5
+--- !u!114 &728102810002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8294512242668543254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bfbf237d2074e2da9f1808626d90fe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActorBoostTrail
+  bodyRenderer: {fileID: 6450928737566425558}
+  trailMaterial: {fileID: 2100000, guid: 57e97ad083884ca6b7c0874eab10368f, type: 2}
+  trailColor: {r: 0, g: 0, b: 0, a: 0.16}
+  afterimageDuration: 0.2
+  minimumMoveSpeed: 0.03
+  prewarmCount: 16
+  sortingOffset: -1

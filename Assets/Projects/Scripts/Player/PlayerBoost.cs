@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Health), typeof(PlayerResources))]
 public class PlayerBoost : MonoBehaviour
@@ -9,8 +10,11 @@ public class PlayerBoost : MonoBehaviour
     [SerializeField, Min(0f)] private float boostReduce = 0.01f;//未满能量时每秒自然衰减量
     [SerializeField, Min(0.01f)] private float boostTime = 10f;//满能量开启后持续的秒数
     [SerializeField, Range(0f, 1f)] private float bajieDamageMultiplier = 0.5f;//八戒无双承受伤害倍率，可与其他减伤叠乘
-    [SerializeField, Min(0f)] private float shaMoveMultiplier = 1.25f;//沙僧无双移动速度倍率
-    [SerializeField, Min(0f)] private float tangAttackMultiplier = 1.9f;//唐僧无双攻击力倍率
+    [FormerlySerializedAs("shaMoveMultiplier")]
+    [SerializeField, Min(0f)] private float moveMultiplier = 1.3f;//四人无双共用的移速倍率，1.3代表增加30%
+    [SerializeField, Range(0f, 1f)] private float wukongCriticalChance = 0.3f;//悟空无双额外暴击率，0.3代表增加30个百分点
+    [SerializeField, Min(0f)] private float tangAttackMultiplier = 1.2f;//唐僧无双攻击力倍率，1.2代表增加20%
+    [SerializeField] private bool shaSuperArmor = true;//沙僧无双免普通受击和晕眩，不免抓取或冰冻
     [SerializeField] private float boostEnergy;//每个人独立积累，换人时清空已经获得的能量
     private bool boost;//本角色当前是否正在无双
     private bool boostRequest;//空格只提交请求，由控制器在死亡之后、受击之前处理
@@ -19,6 +23,7 @@ public class PlayerBoost : MonoBehaviour
     private PlayerResources resources;//沿用角色已有的PlayerId，不重复增加角色编号
     private PlayerMovement movement;//移速增益只通过来源倍率接入
     private PlayerCombat combat;//攻击增益只通过来源倍率接入
+    private ActorBoostTrail boostTrail;//公共拖尾组件可独立用于敌人，不把角色类型写进美术控制器
 
     public float Energy { get { Initialize(); return boostEnergy; } }
     public float MaxEnergy => Mathf.Max(1f, boostFull);
@@ -36,6 +41,8 @@ public class PlayerBoost : MonoBehaviour
         resources = GetComponent<PlayerResources>();
         movement = GetComponent<PlayerMovement>();
         combat = GetComponent<PlayerCombat>();
+        boostTrail = GetComponent<ActorBoostTrail>();
+        if (boostTrail == null) boostTrail = gameObject.AddComponent<ActorBoostTrail>();//兼容未补挂拖尾的旧场景角色
         boostEnergy = Mathf.Clamp(boostEnergy, 0f, MaxEnergy);
     }
 
@@ -96,18 +103,20 @@ public class PlayerBoost : MonoBehaviour
         if (boostEnergy != previous) Changed?.Invoke();
     }
 
-    private void ApplyBoost()//四角色的持续效果独立，不给所有角色统一套霸体
+    private void ApplyBoost()//统一移速与拖尾之外，角色额外能力各自登记来源
     {
+        if (movement != null) movement.SetMoveMultiplier(this, moveMultiplier);
+        if (boostTrail != null) boostTrail.SetActive(true);
         switch (resources.Id)
         {
             case PlayerId.WuKong:
-                health.SetSuperArmor(this, true);
+                if (combat != null) combat.SetCriticalChanceBonus(this, wukongCriticalChance);
                 break;
             case PlayerId.BaJie:
                 health.SetDamageMultiplier(this, bajieDamageMultiplier);
                 break;
             case PlayerId.Sha:
-                if (movement != null) movement.SetMoveMultiplier(this, shaMoveMultiplier);
+                health.SetSuperArmor(this, shaSuperArmor);
                 break;
             case PlayerId.Tang:
                 if (combat != null) combat.SetAttackMultiplier(this, tangAttackMultiplier);
@@ -122,7 +131,12 @@ public class PlayerBoost : MonoBehaviour
         health.SetSuperArmor(this, false);
         health.RemoveDamageMultiplier(this);
         if (movement != null) movement.RemoveMoveMultiplier(this);
-        if (combat != null) combat.RemoveAttackMultiplier(this);
+        if (combat != null)
+        {
+            combat.RemoveAttackMultiplier(this);
+            combat.RemoveCriticalChanceBonus(this);
+        }
+        if (boostTrail != null) boostTrail.SetActive(false);
         Changed?.Invoke();
     }
 

@@ -121,8 +121,8 @@ public class TangNormalAttackManager : MonoBehaviour
             return;
         }
         float previousBlood = health.CurBlood;
-        float multiplier = combat != null ? combat.AttackMultiplier : 1f;
-        health.TakeDamage(new DamageInfo(caster, damage * multiplier, true, false));//正常水平击退，不附带击飞或技能控制效果
+        health.TakeDamage(combat != null ? combat.CreateAttackDamage(damage, true, false, source: caster)
+            : new DamageInfo(caster, damage, true, false));//正常水平击退，攻击倍率和暴击只在实际命中时计算一次
         if (!BattleRun.IsRunning)
         {
             StopEffect();//反伤导致当前角色死亡时，不在已经结束的战斗中继续播放或命中

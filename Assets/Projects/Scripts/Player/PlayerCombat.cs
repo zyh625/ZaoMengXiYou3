@@ -66,6 +66,9 @@ public class PlayerCombat : MonoBehaviour
     private PlayerBoost playerBoost;//命中积累无双，主动攻击与反伤分别结算
     private Health health;//攻击力降低等负面效果参与统一驱散
     private readonly Dictionary<Object, float> attackMultipliers = new();//攻击力倍率按来源叠加，不修改攻击箱的基础伤害
+    [SerializeField, Range(0f, 1f)] private float criticalChance = 0f;//角色基础暴击率，0.3表示30%，不包含临时增益
+    [SerializeField, Min(1f)] private float criticalMultiplier = 2f;//发生暴击时的伤害倍率
+    private readonly Dictionary<Object, float> criticalChanceBonuses = new();//暴击率按来源相加，结束无双只移除自己的加成
 
     protected virtual void Awake()
     {
@@ -244,14 +247,53 @@ public class PlayerCombat : MonoBehaviour
     {
         if (source != null) attackMultipliers.Remove(source);
     }
+
+    public float CriticalChance//读取概率本身不投掷随机数，查询界面或其他属性不会额外消耗一次暴击机会
+    {
+        get
+        {
+            float chance = criticalChance;
+            foreach (KeyValuePair<Object, float> item in criticalChanceBonuses)
+                if (item.Key != null) chance += item.Value;
+            return Mathf.Clamp01(chance);
+        }
+    }
+
+    public void SetCriticalChanceBonus(Object source, float bonus)//加成0.3代表额外增加30个百分点，可叠加其他正负来源
+    {
+        if (source != null) criticalChanceBonuses[source] = bonus;
+    }
+
+    public void RemoveCriticalChanceBonus(Object source)
+    {
+        if (source != null) criticalChanceBonuses.Remove(source);
+    }
+
+    public DamageInfo CreateAttackDamage(float baseDamage, bool knockback = true, bool launch = false,
+        AttackEffect[] effects = null, Transform source = null)//所有玩家主动伤害只在实际命中入口投掷一次暴击
+    {
+        float amount = Mathf.Max(0f, baseDamage) * AttackMultiplier;
+        float chance = CriticalChance;
+        if (amount > 0f && chance > 0f && (chance >= 1f || Random.value < chance))
+            amount *= Mathf.Max(1f, criticalMultiplier);
+        return new DamageInfo(source != null ? source : transform, amount, knockback, launch, effects);
+    }
     private void ClearAttackDebuffs()//只清除攻击降低，正面攻击增益保持
     {
         List<Object> removed = new();//只在清除负面状态时分配
         foreach (KeyValuePair<Object, float> item in attackMultipliers)
             if (item.Key == null || item.Value < 1f) removed.Add(item.Key);
         foreach (Object source in removed) attackMultipliers.Remove(source);
+        removed.Clear();
+        foreach (KeyValuePair<Object, float> item in criticalChanceBonuses)
+            if (item.Key == null || item.Value < 0f) removed.Add(item.Key);
+        foreach (Object source in removed) criticalChanceBonuses.Remove(source);
     }
-    protected virtual void OnDisable() => attackMultipliers.Clear();//换出角色后不保留已经结束的攻击倍率
+    protected virtual void OnDisable()//换出角色后不保留已经结束的攻击倍率或临时暴击率来源
+    {
+        attackMultipliers.Clear();
+        criticalChanceBonuses.Clear();
+    }
     protected virtual void OnDestroy()
     {
         if (health != null) health.DebuffsCleared -= ClearAttackDebuffs;

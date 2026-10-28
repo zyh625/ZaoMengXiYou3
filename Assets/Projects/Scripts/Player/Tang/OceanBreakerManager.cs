@@ -64,7 +64,8 @@ public class OceanBreakerManager : MonoBehaviour
             hitEnemies[enemy] = life;
             Health health = enemy.GetComponent<Health>();
             float blood = health.CurBlood;
-            health.TakeDamage(new DamageInfo(caster, damage * (combat != null ? combat.AttackMultiplier : 1f)));
+            health.TakeDamage(combat != null ? combat.CreateAttackDamage(damage, source: caster)
+                : new DamageInfo(caster, damage));//沿用同一套攻击加成与单次暴击判定
             if (combat != null && health.CurBlood < blood) combat.UpdateBoost();
         }
     }

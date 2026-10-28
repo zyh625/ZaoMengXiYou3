@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 922147736890767134}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.41, y: 0.2, z: 0}
+  m_LocalPosition: {x: 1.41, y: 0.36, z: 0}
   m_LocalScale: {x: 0.68, y: 0.68, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -574,6 +574,7 @@ GameObject:
   - component: {fileID: 721026001003}
   - component: {fileID: 7261026002003}
   - component: {fileID: 381027001}
+  - component: {fileID: 728102810004}
   m_Layer: 11
   m_Name: Tang
   m_TagString: Untagged
@@ -950,7 +951,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0352354748b74cf18c3f2db4a0e1a5f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TangCombat
-  normalAttackFrame: 9
   allAttacks:
   - id: NormalAttack1
     animation:
@@ -1098,6 +1098,11 @@ MonoBehaviour:
   attackDelay: 0.7
   attackMemory: 1.2
   Skilled: -1
+  criticalChance: 0
+  criticalMultiplier: 2
+  normalAttackFrame: 9
+  riseAttackFrame: 10
+  riseAttackSpawnOffset: {x: 2.2, y: 0.2}
 --- !u!114 &721026001003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1138,8 +1143,10 @@ MonoBehaviour:
   boostReduce: 0.01
   boostTime: 10
   bajieDamageMultiplier: 0.5
-  shaMoveMultiplier: 1.25
-  tangAttackMultiplier: 1.9
+  moveMultiplier: 1.3
+  wukongCriticalChance: 0.3
+  tangAttackMultiplier: 1.2
+  shaSuperArmor: 1
   boostEnergy: 0
 --- !u!114 &381027001
 MonoBehaviour:
@@ -1158,6 +1165,25 @@ MonoBehaviour:
   frozenDuration: 2
   meltFrameInterval: 1
   frozenDamageMultiplier: 1.5
+--- !u!114 &728102810004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6696739410814842435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bfbf237d2074e2da9f1808626d90fe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActorBoostTrail
+  bodyRenderer: {fileID: 7581778465363064703}
+  trailMaterial: {fileID: 2100000, guid: 57e97ad083884ca6b7c0874eab10368f, type: 2}
+  trailColor: {r: 0, g: 0, b: 0, a: 0.16}
+  afterimageDuration: 0.2
+  minimumMoveSpeed: 0.03
+  prewarmCount: 16
+  sortingOffset: -1
 --- !u!1 &7553675406581453529
 GameObject:
   m_ObjectHideFlags: 0

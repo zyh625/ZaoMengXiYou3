@@ -118,12 +118,12 @@ TextureImporter:
       name: bloodFull_0
       rect:
         serializedVersion: 2
-        x: 380
-        y: 33
-        width: 1767
-        height: 544
+        x: 548
+        y: 274
+        width: 1565
+        height: 151
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -136,121 +136,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: bloodFull_1
-      rect:
-        serializedVersion: 2
-        x: 641
-        y: 474
-        width: 8
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a442ce963b66cda10800000000000000
-      internalID: 1935534860624733258
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bloodFull_2
-      rect:
-        serializedVersion: 2
-        x: 2065
-        y: 226
-        width: 9
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0c7a642dafa73bbd0800000000000000
-      internalID: -2615611740883867712
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bloodFull_3
-      rect:
-        serializedVersion: 2
-        x: 1528
-        y: 127
-        width: 14
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 02fe6b3c4a0694120800000000000000
-      internalID: 2398554537325948704
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bloodFull_4
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 131
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d2fdc83faed5f6d60800000000000000
-      internalID: 7885624736238853933
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bloodFull_5
-      rect:
-        serializedVersion: 2
-        x: 1520
-        y: 106
-        width: 36
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e6b297d8f32c23df0800000000000000
-      internalID: -201885455065994386
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 700ff29e73805124faead5b12dd105f0
     internalID: 0
     vertices: []
     indices: 
@@ -258,14 +148,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":2172.0,"y":724.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       bloodFull_0: -6140291426652817394
-      bloodFull_1: 1935534860624733258
-      bloodFull_2: -2615611740883867712
-      bloodFull_3: 2398554537325948704
-      bloodFull_4: 7885624736238853933
-      bloodFull_5: -201885455065994386
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

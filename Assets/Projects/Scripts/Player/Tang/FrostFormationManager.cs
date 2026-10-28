@@ -104,7 +104,8 @@ public class FrostFormationManager : MonoBehaviour
             }
             float blood = health.CurBlood;
             //Health先破除冰块并计入通用倍率，再结算本次碎裂伤害，不能先CancelFreeze丢失1.5倍。
-            health.TakeDamage(new DamageInfo(caster, damage * (combat != null ? combat.AttackMultiplier : 1f), false, false));
+            health.TakeDamage(combat != null ? combat.CreateAttackDamage(damage, false, false, source: caster)
+                : new DamageInfo(caster, damage, false, false));//破冰倍率仍由Health结算，不能提前重复计算
             if (combat != null && health.CurBlood < blood) combat.UpdateBoost();
         }
         breakTargets.Clear();

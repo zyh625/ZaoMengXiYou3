@@ -4,7 +4,7 @@ using UnityEngine;
 public class BajieCombat : PlayerCombat
 {
     private HolyShieldManager holyShield;
-    private YieldManager yieldManager;
+    private PlayerManager effectManager;//独立领域由关卡的统一对象池创建，不在本体缓存唯一领域实例
     [SerializeField] private int yieldOpenFrame = 15;//领域开启对应的帧序列，从0开始
     private HolyLightManager holyLight;//技能一同时播放的自身圣光
     private BajieMovement movement;//地面限定施法使用实时地面接触校验
@@ -17,7 +17,7 @@ public class BajieCombat : PlayerCombat
     [SerializeField, Min(0f)] private float suctionHeight = 2f;//收束位置位于八戒正上方的高度
     private Vector2 lastSuctionTarget;//最后一次有效动作帧的位置，完整释放后使用这个终点
     private bool suctionFinished;//本次有效窗口已经结束，不能再次捕获敌人
-    private bool yieldCreated;//每次施法只生成一次领域，已有领域允许重新定位和续时
+    private bool yieldCreated;//每次施法只生成一次新领域，不移动或刷新之前已经生效的领域
     [SerializeField, Min(0f)] private float suctionDamageBonus = 0.3f;//被吸附后下一次攻击增加的伤害比例
     [SerializeField, Min(0f)] private float suctionBonusDuration = 5f;//下一击易伤未触发时的保留时间
     private InputReader input;//反甲手势始终从输入Action读取，支持后续改键
@@ -147,15 +147,22 @@ public class BajieCombat : PlayerCombat
         yieldCreated = false;
     }
 
-    public void SetYieldManager(YieldManager yield)=>yieldManager = yield;
+    public void SetEffectManager(PlayerManager manager) => effectManager = manager;//由PlayerManager初始化角色时统一注入
+
+    public void SetYieldManager(YieldManager yield)//兼容旧的注入入口，实际释放仍走PlayerManager的领域池
+    {
+        if (effectManager != null || yield == null) return;
+        effectManager = yield.GetComponentInParent<PlayerManager>();
+        if (effectManager == null) effectManager = FindFirstObjectByType<PlayerManager>();
+    }
     public void CheckYield(int idx)
     {
-        if (yieldCreated || yieldManager == null) return;
+        if (yieldCreated || effectManager == null) return;
         int openFrame = Mathf.Clamp(yieldOpenFrame, 0, LastFrame(skillThree));//末帧之后仍按末帧处理
         if (idx >= openFrame)
         {
             yieldCreated = true;
-            yieldManager.OpenYield(transform.position.x);
+            effectManager.SpawnYield(transform);
         }
     }
 

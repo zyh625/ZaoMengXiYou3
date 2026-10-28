@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image[] playerAngry;//无双能量槽
     [SerializeField]private TextMeshProUGUI[] texts;
     [SerializeField] private Image portrait;//场景中当前角色的头像Image
+    [SerializeField] private Image level1, level2;//头像下等级的十位和个位，个位数时只显示level2
     [SerializeField] private Image[] skillIcons = new Image[3];//UIO对应的技能图标，仅替换sprite，不改现有布局
     [SerializeField] private Image[] skillBlocks = new Image[3];//UIO对应的冷却遮罩，通过剩余冷却比例更新fillAmount
 
@@ -59,6 +60,24 @@ public class UIManager : MonoBehaviour
         player.UpdateMP(resources.CurrentMana, resources.MaxMana);
         player.UpdateXP(resources.Experience, resources.ExperienceToNextLevel);
         player.UpdateVigor(resources.CurrentVigor, resources.MaxVigor);
+        RefreshLevel(resources.Level);//换人和等级变化沿用资源事件同步，不单独逐帧读取
+    }
+
+    private void RefreshLevel(int level)//只限制两位数字的显示范围，不修改角色真实等级或存档
+    {
+        level = Mathf.Clamp(level, 1, 99);
+        if (level1 != null)
+        {
+            level1.sprite = Font.GetSprite(level / 10);
+            level1.enabled = true;
+            level1.gameObject.SetActive(level >= 10);//十位不足时隐藏整个数字物体
+        }
+        if (level2 != null)
+        {
+            level2.sprite = Font.GetSprite(level % 10);
+            level2.enabled = true;
+            level2.gameObject.SetActive(true);//始终从原来的个位位置显示，1级不补前导零
+        }
     }
 
     private void UnbindPlayer()//移除旧订阅，避免多次切换后重复通知或写入其他角色的血条

@@ -26,12 +26,14 @@ public class InputReader : MonoBehaviour
     private InputAction switchPriButton, switchNextButton;
     private InputAction interactButton, quickDownButton;
     private ActorStatus status;//冻结时舍弃操作事件，不在恢复后补放之前按过的攻击和技能
+    private float pauseMoveValue;//暂停瞬间的方向，恢复时只在真实方向改变后重同步，保持原本的跑步状态
+    private bool resumeInputSync;//恢复后的第一轮输入只同步按键状态，不补放暂停期间按过的攻击和技能
     public float MoveValue => moveButton != null ? moveButton.ReadValue<float>() : 0f;//解冻后读取实际仍按住的移动轴，不重新触发一次按下事件
-    private bool ActionsBlocked => status != null && status.BlocksActions;
-    private bool MovementBlocked => status != null && status.BlocksMovement;
-    public bool AttackHeld => attackButton != null
+    private bool ActionsBlocked => GamePause.IsPaused || resumeInputSync || status != null && status.BlocksActions;
+    private bool MovementBlocked => GamePause.IsPaused || resumeInputSync || status != null && status.BlocksMovement;
+    public bool AttackHeld => !GamePause.IsPaused && attackButton != null
         && attackButton.IsPressed();
-    public bool QuickDownHeld => quickDownButton != null && quickDownButton.IsPressed();//读取Action，保持支持改键
+    public bool QuickDownHeld => !GamePause.IsPaused && quickDownButton != null && quickDownButton.IsPressed();//恢复瞬间直接读取真实按住状态，不误结束仍按住的持续攻击或反甲
 
 
 
@@ -58,6 +60,8 @@ public class InputReader : MonoBehaviour
     }
     private void OnEnable()
     {
+        resumeInputSync = false;
+        GamePause.Changed += OnPauseChanged;
         playerMap?.Enable();
         moveButton.performed += OnMove;
         moveButton.canceled += OnMove;
@@ -71,6 +75,8 @@ public class InputReader : MonoBehaviour
     }
     private void OnDisable()
     {
+        GamePause.Changed -= OnPauseChanged;
+        resumeInputSync = false;
         playerMap?.Disable();
         moveButton.performed -= OnMove;
         moveButton.canceled -= OnMove;
@@ -111,13 +117,43 @@ public class InputReader : MonoBehaviour
     {
         if (!MovementBlocked) QuickDownPressed?.Invoke();
     }
-    private void OnQuickDownReleased(InputAction.CallbackContext ctx) => QuickDownReleased?.Invoke();
+    private void OnQuickDownReleased(InputAction.CallbackContext ctx)
+    {
+        if (!GamePause.IsPaused && !resumeInputSync) QuickDownReleased?.Invoke();
+    }
+
+    private void OnPauseChanged(bool paused)//时间暂停不会自动停用InputAction，主动挡住仍可能执行的瞬发技能与换人
+    {
+        if (paused)
+        {
+            pauseMoveValue = MoveValue;
+            resumeInputSync = false;
+        }
+        else
+        {
+            resumeInputSync = true;
+            SyncResumedInput();//先同步再恢复下一次物理步，避免暂停期间松开方向后仍多走一步
+        }
+    }
+
+    private void SyncResumedInput()//恢复瞬间与首个Update各检查一次，覆盖菜单事件之后才到来的按键松开
+    {
+        if (!Mathf.Approximately(MoveValue, pauseMoveValue)) GetComponent<PlayerMovement>()?.SyncMoveInput(MoveValue);
+        if (quickDownButton != null && !quickDownButton.IsPressed()) QuickDownReleased?.Invoke();
+    }
 
     private void Update()
     {
-        if (ActionsBlocked) return;
+        if (GamePause.IsPaused) return;
+        if (resumeInputSync)
+        {
+            SyncResumedInput();
+            resumeInputSync = false;
+            return;//舍弃这一帧的WasPressedThisFrame，不把菜单期间的空格、技能或Q/E带回战斗
+        }
         if (boostButton.WasPressedThisFrame())
-            BoostPressed?.Invoke();
+            BoostPressed?.Invoke();//异常状态下仍可申请无双驱散，暂停菜单与恢复首帧仍在上面拦截
+        if (ActionsBlocked) return;
         if (switchPriButton.WasPressedThisFrame())
         {
             SwitchPriPressed?.Invoke();

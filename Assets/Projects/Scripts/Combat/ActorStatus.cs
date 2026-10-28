@@ -58,7 +58,7 @@ public class ActorStatus : MonoBehaviour
     public bool ApplyFreeze(Object source, float duration = -1f)//技能和以后新增的攻击效果共用此入口
     {
         ResolveReferences();
-        if (source == null || !isActiveAndEnabled || health == null || health.Dead || health.IsInvincible || health.Boost) return false;
+        if (source == null || !isActiveAndEnabled || health == null || !health.CanReceiveControl(ControlStrength.Strong)) return false;//冰冻属于强控制，普通霸体不能拒绝
         EnemyMovement enemy = GetComponent<EnemyMovement>();
         if (enemy != null && !enemy.CanReceiveHit) return false;
         float hold = duration >= 0f ? duration : frozenDuration;
