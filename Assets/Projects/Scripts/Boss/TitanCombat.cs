@@ -21,8 +21,8 @@ public class TitanCombat : BossCombat
     public bool RageBoostActive => rageBoostActive;
     public event Action RageChanged;//特殊状态UI只订阅本Boss的数据变化
     public event Action<bool> RageBoostChanged;//Controller统一处理霸体、移速、残影以及结束时的动作与技能冷却
-    public override float DamageMultiplier => rageBoostActive && health != null && !health.Dead
-        ? Mathf.Max(0f, rageAttackMultiplier) : 1f;
+    public override float DamageMultiplier => base.DamageMultiplier * (rageBoostActive && health != null && !health.Dead
+        ? Mathf.Max(0f, rageAttackMultiplier) : 1f);//专属怒气仍与通用外部增幅独立叠乘
 
     protected override void Awake()
     {

@@ -20,6 +20,16 @@ public class Health : MonoBehaviour,IDamage
     public ActorStatus Status => status != null ? status : status = GetComponent<ActorStatus>();
     public event System.Action<float, float> HealthChanged;//真实血量变化时通知界面，参数为当前血量和上限
     public event System.Action<DamageInfo, float> DamageReceived;//真实扣血后通知本次伤害及实际扣血量，霸体也会收到，无敌拒绝的命中不会收到
+    public event System.Action<DamageInfo, float> DamageResolved;//整次伤害与附加效果完成后通知，弹反清异常不会漏掉本次刚施加的效果
+    public event System.Func<DamageInfo, bool> DamageBlocked;//一次性格挡在扣血、破冰和附加效果之前处理，返回true时拦截整次命中
+    public event System.Func<DamageKind, bool> AttackIgnored;//纯查询的类别免疫，投射物索敌与真正伤害结算使用同一个规则
+    public bool IgnoresAttack(DamageKind kind)
+    {
+        if (AttackIgnored == null) return false;
+        foreach (System.Func<DamageKind, bool> filter in AttackIgnored.GetInvocationList())
+            if (filter(kind)) return true;
+        return false;
+    }
     public event System.Action<DamageInfo> Died;//本次生命只通知一次死亡，并保留致死来源与命中数据
     public event System.Action DebuffsCleared;//所有负面状态组件统一订阅：清计时、解除自己来源的控制与属性，不移除其他正面增益
     public event System.Action<DamageInfo> InvincibleHit;//有效攻击被无敌挡住时通知精准抵挡，周期扣血与反伤不触发
@@ -77,6 +87,8 @@ public class Health : MonoBehaviour,IDamage
     private Transform poisonSource;//骷髅与流沙共用同一组毒层，最后施加者保留致死经验归属
     private int poisonStacks;//所有中毒来源累加层数，重新施加时刷新整体持续时间
     private float poisonUntil, poisonDamagePerStack, poisonUpdatedAt;//连续结算至到期时刻，不受渲染帧率影响
+    private bool poisonPaused;//换人只暂停毒素，不把它当作驱散或重新施毒
+    private float poisonRemaining;//离场时保存剩余秒数，再登场从同一剩余时间继续
     public int PoisonStacks => poisonStacks;
     private readonly struct NextHitVulnerability//过期或下一次有效攻击后移除，无需每帧轮询
     {
@@ -89,10 +101,16 @@ public class Health : MonoBehaviour,IDamage
     }
     void OnEnable()
     {
-        ClearSourceEffects();
+        ClearSourceEffects(preserveForSwitch);
         if (preserveForSwitch)
         {
             preserveForSwitch = false;
+            if (poisonPaused)
+            {
+                poisonUntil = Time.time + poisonRemaining;
+                poisonUpdatedAt = Time.time;
+                poisonPaused = false;
+            }
             return;
         }
         LifeVersion++;
@@ -102,7 +120,13 @@ public class Health : MonoBehaviour,IDamage
         HealthChanged?.Invoke(curBlood, beginBlood);
     }
     //普通换人不是重生，下一次启用时继续使用该角色已有的生命值。
-    public void PreserveForSwitch() => preserveForSwitch = true;
+    public void PreserveForSwitch()
+    {
+        preserveForSwitch = true;
+        poisonRemaining = Mathf.Max(0f, poisonUntil - Time.time);
+        poisonPaused = poisonStacks > 0;
+        if (poisonPaused && poisonRemaining <= 0f) ClearPoison();
+    }
     //同一来源重复设置只更新该来源，不会每帧重复叠加。
     public void SetDamageMultiplier(Object source, float multiplier)
     {
@@ -157,13 +181,14 @@ public class Health : MonoBehaviour,IDamage
         }
         nextHitVulnerabilities[source] = new NextHitVulnerability(1f + bonus, Time.time + duration);
     }
-    public void ClearDebuffs()//无双开启时清除易伤、减速等负面效果，保留圣盾、领域等正面增益
+    public void ClearDebuffs() => ClearDebuffs(false);//主动驱散始终清除毒素
+    private void ClearDebuffs(bool keepPoison)//换人清理其他来源和表现时，单独保留已暂停的毒素数据
     {
         AttackedEnd();//统一驱散入口也清除尚未处理的受击、击退和击飞请求
         target = null;
         slow = false;
         nextHitVulnerabilities.Clear();
-        ClearPoison();
+        if (!keepPoison) ClearPoison();
         DebuffsCleared?.Invoke();
     }
     //各技能共享毒层；先结清已有层数，再增加新层数，避免本帧追溯放大旧伤害。
@@ -181,7 +206,7 @@ public class Health : MonoBehaviour,IDamage
     private void Update() => UpdatePoison();//持续伤害不依赖攻击箱开关，也不重复产生受击请求
     private void UpdatePoison()
     {
-        if (poisonStacks <= 0 || die) return;
+        if (poisonStacks <= 0 || die || poisonPaused) return;
         float end = Mathf.Min(Time.time, poisonUntil);//最后一帧只结算实际剩余的中毒时间
         float elapsed = Mathf.Max(0f, end - poisonUpdatedAt);
         poisonUpdatedAt = end;
@@ -195,6 +220,8 @@ public class Health : MonoBehaviour,IDamage
         poisonStacks = 0;
         poisonSource = null;
         poisonUntil = poisonDamagePerStack = poisonUpdatedAt = 0f;
+        poisonPaused = false;
+        poisonRemaining = 0f;
     }
     public void Heal(float amount)//持续回血共用入口，不超过血量上限，也不复活死亡角色
     {
@@ -213,12 +240,16 @@ public class Health : MonoBehaviour,IDamage
     private void ReceiveDamage(DamageInfo damage)//基础伤害、命中反应与附加效果分别结算
     {
         if (die) return;
+        if (IgnoresAttack(damage.Kind)) return;
         if (IsInvincible)//仍然拒绝整次命中，只额外通知护盾确实挡住了一次攻击
         {
             if (damage.Amount > 0f && !damage.IsPeriodic && !damage.IsReflected)
                 InvincibleHit?.Invoke(damage);
             return;
         }
+        if (DamageBlocked != null)
+            foreach (System.Func<DamageInfo, bool> block in DamageBlocked.GetInvocationList())
+                if (block(damage)) return;
         if (!damage.IsPeriodic) target = damage.Source;//毒素不覆盖正等待处理的攻击方向
         float originalDamage = damage.Amount;//保留攻击者输入的基础伤害，反伤不使用减伤或易伤后的结果
         float vulnerabilityMultiplier = originalDamage > 0f && !damage.IsPeriodic
@@ -246,7 +277,8 @@ public class Health : MonoBehaviour,IDamage
         else if (!damage.IsPeriodic) AttackedEnd();//毒素不清除另一笔真实攻击尚未处理的受击请求
         if (curBlood != previousBlood) HealthChanged?.Invoke(curBlood, beginBlood);
 
-        if (curBlood < previousBlood) DamageReceived?.Invoke(damage, previousBlood - curBlood);
+        float actualDamage = previousBlood - curBlood;//回调可能修改其他状态，整次命中始终保留同一笔实际伤害
+        if (actualDamage > 0f) DamageReceived?.Invoke(damage, actualDamage);
 
         if (!die && !damage.IsReflected && !damage.IsPeriodic && damage.Effects != null)
             foreach (AttackEffect effect in damage.Effects)
@@ -265,6 +297,7 @@ public class Health : MonoBehaviour,IDamage
                         false, false, null, true));
             }
         }
+        if (actualDamage > 0f) DamageResolved?.Invoke(damage, actualDamage);
         if (killed) Died?.Invoke(damage);
     }
 
@@ -277,15 +310,15 @@ public class Health : MonoBehaviour,IDamage
         nextHitVulnerabilities.Clear();
         return multiplier;
     }
-    private void OnDisable() => ClearSourceEffects();//对象池和换人都不能留下已经失效的来源增益
+    private void OnDisable() => ClearSourceEffects(preserveForSwitch);//换人保留已暂停毒素，对象池回收仍清空
 
-    private void ClearSourceEffects()//不改变现有boost字段和换人保留的真实生命值
+    private void ClearSourceEffects(bool keepPoison = false)//不改变现有boost字段和换人保留的真实生命值
     {
         damageMultipliers.Clear();
         superArmorSources.Clear();
         reflectionRatios.Clear();
         invincibilityUntil.Clear();
-        ClearDebuffs();
+        ClearDebuffs(keepPoison);
     }
 
 }

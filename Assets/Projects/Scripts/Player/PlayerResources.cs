@@ -60,6 +60,16 @@ public class PlayerResources : MonoBehaviour
         return true;
     }
 
+    public void RecoverMana(float amount)//接住蓝色音符等恢复效果共用入口，实时通知现有蓝条
+    {
+        Initialize();
+        if (amount <= 0f || float.IsNaN(amount) || float.IsInfinity(amount)) return;
+        float recovered = Mathf.Min(maxMana, currentMana + amount);
+        if (recovered == currentMana) return;
+        currentMana = recovered;
+        Changed?.Invoke();
+    }
+
     public void AddExperience(float amount)//经验立即回写现有存档对象，由原有保存流程统一写盘
     {
         Initialize();

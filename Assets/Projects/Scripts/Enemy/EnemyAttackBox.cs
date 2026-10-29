@@ -4,7 +4,14 @@ public class EnemyAttackBox : AttackBox
 {
     private EnemyCombat EC;
     private void Awake() => EC = GetComponentInParent<EnemyCombat>();
-    protected override float DamageMultiplier => EC != null ? EC.DamageMultiplier : 1f;//动态读取Boss等攻击来源的额外倍率
+    protected override float DamageMultiplier
+    {
+        get
+        {
+            if (EC == null) EC = GetComponentInParent<EnemyCombat>();//首次打开之前也允许查询真实伤害，不依赖攻击箱Awake时机
+            return EC != null ? EC.DamageMultiplier : 1f;
+        }
+    }
     protected override void TryAttack(Collider2D collider)
     {
         IDamage player = collider.GetComponentInParent<IDamage>();

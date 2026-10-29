@@ -1,0 +1,793 @@
+fileFormatVersion: 2
+guid: 03d4e6ed5e9edcc4282bd1c9954db27f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2684405605512065677
+    second: ShieldAttacked_0
+  - first:
+      213: -2573722791459224865
+    second: ShieldAttacked_1
+  - first:
+      213: 859622078403770474
+    second: ShieldAttacked_2
+  - first:
+      213: 6024169569703165103
+    second: ShieldAttacked_3
+  - first:
+      213: -4169589975630480282
+    second: ShieldAttacked_4
+  - first:
+      213: -5890742689124825915
+    second: ShieldAttacked_5
+  - first:
+      213: -4627630833422392676
+    second: ShieldAttacked_6
+  - first:
+      213: -2386641818874444699
+    second: ShieldAttacked_7
+  - first:
+      213: -950829540824859333
+    second: ShieldAttacked_8
+  - first:
+      213: -7285178296072091233
+    second: ShieldAttacked_9
+  - first:
+      213: -3978813695680841846
+    second: ShieldAttacked_10
+  - first:
+      213: -5593654548746277106
+    second: ShieldAttacked_11
+  - first:
+      213: -5096947746111281212
+    second: ShieldAttacked_12
+  - first:
+      213: 384484600355962471
+    second: ShieldAttacked_13
+  - first:
+      213: 5885875532572041256
+    second: ShieldAttacked_14
+  - first:
+      213: 2448421208335409689
+    second: ShieldAttacked_15
+  - first:
+      213: -4952304801243631857
+    second: ShieldAttacked_16
+  - first:
+      213: -3278405630949223195
+    second: ShieldAttacked_17
+  - first:
+      213: 8721496481710827241
+    second: ShieldAttacked_18
+  - first:
+      213: -2019306444798714426
+    second: ShieldAttacked_19
+  - first:
+      213: -996598204764241051
+    second: ShieldAttacked_20
+  - first:
+      213: -2693048954260030903
+    second: ShieldAttacked_21
+  - first:
+      213: -5339036544400398072
+    second: ShieldAttacked_22
+  - first:
+      213: 773188155952464189
+    second: ShieldAttacked_23
+  - first:
+      213: 2850214438450716976
+    second: ShieldAttacked_24
+  - first:
+      213: 8873198522954274214
+    second: ShieldAttacked_25
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ShieldAttacked_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 947
+        width: 341
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37dc26a03531fbad0800000000000000
+      internalID: -2684405605512065677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldAttacked_1
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 935
+        width: 332
+        height: 302
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd20fb0e1cc484cd0800000000000000
+      internalID: -2573722791459224865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldAttacked_2
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 947
+        width: 328
+        height: 289
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a68f650d9bdfdeb00800000000000000
+      internalID: 859622078403770474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldAttacked_3
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 1191
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: facffd46e462a9350800000000000000
+      internalID: 6024169569703165103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldAttacked_4
+      rect:
+        serializedVersion: 2
+        x: 942
+        y: 938
+        width: 312
+        height: 298
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66cf3833204a226c0800000000000000
+      internalID: -4169589975630480282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldAttacked_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 966
+        width: 5
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c44c771cb0ef3ea0800000000000000
+      internalID: -5890742689124825915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldAttacked_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 636
+        width: 341
+        height: 303
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c92a636764a57cfb0800000000000000
+      internalID: -4627630833422392676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldAttacked_7
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 939
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56485e329e1f0eed0800000000000000
+      internalID: -2386641818874444699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldAttacked_8
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 638
+        width: 322
+        height: 301
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3dbf210299fdc2f0800000000000000
+      internalID: -950829540824859333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldAttacked_9
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 921
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f99cc3130f8d5ea90800000000000000
+      internalID: -7285178296072091233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldAttacked_10
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 638
+        width: 308
+        height: 302
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a87fb71460a68c8c0800000000000000
+      internalID: -3978813695680841846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldAttacked_11
+      rect:
+        serializedVersion: 2
+        x: 1101
+        y: 933
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0feab903d85f52b0800000000000000
+      internalID: -5593654548746277106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldAttacked_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 827
+        width: 5
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c72f4a97010449b0800000000000000
+      internalID: -5096947746111281212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldAttacked_13
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 630
+        width: 333
+        height: 305
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76e33d9f4b6f55500800000000000000
+      internalID: 384484600355962471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldAttacked_14
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 626
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 820ae17bc94dea150800000000000000
+      internalID: 5885875532572041256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldAttacked_15
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 320
+        width: 334
+        height: 301
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9126d5fdd1a8af120800000000000000
+      internalID: 2448421208335409689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldAttacked_16
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 304
+        width: 332
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0f696e8501e54bb0800000000000000
+      internalID: -4952304801243631857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldAttacked_17
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 322
+        width: 327
+        height: 301
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e491a9c273c082d0800000000000000
+      internalID: -3278405630949223195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldAttacked_18
+      rect:
+        serializedVersion: 2
+        x: 938
+        y: 616
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e6613677daf80970800000000000000
+      internalID: 8721496481710827241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldAttacked_19
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 320
+        width: 309
+        height: 299
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cd9d19bc7bf9f3e0800000000000000
+      internalID: -2019306444798714426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldAttacked_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 562
+        width: 6
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5634c35863f5b22f0800000000000000
+      internalID: -996598204764241051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldAttacked_21
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 312
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94af7969e3e50aad0800000000000000
+      internalID: -2693048954260030903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldAttacked_22
+      rect:
+        serializedVersion: 2
+        x: 938
+        y: 0
+        width: 316
+        height: 312
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8096f20ec8ee7e5b0800000000000000
+      internalID: -5339036544400398072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldAttacked_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 341
+        height: 306
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d310614088aeaba00800000000000000
+      internalID: 773188155952464189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldAttacked_24
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 0
+        width: 331
+        height: 306
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0316b814eeefd8720800000000000000
+      internalID: 2850214438450716976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldAttacked_25
+      rect:
+        serializedVersion: 2
+        x: 628
+        y: 13
+        width: 326
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a5d53e5b0fe32b70800000000000000
+      internalID: 8873198522954274214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ShieldAttacked_0: -2684405605512065677
+      ShieldAttacked_1: -2573722791459224865
+      ShieldAttacked_10: -3978813695680841846
+      ShieldAttacked_11: -5593654548746277106
+      ShieldAttacked_12: -5096947746111281212
+      ShieldAttacked_13: 384484600355962471
+      ShieldAttacked_14: 5885875532572041256
+      ShieldAttacked_15: 2448421208335409689
+      ShieldAttacked_16: -4952304801243631857
+      ShieldAttacked_17: -3278405630949223195
+      ShieldAttacked_18: 8721496481710827241
+      ShieldAttacked_19: -2019306444798714426
+      ShieldAttacked_2: 859622078403770474
+      ShieldAttacked_20: -996598204764241051
+      ShieldAttacked_21: -2693048954260030903
+      ShieldAttacked_22: -5339036544400398072
+      ShieldAttacked_23: 773188155952464189
+      ShieldAttacked_24: 2850214438450716976
+      ShieldAttacked_25: 8873198522954274214
+      ShieldAttacked_3: 6024169569703165103
+      ShieldAttacked_4: -4169589975630480282
+      ShieldAttacked_5: -5890742689124825915
+      ShieldAttacked_6: -4627630833422392676
+      ShieldAttacked_7: -2386641818874444699
+      ShieldAttacked_8: -950829540824859333
+      ShieldAttacked_9: -7285178296072091233
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

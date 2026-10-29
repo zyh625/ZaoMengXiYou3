@@ -18,7 +18,7 @@ public class StageEnemyManager : LevelEnemyManager
     private sealed class PoolData
     {
         public EnemyPool config;//保存这一池对应的出生权重
-        public EnemyController[] enemies;//已经登记过奖励、追击目标与渲染顺序的实例
+        public List<EnemyController> enemies;//池内成员统一登记，Boss召唤超过预热数量时可以扩容
         public float spawnOffset;//保持原关卡的相机半宽减去三倍敌人半宽的出生偏移
         public EnemyController spareEnemy;//本次随机选择时找到的空闲成员
     }
@@ -81,7 +81,7 @@ public class StageEnemyManager : LevelEnemyManager
         foreach (EnemyPool config in enemyPools)
         {
             if (config == null || config.prefab == null || config.poolSize <= 0) continue;
-            pools.Add(new PoolData { config = config, enemies = new EnemyController[config.poolSize] });
+            pools.Add(new PoolData { config = config, enemies = new List<EnemyController>(config.poolSize) });
             maxPoolSize = Mathf.Max(maxPoolSize, config.poolSize);
         }
 
@@ -89,13 +89,13 @@ public class StageEnemyManager : LevelEnemyManager
         {
             foreach (PoolData pool in pools)
             {
-                if (i >= pool.enemies.Length) continue;
+                if (i >= pool.config.poolSize) continue;
                 EnemyController enemy = CreateEnemy(pool.config.prefab);
                 //允许使用停用的预制体；先完成Awake与碰撞箱初始化，随后立即归还对象池。
                 if (!enemy.gameObject.activeSelf) enemy.gameObject.SetActive(true);
                 if (i == 0 && CM != null) pool.spawnOffset = CM.CameraHalf - enemy.enemyHalf * 3f;
                 enemy.gameObject.SetActive(false);
-                pool.enemies[i] = enemy;
+                pool.enemies.Add(enemy);
             }
         }
     }
@@ -150,5 +150,27 @@ public class StageEnemyManager : LevelEnemyManager
         foreach (EnemyController enemy in pool.enemies)
             if (enemy != null && !enemy.gameObject.activeSelf) return enemy;
         return null;
+    }
+
+    public override bool TryCreateSummonedEnemy(Vector2 groundPosition)//音符召唤不消耗普通波次出生数，仍共用奖励、换人目标和对象池
+    {
+        if (pools.Count == 0 || !BattleRun.IsRunning) return false;
+        PoolData pool = pools[UnityEngine.Random.Range(0, pools.Count)];//每种本关敌人等概率，不沿用波次出生权重
+        EnemyController enemy = FindSpareEnemy(pool);
+        if (enemy == null)
+        {
+            enemy = CreateEnemy(pool.config.prefab);
+            if (!enemy.gameObject.activeSelf) enemy.gameObject.SetActive(true);
+            enemy.gameObject.SetActive(false);
+            pool.enemies.Add(enemy);//新增实例仍留在本池，下次召唤优先复用
+        }
+        Transform actor = enemy.transform;
+        BoxCollider2D body = enemy.GetComponent<BoxCollider2D>();
+        float feet = body != null ? (body.offset.y - body.size.y * 0.5f) * actor.lossyScale.y : 0f;
+        float centerX = body != null ? body.offset.x * actor.lossyScale.x : 0f;
+        actor.position = new Vector3(groundPosition.x - centerX, groundPosition.y - feet + 0.01f, actor.position.z);
+        enemy.SetSpawnSide(CM != null && groundPosition.x > CM.CameraCenter);
+        enemy.gameObject.SetActive(true);
+        return true;
     }
 }

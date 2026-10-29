@@ -26,11 +26,13 @@ public class InputReader : MonoBehaviour
     private InputAction switchPriButton, switchNextButton;
     private InputAction interactButton, quickDownButton;
     private ActorStatus status;//冻结时舍弃操作事件，不在恢复后补放之前按过的攻击和技能
+    private ActorStun stun;//普通眩晕同样挡住动作输入，空格无双仍保留单独驱散入口
+    private bool Stunned => (stun != null ? stun : stun = GetComponent<ActorStun>()) != null && stun.IsStunned;
     private float pauseMoveValue;//暂停瞬间的方向，恢复时只在真实方向改变后重同步，保持原本的跑步状态
     private bool resumeInputSync;//恢复后的第一轮输入只同步按键状态，不补放暂停期间按过的攻击和技能
     public float MoveValue => moveButton != null ? moveButton.ReadValue<float>() : 0f;//解冻后读取实际仍按住的移动轴，不重新触发一次按下事件
-    private bool ActionsBlocked => GamePause.IsPaused || resumeInputSync || status != null && status.BlocksActions;
-    private bool MovementBlocked => GamePause.IsPaused || resumeInputSync || status != null && status.BlocksMovement;
+    private bool ActionsBlocked => GamePause.IsPaused || resumeInputSync || Stunned || status != null && status.BlocksActions;
+    private bool MovementBlocked => GamePause.IsPaused || resumeInputSync || Stunned || status != null && status.BlocksMovement;
     public bool AttackHeld => !GamePause.IsPaused && attackButton != null
         && attackButton.IsPressed();
     public bool QuickDownHeld => !GamePause.IsPaused && quickDownButton != null && quickDownButton.IsPressed();//恢复瞬间直接读取真实按住状态，不误结束仍按住的持续攻击或反甲

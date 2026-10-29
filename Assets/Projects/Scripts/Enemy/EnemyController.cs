@@ -54,6 +54,7 @@ public class EnemyController : MonoBehaviour
     protected virtual void CheckSkillBoostLose() { }//检查当前增益型技能是否失效
     protected virtual void CheckSkill() { }//检查当前技能阶段对应技能效果
     protected virtual bool SkillReady => false;//当前是否可以释放技能
+    protected virtual bool ProcessSpecialState() => false;//弹反等专属动作在死亡之后、冰冻与普通行为之前取得控制
     private void FixedUpdate()
     {
         EM.BeginMotionStep();//剥离上个物理步的流沙拉力，自身行为仍按原有优先级执行
@@ -70,6 +71,7 @@ public class EnemyController : MonoBehaviour
             SetState(EnemyState.Die);
             return;
         }
+        if (ProcessSpecialState()) return;
         if (status != null && status.BlocksActions)
         {
             HoldControlPose();

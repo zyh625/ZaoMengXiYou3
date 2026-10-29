@@ -270,13 +270,13 @@ public class PlayerCombat : MonoBehaviour
     }
 
     public DamageInfo CreateAttackDamage(float baseDamage, bool knockback = true, bool launch = false,
-        AttackEffect[] effects = null, Transform source = null)//所有玩家主动伤害只在实际命中入口投掷一次暴击
+        AttackEffect[] effects = null, Transform source = null, DamageKind kind = DamageKind.Skill)//所有玩家主动伤害只在实际命中入口投掷一次暴击
     {
         float amount = Mathf.Max(0f, baseDamage) * AttackMultiplier;
         float chance = CriticalChance;
         if (amount > 0f && chance > 0f && (chance >= 1f || Random.value < chance))
             amount *= Mathf.Max(1f, criticalMultiplier);
-        return new DamageInfo(source != null ? source : transform, amount, knockback, launch, effects);
+        return new DamageInfo(source != null ? source : transform, amount, knockback, launch, effects, kind: kind);
     }
     private void ClearAttackDebuffs()//只清除攻击降低，正面攻击增益保持
     {

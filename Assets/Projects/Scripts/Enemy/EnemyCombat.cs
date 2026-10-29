@@ -1,4 +1,6 @@
+
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyCombat : MonoBehaviour
@@ -19,7 +21,41 @@ public class EnemyCombat : MonoBehaviour
     private int curAttack = -1;
     public int Attack => curAttack;
     private bool attackWindowOpened, attackHitReported;//一整招只结算一次命中或落空，重复碰撞和冲刺转向不重复累计
-    public virtual float DamageMultiplier => 1f;//攻击加成在真正命中时读取，攻击箱重新开启也不会丢失
+    public virtual float DamageMultiplier => (Angry ? Mathf.Max(0f, angryRatio) : 1f) * AttackBuffMultiplier;//怒气与外部攻击增幅分别计算，不改写预制体基础攻击
+    private readonly Dictionary<UnityEngine.Object, TimedAttackBuff> attackBuffs = new();//同来源刷新，不同来源的攻击增幅独立到期
+    private readonly List<UnityEngine.Object> expiredAttackBuffs = new();//复用过期来源列表，命中查询不额外分配集合
+    private readonly struct TimedAttackBuff//仅保存本次生命内的临时增益，不写入存档或基础数值
+    {
+        public readonly float Multiplier, Until;
+        public TimedAttackBuff(float multiplier, float until) { Multiplier = multiplier; Until = until; }
+    }
+    protected float AttackBuffMultiplier//所有近战攻击箱及远程发射快照共用倍率入口
+    {
+        get
+        {
+            float multiplier = 1f;
+            expiredAttackBuffs.Clear();
+            foreach (var entry in attackBuffs)
+            {
+                if (entry.Key == null || Time.time >= entry.Value.Until) expiredAttackBuffs.Add(entry.Key);
+                else multiplier *= entry.Value.Multiplier;
+            }
+            foreach (var source in expiredAttackBuffs) attackBuffs.Remove(source);
+            return multiplier;
+        }
+    }
+    public void ApplyAttackBuff(UnityEngine.Object source, float multiplier, float duration)//绿色音符等外部增益按来源刷新持续时间
+    {
+        if (source == null || !isActiveAndEnabled || duration <= 0f || float.IsNaN(duration) || float.IsInfinity(duration)
+            || multiplier < 0f || float.IsNaN(multiplier) || float.IsInfinity(multiplier)) return;
+        Health health = GetComponent<Health>();
+        if (health == null || health.Dead) return;
+        attackBuffs[source] = new TimedAttackBuff(multiplier, Time.time + duration);
+    }
+    public void RemoveAttackBuff(UnityEngine.Object source)//只移除自己提供的增益，保留其他来源
+    {
+        if (source != null) attackBuffs.Remove(source);
+    }
     protected virtual bool UsesAnger => true;//普通小怪保留原怒气；Boss基类默认关闭，具体Boss自行扩展特殊状态
     public void AttackOver(bool completed = false)//正常播完才结算落空，受击或控制打断不当成玩家躲避
     {
@@ -37,6 +73,8 @@ public class EnemyCombat : MonoBehaviour
     private bool angry = false;
     private ActorStatus status;//融化只在真正开始一招时推进，不把碰撞检测或按帧伤害当成额外攻击
     public bool Angry => UsesAnger && angry;
+    protected float AngerAttackMultiplier => Mathf.Max(0f, angryRatio);//远程攻击也能沿用小怪原有愤怒配置
+    protected float AngerCooldownMultiplier => Mathf.Max(0f, delayRatio);
     public bool AngryRequest = false;
     private float lastAngry = -1f;
     public bool AngryEnd=> UsesAnger && (Time.time - lastAngry) >= angryDuration;
@@ -65,6 +103,7 @@ public class EnemyCombat : MonoBehaviour
     }
     protected virtual void OnEnable()
     {
+        attackBuffs.Clear();//对象池下次重生不继承上一条生命获得的增幅
         angry = false;
         curAttack = -1;
         attackWindowOpened = attackHitReported = false;
@@ -159,7 +198,6 @@ public class EnemyCombat : MonoBehaviour
         angry = true;
         for (int i = 0; i < attackNum; i++)
         {
-            enemyAttackBoxes[i].ChangeAttack(angryRatio);
             curAttackDelay[i] *= delayRatio;
         }
     }

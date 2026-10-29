@@ -98,6 +98,7 @@ public class TangNormalAttackManager : MonoBehaviour
         {
             if (enemy == null || !enemy.CanReceiveHit || enemy.BodyCollider == null
                 || !enemy.BodyCollider.enabled || !enemy.BodyCollider.gameObject.activeInHierarchy) continue;
+            if (enemy.GetComponent<Health>() is Health health && health.IgnoresAttack(DamageKind.NormalAttack)) continue;
             Bounds bounds = enemy.BodyCollider.bounds;
             bounds.Expand(new Vector3(area.size.x, area.size.y, 1f));//扩大目标等价于用能量波完整矩形扫过目标
             Vector3 rayStart = new(start.x, start.y, bounds.center.z);
@@ -121,8 +122,8 @@ public class TangNormalAttackManager : MonoBehaviour
             return;
         }
         float previousBlood = health.CurBlood;
-        health.TakeDamage(combat != null ? combat.CreateAttackDamage(damage, true, false, source: caster)
-            : new DamageInfo(caster, damage, true, false));//正常水平击退，攻击倍率和暴击只在实际命中时计算一次
+        health.TakeDamage(combat != null ? combat.CreateAttackDamage(damage, true, false, source: caster, kind: DamageKind.NormalAttack)
+            : new DamageInfo(caster, damage, true, false, kind: DamageKind.NormalAttack));//正常水平击退，攻击倍率和暴击只在实际命中时计算一次
         if (!BattleRun.IsRunning)
         {
             StopEffect();//反伤导致当前角色死亡时，不在已经结束的战斗中继续播放或命中

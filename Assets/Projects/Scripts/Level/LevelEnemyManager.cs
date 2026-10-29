@@ -81,6 +81,8 @@ public abstract class LevelEnemyManager : MonoBehaviour
 
     public abstract bool TryCreateEnemy(bool r, float createY);//选择哪种敌人以及出生方式由具体关卡决定
 
+    public virtual bool TryCreateSummonedEnemy(Vector2 groundPosition) => false;//可召唤的关卡重写入口，坐标表示音符落地的脚底点
+
     public virtual void SetTarget(Transform target)
     {
         currentTarget = target;

@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     private PlayerBoost PB;//无双开启只高于受击处理，不覆盖死亡
     private PlayerResources resources;//每次状态判断完成后统一处理持续气力，所有提前return都会覆盖
     private ActorStatus status;//共用冰冻阶段决定是否封锁操作、是否只保留攻击而锁住位移
+    private ActorStun stun;//普通眩晕由统一组件计时，控制器仍负责动作切换顺序
+    private bool stunPoseHeld;//只在进入或解除眩晕时重设动作，不逐帧重播受击动画
     private bool solidFreezeHeld, statusMovementLocked;//仅在阶段切换时中断动作，避免融化中的新攻击被每帧重置
     private int thawCombo = -1, thawComboFrame = -1;//持续组合技每完成一轮动作也只推进一次融化
     private CameraManager CM;
@@ -35,6 +37,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]protected PlayerState state;//当前状态,初始为待机
     private int stateAction = -1;//记录合并状态内的具体招式编号，区分下一招、二段跳和重复进入同一动作
     public PlayerState State() => state;
+    public bool CanReceiveHit => checkAttacked == null || (checkAttacked.enabled && checkAttacked.gameObject.activeInHierarchy);//手动扫掠投射物也遵守技能受击箱无敌
     public SpriteManager BodySpriteManager//明确查找本体播放器，新增护罩、水柱等子物体不会抢走人物动画
     {
         get
@@ -56,6 +59,8 @@ public class PlayerController : MonoBehaviour
         PI= GetComponent<PlayerInteract>();
         PH = GetComponent<Health>();
         status = PH.Status;
+        stun = GetComponent<ActorStun>();
+        if (stun == null) stun = gameObject.AddComponent<ActorStun>();//已有四角色预制体无需逐个新增同一眩晕组件
         PB = GetComponent<PlayerBoost>();
         resources = GetComponent<PlayerResources>();
         CM = Camera.main.GetComponent<CameraManager>();
@@ -78,6 +83,7 @@ public class PlayerController : MonoBehaviour
         IR.QuickDownPressed += PM.OnQuickDown;
         IR.BoostPressed += PB.RequestBoost;
         if (status != null) status.Changed += OnStatusChanged;
+        if (stun != null) stun.Changed += OnStunChanged;
         OnStatusChanged();
     }
     private void OnDisable()
@@ -92,6 +98,9 @@ public class PlayerController : MonoBehaviour
         IR.QuickDownPressed -= PM.OnQuickDown;
         IR.BoostPressed -= PB.RequestBoost;
         if (status != null) status.Changed -= OnStatusChanged;
+        if (stun != null) stun.Changed -= OnStunChanged;
+        if (stunPoseHeld && SM != null) SM.Resume();
+        stunPoseHeld = false;
         if (solidFreezeHeld && SM != null) SM.Resume();
         solidFreezeHeld = statusMovementLocked = false;
     }
@@ -99,6 +108,7 @@ public class PlayerController : MonoBehaviour
     //交出或接收控制权时结束旧动作，保证切回角色后从可控制的待机状态开始。
     public void ResetForSwitch()
     {
+        if (stun != null) stun.Clear();//正常换人不会保留旧眩晕姿势或暂停播放器
         AttackOver();
         ComboOver();
         RiseOver();
@@ -133,6 +143,35 @@ public class PlayerController : MonoBehaviour
         UpdateVigor();//状态流程中的提前返回不再漏掉持续消耗或恢复
     }
 
+    private void OnStunChanged()//普通眩晕立即关闭攻击与施法，结束后同步当前仍按住的方向
+    {
+        if (PH == null || SM == null || !isActiveAndEnabled) return;
+        if (!PH.Dead && stun != null && stun.IsStunned)
+        {
+            if (status != null && status.BlocksActions) return;//冰冻先保留自己的冻结姿势
+            if (!stunPoseHeld)
+            {
+                stunPoseHeld = true;
+                AttackOver(); ComboOver(); RiseOver(); SkillOver();
+                PC.ClearRequests(); PM.ClearControlInput(); PI.ClearRequest();
+                PH.AttackedEnd(); PM.AllowJump(false);
+                SetState(PlayerState.Attacked);
+            }
+            SM.Pause();
+            return;
+        }
+        if (!stunPoseHeld) return;
+        stunPoseHeld = false;
+        if (PH.Dead || (status != null && status.BlocksActions)) return;
+        SM.Resume();
+        PH.AttackedEnd();
+        PM.AllowJump(true);
+        PM.CheckIsGround();
+        int air = PM.AirState();
+        SetState(air > 0 ? PlayerState.Rise : air < 0 ? PlayerState.Drop : PlayerState.Idle);
+        PM.SyncMoveInput(IR.MoveValue);
+    }
+
     private void OnStatusChanged()//冻结到来立即关闭旧攻击，进入融化或正常解除后再允许本体动画继续
     {
         if (status == null || PH == null || SM == null || !isActiveAndEnabled) return;
@@ -148,6 +187,7 @@ public class PlayerController : MonoBehaviour
         if (solid && !solidFreezeHeld)
         {
             solidFreezeHeld = true;
+            stunPoseHeld = false;//强冻结接管动作后，若它先结束，剩余眩晕需要重新进入受击定格
             SpriteRenderer renderer = SM.GetComponent<SpriteRenderer>();
             Sprite frozenPose = renderer != null ? renderer.sprite : null;//保留被冰住瞬间的姿势，冻结期间不继续挥动旧动作
             AttackOver(); ComboOver(); RiseOver(); SkillOver();
@@ -210,6 +250,13 @@ public class PlayerController : MonoBehaviour
             status.EnforcePosition();
             return;//先允许成功开启无双解除异常；未能开启时仍禁止冰冻中的其他行为
         }
+        if (!PH.Dead && stun != null && stun.IsStunned)
+        {
+            OnStunChanged();
+            PH.AttackedEnd();//眩晕中追加伤害只扣血，不在结束后补播旧受击
+            return;
+        }
+        if (stunPoseHeld) OnStunChanged();//霸体或计时刚结束时先恢复播放器，再进入普通状态判断
         if (PH.Dead||PH.Attacked)//可连续受击
         {
             bool back = PH.AttackedBack, up = PH.AttackedUp;//先保存本次独立效果，结束受击请求会清除它们
