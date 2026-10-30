@@ -36,6 +36,80 @@ public abstract class LevelManager : MonoBehaviour
     private PlayerManager subscribedPlayerManager;//记录实际订阅对象，自动查找和重新启用时不会重复订阅
     public int WaveCount => maxWave;//供关卡创建工具核对波次配置
 
+#if UNITY_EDITOR
+    private bool battlePractice;//仅编辑器测试期间暂停波次、出口和胜利结算，正式游戏不编译这部分逻辑。
+    public bool IsInitialized => initialized;
+    public LevelEnemyManager EnemyManager => enemyManager;
+    public bool IsBattlePractice => battlePractice;
+    public EnemyController PracticeOpponent { get; private set; }//测试窗口读取实际对手和死亡状态，无需反射。
+
+    public bool BeginBattlePractice(EnemyController prefab, bool testBoss)//当前场景完成正式初始化后，切换为单个敌人的手动测试。
+    {
+        if (!Application.isPlaying || !initialized || curPlayer == null || enemyManager == null
+            || (testBoss ? curBoss == null : prefab == null)) return false;
+        if (battlePractice) return false;//重测由窗口重开Play Mode，保证人物、状态和冷却全部重新初始化。
+        battlePractice = true;
+        playerManager.BattlePractice = true;
+        GoldManager.Current?.EndRun();
+        enemyManager.ClearBattlePracticeEnemies();
+        if (curExit != null) curExit.gameObject.SetActive(false);
+        bossUI?.PrepareForBattle();
+
+        CM.FocusBattlePractice(testBoss ? Mathf.Max(0, maxWave - 1) : 0,
+            testBoss ? curBoss.position.x : curPlayer.transform.position.x);
+        float half = CM.CameraHalf;
+        float left = CM.CameraCenter - half + 1.5f;
+        float right = CM.CameraCenter + half - 1.5f;
+        float opponentX = testBoss ? curBoss.position.x : CM.CameraCenter + Mathf.Min(4f, half * 0.4f);
+        float playerX = Mathf.Clamp(opponentX - Mathf.Min(6f, half * 0.8f), left, right);
+        PlacePracticePlayer(playerX);
+        if (testBoss)
+        {
+            PracticeOpponent = curBoss.GetComponent<EnemyController>();
+            curBoss.gameObject.SetActive(true);
+            bossBorn = true;
+            BattleRun.SetBoss(curBoss.GetComponent<Health>());
+            BindBossUI();
+            bossUI?.SetVisible(true);
+        }
+        else
+        {
+            PracticeOpponent = enemyManager.CreateBattlePracticeEnemy(prefab,
+                new Vector2(opponentX, FindPracticeGround(opponentX)));
+        }
+        enemyManager.SetTarget(curPlayer.transform);
+        Physics2D.SyncTransforms();
+        return PracticeOpponent != null;
+    }
+
+    private float FindPracticeGround(float x)//仅查地板层，避开触发箱，测试角色放在当前场地真实地面上。
+    {
+        ContactFilter2D filter = new();
+        filter.SetLayerMask(1 << 6);
+        filter.useTriggers = false;
+        RaycastHit2D[] hit = new RaycastHit2D[1];
+        float height = Mathf.Max(createY, curBoss != null ? curBoss.position.y : createY) + 20f;
+        return Physics2D.Raycast(new Vector2(x, height), Vector2.down, filter, hit, 200f) > 0
+            ? hit[0].point.y : createY - 1f;
+    }
+
+    private void PlacePracticePlayer(float x)//按身体碰撞箱脚底对齐；不改变任何人物预制体的缩放或碰撞箱。
+    {
+        BoxCollider2D box = curPlayer.GetComponent<BoxCollider2D>();
+        float feet = box != null ? (box.offset.y - box.size.y * 0.5f) * curPlayer.transform.lossyScale.y : 0f;
+        Vector3 position = curPlayer.transform.position;
+        position.x = x;
+        position.y = FindPracticeGround(x) - feet + 0.02f;
+        curPlayer.transform.position = position;
+        Rigidbody2D body = curPlayer.GetComponent<Rigidbody2D>();
+        if (body != null)
+        {
+            body.position = position;
+            body.linearVelocity = Vector2.zero;
+        }
+    }
+#endif
+
     protected virtual void Awake() => ResolveSceneReferences();
 
     protected virtual void OnEnable()
@@ -84,6 +158,9 @@ public abstract class LevelManager : MonoBehaviour
     protected virtual void FixedUpdate()
     {
         if (!initialized || curPlayer == null) return;
+#if UNITY_EDITOR
+        if (battlePractice) return;
+#endif
         Health health = curPlayer.GetComponent<Health>();//换人后仍检查当前角色，不缓存已经换出的角色血量
         if (health == null)
         {
@@ -232,14 +309,14 @@ public abstract class LevelManager : MonoBehaviour
 
     public void ResolveSceneReferences()//共享预制体只保存内部引用，场景之间的管理器在启动时连接；已填写的引用保持原样
     {
-        if (ui == null) ui = FindFirstObjectByType<UIManager>();
+        if (ui == null) ui = FindAnyObjectByType<UIManager>();
         if (bossUI == null && ui != null) bossUI = ui.GetComponentInChildren<BossUI>(true);
-        if (bossUI == null) bossUI = FindFirstObjectByType<BossUI>(FindObjectsInactive.Include);//面板默认关闭，普通查找会漏掉
-        if (playerManager == null) playerManager = FindFirstObjectByType<PlayerManager>();
+        if (bossUI == null) bossUI = FindAnyObjectByType<BossUI>(FindObjectsInactive.Include);//面板默认关闭，普通查找会漏掉
+        if (playerManager == null) playerManager = FindAnyObjectByType<PlayerManager>();
         if (CM == null && Camera.main != null) CM = Camera.main.GetComponent<CameraManager>();
         if (enemyManager == null) enemyManager = GetComponent<LevelEnemyManager>();
         if (enemyManager == null) enemyManager = GetComponentInChildren<LevelEnemyManager>(true);
-        if (enemyManager == null) enemyManager = FindFirstObjectByType<LevelEnemyManager>();
+        if (enemyManager == null) enemyManager = FindAnyObjectByType<LevelEnemyManager>();
     }
 
     private void BindPlayerManager()//OnEnable可能早于自动查找成功，Start补绑时也只保留一份订阅

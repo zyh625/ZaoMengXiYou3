@@ -8,7 +8,6 @@ public class BajieCombat : PlayerCombat
     [SerializeField] private int yieldOpenFrame = 15;//领域开启对应的帧序列，从0开始
     private HolyLightManager holyLight;//技能一同时播放的自身圣光
     private BajieMovement movement;//地面限定施法使用实时地面接触校验
-    private Health health;//阻止受击、死亡期间释放技能
     private BajieController controller;//当前仍在受击动画中时也不能释放技能一
     private Combat skillTwo, skillThree;//缓存动作数据，生效窗口直接使用Combat中的开关帧
     private readonly HashSet<EnemyMovement> attractedEnemies = new();//本次曾被吸引的敌人，离开范围也不会丢失
@@ -153,7 +152,7 @@ public class BajieCombat : PlayerCombat
     {
         if (effectManager != null || yield == null) return;
         effectManager = yield.GetComponentInParent<PlayerManager>();
-        if (effectManager == null) effectManager = FindFirstObjectByType<PlayerManager>();
+        if (effectManager == null) effectManager = FindAnyObjectByType<PlayerManager>();
     }
     public void CheckYield(int idx)
     {

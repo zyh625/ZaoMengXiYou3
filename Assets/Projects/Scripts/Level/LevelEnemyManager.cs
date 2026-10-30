@@ -17,6 +17,32 @@ public abstract class LevelEnemyManager : MonoBehaviour
     public Transform CurBoss => curBoss;
     public int EnemyExtraOrder => enemyExtraOrder;
 
+#if UNITY_EDITOR
+    public Transform BossPrefab => boss;//关卡测试窗口只读取本关配置，不自行维护敌人名单。
+    public virtual IEnumerable<EnemyController> GetEnemyPrefabs() => System.Array.Empty<EnemyController>();//具体池提供本关可选类型。
+
+    public void ClearBattlePracticeEnemies()//手动测试开始时关闭全部已登记实例，避免普通刷怪混进测试。
+    {
+        foreach (EnemyController enemy in enemies)
+            if (enemy != null) enemy.gameObject.SetActive(false);
+        if (curBoss != null) curBoss.gameObject.SetActive(false);
+    }
+
+    public EnemyController CreateBattlePracticeEnemy(EnemyController prefab, Vector2 groundPosition)//沿用正式目标、奖励和排序绑定，只创建选中的一只。
+    {
+        if (prefab == null || !initialized) return null;
+        EnemyController enemy = CreateEnemy(prefab);
+        enemy.gameObject.SetActive(false);
+        BoxCollider2D body = enemy.GetComponent<BoxCollider2D>();
+        float feet = body != null ? (body.offset.y - body.size.y * 0.5f) * enemy.transform.lossyScale.y : 0f;
+        float centerX = body != null ? body.offset.x * enemy.transform.lossyScale.x : 0f;
+        enemy.transform.position = new Vector3(groundPosition.x - centerX, groundPosition.y - feet + 0.02f, 0f);
+        enemy.SetSpawnSide(false);
+        enemy.gameObject.SetActive(true);
+        return enemy;
+    }
+#endif
+
     public virtual bool ValidateConfiguration(out string error)//关卡通过统一接口检查配置，新增敌人管理器可继续扩展验证
     {
         if (boss == null || bossBornLocation == null)

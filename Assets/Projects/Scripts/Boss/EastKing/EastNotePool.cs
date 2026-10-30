@@ -18,7 +18,7 @@ public class EastNotePool : MonoBehaviour
     public static EastNotePool GetOrCreate()//预制体不保存场景对象引用，首枚音符自动取得本关池
     {
         if (current != null) return current;
-        current = FindFirstObjectByType<EastNotePool>();
+        current = FindAnyObjectByType<EastNotePool>();
         if (current == null) current = new GameObject("EastNotePool").AddComponent<EastNotePool>();
         return current;
     }
@@ -36,12 +36,12 @@ public class EastNotePool : MonoBehaviour
     private void ResolveSceneReferences(EastCombat source = null)//只选正在使用的场景组件，避免拾取关卡布局中的禁用模板
     {
         if (players == null || !players.isActiveAndEnabled || players.CurrentPlayer == null)
-            foreach (PlayerManager manager in FindObjectsByType<PlayerManager>(FindObjectsSortMode.None))
+            foreach (PlayerManager manager in FindObjectsByType<PlayerManager>())
                 if (manager.isActiveAndEnabled && manager.CurrentPlayer != null) { players = manager; break; }
         if (enemies == null || !enemies.isActiveAndEnabled || source != null && enemies.CurBoss != source.transform)
         {
             LevelEnemyManager fallback = null;//独立测试可以没有登记Boss的管理器，正式关卡优先匹配实际Boss拥有者
-            foreach (LevelEnemyManager manager in FindObjectsByType<LevelEnemyManager>(FindObjectsSortMode.None))
+            foreach (LevelEnemyManager manager in FindObjectsByType<LevelEnemyManager>())
             {
                 if (!manager.isActiveAndEnabled) continue;
                 if (fallback == null) fallback = manager;

@@ -4,7 +4,7 @@ using UnityEngine;
 public class BoomerangManager : MonoBehaviour
 {
     [SerializeField] private SpriteManager SM;//独立播放，不随沙僧换出而停止
-    [SerializeField] private SpriteData animation;//回旋镖的循环帧动画
+    [SerializeField] private new SpriteData animation;//回旋镖的循环帧动画
     [SerializeField, Min(0.01f)] private float travelDistance = 6f;//从生成位置向前飞行的距离
     [SerializeField, Min(0.01f)] private float flySpeed = 8f;//去程速度
     [SerializeField, Min(0.01f)] private float returnSpeed = 8f;//回程与携带敌人的速度

@@ -21,7 +21,9 @@ public class EnemyCombat : MonoBehaviour
     private int curAttack = -1;
     public int Attack => curAttack;
     private bool attackWindowOpened, attackHitReported;//一整招只结算一次命中或落空，重复碰撞和冲刺转向不重复累计
-    public virtual float DamageMultiplier => (Angry ? Mathf.Max(0f, angryRatio) : 1f) * AttackBuffMultiplier;//怒气与外部攻击增幅分别计算，不改写预制体基础攻击
+    private float externalDamageScale = 1f;//关卡召唤等外部来源的伤害倍率；池成员复用时由生成代码显式恢复为1
+    public void SetExternalDamageScale(float value) => externalDamageScale = Mathf.Clamp(value, 0f, 10f);//不修改预制体基础攻击
+    public virtual float DamageMultiplier => (Angry ? Mathf.Max(0f, angryRatio) : 1f) * AttackBuffMultiplier * externalDamageScale;//怒气、临时增幅与外部倍率分别计算
     private readonly Dictionary<UnityEngine.Object, TimedAttackBuff> attackBuffs = new();//同来源刷新，不同来源的攻击增幅独立到期
     private readonly List<UnityEngine.Object> expiredAttackBuffs = new();//复用过期来源列表，命中查询不额外分配集合
     private readonly struct TimedAttackBuff//仅保存本次生命内的临时增益，不写入存档或基础数值

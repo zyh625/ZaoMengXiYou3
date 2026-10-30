@@ -1,0 +1,531 @@
+fileFormatVersion: 2
+guid: fb582afe1bb65eb8af835b9bcfbbfa49
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: NormalWalk_01
+  - first:
+      213: 21300002
+    second: NormalWalk_02
+  - first:
+      213: 21300004
+    second: NormalWalk_03
+  - first:
+      213: 21300006
+    second: NormalWalk_04
+  - first:
+      213: 21300008
+    second: NormalWalk_05
+  - first:
+      213: 21300010
+    second: NormalWalk_06
+  - first:
+      213: 21300012
+    second: NormalWalk_07
+  - first:
+      213: 21300014
+    second: NormalWalk_08
+  - first:
+      213: 21300016
+    second: NormalWalk_09
+  - first:
+      213: 21300018
+    second: NormalWalk_10
+  - first:
+      213: 21300020
+    second: NormalWalk_11
+  - first:
+      213: 21300022
+    second: NormalWalk_12
+  - first:
+      213: 21300024
+    second: NormalWalk_13
+  - first:
+      213: 21300026
+    second: NormalWalk_14
+  - first:
+      213: 21300028
+    second: NormalWalk_15
+  - first:
+      213: 21300030
+    second: NormalWalk_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 9
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: NormalWalk_01
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 863
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4eb6759a07e354a6be99e8ca5b55eca3
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalWalk_02
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 863
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc6b80c71c485b90a4a6492c935e9b8c
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalWalk_03
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 863
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9f110efe07451db85d26fdc62685140
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalWalk_04
+      rect:
+        serializedVersion: 2
+        x: 1211
+        y: 863
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 880a1dc7d9cb5d7cae81a102d516fec0
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalWalk_05
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 576
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c0dd6aff1dc5a42b5b7f090a991e7f1
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalWalk_06
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 576
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c669b82f4d85de89744f6230ac0e810
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalWalk_07
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 576
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e46a1abb17865813aaeeacdf21671e58
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalWalk_08
+      rect:
+        serializedVersion: 2
+        x: 1211
+        y: 576
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43019d414b9852ebb7e2d1f2531e7c04
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalWalk_09
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 289
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07192ac82c2f5459ac44e86ad7be85b5
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalWalk_10
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 289
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ccdc1e5c1f35dcc84b8b2672826ea0e
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalWalk_11
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 289
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83cbb293e43e59c0b3fc7f281b23b4ad
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalWalk_12
+      rect:
+        serializedVersion: 2
+        x: 1211
+        y: 289
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f79dda7b4035e9f9981ad0232031873
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalWalk_13
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5242bbffb36855239308efe406c21b97
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalWalk_14
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 2
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd3b52b94c3b50c89c3da921dea870e9
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalWalk_15
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 2
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13907e94c0ad5b9c8cd25dfd391d52b1
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalWalk_16
+      rect:
+        serializedVersion: 2
+        x: 1211
+        y: 2
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f143da715fc35e38be197c96027956d2
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      NormalWalk_01: 21300000
+      NormalWalk_02: 21300002
+      NormalWalk_03: 21300004
+      NormalWalk_04: 21300006
+      NormalWalk_05: 21300008
+      NormalWalk_06: 21300010
+      NormalWalk_07: 21300012
+      NormalWalk_08: 21300014
+      NormalWalk_09: 21300016
+      NormalWalk_10: 21300018
+      NormalWalk_11: 21300020
+      NormalWalk_12: 21300022
+      NormalWalk_13: 21300024
+      NormalWalk_14: 21300026
+      NormalWalk_15: 21300028
+      NormalWalk_16: 21300030
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: Level4 complete isolated right-facing frames
+  assetBundleName: 
+  assetBundleVariant: 

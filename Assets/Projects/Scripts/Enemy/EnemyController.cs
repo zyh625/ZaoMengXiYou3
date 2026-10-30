@@ -24,12 +24,13 @@ public class EnemyController : MonoBehaviour
         status = EH != null ? EH.Status : GetComponent<ActorStatus>();
         EM = GetComponent<EnemyMovement>();
         EC = GetComponent<EnemyCombat>();
+        EnemyHealthBar.EnsureFor(this);//小怪自动复用受伤后显示、淡出的血条；Boss保持自己的专属界面。
     }
     protected virtual void OnEnable()
     {
         controlPoseHeld = false;
         SetState(EnemyState.Idle);
-        SM.ChangeState(Idle);
+        SM.ChangeState(ResolveStateAnimation(EnemyState.Idle, Idle));
         if (status != null)
         {
             status.Changed += OnStatusChanged;
@@ -152,6 +153,7 @@ public class EnemyController : MonoBehaviour
         EM.Move(EH.Slow);
     }
     protected virtual void HandleAttack(int attack) { }
+    protected virtual SpriteData ResolveStateAnimation(EnemyState next, SpriteData fallback) => fallback;//同一行为状态可按敌人的持盾等形态选择动画，不改变共用判定顺序。
     protected virtual void HandleSkill() { }
     //吸附首次接管时结束攻击与特殊冲刺，防止攻击箱在受控期间继续生效。
     public void InterruptForSuction()
@@ -214,11 +216,11 @@ public class EnemyController : MonoBehaviour
         state = next;
         switch (state)
         {
-            case EnemyState.Idle: SM.ChangeState(Idle); break;
-            case EnemyState.Walk: SM.ChangeState(Walk); break;
+            case EnemyState.Idle: SM.ChangeState(ResolveStateAnimation(state, Idle)); break;
+            case EnemyState.Walk: SM.ChangeState(ResolveStateAnimation(state, Walk)); break;
             case EnemyState.Attacking:HandleAttack(EC.Attack);break;
-            case EnemyState.Attacked: SM.ChangeState(Attacked); break;
-            case EnemyState.Die: SM.ChangeState(Die); break;
+            case EnemyState.Attacked: SM.ChangeState(ResolveStateAnimation(state, Attacked)); break;
+            case EnemyState.Die: SM.ChangeState(ResolveStateAnimation(state, Die)); break;
             case EnemyState.Skill:HandleSkill();break;
         }
     }
@@ -277,7 +279,7 @@ public class EnemyController : MonoBehaviour
         if (SM.IsFinished)
         {
             SkillOver();
-            return false;
+            return state == EnemyState.Skill && !SM.IsFinished;//子类续接新的收回等技能阶段时保留本帧占用，避免立刻被行走覆盖。
         }
         return true;
     }

@@ -25,7 +25,21 @@ public class StageEnemyManager : LevelEnemyManager
 
     [SerializeField] private EnemyPool[] enemyPools = Array.Empty<EnemyPool>();//按顺序配置任意种类的敌人
     [SerializeField] private Transform lungeLeft, lungeRight;//有场地边界接口的Boss共用的左右边界
+    [Header("Boss 召唤")]
+    [SerializeField, Min(0)] private int maxSummonedEnemies = 2;//同时存在的召唤天兵上限，0表示禁止召唤
+    [SerializeField, Range(0.1f, 1f)] private float summonedHpScale = 0.65f;//召唤天兵的血量倍率
+    [SerializeField, Range(0f, 1f)] private float summonedDamageScale = 0.7f;//召唤天兵的伤害倍率
+    private readonly List<EnemyController> summons = new();//当前仍在场的召唤单位，用于数量上限与数值恢复
     private readonly List<PoolData> pools = new();//只收集有效配置，空配置不会参与出生选择
+
+#if UNITY_EDITOR
+    public override IEnumerable<EnemyController> GetEnemyPrefabs()//直接使用关卡Inspector中的池配置，新增类型无需修改测试窗口。
+    {
+        if (enemyPools == null) yield break;
+        foreach (EnemyPool pool in enemyPools)
+            if (pool != null && pool.prefab != null) yield return pool.prefab;
+    }
+#endif
 
     public override bool ValidateConfiguration(out string error)//供关卡启动前检查模板是否已经填好必要引用
     {
@@ -141,6 +155,8 @@ public class StageEnemyManager : LevelEnemyManager
         EnemyController enemy = selectedPool.spareEnemy;
         enemy.transform.position = new Vector2((r ? CM.EdgeR : CM.EdgeL) + (r ? 1f : -1f) * selectedPool.spawnOffset, createY);
         enemy.SetSpawnSide(r);
+        summons.Remove(enemy);//普通波次复用池成员时恢复预制体基础数值
+        ApplyStatScales(enemy, selectedPool, false);
         enemy.gameObject.SetActive(true);
         return true;
     }
@@ -155,6 +171,8 @@ public class StageEnemyManager : LevelEnemyManager
     public override bool TryCreateSummonedEnemy(Vector2 groundPosition)//音符召唤不消耗普通波次出生数，仍共用奖励、换人目标和对象池
     {
         if (pools.Count == 0 || !BattleRun.IsRunning) return false;
+        PruneSummons();
+        if (summons.Count >= Mathf.Max(0, maxSummonedEnemies)) return false;//同屏召唤数量上限，防止蓝音符无限累积
         PoolData pool = pools[UnityEngine.Random.Range(0, pools.Count)];//每种本关敌人等概率，不沿用波次出生权重
         EnemyController enemy = FindSpareEnemy(pool);
         if (enemy == null)
@@ -164,6 +182,7 @@ public class StageEnemyManager : LevelEnemyManager
             enemy.gameObject.SetActive(false);
             pool.enemies.Add(enemy);//新增实例仍留在本池，下次召唤优先复用
         }
+        ApplyStatScales(enemy, pool, true);//召唤天兵血量与伤害按倍率削弱，不修改预制体
         Transform actor = enemy.transform;
         BoxCollider2D body = enemy.GetComponent<BoxCollider2D>();
         float feet = body != null ? (body.offset.y - body.size.y * 0.5f) * actor.lossyScale.y : 0f;
@@ -171,6 +190,31 @@ public class StageEnemyManager : LevelEnemyManager
         actor.position = new Vector3(groundPosition.x - centerX, groundPosition.y - feet + 0.01f, actor.position.z);
         enemy.SetSpawnSide(CM != null && groundPosition.x > CM.CameraCenter);
         enemy.gameObject.SetActive(true);
+        summons.Add(enemy);
         return true;
+    }
+
+    private void PruneSummons()//死亡或回收的召唤单位不再占用上限
+    {
+        for (int i = summons.Count - 1; i >= 0; i--)
+            if (summons[i] == null || !summons[i].gameObject.activeSelf) summons.RemoveAt(i);
+    }
+
+    private void ApplyStatScales(EnemyController enemy, PoolData pool, bool summoned)//预制体保存基础值，运行实例按倍率缩放
+    {
+        if (enemy == null || pool == null || pool.config == null) return;
+        Health health = enemy.GetComponent<Health>();
+        if (health != null)
+        {
+            float baseBlood = health.BeginBlood;
+            if (pool.config.prefab != null)
+            {
+                Health prefabHealth = pool.config.prefab.GetComponent<Health>();
+                if (prefabHealth != null) baseBlood = prefabHealth.BeginBlood;//始终以预制体为基准，池成员反复复用不会层层叠乘
+            }
+            health.SetBaseBlood(baseBlood * (summoned ? Mathf.Clamp(summonedHpScale, 0.05f, 1f) : 1f));
+        }
+        EnemyCombat combat = enemy.GetComponent<EnemyCombat>();
+        if (combat != null) combat.SetExternalDamageScale(summoned ? Mathf.Clamp(summonedDamageScale, 0f, 1f) : 1f);
     }
 }

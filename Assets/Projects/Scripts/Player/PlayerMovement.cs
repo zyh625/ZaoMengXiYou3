@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     public bool LandedThisFrame = false;
     public bool JumpedThisFrame = false;
     public float bodyX => body.position.x;
+    public float bodyY => body.position.y;//供镜头在玩家高于中心时做竖直跟随
     private bool quickDowning = false;
     private float beginGravity;
     private bool isQuickDowning = false;

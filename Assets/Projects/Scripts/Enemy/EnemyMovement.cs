@@ -32,6 +32,7 @@ public class EnemyMovement : MonoBehaviour
     private RigidbodyConstraints2D savedConstraints;//冻结结束时恢复原本的旋转和位置约束
     public bool IsStunned => health != null && !health.Boost && HasActiveStun();//不把过期或免控中的来源算作有效眩晕
     public bool IsCarried => carryOwner != null && health != null && !health.Dead;//携带属于强控制，普通霸体不能让已经被抓住的敌人脱离
+    public bool IsExternallyControlled => IsStunned || IsCarried || externalControl != ExternalControlState.None;//特殊行为同样把吸附、携带和释放后的下落交回共用控制逻辑。
     private readonly Dictionary<Object, QuicksandMotion> quicksands = new();//多个流沙分别维护自己的减速和拉力
     private readonly struct QuicksandMotion//横向移动统一缩放一次，拉力是固定速度而不是加速度
     {
@@ -350,7 +351,8 @@ public class EnemyMovement : MonoBehaviour
         gravitySaved = false;
     }
     protected virtual float MoveSpeedMultiplier => 1f;//子类增益复用移动入口，保持小怪原有速度与减速逻辑
-    public void Move(bool slow)
+    public void Move(bool slow) => MoveAlong(DeltaX > 0f ? 1f : -1f, slow);
+    protected void MoveAlong(float direction, bool slow)//巡逻可指定方向，仍统一叠加愤怒、减速和子类速度倍率。
     {
         if (MovementBlocked)
         {
@@ -358,7 +360,7 @@ public class EnemyMovement : MonoBehaviour
             return;
         }
         Vector2 velocity = body.linearVelocity;
-        velocity.x = (slow ? curSlowSpeed : curMoveSpeed) * MoveSpeedMultiplier * (DeltaX > 0f ? 1f : -1f);
+        velocity.x = (slow ? curSlowSpeed : curMoveSpeed) * MoveSpeedMultiplier * Mathf.Clamp(direction, -1f, 1f);
         body.linearVelocity= velocity;
     }
     public void AttackedMove(bool r,bool up)

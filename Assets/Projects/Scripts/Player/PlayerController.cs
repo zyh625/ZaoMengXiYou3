@@ -271,7 +271,7 @@ public class PlayerController : MonoBehaviour
             SetState(PH.Dead ? PlayerState.Die : PlayerState.Attacked);
             return;
         }
-        CM.UpdateCamera(PM.bodyX - CM.CameraCenter);
+        CM.UpdateCamera(PM.bodyX - CM.CameraCenter, PM.bodyY);
         PM.LimitedRange(CM.CameraCenter - deltaHalf, CM.CameraCenter + deltaHalf);
         if (AttackedProcessing()) return;
         if (PC.Skilled!=-1&& !IsSkilling)

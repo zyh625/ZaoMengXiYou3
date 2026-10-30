@@ -4,7 +4,7 @@ using UnityEngine;
 public class OceanBreakerManager : MonoBehaviour
 {
     [SerializeField] private SpriteManager SM;//只暂停自己的播放器，不影响唐僧本体。
-    [SerializeField] private SpriteData animation;//八帧水柱，由本体第5至12帧逐帧驱动。
+    [SerializeField] private new SpriteData animation;//八帧水柱，由本体第5至12帧逐帧驱动。
     [SerializeField] private Rect[] frameBounds;//实际图片的非透明范围，相对每帧pivot。
     [SerializeField, Min(0f)] private float damage = 20f;//每次完整施法对每条敌人生命只造成一次伤害。
     [SerializeField] private Vector2 localOffset;//水柱相对角色的位置，朝左时水平镜像。

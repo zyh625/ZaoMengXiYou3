@@ -24,6 +24,7 @@ public class EastNoteManager : MonoBehaviour
     private Health sourceHealth;//Boss死亡后停止残留音符，避免胜利动画期间继续召怪或伤人
     private int sourceLifeVersion;//池重生后的Boss不接管上一条生命的音符
     private float flightDamage;//一枚音符不随Boss之后获得或失去增幅反复改伤害
+    private bool resultReported;//每枚白、红音符只结算一次急弦能量，池回收不被当作落空
     public bool IsFlying => running;//供关卡检查与运行验证读取
     protected Transform DamageSource => owner != null ? owner.transform : null;
     protected virtual bool IsHostile => true;//治疗和召唤音符允许无敌中的玩家正常接取
@@ -44,6 +45,7 @@ public class EastNoteManager : MonoBehaviour
         owner = source;
         sourceHealth = source != null ? source.GetComponent<Health>() : null;
         sourceLifeVersion = sourceHealth != null ? sourceHealth.LifeVersion : -1;
+        resultReported = false;
         players = playerManager;
         enemyManager = enemies;
         arenaBounds = new Vector2(Mathf.Min(bounds.x, bounds.y), Mathf.Max(bounds.x, bounds.y));
@@ -89,16 +91,21 @@ public class EastNoteManager : MonoBehaviour
             return;
         }
         SetPosition(to);
-        if (to.x < arenaBounds.x - 3f || to.x > arenaBounds.y + 3f) StopEffect();
+        if (to.x < arenaBounds.x - 3f || to.x > arenaBounds.y + 3f) EndFlight(false);
     }
 
     protected bool CanTick()//所有派生音符共同遵守终局、寿命及施法者生命边界
     {
         if (!running) return false;
-        if (!BattleRun.IsRunning || Time.time >= expiresAt || owner == null || !owner.isActiveAndEnabled
+        if (!BattleRun.IsRunning || owner == null || !owner.isActiveAndEnabled
             || sourceHealth == null || sourceHealth.Dead || sourceHealth.LifeVersion != sourceLifeVersion)
         {
             StopEffect();
+            return false;
+        }
+        if (Time.time >= expiresAt)
+        {
+            EndFlight(false);//自然到期才算落空，施法者死亡、战斗结束和外部回收不算
             return false;
         }
         return true;
@@ -119,7 +126,7 @@ public class EastNoteManager : MonoBehaviour
     {
         fraction = 0f;
         if (!TryGetPlayer(out health, out Collider2D body)) return false;
-        if (IsHostile && (!health.GetComponent<PlayerController>().CanReceiveHit || health.IsInvincible)) return false;
+        if (IsHostile && !health.GetComponent<PlayerController>().CanReceiveHit) return false;//技能关闭受击箱时继续穿过；护盾免伤由TakeDamage判定，接触后消失并计落空
         return SweepBounds(from, to, body.bounds, out fraction);
     }
 
@@ -150,7 +157,19 @@ public class EastNoteManager : MonoBehaviour
 
     protected virtual void OnPlayerContact(Health health)//普通音符命中后消失，不像天兵的箭一样持续穿透
     {
+        float previousBlood = health.CurBlood;//无敌或一次性格挡拒绝整次伤害时按落空结算
         health.TakeDamage(new DamageInfo(DamageSource, flightDamage, knockback, false, HitEffects));
+        EndFlight(health.CurBlood < previousBlood);
+    }
+
+    private void EndFlight(bool hit)//飞行自然结束才报告结果，StopEffect仍保留纯回收语义
+    {
+        if (running && IsHostile && !resultReported && owner is EastCombat combat
+            && sourceHealth != null && !sourceHealth.Dead && sourceHealth.LifeVersion == sourceLifeVersion)
+        {
+            resultReported = true;
+            combat.ReportNoteResult(hit, sourceLifeVersion);
+        }
         StopEffect();
     }
 

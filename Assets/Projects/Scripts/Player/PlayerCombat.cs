@@ -64,7 +64,7 @@ public class PlayerCombat : MonoBehaviour
     public bool AttackedRequest => attackedRequest;
     private PlayerResources resources;//每个角色自己的蓝量和经验，换人不会重置
     private PlayerBoost playerBoost;//命中积累无双，主动攻击与反伤分别结算
-    private Health health;//攻击力降低等负面效果参与统一驱散
+    protected Health health;//基类与各角色共用同一本体生命缓存，避免派生类同名字段重复序列化。
     private readonly Dictionary<Object, float> attackMultipliers = new();//攻击力倍率按来源叠加，不修改攻击箱的基础伤害
     [SerializeField, Range(0f, 1f)] private float criticalChance = 0f;//角色基础暴击率，0.3表示30%，不包含临时增益
     [SerializeField, Min(1f)] private float criticalMultiplier = 2f;//发生暴击时的伤害倍率

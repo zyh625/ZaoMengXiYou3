@@ -93,8 +93,7 @@ public class PurpleRangedCombat : EnemyCombat
     private bool PlayerInArrowCheck()//只把玩家本体的碰撞箱算进射程，其他敌人和攻击箱不会触发
     {
         if (checkBox == null || !checkBox.enabled || !checkBox.gameObject.activeInHierarchy) return false;
-        ContactFilter2D filter = new();
-        filter.NoFilter();
+        ContactFilter2D filter = ContactFilter2D.noFilter;
         int count = checkBox.Overlap(filter, checkResults);
         for (int i = 0; i < count; i++)
         {

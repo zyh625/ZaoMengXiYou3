@@ -1,0 +1,531 @@
+fileFormatVersion: 2
+guid: b482ec47987052f2b4fec49c3fe5977a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: ShieldWalk_01
+  - first:
+      213: 21300002
+    second: ShieldWalk_02
+  - first:
+      213: 21300004
+    second: ShieldWalk_03
+  - first:
+      213: 21300006
+    second: ShieldWalk_04
+  - first:
+      213: 21300008
+    second: ShieldWalk_05
+  - first:
+      213: 21300010
+    second: ShieldWalk_06
+  - first:
+      213: 21300012
+    second: ShieldWalk_07
+  - first:
+      213: 21300014
+    second: ShieldWalk_08
+  - first:
+      213: 21300016
+    second: ShieldWalk_09
+  - first:
+      213: 21300018
+    second: ShieldWalk_10
+  - first:
+      213: 21300020
+    second: ShieldWalk_11
+  - first:
+      213: 21300022
+    second: ShieldWalk_12
+  - first:
+      213: 21300024
+    second: ShieldWalk_13
+  - first:
+      213: 21300026
+    second: ShieldWalk_14
+  - first:
+      213: 21300028
+    second: ShieldWalk_15
+  - first:
+      213: 21300030
+    second: ShieldWalk_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 9
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ShieldWalk_01
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 863
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8358087dd45e5ebeb54d1c6c8a2f460d
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldWalk_02
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 863
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2a5981184bf5a3b8c084f56a938c0b9
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldWalk_03
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 863
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 032cdb490fab5c11b19e9e531d5e91b6
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldWalk_04
+      rect:
+        serializedVersion: 2
+        x: 1211
+        y: 863
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a48b9c89f0de5515bbc2fd978419f1f9
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldWalk_05
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 576
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51f9c74a93a85a1f99e283f7e9339d35
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldWalk_06
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 576
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: deaf919a9341527282d3291ec1d593ff
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldWalk_07
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 576
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dab2e3882c7758cf80cf6f42f28612e8
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldWalk_08
+      rect:
+        serializedVersion: 2
+        x: 1211
+        y: 576
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be21912588495cc5bd624c37e9b70681
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldWalk_09
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 289
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f08fce081f1f5831a2210fe59a7d1597
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldWalk_10
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 289
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b038a900d581586794f26931c1a80845
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldWalk_11
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 289
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57aaa33b6b4459f381fb4386765043ae
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldWalk_12
+      rect:
+        serializedVersion: 2
+        x: 1211
+        y: 289
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 327702f66cb55baa8111f4c1ab64fc93
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldWalk_13
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bebb4fd91b015e6299546c991440df3f
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldWalk_14
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 2
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbc2b7aed0cc51d1959fddd4f5bbd4a8
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldWalk_15
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 2
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 007efe13698c59a2804805e907532f58
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldWalk_16
+      rect:
+        serializedVersion: 2
+        x: 1211
+        y: 2
+        width: 399
+        height: 283
+      alignment: 9
+      pivot: {x: 0.4135338346, y: 0.4522968198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fe470119e0a59969a1a3b588ccd8cfb
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      ShieldWalk_01: 21300000
+      ShieldWalk_02: 21300002
+      ShieldWalk_03: 21300004
+      ShieldWalk_04: 21300006
+      ShieldWalk_05: 21300008
+      ShieldWalk_06: 21300010
+      ShieldWalk_07: 21300012
+      ShieldWalk_08: 21300014
+      ShieldWalk_09: 21300016
+      ShieldWalk_10: 21300018
+      ShieldWalk_11: 21300020
+      ShieldWalk_12: 21300022
+      ShieldWalk_13: 21300024
+      ShieldWalk_14: 21300026
+      ShieldWalk_15: 21300028
+      ShieldWalk_16: 21300030
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: Level4 complete isolated right-facing frames
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,741 @@
+fileFormatVersion: 2
+guid: 510cbaadc97493f46aaa9f9b044e61e8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -537893593137376390
+    second: WheelSpin_0
+  - first:
+      213: -1814517041643302219
+    second: WheelSpin_1
+  - first:
+      213: 1147229150844446937
+    second: WheelSpin_2
+  - first:
+      213: 1174006664973400226
+    second: WheelSpin_3
+  - first:
+      213: 4995222648752250345
+    second: WheelSpin_4
+  - first:
+      213: 4563726797083556452
+    second: WheelSpin_5
+  - first:
+      213: 1887117765347876531
+    second: WheelSpin_6
+  - first:
+      213: -742913986400525787
+    second: WheelSpin_7
+  - first:
+      213: -2537122621772673370
+    second: WheelSpin_8
+  - first:
+      213: 3889954970894068837
+    second: WheelSpin_9
+  - first:
+      213: 3639814878146672647
+    second: WheelSpin_10
+  - first:
+      213: 8971618391529540177
+    second: WheelSpin_11
+  - first:
+      213: 3831608348273634645
+    second: WheelSpin_12
+  - first:
+      213: -7725223422955474254
+    second: WheelSpin_13
+  - first:
+      213: 5324999765222693386
+    second: WheelSpin_14
+  - first:
+      213: -8976655750931875879
+    second: WheelSpin_15
+  - first:
+      213: 9136008165554908966
+    second: WheelSpin_16
+  - first:
+      213: 8183392348833962666
+    second: WheelSpin_17
+  - first:
+      213: 6298719197552634429
+    second: WheelSpin_18
+  - first:
+      213: 6762481389221729774
+    second: WheelSpin_19
+  - first:
+      213: 6671876494324574878
+    second: WheelSpin_20
+  - first:
+      213: -7276882344375913203
+    second: WheelSpin_21
+  - first:
+      213: -7169334905198709230
+    second: WheelSpin_22
+  - first:
+      213: 3790926277292921047
+    second: WheelSpin_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: WheelSpin_0
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 528
+        width: 460
+        height: 470
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a73961e70a40988f0800000000000000
+      internalID: -537893593137376390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WheelSpin_1
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 967
+        width: 76
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b255f54d5a81d6e0800000000000000
+      internalID: -1814517041643302219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WheelSpin_2
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 963
+        width: 69
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d86e0c95d6cbef00800000000000000
+      internalID: 1147229150844446937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WheelSpin_3
+      rect:
+        serializedVersion: 2
+        x: 849
+        y: 932
+        width: 70
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a83ea577d8ea4010800000000000000
+      internalID: 1174006664973400226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WheelSpin_4
+      rect:
+        serializedVersion: 2
+        x: 1052
+        y: 542
+        width: 443
+        height: 446
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ed1dd08888925540800000000000000
+      internalID: 4995222648752250345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WheelSpin_5
+      rect:
+        serializedVersion: 2
+        x: 1561
+        y: 542
+        width: 425
+        height: 451
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46ab810a75d955f30800000000000000
+      internalID: 4563726797083556452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WheelSpin_6
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 537
+        width: 451
+        height: 425
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3be93e4fb93603a10800000000000000
+      internalID: 1887117765347876531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WheelSpin_7
+      rect:
+        serializedVersion: 2
+        x: 1479
+        y: 778
+        width: 26
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5226ded5aa3a0b5f0800000000000000
+      internalID: -742913986400525787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WheelSpin_8
+      rect:
+        serializedVersion: 2
+        x: 1987
+        y: 734
+        width: 13
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6aec1a1fa645accd0800000000000000
+      internalID: -2537122621772673370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WheelSpin_9
+      rect:
+        serializedVersion: 2
+        x: 1553
+        y: 745
+        width: 7
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56ce768af65ebf530800000000000000
+      internalID: 3889954970894068837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WheelSpin_10
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 617
+        width: 39
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7083d1cd858338230800000000000000
+      internalID: 3639814878146672647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WheelSpin_11
+      rect:
+        serializedVersion: 2
+        x: 765
+        y: 529
+        width: 26
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15aca77b467918c70800000000000000
+      internalID: 8971618391529540177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WheelSpin_12
+      rect:
+        serializedVersion: 2
+        x: 746
+        y: 488
+        width: 25
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55d6545fd7b9c2530800000000000000
+      internalID: 3831608348273634645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WheelSpin_13
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 42
+        width: 446
+        height: 442
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b236301a3e7ac490800000000000000
+      internalID: -7725223422955474254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WheelSpin_14
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 62
+        width: 451
+        height: 425
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0a132bc21336e940800000000000000
+      internalID: 5324999765222693386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WheelSpin_15
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 36
+        width: 443
+        height: 446
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d7fcb6a7238c6380800000000000000
+      internalID: -8976655750931875879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WheelSpin_16
+      rect:
+        serializedVersion: 2
+        x: 1589
+        y: 337
+        width: 39
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62fe7fc950f99ce70800000000000000
+      internalID: 9136008165554908966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WheelSpin_17
+      rect:
+        serializedVersion: 2
+        x: 1598
+        y: 31
+        width: 425
+        height: 451
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaad5e9dbff319170800000000000000
+      internalID: 8183392348833962666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WheelSpin_18
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 221
+        width: 13
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3aee06fcbb896750800000000000000
+      internalID: 6298719197552634429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WheelSpin_19
+      rect:
+        serializedVersion: 2
+        x: 2024
+        y: 253
+        width: 7
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee550cc8ef829dd50800000000000000
+      internalID: 6762481389221729774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WheelSpin_20
+      rect:
+        serializedVersion: 2
+        x: 1055
+        y: 170
+        width: 26
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9aae7d8254479c50800000000000000
+      internalID: 6671876494324574878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WheelSpin_21
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 31
+        width: 75
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d057927ff02530b90800000000000000
+      internalID: -7276882344375913203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WheelSpin_22
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 53
+        width: 70
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21672d373e7618c90800000000000000
+      internalID: -7169334905198709230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WheelSpin_23
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 48
+        width: 69
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d01dbf2d531c9430800000000000000
+      internalID: 3790926277292921047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 9341c49080a3887489be5935eab68ea2
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      WheelSpin_0: -537893593137376390
+      WheelSpin_1: -1814517041643302219
+      WheelSpin_10: 3639814878146672647
+      WheelSpin_11: 8971618391529540177
+      WheelSpin_12: 3831608348273634645
+      WheelSpin_13: -7725223422955474254
+      WheelSpin_14: 5324999765222693386
+      WheelSpin_15: -8976655750931875879
+      WheelSpin_16: 9136008165554908966
+      WheelSpin_17: 8183392348833962666
+      WheelSpin_18: 6298719197552634429
+      WheelSpin_19: 6762481389221729774
+      WheelSpin_2: 1147229150844446937
+      WheelSpin_20: 6671876494324574878
+      WheelSpin_21: -7276882344375913203
+      WheelSpin_22: -7169334905198709230
+      WheelSpin_23: 3790926277292921047
+      WheelSpin_3: 1174006664973400226
+      WheelSpin_4: 4995222648752250345
+      WheelSpin_5: 4563726797083556452
+      WheelSpin_6: 1887117765347876531
+      WheelSpin_7: -742913986400525787
+      WheelSpin_8: -2537122621772673370
+      WheelSpin_9: 3889954970894068837
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

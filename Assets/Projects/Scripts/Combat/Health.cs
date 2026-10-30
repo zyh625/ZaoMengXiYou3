@@ -15,12 +15,19 @@ public class Health : MonoBehaviour,IDamage
     [SerializeField]private float curBlood;
     public float BeginBlood => beginBlood;
     public float CurBlood => curBlood;
+    //关卡生成时按倍率改写血量上限（召唤天兵、轮回缩放）；必须在SetActive(true)之前调用，OnEnable会用新上限回满。
+    public void SetBaseBlood(float value)
+    {
+        beginBlood = Mathf.Max(0f, value);
+        if (curBlood > beginBlood) curBlood = beginBlood;
+    }
     public int LifeVersion { get; private set; }//对象池每次真正重生递增，投射物可区分同一实例的新旧生命
     private ActorStatus status;//生命与通用状态共用一次命中结算，新人物自动拥有状态组件
     public ActorStatus Status => status != null ? status : status = GetComponent<ActorStatus>();
     public event System.Action<float, float> HealthChanged;//真实血量变化时通知界面，参数为当前血量和上限
     public event System.Action<DamageInfo, float> DamageReceived;//真实扣血后通知本次伤害及实际扣血量，霸体也会收到，无敌拒绝的命中不会收到
     public event System.Action<DamageInfo, float> DamageResolved;//整次伤害与附加效果完成后通知，弹反清异常不会漏掉本次刚施加的效果
+    public event System.Action<DamageInfo> DamagePreparing;//通过免疫与格挡后、扣血前通知方向性防御，允许本次命中更新自己的减伤来源。
     public event System.Func<DamageInfo, bool> DamageBlocked;//一次性格挡在扣血、破冰和附加效果之前处理，返回true时拦截整次命中
     public event System.Func<DamageKind, bool> AttackIgnored;//纯查询的类别免疫，投射物索敌与真正伤害结算使用同一个规则
     public bool IgnoresAttack(DamageKind kind)
@@ -250,6 +257,7 @@ public class Health : MonoBehaviour,IDamage
         if (DamageBlocked != null)
             foreach (System.Func<DamageInfo, bool> block in DamageBlocked.GetInvocationList())
                 if (block(damage)) return;
+        DamagePreparing?.Invoke(damage);
         if (!damage.IsPeriodic) target = damage.Source;//毒素不覆盖正等待处理的攻击方向
         float originalDamage = damage.Amount;//保留攻击者输入的基础伤害，反伤不使用减伤或易伤后的结果
         float vulnerabilityMultiplier = originalDamage > 0f && !damage.IsPeriodic

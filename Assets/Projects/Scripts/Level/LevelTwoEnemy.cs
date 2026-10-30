@@ -10,6 +10,14 @@ public class LevelTwoEnemy : LevelEnemyManager
     private WolfController[] wolves = new WolfController[10];
     private float TigerHalfX, WolfHalfX;
 
+#if UNITY_EDITOR
+    public override System.Collections.Generic.IEnumerable<EnemyController> GetEnemyPrefabs()//兼容第二关尚使用的虎、狼专用池。
+    {
+        if (tiger != null) yield return tiger;
+        if (wolf != null) yield return wolf;
+    }
+#endif
+
     protected override void InitEnemyPools()
     {
         for (int i = 0; i < tigers.Length; i++)

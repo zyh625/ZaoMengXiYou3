@@ -18,7 +18,7 @@ public class EnemyProjectileManager : MonoBehaviour
     public static EnemyProjectileManager GetOrCreate()
     {
         if (current != null) return current;
-        current = FindFirstObjectByType<EnemyProjectileManager>();
+        current = FindAnyObjectByType<EnemyProjectileManager>();
         if (current == null) current = new GameObject("EnemyProjectilePool").AddComponent<EnemyProjectileManager>();
         return current;
     }
@@ -29,13 +29,13 @@ public class EnemyProjectileManager : MonoBehaviour
         creation.transform.SetParent(transform, false);
         creation.SetActive(false);
         inactiveRoot = creation.transform;
-        players = FindFirstObjectByType<PlayerManager>();
+        players = FindAnyObjectByType<PlayerManager>();
         if (Camera.main != null) cameraManager = Camera.main.GetComponent<CameraManager>();
     }
     public void Fire(NormalArrowManager prefab, EnemyCombat source, Vector2 position, bool right)
     {
         if (prefab == null || source == null || !BattleRun.IsRunning) return;
-        if (players == null) players = FindFirstObjectByType<PlayerManager>();
+        if (players == null) players = FindAnyObjectByType<PlayerManager>();
         if (!pools.TryGetValue(prefab, out PrefabPool<NormalArrowManager> pool))
         {
             pool = new PrefabPool<NormalArrowManager>();

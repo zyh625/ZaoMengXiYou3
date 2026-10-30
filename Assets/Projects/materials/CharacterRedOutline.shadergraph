@@ -11,6 +11,9 @@
         },
         {
             "m_Id": "2f52350976a948628fe2733d5b455c87"
+        },
+        {
+            "m_Id": "ba6b9cb2806e4330b55294d0de795a86"
         }
     ],
     "m_Keywords": [],
@@ -50,6 +53,9 @@
         },
         {
             "m_Id": "a16f2f9b50a6471fa7a96f6d48d65357"
+        },
+        {
+            "m_Id": "c2824f46d9f54436ac2f8c861be74ab5"
         }
     ],
     "m_GroupDatas": [],
@@ -137,6 +143,20 @@
                     "m_Id": "ac8aa4ee323048c5916b51c51cfec67d"
                 },
                 "m_SlotId": 1
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "c2824f46d9f54436ac2f8c861be74ab5"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "ac8aa4ee323048c5916b51c51cfec67d"
+                },
+                "m_SlotId": 6
             }
         }
     ],
@@ -573,6 +593,9 @@
         },
         {
             "m_Id": "2f52350976a948628fe2733d5b455c87"
+        },
+        {
+            "m_Id": "ba6b9cb2806e4330b55294d0de795a86"
         }
     ]
 }
@@ -608,7 +631,7 @@
     },
     "isMainTexture": true,
     "useTilingAndOffset": false,
-    "useTexelSize": true,
+    "useTexelSize": false,
     "m_Modifiable": true,
     "m_DefaultType": 0
 }
@@ -944,6 +967,9 @@
         },
         {
             "m_Id": "bd76e8510d15434290ab87e0a0f0cc23"
+        },
+        {
+            "m_Id": "cda6da4ff6054ee3a95f0fcf997e5154"
         }
     ],
     "synonyms": [],
@@ -958,7 +984,7 @@
     "m_FunctionName": "SpriteOuterOutline",
     "m_FunctionSource": "",
     "m_FunctionSourceUsePragmas": true,
-    "m_FunctionBody": "// Width is measured in source texture pixels. SpriteRenderer supplies _MainTex.\nfloat4 source = SAMPLE_TEXTURE2D(SpriteTexture.tex, SpriteTexture.samplerstate, UV);\nfloat neighborAlpha = source.a;\nfloat width = clamp(OutlineWidth, 0.0, 8.0);\nif (width > 0.0)\n{\n    // Eight directions at each pixel radius keep narrow features connected.\n    [loop] for (int ring = 1; ring <= (int)ceil(width); ++ring)\n    {\n        float2 delta = SpriteTexture.texelSize.xy * min((float)ring, width);\n        float2 uv0 = UV + delta * float2(1.00000000, 0.00000000);\n        float inside0 = step(0.0, uv0.x) * step(uv0.x, 1.0) * step(0.0, uv0.y) * step(uv0.y, 1.0);\n        neighborAlpha = max(neighborAlpha, SAMPLE_TEXTURE2D(SpriteTexture.tex, SpriteTexture.samplerstate, uv0).a * inside0);\n        float2 uv1 = UV + delta * float2(-1.00000000, 0.00000000);\n        float inside1 = step(0.0, uv1.x) * step(uv1.x, 1.0) * step(0.0, uv1.y) * step(uv1.y, 1.0);\n        neighborAlpha = max(neighborAlpha, SAMPLE_TEXTURE2D(SpriteTexture.tex, SpriteTexture.samplerstate, uv1).a * inside1);\n        float2 uv2 = UV + delta * float2(0.00000000, 1.00000000);\n        float inside2 = step(0.0, uv2.x) * step(uv2.x, 1.0) * step(0.0, uv2.y) * step(uv2.y, 1.0);\n        neighborAlpha = max(neighborAlpha, SAMPLE_TEXTURE2D(SpriteTexture.tex, SpriteTexture.samplerstate, uv2).a * inside2);\n        float2 uv3 = UV + delta * float2(0.00000000, -1.00000000);\n        float inside3 = step(0.0, uv3.x) * step(uv3.x, 1.0) * step(0.0, uv3.y) * step(uv3.y, 1.0);\n        neighborAlpha = max(neighborAlpha, SAMPLE_TEXTURE2D(SpriteTexture.tex, SpriteTexture.samplerstate, uv3).a * inside3);\n        float2 uv4 = UV + delta * float2(0.70710678, 0.70710678);\n        float inside4 = step(0.0, uv4.x) * step(uv4.x, 1.0) * step(0.0, uv4.y) * step(uv4.y, 1.0);\n        neighborAlpha = max(neighborAlpha, SAMPLE_TEXTURE2D(SpriteTexture.tex, SpriteTexture.samplerstate, uv4).a * inside4);\n        float2 uv5 = UV + delta * float2(-0.70710678, 0.70710678);\n        float inside5 = step(0.0, uv5.x) * step(uv5.x, 1.0) * step(0.0, uv5.y) * step(uv5.y, 1.0);\n        neighborAlpha = max(neighborAlpha, SAMPLE_TEXTURE2D(SpriteTexture.tex, SpriteTexture.samplerstate, uv5).a * inside5);\n        float2 uv6 = UV + delta * float2(0.70710678, -0.70710678);\n        float inside6 = step(0.0, uv6.x) * step(uv6.x, 1.0) * step(0.0, uv6.y) * step(uv6.y, 1.0);\n        neighborAlpha = max(neighborAlpha, SAMPLE_TEXTURE2D(SpriteTexture.tex, SpriteTexture.samplerstate, uv6).a * inside6);\n        float2 uv7 = UV + delta * float2(-0.70710678, -0.70710678);\n        float inside7 = step(0.0, uv7.x) * step(uv7.x, 1.0) * step(0.0, uv7.y) * step(uv7.y, 1.0);\n        neighborAlpha = max(neighborAlpha, SAMPLE_TEXTURE2D(SpriteTexture.tex, SpriteTexture.samplerstate, uv7).a * inside7);\n    }\n}\n// Composite the source over the outline, preserving the opaque sprite colors.\nfloat outerAlpha = width > 0.0 ? saturate(neighborAlpha - source.a) * saturate(OutlineColor.a) : 0.0;\nAlpha = saturate(source.a + outerAlpha);\nColor = Alpha > 0.00001 ? (source.rgb * source.a + OutlineColor.rgb * outerAlpha) / Alpha : float3(0.0, 0.0, 0.0);\n"
+    "m_FunctionBody": "// Width is measured in source texture pixels. The controller supplies TexelSize, avoiding unsupported automatic texture-size properties in URP 2D.\nfloat4 source = SAMPLE_TEXTURE2D(SpriteTexture.tex, SpriteTexture.samplerstate, UV);\nfloat neighborAlpha = source.a;\nfloat width = clamp(OutlineWidth, 0.0, 8.0);\nif (width > 0.0)\n{\n    // Eight directions at each pixel radius keep narrow features connected.\n    [loop] for (int ring = 1; ring <= (int)ceil(width); ++ring)\n    {\n        float2 delta = TexelSize.xy * min((float)ring, width);\n        float2 uv0 = UV + delta * float2(1.00000000, 0.00000000);\n        float inside0 = step(0.0, uv0.x) * step(uv0.x, 1.0) * step(0.0, uv0.y) * step(uv0.y, 1.0);\n        neighborAlpha = max(neighborAlpha, SAMPLE_TEXTURE2D(SpriteTexture.tex, SpriteTexture.samplerstate, uv0).a * inside0);\n        float2 uv1 = UV + delta * float2(-1.00000000, 0.00000000);\n        float inside1 = step(0.0, uv1.x) * step(uv1.x, 1.0) * step(0.0, uv1.y) * step(uv1.y, 1.0);\n        neighborAlpha = max(neighborAlpha, SAMPLE_TEXTURE2D(SpriteTexture.tex, SpriteTexture.samplerstate, uv1).a * inside1);\n        float2 uv2 = UV + delta * float2(0.00000000, 1.00000000);\n        float inside2 = step(0.0, uv2.x) * step(uv2.x, 1.0) * step(0.0, uv2.y) * step(uv2.y, 1.0);\n        neighborAlpha = max(neighborAlpha, SAMPLE_TEXTURE2D(SpriteTexture.tex, SpriteTexture.samplerstate, uv2).a * inside2);\n        float2 uv3 = UV + delta * float2(0.00000000, -1.00000000);\n        float inside3 = step(0.0, uv3.x) * step(uv3.x, 1.0) * step(0.0, uv3.y) * step(uv3.y, 1.0);\n        neighborAlpha = max(neighborAlpha, SAMPLE_TEXTURE2D(SpriteTexture.tex, SpriteTexture.samplerstate, uv3).a * inside3);\n        float2 uv4 = UV + delta * float2(0.70710678, 0.70710678);\n        float inside4 = step(0.0, uv4.x) * step(uv4.x, 1.0) * step(0.0, uv4.y) * step(uv4.y, 1.0);\n        neighborAlpha = max(neighborAlpha, SAMPLE_TEXTURE2D(SpriteTexture.tex, SpriteTexture.samplerstate, uv4).a * inside4);\n        float2 uv5 = UV + delta * float2(-0.70710678, 0.70710678);\n        float inside5 = step(0.0, uv5.x) * step(uv5.x, 1.0) * step(0.0, uv5.y) * step(uv5.y, 1.0);\n        neighborAlpha = max(neighborAlpha, SAMPLE_TEXTURE2D(SpriteTexture.tex, SpriteTexture.samplerstate, uv5).a * inside5);\n        float2 uv6 = UV + delta * float2(0.70710678, -0.70710678);\n        float inside6 = step(0.0, uv6.x) * step(uv6.x, 1.0) * step(0.0, uv6.y) * step(uv6.y, 1.0);\n        neighborAlpha = max(neighborAlpha, SAMPLE_TEXTURE2D(SpriteTexture.tex, SpriteTexture.samplerstate, uv6).a * inside6);\n        float2 uv7 = UV + delta * float2(-0.70710678, -0.70710678);\n        float inside7 = step(0.0, uv7.x) * step(uv7.x, 1.0) * step(0.0, uv7.y) * step(uv7.y, 1.0);\n        neighborAlpha = max(neighborAlpha, SAMPLE_TEXTURE2D(SpriteTexture.tex, SpriteTexture.samplerstate, uv7).a * inside7);\n    }\n}\n// Composite the source over the outline, preserving the opaque sprite colors.\nfloat outerAlpha = width > 0.0 ? saturate(neighborAlpha - source.a) * saturate(OutlineColor.a) : 0.0;\nAlpha = saturate(source.a + outerAlpha);\nColor = Alpha > 0.00001 ? (source.rgb * source.a + OutlineColor.rgb * outerAlpha) / Alpha : float3(0.0, 0.0, 0.0);\n"
 }
 
 {
@@ -1005,6 +1031,124 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
     "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector4ShaderProperty",
+    "m_ObjectId": "ba6b9cb2806e4330b55294d0de795a86",
+    "m_Guid": {
+        "m_GuidSerialized": "382c69d7-ed6f-418c-bf1b-a42e3281ae5e"
+    },
+    "promotedFromAssetID": "",
+    "promotedFromCategoryName": "",
+    "promotedOrdering": -1,
+    "m_Name": "Outline Texture Pixel Size",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "Outline Texture Pixel Size",
+    "m_DefaultReferenceName": "_OutlineTexelSize",
+    "m_OverrideReferenceName": "_OutlineTexelSize",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": true,
+    "m_customAttributes": [],
+    "m_Value": {
+        "x": 0.00390625,
+        "y": 0.00390625,
+        "z": 256.0,
+        "w": 256.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "c2824f46d9f54436ac2f8c861be74ab5",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -620,
+            "y": 540,
+            "width": 260,
+            "height": 220
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "c95e3935854c4fa8894a090a9304ad77"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": false,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "ba6b9cb2806e4330b55294d0de795a86"
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
+    "m_ObjectId": "c95e3935854c4fa8894a090a9304ad77",
+    "m_Id": 0,
+    "m_DisplayName": "Out",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 2,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
+    "m_ObjectId": "cda6da4ff6054ee3a95f0fcf997e5154",
+    "m_Id": 6,
+    "m_DisplayName": "TexelSize",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "TexelSize",
+    "m_StageCapability": 2,
     "m_Value": {
         "x": 0.0,
         "y": 0.0,

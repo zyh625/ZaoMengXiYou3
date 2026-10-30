@@ -121,12 +121,12 @@ TextureImporter:
       name: ZengZhangBlood_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 160
-        width: 2137
-        height: 478
+        x: 15
+        y: 223
+        width: 2111
+        height: 279
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -139,143 +139,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: ZengZhangBlood_1
-      rect:
-        serializedVersion: 2
-        x: 100
-        y: 486
-        width: 19
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b769e49f5b6748140800000000000000
-      internalID: 4721028833334957691
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ZengZhangBlood_2
-      rect:
-        serializedVersion: 2
-        x: 215
-        y: 208
-        width: 15
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d68aa06b1a5472df0800000000000000
-      internalID: -205118697175865235
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ZengZhangBlood_3
-      rect:
-        serializedVersion: 2
-        x: 259
-        y: 210
-        width: 6
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4fa4353dfc71dd170800000000000000
-      internalID: 8204740277510032116
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ZengZhangBlood_4
-      rect:
-        serializedVersion: 2
-        x: 263
-        y: 210
-        width: 8
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0356c5c5e3c01e5f0800000000000000
-      internalID: -729288202680244944
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ZengZhangBlood_5
-      rect:
-        serializedVersion: 2
-        x: 278
-        y: 194
-        width: 11
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9262cf5b7cace57e0800000000000000
-      internalID: -1774758244036893143
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ZengZhangBlood_6
-      rect:
-        serializedVersion: 2
-        x: 304
-        y: 192
-        width: 17
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1db72ae224f56f690800000000000000
-      internalID: -7568757385894659119
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 89e7d6be1c21c4644a57b001579b5e23
     internalID: 0
     vertices: []
     indices: 
@@ -283,15 +151,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":2173.0,"y":724.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       ZengZhangBlood_0: -2939150808427215231
-      ZengZhangBlood_1: 4721028833334957691
-      ZengZhangBlood_2: -205118697175865235
-      ZengZhangBlood_3: 8204740277510032116
-      ZengZhangBlood_4: -729288202680244944
-      ZengZhangBlood_5: -1774758244036893143
-      ZengZhangBlood_6: -7568757385894659119
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

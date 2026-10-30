@@ -4,7 +4,7 @@ using UnityEngine;
 public class FrostFormationManager : MonoBehaviour
 {
     [SerializeField] private SpriteManager SM;//玄冰阵只显示与本体同步的帧，不自行计时。
-    [SerializeField] private SpriteData animation;//前八帧有效，后两帧碎裂。
+    [SerializeField] private new SpriteData animation;//前八帧有效，后两帧碎裂。
     [SerializeField] private Rect[] frameBounds;//相对Sprite pivot的真实非透明范围。
     [SerializeField, Min(0f)] private float damage = 10f;//碎裂时对本次真正冰冻的敌人结算一次伤害。
     [SerializeField] private Vector2 localOffset;//领域相对人物的位置，通常以人物脚下为中心。

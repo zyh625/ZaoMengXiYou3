@@ -5,7 +5,7 @@ using UnityEngine;
 public class GoldCoin : MonoBehaviour
 {
     [SerializeField] private SpriteManager SM;
-    [SerializeField] private SpriteData animation;//地面与吸附过程中都循环播放旋转帧
+    [SerializeField] private new SpriteData animation;//地面与吸附过程中都循环播放旋转帧
     [SerializeField, Min(0.01f)] private float existTime = 10f;//金币预制体自身的地面存在时长，所有关卡实例统一读取
     [SerializeField, Min(0.01f)] private float absorbTime = 0.45f;//金币预制体自身的完整吸附时长，完成并回收后才入账
     private SpriteRenderer sr;

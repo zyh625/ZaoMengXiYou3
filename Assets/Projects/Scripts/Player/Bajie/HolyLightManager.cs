@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class HolyLightManager : MonoBehaviour
 {
-    [SerializeField] private SpriteData light;//自身圣光的完整十六帧动画
+    [SerializeField] private new SpriteData light;//自身圣光的完整十六帧动画
     [SerializeField] private SpriteManager SM;//独立子Visual的动画组件
     private SpriteRenderer lightRenderer;//圣光渲染器，不修改人物的动画或材质
     private bool playing;//记录本次圣光是否仍在播放

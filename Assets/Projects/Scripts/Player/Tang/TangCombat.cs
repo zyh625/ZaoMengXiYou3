@@ -8,7 +8,6 @@ public class TangCombat : PlayerCombat
     private PlayerManager effectManager;//场景角色管理器注入，普攻投射物不放在唐僧本体下面
     private bool normalAttackReleased;//同一轮攻击只发射一次，不按渲染帧重复生成
     private bool riseAttackReleased;//空中与地面攻击各自记录发射，互相打断或重新出招不串用旧标记
-    private Health health;//施法开始与同步帧时都检查受击、死亡，打断当帧不能补放技能效果
     private TangController controller;//输入时拒绝受击、死亡状态，避免瞬发技能越过限制
     private ProtectionManager protection;//技能一完全由独立护罩管理持续时间和精准抵挡
     private OceanBreakerManager oceanBreaker;//水柱与本体帧一一对应

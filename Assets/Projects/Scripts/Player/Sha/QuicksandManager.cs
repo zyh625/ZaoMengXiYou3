@@ -4,7 +4,7 @@ using UnityEngine;
 public class QuicksandManager : MonoBehaviour
 {
     [SerializeField] private SpriteManager SM;//领域与沙僧分开播放，换人后仍保留
-    [SerializeField] private SpriteData animation;//流沙的八帧循环动画
+    [SerializeField] private new SpriteData animation;//流沙的八帧循环动画
     [SerializeField, Min(0f)] private float duration = 10f;//领域存在时间
     [SerializeField, Min(0.01f)] private float radius = 3f;//领域水平方向的作用半径
     [SerializeField, Range(0f, 1f)] private float edgeSlowAmount = 0.6f;//边缘减速幅度，中心总是减速100%

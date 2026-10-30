@@ -10,6 +10,8 @@ public class ActorStun : MonoBehaviour
     private ActorStatus status;//强控制同时存在时优先遵守它的位置锁
     private float stunUntil;//按游戏时间计时，暂停不会消耗剩余时间
     private Vector2 heldPosition;//首次眩晕时的位置，重复命中只延长时间
+    [SerializeField, Min(0f)] private float immunityAfterStun = 2.5f;//一次眩晕结束后短暂免疫新的普通眩晕，避免被连续控制锁死
+    private float immuneUntil;//免疫结束时刻，只在本次眩晕真正结束时刷新
     public event Action Changed;//控制器收到变化后立即中断旧动作或恢复输入
     public bool IsStunned => isActiveAndEnabled && health != null && !health.Dead && !health.Boost && Time.time < stunUntil;
 
@@ -28,6 +30,7 @@ public class ActorStun : MonoBehaviour
     {
         if (source == null || duration <= 0f || float.IsNaN(duration) || float.IsInfinity(duration)
             || !isActiveAndEnabled || !health.CanReceiveControl()) return false;
+        if (Time.time < immuneUntil) return false;//刚结束一次眩晕后的保护窗口，连续控制不能无缝衔接
         if (!IsStunned) heldPosition = body.position;
         stunUntil = Mathf.Max(stunUntil, Time.time + duration);
         Changed?.Invoke();
@@ -51,6 +54,7 @@ public class ActorStun : MonoBehaviour
     {
         if (stunUntil <= 0f) return;
         stunUntil = 0f;
+        immuneUntil = Time.time + Mathf.Max(0f, immunityAfterStun);//自然结束、被无双驱散、死亡都从结束时刻开始计算保护窗口
         Changed?.Invoke();
     }
     private void OnDied(DamageInfo damage) => Clear();//死亡不等待眩晕计时结束

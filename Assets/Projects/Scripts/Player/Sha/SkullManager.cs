@@ -4,7 +4,7 @@ using UnityEngine;
 public class SkullManager : MonoBehaviour//沙僧的麻痹药剂预制体
 {
     [SerializeField] private SpriteManager SM;
-    [SerializeField] private SpriteData animation;//骷髅头的循环帧动画
+    [SerializeField] private new SpriteData animation;//骷髅头的循环帧动画
     private int usedTime = 0;//骷髅头弹到敌人的次数
     private float lastTime = -1f;//上次使用的时间
     [SerializeField, Min(0)] private int maxUsedTime = 0;//0表示只受持续时间限制，大于0才限制总弹跳次数

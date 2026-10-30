@@ -54,6 +54,10 @@ public class PlayerManager : MonoBehaviour
     public event Action<PlayerController> CurrentPlayerChanged;//切换完成后通知关卡更新追击目标等引用
     public static string LastBattleScene { get; private set; }//直接运行关卡时，失败界面也能找到正确的重试场景
 
+#if UNITY_EDITOR
+    public bool BattlePractice { get; set; }//仅编辑器手动战斗测试使用，死亡保留现场，不进入会自动保存的失败界面。
+#endif
+
     private void Awake()
     {
         if (GetComponent<GoldManager>() == null) gameObject.AddComponent<GoldManager>();//兼容旧关卡中尚未补挂的管理器，新增关卡由RequireComponent自动带上
@@ -247,6 +251,9 @@ public class PlayerManager : MonoBehaviour
     private void LateUpdate()
     {
         if (effectsActive && !BattleRun.IsRunning) StopEffects();//等本帧伤害回调结束再撤销携带、减速和领域保护
+#if UNITY_EDITOR
+        if (BattlePractice) return;
+#endif
         if (!defeatRequested || defeatLoaded) return;
         defeatLoaded = true;
         LastBattleScene = SceneManager.GetActiveScene().name;

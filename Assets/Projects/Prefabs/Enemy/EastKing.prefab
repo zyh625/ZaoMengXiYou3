@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25ea03d8aaa61a41b5c9155fe6f68df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  beginBlood: 200
+  beginBlood: 640
   curBlood: 0
   attackedUp: 0
 --- !u!114 &1322339038707901009
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84f52c93662e4554ad3cb1f943419bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyRewards
-  experienceReward: 1
+  experienceReward: 180
   isBoss: 1
 --- !u!114 &9168275853040009547
 MonoBehaviour:
@@ -192,13 +192,20 @@ MonoBehaviour:
   - {fileID: 8910001003, guid: 60ea4013718fec643a6e85f13b9585aa, type: 3}
   - {fileID: 8910001004, guid: 2d86eb4647ab02145a6710102569abf4, type: 3}
   noteCooldowns:
-  - 2
-  - 6
+  - 2.6
+  - 9
+  - 15
   - 10
-  - 8
-  minimumAttackInterval: 0.75
-  firstAttackDelay: 1
+  minimumAttackInterval: 1.6
+  firstAttackDelay: 2
   shootFrame: 9
+  stringEnergyFull: 100
+  stringEnergyOnHit: 4
+  stringEnergyOnMiss: 5
+  stringEnergyOnDamaged: 6
+  rapidStringsDuration: 6
+  rapidStringsCooldownRatio: 0.7
+  stringEnergy: 0
 --- !u!114 &5399767337060103239
 MonoBehaviour:
   m_ObjectHideFlags: 0

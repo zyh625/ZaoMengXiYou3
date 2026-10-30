@@ -28,6 +28,8 @@ public class SpriteManager : MonoBehaviour
     {
         sr = sr == null ? GetComponent<SpriteRenderer>() : sr;
         outline=GetComponent<SpriteOutlineController>();
+        if (outline == null && sr.sharedMaterial != null && sr.sharedMaterial.HasProperty("_OutlineTexelSize"))
+            outline = sr.gameObject.AddComponent<SpriteOutlineController>();//同材质的角色、敌人和特效统一取得实际纹理尺寸。
     }
     private void OnEnable()
     {

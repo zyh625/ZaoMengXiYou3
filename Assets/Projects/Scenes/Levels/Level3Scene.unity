@@ -968,7 +968,7 @@ PrefabInstance:
     - target: {fileID: 1633174105, guid: 5d2a1d2bc72c5fe89a0d58561100e10b, type: 3}
       propertyPath: bossUI
       value: 
-      objectReference: {fileID: 1856397068}
+      objectReference: {fileID: 1856397072}
     - target: {fileID: 1633174105, guid: 5d2a1d2bc72c5fe89a0d58561100e10b, type: 3}
       propertyPath: maxWave
       value: 4
@@ -1614,6 +1614,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2017912736}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1140876987 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4688384920967784224, guid: 3e7a9ac976145a4884476e404035637d, type: 3}
+  m_PrefabInstance: {fileID: 1856397066}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1207152537
 GameObject:
   m_ObjectHideFlags: 0
@@ -2023,6 +2028,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1795034942 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6543762947332795926, guid: 3e7a9ac976145a4884476e404035637d, type: 3}
+  m_PrefabInstance: {fileID: 1856397066}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1 &1830555297
 GameObject:
   m_ObjectHideFlags: 0
@@ -2174,6 +2190,22 @@ PrefabInstance:
       propertyPath: m_EditorClassIdentifier
       value: Assembly-CSharp::BossUI
       objectReference: {fileID: 0}
+    - target: {fileID: 1650760925479469780, guid: 3e7a9ac976145a4884476e404035637d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 270.1249
+      objectReference: {fileID: 0}
+    - target: {fileID: 1650760925479469780, guid: 3e7a9ac976145a4884476e404035637d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 22.9691
+      objectReference: {fileID: 0}
+    - target: {fileID: 1650760925479469780, guid: 3e7a9ac976145a4884476e404035637d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 19.714
+      objectReference: {fileID: 0}
+    - target: {fileID: 1650760925479469780, guid: 3e7a9ac976145a4884476e404035637d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.6336
+      objectReference: {fileID: 0}
     - target: {fileID: 1806984642686892904, guid: 3e7a9ac976145a4884476e404035637d, type: 3}
       propertyPath: m_FillAmount
       value: 1
@@ -2182,6 +2214,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4677864964205709465, guid: 3e7a9ac976145a4884476e404035637d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8871841973802970046, guid: 5b2cece8e40e94740834990caec25422, type: 3}
     - target: {fileID: 4688384920967784224, guid: 3e7a9ac976145a4884476e404035637d, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2204,16 +2240,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5946919634588100744, guid: 3e7a9ac976145a4884476e404035637d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6227061148613019994, guid: 3e7a9ac976145a4884476e404035637d, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -1200563012959033713, guid: 16f35088ff393fe48aebe66b3a2c3bae, type: 3}
-    m_RemovedComponents: []
+    - target: {fileID: 6543762947332795926, guid: 3e7a9ac976145a4884476e404035637d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6543762947332795926, guid: 3e7a9ac976145a4884476e404035637d, type: 3}
+      propertyPath: m_FillAmount
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7281028002001, guid: 3e7a9ac976145a4884476e404035637d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4688384920967784224, guid: 3e7a9ac976145a4884476e404035637d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1856397072}
   m_SourcePrefab: {fileID: 100100000, guid: 3e7a9ac976145a4884476e404035637d, type: 3}
 --- !u!114 &1856397067 stripped
 MonoBehaviour:
@@ -2226,17 +2274,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1acf76a3d1ee5c458ea4634f2fc2401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
---- !u!114 &1856397068 stripped
+--- !u!114 &1856397072
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7281028002001, guid: 3e7a9ac976145a4884476e404035637d, type: 3}
-  m_PrefabInstance: {fileID: 1856397066}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1140876987}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86da4021196543aab286b85f3c5c19e3, type: 3}
+  m_Script: {fileID: 11500000, guid: fb9ef4450f07447eb5ce5a781493ffdd, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BossUI
+  m_EditorClassIdentifier: Assembly-CSharp::EastBossUI
+  bloodFull: {fileID: 2110325437}
+  specialState: {fileID: 1795034942}
 --- !u!1001 &2017912735
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2342,6 +2393,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86443bea27914a5489a5925a8dcb4786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::zmxy.GamePlay.CameraManager
+--- !u!114 &2110325437 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1806984642686892904, guid: 3e7a9ac976145a4884476e404035637d, type: 3}
+  m_PrefabInstance: {fileID: 1856397066}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1 &3100000000
 GameObject:
   m_ObjectHideFlags: 0
