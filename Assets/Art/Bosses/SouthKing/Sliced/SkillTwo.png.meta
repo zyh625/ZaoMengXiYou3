@@ -1,0 +1,531 @@
+fileFormatVersion: 2
+guid: adea8124eaa0584b9a37e6b08d970b88
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: SkillTwo_01
+  - first:
+      213: 21300002
+    second: SkillTwo_02
+  - first:
+      213: 21300004
+    second: SkillTwo_03
+  - first:
+      213: 21300006
+    second: SkillTwo_04
+  - first:
+      213: 21300008
+    second: SkillTwo_05
+  - first:
+      213: 21300010
+    second: SkillTwo_06
+  - first:
+      213: 21300012
+    second: SkillTwo_07
+  - first:
+      213: 21300014
+    second: SkillTwo_08
+  - first:
+      213: 21300016
+    second: SkillTwo_09
+  - first:
+      213: 21300018
+    second: SkillTwo_10
+  - first:
+      213: 21300020
+    second: SkillTwo_11
+  - first:
+      213: 21300022
+    second: SkillTwo_12
+  - first:
+      213: 21300024
+    second: SkillTwo_13
+  - first:
+      213: 21300026
+    second: SkillTwo_14
+  - first:
+      213: 21300028
+    second: SkillTwo_15
+  - first:
+      213: 21300030
+    second: SkillTwo_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 4096
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 9
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SkillTwo_01
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 1730
+        width: 351
+        height: 382
+      alignment: 9
+      pivot: {x: 0.5413105413, y: 0.3324607330}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60ac48a4f1c05d1ea358fd8cbd2d35c6
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkillTwo_02
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 1725
+        width: 371
+        height: 387
+      alignment: 9
+      pivot: {x: 0.3638814016, y: 0.3281653747}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e0984b6ad69500d9f8420dd71151811
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkillTwo_03
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 1692
+        width: 337
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5637982196, y: 0.3000000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cfbe3221606558183ca2155cb3744c4
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkillTwo_04
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 1585
+        width: 311
+        height: 527
+      alignment: 9
+      pivot: {x: 0.5819935691, y: 0.2409867173}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32168fb784595bd5adc199800248f269
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkillTwo_05
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 1038
+        width: 279
+        height: 543
+      alignment: 9
+      pivot: {x: 0.6594982079, y: 0.2338858195}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51706602a69350728c7c0d27af0c9e4f
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkillTwo_06
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 1037
+        width: 330
+        height: 544
+      alignment: 9
+      pivot: {x: 0.5606060606, y: 0.2334558824}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcd02d0ed7465c6cb20ee574bb1ffd1f
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkillTwo_07
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 1034
+        width: 351
+        height: 547
+      alignment: 9
+      pivot: {x: 0.5356125356, y: 0.2303473492}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 438aac08aae75772b217eeeabf277fa6
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkillTwo_08
+      rect:
+        serializedVersion: 2
+        x: 976
+        y: 1026
+        width: 354
+        height: 555
+      alignment: 9
+      pivot: {x: 0.5197740113, y: 0.2270270270}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3979500a40b152a29a5cc0c732d19db0
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkillTwo_09
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 454
+        width: 358
+        height: 568
+      alignment: 9
+      pivot: {x: 0.5111731844, y: 0.2218309859}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 618f5b2c0c7353bd85f947dc14627c66
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkillTwo_10
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 444
+        width: 385
+        height: 578
+      alignment: 9
+      pivot: {x: 0.4753246753, y: 0.2197231834}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb3364d12ee85b87bdf2cece03eefdb8
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkillTwo_11
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 470
+        width: 272
+        height: 552
+      alignment: 9
+      pivot: {x: 0.6838235294, y: 0.2300724638}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 173b2467db4a5544802429d56f66eab2
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkillTwo_12
+      rect:
+        serializedVersion: 2
+        x: 1031
+        y: 468
+        width: 274
+        height: 554
+      alignment: 9
+      pivot: {x: 0.6642335766, y: 0.2292418773}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78cf734a8fb354c8919a8ec166ad6a15
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkillTwo_13
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 4
+        width: 333
+        height: 436
+      alignment: 9
+      pivot: {x: 0.5765765766, y: 0.2889908257}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d009fb45d345ba39acf2ed5e0888ca9
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkillTwo_14
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 63
+        width: 374
+        height: 377
+      alignment: 9
+      pivot: {x: 0.8422459893, y: 0.3368700265}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84cfb16fe65850009e7258c93bea2caf
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkillTwo_15
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 74
+        width: 385
+        height: 366
+      alignment: 9
+      pivot: {x: 0.5090909091, y: 0.3469945355}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa488e8d159858bab563e50fdd913117
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkillTwo_16
+      rect:
+        serializedVersion: 2
+        x: 1108
+        y: 73
+        width: 346
+        height: 367
+      alignment: 9
+      pivot: {x: 0.5462427746, y: 0.3433242507}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f091b2776b935b75a9cee74755dfe74e
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      SkillTwo_01: 21300000
+      SkillTwo_02: 21300002
+      SkillTwo_03: 21300004
+      SkillTwo_04: 21300006
+      SkillTwo_05: 21300008
+      SkillTwo_06: 21300010
+      SkillTwo_07: 21300012
+      SkillTwo_08: 21300014
+      SkillTwo_09: 21300016
+      SkillTwo_10: 21300018
+      SkillTwo_11: 21300020
+      SkillTwo_12: 21300022
+      SkillTwo_13: 21300024
+      SkillTwo_14: 21300026
+      SkillTwo_15: 21300028
+      SkillTwo_16: 21300030
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: SouthKing per-frame alpha crop; 2px outline margin; aligned pivots
+  assetBundleName: 
+  assetBundleVariant: 

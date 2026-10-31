@@ -50,24 +50,6 @@ TextureImporter:
   - first:
       213: 6801779757635233868
     second: AttackThree_15
-  - first:
-      213: 7848418684100460167
-    second: AttackThree_16
-  - first:
-      213: -3495634082780868386
-    second: AttackThree_17
-  - first:
-      213: 3045719958080921270
-    second: AttackThree_18
-  - first:
-      213: 1069673684655780294
-    second: AttackThree_19
-  - first:
-      213: -6846507016125155330
-    second: AttackThree_20
-  - first:
-      213: 5387351458054815883
-    second: AttackThree_21
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -111,12 +93,12 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
-  alignment: 0
+  spriteMeshType: 0
+  alignment: 9
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -138,7 +120,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -151,7 +133,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -166,12 +148,12 @@ TextureImporter:
       name: AttackThree_0
       rect:
         serializedVersion: 2
-        x: 28
-        y: 989
-        width: 248
-        height: 320
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4
+        y: 1303
+        width: 355
+        height: 385
+      alignment: 9
+      pivot: {x: 0.5661971831, y: 0.3272727273}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -188,12 +170,12 @@ TextureImporter:
       name: AttackThree_1
       rect:
         serializedVersion: 2
-        x: 241
-        y: 1240
-        width: 13
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 363
+        y: 1242
+        width: 373
+        height: 446
+      alignment: 9
+      pivot: {x: 0.4959785523, y: 0.2825112108}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -210,12 +192,12 @@ TextureImporter:
       name: AttackThree_2
       rect:
         serializedVersion: 2
-        x: 293
-        y: 987
-        width: 278
-        height: 317
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 740
+        y: 1199
+        width: 317
+        height: 489
+      alignment: 9
+      pivot: {x: 0.6025236593, y: 0.2597137014}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -232,12 +214,12 @@ TextureImporter:
       name: AttackThree_3
       rect:
         serializedVersion: 2
-        x: 593
-        y: 952
-        width: 282
-        height: 365
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1061
+        y: 1232
+        width: 343
+        height: 456
+      alignment: 9
+      pivot: {x: 0.6180758017, y: 0.2785087719}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -254,12 +236,12 @@ TextureImporter:
       name: AttackThree_4
       rect:
         serializedVersion: 2
-        x: 937
-        y: 988
-        width: 232
-        height: 313
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4
+        y: 739
+        width: 389
+        height: 456
+      alignment: 9
+      pivot: {x: 0.5655526992, y: 0.2785087719}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -276,12 +258,12 @@ TextureImporter:
       name: AttackThree_5
       rect:
         serializedVersion: 2
-        x: 870
-        y: 1123
-        width: 30
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 397
+        y: 736
+        width: 350
+        height: 459
+      alignment: 9
+      pivot: {x: 0.6142857143, y: 0.2766884532}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -298,12 +280,12 @@ TextureImporter:
       name: AttackThree_6
       rect:
         serializedVersion: 2
-        x: 356
-        y: 656
-        width: 248
-        height: 322
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 751
+        y: 791
+        width: 330
+        height: 404
+      alignment: 9
+      pivot: {x: 0.5333333333, y: 0.3143564356}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -320,12 +302,12 @@ TextureImporter:
       name: AttackThree_7
       rect:
         serializedVersion: 2
-        x: 625
-        y: 978
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1085
+        y: 829
+        width: 402
+        height: 366
+      alignment: 9
+      pivot: {x: 0.5870646766, y: 0.3469945355}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -342,12 +324,12 @@ TextureImporter:
       name: AttackThree_8
       rect:
         serializedVersion: 2
-        x: 44
-        y: 626
-        width: 313
-        height: 342
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4
+        y: 389
+        width: 402
+        height: 343
+      alignment: 9
+      pivot: {x: 0.6044776119, y: 0.3702623907}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -364,12 +346,12 @@ TextureImporter:
       name: AttackThree_9
       rect:
         serializedVersion: 2
-        x: 607
-        y: 622
-        width: 254
-        height: 320
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 410
+        y: 415
+        width: 445
+        height: 317
+      alignment: 9
+      pivot: {x: 0.6022471910, y: 0.4006309148}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -386,12 +368,12 @@ TextureImporter:
       name: AttackThree_10
       rect:
         serializedVersion: 2
-        x: 619
-        y: 830
-        width: 14
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 859
+        y: 417
+        width: 424
+        height: 315
+      alignment: 9
+      pivot: {x: 0.6084905660, y: 0.4031746032}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -408,12 +390,12 @@ TextureImporter:
       name: AttackThree_11
       rect:
         serializedVersion: 2
-        x: 878
-        y: 622
-        width: 289
-        height: 316
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1287
+        y: 391
+        width: 401
+        height: 341
+      alignment: 9
+      pivot: {x: 0.5660847880, y: 0.3724340176}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -430,12 +412,12 @@ TextureImporter:
       name: AttackThree_12
       rect:
         serializedVersion: 2
-        x: 0
-        y: 287
-        width: 1169
-        height: 338
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4
+        y: 4
+        width: 359
+        height: 381
+      alignment: 9
+      pivot: {x: 0.5961002786, y: 0.3333333333}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -452,12 +434,12 @@ TextureImporter:
       name: AttackThree_13
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 280
-        height: 292
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 367
+        y: 4
+        width: 378
+        height: 381
+      alignment: 9
+      pivot: {x: 0.5449735450, y: 0.3333333333}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -474,12 +456,12 @@ TextureImporter:
       name: AttackThree_14
       rect:
         serializedVersion: 2
-        x: 146
-        y: 335
-        width: 11
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 749
+        y: 6
+        width: 350
+        height: 379
+      alignment: 9
+      pivot: {x: 0.5914285714, y: 0.3324538259}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -496,12 +478,12 @@ TextureImporter:
       name: AttackThree_15
       rect:
         serializedVersion: 2
-        x: 151
-        y: 335
-        width: 10
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1103
+        y: 4
+        width: 350
+        height: 381
+      alignment: 9
+      pivot: {x: 0.5914285714, y: 0.3333333333}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -510,138 +492,6 @@ TextureImporter:
       bones: []
       spriteID: c486a46f6a6c46e50800000000000000
       internalID: 6801779757635233868
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AttackThree_16
-      rect:
-        serializedVersion: 2
-        x: 289
-        y: 0
-        width: 309
-        height: 293
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 78eb852e53f2bec60800000000000000
-      internalID: 7848418684100460167
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AttackThree_17
-      rect:
-        serializedVersion: 2
-        x: 613
-        y: 21
-        width: 273
-        height: 269
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ed0191782530d7fc0800000000000000
-      internalID: -3495634082780868386
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AttackThree_18
-      rect:
-        serializedVersion: 2
-        x: 913
-        y: 29
-        width: 240
-        height: 262
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6be1bba3a22944a20800000000000000
-      internalID: 3045719958080921270
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AttackThree_19
-      rect:
-        serializedVersion: 2
-        x: 577
-        y: 221
-        width: 9
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6c1bd7f7c8e38de00800000000000000
-      internalID: 1069673684655780294
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AttackThree_20
-      rect:
-        serializedVersion: 2
-        x: 613
-        y: 197
-        width: 9
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ef7f3a7a4225cf0a0800000000000000
-      internalID: -6846507016125155330
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AttackThree_21
-      rect:
-        serializedVersion: 2
-        x: 648
-        y: 23
-        width: 7
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b804a819b97b3ca40800000000000000
-      internalID: 5387351458054815883
       vertices: []
       indices: 
       edges: []
@@ -657,24 +507,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    spriteCustomMetadata:
-      entries: []
     nameFileIdTable:
       AttackThree_0: 8264880179021821943
       AttackThree_1: -6536404831170431295
-      AttackThree_10: -7343893262604345614
-      AttackThree_11: 8821446642750179159
-      AttackThree_12: -3976262014913831564
-      AttackThree_13: -3203745684278026394
-      AttackThree_14: 632893590948975184
-      AttackThree_15: 6801779757635233868
-      AttackThree_16: 7848418684100460167
-      AttackThree_17: -3495634082780868386
-      AttackThree_18: 3045719958080921270
-      AttackThree_19: 1069673684655780294
       AttackThree_2: 5111103211516740755
-      AttackThree_20: -6846507016125155330
-      AttackThree_21: 5387351458054815883
       AttackThree_3: 7558350698522491409
       AttackThree_4: 5147794673914861330
       AttackThree_5: 4368798954418379868
@@ -682,8 +518,14 @@ TextureImporter:
       AttackThree_7: 1237445922295134359
       AttackThree_8: 8926018690824533763
       AttackThree_9: -1144282210334664083
+      AttackThree_10: -7343893262604345614
+      AttackThree_11: 8821446642750179159
+      AttackThree_12: -3976262014913831564
+      AttackThree_13: -3203745684278026394
+      AttackThree_14: 632893590948975184
+      AttackThree_15: 6801779757635233868
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  userData: 
+  userData: SouthKing per-frame alpha crop; 2px outline margin; aligned pivots
   assetBundleName: 
   assetBundleVariant: 

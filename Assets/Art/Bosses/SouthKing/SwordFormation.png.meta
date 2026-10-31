@@ -29,6 +29,9 @@ TextureImporter:
   - first:
       213: 3515117558022199033
     second: SwordFormation_8
+  - first:
+      213: 21300018
+    second: SwordFormation_10
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -72,12 +75,12 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
-  alignment: 0
+  spriteMeshType: 0
+  alignment: 9
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -99,7 +102,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -112,7 +115,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -127,12 +130,12 @@ TextureImporter:
       name: SwordFormation_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1122
-        height: 1402
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4
+        y: 542
+        width: 486
+        height: 136
+      alignment: 9
+      pivot: {x: 0.4711934156, y: -0.5588235294}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -149,12 +152,12 @@ TextureImporter:
       name: SwordFormation_1
       rect:
         serializedVersion: 2
-        x: 244
-        y: 13
-        width: 24
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 494
+        y: 473
+        width: 488
+        height: 205
+      alignment: 9
+      pivot: {x: 0.5102459016, y: -0.2048780488}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -171,12 +174,12 @@ TextureImporter:
       name: SwordFormation_2
       rect:
         serializedVersion: 2
-        x: 304
-        y: 14
-        width: 18
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 986
+        y: 449
+        width: 486
+        height: 229
+      alignment: 9
+      pivot: {x: 0.4711934156, y: -0.1615720524}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -193,12 +196,12 @@ TextureImporter:
       name: SwordFormation_3
       rect:
         serializedVersion: 2
-        x: 321
-        y: 19
-        width: 7
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1476
+        y: 431
+        width: 486
+        height: 247
+      alignment: 9
+      pivot: {x: 0.5102880658, y: -0.0688259109}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -215,12 +218,12 @@ TextureImporter:
       name: SwordFormation_4
       rect:
         serializedVersion: 2
-        x: 335
-        y: 15
-        width: 17
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4
+        y: 158
+        width: 486
+        height: 269
+      alignment: 9
+      pivot: {x: 0.4711934156, y: 0.0185873606}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -237,12 +240,12 @@ TextureImporter:
       name: SwordFormation_5
       rect:
         serializedVersion: 2
-        x: 366
-        y: 0
-        width: 132
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 494
+        y: 144
+        width: 487
+        height: 283
+      alignment: 9
+      pivot: {x: 0.5112936345, y: 0.0742049470}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -259,12 +262,12 @@ TextureImporter:
       name: SwordFormation_6
       rect:
         serializedVersion: 2
-        x: 383
-        y: 13
-        width: 17
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 985
+        y: 291
+        width: 485
+        height: 136
+      alignment: 9
+      pivot: {x: 0.4721649485, y: -0.1176470588}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -281,12 +284,12 @@ TextureImporter:
       name: SwordFormation_7
       rect:
         serializedVersion: 2
-        x: 633
-        y: 12
-        width: 29
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1474
+        y: 290
+        width: 486
+        height: 137
+      alignment: 9
+      pivot: {x: 0.5102880658, y: -0.1094890511}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -303,12 +306,12 @@ TextureImporter:
       name: SwordFormation_8
       rect:
         serializedVersion: 2
-        x: 657
-        y: 9
-        width: 15
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4
+        y: 4
+        width: 485
+        height: 136
+      alignment: 9
+      pivot: {x: 0.4721649485, y: -0.3970588235}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -317,6 +320,28 @@ TextureImporter:
       bones: []
       spriteID: 9f6d6ad8bc438c030800000000000000
       internalID: 3515117558022199033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SwordFormation_10
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 139
+        width: 1
+        height: 1
+      alignment: 9
+      pivot: {x: 0.5000000000, y: 0.5000000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c689a8d7e7ab5dd7bb8f2662506daf72
+      internalID: 21300018
       vertices: []
       indices: 
       edges: []
@@ -332,8 +357,6 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    spriteCustomMetadata:
-      entries: []
     nameFileIdTable:
       SwordFormation_0: -7212610063896301341
       SwordFormation_1: -3972781653140645543
@@ -344,8 +367,9 @@ TextureImporter:
       SwordFormation_6: 5764590485210834584
       SwordFormation_7: 4042239340303258624
       SwordFormation_8: 3515117558022199033
+      SwordFormation_10: 21300018
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  userData: 
+  userData: SouthKing per-frame alpha crop; 2px outline margin; aligned pivots
   assetBundleName: 
   assetBundleVariant: 

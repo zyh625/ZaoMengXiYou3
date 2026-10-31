@@ -20,6 +20,8 @@ public class EnemyCombat : MonoBehaviour
     private int attackNum;
     private int curAttack = -1;
     public int Attack => curAttack;
+    protected EnemyAttackBox CurrentAttackBox => curAttack >= 0 && enemyAttackBoxes != null
+        && curAttack < enemyAttackBoxes.Length ? enemyAttackBoxes[curAttack] : null;//特殊敌人采样窗口时仍共用原攻击箱的去重。
     private bool attackWindowOpened, attackHitReported;//一整招只结算一次命中或落空，重复碰撞和冲刺转向不重复累计
     private float externalDamageScale = 1f;//关卡召唤等外部来源的伤害倍率；池成员复用时由生成代码显式恢复为1
     public void SetExternalDamageScale(float value) => externalDamageScale = Mathf.Clamp(value, 0f, 10f);//不修改预制体基础攻击

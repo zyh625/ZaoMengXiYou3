@@ -1,0 +1,20 @@
+Use case: stylized-concept. Asset type: 2D game production character animation sprite sheet. Input image is the EXACT character identity, costume and art reference; preserve WestKing exactly: blue-gray skin, red eyes, black beard, tall crimson-and-gold crown with red gem identical shape, crimson scale-and-plate armor with ornate gold cloud motifs, red cape and silk sashes. His LEFT forearm at IMAGE-LEFT has the red horned dragon coiled permanently attached around the gauntlet, horned head/mane at image-left. RIGHT hand at image-right holds the SAME spherical deep-red pearl. Exact palette, proportions, lineweight, bold black outlines and cel shading from reference. Three-quarter LEFT-facing; no mirroring.
+Canvas portrait1024x1536 PNG REAL TRANSPARENT alpha, empty clear background, no colored matte or shadows, no text labels numbers borders or grid lines. Exactly sixteen full-body character poses in4columns4rows, equal invisible256x384 cells. Read frames left-right then top-bottom. Keep figures SMALL in cells with huge EMPTY TRANSPARENT gutters on all FOUR sides. All visible parts including crown, pearl, dragon, cape, boots and magic ring must fit a max174px width x280px height per cell, centered x128 with feet on y336. At least40px empty left/right and48px empty top/bottom of every cell and outside canvas edges. Same fixed body drawing scale and center/feet baseline; gestures must never enlarge the body. No cropping, overlaps or touching neighboring cells.
+Animation WARD CAST, one-shot16frames, beginning in ready and ending in held spell stance. Every frame must advance a tiny step in time:
+F1 reference ready stance with pearl in right palm at image-right.
+F2 right hand draws pearl inward toward center chest.
+F3 both hands begin supporting pearl at chest; dragon remains coiled left forearm.
+F4 both arms raise pearl to face height.
+F5 both hands raise pearl overhead, crown shape unchanged and fully visible.
+F6 pearl glows slightly brighter overhead, a tiny thin red-gold ring begins at waist.
+F7 compact red-gold ring closes, hands hold pearl overhead.
+F8 pearl flares, cape edges and dragon mane lift slightly.
+F9 full compact ring of light around torso close to body, no massive aura.
+F10 held pose, cape and mane lifted gently.
+F11 held pose minor energy rise.
+F12 held pose gentle cape flutter.
+F13 held pose red ring pulses subtly.
+F14 held pose energy eases.
+F15 cloth begins settling while both hands keep pearl high.
+F16 settle in held ward stance with pearl high and small red-gold ring stable.
+The small ring must stay inside character silhouette width, no full-screen glow, no flame, no extra characters or objects. Exactly one spherical pearl each frame, attached dragon never detaches or becomes a separate creature. All16 complete figures including raised hands/pearl safely fit in their own cells, huge empty transparent padding.

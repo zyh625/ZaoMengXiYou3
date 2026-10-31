@@ -137,7 +137,7 @@ public class Health : MonoBehaviour,IDamage
     //同一来源重复设置只更新该来源，不会每帧重复叠加。
     public void SetDamageMultiplier(Object source, float multiplier)
     {
-        if (source != null) damageMultipliers[source] = Mathf.Clamp01(multiplier);
+        if (source != null) damageMultipliers[source] = Mathf.Max(0f, multiplier);//保留原有0～1减伤语义，同时允许按来源叠加易伤。
     }
     public void RemoveDamageMultiplier(Object source)//仅移除指定来源的减伤
     {

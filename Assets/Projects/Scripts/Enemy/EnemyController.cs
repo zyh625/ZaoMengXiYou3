@@ -55,6 +55,7 @@ public class EnemyController : MonoBehaviour
     protected virtual void CheckSkillBoostLose() { }//检查当前增益型技能是否失效
     protected virtual void CheckSkill() { }//检查当前技能阶段对应技能效果
     protected virtual bool SkillReady => false;//当前是否可以释放技能
+    protected virtual bool CanStartNormalAttack => true;//子类可统一限制普攻起手间隔，其他敌人沿用原有调度。
     protected virtual bool ProcessSpecialState() => false;//弹反等专属动作在死亡之后、冰冻与普通行为之前取得控制
     private void FixedUpdate()
     {
@@ -128,7 +129,7 @@ public class EnemyController : MonoBehaviour
         }
         float dis = EM.DeltaX;
         EC.CheckAttack();
-        if (EC.AttackReady())//满足攻击条件
+        if (CanStartNormalAttack && EC.AttackReady())//满足攻击条件
         {
             EC.HasAtatck(dis > 0f); EM.Stop(); SpecialAttackSet(dis);
             SM.ChangeSpriteFace(dis > 0f);
