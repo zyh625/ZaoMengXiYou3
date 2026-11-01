@@ -17,6 +17,9 @@ public static class RedBoomValidationBridge
         if(!Application.isBatchMode)throw new System.InvalidOperationException("RunBatch is for an isolated batch editor.");
         Directory.CreateDirectory(RedBoomValidationPaths.AuditDirectory);
         File.WriteAllText(RedBoomValidationPaths.FilePath("runtime-validation.txt"),"RUNNING\n");
+        RedBoomSetup.ValidateSprites();
+        RedBoomSetup.ValidateReferences();
+        File.WriteAllText(RedBoomValidationPaths.FilePath("unity-assets.txt"),"PASS: 145 valid sprites, RedBoom plus three effect prefabs, no missing references, HP 80, XP 18.\n");
         EditorSceneManager.OpenScene("Assets/Projects/Scenes/Levels/Level5Scene.unity",OpenSceneMode.Single);
         SessionState.SetBool(Key+".Batch",true);
         Run();

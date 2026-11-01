@@ -1,0 +1,1453 @@
+{
+  "character": "GreenHammer",
+  "reference": "Stand.png",
+  "generator": "built-in image_gen",
+  "postprocessing": "User-authorized scripted extraction, uniform per-animation scaling, alignment, alpha cleanup and hit lean correction.",
+  "canvas": {
+    "width": 1024,
+    "height": 1536,
+    "columns": 4,
+    "rows": 4,
+    "cell_width": 256,
+    "cell_height": 384
+  },
+  "frame_order": "left-to-right, then top-to-bottom; 1-based frame names",
+  "ground_y_from_cell_top": 328,
+  "pivot_normalized": [
+    0.5,
+    0.14583333333333334
+  ],
+  "pixels_per_unit": 100,
+  "common_prompt_original": "Use case: identity-preserve.\nAsset type: production 2D Unity game CHARACTER-ONLY animation sprite sheet.\nInput image: Stand.png is the exact character identity reference. Preserve his exact face, jade-green/gold armor, pale blue-gray skin, red eyes, green horsehair plume, brow gem, gold cloud-scroll patterns, long green tabard, gold-trimmed boots, gigantic jade hammer with gold bands and large inset green face gems and long dark-green handle. Match the reference's strong dark outlines, line weight and detailed cel shading. Maintain three-quarter LEFT-facing orientation and fixed camera. Change poses only, never redesign the character or hammer.\nMANDATORY COMPOSITION: a portrait 1024x1536 RGBA PNG with genuinely transparent alpha background. EXACTLY 16 complete character figures, 4 columns x 4 rows, uniformly spaced at cell origins (0,0),(256,0),(512,0),(768,0), then y=384,768,1152. Each invisible cell is exactly 256x384. Read frames left-to-right, top-to-bottom; time progresses continuously across row breaks.\nEach character AND all equipment must be SMALL inside its own cell: total occupied width at most 178px (70%), total occupied height at most 288px (75%). At least 39px fully transparent horizontal padding at both sides and 40px vertical padding at top and bottom in EVERY cell, including outside canvas edges. Prefer total neutral silhouette height about 190-200px and width about 170px; reserve ample overhead space for raised hammer/leaping actions. Use a single fixed drawing scale across all 16 frames; neutral boot soles are on cell-local ground baseline y=328, body center consistently near local x=140. Grounded hammer rests low at image LEFT. Never enlarge figures to fill the canvas. No sprite or equipment touches a cell boundary, overlaps another sprite, or is cropped. All heads, plumes, armor, boots, hands, handles and complete hammer heads visible every frame.\nNo text, no frame numbers, no labels, no borders, no grid lines, no background, no floor plane, no cast shadows, no separate effects. True transparent empty gutters. Exactly one guard and one hammer per cell.\n",
+  "common_prompt_revised": "Create a game animation sprite sheet as a transparent cutout asset. Input Stand.png is a CHARACTER IDENTITY reference only, not a background reference. Use the identical green/gold hammer guard, exact costume, pale blue-gray skin, red eyes, green plume, jade hammer gems and cloud-scroll ornament, detailed cel shading and strong clean dark outlines, three-quarter left-facing.\nCRITICAL CANVAS: 1024 pixels wide by 1536 pixels high. Divide the canvas mentally into FOUR COLUMNS and FOUR ROWS: sixteen invisible 256x384 rectangles. Exactly one full character plus his intact hammer per rectangle, sixteen complete poses total. Pose sequence is row-major left-to-right top-to-bottom.\nCRITICAL SCALE: draw the actual character MUCH SMALLER than normal, like small isolated game icons surrounded by empty air. Neutral full figure including plume and hammer about 164 pixels wide by 190 pixels tall. This leaves a lot of transparent space. Absolute maximum bounding box including equipment per pose is 176 wide and 280 high. Same small drawing scale throughout; do NOT fill cell or sheet. Put each cell-local neutral soles at y=320. Every cell must have AT LEAST 40 pixels EMPTY LEFT AND RIGHT padding and AT LEAST 44 pixels EMPTY TOP AND BOTTOM padding. There must be very wide completely transparent blank vertical AND horizontal gutters between all figures. Everything fits inside its own invisible rectangle. Entire hammer, handle, plume and boots fully visible.\nCRITICAL ALPHA: Actual fully transparent alpha outside sprites, as a transparent PNG asset. Erase ALL background pixels. NO green, brown, gold or black backdrop, NO gradient, NO background color, NO texture, NO checkerboard drawn into the image. NO shadow underneath. Background and gutters are EMPTY transparent pixels, alpha zero. No border, grid, lettering, numbering, FX, trails, dust, ground or floor.\nPreserve body scale across poses even when the hammer raises overhead. Pose only the single character with his hammer.",
+  "animations": [
+    {
+      "file": "Idle.png",
+      "name_zh": "待机呼吸",
+      "loop": true,
+      "suggested_fps": 10,
+      "frame_count": 16,
+      "notes_zh": "F01 静立持锤；F02–05 吸气抬肩、盔缨摆动；F06–09 呼气放松握柄；F10–13 重心回落；F14–16 收回初始姿势。F16 与 F01 像素一致。",
+      "prompt": "Animation: IDLE breathing loop, 16 frames. F1 neutral with the hammer head resting on the ground; F2-5 chest rises and shoulder plates lift, the plume sways; F6-9 slow exhale and the hammer handle shifts slightly as his grip relaxes; F10-13 weight settles, red eyes glow; F14-16 return exactly to F1. Both boots stay planted, no stepping, hammer never leaves the ground. Show small but visible sequential breathing changes, not 16 static duplicates. Hammer held with both hands in all frames.",
+      "common_prompt": "common_prompt_revised",
+      "frames": [
+        {
+          "name": "Idle_01",
+          "frame": 1,
+          "column": 0,
+          "row_from_top": 0,
+          "unity_rect": {
+            "x": 0,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_02",
+          "frame": 2,
+          "column": 1,
+          "row_from_top": 0,
+          "unity_rect": {
+            "x": 256,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_03",
+          "frame": 3,
+          "column": 2,
+          "row_from_top": 0,
+          "unity_rect": {
+            "x": 512,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_04",
+          "frame": 4,
+          "column": 3,
+          "row_from_top": 0,
+          "unity_rect": {
+            "x": 768,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_05",
+          "frame": 5,
+          "column": 0,
+          "row_from_top": 1,
+          "unity_rect": {
+            "x": 0,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_06",
+          "frame": 6,
+          "column": 1,
+          "row_from_top": 1,
+          "unity_rect": {
+            "x": 256,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_07",
+          "frame": 7,
+          "column": 2,
+          "row_from_top": 1,
+          "unity_rect": {
+            "x": 512,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_08",
+          "frame": 8,
+          "column": 3,
+          "row_from_top": 1,
+          "unity_rect": {
+            "x": 768,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_09",
+          "frame": 9,
+          "column": 0,
+          "row_from_top": 2,
+          "unity_rect": {
+            "x": 0,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_10",
+          "frame": 10,
+          "column": 1,
+          "row_from_top": 2,
+          "unity_rect": {
+            "x": 256,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_11",
+          "frame": 11,
+          "column": 2,
+          "row_from_top": 2,
+          "unity_rect": {
+            "x": 512,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_12",
+          "frame": 12,
+          "column": 3,
+          "row_from_top": 2,
+          "unity_rect": {
+            "x": 768,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_13",
+          "frame": 13,
+          "column": 0,
+          "row_from_top": 3,
+          "unity_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_14",
+          "frame": 14,
+          "column": 1,
+          "row_from_top": 3,
+          "unity_rect": {
+            "x": 256,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_15",
+          "frame": 15,
+          "column": 2,
+          "row_from_top": 3,
+          "unity_rect": {
+            "x": 512,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_16",
+          "frame": 16,
+          "column": 3,
+          "row_from_top": 3,
+          "unity_rect": {
+            "x": 768,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        }
+      ]
+    },
+    {
+      "file": "Walk.png",
+      "name_zh": "重步行走",
+      "loop": true,
+      "suggested_fps": 10,
+      "frame_count": 16,
+      "notes_zh": "F01 左脚落步；F02–04 下沉承重；F05–08 右腿前摆；F09 右脚着地；F10–12 再次下沉；F13–16 左腿回摆并闭合循环。F16 与 F01 像素一致。",
+      "prompt": "Animation: WALK in place, one smooth 16-frame heavy stomp cycle, not a run. F1 left boot heel strike; F2-4 weight drops onto the left leg and the body dips, the hammer head dragging forward; F5-8 right leg passes and swings forward; F9 right boot lands with the left leg behind; F10-12 weight settles with a deep dip, the hammer bouncing once; F13-16 left leg passes and closes seamlessly to F1. Slow, heavy and grounded, shoulders sway, no camera rotation. Hands always grip the same intact hammer. In-place x position stays stable; feet alternate progressively, no translational movement across cells.",
+      "common_prompt": "common_prompt_original",
+      "frames": [
+        {
+          "name": "Walk_01",
+          "frame": 1,
+          "column": 0,
+          "row_from_top": 0,
+          "unity_rect": {
+            "x": 0,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_02",
+          "frame": 2,
+          "column": 1,
+          "row_from_top": 0,
+          "unity_rect": {
+            "x": 256,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_03",
+          "frame": 3,
+          "column": 2,
+          "row_from_top": 0,
+          "unity_rect": {
+            "x": 512,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_04",
+          "frame": 4,
+          "column": 3,
+          "row_from_top": 0,
+          "unity_rect": {
+            "x": 768,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_05",
+          "frame": 5,
+          "column": 0,
+          "row_from_top": 1,
+          "unity_rect": {
+            "x": 0,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_06",
+          "frame": 6,
+          "column": 1,
+          "row_from_top": 1,
+          "unity_rect": {
+            "x": 256,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_07",
+          "frame": 7,
+          "column": 2,
+          "row_from_top": 1,
+          "unity_rect": {
+            "x": 512,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_08",
+          "frame": 8,
+          "column": 3,
+          "row_from_top": 1,
+          "unity_rect": {
+            "x": 768,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_09",
+          "frame": 9,
+          "column": 0,
+          "row_from_top": 2,
+          "unity_rect": {
+            "x": 0,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_10",
+          "frame": 10,
+          "column": 1,
+          "row_from_top": 2,
+          "unity_rect": {
+            "x": 256,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_11",
+          "frame": 11,
+          "column": 2,
+          "row_from_top": 2,
+          "unity_rect": {
+            "x": 512,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_12",
+          "frame": 12,
+          "column": 3,
+          "row_from_top": 2,
+          "unity_rect": {
+            "x": 768,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_13",
+          "frame": 13,
+          "column": 0,
+          "row_from_top": 3,
+          "unity_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_14",
+          "frame": 14,
+          "column": 1,
+          "row_from_top": 3,
+          "unity_rect": {
+            "x": 256,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_15",
+          "frame": 15,
+          "column": 2,
+          "row_from_top": 3,
+          "unity_rect": {
+            "x": 512,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_16",
+          "frame": 16,
+          "column": 3,
+          "row_from_top": 3,
+          "unity_rect": {
+            "x": 768,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        }
+      ]
+    },
+    {
+      "file": "HammerSweep.png",
+      "name_zh": "横向锤扫",
+      "loop": false,
+      "suggested_fps": 14,
+      "frame_count": 16,
+      "notes_zh": "F01–05 扭身蓄力、举锤至右肩后；F06–09 横扫；F10–12 随势压低锤头；F13–16 收锤回到公共待机姿势，末段短暂停稳。",
+      "prompt": "Animation: one-shot horizontal HAMMER SWEEP, 16 frames. F1-5 wind up, torso twists back and the jade hammer is hoisted behind the right shoulder; F6-9 explosive swing across the front at chest height with the hammer head leading; F10-12 full follow-through with the body rotated and the hammer low at the far side; F13-16 drag the hammer back to the ready stance. The hammer must stay attached to both hands in every frame and remain fully inside the cell. Show real sweeping weapon position changes, torso twists but base view remains three-quarter left. No trails, motion lines or impact effects.",
+      "common_prompt": "common_prompt_original",
+      "frames": [
+        {
+          "name": "HammerSweep_01",
+          "frame": 1,
+          "column": 0,
+          "row_from_top": 0,
+          "unity_rect": {
+            "x": 0,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "HammerSweep_02",
+          "frame": 2,
+          "column": 1,
+          "row_from_top": 0,
+          "unity_rect": {
+            "x": 256,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "HammerSweep_03",
+          "frame": 3,
+          "column": 2,
+          "row_from_top": 0,
+          "unity_rect": {
+            "x": 512,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "HammerSweep_04",
+          "frame": 4,
+          "column": 3,
+          "row_from_top": 0,
+          "unity_rect": {
+            "x": 768,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "HammerSweep_05",
+          "frame": 5,
+          "column": 0,
+          "row_from_top": 1,
+          "unity_rect": {
+            "x": 0,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "HammerSweep_06",
+          "frame": 6,
+          "column": 1,
+          "row_from_top": 1,
+          "unity_rect": {
+            "x": 256,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "HammerSweep_07",
+          "frame": 7,
+          "column": 2,
+          "row_from_top": 1,
+          "unity_rect": {
+            "x": 512,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "HammerSweep_08",
+          "frame": 8,
+          "column": 3,
+          "row_from_top": 1,
+          "unity_rect": {
+            "x": 768,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "HammerSweep_09",
+          "frame": 9,
+          "column": 0,
+          "row_from_top": 2,
+          "unity_rect": {
+            "x": 0,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "HammerSweep_10",
+          "frame": 10,
+          "column": 1,
+          "row_from_top": 2,
+          "unity_rect": {
+            "x": 256,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "HammerSweep_11",
+          "frame": 11,
+          "column": 2,
+          "row_from_top": 2,
+          "unity_rect": {
+            "x": 512,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "HammerSweep_12",
+          "frame": 12,
+          "column": 3,
+          "row_from_top": 2,
+          "unity_rect": {
+            "x": 768,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "HammerSweep_13",
+          "frame": 13,
+          "column": 0,
+          "row_from_top": 3,
+          "unity_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "HammerSweep_14",
+          "frame": 14,
+          "column": 1,
+          "row_from_top": 3,
+          "unity_rect": {
+            "x": 256,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "HammerSweep_15",
+          "frame": 15,
+          "column": 2,
+          "row_from_top": 3,
+          "unity_rect": {
+            "x": 512,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "HammerSweep_16",
+          "frame": 16,
+          "column": 3,
+          "row_from_top": 3,
+          "unity_rect": {
+            "x": 768,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        }
+      ]
+    },
+    {
+      "file": "LeapSlam.png",
+      "name_zh": "跃起重砸",
+      "loop": false,
+      "suggested_fps": 14,
+      "frame_count": 16,
+      "notes_zh": "F01–04 下蹲蓄力；F05–08 双脚离地、举锤；F09–11 下砸并落地；F12–14 冲击深蹲；F15–16 起身回待机。离地偏移已经绘入单元格，播放时不要再逐帧贴地。",
+      "prompt": "Animation: one-shot LEAP SLAM, 16 frames. F1-4 crouch and pull the hammer back; F5-8 leap upward with the hammer raised overhead, both boots visibly off the cell-local ground baseline; F9-11 slam straight down while landing; F12-14 deep impact crouch with the hammer head on the ground and dust implied by pose only; F15-16 rise back to ready. Keep the full body, plume, handle and hammer inside the cell even at the apex. Choose small fixed character drawing scale from F1 onwards so overhead hammer AND jump fit the 40px top padding without shrinking the character at apex. Hammer held two-handed.",
+      "common_prompt": "common_prompt_original",
+      "frames": [
+        {
+          "name": "LeapSlam_01",
+          "frame": 1,
+          "column": 0,
+          "row_from_top": 0,
+          "unity_rect": {
+            "x": 0,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "LeapSlam_02",
+          "frame": 2,
+          "column": 1,
+          "row_from_top": 0,
+          "unity_rect": {
+            "x": 256,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "LeapSlam_03",
+          "frame": 3,
+          "column": 2,
+          "row_from_top": 0,
+          "unity_rect": {
+            "x": 512,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "LeapSlam_04",
+          "frame": 4,
+          "column": 3,
+          "row_from_top": 0,
+          "unity_rect": {
+            "x": 768,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "LeapSlam_05",
+          "frame": 5,
+          "column": 0,
+          "row_from_top": 1,
+          "unity_rect": {
+            "x": 0,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "LeapSlam_06",
+          "frame": 6,
+          "column": 1,
+          "row_from_top": 1,
+          "unity_rect": {
+            "x": 256,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "LeapSlam_07",
+          "frame": 7,
+          "column": 2,
+          "row_from_top": 1,
+          "unity_rect": {
+            "x": 512,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "LeapSlam_08",
+          "frame": 8,
+          "column": 3,
+          "row_from_top": 1,
+          "unity_rect": {
+            "x": 768,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "LeapSlam_09",
+          "frame": 9,
+          "column": 0,
+          "row_from_top": 2,
+          "unity_rect": {
+            "x": 0,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "LeapSlam_10",
+          "frame": 10,
+          "column": 1,
+          "row_from_top": 2,
+          "unity_rect": {
+            "x": 256,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "LeapSlam_11",
+          "frame": 11,
+          "column": 2,
+          "row_from_top": 2,
+          "unity_rect": {
+            "x": 512,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "LeapSlam_12",
+          "frame": 12,
+          "column": 3,
+          "row_from_top": 2,
+          "unity_rect": {
+            "x": 768,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "LeapSlam_13",
+          "frame": 13,
+          "column": 0,
+          "row_from_top": 3,
+          "unity_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "LeapSlam_14",
+          "frame": 14,
+          "column": 1,
+          "row_from_top": 3,
+          "unity_rect": {
+            "x": 256,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "LeapSlam_15",
+          "frame": 15,
+          "column": 2,
+          "row_from_top": 3,
+          "unity_rect": {
+            "x": 512,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "LeapSlam_16",
+          "frame": 16,
+          "column": 3,
+          "row_from_top": 3,
+          "unity_rect": {
+            "x": 768,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        }
+      ]
+    },
+    {
+      "file": "GroundPound.png",
+      "name_zh": "原地砸地",
+      "loop": false,
+      "suggested_fps": 12,
+      "frame_count": 16,
+      "notes_zh": "F01–05 举锤伸展；F06–08 向下重砸；F09–11 深蹲触地；F12–16 缓慢起身并回公共待机。",
+      "prompt": "Animation: one-shot GROUND POUND, 16 frames. F1-5 raise the hammer overhead with both hands and straighten the back; F6-8 slam it straight down in front, torso folding; F9-11 impact crouch, hammer head flat on the ground, arms extended; F12-16 slowly rise back to the ready stance. Both feet planted throughout, no jump, no camera rotation, no shockwave drawn. Intact hammer stays gripped with both hands. Fit overhead hammer within padding using one small fixed scale.",
+      "common_prompt": "common_prompt_original",
+      "frames": [
+        {
+          "name": "GroundPound_01",
+          "frame": 1,
+          "column": 0,
+          "row_from_top": 0,
+          "unity_rect": {
+            "x": 0,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "GroundPound_02",
+          "frame": 2,
+          "column": 1,
+          "row_from_top": 0,
+          "unity_rect": {
+            "x": 256,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "GroundPound_03",
+          "frame": 3,
+          "column": 2,
+          "row_from_top": 0,
+          "unity_rect": {
+            "x": 512,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "GroundPound_04",
+          "frame": 4,
+          "column": 3,
+          "row_from_top": 0,
+          "unity_rect": {
+            "x": 768,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "GroundPound_05",
+          "frame": 5,
+          "column": 0,
+          "row_from_top": 1,
+          "unity_rect": {
+            "x": 0,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "GroundPound_06",
+          "frame": 6,
+          "column": 1,
+          "row_from_top": 1,
+          "unity_rect": {
+            "x": 256,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "GroundPound_07",
+          "frame": 7,
+          "column": 2,
+          "row_from_top": 1,
+          "unity_rect": {
+            "x": 512,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "GroundPound_08",
+          "frame": 8,
+          "column": 3,
+          "row_from_top": 1,
+          "unity_rect": {
+            "x": 768,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "GroundPound_09",
+          "frame": 9,
+          "column": 0,
+          "row_from_top": 2,
+          "unity_rect": {
+            "x": 0,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "GroundPound_10",
+          "frame": 10,
+          "column": 1,
+          "row_from_top": 2,
+          "unity_rect": {
+            "x": 256,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "GroundPound_11",
+          "frame": 11,
+          "column": 2,
+          "row_from_top": 2,
+          "unity_rect": {
+            "x": 512,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "GroundPound_12",
+          "frame": 12,
+          "column": 3,
+          "row_from_top": 2,
+          "unity_rect": {
+            "x": 768,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "GroundPound_13",
+          "frame": 13,
+          "column": 0,
+          "row_from_top": 3,
+          "unity_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "GroundPound_14",
+          "frame": 14,
+          "column": 1,
+          "row_from_top": 3,
+          "unity_rect": {
+            "x": 256,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "GroundPound_15",
+          "frame": 15,
+          "column": 2,
+          "row_from_top": 3,
+          "unity_rect": {
+            "x": 512,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "GroundPound_16",
+          "frame": 16,
+          "column": 3,
+          "row_from_top": 3,
+          "unity_rect": {
+            "x": 768,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        }
+      ]
+    },
+    {
+      "file": "Hit.png",
+      "name_zh": "受击后仰",
+      "loop": false,
+      "suggested_fps": 16,
+      "frame_count": 16,
+      "notes_zh": "F01 准备姿势；F02 肩部受击；F03–06 上身向画面右侧后仰；F07–09 吸收冲击；F10–13 站直；F14–16 复原。F16 与 F01 像素一致。",
+      "prompt": "Animation: a SINGLE HIT REACTION over 16 frames, not attacking. F1 ready; F2 sudden shoulder flinch; F3-6 upper body leans back toward screen RIGHT as the impact comes from LEFT, head snaps back and one boot slides half a step; F7-9 weight absorbs the hit while the hammer head drags forward; F10-13 straighten; F14-16 return exactly to the initial ready stance. Face remains oriented left, no enemy, no projectile, no blood, no spark, no motion lines. Hammer remains held and mostly low on the left; do not depict an attack.",
+      "common_prompt": "common_prompt_original",
+      "frames": [
+        {
+          "name": "Hit_01",
+          "frame": 1,
+          "column": 0,
+          "row_from_top": 0,
+          "unity_rect": {
+            "x": 0,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_02",
+          "frame": 2,
+          "column": 1,
+          "row_from_top": 0,
+          "unity_rect": {
+            "x": 256,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_03",
+          "frame": 3,
+          "column": 2,
+          "row_from_top": 0,
+          "unity_rect": {
+            "x": 512,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_04",
+          "frame": 4,
+          "column": 3,
+          "row_from_top": 0,
+          "unity_rect": {
+            "x": 768,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_05",
+          "frame": 5,
+          "column": 0,
+          "row_from_top": 1,
+          "unity_rect": {
+            "x": 0,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_06",
+          "frame": 6,
+          "column": 1,
+          "row_from_top": 1,
+          "unity_rect": {
+            "x": 256,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_07",
+          "frame": 7,
+          "column": 2,
+          "row_from_top": 1,
+          "unity_rect": {
+            "x": 512,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_08",
+          "frame": 8,
+          "column": 3,
+          "row_from_top": 1,
+          "unity_rect": {
+            "x": 768,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_09",
+          "frame": 9,
+          "column": 0,
+          "row_from_top": 2,
+          "unity_rect": {
+            "x": 0,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_10",
+          "frame": 10,
+          "column": 1,
+          "row_from_top": 2,
+          "unity_rect": {
+            "x": 256,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_11",
+          "frame": 11,
+          "column": 2,
+          "row_from_top": 2,
+          "unity_rect": {
+            "x": 512,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_12",
+          "frame": 12,
+          "column": 3,
+          "row_from_top": 2,
+          "unity_rect": {
+            "x": 768,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_13",
+          "frame": 13,
+          "column": 0,
+          "row_from_top": 3,
+          "unity_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_14",
+          "frame": 14,
+          "column": 1,
+          "row_from_top": 3,
+          "unity_rect": {
+            "x": 256,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_15",
+          "frame": 15,
+          "column": 2,
+          "row_from_top": 3,
+          "unity_rect": {
+            "x": 512,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_16",
+          "frame": 16,
+          "column": 3,
+          "row_from_top": 3,
+          "unity_rect": {
+            "x": 768,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        }
+      ]
+    },
+    {
+      "file": "Death.png",
+      "name_zh": "死亡倒地",
+      "loop": false,
+      "suggested_fps": 12,
+      "frame_count": 16,
+      "notes_zh": "F01–03 后仰失衡、松开一手；F04–07 屈膝；F08–11 跪地支撑；F12–15 向前侧倒；F16 保持倒地终态。播放后停在 F16，禁止循环。",
+      "prompt": "Animation: death, 16 frames, one-shot. F1-3 stagger backward, the hammer slips from one hand; F4-7 knees buckle; F8-11 drops to one knee as the hammer head hits the ground; F12-15 falls forward onto his side, armor plates settling; F16 final still pose with the intact hammer lying beside him. F12-16 must clearly progress from kneeling to fully horizontal side-lying dead body, not return to ready. No blood, dismemberment or effects. Do not lose detached hammer, do not duplicate it. Lying body and whole hammer fit side by side within 178px width without cropping; keep same body scale.",
+      "common_prompt": "common_prompt_original",
+      "frames": [
+        {
+          "name": "Death_01",
+          "frame": 1,
+          "column": 0,
+          "row_from_top": 0,
+          "unity_rect": {
+            "x": 0,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_02",
+          "frame": 2,
+          "column": 1,
+          "row_from_top": 0,
+          "unity_rect": {
+            "x": 256,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_03",
+          "frame": 3,
+          "column": 2,
+          "row_from_top": 0,
+          "unity_rect": {
+            "x": 512,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_04",
+          "frame": 4,
+          "column": 3,
+          "row_from_top": 0,
+          "unity_rect": {
+            "x": 768,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_05",
+          "frame": 5,
+          "column": 0,
+          "row_from_top": 1,
+          "unity_rect": {
+            "x": 0,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_06",
+          "frame": 6,
+          "column": 1,
+          "row_from_top": 1,
+          "unity_rect": {
+            "x": 256,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_07",
+          "frame": 7,
+          "column": 2,
+          "row_from_top": 1,
+          "unity_rect": {
+            "x": 512,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_08",
+          "frame": 8,
+          "column": 3,
+          "row_from_top": 1,
+          "unity_rect": {
+            "x": 768,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_09",
+          "frame": 9,
+          "column": 0,
+          "row_from_top": 2,
+          "unity_rect": {
+            "x": 0,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_10",
+          "frame": 10,
+          "column": 1,
+          "row_from_top": 2,
+          "unity_rect": {
+            "x": 256,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_11",
+          "frame": 11,
+          "column": 2,
+          "row_from_top": 2,
+          "unity_rect": {
+            "x": 512,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_12",
+          "frame": 12,
+          "column": 3,
+          "row_from_top": 2,
+          "unity_rect": {
+            "x": 768,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_13",
+          "frame": 13,
+          "column": 0,
+          "row_from_top": 3,
+          "unity_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_14",
+          "frame": 14,
+          "column": 1,
+          "row_from_top": 3,
+          "unity_rect": {
+            "x": 256,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_15",
+          "frame": 15,
+          "column": 2,
+          "row_from_top": 3,
+          "unity_rect": {
+            "x": 512,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_16",
+          "frame": 16,
+          "column": 3,
+          "row_from_top": 3,
+          "unity_rect": {
+            "x": 768,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        }
+      ]
+    }
+  ]
+}

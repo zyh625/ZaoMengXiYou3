@@ -78,6 +78,7 @@ public static class RedBoomSetup
             Sprite[] frames=Frames(action);int expected=action=="Ray"?8:action=="Mark"?9:16;
             Require(frames.Length==expected,action+" frame count");
             Texture2D pixels=new(2,2,TextureFormat.RGBA32,false);pixels.LoadImage(File.ReadAllBytes(Path.Combine(Application.dataPath,"Art/Enemies/Level5/RedBoom/"+action+".png")));Color32[] rgba=pixels.GetPixels32();
+            Require(pixels.width==1024 && pixels.height==1536,action+" atlas dimensions");
             for(int i=0;i<expected;i++)
             {
                 Sprite frame=frames[i];Rect rect=frame.rect;
@@ -87,6 +88,7 @@ public static class RedBoomSetup
                 for(int y=(int)rect.yMin;y<(int)rect.yMax&&!visible;y++)
                     for(int x=(int)rect.xMin;x<(int)rect.xMax;x++) if(rgba[y*pixels.width+x].a>=2){visible=true;break;}
                 Require(visible,frame.name+" empty sprite");
+                Require(frame.vertices.Length>=3 && frame.triangles.Length>=3,frame.name+" empty mesh");
             }
             Object.DestroyImmediate(pixels);
         }

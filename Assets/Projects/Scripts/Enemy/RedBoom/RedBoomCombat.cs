@@ -99,7 +99,7 @@ public sealed class RedBoomCombat : EnemyCombat
         if (CurrentSkill < 0 || released) return;
         if (health == null || health.Dead || health.Attacked || health.Status != null && health.Status.BlocksActions)
         { CancelCast(); return; }
-        if (frame < ReleaseFrame || Time.time + 0.0001f < castAt + Windup) return;
+        if (frame < ReleaseFrame || Time.time < castAt + Windup) return;
         released = true;
         if (CurrentSkill == 0)
         {

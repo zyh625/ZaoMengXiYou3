@@ -166,6 +166,23 @@ public sealed class RedBoomRuntimeValidation : MonoBehaviour
         RedBoomMark cleanup=pool.Mark(markPrefab,hp,source);pool.ReleaseAll();before=hp.CurBlood;
         hp.TakeDamage(new DamageInfo(enemy.transform,10f,false,false,null,false,true));
         Check(!cleanup.gameObject.activeSelf && !RedBoomMark.IsMarked(hp) && Near(before-hp.CurBlood,10f),"pool release clears marks and restores damage multipliers");
+
+        //最后交还完整控制器与 SpriteManager，验证实际动画会依次释放三招。
+        hp.Heal(1000f);ResetEnemy(enemy,hero);Place(replacement,5f);controller.enabled=true;
+        before=hp.CurBlood;deadline=Time.time+2.5f;
+        while(!RedBoomMark.IsMarked(hp) && Time.time<deadline)yield return null;
+        Check(RedBoomMark.IsMarked(hp) && hp.CurBlood==before,"real controller releases mark through AttackThree animation without damage");
+        deadline=Time.time+3.5f;
+        while(combat.RayShots==0 && Time.time<deadline)yield return null;
+        Check(combat.RayShots==1 && Near(before-hp.CurBlood,14.4f),"real AttackOne animation releases one ray with marked 12 x 1.2 damage");
+        RedBoomLantern[] lanterns=pool.GetComponentsInChildren<RedBoomLantern>(true);bool thrown=false;deadline=Time.time+2.5f;
+        while(!thrown && Time.time<deadline)
+        {
+            foreach(RedBoomLantern effect in lanterns)if(effect.gameObject.activeSelf){thrown=true;break;}
+            if(!thrown)yield return null;
+        }
+        Check(thrown,"real AttackTwo animation releases pooled lantern after mark and ray enter cooldown");
+        controller.enabled=false;combat.CancelCast();pool.ReleaseAll();
     }
 }
 

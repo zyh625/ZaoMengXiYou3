@@ -1,0 +1,1562 @@
+{
+  "character": "NorthKing",
+  "reference": "../Stand.png",
+  "generator": "built-in image_gen",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "cell": [
+    256,
+    384
+  ],
+  "frame_order": "left to right, top to bottom",
+  "pivot": [
+    0.5,
+    0.14583333333333334
+  ],
+  "baseline_top_left": 328,
+  "common_prompt": "Use case: identity-preserve. Production 2D Unity game animation cutouts.\nREFERENCE: Stand.png is the EXACT NorthKing identity. Preserve this massive jade-green/gold Heavenly King: blue-gray skin, glaring red eyes, thick black beard and black hair, tall elaborate gold/green crown with large diamond jade gem and top finial, emerald heavy armor with identical gold/light-jade cloud scroll ornament, gold boots, green cape and silk sashes. Match exact costume proportions, strong dark outlines and polished cel shading. Fixed camera, three-quarter LEFT-facing orientation. The SAME grip hand holds the parasol at SCREEN LEFT as in the reference; the other hand is a clenched fist at SCREEN RIGHT unless action requires both hands.\nONE LARGE OPEN PARASOL: preserve the reference's enormous emerald canopy, its fixed fan/scalloped outline, exact gold rib count and placement, gold cloud ornament, jade bead/green tassels all around the rim, gold central hub, dark-green handle with gold collars and jade finials. The canopy is always FULLY OPEN, never furled, collapsed, cut in half, replaced by a shield disc, shortened or shrunk independently of character. The shaft stays physically attached to canopy and grip. Exactly ONE king and ONE intact open parasol per pose. No duplicated arms or props.\nLAYOUT: this is a SQUARE 1536x1536 TRANSPARENT STAGING ATLAS for later deterministic packing into a final portrait 1024x1536 game sheet. EXACTLY 16 COMPLETE FULL-BODY figures, FOUR columns by FOUR rows, each centered in its own invisible 384x384 square. Read animation left-to-right then top-to-bottom, continuous across row transitions.\nEach whole figure INCLUDING THE FULL LARGE OPEN CANOPY, ALL TASSELS, CROWN, CAPE AND BOTH BOOTS is SMALL, no more than 270px wide or 290px high. Use one fixed small drawing scale for all 16 poses, chosen so the broadest umbrella thrust, overhead raise, jump apex and horizontal death pose fit. There must be AT LEAST 50px clear empty transparent space on LEFT and RIGHT and AT LEAST 40px TOP and BOTTOM of EVERY figure. Fixed cell-local planted boot baseline y=338, consistent body center. Do not enlarge anything to fill cells. Never let umbrellas, tassels, fists, crowns or capes touch/overlap a neighboring figure or outside canvas edges. Leave very wide genuinely transparent gutters. All body parts and all prop parts fully visible, except torso may naturally be obscured by own open parasol during guard.\nALPHA: REAL transparent pixels outside the figures. No background color, gradient, scenery, floor, cast shadow, texture or printed checkerboard. No borders, grid, labels, numbers, words or watermark.\nABSOLUTELY CHARACTER AND PHYSICAL PARASOL ONLY: No effects of any kind: no aura, magic rings, umbrella needles/projectiles, rain droplets, beams, wind vortex, dust, particles, streaks, motion lines, blood, enemies or impact flashes. All spells will be separate Unity effect prefabs. Only the body pose, physical canopy/ribs/tassels and cape convey the action.\n",
+  "no_baked_effects": true,
+  "animations": [
+    {
+      "key": "Idle",
+      "label": "待机呼吸",
+      "loop": true,
+      "fps": 10,
+      "action": "Animation: IDLE breathing loop, 16 frames. F1 neutral, one open parasol resting at SCREEN LEFT, other fist at side; F2-5 chest rises, shoulders lift, parasol sways slightly, jade tassels swing; F6-9 slow exhale, fist tightens, cape settles; F10-13 parasol tilts back, gems catch existing cel highlights; F14-16 return exactly to F1. BOTH BOOTS stay fixed and planted. Canopy always fully open. No stepping or new light effects. Gradual subtle changes, not a duplicated static contact sheet.",
+      "file": "Idle.png",
+      "frame_count": 16,
+      "frames": [
+        {
+          "name": "Idle_01",
+          "frame": 1,
+          "unity_rect": {
+            "x": 0,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_02",
+          "frame": 2,
+          "unity_rect": {
+            "x": 256,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_03",
+          "frame": 3,
+          "unity_rect": {
+            "x": 512,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_04",
+          "frame": 4,
+          "unity_rect": {
+            "x": 768,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_05",
+          "frame": 5,
+          "unity_rect": {
+            "x": 0,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_06",
+          "frame": 6,
+          "unity_rect": {
+            "x": 256,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_07",
+          "frame": 7,
+          "unity_rect": {
+            "x": 512,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_08",
+          "frame": 8,
+          "unity_rect": {
+            "x": 768,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_09",
+          "frame": 9,
+          "unity_rect": {
+            "x": 0,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_10",
+          "frame": 10,
+          "unity_rect": {
+            "x": 256,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_11",
+          "frame": 11,
+          "unity_rect": {
+            "x": 512,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_12",
+          "frame": 12,
+          "unity_rect": {
+            "x": 768,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_13",
+          "frame": 13,
+          "unity_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_14",
+          "frame": 14,
+          "unity_rect": {
+            "x": 256,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_15",
+          "frame": 15,
+          "unity_rect": {
+            "x": 512,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_16",
+          "frame": 16,
+          "unity_rect": {
+            "x": 768,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        }
+      ]
+    },
+    {
+      "key": "Walk",
+      "label": "重步行走",
+      "loop": true,
+      "fps": 10,
+      "action": "Animation: WALK IN PLACE, 16-frame HEAVY ROYAL STRIDE. F1 left boot forward; F2-5 weight drops onto left leg, deep armor/body dip, parasol sways and cape swings; F6-9 right leg passes; F10-13 right boot lands and weight settles deeply; F14-16 left leg passes and closes seamlessly to F1. Slow, weighty short grounded steps, NOT running or hopping. Upper body stays regal, parasol held high and steady. Canopy never closes. Feet alternate while model center stays fixed.",
+      "file": "Walk.png",
+      "frame_count": 16,
+      "frames": [
+        {
+          "name": "Walk_01",
+          "frame": 1,
+          "unity_rect": {
+            "x": 0,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_02",
+          "frame": 2,
+          "unity_rect": {
+            "x": 256,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_03",
+          "frame": 3,
+          "unity_rect": {
+            "x": 512,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_04",
+          "frame": 4,
+          "unity_rect": {
+            "x": 768,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_05",
+          "frame": 5,
+          "unity_rect": {
+            "x": 0,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_06",
+          "frame": 6,
+          "unity_rect": {
+            "x": 256,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_07",
+          "frame": 7,
+          "unity_rect": {
+            "x": 512,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_08",
+          "frame": 8,
+          "unity_rect": {
+            "x": 768,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_09",
+          "frame": 9,
+          "unity_rect": {
+            "x": 0,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_10",
+          "frame": 10,
+          "unity_rect": {
+            "x": 256,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_11",
+          "frame": 11,
+          "unity_rect": {
+            "x": 512,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_12",
+          "frame": 12,
+          "unity_rect": {
+            "x": 768,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_13",
+          "frame": 13,
+          "unity_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_14",
+          "frame": 14,
+          "unity_rect": {
+            "x": 256,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_15",
+          "frame": 15,
+          "unity_rect": {
+            "x": 512,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_16",
+          "frame": 16,
+          "unity_rect": {
+            "x": 768,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        }
+      ]
+    },
+    {
+      "key": "UmbrellaBash",
+      "label": "巨伞突刺",
+      "loop": false,
+      "fps": 14,
+      "action": "Animation: one-shot UMBRELLA BASH, 16 chronological frames. F1 ready; F2-4 draw the intact OPEN parasol back toward the shoulder; F5-8 thrust it straight toward SCREEN LEFT like a spear at CHEST HEIGHT, open canopy leading in front of shaft; F9-11 hold full extension with body leaning forward, cape blown back to RIGHT; F12-16 withdraw to ready. The LARGE OPEN canopy stays the same size and design and is fully visible at every extreme. Shaft and grip remain attached; do not turn it into a closed spear or small shield. No second attack in recovery.",
+      "file": "UmbrellaBash.png",
+      "frame_count": 16,
+      "frames": [
+        {
+          "name": "UmbrellaBash_01",
+          "frame": 1,
+          "unity_rect": {
+            "x": 0,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "UmbrellaBash_02",
+          "frame": 2,
+          "unity_rect": {
+            "x": 256,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "UmbrellaBash_03",
+          "frame": 3,
+          "unity_rect": {
+            "x": 512,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "UmbrellaBash_04",
+          "frame": 4,
+          "unity_rect": {
+            "x": 768,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "UmbrellaBash_05",
+          "frame": 5,
+          "unity_rect": {
+            "x": 0,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "UmbrellaBash_06",
+          "frame": 6,
+          "unity_rect": {
+            "x": 256,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "UmbrellaBash_07",
+          "frame": 7,
+          "unity_rect": {
+            "x": 512,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "UmbrellaBash_08",
+          "frame": 8,
+          "unity_rect": {
+            "x": 768,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "UmbrellaBash_09",
+          "frame": 9,
+          "unity_rect": {
+            "x": 0,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "UmbrellaBash_10",
+          "frame": 10,
+          "unity_rect": {
+            "x": 256,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "UmbrellaBash_11",
+          "frame": 11,
+          "unity_rect": {
+            "x": 512,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "UmbrellaBash_12",
+          "frame": 12,
+          "unity_rect": {
+            "x": 768,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "UmbrellaBash_13",
+          "frame": 13,
+          "unity_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "UmbrellaBash_14",
+          "frame": 14,
+          "unity_rect": {
+            "x": 256,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "UmbrellaBash_15",
+          "frame": 15,
+          "unity_rect": {
+            "x": 512,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "UmbrellaBash_16",
+          "frame": 16,
+          "unity_rect": {
+            "x": 768,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        }
+      ]
+    },
+    {
+      "key": "UmbrellaVortex",
+      "label": "巨伞旋转",
+      "loop": false,
+      "fps": 14,
+      "action": "Animation: one-shot UMBRELLA VORTEX posture, 16 frames. F1 ready; F2-4 raise the OPEN parasol overhead using BOTH HANDS; F5-8 begin rotating the intact parasol, canopy tilted through successive angles, body braced, boots wide and planted; F9-14 continuous spinning poses with physical cape/sashes and attached tassels pulled outward; F15-16 lower to ready. Same rib count and canopy size, no motion blur obscuring shape. Draw NO wind vortex, aura, particles, streaks or speed lines, ONLY king and physical spinning parasol. Overall camera stays three-quarter LEFT.",
+      "file": "UmbrellaVortex.png",
+      "frame_count": 16,
+      "frames": [
+        {
+          "name": "UmbrellaVortex_01",
+          "frame": 1,
+          "unity_rect": {
+            "x": 0,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "UmbrellaVortex_02",
+          "frame": 2,
+          "unity_rect": {
+            "x": 256,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "UmbrellaVortex_03",
+          "frame": 3,
+          "unity_rect": {
+            "x": 512,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "UmbrellaVortex_04",
+          "frame": 4,
+          "unity_rect": {
+            "x": 768,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "UmbrellaVortex_05",
+          "frame": 5,
+          "unity_rect": {
+            "x": 0,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "UmbrellaVortex_06",
+          "frame": 6,
+          "unity_rect": {
+            "x": 256,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "UmbrellaVortex_07",
+          "frame": 7,
+          "unity_rect": {
+            "x": 512,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "UmbrellaVortex_08",
+          "frame": 8,
+          "unity_rect": {
+            "x": 768,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "UmbrellaVortex_09",
+          "frame": 9,
+          "unity_rect": {
+            "x": 0,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "UmbrellaVortex_10",
+          "frame": 10,
+          "unity_rect": {
+            "x": 256,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "UmbrellaVortex_11",
+          "frame": 11,
+          "unity_rect": {
+            "x": 512,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "UmbrellaVortex_12",
+          "frame": 12,
+          "unity_rect": {
+            "x": 768,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "UmbrellaVortex_13",
+          "frame": 13,
+          "unity_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "UmbrellaVortex_14",
+          "frame": 14,
+          "unity_rect": {
+            "x": 256,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "UmbrellaVortex_15",
+          "frame": 15,
+          "unity_rect": {
+            "x": 512,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "UmbrellaVortex_16",
+          "frame": 16,
+          "unity_rect": {
+            "x": 768,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        }
+      ]
+    },
+    {
+      "key": "RibVolley",
+      "label": "伞骨发射姿势",
+      "loop": false,
+      "fps": 14,
+      "action": "Animation: one-shot RIB VOLLEY firing posture, 16 frames. F1 ready; F2-4 tilt OPEN parasol so canopy points forward toward SCREEN LEFT at chest height; F5-8 brace and lean forward while the EXISTING ATTACHED ribs flex with firing tension; F9-12 recoil backward, arms braced, cape swings back; F13-16 recover to upright ready. The ribs stay attached and all original ribs remain in canopy; NOTHING detaches or flies. NO projectile, needle, beam, light effect or extra spikes outside canopy. Only physical firing/recoil postures.",
+      "file": "RibVolley.png",
+      "frame_count": 16,
+      "frames": [
+        {
+          "name": "RibVolley_01",
+          "frame": 1,
+          "unity_rect": {
+            "x": 0,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "RibVolley_02",
+          "frame": 2,
+          "unity_rect": {
+            "x": 256,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "RibVolley_03",
+          "frame": 3,
+          "unity_rect": {
+            "x": 512,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "RibVolley_04",
+          "frame": 4,
+          "unity_rect": {
+            "x": 768,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "RibVolley_05",
+          "frame": 5,
+          "unity_rect": {
+            "x": 0,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "RibVolley_06",
+          "frame": 6,
+          "unity_rect": {
+            "x": 256,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "RibVolley_07",
+          "frame": 7,
+          "unity_rect": {
+            "x": 512,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "RibVolley_08",
+          "frame": 8,
+          "unity_rect": {
+            "x": 768,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "RibVolley_09",
+          "frame": 9,
+          "unity_rect": {
+            "x": 0,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "RibVolley_10",
+          "frame": 10,
+          "unity_rect": {
+            "x": 256,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "RibVolley_11",
+          "frame": 11,
+          "unity_rect": {
+            "x": 512,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "RibVolley_12",
+          "frame": 12,
+          "unity_rect": {
+            "x": 768,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "RibVolley_13",
+          "frame": 13,
+          "unity_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "RibVolley_14",
+          "frame": 14,
+          "unity_rect": {
+            "x": 256,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "RibVolley_15",
+          "frame": 15,
+          "unity_rect": {
+            "x": 512,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "RibVolley_16",
+          "frame": 16,
+          "unity_rect": {
+            "x": 768,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        }
+      ]
+    },
+    {
+      "key": "RainCurtain",
+      "label": "腾空雨幕施法",
+      "loop": false,
+      "fps": 14,
+      "action": "Animation: one-shot RAIN CURTAIN casting posture, 16 frames. F1-4 crouch; F5-8 leap with BOTH BOOTS clearly off the fixed ground baseline and open parasol OVERHEAD; F9-12 twist/spin in the air, canopy tilted, cape/tassels flared; F13-14 land in a deep crouch; F15-16 stand back to ready. Preserve overall three-quarter LEFT identity despite torso twist. Same small drawing scale from F1 through leap apex; full canopy, tassels, crown and boots all inside own cell even at highest point. NO falling needles, rain, particles, vortex or magic effect drawn.",
+      "file": "RainCurtain.png",
+      "frame_count": 16,
+      "frames": [
+        {
+          "name": "RainCurtain_01",
+          "frame": 1,
+          "unity_rect": {
+            "x": 0,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "RainCurtain_02",
+          "frame": 2,
+          "unity_rect": {
+            "x": 256,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "RainCurtain_03",
+          "frame": 3,
+          "unity_rect": {
+            "x": 512,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "RainCurtain_04",
+          "frame": 4,
+          "unity_rect": {
+            "x": 768,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "RainCurtain_05",
+          "frame": 5,
+          "unity_rect": {
+            "x": 0,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "RainCurtain_06",
+          "frame": 6,
+          "unity_rect": {
+            "x": 256,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "RainCurtain_07",
+          "frame": 7,
+          "unity_rect": {
+            "x": 512,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "RainCurtain_08",
+          "frame": 8,
+          "unity_rect": {
+            "x": 768,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "RainCurtain_09",
+          "frame": 9,
+          "unity_rect": {
+            "x": 0,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "RainCurtain_10",
+          "frame": 10,
+          "unity_rect": {
+            "x": 256,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "RainCurtain_11",
+          "frame": 11,
+          "unity_rect": {
+            "x": 512,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "RainCurtain_12",
+          "frame": 12,
+          "unity_rect": {
+            "x": 768,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "RainCurtain_13",
+          "frame": 13,
+          "unity_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "RainCurtain_14",
+          "frame": 14,
+          "unity_rect": {
+            "x": 256,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "RainCurtain_15",
+          "frame": 15,
+          "unity_rect": {
+            "x": 512,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "RainCurtain_16",
+          "frame": 16,
+          "unity_rect": {
+            "x": 768,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        }
+      ]
+    },
+    {
+      "key": "Guard",
+      "label": "巨伞防御",
+      "loop": false,
+      "fps": 12,
+      "action": "Animation: GUARD, 16 frames ending in HELD GUARD. F1 ready; F2-4 short forward step and plant the intact OPEN parasol in front at SCREEN LEFT like a shield; F5-8 brace behind it with BOTH HANDS, shoulders hunched and head lowered; F9-13 hold, canopy tilts subtly, jade tassels shiver; F14-16 settle into the SAME HELD GUARD. OPEN canopy faces LEFT and covers/occludes the torso, eyes/crown remain visible ABOVE its rim, boots visible beneath. End STILL IN GUARD, do not recover to idle. Keep original canopy and ribs rather than drawing a separate shield. NO shield ring, dome, glow or light effect.",
+      "file": "Guard.png",
+      "frame_count": 16,
+      "frames": [
+        {
+          "name": "Guard_01",
+          "frame": 1,
+          "unity_rect": {
+            "x": 0,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Guard_02",
+          "frame": 2,
+          "unity_rect": {
+            "x": 256,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Guard_03",
+          "frame": 3,
+          "unity_rect": {
+            "x": 512,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Guard_04",
+          "frame": 4,
+          "unity_rect": {
+            "x": 768,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Guard_05",
+          "frame": 5,
+          "unity_rect": {
+            "x": 0,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Guard_06",
+          "frame": 6,
+          "unity_rect": {
+            "x": 256,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Guard_07",
+          "frame": 7,
+          "unity_rect": {
+            "x": 512,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Guard_08",
+          "frame": 8,
+          "unity_rect": {
+            "x": 768,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Guard_09",
+          "frame": 9,
+          "unity_rect": {
+            "x": 0,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Guard_10",
+          "frame": 10,
+          "unity_rect": {
+            "x": 256,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Guard_11",
+          "frame": 11,
+          "unity_rect": {
+            "x": 512,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Guard_12",
+          "frame": 12,
+          "unity_rect": {
+            "x": 768,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Guard_13",
+          "frame": 13,
+          "unity_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Guard_14",
+          "frame": 14,
+          "unity_rect": {
+            "x": 256,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Guard_15",
+          "frame": 15,
+          "unity_rect": {
+            "x": 512,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Guard_16",
+          "frame": 16,
+          "unity_rect": {
+            "x": 768,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        }
+      ]
+    },
+    {
+      "key": "Hit",
+      "label": "受击后仰",
+      "loop": false,
+      "fps": 16,
+      "action": "Animation: SINGLE HIT REACTION, 16 frames, NOT an attack. F1 ready; F2 sudden armor flinch; F3-6 torso and head lean BACK toward SCREEN RIGHT from impact arriving LEFT, parasol tilts but remains held OPEN; F7-9 knees bend absorbing hit, cape/tassels flutter; F10-13 straighten; F14-16 return exactly to F1. No punching, umbrella thrust or casting. The canopy remains fully open. No enemy/projectile/blood/spark/motion line or effect.",
+      "file": "Hit.png",
+      "frame_count": 16,
+      "frames": [
+        {
+          "name": "Hit_01",
+          "frame": 1,
+          "unity_rect": {
+            "x": 0,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_02",
+          "frame": 2,
+          "unity_rect": {
+            "x": 256,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_03",
+          "frame": 3,
+          "unity_rect": {
+            "x": 512,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_04",
+          "frame": 4,
+          "unity_rect": {
+            "x": 768,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_05",
+          "frame": 5,
+          "unity_rect": {
+            "x": 0,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_06",
+          "frame": 6,
+          "unity_rect": {
+            "x": 256,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_07",
+          "frame": 7,
+          "unity_rect": {
+            "x": 512,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_08",
+          "frame": 8,
+          "unity_rect": {
+            "x": 768,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_09",
+          "frame": 9,
+          "unity_rect": {
+            "x": 0,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_10",
+          "frame": 10,
+          "unity_rect": {
+            "x": 256,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_11",
+          "frame": 11,
+          "unity_rect": {
+            "x": 512,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_12",
+          "frame": 12,
+          "unity_rect": {
+            "x": 768,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_13",
+          "frame": 13,
+          "unity_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_14",
+          "frame": 14,
+          "unity_rect": {
+            "x": 256,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_15",
+          "frame": 15,
+          "unity_rect": {
+            "x": 512,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_16",
+          "frame": 16,
+          "unity_rect": {
+            "x": 768,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        }
+      ]
+    },
+    {
+      "key": "Death",
+      "label": "死亡倒地",
+      "loop": false,
+      "fps": 12,
+      "action": "Animation: DEATH, 16 frames one-shot. F1-3 stagger back, open parasol dips; F4-7 knees buckle; F8-11 drop to ONE KNEE, parasol rests on ground with OPEN canopy tilted; F12-15 fall forward onto side, cape spreads; F16 FINAL FULLY PRONE corpse on ground with SAME LARGE OPEN PARASOL lying intact beside him. Both king and open canopy completely fit inside their own cell; do not close, shrink or hide canopy to fit. Keep whole shaft, ribs and tassels visible in final pose. No return to kneeling/ready in late frames. No blood/dismemberment or effects.",
+      "file": "Death.png",
+      "frame_count": 16,
+      "frames": [
+        {
+          "name": "Death_01",
+          "frame": 1,
+          "unity_rect": {
+            "x": 0,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_02",
+          "frame": 2,
+          "unity_rect": {
+            "x": 256,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_03",
+          "frame": 3,
+          "unity_rect": {
+            "x": 512,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_04",
+          "frame": 4,
+          "unity_rect": {
+            "x": 768,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_05",
+          "frame": 5,
+          "unity_rect": {
+            "x": 0,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_06",
+          "frame": 6,
+          "unity_rect": {
+            "x": 256,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_07",
+          "frame": 7,
+          "unity_rect": {
+            "x": 512,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_08",
+          "frame": 8,
+          "unity_rect": {
+            "x": 768,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_09",
+          "frame": 9,
+          "unity_rect": {
+            "x": 0,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_10",
+          "frame": 10,
+          "unity_rect": {
+            "x": 256,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_11",
+          "frame": 11,
+          "unity_rect": {
+            "x": 512,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_12",
+          "frame": 12,
+          "unity_rect": {
+            "x": 768,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_13",
+          "frame": 13,
+          "unity_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_14",
+          "frame": 14,
+          "unity_rect": {
+            "x": 256,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_15",
+          "frame": 15,
+          "unity_rect": {
+            "x": 512,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_16",
+          "frame": 16,
+          "unity_rect": {
+            "x": 768,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        }
+      ]
+    }
+  ]
+}

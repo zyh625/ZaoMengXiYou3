@@ -3,65 +3,53 @@ guid: 7c3045546b71e2b41803f07a7bda4e8e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1701677993905860967
+      213: 21300000
     second: Ward_0
   - first:
-      213: 1486840187641082188
+      213: 21300002
     second: Ward_1
   - first:
-      213: 4888488747082383824
+      213: 21300004
     second: Ward_2
   - first:
-      213: -3547600786793422799
+      213: 21300006
     second: Ward_3
   - first:
-      213: 7090243213767342475
+      213: 21300008
     second: Ward_4
   - first:
-      213: -6310709251012369776
+      213: 21300010
     second: Ward_5
   - first:
-      213: 2799926725169834318
+      213: 21300012
     second: Ward_6
   - first:
-      213: 4733497385695823041
+      213: 21300014
     second: Ward_7
   - first:
-      213: 3719026192727667028
+      213: 21300016
     second: Ward_8
   - first:
-      213: -8494220164548115713
+      213: 21300018
     second: Ward_9
   - first:
-      213: -1859722607590695432
+      213: 21300020
     second: Ward_10
   - first:
-      213: 4536916789662316178
+      213: 21300022
     second: Ward_11
   - first:
-      213: 1395601225795759400
+      213: 21300024
     second: Ward_12
   - first:
-      213: 8247017604286847771
+      213: 21300026
     second: Ward_13
   - first:
-      213: -7650700237176680844
+      213: 21300028
     second: Ward_14
   - first:
-      213: -4206489815201569989
+      213: 21300030
     second: Ward_15
-  - first:
-      213: 8423442921913625801
-    second: Ward_16
-  - first:
-      213: -9092656572344714482
-    second: Ward_17
-  - first:
-      213: 5660078612577560593
-    second: Ward_18
-  - first:
-      213: 5826310086977911274
-    second: Ward_19
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -132,7 +120,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -145,7 +133,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -160,478 +148,385 @@ TextureImporter:
       name: Ward_0
       rect:
         serializedVersion: 2
-        x: 45
-        y: 1199
-        width: 158
-        height: 197
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 17
+        y: 1182
+        width: 222
+        height: 276
+      alignment: 9
+      pivot: {x: 0.576576577, y: 0.007246377}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 99e442361ec6268e0800000000000000
-      internalID: -1701677993905860967
+      spriteID: d65a8ecfccb156029dfc54876f403c27
+      internalID: 21300000
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: Ward_1
       rect:
         serializedVersion: 2
-        x: 304
-        y: 1199
-        width: 148
-        height: 196
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 280
+        y: 1182
+        width: 208
+        height: 275
+      alignment: 9
+      pivot: {x: 0.591346154, y: 0.007272727}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c413f16e54152a410800000000000000
-      internalID: 1486840187641082188
+      spriteID: 0af2eb4b40f95cbb815b97c668e5b6ff
+      internalID: 21300002
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: Ward_2
       rect:
         serializedVersion: 2
-        x: 559
-        y: 1199
-        width: 146
-        height: 195
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 538
+        y: 1182
+        width: 205
+        height: 274
+      alignment: 9
+      pivot: {x: 0.587804878, y: 0.007299270}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0d1075a7d9667d340800000000000000
-      internalID: 4888488747082383824
+      spriteID: ab4e927ffe53509ca0bcf019270ae35a
+      internalID: 21300004
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: Ward_3
       rect:
         serializedVersion: 2
-        x: 809
-        y: 1200
-        width: 160
-        height: 195
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 784
+        y: 1182
+        width: 225
+        height: 274
+      alignment: 9
+      pivot: {x: 0.564444444, y: 0.007299270}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 130284261e364cec0800000000000000
-      internalID: -3547600786793422799
+      spriteID: 0a25dafc9b83569c9e48f1ac5a515e06
+      internalID: 21300006
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: Ward_4
       rect:
         serializedVersion: 2
-        x: 53
-        y: 815
-        width: 154
-        height: 218
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 20
+        y: 798
+        width: 216
+        height: 306
+      alignment: 9
+      pivot: {x: 0.555555556, y: 0.006535948}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b89f9bf13aa956260800000000000000
-      internalID: 7090243213767342475
+      spriteID: 26b36bc15f1b5529908f806031309775
+      internalID: 21300008
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: Ward_5
       rect:
         serializedVersion: 2
-        x: 307
-        y: 815
-        width: 152
-        height: 220
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 278
+        y: 798
+        width: 213
+        height: 308
+      alignment: 9
+      pivot: {x: 0.568075117, y: 0.006493506}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 092e2ac2f5bdb68a0800000000000000
-      internalID: -6310709251012369776
+      spriteID: dcd28885ffa55fa6bb5c283acd588714
+      internalID: 21300010
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: Ward_6
       rect:
         serializedVersion: 2
-        x: 559
-        y: 815
-        width: 158
-        height: 219
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 529
+        y: 798
+        width: 222
+        height: 307
+      alignment: 9
+      pivot: {x: 0.545045045, y: 0.006514658}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e49eeda95865bd620800000000000000
-      internalID: 2799926725169834318
+      spriteID: 1be4d930e82654a79a56b6b604090822
+      internalID: 21300012
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: Ward_7
       rect:
         serializedVersion: 2
-        x: 813
-        y: 815
-        width: 161
-        height: 219
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 783
+        y: 798
+        width: 226
+        height: 307
+      alignment: 9
+      pivot: {x: 0.502212389, y: 0.006514658}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1c4c3ab0bc2c0b140800000000000000
-      internalID: 4733497385695823041
+      spriteID: fc860dec99835dc5befc0b933307f090
+      internalID: 21300014
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: Ward_8
       rect:
         serializedVersion: 2
-        x: 48
-        y: 482
-        width: 164
-        height: 222
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 13
+        y: 414
+        width: 230
+        height: 310
+      alignment: 9
+      pivot: {x: 0.521739130, y: 0.006451613}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 451f7e73e92ac9330800000000000000
-      internalID: 3719026192727667028
+      spriteID: 338269c3c86859e38d5cdb5811f00993
+      internalID: 21300016
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: Ward_9
       rect:
         serializedVersion: 2
-        x: 304
-        y: 482
-        width: 165
-        height: 222
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 268
+        y: 414
+        width: 232
+        height: 310
+      alignment: 9
+      pivot: {x: 0.528017241, y: 0.006451613}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ff24620c3c77e1a80800000000000000
-      internalID: -8494220164548115713
+      spriteID: be3cb13224bb5766bf4b4304191b2b80
+      internalID: 21300018
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: Ward_10
       rect:
         serializedVersion: 2
-        x: 558
-        y: 482
-        width: 159
-        height: 223
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 529
+        y: 414
+        width: 222
+        height: 314
+      alignment: 9
+      pivot: {x: 0.531531532, y: 0.006369427}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8fd1bc14420f036e0800000000000000
-      internalID: -1859722607590695432
+      spriteID: a1ffa68420e6565c8fbe9d3a1148ae0b
+      internalID: 21300020
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: Ward_11
       rect:
         serializedVersion: 2
-        x: 812
-        y: 483
-        width: 164
-        height: 222
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 781
+        y: 414
+        width: 230
+        height: 313
+      alignment: 9
+      pivot: {x: 0.491304348, y: 0.006389776}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 296f35758cd56fe30800000000000000
-      internalID: 4536916789662316178
+      spriteID: 129bff05543c576f8b0dec0a3ec99ba7
+      internalID: 21300022
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: Ward_12
       rect:
         serializedVersion: 2
-        x: 110
-        y: 431
-        width: 47
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 12
+        y: 30
+        width: 233
+        height: 311
+      alignment: 9
+      pivot: {x: 0.532188841, y: 0.006430868}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 82de7afabeb2e5310800000000000000
-      internalID: 1395601225795759400
+      spriteID: 2835d7f4108c531c945260895a7c3eb1
+      internalID: 21300024
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: Ward_13
       rect:
         serializedVersion: 2
-        x: 365
-        y: 431
-        width: 46
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 273
+        y: 30
+        width: 222
+        height: 311
+      alignment: 9
+      pivot: {x: 0.527027027, y: 0.006430868}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b1b19e701da437270800000000000000
-      internalID: 8247017604286847771
+      spriteID: db6432c846cb53c8baea858ca39c37a9
+      internalID: 21300026
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: Ward_14
       rect:
         serializedVersion: 2
-        x: 621
-        y: 431
-        width: 46
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 528
+        y: 30
+        width: 225
+        height: 311
+      alignment: 9
+      pivot: {x: 0.540000000, y: 0.006430868}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 47e46106ba043d590800000000000000
-      internalID: -7650700237176680844
+      spriteID: 009a4c9790a9590eb8e74c1f88b1189b
+      internalID: 21300028
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: Ward_15
       rect:
         serializedVersion: 2
-        x: 874
-        y: 431
-        width: 45
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 792
+        y: 30
+        width: 208
+        height: 311
+      alignment: 9
+      pivot: {x: 0.555288462, y: 0.006430868}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b33ac9dcccb8f95c0800000000000000
-      internalID: -4206489815201569989
+      spriteID: 70071940f78858ad8e52a9f1319caeca
+      internalID: 21300030
       vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ward_16
-      rect:
-        serializedVersion: 2
-        x: 49
-        y: 47
-        width: 166
-        height: 207
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9cca07a45b416e470800000000000000
-      internalID: 8423442921913625801
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ward_17
-      rect:
-        serializedVersion: 2
-        x: 304
-        y: 47
-        width: 158
-        height: 207
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e0bb5ccb50560d180800000000000000
-      internalID: -9092656572344714482
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ward_18
-      rect:
-        serializedVersion: 2
-        x: 561
-        y: 47
-        width: 160
-        height: 207
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 118a87f7283ac8e40800000000000000
-      internalID: 5660078612577560593
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ward_19
-      rect:
-        serializedVersion: 2
-        x: 813
-        y: 47
-        width: 149
-        height: 207
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ae9f79da7263bd050800000000000000
-      internalID: 5826310086977911274
-      vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     outline: []
-    customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
-    indices: 
+    indices:
     edges: []
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Ward_0: -1701677993905860967
-      Ward_1: 1486840187641082188
-      Ward_10: -1859722607590695432
-      Ward_11: 4536916789662316178
-      Ward_12: 1395601225795759400
-      Ward_13: 8247017604286847771
-      Ward_14: -7650700237176680844
-      Ward_15: -4206489815201569989
-      Ward_16: 8423442921913625801
-      Ward_17: -9092656572344714482
-      Ward_18: 5660078612577560593
-      Ward_19: 5826310086977911274
-      Ward_2: 4888488747082383824
-      Ward_3: -3547600786793422799
-      Ward_4: 7090243213767342475
-      Ward_5: -6310709251012369776
-      Ward_6: 2799926725169834318
-      Ward_7: 4733497385695823041
-      Ward_8: 3719026192727667028
-      Ward_9: -8494220164548115713
-  mipmapLimitGroupName: 
+      Ward_0: 21300000
+      Ward_1: 21300002
+      Ward_2: 21300004
+      Ward_3: 21300006
+      Ward_4: 21300008
+      Ward_5: 21300010
+      Ward_6: 21300012
+      Ward_7: 21300014
+      Ward_8: 21300016
+      Ward_9: 21300018
+      Ward_10: 21300020
+      Ward_11: 21300022
+      Ward_12: 21300024
+      Ward_13: 21300026
+      Ward_14: 21300028
+      Ward_15: 21300030
+  mipmapLimitGroupName:
   pSDRemoveMatte: 0
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+  userData: WestKing finished sheets only; 2px alpha crop; foot baseline 352
+  assetBundleName:
+  assetBundleVariant:

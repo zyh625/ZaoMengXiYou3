@@ -3,56 +3,53 @@ guid: 6020fb20def244146ba61686788f89bc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1871340940740958250
+      213: 21300000
     second: PearlToss_0
   - first:
-      213: 6496492176238675253
+      213: 21300002
     second: PearlToss_1
   - first:
-      213: 8430642114081367103
+      213: 21300004
     second: PearlToss_2
   - first:
-      213: 95462087573310856
+      213: 21300006
     second: PearlToss_3
   - first:
-      213: -1442031522638852722
+      213: 21300008
     second: PearlToss_4
   - first:
-      213: 5182922939714250150
+      213: 21300010
     second: PearlToss_5
   - first:
-      213: 6648488384702686056
+      213: 21300012
     second: PearlToss_6
   - first:
-      213: 5018671058649912707
+      213: 21300014
     second: PearlToss_7
   - first:
-      213: -1822423067534945589
+      213: 21300016
     second: PearlToss_8
   - first:
-      213: -3494886375900106915
+      213: 21300018
     second: PearlToss_9
   - first:
-      213: -3898728967097788610
+      213: 21300020
     second: PearlToss_10
   - first:
-      213: 3099425164715343925
+      213: 21300022
     second: PearlToss_11
   - first:
-      213: 1472240520390208779
+      213: 21300024
     second: PearlToss_12
   - first:
-      213: 8714464283683361851
+      213: 21300026
     second: PearlToss_13
   - first:
-      213: -3485411746555016106
+      213: 21300028
     second: PearlToss_14
   - first:
-      213: -7654002976129745465
+      213: 21300030
     second: PearlToss_15
-  - first:
-      213: -7192250184789062054
-    second: PearlToss_16
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -123,7 +120,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -136,7 +133,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -151,409 +148,385 @@ TextureImporter:
       name: PearlToss_0
       rect:
         serializedVersion: 2
-        x: 54
-        y: 1199
-        width: 159
-        height: 203
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 24
+        y: 1182
+        width: 208
+        height: 267
+      alignment: 9
+      pivot: {x: 0.562500000, y: 0.007490637}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6d76d754459a706e0800000000000000
-      internalID: -1871340940740958250
+      spriteID: e200ea470be3536b8a9ac40c79111f65
+      internalID: 21300000
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: PearlToss_1
       rect:
         serializedVersion: 2
-        x: 308
-        y: 1199
-        width: 157
-        height: 204
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 282
+        y: 1182
+        width: 205
+        height: 267
+      alignment: 9
+      pivot: {x: 0.556097561, y: 0.007490637}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5358fc2e63d282a50800000000000000
-      internalID: 6496492176238675253
+      spriteID: de33acabb9cf575d808ef0a2086692df
+      internalID: 21300002
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: PearlToss_2
       rect:
         serializedVersion: 2
-        x: 562
-        y: 1199
-        width: 154
-        height: 204
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 539
+        y: 1182
+        width: 202
+        height: 267
+      alignment: 9
+      pivot: {x: 0.549504950, y: 0.007490637}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f34a446d558aff470800000000000000
-      internalID: 8430642114081367103
+      spriteID: d492ebe2904e5cfead20cf251002e756
+      internalID: 21300004
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: PearlToss_3
       rect:
         serializedVersion: 2
-        x: 818
-        y: 1199
-        width: 156
-        height: 204
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 794
+        y: 1182
+        width: 205
+        height: 267
+      alignment: 9
+      pivot: {x: 0.541463415, y: 0.007490637}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 88d035b4346235100800000000000000
-      internalID: 95462087573310856
+      spriteID: cffd189c74275aa19f81be39e5616949
+      internalID: 21300006
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: PearlToss_4
       rect:
         serializedVersion: 2
-        x: 55
-        y: 815
-        width: 160
-        height: 198
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 22
+        y: 798
+        width: 211
+        height: 260
+      alignment: 9
+      pivot: {x: 0.542654028, y: 0.007692308}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e8d023a68ffdcfbe0800000000000000
-      internalID: -1442031522638852722
+      spriteID: f8c78e163af05fa2b163468dd57a7b23
+      internalID: 21300008
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: PearlToss_5
       rect:
         serializedVersion: 2
-        x: 305
-        y: 815
-        width: 166
-        height: 198
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 278
+        y: 798
+        width: 212
+        height: 260
+      alignment: 9
+      pivot: {x: 0.582547170, y: 0.007692308}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6a524ef04f07de740800000000000000
-      internalID: 5182922939714250150
+      spriteID: e7089c57f838531e8e61265ed3cb1108
+      internalID: 21300010
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: PearlToss_6
       rect:
         serializedVersion: 2
-        x: 553
-        y: 815
-        width: 168
-        height: 200
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 528
+        y: 798
+        width: 223
+        height: 262
+      alignment: 9
+      pivot: {x: 0.598654709, y: 0.007633588}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 863a38fe5fc244c50800000000000000
-      internalID: 6648488384702686056
+      spriteID: 867aca76760c594d8d6d1134181a3cdb
+      internalID: 21300012
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: PearlToss_7
       rect:
         serializedVersion: 2
-        x: 713
-        y: 919
-        width: 14
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 780
+        y: 798
+        width: 233
+        height: 261
+      alignment: 9
+      pivot: {x: 0.633047210, y: 0.007662835}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3859c5fdcb6e5a540800000000000000
-      internalID: 5018671058649912707
+      spriteID: a0a82387ec895965920c732051ac2e60
+      internalID: 21300014
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: PearlToss_8
       rect:
         serializedVersion: 2
-        x: 809
-        y: 815
-        width: 166
-        height: 199
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 26
+        y: 414
+        width: 205
+        height: 260
+      alignment: 9
+      pivot: {x: 0.565853659, y: 0.007692308}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bc21a1d20e375b6e0800000000000000
-      internalID: -1822423067534945589
+      spriteID: d74591524f715a8884033017de4febb4
+      internalID: 21300016
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: PearlToss_9
       rect:
         serializedVersion: 2
-        x: 56
-        y: 431
-        width: 157
-        height: 198
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 284
+        y: 414
+        width: 201
+        height: 260
+      alignment: 9
+      pivot: {x: 0.552238806, y: 0.007692308}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d5f2f1a9b5baf7fc0800000000000000
-      internalID: -3494886375900106915
+      spriteID: 56fb9e5a704e5662a0f79b9b4bc4950d
+      internalID: 21300018
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: PearlToss_10
       rect:
         serializedVersion: 2
-        x: 316
-        y: 431
-        width: 153
-        height: 198
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 531
+        y: 414
+        width: 218
+        height: 260
+      alignment: 9
+      pivot: {x: 0.561926606, y: 0.007692308}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e375c9829aee4e9c0800000000000000
-      internalID: -3898728967097788610
+      spriteID: e5f47fc8b94654489e7eafb9558f4c5f
+      internalID: 21300020
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: PearlToss_11
       rect:
         serializedVersion: 2
-        x: 562
-        y: 431
-        width: 165
-        height: 198
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 796
+        y: 414
+        width: 201
+        height: 261
+      alignment: 9
+      pivot: {x: 0.562189055, y: 0.007662835}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 530c3ce04ce530b20800000000000000
-      internalID: 3099425164715343925
+      spriteID: f71d76d09c2152be9f98e2c89a7fd0ca
+      internalID: 21300022
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: PearlToss_12
       rect:
         serializedVersion: 2
-        x: 820
-        y: 431
-        width: 153
-        height: 199
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 22
+        y: 30
+        width: 213
+        height: 267
+      alignment: 9
+      pivot: {x: 0.563380282, y: 0.007490637}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b0d6bc9f3f27e6410800000000000000
-      internalID: 1472240520390208779
+      spriteID: 11661ca1b2cc513cab0785af8612eb53
+      internalID: 21300024
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: PearlToss_13
       rect:
         serializedVersion: 2
-        x: 50
-        y: 47
-        width: 163
-        height: 204
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 276
+        y: 30
+        width: 215
+        height: 271
+      alignment: 9
+      pivot: {x: 0.574418605, y: 0.007380074}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b3496c4481fffe870800000000000000
-      internalID: 8714464283683361851
+      spriteID: 74c82ff5bad856c2878ec7a9df591144
+      internalID: 21300026
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: PearlToss_14
       rect:
         serializedVersion: 2
-        x: 305
-        y: 47
-        width: 163
-        height: 206
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 536
+        y: 30
+        width: 209
+        height: 268
+      alignment: 9
+      pivot: {x: 0.578947368, y: 0.007462687}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 65c4d96ab7451afc0800000000000000
-      internalID: -3485411746555016106
+      spriteID: 52c6ae8625a256818d7ad1a9c6150f02
+      internalID: 21300028
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: PearlToss_15
       rect:
         serializedVersion: 2
-        x: 559
-        y: 47
-        width: 159
-        height: 204
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 793
+        y: 30
+        width: 206
+        height: 269
+      alignment: 9
+      pivot: {x: 0.567961165, y: 0.007434944}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7cdf00a88d487c590800000000000000
-      internalID: -7654002976129745465
+      spriteID: 85188b635d9f532abde8bf520d6d0721
+      internalID: 21300030
       vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PearlToss_16
-      rect:
-        serializedVersion: 2
-        x: 814
-        y: 47
-        width: 157
-        height: 205
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a5e09e7209eff2c90800000000000000
-      internalID: -7192250184789062054
-      vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     outline: []
-    customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
-    indices: 
+    indices:
     edges: []
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      PearlToss_0: -1871340940740958250
-      PearlToss_1: 6496492176238675253
-      PearlToss_10: -3898728967097788610
-      PearlToss_11: 3099425164715343925
-      PearlToss_12: 1472240520390208779
-      PearlToss_13: 8714464283683361851
-      PearlToss_14: -3485411746555016106
-      PearlToss_15: -7654002976129745465
-      PearlToss_16: -7192250184789062054
-      PearlToss_2: 8430642114081367103
-      PearlToss_3: 95462087573310856
-      PearlToss_4: -1442031522638852722
-      PearlToss_5: 5182922939714250150
-      PearlToss_6: 6648488384702686056
-      PearlToss_7: 5018671058649912707
-      PearlToss_8: -1822423067534945589
-      PearlToss_9: -3494886375900106915
-  mipmapLimitGroupName: 
+      PearlToss_0: 21300000
+      PearlToss_1: 21300002
+      PearlToss_2: 21300004
+      PearlToss_3: 21300006
+      PearlToss_4: 21300008
+      PearlToss_5: 21300010
+      PearlToss_6: 21300012
+      PearlToss_7: 21300014
+      PearlToss_8: 21300016
+      PearlToss_9: 21300018
+      PearlToss_10: 21300020
+      PearlToss_11: 21300022
+      PearlToss_12: 21300024
+      PearlToss_13: 21300026
+      PearlToss_14: 21300028
+      PearlToss_15: 21300030
+  mipmapLimitGroupName:
   pSDRemoveMatte: 0
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+  userData: WestKing finished sheets only; 2px alpha crop; foot baseline 352
+  assetBundleName:
+  assetBundleVariant:

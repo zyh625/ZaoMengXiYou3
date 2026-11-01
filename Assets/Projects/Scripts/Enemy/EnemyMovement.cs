@@ -33,6 +33,7 @@ public class EnemyMovement : MonoBehaviour
     public bool IsStunned => health != null && !health.Boost && HasActiveStun();//不把过期或免控中的来源算作有效眩晕
     public bool IsCarried => carryOwner != null && health != null && !health.Dead;//携带属于强控制，普通霸体不能让已经被抓住的敌人脱离
     public bool IsExternallyControlled => IsStunned || IsCarried || externalControl != ExternalControlState.None;//特殊行为同样把吸附、携带和释放后的下落交回共用控制逻辑。
+    protected bool IsSuctionActive => externalControl == ExternalControlState.Suction;//只读查询：子类临时重力要区分主动吸附与释放后的下落，不改变共用控制流程。
     private readonly Dictionary<Object, QuicksandMotion> quicksands = new();//多个流沙分别维护自己的减速和拉力
     private readonly struct QuicksandMotion//横向移动统一缩放一次，拉力是固定速度而不是加速度
     {

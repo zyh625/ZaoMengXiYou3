@@ -1,0 +1,1410 @@
+{
+  "generator": "built-in image_gen",
+  "no_characters_in_fx": true,
+  "canvas": [
+    1024,
+    1024
+  ],
+  "cell": [
+    256,
+    256
+  ],
+  "effects": [
+    {
+      "key": "GreenSummonHammer",
+      "label": "GreenSummon 独立落锤",
+      "owner": "GreenSummon",
+      "loop": false,
+      "fps": 16,
+      "duration": 0,
+      "sort": 12,
+      "action": "Effect: a single SUMMONED SPECTRAL JADE HAMMER FALL AND IMPACT, 16-frame one shot. Only an ethereal jade-green/gold hammer prop and impact energy, absolutely NO person, hand, banner or armor. Shape matches a massive jade/gold rectangular hammer head with a large green diamond inset and a short visible dark-green shaft. F1-3 faint spectral hammer materializes high near cell-local top; F4-7 drops vertically to cell-local impact anchor near bottom at y=210, same hammer scale; F8-10 strikes with a compact jade/gold flare and horizontal elliptical ground ripple; F11-15 hammer dissolves and ripple expands/fades; F16 only the last small fading glints near impact anchor. Keep all hammer, flare and ripple inside the cell with padding, no stone floor or scenery. Impact anchor fixed at same x and y, no camera movement.",
+      "texture": "Assets/Art/Enemies/Level6/GreenSummon/Effects/GreenSummonHammer.png",
+      "prefab": "Assets/Projects/Prefabs/SeparateEffort/GreenSummonHammerFX.prefab",
+      "guid": "ad8f54fb4b534e659de92ac5cfc1d75b",
+      "ids": [
+        608108375998204613,
+        672191743149770384,
+        244826989125978102,
+        87130137526688878,
+        996693912817586444,
+        7728714096073607,
+        842997072943483433,
+        494007556763809252,
+        1033737843713357368,
+        131448289402446892,
+        227380210119502244,
+        1067478004789209342,
+        147255880789678338,
+        11800610155051086,
+        429819551944959133,
+        60438551866313403
+      ],
+      "pivot": [
+        0.5,
+        0.12890625
+      ],
+      "frames": [
+        {
+          "frame": 1,
+          "bbox": [
+            90,
+            35,
+            182,
+            166
+          ],
+          "margins_LRTB": [
+            90,
+            74,
+            35,
+            90
+          ]
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            79,
+            33,
+            193,
+            170
+          ],
+          "margins_LRTB": [
+            79,
+            63,
+            33,
+            86
+          ]
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            76,
+            47,
+            184,
+            188
+          ],
+          "margins_LRTB": [
+            76,
+            72,
+            47,
+            68
+          ]
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            75,
+            65,
+            178,
+            212
+          ],
+          "margins_LRTB": [
+            75,
+            78,
+            65,
+            44
+          ]
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            76,
+            40,
+            180,
+            209
+          ],
+          "margins_LRTB": [
+            76,
+            76,
+            40,
+            47
+          ]
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            82,
+            36,
+            178,
+            215
+          ],
+          "margins_LRTB": [
+            82,
+            78,
+            36,
+            41
+          ]
+        },
+        {
+          "frame": 7,
+          "bbox": [
+            78,
+            41,
+            181,
+            221
+          ],
+          "margins_LRTB": [
+            78,
+            75,
+            41,
+            35
+          ]
+        },
+        {
+          "frame": 8,
+          "bbox": [
+            37,
+            38,
+            216,
+            222
+          ],
+          "margins_LRTB": [
+            37,
+            40,
+            38,
+            34
+          ]
+        },
+        {
+          "frame": 9,
+          "bbox": [
+            39,
+            49,
+            218,
+            208
+          ],
+          "margins_LRTB": [
+            39,
+            38,
+            49,
+            48
+          ]
+        },
+        {
+          "frame": 10,
+          "bbox": [
+            41,
+            47,
+            223,
+            207
+          ],
+          "margins_LRTB": [
+            41,
+            33,
+            47,
+            49
+          ]
+        },
+        {
+          "frame": 11,
+          "bbox": [
+            33,
+            58,
+            221,
+            208
+          ],
+          "margins_LRTB": [
+            33,
+            35,
+            58,
+            48
+          ]
+        },
+        {
+          "frame": 12,
+          "bbox": [
+            33,
+            58,
+            216,
+            207
+          ],
+          "margins_LRTB": [
+            33,
+            40,
+            58,
+            49
+          ]
+        },
+        {
+          "frame": 13,
+          "bbox": [
+            48,
+            53,
+            212,
+            190
+          ],
+          "margins_LRTB": [
+            48,
+            44,
+            53,
+            66
+          ]
+        },
+        {
+          "frame": 14,
+          "bbox": [
+            49,
+            49,
+            210,
+            189
+          ],
+          "margins_LRTB": [
+            49,
+            46,
+            49,
+            67
+          ]
+        },
+        {
+          "frame": 15,
+          "bbox": [
+            48,
+            80,
+            205,
+            186
+          ],
+          "margins_LRTB": [
+            48,
+            51,
+            80,
+            70
+          ]
+        },
+        {
+          "frame": 16,
+          "bbox": [
+            94,
+            122,
+            153,
+            186
+          ],
+          "margins_LRTB": [
+            94,
+            103,
+            122,
+            70
+          ]
+        }
+      ],
+      "sha256": "8ff9068631f51a10ac899363be249cbece60b171f91e2bb57950278a43fcf511",
+      "prompt": "Effect: a single SUMMONED SPECTRAL JADE HAMMER FALL AND IMPACT, 16-frame one shot. Only an ethereal jade-green/gold hammer prop and impact energy, absolutely NO person, hand, banner or armor. Shape matches a massive jade/gold rectangular hammer head with a large green diamond inset and a short visible dark-green shaft. F1-3 faint spectral hammer materializes high near cell-local top; F4-7 drops vertically to cell-local impact anchor near bottom at y=210, same hammer scale; F8-10 strikes with a compact jade/gold flare and horizontal elliptical ground ripple; F11-15 hammer dissolves and ripple expands/fades; F16 only the last small fading glints near impact anchor. Keep all hammer, flare and ripple inside the cell with padding, no stone floor or scenery. Impact anchor fixed at same x and y, no camera movement."
+    },
+    {
+      "key": "GreenSummonWarBannerAura",
+      "label": "GreenSummon 独立战旗光环",
+      "owner": "GreenSummon",
+      "loop": true,
+      "fps": 12,
+      "duration": 0,
+      "sort": 2,
+      "action": "Effect: WAR BANNER AURA ONLY, 16-frame seamless loop. A low horizontal elliptical jade-green and gold celestial aura ring, seen in the same three-quarter game perspective, with subtle cloud-scroll energy curling upward a short distance and tiny gold/jade motes. No physical banner, pole, cloth, character or ground texture. F1-5 slow luminous swell and clockwise mote drift; F6-10 cloud-curls roll gently around the ring; F11-15 settle/fade back; F16 matchesF1. Stable ellipse footprint and center, complete ellipse entirely visible every frame. This is a separate under-foot/world-ground buff aura visual, not an opaque magic disc.",
+      "texture": "Assets/Art/Enemies/Level6/GreenSummon/Effects/GreenSummonWarBannerAura.png",
+      "prefab": "Assets/Projects/Prefabs/SeparateEffort/GreenSummonWarBannerAuraFX.prefab",
+      "guid": "ac616c67ec2f41aa90e660fc81cf9480",
+      "ids": [
+        495297878450063084,
+        219217298233580285,
+        163359652094705525,
+        562773690024237487,
+        592081111109496242,
+        521198154738411198,
+        222174006217654187,
+        838879486381367077,
+        91199542093494308,
+        72876110444290398,
+        804767013589352007,
+        613015827027135366,
+        852348282889237607,
+        431879045779012804,
+        302984014888375972,
+        289188365976152093
+      ],
+      "pivot": [
+        0.5,
+        0.3828125
+      ],
+      "frames": [
+        {
+          "frame": 1,
+          "bbox": [
+            45,
+            112,
+            212,
+            181
+          ],
+          "margins_LRTB": [
+            45,
+            44,
+            112,
+            75
+          ]
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            43,
+            111,
+            213,
+            183
+          ],
+          "margins_LRTB": [
+            43,
+            43,
+            111,
+            73
+          ]
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            38,
+            107,
+            215,
+            186
+          ],
+          "margins_LRTB": [
+            38,
+            41,
+            107,
+            70
+          ]
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            37,
+            107,
+            217,
+            190
+          ],
+          "margins_LRTB": [
+            37,
+            39,
+            107,
+            66
+          ]
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            41,
+            79,
+            221,
+            185
+          ],
+          "margins_LRTB": [
+            41,
+            35,
+            79,
+            71
+          ]
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            35,
+            60,
+            222,
+            191
+          ],
+          "margins_LRTB": [
+            35,
+            34,
+            60,
+            65
+          ]
+        },
+        {
+          "frame": 7,
+          "bbox": [
+            34,
+            64,
+            223,
+            196
+          ],
+          "margins_LRTB": [
+            34,
+            33,
+            64,
+            60
+          ]
+        },
+        {
+          "frame": 8,
+          "bbox": [
+            33,
+            61,
+            222,
+            199
+          ],
+          "margins_LRTB": [
+            33,
+            34,
+            61,
+            57
+          ]
+        },
+        {
+          "frame": 9,
+          "bbox": [
+            34,
+            62,
+            223,
+            194
+          ],
+          "margins_LRTB": [
+            34,
+            33,
+            62,
+            62
+          ]
+        },
+        {
+          "frame": 10,
+          "bbox": [
+            34,
+            64,
+            219,
+            192
+          ],
+          "margins_LRTB": [
+            34,
+            37,
+            64,
+            64
+          ]
+        },
+        {
+          "frame": 11,
+          "bbox": [
+            35,
+            57,
+            221,
+            190
+          ],
+          "margins_LRTB": [
+            35,
+            35,
+            57,
+            66
+          ]
+        },
+        {
+          "frame": 12,
+          "bbox": [
+            37,
+            69,
+            216,
+            183
+          ],
+          "margins_LRTB": [
+            37,
+            40,
+            69,
+            73
+          ]
+        },
+        {
+          "frame": 13,
+          "bbox": [
+            42,
+            63,
+            214,
+            166
+          ],
+          "margins_LRTB": [
+            42,
+            42,
+            63,
+            90
+          ]
+        },
+        {
+          "frame": 14,
+          "bbox": [
+            41,
+            79,
+            211,
+            166
+          ],
+          "margins_LRTB": [
+            41,
+            45,
+            79,
+            90
+          ]
+        },
+        {
+          "frame": 15,
+          "bbox": [
+            44,
+            93,
+            212,
+            165
+          ],
+          "margins_LRTB": [
+            44,
+            44,
+            93,
+            91
+          ]
+        },
+        {
+          "frame": 16,
+          "bbox": [
+            45,
+            112,
+            212,
+            181
+          ],
+          "margins_LRTB": [
+            45,
+            44,
+            112,
+            75
+          ]
+        }
+      ],
+      "sha256": "1343c8c13642812201bdb408fddd7d70024ba0474c9ac4f45df15edb32fce2b0",
+      "prompt": "Effect: WAR BANNER AURA ONLY, 16-frame seamless loop. A low horizontal elliptical jade-green and gold celestial aura ring, seen in the same three-quarter game perspective, with subtle cloud-scroll energy curling upward a short distance and tiny gold/jade motes. No physical banner, pole, cloth, character or ground texture. F1-5 slow luminous swell and clockwise mote drift; F6-10 cloud-curls roll gently around the ring; F11-15 settle/fade back; F16 matchesF1. Stable ellipse footprint and center, complete ellipse entirely visible every frame. This is a separate under-foot/world-ground buff aura visual, not an opaque magic disc."
+    },
+    {
+      "key": "NorthKingUmbrellaRib",
+      "label": "NorthKing 独立伞骨弹",
+      "owner": "NorthKing",
+      "loop": true,
+      "fps": 16,
+      "duration": 2,
+      "sort": 15,
+      "action": "Effect: ONE FLYING UMBRELLA-RIB DART ONLY, 16-frame seamless flight loop. A single slender emerald-jade and gold pointed parasol rib missile, its sharp point facing SCREEN LEFT with a short pale-mint/gold luminous tail trailing to RIGHT. No umbrella canopy, boss, hand, gun, multiple missiles, impact explosion or background. Stable missile length, thickness and center in all frames. F1-8 the subtle trail and small glints ripple backward, F9-15 pulsation eases back, F16 matchesF1. Do not translate dart across the sheet; world motion is controlled independently by Unity prefab. No text or motion lines outside its compact glow.",
+      "texture": "Assets/Art/Bosses/NorthKing/SpriteSheets16/Effects/NorthKingUmbrellaRib.png",
+      "prefab": "Assets/Projects/Prefabs/SeparateEffort/NorthKingUmbrellaRibFX.prefab",
+      "guid": "2d3fdb15ac0746f2955609f5cb88062d",
+      "ids": [
+        715318733288992523,
+        788460018021394459,
+        1029476856148539346,
+        713561078242804099,
+        729514196284798800,
+        249913414659953532,
+        64522160201562737,
+        267719520762430473,
+        744813398853395520,
+        888767508612196712,
+        904173846473340865,
+        730638012187898062,
+        692203971305119871,
+        952649585369183358,
+        771552629560086339,
+        782587015194378578
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "frames": [
+        {
+          "frame": 1,
+          "bbox": [
+            35,
+            107,
+            216,
+            159
+          ],
+          "margins_LRTB": [
+            35,
+            40,
+            107,
+            97
+          ]
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            34,
+            95,
+            214,
+            171
+          ],
+          "margins_LRTB": [
+            34,
+            42,
+            95,
+            85
+          ]
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            33,
+            97,
+            215,
+            178
+          ],
+          "margins_LRTB": [
+            33,
+            41,
+            97,
+            78
+          ]
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            35,
+            92,
+            215,
+            180
+          ],
+          "margins_LRTB": [
+            35,
+            41,
+            92,
+            76
+          ]
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            34,
+            79,
+            219,
+            177
+          ],
+          "margins_LRTB": [
+            34,
+            37,
+            79,
+            79
+          ]
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            34,
+            71,
+            221,
+            182
+          ],
+          "margins_LRTB": [
+            34,
+            35,
+            71,
+            74
+          ]
+        },
+        {
+          "frame": 7,
+          "bbox": [
+            33,
+            78,
+            223,
+            183
+          ],
+          "margins_LRTB": [
+            33,
+            33,
+            78,
+            73
+          ]
+        },
+        {
+          "frame": 8,
+          "bbox": [
+            35,
+            77,
+            217,
+            186
+          ],
+          "margins_LRTB": [
+            35,
+            39,
+            77,
+            70
+          ]
+        },
+        {
+          "frame": 9,
+          "bbox": [
+            34,
+            94,
+            215,
+            175
+          ],
+          "margins_LRTB": [
+            34,
+            41,
+            94,
+            81
+          ]
+        },
+        {
+          "frame": 10,
+          "bbox": [
+            35,
+            90,
+            213,
+            169
+          ],
+          "margins_LRTB": [
+            35,
+            43,
+            90,
+            87
+          ]
+        },
+        {
+          "frame": 11,
+          "bbox": [
+            34,
+            97,
+            214,
+            176
+          ],
+          "margins_LRTB": [
+            34,
+            42,
+            97,
+            80
+          ]
+        },
+        {
+          "frame": 12,
+          "bbox": [
+            35,
+            101,
+            214,
+            162
+          ],
+          "margins_LRTB": [
+            35,
+            42,
+            101,
+            94
+          ]
+        },
+        {
+          "frame": 13,
+          "bbox": [
+            35,
+            95,
+            215,
+            159
+          ],
+          "margins_LRTB": [
+            35,
+            41,
+            95,
+            97
+          ]
+        },
+        {
+          "frame": 14,
+          "bbox": [
+            35,
+            97,
+            213,
+            163
+          ],
+          "margins_LRTB": [
+            35,
+            43,
+            97,
+            93
+          ]
+        },
+        {
+          "frame": 15,
+          "bbox": [
+            34,
+            101,
+            215,
+            162
+          ],
+          "margins_LRTB": [
+            34,
+            41,
+            101,
+            94
+          ]
+        },
+        {
+          "frame": 16,
+          "bbox": [
+            35,
+            107,
+            216,
+            159
+          ],
+          "margins_LRTB": [
+            35,
+            40,
+            107,
+            97
+          ]
+        }
+      ],
+      "sha256": "4689d1728e3e53ecddbee1e9ed9689946b564a9f65cd85b2c67a4bb15423b9dd",
+      "prompt": "Effect: ONE FLYING UMBRELLA-RIB DART ONLY, 16-frame seamless flight loop. A single slender emerald-jade and gold pointed parasol rib missile, its sharp point facing SCREEN LEFT with a short pale-mint/gold luminous tail trailing to RIGHT. No umbrella canopy, boss, hand, gun, multiple missiles, impact explosion or background. Stable missile length, thickness and center in all frames. F1-8 the subtle trail and small glints ripple backward, F9-15 pulsation eases back, F16 matchesF1. Do not translate dart across the sheet; world motion is controlled independently by Unity prefab. No text or motion lines outside its compact glow."
+    },
+    {
+      "key": "NorthKingRainCurtain",
+      "label": "NorthKing 独立雨幕",
+      "owner": "NorthKing",
+      "loop": true,
+      "fps": 16,
+      "duration": 2,
+      "sort": 10,
+      "action": "Effect: RAIN CURTAIN VOLUME ONLY, 16-frame continuous loop. A compact rectangular vertical shower of thin jade-green/gold luminous needle-like drops falling straight DOWN, with a few tiny pale-mint droplets near the bottom, all fading out before cell edges. No umbrella, canopy, character, cloud, sky, ground plane, impact floor or environment. Frame progression clearly shows the same spaced drops traveling downward and new drops entering/fading at top, seamless F16 toF1. Entire rain volume stays fixed in local bounds and center; all streak ends and particles inside the cell with 32px gutters. This is a standalone downward projectile-rain visual volume, not part of any king sprite.",
+      "texture": "Assets/Art/Bosses/NorthKing/SpriteSheets16/Effects/NorthKingRainCurtain.png",
+      "prefab": "Assets/Projects/Prefabs/SeparateEffort/NorthKingRainCurtainFX.prefab",
+      "guid": "835676be59ef42b39f3003cce1bc29af",
+      "ids": [
+        144424449044161137,
+        55928864598596508,
+        904667736467759994,
+        195168655999169270,
+        1080970848468570576,
+        190224687457079838,
+        822231266959487885,
+        237580199105330251,
+        843030950568126823,
+        798862675882374,
+        1002212343417191489,
+        438376329360744810,
+        514718563855565486,
+        882285008548058627,
+        243891899914720949,
+        171127957132705848
+      ],
+      "pivot": [
+        0.5,
+        0.12890625
+      ],
+      "frames": [
+        {
+          "frame": 1,
+          "bbox": [
+            71,
+            49,
+            189,
+            217
+          ],
+          "margins_LRTB": [
+            71,
+            67,
+            49,
+            39
+          ]
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            72,
+            51,
+            190,
+            217
+          ],
+          "margins_LRTB": [
+            72,
+            66,
+            51,
+            39
+          ]
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            70,
+            57,
+            190,
+            222
+          ],
+          "margins_LRTB": [
+            70,
+            66,
+            57,
+            34
+          ]
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            70,
+            54,
+            188,
+            223
+          ],
+          "margins_LRTB": [
+            70,
+            68,
+            54,
+            33
+          ]
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            69,
+            46,
+            189,
+            222
+          ],
+          "margins_LRTB": [
+            69,
+            67,
+            46,
+            34
+          ]
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            67,
+            44,
+            187,
+            217
+          ],
+          "margins_LRTB": [
+            67,
+            69,
+            44,
+            39
+          ]
+        },
+        {
+          "frame": 7,
+          "bbox": [
+            66,
+            44,
+            186,
+            220
+          ],
+          "margins_LRTB": [
+            66,
+            70,
+            44,
+            36
+          ]
+        },
+        {
+          "frame": 8,
+          "bbox": [
+            68,
+            44,
+            185,
+            217
+          ],
+          "margins_LRTB": [
+            68,
+            71,
+            44,
+            39
+          ]
+        },
+        {
+          "frame": 9,
+          "bbox": [
+            67,
+            44,
+            186,
+            212
+          ],
+          "margins_LRTB": [
+            67,
+            70,
+            44,
+            44
+          ]
+        },
+        {
+          "frame": 10,
+          "bbox": [
+            67,
+            44,
+            185,
+            213
+          ],
+          "margins_LRTB": [
+            67,
+            71,
+            44,
+            43
+          ]
+        },
+        {
+          "frame": 11,
+          "bbox": [
+            68,
+            45,
+            186,
+            213
+          ],
+          "margins_LRTB": [
+            68,
+            70,
+            45,
+            43
+          ]
+        },
+        {
+          "frame": 12,
+          "bbox": [
+            69,
+            43,
+            183,
+            212
+          ],
+          "margins_LRTB": [
+            69,
+            73,
+            43,
+            44
+          ]
+        },
+        {
+          "frame": 13,
+          "bbox": [
+            70,
+            34,
+            184,
+            202
+          ],
+          "margins_LRTB": [
+            70,
+            72,
+            34,
+            54
+          ]
+        },
+        {
+          "frame": 14,
+          "bbox": [
+            72,
+            34,
+            185,
+            203
+          ],
+          "margins_LRTB": [
+            72,
+            71,
+            34,
+            53
+          ]
+        },
+        {
+          "frame": 15,
+          "bbox": [
+            70,
+            33,
+            185,
+            200
+          ],
+          "margins_LRTB": [
+            70,
+            71,
+            33,
+            56
+          ]
+        },
+        {
+          "frame": 16,
+          "bbox": [
+            71,
+            49,
+            189,
+            217
+          ],
+          "margins_LRTB": [
+            71,
+            67,
+            49,
+            39
+          ]
+        }
+      ],
+      "sha256": "95b3c8f19d679b5d30f2c584c3b8ba38e0a4f777dda7c4678e1e8857e9275776",
+      "prompt": "Effect: RAIN CURTAIN VOLUME ONLY, 16-frame continuous loop. A compact rectangular vertical shower of thin jade-green/gold luminous needle-like drops falling straight DOWN, with a few tiny pale-mint droplets near the bottom, all fading out before cell edges. No umbrella, canopy, character, cloud, sky, ground plane, impact floor or environment. Frame progression clearly shows the same spaced drops traveling downward and new drops entering/fading at top, seamless F16 toF1. Entire rain volume stays fixed in local bounds and center; all streak ends and particles inside the cell with 32px gutters. This is a standalone downward projectile-rain visual volume, not part of any king sprite."
+    },
+    {
+      "key": "NorthKingShield",
+      "label": "NorthKing 独立护罩",
+      "owner": "NorthKing",
+      "loop": true,
+      "fps": 12,
+      "duration": 0,
+      "sort": 20,
+      "action": "Effect: GUARD SHIELD AURA ONLY, 16-frame seamless loop. A translucent jade-green celestial protective dome/oval barrier in three-quarter perspective, thin gold rim and restrained cloud-scroll energy drifting around edge. Hollow/translucent center is genuinely transparent so a character can be independently composited behind it. No king, face, body, armor, umbrella or physical shield prop. Stable full oval/dome footprint and center in every frame. F1-5 rim pulses brighter, F6-10 small green/gold edge glints drift, F11-15 settle, F16 matchesF1. No beams, explosions, scenery or opaque colored rectangle. Entire barrier and glow fit inside each cell.",
+      "texture": "Assets/Art/Bosses/NorthKing/SpriteSheets16/Effects/NorthKingShield.png",
+      "prefab": "Assets/Projects/Prefabs/SeparateEffort/NorthKingShieldFX.prefab",
+      "guid": "22b6662999e342e6ac936fdca0a95e0d",
+      "ids": [
+        730536461139771972,
+        45521263195026941,
+        699826290773655282,
+        268194917527275832,
+        954002494866277129,
+        635924303636756044,
+        1123128644237233749,
+        950977627988348981,
+        63062557740156050,
+        298423428366891954,
+        219315552335327941,
+        869641485504958189,
+        376145675698451528,
+        815038302895945100,
+        42373585859008593,
+        167738286494907970
+      ],
+      "pivot": [
+        0.5,
+        0.12890625
+      ],
+      "frames": [
+        {
+          "frame": 1,
+          "bbox": [
+            51,
+            80,
+            220,
+            214
+          ],
+          "margins_LRTB": [
+            51,
+            36,
+            80,
+            42
+          ]
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            44,
+            80,
+            215,
+            215
+          ],
+          "margins_LRTB": [
+            44,
+            41,
+            80,
+            41
+          ]
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            36,
+            80,
+            211,
+            215
+          ],
+          "margins_LRTB": [
+            36,
+            45,
+            80,
+            41
+          ]
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            33,
+            80,
+            208,
+            215
+          ],
+          "margins_LRTB": [
+            33,
+            48,
+            80,
+            41
+          ]
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            42,
+            62,
+            223,
+            207
+          ],
+          "margins_LRTB": [
+            42,
+            33,
+            62,
+            49
+          ]
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            43,
+            67,
+            218,
+            200
+          ],
+          "margins_LRTB": [
+            43,
+            38,
+            67,
+            56
+          ]
+        },
+        {
+          "frame": 7,
+          "bbox": [
+            39,
+            65,
+            214,
+            200
+          ],
+          "margins_LRTB": [
+            39,
+            42,
+            65,
+            56
+          ]
+        },
+        {
+          "frame": 8,
+          "bbox": [
+            34,
+            65,
+            212,
+            200
+          ],
+          "margins_LRTB": [
+            34,
+            44,
+            65,
+            56
+          ]
+        },
+        {
+          "frame": 9,
+          "bbox": [
+            50,
+            51,
+            220,
+            188
+          ],
+          "margins_LRTB": [
+            50,
+            36,
+            51,
+            68
+          ]
+        },
+        {
+          "frame": 10,
+          "bbox": [
+            45,
+            53,
+            220,
+            188
+          ],
+          "margins_LRTB": [
+            45,
+            36,
+            53,
+            68
+          ]
+        },
+        {
+          "frame": 11,
+          "bbox": [
+            42,
+            54,
+            212,
+            188
+          ],
+          "margins_LRTB": [
+            42,
+            44,
+            54,
+            68
+          ]
+        },
+        {
+          "frame": 12,
+          "bbox": [
+            37,
+            54,
+            207,
+            188
+          ],
+          "margins_LRTB": [
+            37,
+            49,
+            54,
+            68
+          ]
+        },
+        {
+          "frame": 13,
+          "bbox": [
+            51,
+            43,
+            221,
+            176
+          ],
+          "margins_LRTB": [
+            51,
+            35,
+            43,
+            80
+          ]
+        },
+        {
+          "frame": 14,
+          "bbox": [
+            45,
+            42,
+            215,
+            175
+          ],
+          "margins_LRTB": [
+            45,
+            41,
+            42,
+            81
+          ]
+        },
+        {
+          "frame": 15,
+          "bbox": [
+            39,
+            40,
+            212,
+            175
+          ],
+          "margins_LRTB": [
+            39,
+            44,
+            40,
+            81
+          ]
+        },
+        {
+          "frame": 16,
+          "bbox": [
+            51,
+            80,
+            220,
+            214
+          ],
+          "margins_LRTB": [
+            51,
+            36,
+            80,
+            42
+          ]
+        }
+      ],
+      "sha256": "913629b85029a596bf83addfd9c36230b48928a931ee0142d07161f693986a9c",
+      "prompt": "Effect: GUARD SHIELD AURA ONLY, 16-frame seamless loop. A translucent jade-green celestial protective dome/oval barrier in three-quarter perspective, thin gold rim and restrained cloud-scroll energy drifting around edge. Hollow/translucent center is genuinely transparent so a character can be independently composited behind it. No king, face, body, armor, umbrella or physical shield prop. Stable full oval/dome footprint and center in every frame. F1-5 rim pulses brighter, F6-10 small green/gold edge glints drift, F11-15 settle, F16 matchesF1. No beams, explosions, scenery or opaque colored rectangle. Entire barrier and glow fit inside each cell."
+    }
+  ],
+  "common_prompt": "Use case: stylized-concept. Asset: EFFECT-ONLY 2D Unity VFX animation sprite atlas, not an icon and not a character sheet.\nSTYLE REFERENCE is only to match the jade-green/gold/pale-mint celestial magic palette and polished hand-painted/cel-shaded game look. NO characters, faces, hands, bodies, armor, banners or umbrellas in these effect-only images unless a falling hammer prop is explicitly requested below.\nLAYOUT: square 1024x1024 RGBA PNG, REAL TRANSPARENT background, 4 columns by 4 rows, exactly 16 chronological animation frames, read left-to-right top-to-bottom. Invisible cells256x256. Each entire effect plus all glow/trails/particles is SMALL inside its own cell, at most190x190 with at least32px genuinely empty transparent margins on ALL FOUR sides. Wide clean transparent gutters. No effect glow may spill into another cell. Same effect scale and stable local center through the sequence; only requested motion changes. No labels, numbers, borders, grid, scenery, floor, background color/gradient/texture, black frame, UI or printed checkerboard. Pure transparent alpha outside effect. Restrained luminous highlights with strong jade/gold color, readable at small game scale. Do not draw an entire scene.\n"
+}

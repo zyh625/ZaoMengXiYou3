@@ -124,12 +124,12 @@ TextureImporter:
       name: DuoWenBlood_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 95
-        width: 2123
-        height: 545
+        x: 6
+        y: 207
+        width: 2139
+        height: 310
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -142,165 +142,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: DuoWenBlood_1
-      rect:
-        serializedVersion: 2
-        x: 100
-        y: 485
-        width: 19
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f327fc354aaae5fc0800000000000000
-      internalID: -3504175837290204609
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DuoWenBlood_2
-      rect:
-        serializedVersion: 2
-        x: 416
-        y: 208
-        width: 6
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3f3a42b9687a5f330800000000000000
-      internalID: 3744082861798761459
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DuoWenBlood_3
-      rect:
-        serializedVersion: 2
-        x: 424
-        y: 207
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ac2fcfc87b575e6a0800000000000000
-      internalID: -6420596262541921590
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DuoWenBlood_4
-      rect:
-        serializedVersion: 2
-        x: 1801
-        y: 210
-        width: 9
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d7476832d82855b50800000000000000
-      internalID: 6581309973169861757
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DuoWenBlood_5
-      rect:
-        serializedVersion: 2
-        x: 338
-        y: 184
-        width: 7
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5065ff1dca04a8e40800000000000000
-      internalID: 5659406992746173957
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DuoWenBlood_6
-      rect:
-        serializedVersion: 2
-        x: 376
-        y: 176
-        width: 25
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f3d2a89279bd05c70800000000000000
-      internalID: 8957901101123382591
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DuoWenBlood_7
-      rect:
-        serializedVersion: 2
-        x: 563
-        y: 114
-        width: 14
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a8aa35052821a2420800000000000000
-      internalID: 2605915685289962122
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: a8bb7b06da90c144296d36a60dee34aa
     internalID: 0
     vertices: []
     indices: 
@@ -308,16 +154,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":2173.0,"y":724.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       DuoWenBlood_0: 6275508535938433478
-      DuoWenBlood_1: -3504175837290204609
-      DuoWenBlood_2: 3744082861798761459
-      DuoWenBlood_3: -6420596262541921590
-      DuoWenBlood_4: 6581309973169861757
-      DuoWenBlood_5: 5659406992746173957
-      DuoWenBlood_6: 8957901101123382591
-      DuoWenBlood_7: 2605915685289962122
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
