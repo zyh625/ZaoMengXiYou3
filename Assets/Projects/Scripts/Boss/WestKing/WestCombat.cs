@@ -90,7 +90,7 @@ public sealed class WestCombat : BossCombat,IEnemyArenaBounds
     {
         PlayerController target=Target;
         if(skill<0 || skill>3 || CurrentSkill>=0 || !CanAct || target==null || Time.time<nextAttack || Time.time<readyAt[skill])return false;
-        CurrentSkill=skill;nextSkill=(skill+1)%4;readyAt[skill]=Time.time+cooldowns[skill];castAt=Time.time;
+        CurrentSkill=skill;nextSkill=(skill+1)%4;readyAt[skill]=Time.time+cooldowns[skill]*RebirthCooldownMultiplier;castAt=Time.time;
         AttackFaceRight=target.transform.position.x>=transform.position.x;released=false;health.Status?.NotifyAttackStarted();return true;
     }
     public void SampleFrame(int frame)
@@ -112,7 +112,7 @@ public sealed class WestCombat : BossCombat,IEnemyArenaBounds
     }
     public void CancelAttack()
     {
-        if(CurrentSkill>=0)nextAttack=Time.time+attackInterval;
+        if(CurrentSkill>=0)nextAttack=Time.time+attackInterval*RebirthCooldownMultiplier;
         claw?.gameObject.SetActive(false);
         if(breath!=null && breath.gameObject.activeSelf)breath.StopStream();
         breath=null;CurrentSkill=-1;released=false;
@@ -179,7 +179,7 @@ public sealed class WestCombat : BossCombat,IEnemyArenaBounds
     private void Restore()
     {
         pool.ClearOrbs();health.RemoveDamageMultiplier(this);health.SetSuperArmor(this,false);Phase=WardPhase.Normal;
-        wardRemaining=exposedRemaining=0f;nextAttack=Time.time+attackInterval;WardChanged?.Invoke();
+        wardRemaining=exposedRemaining=0f;nextAttack=Time.time+attackInterval*RebirthCooldownMultiplier;WardChanged?.Invoke();
     }
     private void Died(DamageInfo damage){CancelAttack();Restore();pool.ReleaseAll();pendingWards=0;}
     private void OnDisable()

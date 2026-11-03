@@ -14,13 +14,17 @@ public static class BattleRun
     private static int activePlayer = -1;
     private static float startedAt, lastUsageAt;
     private static bool bossEntered, bossDefeated;
-    public static bool IsRunning { get; private set; }//金币必须在此值仍为true时完成吸附才可入账
+    private static bool running;
+    private static bool hasBossPhase = true;
+    public static bool IsRunning { get=>TrainingSession.Active?TrainingSession.EffectsEnabled:running;private set=>running=value; }//训练仅开放技能/特效，不创建结算或写入正式统计。
     public static BattleData LastResult { get; private set; }//跨结算场景保留一次完整结果，不创建磁盘字段
     public static BattleData CurrentResult { get; private set; }
 
-    public static void Begin(int level, PlayerManager manager)
+    public static void Begin(int level, PlayerManager manager, bool hasBoss = true)
     {
+        if(TrainingSession.Active)return;
         boss = null;
+        hasBossPhase = hasBoss;
         bossEntered = bossDefeated = false;
         waveIndex = waveCount = waveTotal = waveKills = 0;
         activePlayer = -1;
@@ -47,7 +51,7 @@ public static class BattleRun
 
     public static void SetCurrentPlayer(PlayerController player)//切换时先结清上一人的使用时长，不靠对象OnDisable猜测
     {
-        if (!IsRunning) return;
+        if (TrainingSession.Active || !IsRunning) return;
         AccumulateUsage();
         PlayerResources resources = player != null ? player.GetComponent<PlayerResources>() : null;
         activePlayer = resources != null ? (int)resources.Id : -1;
@@ -63,7 +67,7 @@ public static class BattleRun
 
     public static void RecordDamage(Health victim, DamageInfo damage, float actualDamage)
     {
-        if (!IsRunning || victim == null || actualDamage <= 0f) return;
+        if (TrainingSession.Active || !IsRunning || victim == null || actualDamage <= 0f) return;
         PlayerResources defender = victim.GetComponent<PlayerResources>();
         if (defender != null)
         {
@@ -80,6 +84,7 @@ public static class BattleRun
 
     public static void SetWave(int index, int totalWaves, int totalThisWave)
     {
+        if(TrainingSession.Active)return;
         if (!IsRunning) return;
         if (waveIndex != index) waveKills = 0;
         waveIndex = Mathf.Max(0, index);
@@ -89,6 +94,7 @@ public static class BattleRun
 
     public static void RecordEnemyKill(bool isBoss)
     {
+        if(TrainingSession.Active)return;
         if (!IsRunning) return;
         if (isBoss) bossDefeated = true;
         else waveKills = Mathf.Min(waveTotal, waveKills + 1);
@@ -96,6 +102,7 @@ public static class BattleRun
 
     public static void SetBoss(Health value)//只在Boss真正现身进入战斗时调用，出场等待仍属于小怪进度上限70%
     {
+        if(TrainingSession.Active)return;
         if (!IsRunning) return;
         boss = value;
         bossEntered = true;
@@ -103,6 +110,7 @@ public static class BattleRun
 
     public static BattleData Finish(bool victory)
     {
+        if(TrainingSession.Active)return LastResult??CurrentResult;
         if (!IsRunning) return LastResult ?? CurrentResult;
         AccumulateUsage();
         IsRunning = false;//先关统计和拾取资格，再计算并切场景
@@ -119,13 +127,16 @@ public static class BattleRun
     private static int AverageHealth()
     {
         float sum = 0f;
+        int count = 0;
         for (int i = 0; i < playerHealths.Length; i++)
         {
             Health health = playerHealths[i];
-            if (health == null || health.LifeVersion == 0) sum += 1f;//备用角色还没OnEnable，不能用序列化的0血量当成已死
+            if (health == null) continue;//未解锁角色不参与本场平均状态。
+            count++;
+            if (health.LifeVersion == 0) sum += 1f;//已解锁备用角色未启用时仍视为满血。
             else if (health.BeginBlood > 0f) sum += Mathf.Clamp01(health.CurBlood / health.BeginBlood);
         }
-        return Mathf.Clamp(Mathf.FloorToInt(sum / playerHealths.Length * 100f), 0, 100);
+        return count > 0 ? Mathf.Clamp(Mathf.FloorToInt(sum / count * 100f), 0, 100) : 100;
     }
 
     private static int SelectMVP()
@@ -165,7 +176,8 @@ public static class BattleRun
         }
         if (waveCount <= 0) return 0;
         float fraction = waveTotal > 0 ? Mathf.Clamp01((float)waveKills / waveTotal) : 1f;
-        return Mathf.Clamp(Mathf.FloorToInt(70f / waveCount * (Mathf.Min(waveIndex, waveCount) + fraction)), 0, 70);
+        int waveShare = hasBossPhase ? 70 : 100;
+        return Mathf.Clamp(Mathf.FloorToInt((float)waveShare / waveCount * (Mathf.Min(waveIndex, waveCount) + fraction)), 0, waveShare);
     }
 
     public static int GetSceneLevel(string sceneName)//编辑器直接运行关卡同样使用实际场景编号
@@ -176,7 +188,7 @@ public static class BattleRun
         return 1;
     }
 
-    public static void Cancel() => ResetSession();//切换存档只丢弃旧轮统计，不让旧MVP、耗时或运行标记跨档串用
+    public static void Cancel(){if(!TrainingSession.Active)ResetSession();}//训练退出不覆盖上一场正式结算。
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
     private static void ResetSession()//关闭Domain Reload后重新进入播放也不带入上轮结果

@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class SkillManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] Skills;//猴，猪，沙，唐
+    private readonly List<(Button button, PlayerId id)> characterTabs = new();
     private int curCharactor = 0;//默认打开猴子的技能面板
     [SerializeField] private Sprite[] numberSprites = new Sprite[10];//Numbers图片中按0到9排列的数字，保留费用和等级原来的字体
     [SerializeField] private Transform curGold;//当前金币区域，使用其goldNum下已有的数字图片
@@ -53,6 +54,12 @@ public class SkillManager : MonoBehaviour
         if (goldNum != null)
             goldDisplay = new SkillNumberDisplay(goldNum, 7, numberSprites, firstDigit: 1);//固定使用num1到num7，从第一位开始显示
         BindPurchaseButtons();
+        foreach (Button tab in GetComponentsInChildren<Button>(true))
+        {
+            PlayerId? id = tab.name.ToLowerInvariant() switch
+            { "wukong" => PlayerId.WuKong, "bajie" => PlayerId.BaJie, "tang" => PlayerId.Tang, "sha" => PlayerId.Sha, _ => null };
+            if (id.HasValue) characterTabs.Add((tab, id.Value));
+        }
     }
 
     private void BindSession()//关卡内拾取金币或在其他界面学习后，已打开的面板也能立即刷新
@@ -78,7 +85,8 @@ public class SkillManager : MonoBehaviour
     }
     public void PressCharactor(int num)//点击哪个角色就打开哪个面板
     {
-        if (Skills == null || num < 0 || num >= Skills.Length || Skills[num] == null) return;
+        if (Skills == null || num < 0 || num >= Skills.Length || Skills[num] == null
+            || !GameSession.EnsureSession().EnsureRuntimeData().IsPlayerUnlocked((PlayerId)num)) return;
         Initialize();
         curCharactor = num;
         ShowCurrentPanel();
@@ -173,6 +181,7 @@ public class SkillManager : MonoBehaviour
     private void RefreshButtons()//同一份等级配置决定显示和实战属性，不修改UI图片布局
     {
         SaveData data = GameSession.EnsureSession().EnsureRuntimeData();
+        foreach (var tab in characterTabs) tab.button.interactable = data.IsPlayerUnlocked(tab.id);
         goldDisplay?.SetValue(Mathf.Clamp(data.gold, 0, 9999999));//余额区域最多显示7位，超出时显示9999999，不改实际存档金币
         SkillProgression progression = SkillProgression.Current;//统一读取每个角色、技能、等级的数据
         foreach (SkillView view in skillViews)
@@ -194,7 +203,7 @@ public class SkillManager : MonoBehaviour
             int cost = progression.GetLevelData(binding.player, binding.skillNumber, level + 1).goldCost;
             binding.button.gameObject.SetActive(binding.upgrade ? level > 0 : level == 0);
             binding.button.interactable = (int)binding.player == curCharactor
-                && data.gold >= cost && level < progression.MaxLevel;
+                && data.IsPlayerUnlocked(binding.player) && data.gold >= cost && level < progression.MaxLevel;
         }
     }
 

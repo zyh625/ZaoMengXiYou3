@@ -18,6 +18,7 @@ public class GoldManager : MonoBehaviour
     private readonly List<GoldCoin> coins = new();//空闲金币对象复用，不为每枚金币重复创建管理器
     private int level;//Boss首杀标记按真实关卡编号记录
     private bool running;//终局先关入账，再取消所有未完成拾取
+    private RebirthScaling.Multipliers rebirthScales;//每轮快照，拾取和对象池复用不会再次放大。
     public static GoldManager Current { get; private set; }//关卡和死亡奖励统一使用当前管理器
 
     private void Awake() => Current = this;
@@ -28,6 +29,7 @@ public class GoldManager : MonoBehaviour
         Current = this;
         players = playerManager;
         level = Mathf.Max(1, currentLevel);
+        rebirthScales = RebirthScaling.ForLevel(level);
         data = GameSession.EnsureSession().EnsureRuntimeData();
         running = players != null;
         if (coinPrefab == null)
@@ -54,6 +56,7 @@ public class GoldManager : MonoBehaviour
             int limit = (int)System.Math.Min(int.MaxValue - 1L, upper);//为Random.Range的包含上限保留+1空间
             amount = Random.Range(0, limit + 1);
         }
+        amount = rebirthScales.GoldAmount(amount);
         if (!CanCollect || amount <= 0 || coinPrefab == null) return;//同归于尽仍记录首杀，但终局绝不生成或入账金币
         Collider2D enemyBody = enemy.GetComponent<Collider2D>();
         Vector2 origin = enemyBody != null ? (Vector2)enemyBody.bounds.center : (Vector2)enemy.position;

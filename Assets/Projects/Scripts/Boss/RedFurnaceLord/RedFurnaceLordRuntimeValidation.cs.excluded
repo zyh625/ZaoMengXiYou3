@@ -1,0 +1,169 @@
+#if UNITY_EDITOR
+using System;
+using System.Collections;
+using System.IO;
+using System.Reflection;
+using System.Text;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.UI;
+using zmxy.GamePlay;
+using Object = UnityEngine.Object;
+
+// Tests only the actual RedFurnaceLord and Level7 scene. No test edits are saved.
+public sealed class RedFurnaceLordRuntimeValidation : MonoBehaviour
+{
+    private readonly StringBuilder report = new();
+    private static string Report => Path.GetFullPath("output/RedFurnaceLordAudit/runtime.txt");
+    private void Check(bool valid, string message)
+    { if (!valid) throw new InvalidOperationException(message); report.AppendLine("PASS: " + message); File.WriteAllText(Report, report.ToString()); }
+    private IEnumerator Start()
+    {
+        var run = Scenario();
+        while (true)
+        {
+            object wait;
+            try { if (!run.MoveNext()) break; wait = run.Current; }
+            catch (Exception ex)
+            { report.AppendLine("FAIL: " + ex); File.WriteAllText(Report, report.ToString()); Debug.LogException(ex); EditorApplication.isPlaying = false; yield break; }
+            yield return wait;
+        }
+        report.AppendLine("ALL PASS"); File.WriteAllText(Report, report.ToString());
+        Debug.Log("RED_FURNACE_LORD_RUNTIME_PASS"); EditorApplication.isPlaying = false;
+    }
+    private static bool Near(float a, float b, float tolerance = .04f) => Mathf.Abs(a - b) <= tolerance;
+    private static void Damage(Health hp, float amount, Transform source) => hp.TakeDamage(new DamageInfo(source, amount, false, false, null, false, true, DamageKind.Skill));
+    private static void Place(GameObject go, float x)
+    {
+        var box = go.GetComponent<BoxCollider2D>(); float feet = (box.offset.y - box.size.y * .5f) * go.transform.lossyScale.y;
+        Vector2 at = new(x, .02f - feet); go.transform.position = at;
+        var body = go.GetComponent<Rigidbody2D>(); body.position = at; body.linearVelocity = Vector2.zero; Physics2D.SyncTransforms();
+    }
+    private static void Reset(GameObject boss, PlayerController player, float playerX = 2f)
+    {
+        boss.SetActive(false); boss.SetActive(true); boss.GetComponent<RedFurnaceLordCombat>().BindTarget(player);
+        Place(boss, 0); Place(player.gameObject, playerX); player.GetComponent<Health>().Heal(10000);
+    }
+    private static object Field(object value, string name) => typeof(LevelManager).GetField(name, BindingFlags.Instance | BindingFlags.NonPublic).GetValue(value);
+    private static void SetField(object value, string name, object field) => typeof(LevelManager).GetField(name, BindingFlags.Instance | BindingFlags.NonPublic).SetValue(value, field);
+    private IEnumerator Scenario()
+    {
+        yield return new WaitForSeconds(.5f);
+        var stage = FindAnyObjectByType<RollingFurnaceStageManager>(); var manager = FindAnyObjectByType<RollingFurnaceStageEnemyManager>();
+        Check(stage != null && stage.IsInitialized && manager.HasBoss, "Level7 initializes and HasBoss is true");
+        var realBoss = manager.CurBoss; var real = realBoss.GetComponent<Health>();
+        Check(realBoss.GetComponent<RedFurnaceLordController>() != null && real.BeginBlood == 1310, "scene creates RedFurnaceLord at existing boss spawn");
+        var panel = FindAnyObjectByType<RedFurnaceLordUI>(FindObjectsInactive.Include);
+        Check(panel != null, "Level7 contains RedFurnaceLordUI");
+        var imageData = new SerializedObject(panel);
+        var blood = (Image)imageData.FindProperty("bloodFull").objectReferenceValue;
+        var special = (Image)imageData.FindProperty("specialState").objectReferenceValue;
+        // Force only the existing last-wave transition, preserving scene wave configuration.
+        manager.ClearBattlePracticeEnemies();
+        SetField(stage, "curWave", stage.WaveCount - 1); SetField(stage, "leftEnemy", 0); SetField(stage, "rightEnemy", 0);
+        typeof(RollingFurnaceStageManager).GetMethod("TryNextWave", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(stage, null);
+        Check((bool)Field(stage, "bossStart"), "last wave enters Boss stage instead of waiting for a missing Boss");
+        SetField(stage, "bossStartTime", Time.time - 100);
+        typeof(LevelManager).GetMethod("CheckBossBorn", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(stage, null);
+        Check(realBoss.gameObject.activeSelf && (bool)Field(stage, "bossBorn") && panel.gameObject.activeInHierarchy, "normal boss birth activates Boss and UI");
+        Damage(real, 393, transform);
+        Check(Near(blood.fillAmount, .7f) && special.fillAmount > .99f && special.color.r > .9f, "real scene health / orange-red core countdown update through events");
+        foreach (var root in gameObject.scene.GetRootGameObjects()) if (root != gameObject) root.SetActive(false);
+
+        var floor = new GameObject("ValidationFloor") { layer = 6 }; floor.transform.position = Vector3.down * .5f;
+        floor.AddComponent<BoxCollider2D>().size = new Vector2(100, 1);
+        var cameraRoot = new GameObject("ValidationCamera"); cameraRoot.SetActive(false); cameraRoot.tag = "MainCamera";
+        var camera = cameraRoot.AddComponent<Camera>(); camera.orthographic = true; camera.orthographicSize = 12; camera.transform.position = new Vector3(0, 3, -10);
+        var cm = cameraRoot.AddComponent<CameraManager>(); var data = new SerializedObject(cm);
+        foreach (string name in new[] { "cameraEdgeLeft", "cameraEdgeRight" })
+        {
+            var edge = new GameObject(name); edge.transform.position = Vector3.right * (name.EndsWith("Left") ? -40 : 40);
+            var a = data.FindProperty(name); a.arraySize = 1; a.GetArrayElementAtIndex(0).objectReferenceValue = edge.transform;
+        }
+        data.ApplyModifiedPropertiesWithoutUndo(); cameraRoot.SetActive(true);
+        var hero = Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Projects/Prefabs/Character/WuKong.prefab"));
+        var player = hero.GetComponent<PlayerController>(); var hp = hero.GetComponent<Health>(); hp.SetBaseBlood(10000); hp.Heal(10000);
+        var boss = Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Projects/Prefabs/Enemy/RedFurnaceLord.prefab"));
+        var controller = boss.GetComponent<RedFurnaceLordController>(); controller.enabled = false;
+        var combat = boss.GetComponent<RedFurnaceLordCombat>(); var health = boss.GetComponent<Health>();
+        var body = boss.GetComponent<Rigidbody2D>(); var movement = boss.GetComponent<RedFurnaceLordMovement>();
+        Reset(boss, player); yield return new WaitForSeconds(.15f);
+        var boxes = new SerializedObject(combat).FindProperty("skillBoxes");
+        BoxCollider2D Box(int i) => (BoxCollider2D)boxes.GetArrayElementAtIndex(i).objectReferenceValue;
+        float gravity = body.gravityScale;
+        Check(!combat.Angry && health.BeginBlood == 1310, "HP1310 and UsesAnger=false");
+        Check(combat.ReadyAttack == 0 && combat.BeginAttack(0), "2u chooses PestleSmash");
+        float before = hp.CurBlood; combat.SampleFrame(6); Check(!Box(0).gameObject.activeSelf && Near(hp.CurBlood, before), "Pestle F7 has no hit");
+        combat.SampleFrame(7); combat.SampleFrame(7); combat.SampleFrame(10);
+        Check(Box(0).gameObject.activeSelf && Near(before - hp.CurBlood, 34), "Pestle F8-F11 deals34 exactly once despite repeated samples");
+        combat.SampleFrame(11); Check(!Box(0).gameObject.activeSelf, "Pestle closes at F12"); combat.CancelAttack();
+        Check(!combat.BeginAttack(0), "independent smash cooldown and attack interval reject immediate reentry");
+
+        Reset(boss, player, 5); Check(combat.ReadyAttack == 2 && combat.BeginAttack(2), "5u chooses ChainSweep");
+        before = hp.CurBlood; combat.SampleFrame(5); Check(!Box(2).gameObject.activeSelf, "Chain F6 closed");
+        combat.SampleFrame(6); combat.SampleFrame(10);
+        Check(Near(before - hp.CurBlood, 24) && Near(hero.transform.position.x, 3), "Chain F7-F11 deals24 and pulls toward Boss front by2u once");
+        combat.SampleFrame(11); Check(!Box(2).gameObject.activeSelf, "Chain closes at F12"); combat.CancelAttack();
+
+        Reset(boss, player, 3.5f); before = hp.CurBlood; Check(combat.BeginAttack(1), "breath can start independently");
+        combat.SampleFrame(4); Check(!Box(1).gameObject.activeSelf, "Breath F5 closed");
+        combat.SampleFrame(5); combat.SampleFrame(11);
+        Check(Box(1).gameObject.activeSelf && combat.HoldBreathPose(11), "Breath opens F6 and holds F12 while streaming");
+        yield return new WaitForSeconds(.4f); Check(combat.BreathTicks == 0 && Near(hp.CurBlood, before), "breath has no per-frame damage before first0.5s tick");
+        yield return new WaitForSeconds(1.7f);
+        Check(combat.BreathTicks == 4 && Near(before - hp.CurBlood, 32), "two-second cone deals four0.5s ticks totaling32");
+        Check(!Box(1).gameObject.activeSelf && !combat.HoldBreathPose(11), "breath closes and releases held pose after2s"); combat.CancelAttack();
+        Reset(boss, player, -3); before = hp.CurBlood; Check(combat.BeginAttack(1), "left-facing breath starts");
+        combat.SampleFrame(5); Place(hero, 3); yield return new WaitForSeconds(2.1f);
+        Check(Near(hp.CurBlood, before), "cone rejects a target behind the locked facing direction"); combat.CancelAttack();
+
+        Reset(boss, player, 2); Damage(health, 392, hero.transform); Check(!combat.IsCoreOpen, "core does not trigger above70%");
+        Damage(health, 1, hero.transform); float coreAt = Time.time;
+        Check(combat.IsCoreOpen && combat.CoreStarts == 1 && Near(combat.CoreRemaining, 6), "first70% threshold enters a six-second core exactly once");
+        before = health.CurBlood; Damage(health, 10, hero.transform);
+        Check(Near(before - health.CurBlood, 15) && health.Boost, "core receives50% extra damage while ordinary hit reaction is armored");
+        Check(!combat.BeginAttack(0), "core locks all ordinary casts");
+        combat.SampleCoreFrame(6); yield return new WaitForSeconds(.2f); Check(combat.AuraTicks == 0, "aura inactive before F8");
+        combat.SampleCoreFrame(7); before = hp.CurBlood; float bossX = body.position.x;
+        yield return new WaitForSeconds(.35f); Check(combat.AuraTicks == 1 && Near(before - hp.CurBlood, 8), "first aura tick occurs at0.5s, after F8");
+        float deadline = Time.time + 6;
+        while (combat.IsCoreOpen && Time.time < deadline) yield return null;
+        Check(!combat.IsCoreOpen && Near(Time.time - coreAt, 6, .15f) && Near(body.position.x, bossX), "core stays still and exits after6s without altering gravity");
+        Check(combat.AuraTicks == 12 && combat.BurstCount == 1 && Near(before - hp.CurBlood, 96 + 35), "twelve aura ticks and exactly one35-damage CoreBurst");
+        combat.EndCore(true); Check(combat.BurstCount == 1 && !health.Boost, "repeat cleanup cannot duplicate burst and removes own armor");
+        before = health.CurBlood; Damage(health, 10, hero.transform); Check(Near(before - health.CurBlood, 10), "normal incoming damage restored after core");
+        Damage(health, health.CurBlood - 524, hero.transform);
+        Check(combat.IsCoreOpen && combat.CoreStarts == 2, "first40% threshold triggers the second and final core");
+        var otherSource = new GameObject("IndependentReduction"); health.SetDamageMultiplier(otherSource, .5f);
+        combat.EndCore(true); before = health.CurBlood; Damage(health, 10, hero.transform);
+        Check(Near(before - health.CurBlood, 5) && combat.BurstCount == 2, "interrupted core bursts once and cleanup preserves another damage source");
+        health.RemoveDamageMultiplier(otherSource); Damage(health, 1, hero.transform);
+        Check(!combat.IsCoreOpen && combat.CoreStarts == 2, "subsequent damage below40% cannot retrigger either threshold");
+
+        Reset(boss, player, 20); Damage(health, 393, hero.transform); combat.SampleCoreFrame(7);
+        health.Status.ApplyFreeze(otherSource, 2); yield return null; yield return new WaitForFixedUpdate();
+        Check(!combat.IsCoreOpen && combat.BurstCount == 1 && !health.Boost, "strong freeze interrupts core, emits one burst and clears its own sources");
+        health.ClearDebuffs(); before = health.CurBlood; Damage(health, 10, hero.transform);
+        Check(Near(before - health.CurBlood, 10), "freeze cancellation leaves no vulnerability");
+        Reset(boss, player, 20); Damage(health, 393, hero.transform); Damage(health, 10000, hero.transform);
+        Check(health.Dead && !combat.IsCoreOpen && !health.Boost && combat.BurstCount == 0, "death clears core without a postmortem attack");
+        Reset(boss, player, 20); Check(!combat.IsCoreOpen && combat.CoreStarts == 0 && Near(health.CurBlood, 1310), "pool reuse resets health, thresholds and core state");
+        Damage(health, 800, hero.transform); Check(combat.CoreStarts == 1, "one large hit crossing both thresholds starts the first queued core");
+        combat.EndCore(true); yield return null;
+        Check(combat.IsCoreOpen && combat.CoreStarts == 2, "the40% trigger remains queued rather than being lost");
+        boss.SetActive(false); Check(!combat.IsCoreOpen && !health.Boost, "disable cleans every attack box, aura and source");
+        boss.SetActive(true); combat.BindTarget(player); Place(boss, 0); controller.enabled = true; Place(hero, 3);
+        yield return new WaitForSeconds(1.5f);
+        Check(combat.CurrentSkill == -1 && Near(body.gravityScale, gravity), "real controller completes a frame-sampled cast and preserves gravity");
+        boss.SetActive(false);
+
+        // Resume only the existing Boss instance; invoke the normal completion hook on
+        // the disabled stage to inspect exit state without triggering save/scene changes.
+        realBoss.gameObject.SetActive(true); realBoss.GetComponent<EnemyMovement>().SetTarget(hero.transform); Place(realBoss.gameObject, 15);
+        Damage(real, 10000, hero.transform); yield return new WaitForSeconds(1.6f);
+        Check(!realBoss.gameObject.activeSelf, "actual scene Boss death animation finishes and disables the instance");
+        typeof(LevelManager).GetMethod("CheckBossOver", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(stage, null);
+        Check((bool)Field(stage, "bossOver") && ((ExitManager)Field(stage, "curExit")).gameObject.activeSelf, "normal Level7 Boss completion enables the exit without stalling");
+    }
+}
+#endif

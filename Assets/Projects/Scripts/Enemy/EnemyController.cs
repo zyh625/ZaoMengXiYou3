@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour
     private ActorStatus status;//固体冰冻禁用行为，融化阶段只继续攻击而不移动
     protected Health EH;
     protected EnemyCombat EC;
+    public bool TrainingPassive {get;set;}//仅训练场实例设置；保持受击/死亡动画，暂停走动、攻击和转向。
     [SerializeField] protected EnemyState state;
     [SerializeField] private float stopDistance;
     [SerializeField] protected BoxCollider2D attackedBox;
@@ -71,6 +72,14 @@ public class EnemyController : MonoBehaviour
             EM.ClearExternalControl();//死亡仍优先于吸附，立即恢复原重力。
             EM.Stop(); AttackOver();
             SetState(EnemyState.Die);
+            return;
+        }
+        if(TrainingPassive)
+        {
+            AttackOver();EM.Stop();
+            if(status!=null && status.BlocksActions){HoldControlPose();EH.AttackedEnd();return;}
+            if(EH.Attacked){EH.AttackedEnd();SetState(EnemyState.Attacked);}
+            else if(state!=EnemyState.Attacked || SM.IsFinished)SetState(EnemyState.Idle);
             return;
         }
         if (ProcessSpecialState()) return;

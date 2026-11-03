@@ -35,6 +35,21 @@ public abstract class LevelManager : MonoBehaviour
     protected bool initialized;//对象池建立后才处理换人通知
     private PlayerManager subscribedPlayerManager;//记录实际订阅对象，自动查找和重新启用时不会重复订阅
     public int WaveCount => maxWave;//供关卡创建工具核对波次配置
+    protected virtual bool HasBossPhase => true;
+    private bool rebirthPrepared;
+    public float RuntimeEnemyDelay => enemyDelay * RebirthScaling.Current.SpawnDelay;
+    public float RuntimeEnemyMax => enemyMax + RebirthScaling.Current.ExtraAlive;
+
+    private void PrepareRebirthWaves()
+    {
+        if (rebirthPrepared) return;
+        rebirthPrepared = true;
+        //只改当前实例的数组。计数、推进和BattleRun.SetWave始终读取同一份运行时数量。
+        RebirthScaling.Multipliers scales = RebirthScaling.Current;
+        scales.ScaleWaves(leftEnemyMax, rightEnemyMax, out int[] left, out int[] right);
+        leftEnemyMax = left;
+        rightEnemyMax = right;
+    }
 
 #if UNITY_EDITOR
     private bool battlePractice;//仅编辑器测试期间暂停波次、出口和胜利结算，正式游戏不编译这部分逻辑。
@@ -110,7 +125,11 @@ public abstract class LevelManager : MonoBehaviour
     }
 #endif
 
-    protected virtual void Awake() => ResolveSceneReferences();
+    protected virtual void Awake()
+    {
+        ResolveSceneReferences();
+        PrepareRebirthWaves();
+    }
 
     protected virtual void OnEnable()
     {
@@ -141,11 +160,11 @@ public abstract class LevelManager : MonoBehaviour
             return;
         }
         int level = BattleRun.GetSceneLevel(SceneManager.GetActiveScene().name);//临时统计绑定当前实际关卡，而不是沿用上次进入的编号
-        BattleRun.Begin(level, playerManager);
+        BattleRun.Begin(level, playerManager, HasBossPhase);
         UpdateWaveProgress();
         GoldManager.Current?.BeginRun(playerManager, level);
         InitEnemies();
-        if (curBoss == null)
+        if (curBoss == null && HasBossPhase)
         {
             StopForInvalidConfiguration($"{GetType().Name}未能创建Boss，请检查敌人管理器的Boss预制体和出生点");
             return;
@@ -193,22 +212,22 @@ public abstract class LevelManager : MonoBehaviour
             return;
         }
         int curNum = enemyManager.AliveNum();
-        if (curNum >= enemyMax) return;//同时存在的敌人过多
+        if (curNum >= RuntimeEnemyMax) return;//同时存在的敌人过多
         if (leftEnemy+rightEnemy >= leftEnemyMax[curWave] + rightEnemyMax[curWave])//这一波的全部敌人已经出动
         {
             if (curNum == 0) TryNextWave();
             return;
         }
-        if ((lastLeftTime == -1 || Time.time - lastLeftTime > enemyDelay)
+        if ((lastLeftTime == -1 || Time.time - lastLeftTime > RuntimeEnemyDelay)
             && leftEnemy < leftEnemyMax[curWave])
             TryCreateEnemy(false);
-        if ((lastRightTime == -1 || Time.time - lastRightTime > enemyDelay)
+        if ((lastRightTime == -1 || Time.time - lastRightTime > RuntimeEnemyDelay)
             && rightEnemy < rightEnemyMax[curWave])
             TryCreateEnemy(true);
     }
     protected virtual void TryCreateEnemy(bool r)
     {
-        if (enemyManager.AliveNum() >= enemyMax) return;
+        if (enemyManager.AliveNum() >= RuntimeEnemyMax) return;
         if (!enemyManager.TryCreateEnemy(r, createY)) return;
         if (r)
         {
@@ -232,6 +251,13 @@ public abstract class LevelManager : MonoBehaviour
     {
         if (curWave == maxWave-1)//开启boss战
         {
+            if (!HasBossPhase)
+            {
+                createEnemy = false;
+                curExit.gameObject.SetActive(true);
+                bossOver = true;
+                return;
+            }
             bossStart = true;
             bossStartTime = Time.time;
             return;

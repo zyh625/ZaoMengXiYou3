@@ -361,7 +361,7 @@ public class EnemyMovement : MonoBehaviour
             return;
         }
         Vector2 velocity = body.linearVelocity;
-        velocity.x = (slow ? curSlowSpeed : curMoveSpeed) * MoveSpeedMultiplier * Mathf.Clamp(direction, -1f, 1f);
+        velocity.x = (slow ? curSlowSpeed : curMoveSpeed) * MoveSpeedMultiplier * RebirthScaling.Current.Movement * Mathf.Clamp(direction, -1f, 1f);
         body.linearVelocity= velocity;
     }
     public void AttackedMove(bool r,bool up)

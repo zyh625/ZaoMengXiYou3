@@ -11,17 +11,35 @@ public class Map : MonoBehaviour
     [SerializeField] private float saveDuration = 2f;//"保存游戏"逐渐消失
     [SerializeField] private float saveKeep = 2f;//"保存游戏"先一直显示
     [SerializeField] private GameObject handBook, skills;
+    [SerializeField] private Text rebirthLabel;
     private bool isSaving = false;
     private float beginSave = 0f;
     private GameSession instance;
+    public bool CanRebirth => instance != null && instance.CanRebirth;
+    public void EnterRebirth()
+    {
+        if(instance==null)instance=GameSession.instance;
+        if(instance==null || !Application.CanStreamedLevelBeLoaded("Level1Scene"))return;
+        if(instance.TryBeginRebirthFromMap())SceneManager.LoadScene("Level1Scene");
+    }
     private void Start()
     {
         beginAlpha = saveSucess.color.a;
         instance = GameSession.EnsureSession();
+        instance.DataChanged += RefreshRebirth;
+        RefreshRebirth();
         for(int i = 0; buttons != null && i < Mathf.Min(instance.maxLevel, buttons.Length); i++)
         {
             buttons[i].gameObject.SetActive(true);//开启已经通关的关卡和下一关
         }
+    }
+    private void RefreshRebirth()
+    {
+        if (rebirthLabel != null) rebirthLabel.text = $"第 {(instance != null ? instance.Rebirth : 0)} 轮回";
+    }
+    private void OnDestroy()
+    {
+        if (instance != null) instance.DataChanged -= RefreshRebirth;
     }
     private void Update()
     {

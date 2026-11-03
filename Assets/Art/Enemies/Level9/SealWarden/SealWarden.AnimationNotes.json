@@ -1,0 +1,2718 @@
+{
+  "character": "SealWarden",
+  "generator": "built-in image_gen",
+  "reference": "../Stand.png",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "grid": [
+    4,
+    4
+  ],
+  "cell": [
+    256,
+    384
+  ],
+  "ppu": 100,
+  "pivot": [
+    0.5,
+    0.14583333333333334
+  ],
+  "baseline_top_left": 328,
+  "character_only": true,
+  "animations": [
+    {
+      "key": "Idle",
+      "file": "SpriteSheets16\\Idle.png",
+      "fps": 10,
+      "loop": true,
+      "source": "C:\\Users\\25786\\.codex\\generated_images\\01a1775f-e169-7cc0-bfbe-ed98100a0b0f\\exec-faa4decb-2f87-412e-bcde-018028fcf1ba.png",
+      "prompt": "IDLE heavy breathing loop,16 frames. F1 neutral both cube gauntlets hanging at sides; F2-5 chest rises slightly, shoulder plates lift and twin back stelae sway very slightly; F6-9 slow exhale gauntlets settle; F10-13 mask tilts a few degrees, sun medallion material highlights shift; F14-16 return EXACTLY to F1. Feet planted same positions, NO stepping. Subtle motion not body inflation.",
+      "uniform_scale": 0.6369426751592356,
+      "guid": "7051633f20a04b8db245cea24569154c",
+      "frames": [
+        {
+          "index": 0,
+          "name": "Idle_0",
+          "bbox": [
+            55,
+            128,
+            201,
+            328
+          ],
+          "margins": [
+            55,
+            55,
+            128,
+            56
+          ]
+        },
+        {
+          "index": 1,
+          "name": "Idle_1",
+          "bbox": [
+            56,
+            124,
+            201,
+            328
+          ],
+          "margins": [
+            56,
+            55,
+            124,
+            56
+          ]
+        },
+        {
+          "index": 2,
+          "name": "Idle_2",
+          "bbox": [
+            56,
+            124,
+            201,
+            328
+          ],
+          "margins": [
+            56,
+            55,
+            124,
+            56
+          ]
+        },
+        {
+          "index": 3,
+          "name": "Idle_3",
+          "bbox": [
+            56,
+            122,
+            201,
+            328
+          ],
+          "margins": [
+            56,
+            55,
+            122,
+            56
+          ]
+        },
+        {
+          "index": 4,
+          "name": "Idle_4",
+          "bbox": [
+            56,
+            125,
+            200,
+            328
+          ],
+          "margins": [
+            56,
+            56,
+            125,
+            56
+          ]
+        },
+        {
+          "index": 5,
+          "name": "Idle_5",
+          "bbox": [
+            56,
+            125,
+            201,
+            328
+          ],
+          "margins": [
+            56,
+            55,
+            125,
+            56
+          ]
+        },
+        {
+          "index": 6,
+          "name": "Idle_6",
+          "bbox": [
+            56,
+            125,
+            201,
+            328
+          ],
+          "margins": [
+            56,
+            55,
+            125,
+            56
+          ]
+        },
+        {
+          "index": 7,
+          "name": "Idle_7",
+          "bbox": [
+            57,
+            125,
+            200,
+            328
+          ],
+          "margins": [
+            57,
+            56,
+            125,
+            56
+          ]
+        },
+        {
+          "index": 8,
+          "name": "Idle_8",
+          "bbox": [
+            56,
+            129,
+            201,
+            328
+          ],
+          "margins": [
+            56,
+            55,
+            129,
+            56
+          ]
+        },
+        {
+          "index": 9,
+          "name": "Idle_9",
+          "bbox": [
+            55,
+            131,
+            201,
+            328
+          ],
+          "margins": [
+            55,
+            55,
+            131,
+            56
+          ]
+        },
+        {
+          "index": 10,
+          "name": "Idle_10",
+          "bbox": [
+            56,
+            131,
+            201,
+            328
+          ],
+          "margins": [
+            56,
+            55,
+            131,
+            56
+          ]
+        },
+        {
+          "index": 11,
+          "name": "Idle_11",
+          "bbox": [
+            56,
+            131,
+            200,
+            328
+          ],
+          "margins": [
+            56,
+            56,
+            131,
+            56
+          ]
+        },
+        {
+          "index": 12,
+          "name": "Idle_12",
+          "bbox": [
+            56,
+            127,
+            201,
+            328
+          ],
+          "margins": [
+            56,
+            55,
+            127,
+            56
+          ]
+        },
+        {
+          "index": 13,
+          "name": "Idle_13",
+          "bbox": [
+            56,
+            127,
+            200,
+            328
+          ],
+          "margins": [
+            56,
+            56,
+            127,
+            56
+          ]
+        },
+        {
+          "index": 14,
+          "name": "Idle_14",
+          "bbox": [
+            56,
+            127,
+            200,
+            328
+          ],
+          "margins": [
+            56,
+            56,
+            127,
+            56
+          ]
+        },
+        {
+          "index": 15,
+          "name": "Idle_15",
+          "bbox": [
+            56,
+            127,
+            200,
+            328
+          ],
+          "margins": [
+            56,
+            56,
+            127,
+            56
+          ]
+        }
+      ],
+      "sha256": "9ae0e77c86acb2523f07fd35d91ffd3dce96748c309eb2cf82fe7cd50779270b"
+    },
+    {
+      "key": "Walk",
+      "file": "SpriteSheets16\\Walk.png",
+      "fps": 10,
+      "loop": true,
+      "source": "C:\\Users\\25786\\.codex\\generated_images\\01a1775f-e169-7cc0-bfbe-ed98100a0b0f\\exec-b6a1b6f5-01ff-4bc1-8468-97956ccecce0.png",
+      "prompt": "WALK IN PLACE,16-frame heavy armored stomp loop. F1 left boot forward; F2-5 weight sinks onto left leg with deep body dip and both gauntlets swinging; F6-9 right leg passes with readable knee lift; F10-13 right boot lands with heavy bob, stelae jolt; F14-16 left leg comes through back to F1. Legs alternate clearly. Slow weighty walking NOT running. Root stays horizontally stationary and feet share ground baseline. Last to first seamless.",
+      "uniform_scale": 0.6134969325153374,
+      "guid": "db29f81fc22a460e99d0f0069c0eb2f2",
+      "frames": [
+        {
+          "index": 0,
+          "name": "Walk_0",
+          "bbox": [
+            52,
+            128,
+            205,
+            328
+          ],
+          "margins": [
+            52,
+            51,
+            128,
+            56
+          ]
+        },
+        {
+          "index": 1,
+          "name": "Walk_1",
+          "bbox": [
+            54,
+            137,
+            202,
+            328
+          ],
+          "margins": [
+            54,
+            54,
+            137,
+            56
+          ]
+        },
+        {
+          "index": 2,
+          "name": "Walk_2",
+          "bbox": [
+            47,
+            141,
+            209,
+            328
+          ],
+          "margins": [
+            47,
+            47,
+            141,
+            56
+          ]
+        },
+        {
+          "index": 3,
+          "name": "Walk_3",
+          "bbox": [
+            55,
+            143,
+            202,
+            328
+          ],
+          "margins": [
+            55,
+            54,
+            143,
+            56
+          ]
+        },
+        {
+          "index": 4,
+          "name": "Walk_4",
+          "bbox": [
+            50,
+            135,
+            206,
+            328
+          ],
+          "margins": [
+            50,
+            50,
+            135,
+            56
+          ]
+        },
+        {
+          "index": 5,
+          "name": "Walk_5",
+          "bbox": [
+            49,
+            124,
+            207,
+            328
+          ],
+          "margins": [
+            49,
+            49,
+            124,
+            56
+          ]
+        },
+        {
+          "index": 6,
+          "name": "Walk_6",
+          "bbox": [
+            55,
+            124,
+            201,
+            328
+          ],
+          "margins": [
+            55,
+            55,
+            124,
+            56
+          ]
+        },
+        {
+          "index": 7,
+          "name": "Walk_7",
+          "bbox": [
+            53,
+            126,
+            203,
+            328
+          ],
+          "margins": [
+            53,
+            53,
+            126,
+            56
+          ]
+        },
+        {
+          "index": 8,
+          "name": "Walk_8",
+          "bbox": [
+            48,
+            122,
+            208,
+            328
+          ],
+          "margins": [
+            48,
+            48,
+            122,
+            56
+          ]
+        },
+        {
+          "index": 9,
+          "name": "Walk_9",
+          "bbox": [
+            50,
+            128,
+            206,
+            328
+          ],
+          "margins": [
+            50,
+            50,
+            128,
+            56
+          ]
+        },
+        {
+          "index": 10,
+          "name": "Walk_10",
+          "bbox": [
+            52,
+            127,
+            204,
+            328
+          ],
+          "margins": [
+            52,
+            52,
+            127,
+            56
+          ]
+        },
+        {
+          "index": 11,
+          "name": "Walk_11",
+          "bbox": [
+            55,
+            130,
+            202,
+            328
+          ],
+          "margins": [
+            55,
+            54,
+            130,
+            56
+          ]
+        },
+        {
+          "index": 12,
+          "name": "Walk_12",
+          "bbox": [
+            49,
+            124,
+            208,
+            328
+          ],
+          "margins": [
+            49,
+            48,
+            124,
+            56
+          ]
+        },
+        {
+          "index": 13,
+          "name": "Walk_13",
+          "bbox": [
+            50,
+            121,
+            206,
+            328
+          ],
+          "margins": [
+            50,
+            50,
+            121,
+            56
+          ]
+        },
+        {
+          "index": 14,
+          "name": "Walk_14",
+          "bbox": [
+            52,
+            131,
+            204,
+            328
+          ],
+          "margins": [
+            52,
+            52,
+            131,
+            56
+          ]
+        },
+        {
+          "index": 15,
+          "name": "Walk_15",
+          "bbox": [
+            54,
+            129,
+            202,
+            328
+          ],
+          "margins": [
+            54,
+            54,
+            129,
+            56
+          ]
+        }
+      ],
+      "sha256": "4ef0d8a35cb4192c457be6a9a92a245fb0d62a22dbaf16f81690680b969460a1"
+    },
+    {
+      "key": "SealPunch",
+      "file": "SpriteSheets16\\SealPunch.png",
+      "fps": 14,
+      "loop": false,
+      "source": "C:\\Users\\25786\\.codex\\generated_images\\01a1775f-e169-7cc0-bfbe-ed98100a0b0f\\exec-e4ae308f-ff37-46b7-a823-f4adcdd7b93d.png",
+      "prompt": "One-shot STAGGERED SEAL PUNCH,16 frames. F1-4 raise left cube gauntlet; F5-7 drive LEFT punch straight forward toward SCREEN LEFT at chest height; F8-9 hold left arm extended; F10-11 draw left back while cocking right cube; F12-13 drive RIGHT punch toward SCREEN LEFT at lower waist height; F14-16 retract both to initial ready stance. Two separate clear punch beats at DIFFERENT heights. Keep both cube gauntlets attached, complete, same size. Both stelae remain on back. NO punch trails or impact graphics.",
+      "uniform_scale": 0.6402877697841727,
+      "guid": "b657b07dfd1a4037b5a35802c496331d",
+      "frames": [
+        {
+          "index": 0,
+          "name": "SealPunch_0",
+          "bbox": [
+            55,
+            132,
+            201,
+            328
+          ],
+          "margins": [
+            55,
+            55,
+            132,
+            56
+          ]
+        },
+        {
+          "index": 1,
+          "name": "SealPunch_1",
+          "bbox": [
+            59,
+            126,
+            198,
+            328
+          ],
+          "margins": [
+            59,
+            58,
+            126,
+            56
+          ]
+        },
+        {
+          "index": 2,
+          "name": "SealPunch_2",
+          "bbox": [
+            53,
+            133,
+            203,
+            328
+          ],
+          "margins": [
+            53,
+            53,
+            133,
+            56
+          ]
+        },
+        {
+          "index": 3,
+          "name": "SealPunch_3",
+          "bbox": [
+            56,
+            103,
+            200,
+            328
+          ],
+          "margins": [
+            56,
+            56,
+            103,
+            56
+          ]
+        },
+        {
+          "index": 4,
+          "name": "SealPunch_4",
+          "bbox": [
+            47,
+            144,
+            209,
+            328
+          ],
+          "margins": [
+            47,
+            47,
+            144,
+            56
+          ]
+        },
+        {
+          "index": 5,
+          "name": "SealPunch_5",
+          "bbox": [
+            40,
+            146,
+            216,
+            328
+          ],
+          "margins": [
+            40,
+            40,
+            146,
+            56
+          ]
+        },
+        {
+          "index": 6,
+          "name": "SealPunch_6",
+          "bbox": [
+            39,
+            144,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            144,
+            56
+          ]
+        },
+        {
+          "index": 7,
+          "name": "SealPunch_7",
+          "bbox": [
+            46,
+            149,
+            210,
+            328
+          ],
+          "margins": [
+            46,
+            46,
+            149,
+            56
+          ]
+        },
+        {
+          "index": 8,
+          "name": "SealPunch_8",
+          "bbox": [
+            56,
+            126,
+            201,
+            328
+          ],
+          "margins": [
+            56,
+            55,
+            126,
+            56
+          ]
+        },
+        {
+          "index": 9,
+          "name": "SealPunch_9",
+          "bbox": [
+            55,
+            126,
+            202,
+            328
+          ],
+          "margins": [
+            55,
+            54,
+            126,
+            56
+          ]
+        },
+        {
+          "index": 10,
+          "name": "SealPunch_10",
+          "bbox": [
+            57,
+            125,
+            199,
+            328
+          ],
+          "margins": [
+            57,
+            57,
+            125,
+            56
+          ]
+        },
+        {
+          "index": 11,
+          "name": "SealPunch_11",
+          "bbox": [
+            51,
+            141,
+            205,
+            328
+          ],
+          "margins": [
+            51,
+            51,
+            141,
+            56
+          ]
+        },
+        {
+          "index": 12,
+          "name": "SealPunch_12",
+          "bbox": [
+            45,
+            153,
+            211,
+            328
+          ],
+          "margins": [
+            45,
+            45,
+            153,
+            56
+          ]
+        },
+        {
+          "index": 13,
+          "name": "SealPunch_13",
+          "bbox": [
+            63,
+            140,
+            194,
+            328
+          ],
+          "margins": [
+            63,
+            62,
+            140,
+            56
+          ]
+        },
+        {
+          "index": 14,
+          "name": "SealPunch_14",
+          "bbox": [
+            62,
+            138,
+            195,
+            328
+          ],
+          "margins": [
+            62,
+            61,
+            138,
+            56
+          ]
+        },
+        {
+          "index": 15,
+          "name": "SealPunch_15",
+          "bbox": [
+            57,
+            137,
+            199,
+            328
+          ],
+          "margins": [
+            57,
+            57,
+            137,
+            56
+          ]
+        }
+      ],
+      "sha256": "8272014a7ef138525e37150b7ccacaed35c191ffeb29c1e0eeb34a8764112c69"
+    },
+    {
+      "key": "DeployBoundary",
+      "file": "SpriteSheets16\\DeployBoundary.png",
+      "fps": 14,
+      "loop": false,
+      "source": "C:\\Users\\25786\\.codex\\generated_images\\01a1775f-e169-7cc0-bfbe-ed98100a0b0f\\exec-b45032c0-ba37-4607-a715-136323aa65a5.png",
+      "prompt": "One-shot DEPLOY BOUNDARY,16 chronological frames. F1-4 raise BOTH cube gauntlets overhead, complete silhouette shrinks neither grows; F5-8 slam both attached cube gauntlets down either side of body, knees brace; F9-12 the SAME TWO back stelae swing forward at hinged shoulders and lower to plant upright into the ground on either side; F13-16 hold planted crouch with both hands inside/on cubes. Exactly TWO stelae total, move those from back, DO NOT leave copies on back. No separately created wedges or magical boundary walls; no dust, no circles. Physical stelae remain fully visible inside each cell.",
+      "uniform_scale": 0.6802721088435374,
+      "guid": "32322f028d654df6940a08ff4439e779",
+      "frames": [
+        {
+          "index": 0,
+          "name": "DeployBoundary_0",
+          "bbox": [
+            54,
+            128,
+            202,
+            328
+          ],
+          "margins": [
+            54,
+            54,
+            128,
+            56
+          ]
+        },
+        {
+          "index": 1,
+          "name": "DeployBoundary_1",
+          "bbox": [
+            52,
+            128,
+            204,
+            328
+          ],
+          "margins": [
+            52,
+            52,
+            128,
+            56
+          ]
+        },
+        {
+          "index": 2,
+          "name": "DeployBoundary_2",
+          "bbox": [
+            60,
+            91,
+            197,
+            328
+          ],
+          "margins": [
+            60,
+            59,
+            91,
+            56
+          ]
+        },
+        {
+          "index": 3,
+          "name": "DeployBoundary_3",
+          "bbox": [
+            62,
+            72,
+            195,
+            328
+          ],
+          "margins": [
+            62,
+            61,
+            72,
+            56
+          ]
+        },
+        {
+          "index": 4,
+          "name": "DeployBoundary_4",
+          "bbox": [
+            55,
+            97,
+            201,
+            328
+          ],
+          "margins": [
+            55,
+            55,
+            97,
+            56
+          ]
+        },
+        {
+          "index": 5,
+          "name": "DeployBoundary_5",
+          "bbox": [
+            48,
+            148,
+            209,
+            328
+          ],
+          "margins": [
+            48,
+            47,
+            148,
+            56
+          ]
+        },
+        {
+          "index": 6,
+          "name": "DeployBoundary_6",
+          "bbox": [
+            51,
+            172,
+            205,
+            328
+          ],
+          "margins": [
+            51,
+            51,
+            172,
+            56
+          ]
+        },
+        {
+          "index": 7,
+          "name": "DeployBoundary_7",
+          "bbox": [
+            52,
+            162,
+            204,
+            328
+          ],
+          "margins": [
+            52,
+            52,
+            162,
+            56
+          ]
+        },
+        {
+          "index": 8,
+          "name": "DeployBoundary_8",
+          "bbox": [
+            56,
+            159,
+            201,
+            328
+          ],
+          "margins": [
+            56,
+            55,
+            159,
+            56
+          ]
+        },
+        {
+          "index": 9,
+          "name": "DeployBoundary_9",
+          "bbox": [
+            52,
+            180,
+            204,
+            328
+          ],
+          "margins": [
+            52,
+            52,
+            180,
+            56
+          ]
+        },
+        {
+          "index": 10,
+          "name": "DeployBoundary_10",
+          "bbox": [
+            54,
+            177,
+            202,
+            328
+          ],
+          "margins": [
+            54,
+            54,
+            177,
+            56
+          ]
+        },
+        {
+          "index": 11,
+          "name": "DeployBoundary_11",
+          "bbox": [
+            54,
+            169,
+            203,
+            328
+          ],
+          "margins": [
+            54,
+            53,
+            169,
+            56
+          ]
+        },
+        {
+          "index": 12,
+          "name": "DeployBoundary_12",
+          "bbox": [
+            55,
+            184,
+            202,
+            328
+          ],
+          "margins": [
+            55,
+            54,
+            184,
+            56
+          ]
+        },
+        {
+          "index": 13,
+          "name": "DeployBoundary_13",
+          "bbox": [
+            54,
+            184,
+            203,
+            328
+          ],
+          "margins": [
+            54,
+            53,
+            184,
+            56
+          ]
+        },
+        {
+          "index": 14,
+          "name": "DeployBoundary_14",
+          "bbox": [
+            54,
+            185,
+            202,
+            328
+          ],
+          "margins": [
+            54,
+            54,
+            185,
+            56
+          ]
+        },
+        {
+          "index": 15,
+          "name": "DeployBoundary_15",
+          "bbox": [
+            56,
+            184,
+            201,
+            328
+          ],
+          "margins": [
+            56,
+            55,
+            184,
+            56
+          ]
+        }
+      ],
+      "sha256": "e99abcb24fab2efa41ddabc3754c2ba5b2d9e5ef1ab6091ec7a7be47381a66a5"
+    },
+    {
+      "key": "GateCompression",
+      "file": "SpriteSheets16\\GateCompression.png",
+      "fps": 14,
+      "loop": false,
+      "source": "C:\\Users\\25786\\.codex\\generated_images\\01a1775f-e169-7cc0-bfbe-ed98100a0b0f\\exec-6b828844-3a4e-45ea-b2d2-56fb27f56a7f.png",
+      "prompt": "One-shot GATE COMPRESSION,16 frames. F1-4 bring both cube gauntlets together in front of chest, palms facing each other; F5-8 brace knees and push cubes inward; F9-13 hold compression, torso leaning, twin stelae trembling subtly; F14-16 release and return to ready stance. Cubes retain cubic gold/black construction and sun emblems, do not fuse them into one object. NO gate, wall, dust or energy graphics, poses only.",
+      "uniform_scale": 0.5633802816901409,
+      "guid": "eef2f5dd03fa49a9ada236c5577ac533",
+      "frames": [
+        {
+          "index": 0,
+          "name": "GateCompression_0",
+          "bbox": [
+            56,
+            128,
+            200,
+            328
+          ],
+          "margins": [
+            56,
+            56,
+            128,
+            56
+          ]
+        },
+        {
+          "index": 1,
+          "name": "GateCompression_1",
+          "bbox": [
+            62,
+            129,
+            194,
+            328
+          ],
+          "margins": [
+            62,
+            62,
+            129,
+            56
+          ]
+        },
+        {
+          "index": 2,
+          "name": "GateCompression_2",
+          "bbox": [
+            64,
+            130,
+            192,
+            328
+          ],
+          "margins": [
+            64,
+            64,
+            130,
+            56
+          ]
+        },
+        {
+          "index": 3,
+          "name": "GateCompression_3",
+          "bbox": [
+            66,
+            130,
+            191,
+            328
+          ],
+          "margins": [
+            66,
+            65,
+            130,
+            56
+          ]
+        },
+        {
+          "index": 4,
+          "name": "GateCompression_4",
+          "bbox": [
+            65,
+            140,
+            192,
+            328
+          ],
+          "margins": [
+            65,
+            64,
+            140,
+            56
+          ]
+        },
+        {
+          "index": 5,
+          "name": "GateCompression_5",
+          "bbox": [
+            61,
+            144,
+            195,
+            328
+          ],
+          "margins": [
+            61,
+            61,
+            144,
+            56
+          ]
+        },
+        {
+          "index": 6,
+          "name": "GateCompression_6",
+          "bbox": [
+            59,
+            139,
+            198,
+            328
+          ],
+          "margins": [
+            59,
+            58,
+            139,
+            56
+          ]
+        },
+        {
+          "index": 7,
+          "name": "GateCompression_7",
+          "bbox": [
+            64,
+            140,
+            192,
+            328
+          ],
+          "margins": [
+            64,
+            64,
+            140,
+            56
+          ]
+        },
+        {
+          "index": 8,
+          "name": "GateCompression_8",
+          "bbox": [
+            64,
+            143,
+            193,
+            328
+          ],
+          "margins": [
+            64,
+            63,
+            143,
+            56
+          ]
+        },
+        {
+          "index": 9,
+          "name": "GateCompression_9",
+          "bbox": [
+            63,
+            143,
+            194,
+            328
+          ],
+          "margins": [
+            63,
+            62,
+            143,
+            56
+          ]
+        },
+        {
+          "index": 10,
+          "name": "GateCompression_10",
+          "bbox": [
+            62,
+            145,
+            195,
+            328
+          ],
+          "margins": [
+            62,
+            61,
+            145,
+            56
+          ]
+        },
+        {
+          "index": 11,
+          "name": "GateCompression_11",
+          "bbox": [
+            65,
+            140,
+            191,
+            328
+          ],
+          "margins": [
+            65,
+            65,
+            140,
+            56
+          ]
+        },
+        {
+          "index": 12,
+          "name": "GateCompression_12",
+          "bbox": [
+            64,
+            139,
+            192,
+            328
+          ],
+          "margins": [
+            64,
+            64,
+            139,
+            56
+          ]
+        },
+        {
+          "index": 13,
+          "name": "GateCompression_13",
+          "bbox": [
+            63,
+            139,
+            193,
+            328
+          ],
+          "margins": [
+            63,
+            63,
+            139,
+            56
+          ]
+        },
+        {
+          "index": 14,
+          "name": "GateCompression_14",
+          "bbox": [
+            60,
+            134,
+            197,
+            328
+          ],
+          "margins": [
+            60,
+            59,
+            134,
+            56
+          ]
+        },
+        {
+          "index": 15,
+          "name": "GateCompression_15",
+          "bbox": [
+            59,
+            129,
+            197,
+            328
+          ],
+          "margins": [
+            59,
+            59,
+            129,
+            56
+          ]
+        }
+      ],
+      "sha256": "e95016b038a950277ce80e6acd877ce64ad28419f1bfd271ae2e76aeb01979b4"
+    },
+    {
+      "key": "Hit",
+      "file": "SpriteSheets16\\Hit.png",
+      "fps": 16,
+      "loop": false,
+      "source": "C:\\Users\\25786\\.codex\\generated_images\\01a1775f-e169-7cc0-bfbe-ed98100a0b0f\\exec-d90e93aa-8584-4cf0-a560-df3277e7fe3f.png",
+      "prompt": "SINGLE HIT REACTION16 frames, NOT an attack. F1 ready; F2 back stelae jolt; F3-6 torso shoved back toward screen RIGHT as impact comes from LEFT, mask tilts, both gauntlets swing outward; F7-9 one boot slides backward to brace; F10-13 settle; F14-16 return EXACTLY initial ready stance. No punch motion. No enemy/projectile/blood/sparks/motion lines.",
+      "uniform_scale": 0.5952380952380952,
+      "guid": "0118521a42be476bb29733a680807517",
+      "frames": [
+        {
+          "index": 0,
+          "name": "Hit_0",
+          "bbox": [
+            56,
+            128,
+            200,
+            328
+          ],
+          "margins": [
+            56,
+            56,
+            128,
+            56
+          ]
+        },
+        {
+          "index": 1,
+          "name": "Hit_1",
+          "bbox": [
+            51,
+            130,
+            205,
+            328
+          ],
+          "margins": [
+            51,
+            51,
+            130,
+            56
+          ]
+        },
+        {
+          "index": 2,
+          "name": "Hit_2",
+          "bbox": [
+            53,
+            132,
+            204,
+            328
+          ],
+          "margins": [
+            53,
+            52,
+            132,
+            56
+          ]
+        },
+        {
+          "index": 3,
+          "name": "Hit_3",
+          "bbox": [
+            61,
+            139,
+            196,
+            328
+          ],
+          "margins": [
+            61,
+            60,
+            139,
+            56
+          ]
+        },
+        {
+          "index": 4,
+          "name": "Hit_4",
+          "bbox": [
+            51,
+            142,
+            206,
+            328
+          ],
+          "margins": [
+            51,
+            50,
+            142,
+            56
+          ]
+        },
+        {
+          "index": 5,
+          "name": "Hit_5",
+          "bbox": [
+            49,
+            152,
+            207,
+            328
+          ],
+          "margins": [
+            49,
+            49,
+            152,
+            56
+          ]
+        },
+        {
+          "index": 6,
+          "name": "Hit_6",
+          "bbox": [
+            54,
+            158,
+            203,
+            328
+          ],
+          "margins": [
+            54,
+            53,
+            158,
+            56
+          ]
+        },
+        {
+          "index": 7,
+          "name": "Hit_7",
+          "bbox": [
+            59,
+            152,
+            197,
+            328
+          ],
+          "margins": [
+            59,
+            59,
+            152,
+            56
+          ]
+        },
+        {
+          "index": 8,
+          "name": "Hit_8",
+          "bbox": [
+            53,
+            136,
+            203,
+            328
+          ],
+          "margins": [
+            53,
+            53,
+            136,
+            56
+          ]
+        },
+        {
+          "index": 9,
+          "name": "Hit_9",
+          "bbox": [
+            55,
+            135,
+            201,
+            328
+          ],
+          "margins": [
+            55,
+            55,
+            135,
+            56
+          ]
+        },
+        {
+          "index": 10,
+          "name": "Hit_10",
+          "bbox": [
+            50,
+            131,
+            207,
+            328
+          ],
+          "margins": [
+            50,
+            49,
+            131,
+            56
+          ]
+        },
+        {
+          "index": 11,
+          "name": "Hit_11",
+          "bbox": [
+            59,
+            137,
+            197,
+            328
+          ],
+          "margins": [
+            59,
+            59,
+            137,
+            56
+          ]
+        },
+        {
+          "index": 12,
+          "name": "Hit_12",
+          "bbox": [
+            55,
+            146,
+            201,
+            328
+          ],
+          "margins": [
+            55,
+            55,
+            146,
+            56
+          ]
+        },
+        {
+          "index": 13,
+          "name": "Hit_13",
+          "bbox": [
+            58,
+            140,
+            198,
+            328
+          ],
+          "margins": [
+            58,
+            58,
+            140,
+            56
+          ]
+        },
+        {
+          "index": 14,
+          "name": "Hit_14",
+          "bbox": [
+            55,
+            138,
+            202,
+            328
+          ],
+          "margins": [
+            55,
+            54,
+            138,
+            56
+          ]
+        },
+        {
+          "index": 15,
+          "name": "Hit_15",
+          "bbox": [
+            59,
+            135,
+            198,
+            328
+          ],
+          "margins": [
+            59,
+            58,
+            135,
+            56
+          ]
+        }
+      ],
+      "sha256": "951ba36f89c80559333b772cd15a323b8505e73dd52a3b67492b6c68a539add9"
+    },
+    {
+      "key": "Death",
+      "file": "SpriteSheets16\\Death.png",
+      "fps": 12,
+      "loop": false,
+      "source": "C:\\Users\\25786\\.codex\\generated_images\\01a1775f-e169-7cc0-bfbe-ed98100a0b0f\\exec-5d94109a-5b1d-4f12-9173-2c88e72cfe0e.png",
+      "prompt": "DEATH16 frames one-shot. F1-3 stagger backward gauntlets dragging; F4-7 legs buckle and twin stelae tip; F8-11 sink onto BOTH knees, both cube gauntlets meet ground; F12-15 fall FORWARD onto ground, twin stelae lower across the back; F16 final still collapsed pose. Natural continuous changing poses, not sixteen upright repeats. Both cubes and both stelae remain attached/complete same scale, no dismemberment. Entire horizontal collapsed body fits with margin. Do NOT fade alpha: final opaque fallen pose. No blood, dust, fracture debris or external effects.",
+      "uniform_scale": 0.6006006006006006,
+      "guid": "eaaf994b15a74c3d933f023264b4214f",
+      "frames": [
+        {
+          "index": 0,
+          "name": "Death_0",
+          "bbox": [
+            54,
+            128,
+            202,
+            328
+          ],
+          "margins": [
+            54,
+            54,
+            128,
+            56
+          ]
+        },
+        {
+          "index": 1,
+          "name": "Death_1",
+          "bbox": [
+            58,
+            126,
+            199,
+            328
+          ],
+          "margins": [
+            58,
+            57,
+            126,
+            56
+          ]
+        },
+        {
+          "index": 2,
+          "name": "Death_2",
+          "bbox": [
+            51,
+            129,
+            205,
+            328
+          ],
+          "margins": [
+            51,
+            51,
+            129,
+            56
+          ]
+        },
+        {
+          "index": 3,
+          "name": "Death_3",
+          "bbox": [
+            54,
+            150,
+            202,
+            328
+          ],
+          "margins": [
+            54,
+            54,
+            150,
+            56
+          ]
+        },
+        {
+          "index": 4,
+          "name": "Death_4",
+          "bbox": [
+            53,
+            137,
+            204,
+            328
+          ],
+          "margins": [
+            53,
+            52,
+            137,
+            56
+          ]
+        },
+        {
+          "index": 5,
+          "name": "Death_5",
+          "bbox": [
+            60,
+            145,
+            197,
+            328
+          ],
+          "margins": [
+            60,
+            59,
+            145,
+            56
+          ]
+        },
+        {
+          "index": 6,
+          "name": "Death_6",
+          "bbox": [
+            56,
+            154,
+            201,
+            328
+          ],
+          "margins": [
+            56,
+            55,
+            154,
+            56
+          ]
+        },
+        {
+          "index": 7,
+          "name": "Death_7",
+          "bbox": [
+            55,
+            190,
+            201,
+            328
+          ],
+          "margins": [
+            55,
+            55,
+            190,
+            56
+          ]
+        },
+        {
+          "index": 8,
+          "name": "Death_8",
+          "bbox": [
+            54,
+            198,
+            203,
+            328
+          ],
+          "margins": [
+            54,
+            53,
+            198,
+            56
+          ]
+        },
+        {
+          "index": 9,
+          "name": "Death_9",
+          "bbox": [
+            56,
+            213,
+            200,
+            328
+          ],
+          "margins": [
+            56,
+            56,
+            213,
+            56
+          ]
+        },
+        {
+          "index": 10,
+          "name": "Death_10",
+          "bbox": [
+            56,
+            231,
+            200,
+            328
+          ],
+          "margins": [
+            56,
+            56,
+            231,
+            56
+          ]
+        },
+        {
+          "index": 11,
+          "name": "Death_11",
+          "bbox": [
+            49,
+            248,
+            207,
+            328
+          ],
+          "margins": [
+            49,
+            49,
+            248,
+            56
+          ]
+        },
+        {
+          "index": 12,
+          "name": "Death_12",
+          "bbox": [
+            52,
+            257,
+            205,
+            328
+          ],
+          "margins": [
+            52,
+            51,
+            257,
+            56
+          ]
+        },
+        {
+          "index": 13,
+          "name": "Death_13",
+          "bbox": [
+            54,
+            261,
+            203,
+            328
+          ],
+          "margins": [
+            54,
+            53,
+            261,
+            56
+          ]
+        },
+        {
+          "index": 14,
+          "name": "Death_14",
+          "bbox": [
+            56,
+            263,
+            201,
+            328
+          ],
+          "margins": [
+            56,
+            55,
+            263,
+            56
+          ]
+        },
+        {
+          "index": 15,
+          "name": "Death_15",
+          "bbox": [
+            51,
+            261,
+            205,
+            328
+          ],
+          "margins": [
+            51,
+            51,
+            261,
+            56
+          ]
+        }
+      ],
+      "sha256": "d47e0f1081af9f24fb3eb4debb58bd220d32ce2775c31015a6105b0db02f556b"
+    }
+  ],
+  "effects": [
+    {
+      "key": "SealPunchImpact",
+      "file": "Effects\\SealPunchImpact.png",
+      "fps": 16,
+      "loop": false,
+      "source": "C:\\Users\\25786\\.codex\\generated_images\\01a1775f-e169-7cc0-bfbe-ed98100a0b0f\\exec-312cfd2f-f334-4f4e-9f0b-c8ea68da0c02.png",
+      "prompt": "STAGGERED DOUBLE SEAL-PUNCH IMPACT, sixteen chronological frames. Effect only, NO character, hands, arms or physical gauntlets. Two successive compact angular antique-gold/ivory impact rings with black SUN seal imprint and fine crimson fissure streaks, punching toward screen LEFT. F1-3 small tightly coiling upper-height gold pressure streak; F4-6 first upper impact bursts toward LEFT; F7-8 upper ring breaks and fades; F9-10 second seal gathers lower by45px; F11-13 stronger lower impact expands LEFT; F14-16 both fragment into fading golden/crimson flecks, nearly gone final. Same drawing scale, no text or actual script glyphs, no floor shockwave/fire/lightning. All particles remain inside the cell.",
+      "uniform_scale": 0.6953125,
+      "guid": "e5d79907dda94dabbe4f8ed37a862b34",
+      "frames": [
+        {
+          "index": 0,
+          "name": "SealPunchImpact_0",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 1,
+          "name": "SealPunchImpact_1",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 2,
+          "name": "SealPunchImpact_2",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 3,
+          "name": "SealPunchImpact_3",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 4,
+          "name": "SealPunchImpact_4",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 5,
+          "name": "SealPunchImpact_5",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 6,
+          "name": "SealPunchImpact_6",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 7,
+          "name": "SealPunchImpact_7",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 8,
+          "name": "SealPunchImpact_8",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 9,
+          "name": "SealPunchImpact_9",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 10,
+          "name": "SealPunchImpact_10",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 11,
+          "name": "SealPunchImpact_11",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 12,
+          "name": "SealPunchImpact_12",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 13,
+          "name": "SealPunchImpact_13",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 14,
+          "name": "SealPunchImpact_14",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 15,
+          "name": "SealPunchImpact_15",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        }
+      ],
+      "sha256": "741b26268db73e6fd671c28779b19309546473956cc8a868c6e38e2b4e0b090a"
+    },
+    {
+      "key": "BoundarySeal",
+      "file": "Effects\\BoundarySeal.png",
+      "fps": 16,
+      "loop": false,
+      "source": "C:\\Users\\25786\\.codex\\generated_images\\01a1775f-e169-7cc0-bfbe-ed98100a0b0f\\exec-90ef0d01-44a5-4973-a9ae-3c27b4a37a0d.png",
+      "prompt": "DEPLOY BOUNDARY effect, sixteen chronological frames. No character, armor, hands or cube gauntlets. Exactly TWO short rectangular BLACK STONE / IVORY boundary stelae with antique GOLD frames and BLACK SUN medallions, matching the reference's back stelae as independent deployed objects, separated with an EMPTY passable center gap. F1-3 two small thin gold/crimson ground seal outlines telegraph positions; F4-7 twin stelae rise/settle into those positions with compact ivory-gold landing flashes; F8-11 both complete stelae hold planted, thin crimson seam pulse; F12-14 fissures spread and stone chips loosen; F15-16 pair breaks into small black/gold fragments and fades. Keep same pair and drawing scale. Blank middle corridor, NO wall connecting posts, no enclosing cage. No floor texture, letters, extra stelae or character. Both whole posts and every fragment inside cell.",
+      "uniform_scale": 0.6953125,
+      "guid": "08344c370b2945599721f49628f0cb49",
+      "frames": [
+        {
+          "index": 0,
+          "name": "BoundarySeal_0",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 1,
+          "name": "BoundarySeal_1",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 2,
+          "name": "BoundarySeal_2",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 3,
+          "name": "BoundarySeal_3",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 4,
+          "name": "BoundarySeal_4",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 5,
+          "name": "BoundarySeal_5",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 6,
+          "name": "BoundarySeal_6",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 7,
+          "name": "BoundarySeal_7",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 8,
+          "name": "BoundarySeal_8",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 9,
+          "name": "BoundarySeal_9",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 10,
+          "name": "BoundarySeal_10",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 11,
+          "name": "BoundarySeal_11",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 12,
+          "name": "BoundarySeal_12",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 13,
+          "name": "BoundarySeal_13",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 14,
+          "name": "BoundarySeal_14",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 15,
+          "name": "BoundarySeal_15",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        }
+      ],
+      "sha256": "165081a273ed1e19a84477ba2950abddf42935cccf12ce0c3892bed2ff4464b2"
+    },
+    {
+      "key": "GateCompression",
+      "file": "Effects\\GateCompression.png",
+      "fps": 16,
+      "loop": false,
+      "source": "C:\\Users\\25786\\.codex\\generated_images\\01a1775f-e169-7cc0-bfbe-ed98100a0b0f\\exec-a796939e-c431-4739-9fea-000642805914.png",
+      "prompt": "GATE COMPRESSION effect only,16 chronological frames. No character, limbs, armor or cube gauntlets. Pair of upright angular translucent IVORY-GOLD boundary-force panels with dark broken-sun imprints and thin CRIMSON seam lines, aligned LEFT and RIGHT leaving a clear central gap. F1-4 faint gold contours brighten and rim lines turn red to telegraph; F5-8 BOTH panels slide inward symmetrically ONCE to compress gap, fixed target center not tracking; F9-11 narrow central gold-white compressed seal flash, panels nearly meet without filling whole cell; F12-14 pressure releases into angular fading fragments; F15-16 only faint flecks and transparent empty space. No physical stelae drawn, this is their energy action only. No portal, fire, smoke, ground, readable text or character. Same scale panels do not grow, all within cell.",
+      "uniform_scale": 0.6953125,
+      "guid": "aac3ccd565474921aee1d5c0c9939194",
+      "frames": [
+        {
+          "index": 0,
+          "name": "GateCompression_0",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 1,
+          "name": "GateCompression_1",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 2,
+          "name": "GateCompression_2",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 3,
+          "name": "GateCompression_3",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 4,
+          "name": "GateCompression_4",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 5,
+          "name": "GateCompression_5",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 6,
+          "name": "GateCompression_6",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 7,
+          "name": "GateCompression_7",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 8,
+          "name": "GateCompression_8",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 9,
+          "name": "GateCompression_9",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 10,
+          "name": "GateCompression_10",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 11,
+          "name": "GateCompression_11",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 12,
+          "name": "GateCompression_12",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 13,
+          "name": "GateCompression_13",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 14,
+          "name": "GateCompression_14",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        },
+        {
+          "index": 15,
+          "name": "GateCompression_15",
+          "bbox": [
+            39,
+            61,
+            217,
+            328
+          ],
+          "margins": [
+            39,
+            39,
+            61,
+            56
+          ]
+        }
+      ],
+      "sha256": "93a3a8065d1d0210f0e31ce8ea0159869deb81e034e813daeaf8aa0719e7eef4"
+    }
+  ]
+}

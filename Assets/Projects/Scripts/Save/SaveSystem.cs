@@ -14,6 +14,7 @@ public static class SaveSystem
 
     public static bool TrySave()//没有真正选档的编辑器直跑只保留内存数据，绝不默认覆盖save0
     {
+        if(TrainingSession.Active){TrainingSession.BlockWrite();return false;}
         GameSession session = GameSession.instance;
         if (session == null || !session.HasSelectedFile || session.data == null) return false;
         string p = FilePath(session.curFile);
@@ -51,12 +52,14 @@ public static class SaveSystem
     }
     public static SaveData Load(int num)
     {
+        if(TrainingSession.Active){TrainingSession.BlockRead();return null;}
         if (num < 0) return null;
         string p = FilePath(num);
         return ReadFile(p) ?? ReadFile(p + ".bak");//正式文件损坏时优先保留已有进度，读取成功不自动重写用户文件
     }
     public static void Delete(int num)
     {
+        if(TrainingSession.Active){TrainingSession.BlockWrite();return;}
         if (num < 0) return;
         string p = FilePath(num);
         foreach (string file in new[] { p, p + ".bak", p + ".tmp" })//删除只限指定槽，备份也一同清理以免下次又恢复已删除的档

@@ -7,7 +7,7 @@ public class OceanBreakerManager : MonoBehaviour
     [SerializeField] private new SpriteData animation;//八帧水柱，由本体第5至12帧逐帧驱动。
     [SerializeField] private Rect[] frameBounds;//实际图片的非透明范围，相对每帧pivot。
     [SerializeField, Min(0f)] private float damage = 20f;//每次完整施法对每条敌人生命只造成一次伤害。
-    [SerializeField] private Vector2 localOffset;//水柱相对角色的位置，朝左时水平镜像。
+    private Vector3 initialLocalPosition;//预制体里的初始相对位置，朝左时只镜像X。
     private SpriteRenderer sr;//显示和判定共用同一个特效变换。
     private Transform caster;//保存本次施法来源，用于伤害方向、倍率和无双积累。
     private PlayerCombat combat;
@@ -15,6 +15,8 @@ public class OceanBreakerManager : MonoBehaviour
     private readonly List<EnemyMovement> enemies = new();//伤害前快照，避免死亡回收改变活动集合。
     private int lastBodyFrame = -1;//跨帧时补齐遗漏的有效范围，避免低帧率漏掉整段水柱。
     private bool casting;//被打断后即使本体仍显示旧帧，也不能补放已经结束的效果。
+
+    private void Awake() => initialLocalPosition = transform.localPosition;//记录初始位置，之后不再从Inspector偏移读取。
 
     private void OnEnable()
     {
@@ -35,7 +37,7 @@ public class OceanBreakerManager : MonoBehaviour
     public void SyncFrame(int bodyFrame, bool right)//本体与水柱共用帧号，不采用第二套fps计时。
     {
         if (!casting) return;
-        TangSkillEffectUtility.Place(transform, caster, localOffset, right);
+        TangSkillEffectUtility.Place(transform, caster, initialLocalPosition, right);
         int first = Mathf.Max(lastBodyFrame + 1, 4);//本体下标4即用户看到的第5帧。
         int last = Mathf.Min(bodyFrame, 11);
         for (int frame = first; frame <= last && casting; frame++) DamageFrame(frame - 4);

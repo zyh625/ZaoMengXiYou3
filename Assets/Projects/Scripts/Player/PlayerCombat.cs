@@ -45,6 +45,12 @@ public class PlayerCombat : MonoBehaviour
     private float[] skillCooldownUntil;//按角色、技能编号保存绝对到期时间，换人停用期间仍自然计时
     private float[] skillCooldownDurations;//保存该次释放的实际冷却长度，运行中修改配置不改变旧冷却比例
     public int SkillCount => skillNum;//界面可展示前几个槽，战斗数据仍允许以后继续增加技能
+    private bool trainingNoCooldown;
+    public bool TrainingNoCooldown
+    {
+        get=>trainingNoCooldown;
+        set{trainingNoCooldown=value;if(value && skillCooldownUntil!=null){System.Array.Clear(skillCooldownUntil,0,skillCooldownUntil.Length);System.Array.Clear(skillCooldownDurations,0,skillCooldownDurations.Length);}}
+    }
     public event System.Action<int> SkillCooldownStarted;//仅实际扣蓝并成功接受后通知界面立即盖满冷却遮罩
 
     private bool attackRequest = false;//请求攻击
@@ -165,7 +171,7 @@ public class PlayerCombat : MonoBehaviour
         if (health != null && health.Status != null && health.Status.BlocksActions) return false;
         if (!IsSkillLearned(k) || IsSkillCoolingDown(k)) return false;
         if (!resources.TrySpendMana(GetSkillManaCost(k))) return false;
-        float duration = GetSkillCooldownDuration(k);//按当前已学习等级读取，已开始的旧冷却仍使用当次长度
+        float duration = TrainingNoCooldown?0f:GetSkillCooldownDuration(k);//训练开关默认关闭，普通技能沿用原冷却。
         skillCooldownDurations[k] = duration;
         skillCooldownUntil[k] = Time.time + duration;
         SkillCooldownStarted?.Invoke(k);
@@ -184,7 +190,7 @@ public class PlayerCombat : MonoBehaviour
     public bool IsSkillCoolingDown(int k) => GetSkillCooldownRemaining(k) > 0f;//输入和真正施法时共用同一冷却判断
     public Sprite GetSkillIcon(int k) => HasSkill(k) ? skills[k].skillIcon : null;//界面只读图标，不依赖角色类型
     public float GetSkillCooldownRemaining(int k)//绝对时间无需在Update递减，备用角色也会正常走完冷却
-        => HasSkill(k) && skillCooldownUntil != null ? Mathf.Max(0f, skillCooldownUntil[k] - Time.time) : 0f;
+        => !TrainingNoCooldown && HasSkill(k) && skillCooldownUntil != null ? Mathf.Max(0f, skillCooldownUntil[k] - Time.time) : 0f;
     public float GetSkillCooldownRatio(int k)//遮罩显示剩余比例：成功释放为1，冷却结束为0
     {
         if (!HasSkill(k) || skillCooldownDurations == null || skillCooldownDurations[k] <= 0f) return 0f;
@@ -274,9 +280,10 @@ public class PlayerCombat : MonoBehaviour
     {
         float amount = Mathf.Max(0f, baseDamage) * AttackMultiplier;
         float chance = CriticalChance;
-        if (amount > 0f && chance > 0f && (chance >= 1f || Random.value < chance))
+        bool critical=amount > 0f && chance > 0f && (chance >= 1f || Random.value < chance);
+        if (critical)
             amount *= Mathf.Max(1f, criticalMultiplier);
-        return new DamageInfo(source != null ? source : transform, amount, knockback, launch, effects, kind: kind);
+        return new DamageInfo(source != null ? source : transform, amount, knockback, launch, effects, kind: kind,isCritical:critical);
     }
     private void ClearAttackDebuffs()//只清除攻击降低，正面攻击增益保持
     {

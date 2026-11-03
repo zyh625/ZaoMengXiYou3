@@ -7,7 +7,7 @@ public class FrostFormationManager : MonoBehaviour
     [SerializeField] private new SpriteData animation;//前八帧有效，后两帧碎裂。
     [SerializeField] private Rect[] frameBounds;//相对Sprite pivot的真实非透明范围。
     [SerializeField, Min(0f)] private float damage = 10f;//碎裂时对本次真正冰冻的敌人结算一次伤害。
-    [SerializeField] private Vector2 localOffset;//领域相对人物的位置，通常以人物脚下为中心。
+    private Vector3 initialLocalPosition;//预制体里的初始相对位置，施法时只按朝向镜像X。
     private SpriteRenderer sr;
     private Transform caster;
     private PlayerCombat combat;
@@ -22,6 +22,8 @@ public class FrostFormationManager : MonoBehaviour
     }
     private int lastBodyFrame = -1;
     private bool casting, shattered;//后两张碎裂图共用一次伤害，不能各打一次。
+
+    private void Awake() => initialLocalPosition = transform.localPosition;//记录初始位置，之后不再从Inspector偏移读取。
 
     private void OnEnable()
     {
@@ -43,7 +45,7 @@ public class FrostFormationManager : MonoBehaviour
     public void SyncFrame(int bodyFrame, bool right)
     {
         if (!casting) return;
-        TangSkillEffectUtility.Place(transform, caster, localOffset, right);
+        TangSkillEffectUtility.Place(transform, caster, initialLocalPosition, right);
         if (!shattered)
         {
             int first = Mathf.Max(lastBodyFrame + 1, 4);

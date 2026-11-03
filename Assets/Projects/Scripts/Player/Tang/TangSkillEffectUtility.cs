@@ -9,11 +9,10 @@ internal static class TangSkillEffectUtility
         if (renderer == null) renderer = effect.GetComponent<SpriteRenderer>();
     }
 
-    internal static void Place(Transform effect, Transform caster, Vector2 offset, bool right)
+    internal static void Place(Transform effect, Transform caster, Vector3 initialLocalPosition, bool right)
     {
-        Vector3 position = effect.localPosition;//只镜像技能配置的位置，不改人物自己的Transform。
-        position.x = right ? offset.x : -offset.x;
-        position.y = offset.y;
+        Vector3 position = initialLocalPosition;//位置取特效在预制体里的初始本地坐标，只做左右镜像，不改人物自己的Transform。
+        position.x = right ? initialLocalPosition.x : -initialLocalPosition.x;
         effect.localPosition = position;
         SpriteRenderer renderer = effect.GetComponent<SpriteRenderer>();
         Transform visual = caster != null ? caster.Find("Visual") : null;

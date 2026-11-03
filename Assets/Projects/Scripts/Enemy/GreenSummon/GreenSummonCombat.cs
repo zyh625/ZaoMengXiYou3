@@ -67,7 +67,7 @@ public sealed class GreenSummonCombat : EnemyCombat
         GreenSummonEffectPool effects=Effects;
         Vector2 ground=GreenSummonHitUtility.GroundAt(target.transform.position);
         if(skill==0 && GreenSummonHammer.HasWarningAt(ground) || skill==2 && !effects.ReserveBanner(this))return false;
-        CurrentSkill=skill;readyAt[skill]=Time.time+skillCooldowns[skill];released=false;FaceRight=target.transform.position.x>=transform.position.x;
+        CurrentSkill=skill;readyAt[skill]=Time.time+skillCooldowns[skill]*RebirthCooldownMultiplier;released=false;FaceRight=target.transform.position.x>=transform.position.x;
         health.Status?.NotifyAttackStarted();if(skill==0)warning=effects.Warn(hammerPrefab,this,ground);return true;
     }
     public void SampleFrame(int frame)

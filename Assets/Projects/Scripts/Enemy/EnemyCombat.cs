@@ -79,6 +79,7 @@ public class EnemyCombat : MonoBehaviour
     public bool Angry => UsesAnger && angry;
     protected float AngerAttackMultiplier => Mathf.Max(0f, angryRatio);//远程攻击也能沿用小怪原有愤怒配置
     protected float AngerCooldownMultiplier => Mathf.Max(0f, delayRatio);
+    protected float RebirthCooldownMultiplier => RebirthScaling.Current.AttackCooldown;
     public bool AngryRequest = false;
     private float lastAngry = -1f;
     public bool AngryEnd=> UsesAnger && (Time.time - lastAngry) >= angryDuration;
@@ -131,7 +132,7 @@ public class EnemyCombat : MonoBehaviour
         if (Attack != -1) return;
         for (int i = 0; i < attackNum; i++)
             AttackRequest[i] = CheckAttackLogic[i].PlayerIn &&
-            Time.time - lastAttack[i] >= curAttackDelay[i];
+            Time.time - lastAttack[i] >= curAttackDelay[i] * RebirthCooldownMultiplier;
     }
     public void HasAtatck(bool r)//成功攻击
     {

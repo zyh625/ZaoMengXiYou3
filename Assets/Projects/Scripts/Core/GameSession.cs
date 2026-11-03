@@ -22,6 +22,50 @@ public class GameSession : MonoBehaviour
     public event Action DataChanged;//金币或技能购买真正发生变化后，当前打开的技能界面统一刷新
     private bool fileSelected;//必须真实调用SelectFile才允许写盘，序列化的curFile值不能当成选档授权
     public bool HasSelectedFile => fileSelected && curFile >= 0;
+    public int Rebirth => HasSelectedFile && data != null ? Math.Max(0, data.rebirth) : 0;
+    public bool CanRebirth => !TrainingSession.Active && HasSelectedFile && data != null && data.rebirthAvailable;
+
+    public void RegisterVictory(BattleData result)
+    {
+        if(TrainingSession.Active || data==null || result==null || result!=battle || !result.victory || result.curLevel<1 || result.curLevel>9)return;
+        data.gameLevel=Math.Max(data.gameLevel,Math.Min(9,result.curLevel+1));
+        data.UnlockAfterVictory(result.curLevel);
+        if(result.curLevel==9)data.rebirthAvailable=true;
+        maxLevel=data.gameLevel;NotifyDataChanged();
+    }
+
+    public bool TryBeginRebirth(BattleData result)//先持久化成功，再丢弃本轮统计；保存失败可以原地重试。
+    {
+        if (!CanRebirth || result == null || !result.victory || result.curLevel != 9) return false;
+        if (battle != result) return false;//已经消费的结算不能被再次点击累计轮回。
+        return CommitRebirth("VictoryScene");
+    }
+    public bool TryBeginRebirthFromMap()
+    {
+        if(!CanRebirth || UnityEngine.SceneManagement.SceneManager.GetActiveScene().name!="MapScene")return false;
+        return CommitRebirth("MapScene");
+    }
+    private bool CommitRebirth(string origin)
+    {
+        int previous = data.rebirth;
+        string previousDate = data.date;
+        bool previousQualification=data.rebirthAvailable;
+        data.rebirth = previous < int.MaxValue ? previous + 1 : int.MaxValue;
+        data.rebirthAvailable=false;
+        if (!SaveSystem.TrySave())
+        {
+            data.rebirth = previous;
+            data.date = previousDate;
+            data.rebirthAvailable=previousQualification;
+            return false;
+        }
+        GoldManager.Current?.EndRun();
+        BattleRun.Cancel();
+        battle = new BattleData { curLevel = 1 };
+        priScene = origin;
+        NotifyDataChanged();
+        return true;
+    }
     public void Awake()
     {
         if (instance != null && instance != this)
@@ -100,7 +144,7 @@ public class GameSession : MonoBehaviour
     {
         SaveData save = EnsureRuntimeData();
         SkillProgression progression = SkillProgression.Current;
-        if (!progression.HasSkill(id, skillNumber)) return false;
+        if (!save.IsPlayerUnlocked(id) || !progression.HasSkill(id, skillNumber)) return false;
         PlayerData player = save.GetPlayer(id);
         int cost = progression.GetLevelData(id, skillNumber, 1).goldCost;//第一等级的价格就是学习费用
         if (player == null || player.GetSkillLevel(skillNumber) != 0 || !save.TrySpendGold(cost)) return false;
@@ -117,7 +161,7 @@ public class GameSession : MonoBehaviour
     {
         SaveData save = EnsureRuntimeData();
         SkillProgression progression = SkillProgression.Current;
-        if (!progression.HasSkill(id, skillNumber)) return false;
+        if (!save.IsPlayerUnlocked(id) || !progression.HasSkill(id, skillNumber)) return false;
         PlayerData player = save.GetPlayer(id);
         if (player == null) return false;
         int level = player.GetSkillLevel(skillNumber);

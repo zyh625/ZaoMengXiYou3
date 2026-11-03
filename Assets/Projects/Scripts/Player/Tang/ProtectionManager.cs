@@ -13,10 +13,15 @@ public class ProtectionManager : MonoBehaviour
     private SpriteRenderer sr;//隐藏护罩只关闭显示，不停用对象导致重复订阅
     private float openedAt, normalUntil, warningUntil;//使用游戏时间计时，受到控制不会延长护罩寿命
     private bool active, perfectBlocked, perfectWindowEnded;//一次释放最多奖励一次精准抵挡
+    private Vector3 initialLocalPosition;//护罩在预制体里的初始相对位置
     private enum ProtectionPhase { Hidden, Normal, Highlight, Warning }//动画阶段只在发生变化时切换
     private ProtectionPhase phase;
 
-    private void Awake() => ResolveReferences();//允许初始停用的护罩在第一次开启时补齐自身引用
+    private void Awake()//允许初始停用的护罩在第一次开启时补齐自身引用
+    {
+        initialLocalPosition = transform.localPosition;
+        ResolveReferences();
+    }
 
     private void ResolveReferences()//只查自身播放器和父角色组件，避免取到其他技能的播放器
     {
@@ -44,6 +49,7 @@ public class ProtectionManager : MonoBehaviour
     {
         if (!gameObject.activeSelf) gameObject.SetActive(true);
         ResolveReferences();
+        transform.localPosition = initialLocalPosition;//生成位置固定为预制体初始相对位置
         if (!isActiveAndEnabled || health == null || health.Dead) return;
         CloseProtection();//允许重新释放时清理上一轮自己的来源，不改变其他角色增益
         openedAt = Time.time;

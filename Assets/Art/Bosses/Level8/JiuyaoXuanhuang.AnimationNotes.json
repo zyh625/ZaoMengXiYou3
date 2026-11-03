@@ -1,0 +1,8335 @@
+{
+  "date": "2026-11-02",
+  "character": "JiuyaoXuanhuang",
+  "name_zh": "九曜玄凰",
+  "generator": "built-in image_gen",
+  "reference": "level8.png",
+  "reference_sha256": "68adfec4652e923eb34d5bd4d8b1ec26465dae36bcf6e91ae12c5c4eecfcf61e",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "grid": [
+    4,
+    4
+  ],
+  "cell": [
+    256,
+    384
+  ],
+  "baseline_from_top": 328,
+  "pivot": [
+    0.5,
+    0.14583333333333334
+  ],
+  "ppu": 100,
+  "no_baked_skill_effects": true,
+  "common_prompt": "Use case: stylized-concept. Asset: production 2D Unity BOSS CHARACTER BODY animation sheet.\nREFERENCE ROLE: attached level8.png is the EXACT identity, anatomy, feather silhouette, palette, black outline weight and cel-shaded style reference. It is JIUYAO XUANHUANG, a majestic NON-HUMANOID star phoenix. Silver-white head/breast and slender curved S-neck, short hooked BLACK beak, fierce RED eyes. EXACTLY THREE long swept silver/ivory crest plumes. Deep navy/cobalt wing and body plumage with layered icy-CYAN feather edges. TWO feathered WINGS, TWO powerful dark scaled BIRD legs and silver talons; NO arms, hands, human skin, armor, tools or weapons. Huge attached navy/cyan fan tail as reference: SIX large cyan-ring medallions, each containing one FOUR-POINT cyan star, distributed over the long paired fan feathers. One corresponding cyan star-eye marking at each outer wing panel. Preserve the same tail feather shape, ring/star count and crest design in all16 poses; all wing/tail tips and markings fully drawn. Do not turn this into a humanoid bird soldier, peacock with a human face, dragon or ordinary eagle.\nEXACTLY16 separate FULL phoenix figures, FOUR columns x FOUR rows, PORTRAIT1024x1536 RGBA PNG, invisible equal256x384 cells. Chronological row-major left-to-right then top-to-bottom, including row transitions. ALL FOUR ROWS must contain4 complete birds: row1F1-4,row2F5-8,row3F9-12,row4F13-16. Never stop at12figures or leave a blank fourth row.\nCOMPOSITION CRITICAL: draw the whole bird TINY inside each cell. Entire body plus COMPLETE spread wings and HUGE full tail fan should be approximately120-150px wide x160-220px tall. Absolute maximum178px width/288px height (70%/75%). Prefer at least50px transparent side margins and60px vertical margins, NEVER less than32px horizontal or40px vertical. The sheet must be mostly EMPTY TRANSPARENT space. Make WHOLE bird smaller to fit wide wings/tail, do not shorten/crop appendages, omit stars or fill cells. No touching/overlapping neighbors or outside canvas edge.\nONE fixed drawing scale and camera, three-quarter SCREEN LEFT facing, beak points LEFT; only the explicitly described small torso/tail turns, no camera spin or mirrored right-facing birds. Ground baseline cell-local y328, consistent body/feet center. Grounded toes touch same baseline; airborne poses rise above that SAME baseline, not a different camera or scale. Keep all jump apex crest and tail tips inside cell.\nOnly draw REAL CHARACTER BODY and ATTACHED feathers/embedded star markings. All SKILL VISUAL EFFECTS ARE SEPARATE assets: NO dash trails, slash arcs, energy rings, auras, loose feathers, projectiles, glints outside the body, impact flashes, dust, stone chips, afterimages, motion lines, shadows or particles in this character sheet. Embedded star color may brighten subtly but no external bloom halo.\nTransparent ALPHA0 around bird and between all feather gaps. Do not copy reference's dark mist/blue backdrop glow. No background, floor/ground texture, scenery, opaque gradient, checkerboard, labels, text, numbers, grid, border, watermark or extra creatures.\n",
+  "animations": [
+    {
+      "key": "Idle",
+      "label": "待机呼吸",
+      "fps": 12,
+      "loop": true,
+      "action": "IDLE breathing loop16frames. F1 neutral standing, wings FOLDED alongside body (both outer star panels readable), long six-star tail fan trailing toward imageRIGHT. F2-5 breast rises gradually, three crest plumes sway, embedded stars pulse faintly. F6-9 slow exhale, wings settle, tail fan shifts a little. F10-13 head tilts/turns only slightly while still facingLEFT, talons grip. F14-16 ease back EXACTLY toF1. Feet planted, no stepping or flight. All six tail stars and every tail tip fit.",
+      "file": "Idle.png",
+      "frame_count": 16,
+      "scale": 0.41117930993385365,
+      "final_prompt_override": null,
+      "sha256": "9c166d4008a297a0b1c3e8844cdc51560763d0df5d1ff8c5e2ab4de00535fa99",
+      "guid": "cb62f879cded40cf9150e72c49178e57",
+      "sprite_ids": [
+        632519204094915191,
+        685210884797531318,
+        992824279652552469,
+        1020480568939056169,
+        252546245837216272,
+        735112185315169598,
+        699247495313808728,
+        749955770341999625,
+        751931864133187906,
+        171330232953204455,
+        277269769321285984,
+        179523736201806784,
+        1114357669151220536,
+        44347867279334817,
+        1093122890029751568,
+        642496706526215329
+      ],
+      "frames": [
+        {
+          "frame": 1,
+          "bbox": [
+            94,
+            233,
+            192,
+            330
+          ],
+          "margins_LRTB": [
+            94,
+            64,
+            233,
+            54
+          ]
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            92,
+            227,
+            191,
+            331
+          ],
+          "margins_LRTB": [
+            92,
+            65,
+            227,
+            53
+          ]
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            92,
+            224,
+            194,
+            330
+          ],
+          "margins_LRTB": [
+            92,
+            62,
+            224,
+            54
+          ]
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            93,
+            222,
+            190,
+            331
+          ],
+          "margins_LRTB": [
+            93,
+            66,
+            222,
+            53
+          ]
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            94,
+            222,
+            194,
+            330
+          ],
+          "margins_LRTB": [
+            94,
+            62,
+            222,
+            54
+          ]
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            94,
+            225,
+            191,
+            330
+          ],
+          "margins_LRTB": [
+            94,
+            65,
+            225,
+            54
+          ]
+        },
+        {
+          "frame": 7,
+          "bbox": [
+            93,
+            229,
+            190,
+            332
+          ],
+          "margins_LRTB": [
+            93,
+            66,
+            229,
+            52
+          ]
+        },
+        {
+          "frame": 8,
+          "bbox": [
+            93,
+            231,
+            191,
+            332
+          ],
+          "margins_LRTB": [
+            93,
+            65,
+            231,
+            52
+          ]
+        },
+        {
+          "frame": 9,
+          "bbox": [
+            94,
+            225,
+            192,
+            330
+          ],
+          "margins_LRTB": [
+            94,
+            64,
+            225,
+            54
+          ]
+        },
+        {
+          "frame": 10,
+          "bbox": [
+            92,
+            233,
+            190,
+            331
+          ],
+          "margins_LRTB": [
+            92,
+            66,
+            233,
+            53
+          ]
+        },
+        {
+          "frame": 11,
+          "bbox": [
+            93,
+            241,
+            190,
+            330
+          ],
+          "margins_LRTB": [
+            93,
+            66,
+            241,
+            54
+          ]
+        },
+        {
+          "frame": 12,
+          "bbox": [
+            94,
+            225,
+            190,
+            330
+          ],
+          "margins_LRTB": [
+            94,
+            66,
+            225,
+            54
+          ]
+        },
+        {
+          "frame": 13,
+          "bbox": [
+            94,
+            224,
+            192,
+            330
+          ],
+          "margins_LRTB": [
+            94,
+            64,
+            224,
+            54
+          ]
+        },
+        {
+          "frame": 14,
+          "bbox": [
+            93,
+            229,
+            193,
+            333
+          ],
+          "margins_LRTB": [
+            93,
+            63,
+            229,
+            51
+          ]
+        },
+        {
+          "frame": 15,
+          "bbox": [
+            96,
+            228,
+            190,
+            332
+          ],
+          "margins_LRTB": [
+            96,
+            66,
+            228,
+            52
+          ]
+        },
+        {
+          "frame": 16,
+          "bbox": [
+            94,
+            233,
+            192,
+            330
+          ],
+          "margins_LRTB": [
+            94,
+            64,
+            233,
+            54
+          ]
+        }
+      ],
+      "placement": [
+        {
+          "frame": 1,
+          "top_left": [
+            94,
+            233
+          ],
+          "draw_scale": 0.41117930993385365,
+          "flight_offset": 0,
+          "source_bbox": [
+            26,
+            216,
+            265,
+            451
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 2,
+          "top_left": [
+            92,
+            227
+          ],
+          "draw_scale": 0.41117930993385365,
+          "flight_offset": 0,
+          "source_bbox": [
+            280,
+            201,
+            521,
+            454
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 3,
+          "top_left": [
+            92,
+            224
+          ],
+          "draw_scale": 0.41117930993385365,
+          "flight_offset": 0,
+          "source_bbox": [
+            534,
+            193,
+            782,
+            452
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 4,
+          "top_left": [
+            93,
+            222
+          ],
+          "draw_scale": 0.41117930993385365,
+          "flight_offset": 0,
+          "source_bbox": [
+            788,
+            190,
+            1024,
+            454
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 5,
+          "top_left": [
+            94,
+            222
+          ],
+          "draw_scale": 0.41117930993385365,
+          "flight_offset": 0,
+          "source_bbox": [
+            33,
+            526,
+            275,
+            788
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 6,
+          "top_left": [
+            94,
+            225
+          ],
+          "draw_scale": 0.41117930993385365,
+          "flight_offset": 0,
+          "source_bbox": [
+            289,
+            532,
+            526,
+            788
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 7,
+          "top_left": [
+            93,
+            229
+          ],
+          "draw_scale": 0.41117930993385365,
+          "flight_offset": 0,
+          "source_bbox": [
+            534,
+            542,
+            771,
+            793
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 8,
+          "top_left": [
+            93,
+            231
+          ],
+          "draw_scale": 0.41117930993385365,
+          "flight_offset": 0,
+          "source_bbox": [
+            785,
+            546,
+            1023,
+            791
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 9,
+          "top_left": [
+            94,
+            225
+          ],
+          "draw_scale": 0.41117930993385365,
+          "flight_offset": 0,
+          "source_bbox": [
+            32,
+            866,
+            271,
+            1121
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 10,
+          "top_left": [
+            92,
+            233
+          ],
+          "draw_scale": 0.41117930993385365,
+          "flight_offset": 0,
+          "source_bbox": [
+            293,
+            886,
+            531,
+            1124
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 11,
+          "top_left": [
+            93,
+            241
+          ],
+          "draw_scale": 0.41117930993385365,
+          "flight_offset": 0,
+          "source_bbox": [
+            539,
+            905,
+            775,
+            1122
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 12,
+          "top_left": [
+            94,
+            225
+          ],
+          "draw_scale": 0.41117930993385365,
+          "flight_offset": 0,
+          "source_bbox": [
+            790,
+            865,
+            1023,
+            1121
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 13,
+          "top_left": [
+            94,
+            224
+          ],
+          "draw_scale": 0.41117930993385365,
+          "flight_offset": 0,
+          "source_bbox": [
+            35,
+            1205,
+            274,
+            1463
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 14,
+          "top_left": [
+            93,
+            229
+          ],
+          "draw_scale": 0.41117930993385365,
+          "flight_offset": 0,
+          "source_bbox": [
+            288,
+            1217,
+            530,
+            1469
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 15,
+          "top_left": [
+            96,
+            228
+          ],
+          "draw_scale": 0.41117930993385365,
+          "flight_offset": 0,
+          "source_bbox": [
+            544,
+            1213,
+            773,
+            1465
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 16,
+          "top_left": [
+            93,
+            234
+          ],
+          "draw_scale": 0.41117930993385365,
+          "flight_offset": 0,
+          "source_bbox": [
+            786,
+            1228,
+            1024,
+            1463
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        }
+      ]
+    },
+    {
+      "key": "Walk",
+      "label": "庄重鸟步",
+      "fps": 14,
+      "loop": true,
+      "action": "WALK IN PLACE, stately16frame bird stride. F1 LEFT talon forward, right behind. F2-6 roll weight onto left leg, subtle body dip, long attached tail fan sways. F7-10 RIGHT leg passes forward. F11-13 right talon lands, small body bob. F14-16 left leg passes and closes seamlessly toF1. Wings remain FOLDED, no flight or flapping. Visible alternating leg poses, stable body center. Keep complete huge tail and its six star medallions inside cell.",
+      "file": "Walk.png",
+      "frame_count": 16,
+      "scale": 0.3824409710675091,
+      "final_prompt_override": "Production 2D character-body animation atlas of the EXACT star phoenix in the attached reference: silver long S-neck and breast, red eye, black beak, three long silver crest plumes, navy/cobalt/cyan wing feathers, SIX cyan ringed four-point stars on the complete huge attached fan tail, dark bird legs. No humanoid features. Match all feather shapes, linework, cel shading, palette and left-facing three-quarter orientation.\nEXACTLY16 complete TINY birds, four columns and four rows, on portrait1024x1536 transparentPNG. Invisible256x384logicalcells. This is a SPARSE SMALL-THUMBNAIL sheet, not big portraits. Leave wide EMPTY outer margin and gutters. Bird centers near x=176,400,624,848 and y=280,620,960,1300. Each entire bird INCLUDING full wings and fan must be under150pxwide and200pxtall. Every feather tip fits insidecanvas, especially column4; no tail tips at the right canvas edge. Row4MUSThave4birds. Fixed drawing scale, fixed groundline, time progresses rowmajor.\nWALK IN PLACE, stately16frame bird stride. F1 LEFT talon forward, right behind. F2-6 roll weight onto left leg, subtle body dip, long attached tail fan sways. F7-10 RIGHT leg passes forward. F11-13 right talon lands, small body bob. F14-16 left leg passes and closes seamlessly toF1. Wings remain FOLDED, no flight or flapping. Visible alternating leg poses, stable body center. Keep complete huge tail and its six star medallions inside cell.\nOnly the bird body and attached feathers: NO aura, mist, glows outside feathers, feather particles, dust, shadow, backdrop, floor, labels, lines or text. ALPHA0 emptyspace. Embedded stars may brighten without externalglow.",
+      "sha256": "d469925f2ff9ea9715704e2a2571ab738d3c9c7cbeb3e5c370743821ac54433b",
+      "guid": "db1e1ece868f4d8a98eba4d3d0bf9005",
+      "sprite_ids": [
+        1076396124551686189,
+        840214009335484347,
+        209866201290926617,
+        1038735283660210120,
+        655466792792109063,
+        407503652480286619,
+        470138591063341380,
+        507329684117687199,
+        79211677621660742,
+        808327481947431911,
+        747495625357861135,
+        251874484695600475,
+        1104163607396157961,
+        861254406904098637,
+        148166566772316340,
+        787273207424736126
+      ],
+      "frames": [
+        {
+          "frame": 1,
+          "bbox": [
+            97,
+            234,
+            193,
+            330
+          ],
+          "margins_LRTB": [
+            97,
+            63,
+            234,
+            54
+          ]
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            95,
+            235,
+            183,
+            331
+          ],
+          "margins_LRTB": [
+            95,
+            73,
+            235,
+            53
+          ]
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            95,
+            235,
+            186,
+            331
+          ],
+          "margins_LRTB": [
+            95,
+            70,
+            235,
+            53
+          ]
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            94,
+            235,
+            186,
+            330
+          ],
+          "margins_LRTB": [
+            94,
+            70,
+            235,
+            54
+          ]
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            92,
+            234,
+            187,
+            330
+          ],
+          "margins_LRTB": [
+            92,
+            69,
+            234,
+            54
+          ]
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            94,
+            234,
+            187,
+            330
+          ],
+          "margins_LRTB": [
+            94,
+            69,
+            234,
+            54
+          ]
+        },
+        {
+          "frame": 7,
+          "bbox": [
+            93,
+            234,
+            184,
+            331
+          ],
+          "margins_LRTB": [
+            93,
+            72,
+            234,
+            53
+          ]
+        },
+        {
+          "frame": 8,
+          "bbox": [
+            95,
+            234,
+            188,
+            331
+          ],
+          "margins_LRTB": [
+            95,
+            68,
+            234,
+            53
+          ]
+        },
+        {
+          "frame": 9,
+          "bbox": [
+            95,
+            234,
+            191,
+            330
+          ],
+          "margins_LRTB": [
+            95,
+            65,
+            234,
+            54
+          ]
+        },
+        {
+          "frame": 10,
+          "bbox": [
+            98,
+            234,
+            188,
+            330
+          ],
+          "margins_LRTB": [
+            98,
+            68,
+            234,
+            54
+          ]
+        },
+        {
+          "frame": 11,
+          "bbox": [
+            95,
+            234,
+            186,
+            331
+          ],
+          "margins_LRTB": [
+            95,
+            70,
+            234,
+            53
+          ]
+        },
+        {
+          "frame": 12,
+          "bbox": [
+            95,
+            235,
+            190,
+            330
+          ],
+          "margins_LRTB": [
+            95,
+            66,
+            235,
+            54
+          ]
+        },
+        {
+          "frame": 13,
+          "bbox": [
+            93,
+            234,
+            189,
+            330
+          ],
+          "margins_LRTB": [
+            93,
+            67,
+            234,
+            54
+          ]
+        },
+        {
+          "frame": 14,
+          "bbox": [
+            96,
+            234,
+            187,
+            330
+          ],
+          "margins_LRTB": [
+            96,
+            69,
+            234,
+            54
+          ]
+        },
+        {
+          "frame": 15,
+          "bbox": [
+            95,
+            234,
+            191,
+            330
+          ],
+          "margins_LRTB": [
+            95,
+            65,
+            234,
+            54
+          ]
+        },
+        {
+          "frame": 16,
+          "bbox": [
+            97,
+            234,
+            193,
+            330
+          ],
+          "margins_LRTB": [
+            97,
+            63,
+            234,
+            54
+          ]
+        }
+      ],
+      "placement": [
+        {
+          "frame": 1,
+          "top_left": [
+            97,
+            234
+          ],
+          "draw_scale": 0.3824409710675091,
+          "flight_offset": 0,
+          "source_bbox": [
+            25,
+            153,
+            276,
+            404
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 2,
+          "top_left": [
+            95,
+            235
+          ],
+          "draw_scale": 0.3824409710675091,
+          "flight_offset": 0,
+          "source_bbox": [
+            284,
+            155,
+            513,
+            405
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 3,
+          "top_left": [
+            95,
+            235
+          ],
+          "draw_scale": 0.3824409710675091,
+          "flight_offset": 0,
+          "source_bbox": [
+            524,
+            155,
+            761,
+            405
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 4,
+          "top_left": [
+            94,
+            235
+          ],
+          "draw_scale": 0.3824409710675091,
+          "flight_offset": 0,
+          "source_bbox": [
+            768,
+            155,
+            1009,
+            404
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 5,
+          "top_left": [
+            92,
+            234
+          ],
+          "draw_scale": 0.3824409710675091,
+          "flight_offset": 0,
+          "source_bbox": [
+            28,
+            505,
+            277,
+            757
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 6,
+          "top_left": [
+            94,
+            234
+          ],
+          "draw_scale": 0.3824409710675091,
+          "flight_offset": 0,
+          "source_bbox": [
+            284,
+            505,
+            528,
+            757
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 7,
+          "top_left": [
+            93,
+            234
+          ],
+          "draw_scale": 0.3824409710675091,
+          "flight_offset": 0,
+          "source_bbox": [
+            528,
+            505,
+            767,
+            759
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 8,
+          "top_left": [
+            95,
+            234
+          ],
+          "draw_scale": 0.3824409710675091,
+          "flight_offset": 0,
+          "source_bbox": [
+            769,
+            505,
+            1013,
+            758
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 9,
+          "top_left": [
+            95,
+            234
+          ],
+          "draw_scale": 0.3824409710675091,
+          "flight_offset": 0,
+          "source_bbox": [
+            28,
+            858,
+            278,
+            1110
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 10,
+          "top_left": [
+            98,
+            234
+          ],
+          "draw_scale": 0.3824409710675091,
+          "flight_offset": 0,
+          "source_bbox": [
+            286,
+            861,
+            521,
+            1112
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 11,
+          "top_left": [
+            95,
+            234
+          ],
+          "draw_scale": 0.3824409710675091,
+          "flight_offset": 0,
+          "source_bbox": [
+            519,
+            859,
+            758,
+            1112
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 12,
+          "top_left": [
+            95,
+            235
+          ],
+          "draw_scale": 0.3824409710675091,
+          "flight_offset": 0,
+          "source_bbox": [
+            764,
+            862,
+            1013,
+            1111
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 13,
+          "top_left": [
+            93,
+            234
+          ],
+          "draw_scale": 0.3824409710675091,
+          "flight_offset": 0,
+          "source_bbox": [
+            28,
+            1210,
+            278,
+            1461
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 14,
+          "top_left": [
+            96,
+            234
+          ],
+          "draw_scale": 0.3824409710675091,
+          "flight_offset": 0,
+          "source_bbox": [
+            281,
+            1212,
+            518,
+            1463
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 15,
+          "top_left": [
+            95,
+            234
+          ],
+          "draw_scale": 0.3824409710675091,
+          "flight_offset": 0,
+          "source_bbox": [
+            518,
+            1210,
+            770,
+            1461
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 16,
+          "top_left": [
+            99,
+            236
+          ],
+          "draw_scale": 0.3824409710675091,
+          "flight_offset": 0,
+          "source_bbox": [
+            775,
+            1213,
+            1012,
+            1460
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        }
+      ]
+    },
+    {
+      "key": "SkyDash",
+      "label": "低空突进",
+      "fps": 16,
+      "loop": false,
+      "action": "One-shot SKY DASH16frames. F1 ready. F2-5 crouch, draw BOTH wings back, attached tail fan closes but SIX star medallions remain identifiable. F6-8 launch forward towardLEFT at LOW altitude: long neck/beak lead, body HORIZONTAL, wings swept back, both talons trailing OFF ground. F9-12 hold low gliding dash, wings/back and tail streamline, complete silhouette insidecell. F13-15 BRAKE by spreading BOTH wings wide, straighten body and lower talons. F16 ready. Keep dash centered inside its cell with only slight leftward local displacement, no traveling across sheet gutters. No trail/afterimage/motionlines/effects.",
+      "file": "SkyDash.png",
+      "frame_count": 16,
+      "scale": 0.38659793814432986,
+      "final_prompt_override": null,
+      "sha256": "256fbb3f7059ac72c9d67fa9ec2c10c1162639c65eb1228fdd7a0c9650415b9e",
+      "guid": "a1161c87282c4bac964ea3419aef1d42",
+      "sprite_ids": [
+        667311498966926693,
+        1041024399976096039,
+        9218757643888563,
+        142641580393951,
+        979100179375580077,
+        140177086938560863,
+        860769305248793588,
+        23669131272461602,
+        690849900322368951,
+        635783098478287877,
+        700072845838453017,
+        1089428031525911620,
+        411681917848666280,
+        629764770726341831,
+        1047993816469210686,
+        668408123357507164
+      ],
+      "frames": [
+        {
+          "frame": 1,
+          "bbox": [
+            94,
+            233,
+            192,
+            330
+          ],
+          "margins_LRTB": [
+            94,
+            64,
+            233,
+            54
+          ]
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            93,
+            260,
+            182,
+            328
+          ],
+          "margins_LRTB": [
+            93,
+            74,
+            260,
+            56
+          ]
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            93,
+            265,
+            182,
+            328
+          ],
+          "margins_LRTB": [
+            93,
+            74,
+            265,
+            56
+          ]
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            92,
+            270,
+            181,
+            328
+          ],
+          "margins_LRTB": [
+            92,
+            75,
+            270,
+            56
+          ]
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            92,
+            254,
+            183,
+            328
+          ],
+          "margins_LRTB": [
+            92,
+            73,
+            254,
+            56
+          ]
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            90,
+            258,
+            184,
+            316
+          ],
+          "margins_LRTB": [
+            90,
+            72,
+            258,
+            68
+          ]
+        },
+        {
+          "frame": 7,
+          "bbox": [
+            89,
+            243,
+            187,
+            308
+          ],
+          "margins_LRTB": [
+            89,
+            69,
+            243,
+            76
+          ]
+        },
+        {
+          "frame": 8,
+          "bbox": [
+            91,
+            215,
+            185,
+            304
+          ],
+          "margins_LRTB": [
+            91,
+            71,
+            215,
+            80
+          ]
+        },
+        {
+          "frame": 9,
+          "bbox": [
+            90,
+            259,
+            185,
+            304
+          ],
+          "margins_LRTB": [
+            90,
+            71,
+            259,
+            80
+          ]
+        },
+        {
+          "frame": 10,
+          "bbox": [
+            90,
+            262,
+            185,
+            304
+          ],
+          "margins_LRTB": [
+            90,
+            71,
+            262,
+            80
+          ]
+        },
+        {
+          "frame": 11,
+          "bbox": [
+            90,
+            262,
+            185,
+            306
+          ],
+          "margins_LRTB": [
+            90,
+            71,
+            262,
+            78
+          ]
+        },
+        {
+          "frame": 12,
+          "bbox": [
+            90,
+            261,
+            185,
+            310
+          ],
+          "margins_LRTB": [
+            90,
+            71,
+            261,
+            74
+          ]
+        },
+        {
+          "frame": 13,
+          "bbox": [
+            87,
+            215,
+            189,
+            316
+          ],
+          "margins_LRTB": [
+            87,
+            67,
+            215,
+            68
+          ]
+        },
+        {
+          "frame": 14,
+          "bbox": [
+            88,
+            210,
+            189,
+            322
+          ],
+          "margins_LRTB": [
+            88,
+            67,
+            210,
+            62
+          ]
+        },
+        {
+          "frame": 15,
+          "bbox": [
+            87,
+            238,
+            189,
+            328
+          ],
+          "margins_LRTB": [
+            87,
+            67,
+            238,
+            56
+          ]
+        },
+        {
+          "frame": 16,
+          "bbox": [
+            94,
+            233,
+            192,
+            330
+          ],
+          "margins_LRTB": [
+            94,
+            64,
+            233,
+            54
+          ]
+        }
+      ],
+      "placement": [
+        {
+          "frame": 1,
+          "top_left": [
+            86,
+            229
+          ],
+          "draw_scale": 0.38659793814432986,
+          "flight_offset": 0,
+          "source_bbox": [
+            2,
+            129,
+            271,
+            386
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1,
+          "shared_ready": "Idle_0"
+        },
+        {
+          "frame": 2,
+          "top_left": [
+            93,
+            260
+          ],
+          "draw_scale": 0.38659793814432986,
+          "flight_offset": 0,
+          "source_bbox": [
+            282,
+            195,
+            511,
+            372
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 3,
+          "top_left": [
+            92,
+            265
+          ],
+          "draw_scale": 0.38659793814432986,
+          "flight_offset": 0,
+          "source_bbox": [
+            533,
+            210,
+            767,
+            374
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 4,
+          "top_left": [
+            92,
+            270
+          ],
+          "draw_scale": 0.38659793814432986,
+          "flight_offset": 0,
+          "source_bbox": [
+            785,
+            225,
+            1015,
+            375
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 5,
+          "top_left": [
+            92,
+            254
+          ],
+          "draw_scale": 0.38659793814432986,
+          "flight_offset": 0,
+          "source_bbox": [
+            20,
+            556,
+            255,
+            747
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 6,
+          "top_left": [
+            90,
+            258
+          ],
+          "draw_scale": 0.38659793814432986,
+          "flight_offset": 12,
+          "source_bbox": [
+            260,
+            585,
+            504,
+            734
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 7,
+          "top_left": [
+            89,
+            243
+          ],
+          "draw_scale": 0.38659793814432986,
+          "flight_offset": 20,
+          "source_bbox": [
+            512,
+            574,
+            765,
+            742
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 8,
+          "top_left": [
+            91,
+            215
+          ],
+          "draw_scale": 0.38659793814432986,
+          "flight_offset": 24,
+          "source_bbox": [
+            775,
+            517,
+            1017,
+            748
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 9,
+          "top_left": [
+            90,
+            259
+          ],
+          "draw_scale": 0.38659793814432986,
+          "flight_offset": 24,
+          "source_bbox": [
+            8,
+            967,
+            255,
+            1084
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 10,
+          "top_left": [
+            90,
+            262
+          ],
+          "draw_scale": 0.38659793814432986,
+          "flight_offset": 24,
+          "source_bbox": [
+            265,
+            974,
+            512,
+            1083
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 11,
+          "top_left": [
+            90,
+            262
+          ],
+          "draw_scale": 0.38659793814432986,
+          "flight_offset": 22,
+          "source_bbox": [
+            521,
+            971,
+            767,
+            1086
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 12,
+          "top_left": [
+            90,
+            261
+          ],
+          "draw_scale": 0.38659793814432986,
+          "flight_offset": 18,
+          "source_bbox": [
+            773,
+            955,
+            1020,
+            1083
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 13,
+          "top_left": [
+            87,
+            215
+          ],
+          "draw_scale": 0.38659793814432986,
+          "flight_offset": 12,
+          "source_bbox": [
+            18,
+            1203,
+            282,
+            1463
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 14,
+          "top_left": [
+            88,
+            210
+          ],
+          "draw_scale": 0.38659793814432986,
+          "flight_offset": 6,
+          "source_bbox": [
+            261,
+            1191,
+            521,
+            1480
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 15,
+          "top_left": [
+            87,
+            238
+          ],
+          "draw_scale": 0.38659793814432986,
+          "flight_offset": 0,
+          "source_bbox": [
+            507,
+            1229,
+            772,
+            1461
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 16,
+          "top_left": [
+            90,
+            239
+          ],
+          "draw_scale": 0.38659793814432986,
+          "flight_offset": 0,
+          "source_bbox": [
+            778,
+            1248,
+            1024,
+            1479
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1,
+          "shared_ready": "Idle_0"
+        }
+      ]
+    },
+    {
+      "key": "FeatherFan",
+      "label": "展翼羽刃",
+      "fps": 14,
+      "loop": false,
+      "action": "One-shot FEATHER FAN casting POSTURE only,16frames. F1 ready. F2-4 rear the long neck and chest back, lift BOTH feather wings. F5-7 SNAP wings FORWARD at chest height towardSCREEN LEFT. F8-11 hold the forward-flung pose, breast pushed out, ATTACHED wing feathers splayed, full tail fan attached behind. F12-16 slowly fold wings back and return ready. No flying feather blades, feather particles or projectiles; EVERY feather remains attached to body. Entire wings fit and all six tail stars remain.",
+      "file": "FeatherFan.png",
+      "frame_count": 16,
+      "scale": 0.45021532037061196,
+      "final_prompt_override": null,
+      "sha256": "aabaa6cad4dba1d371770ca40ac0a45a2b6e4069c7e5d908e4f4f71b94efbc49",
+      "guid": "febae21905564de88f1a6dd9b12110f5",
+      "sprite_ids": [
+        631127573874821402,
+        847003193237853872,
+        1063764829357023583,
+        469013320619597619,
+        33432640978888160,
+        902672994330132252,
+        309596509384781774,
+        509216709786723713,
+        648146859716699554,
+        348167491996722632,
+        367616825341600909,
+        453005748431202167,
+        756513188849401168,
+        854359932662836331,
+        774350624037446645,
+        1148991976440355827
+      ],
+      "frames": [
+        {
+          "frame": 1,
+          "bbox": [
+            94,
+            233,
+            192,
+            330
+          ],
+          "margins_LRTB": [
+            94,
+            64,
+            233,
+            54
+          ]
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            87,
+            224,
+            198,
+            334
+          ],
+          "margins_LRTB": [
+            87,
+            58,
+            224,
+            50
+          ]
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            88,
+            210,
+            193,
+            336
+          ],
+          "margins_LRTB": [
+            88,
+            63,
+            210,
+            48
+          ]
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            92,
+            175,
+            192,
+            332
+          ],
+          "margins_LRTB": [
+            92,
+            64,
+            175,
+            52
+          ]
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            87,
+            234,
+            199,
+            330
+          ],
+          "margins_LRTB": [
+            87,
+            57,
+            234,
+            54
+          ]
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            75,
+            233,
+            195,
+            329
+          ],
+          "margins_LRTB": [
+            75,
+            61,
+            233,
+            55
+          ]
+        },
+        {
+          "frame": 7,
+          "bbox": [
+            76,
+            235,
+            192,
+            330
+          ],
+          "margins_LRTB": [
+            76,
+            64,
+            235,
+            54
+          ]
+        },
+        {
+          "frame": 8,
+          "bbox": [
+            74,
+            234,
+            196,
+            330
+          ],
+          "margins_LRTB": [
+            74,
+            60,
+            234,
+            54
+          ]
+        },
+        {
+          "frame": 9,
+          "bbox": [
+            74,
+            231,
+            195,
+            330
+          ],
+          "margins_LRTB": [
+            74,
+            61,
+            231,
+            54
+          ]
+        },
+        {
+          "frame": 10,
+          "bbox": [
+            76,
+            232,
+            193,
+            330
+          ],
+          "margins_LRTB": [
+            76,
+            63,
+            232,
+            54
+          ]
+        },
+        {
+          "frame": 11,
+          "bbox": [
+            73,
+            233,
+            196,
+            331
+          ],
+          "margins_LRTB": [
+            73,
+            60,
+            233,
+            53
+          ]
+        },
+        {
+          "frame": 12,
+          "bbox": [
+            79,
+            232,
+            190,
+            331
+          ],
+          "margins_LRTB": [
+            79,
+            66,
+            232,
+            53
+          ]
+        },
+        {
+          "frame": 13,
+          "bbox": [
+            76,
+            224,
+            194,
+            331
+          ],
+          "margins_LRTB": [
+            76,
+            62,
+            224,
+            53
+          ]
+        },
+        {
+          "frame": 14,
+          "bbox": [
+            76,
+            228,
+            197,
+            330
+          ],
+          "margins_LRTB": [
+            76,
+            59,
+            228,
+            54
+          ]
+        },
+        {
+          "frame": 15,
+          "bbox": [
+            92,
+            229,
+            198,
+            329
+          ],
+          "margins_LRTB": [
+            92,
+            58,
+            229,
+            55
+          ]
+        },
+        {
+          "frame": 16,
+          "bbox": [
+            94,
+            233,
+            192,
+            330
+          ],
+          "margins_LRTB": [
+            94,
+            64,
+            233,
+            54
+          ]
+        }
+      ],
+      "placement": [
+        {
+          "frame": 1,
+          "top_left": [
+            86,
+            232
+          ],
+          "draw_scale": 0.45021532037061196,
+          "flight_offset": 0,
+          "source_bbox": [
+            26,
+            254,
+            265,
+            482
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1,
+          "shared_ready": "Idle_0"
+        },
+        {
+          "frame": 2,
+          "top_left": [
+            87,
+            224
+          ],
+          "draw_scale": 0.45021532037061196,
+          "flight_offset": 0,
+          "source_bbox": [
+            287,
+            235,
+            533,
+            479
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 3,
+          "top_left": [
+            88,
+            210
+          ],
+          "draw_scale": 0.45021532037061196,
+          "flight_offset": 0,
+          "source_bbox": [
+            548,
+            206,
+            782,
+            486
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 4,
+          "top_left": [
+            92,
+            175
+          ],
+          "draw_scale": 0.45021532037061196,
+          "flight_offset": 0,
+          "source_bbox": [
+            793,
+            125,
+            1018,
+            474
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 5,
+          "top_left": [
+            87,
+            234
+          ],
+          "draw_scale": 0.45021532037061196,
+          "flight_offset": 0,
+          "source_bbox": [
+            28,
+            599,
+            277,
+            813
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 6,
+          "top_left": [
+            75,
+            233
+          ],
+          "draw_scale": 0.45021532037061196,
+          "flight_offset": 0,
+          "source_bbox": [
+            255,
+            600,
+            521,
+            814
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 7,
+          "top_left": [
+            76,
+            235
+          ],
+          "draw_scale": 0.45021532037061196,
+          "flight_offset": 0,
+          "source_bbox": [
+            500,
+            602,
+            757,
+            814
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 8,
+          "top_left": [
+            74,
+            234
+          ],
+          "draw_scale": 0.45021532037061196,
+          "flight_offset": 0,
+          "source_bbox": [
+            741,
+            600,
+            1015,
+            813
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 9,
+          "top_left": [
+            74,
+            231
+          ],
+          "draw_scale": 0.45021532037061196,
+          "flight_offset": 0,
+          "source_bbox": [
+            8,
+            916,
+            277,
+            1136
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 10,
+          "top_left": [
+            75,
+            232
+          ],
+          "draw_scale": 0.45021532037061196,
+          "flight_offset": 0,
+          "source_bbox": [
+            265,
+            916,
+            526,
+            1133
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 11,
+          "top_left": [
+            73,
+            233
+          ],
+          "draw_scale": 0.45021532037061196,
+          "flight_offset": 0,
+          "source_bbox": [
+            512,
+            918,
+            785,
+            1135
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 12,
+          "top_left": [
+            78,
+            232
+          ],
+          "draw_scale": 0.45021532037061196,
+          "flight_offset": 0,
+          "source_bbox": [
+            771,
+            923,
+            1023,
+            1142
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 13,
+          "top_left": [
+            76,
+            224
+          ],
+          "draw_scale": 0.45021532037061196,
+          "flight_offset": 0,
+          "source_bbox": [
+            13,
+            1242,
+            274,
+            1479
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 14,
+          "top_left": [
+            76,
+            228
+          ],
+          "draw_scale": 0.45021532037061196,
+          "flight_offset": 0,
+          "source_bbox": [
+            266,
+            1252,
+            535,
+            1479
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 15,
+          "top_left": [
+            92,
+            229
+          ],
+          "draw_scale": 0.45021532037061196,
+          "flight_offset": 0,
+          "source_bbox": [
+            537,
+            1259,
+            773,
+            1482
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 16,
+          "top_left": [
+            88,
+            226
+          ],
+          "draw_scale": 0.45021532037061196,
+          "flight_offset": 0,
+          "source_bbox": [
+            777,
+            1252,
+            1012,
+            1484
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1,
+          "shared_ready": "Idle_0"
+        }
+      ]
+    },
+    {
+      "key": "TailSweep",
+      "label": "星尾横扫",
+      "fps": 14,
+      "loop": false,
+      "action": "One-shot TAIL SWEEP16frames. F1 ready. F2-5 twist UPPER BODY slightly away (head/beak still readsLEFT threequarter), raise attached six-star fan tail. F6-8 WHIP huge tail FAN forward towardLEFT and LOW across ground in a wide arc, body braced with talons planted. F9-11 follow-through, torso rotated a little and whole fan extended to the far side. F12-14 brake and pull tail back. F15-16 ready. Tail remains ATTACHED and all six medallions plus tips fully visible, no shortened/missing feathers. Scale down entire bird to fit the WIDEST sweep; do not crop. No lightarc/dust/effects.",
+      "file": "TailSweep.png",
+      "frame_count": 16,
+      "scale": 0.47422680412371127,
+      "final_prompt_override": null,
+      "sha256": "cb7cc50e0a6bbd2a39b082d0bd71a6c615a54fda21f308d5fc9a3462815489ac",
+      "guid": "d1ccb366fc5444c0bfbf1e1cf1e7dd04",
+      "sprite_ids": [
+        980409507548644137,
+        379467584035666640,
+        635564596172220329,
+        424465316589332742,
+        1108534248669092731,
+        435743187451831020,
+        1066970842310842676,
+        129550519930266538,
+        225987986712927640,
+        459648144038705387,
+        259301682427058059,
+        129318829350406101,
+        215825482332387894,
+        447368180693682964,
+        1099770675184654523,
+        599924331211022347
+      ],
+      "frames": [
+        {
+          "frame": 1,
+          "bbox": [
+            94,
+            233,
+            192,
+            330
+          ],
+          "margins_LRTB": [
+            94,
+            64,
+            233,
+            54
+          ]
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            94,
+            212,
+            207,
+            331
+          ],
+          "margins_LRTB": [
+            94,
+            49,
+            212,
+            53
+          ]
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            90,
+            191,
+            209,
+            330
+          ],
+          "margins_LRTB": [
+            90,
+            47,
+            191,
+            54
+          ]
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            91,
+            155,
+            202,
+            330
+          ],
+          "margins_LRTB": [
+            91,
+            54,
+            155,
+            54
+          ]
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            88,
+            224,
+            196,
+            329
+          ],
+          "margins_LRTB": [
+            88,
+            60,
+            224,
+            55
+          ]
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            89,
+            238,
+            220,
+            329
+          ],
+          "margins_LRTB": [
+            89,
+            36,
+            238,
+            55
+          ]
+        },
+        {
+          "frame": 7,
+          "bbox": [
+            79,
+            245,
+            219,
+            330
+          ],
+          "margins_LRTB": [
+            79,
+            37,
+            245,
+            54
+          ]
+        },
+        {
+          "frame": 8,
+          "bbox": [
+            82,
+            230,
+            192,
+            329
+          ],
+          "margins_LRTB": [
+            82,
+            64,
+            230,
+            55
+          ]
+        },
+        {
+          "frame": 9,
+          "bbox": [
+            44,
+            227,
+            172,
+            328
+          ],
+          "margins_LRTB": [
+            44,
+            84,
+            227,
+            56
+          ]
+        },
+        {
+          "frame": 10,
+          "bbox": [
+            52,
+            227,
+            177,
+            329
+          ],
+          "margins_LRTB": [
+            52,
+            79,
+            227,
+            55
+          ]
+        },
+        {
+          "frame": 11,
+          "bbox": [
+            61,
+            220,
+            172,
+            329
+          ],
+          "margins_LRTB": [
+            61,
+            84,
+            220,
+            55
+          ]
+        },
+        {
+          "frame": 12,
+          "bbox": [
+            63,
+            234,
+            167,
+            330
+          ],
+          "margins_LRTB": [
+            63,
+            89,
+            234,
+            54
+          ]
+        },
+        {
+          "frame": 13,
+          "bbox": [
+            87,
+            217,
+            210,
+            330
+          ],
+          "margins_LRTB": [
+            87,
+            46,
+            217,
+            54
+          ]
+        },
+        {
+          "frame": 14,
+          "bbox": [
+            89,
+            229,
+            204,
+            330
+          ],
+          "margins_LRTB": [
+            89,
+            52,
+            229,
+            54
+          ]
+        },
+        {
+          "frame": 15,
+          "bbox": [
+            86,
+            229,
+            202,
+            330
+          ],
+          "margins_LRTB": [
+            86,
+            54,
+            229,
+            54
+          ]
+        },
+        {
+          "frame": 16,
+          "bbox": [
+            94,
+            233,
+            192,
+            330
+          ],
+          "margins_LRTB": [
+            94,
+            64,
+            233,
+            54
+          ]
+        }
+      ],
+      "placement": [
+        {
+          "frame": 1,
+          "top_left": [
+            84,
+            226
+          ],
+          "draw_scale": 0.47422680412371127,
+          "flight_offset": 0,
+          "source_bbox": [
+            19,
+            294,
+            278,
+            516
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1,
+          "shared_ready": "Idle_0"
+        },
+        {
+          "frame": 2,
+          "top_left": [
+            94,
+            212
+          ],
+          "draw_scale": 0.47422680412371127,
+          "flight_offset": 0,
+          "source_bbox": [
+            288,
+            265,
+            527,
+            515
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 3,
+          "top_left": [
+            89,
+            191
+          ],
+          "draw_scale": 0.47422680412371127,
+          "flight_offset": 0,
+          "source_bbox": [
+            535,
+            221,
+            789,
+            515
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 4,
+          "top_left": [
+            91,
+            155
+          ],
+          "draw_scale": 0.47422680412371127,
+          "flight_offset": 0,
+          "source_bbox": [
+            778,
+            145,
+            1013,
+            515
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 5,
+          "top_left": [
+            88,
+            224
+          ],
+          "draw_scale": 0.47422680412371127,
+          "flight_offset": 0,
+          "source_bbox": [
+            7,
+            612,
+            235,
+            833
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 6,
+          "top_left": [
+            89,
+            238
+          ],
+          "draw_scale": 0.47422680412371127,
+          "flight_offset": 0,
+          "source_bbox": [
+            232,
+            637,
+            509,
+            829
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 7,
+          "top_left": [
+            79,
+            245
+          ],
+          "draw_scale": 0.47422680412371127,
+          "flight_offset": 0,
+          "source_bbox": [
+            502,
+            649,
+            797,
+            828
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 8,
+          "top_left": [
+            82,
+            230
+          ],
+          "draw_scale": 0.47422680412371127,
+          "flight_offset": 0,
+          "source_bbox": [
+            780,
+            639,
+            1013,
+            848
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 9,
+          "top_left": [
+            44,
+            227
+          ],
+          "draw_scale": 0.47422680412371127,
+          "flight_offset": 0,
+          "source_bbox": [
+            9,
+            927,
+            278,
+            1141
+          ],
+          "direction_mirrored": true,
+          "source_parts": 1
+        },
+        {
+          "frame": 10,
+          "top_left": [
+            52,
+            227
+          ],
+          "draw_scale": 0.47422680412371127,
+          "flight_offset": 0,
+          "source_bbox": [
+            283,
+            924,
+            546,
+            1139
+          ],
+          "direction_mirrored": true,
+          "source_parts": 1
+        },
+        {
+          "frame": 11,
+          "top_left": [
+            61,
+            220
+          ],
+          "draw_scale": 0.47422680412371127,
+          "flight_offset": 0,
+          "source_bbox": [
+            559,
+            912,
+            793,
+            1141
+          ],
+          "direction_mirrored": true,
+          "source_parts": 1
+        },
+        {
+          "frame": 12,
+          "top_left": [
+            63,
+            234
+          ],
+          "draw_scale": 0.47422680412371127,
+          "flight_offset": 0,
+          "source_bbox": [
+            795,
+            924,
+            1014,
+            1126
+          ],
+          "direction_mirrored": true,
+          "source_parts": 1
+        },
+        {
+          "frame": 13,
+          "top_left": [
+            87,
+            217
+          ],
+          "draw_scale": 0.47422680412371127,
+          "flight_offset": 0,
+          "source_bbox": [
+            19,
+            1238,
+            280,
+            1477
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 14,
+          "top_left": [
+            88,
+            229
+          ],
+          "draw_scale": 0.47422680412371127,
+          "flight_offset": 0,
+          "source_bbox": [
+            276,
+            1264,
+            521,
+            1477
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 15,
+          "top_left": [
+            86,
+            229
+          ],
+          "draw_scale": 0.47422680412371127,
+          "flight_offset": 0,
+          "source_bbox": [
+            533,
+            1263,
+            780,
+            1477
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 16,
+          "top_left": [
+            89,
+            229
+          ],
+          "draw_scale": 0.47422680412371127,
+          "flight_offset": 0,
+          "source_bbox": [
+            788,
+            1264,
+            1018,
+            1477
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1,
+          "shared_ready": "Idle_0"
+        }
+      ]
+    },
+    {
+      "key": "StarDive",
+      "label": "星陨俯冲",
+      "fps": 14,
+      "loop": false,
+      "action": "One-shot STAR DIVE16frames. F1 ready. F2-5 crouch then LEAP UP with wings folded and talons lifting. F6-8 apex hover, head/beak angles down and LEFT, wings tucked; whole bird and fan tail insidecell. F9-11 DIVE diagonally DOWN-LEFT, wings tucked, talons forward and tail behind. F12-14 LAND in deep IMPACT CROUCH, both wings spread and six-star tail fan flared, all appendages complete. F15-16 rise ready. Baked jump offset only modest (24-32px above fixed groundline), same scale throughout. Draw ONLY pose, no impact flash/ring, dust, stones or loose feathers.",
+      "file": "StarDive.png",
+      "frame_count": 16,
+      "scale": 0.3940942970557157,
+      "final_prompt_override": null,
+      "sha256": "b467192a74d1c82f00e97301f318b3d1e580b8046bfb7434b5bd96c790457f6d",
+      "guid": "d9e30db9ce3040f393682471a58111ea",
+      "sprite_ids": [
+        1049874807483565687,
+        432840382595504784,
+        174378360538643412,
+        496243217560043894,
+        610081118396955155,
+        805460337409367436,
+        498563556768883735,
+        1098227604779443856,
+        436862131064169671,
+        591119014207307132,
+        372721581834922794,
+        113497568352525990,
+        68106947347491384,
+        874545564939207837,
+        919979334254549080,
+        211913251027514610
+      ],
+      "frames": [
+        {
+          "frame": 1,
+          "bbox": [
+            94,
+            233,
+            192,
+            330
+          ],
+          "margins_LRTB": [
+            94,
+            64,
+            233,
+            54
+          ]
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            91,
+            256,
+            183,
+            328
+          ],
+          "margins_LRTB": [
+            91,
+            73,
+            256,
+            56
+          ]
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            90,
+            260,
+            186,
+            324
+          ],
+          "margins_LRTB": [
+            90,
+            70,
+            260,
+            60
+          ]
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            92,
+            217,
+            182,
+            316
+          ],
+          "margins_LRTB": [
+            92,
+            74,
+            217,
+            68
+          ]
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            88,
+            194,
+            187,
+            304
+          ],
+          "margins_LRTB": [
+            88,
+            69,
+            194,
+            80
+          ]
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            95,
+            183,
+            179,
+            296
+          ],
+          "margins_LRTB": [
+            95,
+            77,
+            183,
+            88
+          ]
+        },
+        {
+          "frame": 7,
+          "bbox": [
+            98,
+            179,
+            174,
+            292
+          ],
+          "margins_LRTB": [
+            98,
+            82,
+            179,
+            92
+          ]
+        },
+        {
+          "frame": 8,
+          "bbox": [
+            95,
+            197,
+            180,
+            292
+          ],
+          "margins_LRTB": [
+            95,
+            76,
+            197,
+            92
+          ]
+        },
+        {
+          "frame": 9,
+          "bbox": [
+            93,
+            190,
+            181,
+            300
+          ],
+          "margins_LRTB": [
+            93,
+            75,
+            190,
+            84
+          ]
+        },
+        {
+          "frame": 10,
+          "bbox": [
+            93,
+            206,
+            182,
+            310
+          ],
+          "margins_LRTB": [
+            93,
+            74,
+            206,
+            74
+          ]
+        },
+        {
+          "frame": 11,
+          "bbox": [
+            89,
+            218,
+            186,
+            320
+          ],
+          "margins_LRTB": [
+            89,
+            70,
+            218,
+            64
+          ]
+        },
+        {
+          "frame": 12,
+          "bbox": [
+            85,
+            240,
+            191,
+            328
+          ],
+          "margins_LRTB": [
+            85,
+            65,
+            240,
+            56
+          ]
+        },
+        {
+          "frame": 13,
+          "bbox": [
+            88,
+            245,
+            189,
+            328
+          ],
+          "margins_LRTB": [
+            88,
+            67,
+            245,
+            56
+          ]
+        },
+        {
+          "frame": 14,
+          "bbox": [
+            90,
+            239,
+            185,
+            328
+          ],
+          "margins_LRTB": [
+            90,
+            71,
+            239,
+            56
+          ]
+        },
+        {
+          "frame": 15,
+          "bbox": [
+            89,
+            242,
+            187,
+            328
+          ],
+          "margins_LRTB": [
+            89,
+            69,
+            242,
+            56
+          ]
+        },
+        {
+          "frame": 16,
+          "bbox": [
+            94,
+            233,
+            192,
+            330
+          ],
+          "margins_LRTB": [
+            94,
+            64,
+            233,
+            54
+          ]
+        }
+      ],
+      "placement": [
+        {
+          "frame": 1,
+          "top_left": [
+            88,
+            234
+          ],
+          "draw_scale": 0.3940942970557157,
+          "flight_offset": 0,
+          "source_bbox": [
+            17,
+            219,
+            272,
+            458
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1,
+          "shared_ready": "Idle_0"
+        },
+        {
+          "frame": 2,
+          "top_left": [
+            91,
+            256
+          ],
+          "draw_scale": 0.3940942970557157,
+          "flight_offset": 0,
+          "source_bbox": [
+            285,
+            276,
+            518,
+            458
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 3,
+          "top_left": [
+            90,
+            260
+          ],
+          "draw_scale": 0.3940942970557157,
+          "flight_offset": 4,
+          "source_bbox": [
+            537,
+            296,
+            780,
+            459
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 4,
+          "top_left": [
+            92,
+            217
+          ],
+          "draw_scale": 0.3940942970557157,
+          "flight_offset": 12,
+          "source_bbox": [
+            784,
+            210,
+            1013,
+            461
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 5,
+          "top_left": [
+            88,
+            194
+          ],
+          "draw_scale": 0.3940942970557157,
+          "flight_offset": 24,
+          "source_bbox": [
+            49,
+            527,
+            300,
+            805
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 6,
+          "top_left": [
+            95,
+            183
+          ],
+          "draw_scale": 0.3940942970557157,
+          "flight_offset": 32,
+          "source_bbox": [
+            328,
+            527,
+            540,
+            813
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 7,
+          "top_left": [
+            98,
+            179
+          ],
+          "draw_scale": 0.3940942970557157,
+          "flight_offset": 36,
+          "source_bbox": [
+            563,
+            527,
+            755,
+            814
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 8,
+          "top_left": [
+            94,
+            197
+          ],
+          "draw_scale": 0.3940942970557157,
+          "flight_offset": 36,
+          "source_bbox": [
+            788,
+            546,
+            1006,
+            788
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 9,
+          "top_left": [
+            93,
+            190
+          ],
+          "draw_scale": 0.3940942970557157,
+          "flight_offset": 28,
+          "source_bbox": [
+            49,
+            849,
+            273,
+            1128
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 10,
+          "top_left": [
+            93,
+            206
+          ],
+          "draw_scale": 0.3940942970557157,
+          "flight_offset": 18,
+          "source_bbox": [
+            284,
+            869,
+            509,
+            1133
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 11,
+          "top_left": [
+            89,
+            218
+          ],
+          "draw_scale": 0.3940942970557157,
+          "flight_offset": 8,
+          "source_bbox": [
+            514,
+            879,
+            761,
+            1138
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 12,
+          "top_left": [
+            85,
+            240
+          ],
+          "draw_scale": 0.3940942970557157,
+          "flight_offset": 0,
+          "source_bbox": [
+            745,
+            923,
+            1015,
+            1147
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 13,
+          "top_left": [
+            88,
+            245
+          ],
+          "draw_scale": 0.3940942970557157,
+          "flight_offset": 0,
+          "source_bbox": [
+            14,
+            1257,
+            270,
+            1467
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 14,
+          "top_left": [
+            90,
+            238
+          ],
+          "draw_scale": 0.3940942970557157,
+          "flight_offset": 0,
+          "source_bbox": [
+            280,
+            1237,
+            521,
+            1466
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 15,
+          "top_left": [
+            89,
+            242
+          ],
+          "draw_scale": 0.3940942970557157,
+          "flight_offset": 0,
+          "source_bbox": [
+            535,
+            1248,
+            783,
+            1466
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 16,
+          "top_left": [
+            93,
+            244
+          ],
+          "draw_scale": 0.3940942970557157,
+          "flight_offset": 0,
+          "source_bbox": [
+            793,
+            1253,
+            1016,
+            1467
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1,
+          "shared_ready": "Idle_0"
+        }
+      ]
+    },
+    {
+      "key": "Ascend",
+      "label": "星曜升空",
+      "fps": 12,
+      "loop": false,
+      "holdLast": true,
+      "action": "ASCEND for special state16frames, ending in HELD AIRBORNE pose, not a loop. F1 ready. F2-5 spread BOTH wings wide and crouch. F6-8 beat wings DOWN and lift BOTH talons off ground. F9-12 rise modestly, attached huge tail fan opens like reference and embedded FOUR-POINT star medallions brighten within the feathers. F13-16 HOLD airborne: BOTH wings fully spread, entire six-star fan flared like a star peacock, talons folded slightly and NO ground contact. F16 must remain AIRBORNE, do NOT return tostanding. Use smaller whole-body scale for widest wings/tail; all tips fullyinsidecell. NO aura, beam, ground shadow, sparkle, particle or loose feathers.",
+      "file": "Ascend.png",
+      "frame_count": 16,
+      "scale": 0.42468072011078617,
+      "final_prompt_override": "Edit the FIRST image, a16-pose bird sprite atlas. SECOND image is the exact phoenix identity reference. Preserve the exact bird, navy/cyan feather pattern, silver long neck, red eye, THREE long silver crest plumes, SIX ringed cyan four-point tail stars, ink lines and cel shading.\nReplace its action with TAKEOFF into a special airborne stance. Exactly16 tiny FULL birds in4columns x4rows on1024x1536 transparentPNG.\nROW1 frames1-4: neutral -> crouch while slowly spreading both wings.\nROW2 frames5-8: wings spread -> downstroke -> both talons lifting off ground.\nROW3 frames9-12: bird rises, both wings open wider, huge six-star tail fan opens fully.\nROW4 frames13-16: FOUR held AIRBORNE poses, wings fully spread and tail fully flared. Talons remain OFF the ground. Finalframe must NOT stand.\nKeep bird facing LEFT. Whole bird including wing and tail tips tiny, under170pxwidth per256x384cell, empty32pxside and40pxtop/bottom margins. Same drawing scale. No aura, light trails, particles, loose feathers, shadow, background, label or grid. Real transparentalpha. Character body ONLY.",
+      "sha256": "ad4bb9fb62a569738fe84054d83ecd2f1cac4a8489d80fdc68280e2474109fa5",
+      "guid": "259feef9c35b4117be8b0fd9b3020e51",
+      "sprite_ids": [
+        102313478027967344,
+        327446867651667380,
+        818672478993676329,
+        135942232695856077,
+        318481334625579709,
+        612516419599446500,
+        689314684383692807,
+        80698876056392729,
+        22718289845045162,
+        637240029684133930,
+        147589087573847121,
+        705129817334436932,
+        877611106159233287,
+        895232027423328081,
+        296429664803758310,
+        431447553342238473
+      ],
+      "frames": [
+        {
+          "frame": 1,
+          "bbox": [
+            89,
+            235,
+            189,
+            328
+          ],
+          "margins_LRTB": [
+            89,
+            67,
+            235,
+            56
+          ]
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            89,
+            242,
+            187,
+            328
+          ],
+          "margins_LRTB": [
+            89,
+            69,
+            242,
+            56
+          ]
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            88,
+            232,
+            189,
+            328
+          ],
+          "margins_LRTB": [
+            88,
+            67,
+            232,
+            56
+          ]
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            87,
+            210,
+            190,
+            328
+          ],
+          "margins_LRTB": [
+            87,
+            66,
+            210,
+            56
+          ]
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            87,
+            213,
+            188,
+            328
+          ],
+          "margins_LRTB": [
+            87,
+            68,
+            213,
+            56
+          ]
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            86,
+            197,
+            190,
+            320
+          ],
+          "margins_LRTB": [
+            86,
+            66,
+            197,
+            64
+          ]
+        },
+        {
+          "frame": 7,
+          "bbox": [
+            88,
+            184,
+            187,
+            312
+          ],
+          "margins_LRTB": [
+            88,
+            69,
+            184,
+            72
+          ]
+        },
+        {
+          "frame": 8,
+          "bbox": [
+            89,
+            172,
+            187,
+            304
+          ],
+          "margins_LRTB": [
+            89,
+            69,
+            172,
+            80
+          ]
+        },
+        {
+          "frame": 9,
+          "bbox": [
+            86,
+            169,
+            192,
+            296
+          ],
+          "margins_LRTB": [
+            86,
+            64,
+            169,
+            88
+          ]
+        },
+        {
+          "frame": 10,
+          "bbox": [
+            88,
+            159,
+            187,
+            288
+          ],
+          "margins_LRTB": [
+            88,
+            69,
+            159,
+            96
+          ]
+        },
+        {
+          "frame": 11,
+          "bbox": [
+            89,
+            152,
+            188,
+            284
+          ],
+          "margins_LRTB": [
+            89,
+            68,
+            152,
+            100
+          ]
+        },
+        {
+          "frame": 12,
+          "bbox": [
+            89,
+            148,
+            187,
+            280
+          ],
+          "margins_LRTB": [
+            89,
+            69,
+            148,
+            104
+          ]
+        },
+        {
+          "frame": 13,
+          "bbox": [
+            82,
+            172,
+            197,
+            276
+          ],
+          "margins_LRTB": [
+            82,
+            59,
+            172,
+            108
+          ]
+        },
+        {
+          "frame": 14,
+          "bbox": [
+            91,
+            149,
+            182,
+            276
+          ],
+          "margins_LRTB": [
+            91,
+            74,
+            149,
+            108
+          ]
+        },
+        {
+          "frame": 15,
+          "bbox": [
+            84,
+            151,
+            194,
+            276
+          ],
+          "margins_LRTB": [
+            84,
+            62,
+            151,
+            108
+          ]
+        },
+        {
+          "frame": 16,
+          "bbox": [
+            87,
+            155,
+            189,
+            276
+          ],
+          "margins_LRTB": [
+            87,
+            67,
+            155,
+            108
+          ]
+        }
+      ],
+      "placement": [
+        {
+          "frame": 1,
+          "top_left": [
+            88,
+            235
+          ],
+          "draw_scale": 0.42468072011078617,
+          "flight_offset": 0,
+          "source_bbox": [
+            24,
+            236,
+            261,
+            455
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 2,
+          "top_left": [
+            89,
+            242
+          ],
+          "draw_scale": 0.42468072011078617,
+          "flight_offset": 0,
+          "source_bbox": [
+            276,
+            249,
+            507,
+            452
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 3,
+          "top_left": [
+            88,
+            232
+          ],
+          "draw_scale": 0.42468072011078617,
+          "flight_offset": 0,
+          "source_bbox": [
+            513,
+            237,
+            750,
+            463
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 4,
+          "top_left": [
+            87,
+            210
+          ],
+          "draw_scale": 0.42468072011078617,
+          "flight_offset": 0,
+          "source_bbox": [
+            765,
+            186,
+            1007,
+            464
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 5,
+          "top_left": [
+            87,
+            213
+          ],
+          "draw_scale": 0.42468072011078617,
+          "flight_offset": 0,
+          "source_bbox": [
+            24,
+            537,
+            263,
+            807
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 6,
+          "top_left": [
+            86,
+            197
+          ],
+          "draw_scale": 0.42468072011078617,
+          "flight_offset": 8,
+          "source_bbox": [
+            274,
+            514,
+            519,
+            804
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 7,
+          "top_left": [
+            88,
+            184
+          ],
+          "draw_scale": 0.42468072011078617,
+          "flight_offset": 16,
+          "source_bbox": [
+            533,
+            506,
+            767,
+            807
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 8,
+          "top_left": [
+            89,
+            172
+          ],
+          "draw_scale": 0.42468072011078617,
+          "flight_offset": 24,
+          "source_bbox": [
+            778,
+            497,
+            1009,
+            807
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 9,
+          "top_left": [
+            86,
+            169
+          ],
+          "draw_scale": 0.42468072011078617,
+          "flight_offset": 32,
+          "source_bbox": [
+            24,
+            838,
+            273,
+            1136
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 10,
+          "top_left": [
+            88,
+            159
+          ],
+          "draw_scale": 0.42468072011078617,
+          "flight_offset": 40,
+          "source_bbox": [
+            287,
+            833,
+            520,
+            1136
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 11,
+          "top_left": [
+            89,
+            152
+          ],
+          "draw_scale": 0.42468072011078617,
+          "flight_offset": 44,
+          "source_bbox": [
+            534,
+            831,
+            766,
+            1141
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 12,
+          "top_left": [
+            89,
+            148
+          ],
+          "draw_scale": 0.42468072011078617,
+          "flight_offset": 48,
+          "source_bbox": [
+            778,
+            831,
+            1009,
+            1142
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 13,
+          "top_left": [
+            82,
+            172
+          ],
+          "draw_scale": 0.42468072011078617,
+          "flight_offset": 52,
+          "source_bbox": [
+            16,
+            1211,
+            287,
+            1457
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 14,
+          "top_left": [
+            91,
+            149
+          ],
+          "draw_scale": 0.42468072011078617,
+          "flight_offset": 52,
+          "source_bbox": [
+            303,
+            1165,
+            518,
+            1465
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 15,
+          "top_left": [
+            84,
+            151
+          ],
+          "draw_scale": 0.42468072011078617,
+          "flight_offset": 52,
+          "source_bbox": [
+            504,
+            1169,
+            764,
+            1463
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 16,
+          "top_left": [
+            87,
+            155
+          ],
+          "draw_scale": 0.42468072011078617,
+          "flight_offset": 52,
+          "source_bbox": [
+            768,
+            1180,
+            1008,
+            1466
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        }
+      ]
+    },
+    {
+      "key": "Hit",
+      "label": "单次受击",
+      "fps": 12,
+      "loop": false,
+      "action": "SINGLE HIT REACTION16frames, NOT attacking. F1 ready. F2 three-plume crest whips back. F3-6 whole body recoils towardSCREEN RIGHT from impactLEFT, wings flare passively, attached breast/wing feathers ruffle outward. ALL feathers stay attached: NO loose flying feathers because separate effects are required. F7-9 talons slide slightly back to brace. F10-13 straighten, settle wings/fan. F14-16 return exactlyF1. Beak stillLEFT; no attacker/projectile/blood/sparks/motionlines/effects.",
+      "file": "Hit.png",
+      "frame_count": 16,
+      "scale": 0.4546902784912053,
+      "final_prompt_override": "Use case: stylized-concept. Asset: production 2D Unity BOSS CHARACTER BODY animation sheet.\nREFERENCE ROLE: attached level8.png is the EXACT identity, anatomy, feather silhouette, palette, black outline weight and cel-shaded style reference. It is JIUYAO XUANHUANG, a majestic NON-HUMANOID star phoenix. Silver-white head/breast and slender curved S-neck, short hooked BLACK beak, fierce RED eyes. EXACTLY THREE long swept silver/ivory crest plumes. Deep navy/cobalt wing and body plumage with layered icy-CYAN feather edges. TWO feathered WINGS, TWO powerful dark scaled BIRD legs and silver talons; NO arms, hands, human skin, armor, tools or weapons. Huge attached navy/cyan fan tail as reference: SIX large cyan-ring medallions, each containing one FOUR-POINT cyan star, distributed over the long paired fan feathers. One corresponding cyan star-eye marking at each outer wing panel. Preserve the same tail feather shape, ring/star count and crest design in all16 poses; all wing/tail tips and markings fully drawn. Do not turn this into a humanoid bird soldier, peacock with a human face, dragon or ordinary eagle.\nEXACTLY16 separate FULL phoenix figures, FOUR columns x FOUR rows, PORTRAIT1024x1536 RGBA PNG, invisible equal256x384 cells. Chronological row-major left-to-right then top-to-bottom, including row transitions. ALL FOUR ROWS must contain4 complete birds: row1F1-4,row2F5-8,row3F9-12,row4F13-16. Never stop at12figures or leave a blank fourth row.\nCOMPOSITION CRITICAL: draw the whole bird TINY inside each cell. Entire body plus COMPLETE spread wings and HUGE full tail fan should be approximately120-150px wide x160-220px tall. Absolute maximum178px width/288px height (70%/75%). Prefer at least50px transparent side margins and60px vertical margins, NEVER less than32px horizontal or40px vertical. The sheet must be mostly EMPTY TRANSPARENT space. Make WHOLE bird smaller to fit wide wings/tail, do not shorten/crop appendages, omit stars or fill cells. No touching/overlapping neighbors or outside canvas edge.\nONE fixed drawing scale and camera, three-quarter SCREEN LEFT facing, beak points LEFT; only the explicitly described small torso/tail turns, no camera spin or mirrored right-facing birds. Ground baseline cell-local y328, consistent body/feet center. Grounded toes touch same baseline; airborne poses rise above that SAME baseline, not a different camera or scale. Keep all jump apex crest and tail tips inside cell.\nOnly draw REAL CHARACTER BODY and ATTACHED feathers/embedded star markings. All SKILL VISUAL EFFECTS ARE SEPARATE assets: NO dash trails, slash arcs, energy rings, auras, loose feathers, projectiles, glints outside the body, impact flashes, dust, stone chips, afterimages, motion lines, shadows or particles in this character sheet. Embedded star color may brighten subtly but no external bloom halo.\nTransparent ALPHA0 around bird and between all feather gaps. Do not copy reference's dark mist/blue backdrop glow. No background, floor/ground texture, scenery, opaque gradient, checkerboard, labels, text, numbers, grid, border, watermark or extra creatures.\n\nKeep all16 full birds TINY inside their cells, entire wings/tail under150pxwidth, wide transparentpaddingall4sides. Nevercrop wings or tail. All4rows have4birds.\nSINGLE HIT REACTION16frames, NOT attacking. F1 ready. F2 three-plume crest whips back. F3-6 whole body recoils towardSCREEN RIGHT from impactLEFT, wings flare passively, attached breast/wing feathers ruffle outward. ALL feathers stay attached: NO loose flying feathers because separate effects are required. F7-9 talons slide slightly back to brace. F10-13 straighten, settle wings/fan. F14-16 return exactlyF1. Beak stillLEFT; no attacker/projectile/blood/sparks/motionlines/effects.",
+      "sha256": "350cd50dc297a9365a4811dfb7918137b076676f981e06f5ca4d11e05036dd54",
+      "guid": "c200b45fa54d42608be5b342cf7d7cd3",
+      "sprite_ids": [
+        524020863509201968,
+        538203816337136785,
+        898241760357270970,
+        992807657147480401,
+        351090163482994895,
+        602032985716419353,
+        22735870684078299,
+        906720442818644865,
+        12308948380882337,
+        416107571987602444,
+        862650755878597945,
+        621107932479984571,
+        981904749159962988,
+        261538277340724143,
+        828830795544334411,
+        98387118292766392
+      ],
+      "frames": [
+        {
+          "frame": 1,
+          "bbox": [
+            94,
+            233,
+            192,
+            330
+          ],
+          "margins_LRTB": [
+            94,
+            64,
+            233,
+            54
+          ]
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            93,
+            234,
+            196,
+            336
+          ],
+          "margins_LRTB": [
+            93,
+            60,
+            234,
+            48
+          ]
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            91,
+            237,
+            199,
+            336
+          ],
+          "margins_LRTB": [
+            91,
+            57,
+            237,
+            48
+          ]
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            89,
+            229,
+            196,
+            335
+          ],
+          "margins_LRTB": [
+            89,
+            60,
+            229,
+            49
+          ]
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            88,
+            223,
+            203,
+            336
+          ],
+          "margins_LRTB": [
+            88,
+            53,
+            223,
+            48
+          ]
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            87,
+            233,
+            199,
+            336
+          ],
+          "margins_LRTB": [
+            87,
+            57,
+            233,
+            48
+          ]
+        },
+        {
+          "frame": 7,
+          "bbox": [
+            89,
+            239,
+            200,
+            335
+          ],
+          "margins_LRTB": [
+            89,
+            56,
+            239,
+            49
+          ]
+        },
+        {
+          "frame": 8,
+          "bbox": [
+            92,
+            239,
+            200,
+            333
+          ],
+          "margins_LRTB": [
+            92,
+            56,
+            239,
+            51
+          ]
+        },
+        {
+          "frame": 9,
+          "bbox": [
+            91,
+            246,
+            201,
+            336
+          ],
+          "margins_LRTB": [
+            91,
+            55,
+            246,
+            48
+          ]
+        },
+        {
+          "frame": 10,
+          "bbox": [
+            89,
+            237,
+            198,
+            336
+          ],
+          "margins_LRTB": [
+            89,
+            58,
+            237,
+            48
+          ]
+        },
+        {
+          "frame": 11,
+          "bbox": [
+            91,
+            229,
+            199,
+            336
+          ],
+          "margins_LRTB": [
+            91,
+            57,
+            229,
+            48
+          ]
+        },
+        {
+          "frame": 12,
+          "bbox": [
+            90,
+            228,
+            196,
+            337
+          ],
+          "margins_LRTB": [
+            90,
+            60,
+            228,
+            47
+          ]
+        },
+        {
+          "frame": 13,
+          "bbox": [
+            90,
+            233,
+            200,
+            336
+          ],
+          "margins_LRTB": [
+            90,
+            56,
+            233,
+            48
+          ]
+        },
+        {
+          "frame": 14,
+          "bbox": [
+            89,
+            229,
+            197,
+            337
+          ],
+          "margins_LRTB": [
+            89,
+            59,
+            229,
+            47
+          ]
+        },
+        {
+          "frame": 15,
+          "bbox": [
+            93,
+            229,
+            197,
+            337
+          ],
+          "margins_LRTB": [
+            93,
+            59,
+            229,
+            47
+          ]
+        },
+        {
+          "frame": 16,
+          "bbox": [
+            94,
+            233,
+            192,
+            330
+          ],
+          "margins_LRTB": [
+            94,
+            64,
+            233,
+            54
+          ]
+        }
+      ],
+      "placement": [
+        {
+          "frame": 1,
+          "top_left": [
+            93,
+            233
+          ],
+          "draw_scale": 0.4546902784912053,
+          "flight_offset": 0,
+          "source_bbox": [
+            19,
+            137,
+            250,
+            366
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1,
+          "shared_ready": "Idle_0"
+        },
+        {
+          "frame": 2,
+          "top_left": [
+            93,
+            234
+          ],
+          "draw_scale": 0.4546902784912053,
+          "flight_offset": 0,
+          "source_bbox": [
+            276,
+            139,
+            503,
+            363
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 3,
+          "top_left": [
+            91,
+            237
+          ],
+          "draw_scale": 0.4546902784912053,
+          "flight_offset": 0,
+          "source_bbox": [
+            527,
+            146,
+            765,
+            363
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 4,
+          "top_left": [
+            89,
+            229
+          ],
+          "draw_scale": 0.4546902784912053,
+          "flight_offset": 0,
+          "source_bbox": [
+            779,
+            128,
+            1016,
+            362
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 5,
+          "top_left": [
+            88,
+            223
+          ],
+          "draw_scale": 0.4546902784912053,
+          "flight_offset": 0,
+          "source_bbox": [
+            14,
+            498,
+            270,
+            747
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 6,
+          "top_left": [
+            87,
+            233
+          ],
+          "draw_scale": 0.4546902784912053,
+          "flight_offset": 0,
+          "source_bbox": [
+            265,
+            518,
+            511,
+            744
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 7,
+          "top_left": [
+            89,
+            239
+          ],
+          "draw_scale": 0.4546902784912053,
+          "flight_offset": 0,
+          "source_bbox": [
+            521,
+            534,
+            766,
+            745
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 8,
+          "top_left": [
+            91,
+            239
+          ],
+          "draw_scale": 0.4546902784912053,
+          "flight_offset": 0,
+          "source_bbox": [
+            775,
+            534,
+            1015,
+            741
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 9,
+          "top_left": [
+            91,
+            246
+          ],
+          "draw_scale": 0.4546902784912053,
+          "flight_offset": 0,
+          "source_bbox": [
+            15,
+            906,
+            257,
+            1105
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 10,
+          "top_left": [
+            89,
+            237
+          ],
+          "draw_scale": 0.4546902784912053,
+          "flight_offset": 0,
+          "source_bbox": [
+            271,
+            888,
+            511,
+            1106
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 11,
+          "top_left": [
+            91,
+            229
+          ],
+          "draw_scale": 0.4546902784912053,
+          "flight_offset": 0,
+          "source_bbox": [
+            528,
+            876,
+            766,
+            1112
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 12,
+          "top_left": [
+            90,
+            228
+          ],
+          "draw_scale": 0.4546902784912053,
+          "flight_offset": 0,
+          "source_bbox": [
+            784,
+            872,
+            1020,
+            1111
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 13,
+          "top_left": [
+            90,
+            233
+          ],
+          "draw_scale": 0.4546902784912053,
+          "flight_offset": 0,
+          "source_bbox": [
+            16,
+            1234,
+            257,
+            1460
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 14,
+          "top_left": [
+            89,
+            229
+          ],
+          "draw_scale": 0.4546902784912053,
+          "flight_offset": 0,
+          "source_bbox": [
+            274,
+            1227,
+            511,
+            1464
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 15,
+          "top_left": [
+            92,
+            229
+          ],
+          "draw_scale": 0.4546902784912053,
+          "flight_offset": 0,
+          "source_bbox": [
+            529,
+            1227,
+            760,
+            1465
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 16,
+          "top_left": [
+            92,
+            229
+          ],
+          "draw_scale": 0.4546902784912053,
+          "flight_offset": 0,
+          "source_bbox": [
+            781,
+            1229,
+            1013,
+            1466
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1,
+          "shared_ready": "Idle_0"
+        }
+      ]
+    },
+    {
+      "key": "Death",
+      "label": "伏地陨落",
+      "fps": 12,
+      "loop": false,
+      "action": "DEATH one-shot16frames. Row1F1-4: four separate stagger/droop/begin-buckle poses, wings drooping. Row2F5-8: four separate deeper leg-buckle and sinking-to-side poses, full tail dragging. Row3F9-12: four separate full collapse onto one SIDE towardLEFT, wings fold awkwardly but remain ATTACHED. Row4F13,F14,F15,F16: FOUR distinct final settling prone poses with full attached tail fan SPREAD ON GROUND, embedded star markings dim progressively onebyone; F16 finalstill (verydim cyan markings remain anatomically in place). Do NOT stop after12frames, do NOT stand up in lastrow. No blood/dismemberment/loose feathers or particles. Complete beak, folded wings, talons, all three crestplumes and six-star tail fullyinsideeachcell, no clipping at outeredges.",
+      "file": "Death.png",
+      "frame_count": 16,
+      "scale": 0.43374402816193103,
+      "final_prompt_override": "Use case: stylized-concept. Asset: production 2D Unity BOSS CHARACTER BODY animation sheet.\nREFERENCE ROLE: attached level8.png is the EXACT identity, anatomy, feather silhouette, palette, black outline weight and cel-shaded style reference. It is JIUYAO XUANHUANG, a majestic NON-HUMANOID star phoenix. Silver-white head/breast and slender curved S-neck, short hooked BLACK beak, fierce RED eyes. EXACTLY THREE long swept silver/ivory crest plumes. Deep navy/cobalt wing and body plumage with layered icy-CYAN feather edges. TWO feathered WINGS, TWO powerful dark scaled BIRD legs and silver talons; NO arms, hands, human skin, armor, tools or weapons. Huge attached navy/cyan fan tail as reference: SIX large cyan-ring medallions, each containing one FOUR-POINT cyan star, distributed over the long paired fan feathers. One corresponding cyan star-eye marking at each outer wing panel. Preserve the same tail feather shape, ring/star count and crest design in all16 poses; all wing/tail tips and markings fully drawn. Do not turn this into a humanoid bird soldier, peacock with a human face, dragon or ordinary eagle.\nEXACTLY16 separate FULL phoenix figures, FOUR columns x FOUR rows, PORTRAIT1024x1536 RGBA PNG, invisible equal256x384 cells. Chronological row-major left-to-right then top-to-bottom, including row transitions. ALL FOUR ROWS must contain4 complete birds: row1F1-4,row2F5-8,row3F9-12,row4F13-16. Never stop at12figures or leave a blank fourth row.\nCOMPOSITION CRITICAL: draw the whole bird TINY inside each cell. Entire body plus COMPLETE spread wings and HUGE full tail fan should be approximately120-150px wide x160-220px tall. Absolute maximum178px width/288px height (70%/75%). Prefer at least50px transparent side margins and60px vertical margins, NEVER less than32px horizontal or40px vertical. The sheet must be mostly EMPTY TRANSPARENT space. Make WHOLE bird smaller to fit wide wings/tail, do not shorten/crop appendages, omit stars or fill cells. No touching/overlapping neighbors or outside canvas edge.\nONE fixed drawing scale and camera, three-quarter SCREEN LEFT facing, beak points LEFT; only the explicitly described small torso/tail turns, no camera spin or mirrored right-facing birds. Ground baseline cell-local y328, consistent body/feet center. Grounded toes touch same baseline; airborne poses rise above that SAME baseline, not a different camera or scale. Keep all jump apex crest and tail tips inside cell.\nOnly draw REAL CHARACTER BODY and ATTACHED feathers/embedded star markings. All SKILL VISUAL EFFECTS ARE SEPARATE assets: NO dash trails, slash arcs, energy rings, auras, loose feathers, projectiles, glints outside the body, impact flashes, dust, stone chips, afterimages, motion lines, shadows or particles in this character sheet. Embedded star color may brighten subtly but no external bloom halo.\nTransparent ALPHA0 around bird and between all feather gaps. Do not copy reference's dark mist/blue backdrop glow. No background, floor/ground texture, scenery, opaque gradient, checkerboard, labels, text, numbers, grid, border, watermark or extra creatures.\n\nREQUIRED LAYOUT CORRECTION: ALL16 BIRDS MUST BE VERY SMALL thumbnails, whole bird widthabout120px andheightabout160px, centered within its256x384cell, with HUGE empty transparent gutters at least60px onboth sides. Fourth row hasFOUR full birds. Never let the enormous fan-tail crop the right outeredge; leaveextraemptyspace especiallycolumn4. No glowbackground. Six tail star medallions remain ontheir originalfeathers, not replaced by eyes. Do not merge neighboringfigures.\nDEATH one-shot16frames. Row1F1-4: four separate stagger/droop/begin-buckle poses, wings drooping. Row2F5-8: four separate deeper leg-buckle and sinking-to-side poses, full tail dragging. Row3F9-12: four separate full collapse onto one SIDE towardLEFT, wings fold awkwardly but remain ATTACHED. Row4F13,F14,F15,F16: FOUR distinct final settling prone poses with full attached tail fan SPREAD ON GROUND, embedded star markings dim progressively onebyone; F16 finalstill (verydim cyan markings remain anatomically in place). Do NOT stop after12frames, do NOT stand up in lastrow. No blood/dismemberment/loose feathers or particles. Complete beak, folded wings, talons, all three crestplumes and six-star tail fullyinsideeachcell, no clipping at outeredges.",
+      "sha256": "e9266e85c9e9efceb439230109be9ab3a1718262800b36fc877ffa4a6cdc9e52",
+      "guid": "8140ce6db2974461905d8d7f14060efe",
+      "sprite_ids": [
+        70445902535065826,
+        1135458440482544369,
+        824247056349176857,
+        67344668993501013,
+        471245250322807088,
+        561211196424976484,
+        495640553152457528,
+        875520401841576975,
+        54352005029596385,
+        867684163974764095,
+        869773274217264407,
+        82100008469728032,
+        854584081104246206,
+        53505463506481737,
+        466017200479662157,
+        375022515661214391
+      ],
+      "frames": [
+        {
+          "frame": 1,
+          "bbox": [
+            90,
+            233,
+            196,
+            338
+          ],
+          "margins_LRTB": [
+            90,
+            60,
+            233,
+            46
+          ]
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            93,
+            236,
+            195,
+            337
+          ],
+          "margins_LRTB": [
+            93,
+            61,
+            236,
+            47
+          ]
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            95,
+            245,
+            191,
+            337
+          ],
+          "margins_LRTB": [
+            95,
+            65,
+            245,
+            47
+          ]
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            96,
+            247,
+            191,
+            337
+          ],
+          "margins_LRTB": [
+            96,
+            65,
+            247,
+            47
+          ]
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            94,
+            243,
+            200,
+            338
+          ],
+          "margins_LRTB": [
+            94,
+            56,
+            243,
+            46
+          ]
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            92,
+            257,
+            203,
+            338
+          ],
+          "margins_LRTB": [
+            92,
+            53,
+            257,
+            46
+          ]
+        },
+        {
+          "frame": 7,
+          "bbox": [
+            93,
+            268,
+            200,
+            338
+          ],
+          "margins_LRTB": [
+            93,
+            56,
+            268,
+            46
+          ]
+        },
+        {
+          "frame": 8,
+          "bbox": [
+            92,
+            273,
+            195,
+            328
+          ],
+          "margins_LRTB": [
+            92,
+            61,
+            273,
+            56
+          ]
+        },
+        {
+          "frame": 9,
+          "bbox": [
+            94,
+            272,
+            201,
+            328
+          ],
+          "margins_LRTB": [
+            94,
+            55,
+            272,
+            56
+          ]
+        },
+        {
+          "frame": 10,
+          "bbox": [
+            95,
+            281,
+            202,
+            328
+          ],
+          "margins_LRTB": [
+            95,
+            54,
+            281,
+            56
+          ]
+        },
+        {
+          "frame": 11,
+          "bbox": [
+            94,
+            285,
+            202,
+            328
+          ],
+          "margins_LRTB": [
+            94,
+            54,
+            285,
+            56
+          ]
+        },
+        {
+          "frame": 12,
+          "bbox": [
+            95,
+            283,
+            200,
+            328
+          ],
+          "margins_LRTB": [
+            95,
+            56,
+            283,
+            56
+          ]
+        },
+        {
+          "frame": 13,
+          "bbox": [
+            94,
+            287,
+            203,
+            328
+          ],
+          "margins_LRTB": [
+            94,
+            53,
+            287,
+            56
+          ]
+        },
+        {
+          "frame": 14,
+          "bbox": [
+            95,
+            287,
+            203,
+            328
+          ],
+          "margins_LRTB": [
+            95,
+            53,
+            287,
+            56
+          ]
+        },
+        {
+          "frame": 15,
+          "bbox": [
+            94,
+            286,
+            202,
+            328
+          ],
+          "margins_LRTB": [
+            94,
+            54,
+            286,
+            56
+          ]
+        },
+        {
+          "frame": 16,
+          "bbox": [
+            95,
+            286,
+            199,
+            328
+          ],
+          "margins_LRTB": [
+            95,
+            57,
+            286,
+            56
+          ]
+        }
+      ],
+      "placement": [
+        {
+          "frame": 1,
+          "top_left": [
+            90,
+            233
+          ],
+          "draw_scale": 0.43374402816193103,
+          "flight_offset": 0,
+          "source_bbox": [
+            14,
+            152,
+            259,
+            394
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 2,
+          "top_left": [
+            93,
+            236
+          ],
+          "draw_scale": 0.43374402816193103,
+          "flight_offset": 0,
+          "source_bbox": [
+            284,
+            158,
+            521,
+            391
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 3,
+          "top_left": [
+            94,
+            245
+          ],
+          "draw_scale": 0.43374402816193103,
+          "flight_offset": 0,
+          "source_bbox": [
+            549,
+            179,
+            773,
+            392
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 4,
+          "top_left": [
+            96,
+            247
+          ],
+          "draw_scale": 0.43374402816193103,
+          "flight_offset": 0,
+          "source_bbox": [
+            795,
+            185,
+            1013,
+            392
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 5,
+          "top_left": [
+            94,
+            243
+          ],
+          "draw_scale": 0.43374402816193103,
+          "flight_offset": 0,
+          "source_bbox": [
+            20,
+            568,
+            264,
+            788
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 6,
+          "top_left": [
+            92,
+            257
+          ],
+          "draw_scale": 0.43374402816193103,
+          "flight_offset": 0,
+          "source_bbox": [
+            270,
+            594,
+            525,
+            780
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 7,
+          "top_left": [
+            93,
+            268
+          ],
+          "draw_scale": 0.43374402816193103,
+          "flight_offset": 0,
+          "source_bbox": [
+            528,
+            619,
+            777,
+            780
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 8,
+          "top_left": [
+            92,
+            273
+          ],
+          "draw_scale": 0.43374402816193103,
+          "flight_offset": 0,
+          "source_bbox": [
+            781,
+            652,
+            1018,
+            779
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 9,
+          "top_left": [
+            94,
+            272
+          ],
+          "draw_scale": 0.43374402816193103,
+          "flight_offset": 0,
+          "source_bbox": [
+            15,
+            1020,
+            263,
+            1149
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 10,
+          "top_left": [
+            95,
+            281
+          ],
+          "draw_scale": 0.43374402816193103,
+          "flight_offset": 0,
+          "source_bbox": [
+            268,
+            1041,
+            514,
+            1149
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 11,
+          "top_left": [
+            94,
+            284
+          ],
+          "draw_scale": 0.43374402816193103,
+          "flight_offset": 0,
+          "source_bbox": [
+            522,
+            1048,
+            774,
+            1150
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 12,
+          "top_left": [
+            95,
+            283
+          ],
+          "draw_scale": 0.43374402816193103,
+          "flight_offset": 0,
+          "source_bbox": [
+            777,
+            1048,
+            1020,
+            1151
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 13,
+          "top_left": [
+            94,
+            287
+          ],
+          "draw_scale": 0.43374402816193103,
+          "flight_offset": 0,
+          "source_bbox": [
+            12,
+            1393,
+            264,
+            1488
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 14,
+          "top_left": [
+            95,
+            287
+          ],
+          "draw_scale": 0.43374402816193103,
+          "flight_offset": 0,
+          "source_bbox": [
+            270,
+            1393,
+            519,
+            1488
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 15,
+          "top_left": [
+            94,
+            286
+          ],
+          "draw_scale": 0.43374402816193103,
+          "flight_offset": 0,
+          "source_bbox": [
+            525,
+            1393,
+            773,
+            1489
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        },
+        {
+          "frame": 16,
+          "top_left": [
+            95,
+            286
+          ],
+          "draw_scale": 0.43374402816193103,
+          "flight_offset": 0,
+          "source_bbox": [
+            779,
+            1393,
+            1020,
+            1489
+          ],
+          "direction_mirrored": false,
+          "source_parts": 1
+        }
+      ]
+    }
+  ],
+  "effects": {
+    "common_prompt": "Use case: stylized-concept. Asset: independent 2D GAME EFFECT animation sprite sheet for Jiuyao Xuanhuang star-phoenix boss.\nThe attached bird is ONLY a style and color reference: clean dark NAVY outlines, cel-shaded SILVER-WHITE highlights and CYAN/COBALT star-feather energy. Effect ONLY: NEVER draw whole/partial bird, beak, eye, head, crest, neck, wings attached to a body, feet, character silhouette, body afterimage, creature, weapon handle or background. Isolated individual feather projectile/shards are allowed when specified.\nEXACTLY16 chronological effect frames in4 columns x4 rows, square1024x1024 RGBA PNG. Sixteen equal invisible256x256cells, read row-major. Effect SMALL, entire glow/shards/trail within maximum188x188px, at least32px truly EMPTY TRANSPARENT padding inside all4cell edges, including canvasedges. Prefer even moreemptyspace. Do not crop or cross neighbors. ONE fixed scale and anchor; grow and fade naturally, do not zoom tofill cells. All16 frames present; end almostdissipated.\nREAL TRANSPARENT ALPHA, no opaque colored/gradient/gray/blue background or cloudrectangle, ground texture, floor, castshadow, printedcheckerboard, grid, border, text, numbering, UI or watermark. Clean hand-painted cartoon/celshaded fantasy game style matches reference; no photoreal bloom, purple lightning, green/gold/orange magic or unrelatedsymbols. Four-point cyan star theme. NOT baked onto character.\n",
+    "entries": [
+      {
+        "key": "JiuyaoXuanhuangSkyDashTrail",
+        "label": "低空突进星迹",
+        "fps": 20,
+        "anchor": "center",
+        "loop": false,
+        "prompt": "Effect: a low horizontal CYAN-WHITE starwind streak left behind a forward dash towardLEFT. Pure narrow curved aerodynamic pressure filaments, 2-3 tiny fourpoint star glints, no bird-shaped afterimage or feather/body silhouette. Sharp leading point is on LEFT, wake trails towardRIGHT. F1small white-cyan tip at fixed center-left; F2-5 streak lengthens with two thin navy-edged cyan streamers; F6-10 full length160px, low height80px, rolling wisps; F11-14 streak breaks and thins; F15-16 only tiny fading stars. Fixed center(128,128), max188width/110height, allinside32..224.",
+        "file": "Effects/SkyDashTrail.png",
+        "prefab": "Assets/Projects/Prefabs/SeparateEffort/JiuyaoXuanhuangSkyDashTrailFX.prefab",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "scale": 0.5878594249201278,
+        "guid": "bb95ccf242c74409af11321c9b2898b6",
+        "sprite_ids": [
+          1024978566205098776,
+          1062544945773043288,
+          1114470639574975255,
+          370715270991371326,
+          257257852019138537,
+          185434648246517719,
+          962425494172611683,
+          196206127732699174,
+          782198823588679274,
+          824243171836299387,
+          1041449708153898110,
+          546448498675908590,
+          35590738441005775,
+          78829902584418339,
+          718629205795049526,
+          537793875467417462
+        ],
+        "frames": [
+          {
+            "frame": 1,
+            "bbox": [
+              98,
+              131,
+              148,
+              161
+            ],
+            "margins_LRTB": [
+              98,
+              108,
+              131,
+              95
+            ]
+          },
+          {
+            "frame": 2,
+            "bbox": [
+              80,
+              128,
+              168,
+              168
+            ],
+            "margins_LRTB": [
+              80,
+              88,
+              128,
+              88
+            ]
+          },
+          {
+            "frame": 3,
+            "bbox": [
+              69,
+              117,
+              187,
+              175
+            ],
+            "margins_LRTB": [
+              69,
+              69,
+              117,
+              81
+            ]
+          },
+          {
+            "frame": 4,
+            "bbox": [
+              58,
+              113,
+              195,
+              176
+            ],
+            "margins_LRTB": [
+              58,
+              61,
+              113,
+              80
+            ]
+          },
+          {
+            "frame": 5,
+            "bbox": [
+              57,
+              104,
+              213,
+              176
+            ],
+            "margins_LRTB": [
+              57,
+              43,
+              104,
+              80
+            ]
+          },
+          {
+            "frame": 6,
+            "bbox": [
+              45,
+              107,
+              211,
+              178
+            ],
+            "margins_LRTB": [
+              45,
+              45,
+              107,
+              78
+            ]
+          },
+          {
+            "frame": 7,
+            "bbox": [
+              36,
+              99,
+              220,
+              183
+            ],
+            "margins_LRTB": [
+              36,
+              36,
+              99,
+              73
+            ]
+          },
+          {
+            "frame": 8,
+            "bbox": [
+              42,
+              100,
+              210,
+              181
+            ],
+            "margins_LRTB": [
+              42,
+              46,
+              100,
+              75
+            ]
+          },
+          {
+            "frame": 9,
+            "bbox": [
+              46,
+              99,
+              220,
+              184
+            ],
+            "margins_LRTB": [
+              46,
+              36,
+              99,
+              72
+            ]
+          },
+          {
+            "frame": 10,
+            "bbox": [
+              52,
+              111,
+              219,
+              173
+            ],
+            "margins_LRTB": [
+              52,
+              37,
+              111,
+              83
+            ]
+          },
+          {
+            "frame": 11,
+            "bbox": [
+              51,
+              100,
+              198,
+              178
+            ],
+            "margins_LRTB": [
+              51,
+              58,
+              100,
+              78
+            ]
+          },
+          {
+            "frame": 12,
+            "bbox": [
+              56,
+              112,
+              195,
+              163
+            ],
+            "margins_LRTB": [
+              56,
+              61,
+              112,
+              93
+            ]
+          },
+          {
+            "frame": 13,
+            "bbox": [
+              75,
+              106,
+              193,
+              153
+            ],
+            "margins_LRTB": [
+              75,
+              63,
+              106,
+              103
+            ]
+          },
+          {
+            "frame": 14,
+            "bbox": [
+              94,
+              108,
+              174,
+              147
+            ],
+            "margins_LRTB": [
+              94,
+              82,
+              108,
+              109
+            ]
+          },
+          {
+            "frame": 15,
+            "bbox": [
+              99,
+              117,
+              177,
+              144
+            ],
+            "margins_LRTB": [
+              99,
+              79,
+              117,
+              112
+            ]
+          },
+          {
+            "frame": 16,
+            "bbox": [
+              102,
+              120,
+              171,
+              141
+            ],
+            "margins_LRTB": [
+              102,
+              85,
+              120,
+              115
+            ]
+          }
+        ],
+        "placement": [
+          {
+            "frame": 1,
+            "top_left": [
+              98,
+              131
+            ],
+            "draw_scale": 0.5878594249201278,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 2,
+            "top_left": [
+              80,
+              128
+            ],
+            "draw_scale": 0.5878594249201278,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 3,
+            "top_left": [
+              69,
+              117
+            ],
+            "draw_scale": 0.5878594249201278,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 4,
+            "top_left": [
+              58,
+              113
+            ],
+            "draw_scale": 0.5878594249201278,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 5,
+            "top_left": [
+              57,
+              104
+            ],
+            "draw_scale": 0.5878594249201278,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 6,
+            "top_left": [
+              45,
+              107
+            ],
+            "draw_scale": 0.5878594249201278,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 7,
+            "top_left": [
+              36,
+              99
+            ],
+            "draw_scale": 0.5878594249201278,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 8,
+            "top_left": [
+              42,
+              100
+            ],
+            "draw_scale": 0.5878594249201278,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 9,
+            "top_left": [
+              46,
+              99
+            ],
+            "draw_scale": 0.5878594249201278,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 10,
+            "top_left": [
+              52,
+              111
+            ],
+            "draw_scale": 0.5878594249201278,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 11,
+            "top_left": [
+              51,
+              100
+            ],
+            "draw_scale": 0.5878594249201278,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 0.94
+          },
+          {
+            "frame": 12,
+            "top_left": [
+              56,
+              112
+            ],
+            "draw_scale": 0.5878594249201278,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 0.82
+          },
+          {
+            "frame": 13,
+            "top_left": [
+              75,
+              106
+            ],
+            "draw_scale": 0.5878594249201278,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 0.64
+          },
+          {
+            "frame": 14,
+            "top_left": [
+              94,
+              108
+            ],
+            "draw_scale": 0.5878594249201278,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 0.44
+          },
+          {
+            "frame": 15,
+            "top_left": [
+              98,
+              117
+            ],
+            "draw_scale": 0.5878594249201278,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 0.25
+          },
+          {
+            "frame": 16,
+            "top_left": [
+              100,
+              118
+            ],
+            "draw_scale": 0.5878594249201278,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 0.1
+          }
+        ],
+        "sha256": "7e3ac948f0725747be2840f46acff411e7f2d7babecd77863a6a55c3a1ad9193",
+        "separation_diagnostics": [
+          {
+            "horizontal_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "horizontal_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "horizontal_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 1,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 1,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 1,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 2,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 2,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 2,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 3,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 3,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 3,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 4,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 4,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 4,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          }
+        ]
+      },
+      {
+        "key": "JiuyaoXuanhuangFeatherBlade",
+        "label": "星羽刃弹",
+        "fps": 20,
+        "anchor": "center",
+        "loop": false,
+        "prompt": "Effect: ONE complete long curved NAVY/COBALT FEATHER BLADE projectile, sharp silver-cyan edge and one small FOUR-POINT cyan star within its feather panel, flying towardIMAGE LEFT; thin star-spark wake trails on RIGHT. This is a SINGLE detached feather, not a whole wing/bird, no beak/head/eye/claw/handle, no fan of multiple blades. Fixed projectilecenter(128,128), length120px, width40px, mostly horizontal pointLEFT. F1 condenses from tiny cyanflash; F2-4 complete feather forms; F5-8 flies in place with full thin rightward wake; F9-14 same intact blade silhouette as wake thins and opacity decreases; F15-16 blade dissolves to a small star spark. Keep identical feather shape/scale F4-12, no spinning around camera. Entirekitmax188x100inside32..224.",
+        "file": "Effects/FeatherBlade.png",
+        "prefab": "Assets/Projects/Prefabs/SeparateEffort/JiuyaoXuanhuangFeatherBladeFX.prefab",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "scale": 0.5762452107279693,
+        "guid": "4f577a0be74f4b08a7a56b703fa0e9c9",
+        "sprite_ids": [
+          1004609005033558974,
+          311628532259939756,
+          243277967820724420,
+          454801030165233566,
+          579773542359180323,
+          378087766089775796,
+          633415340235458850,
+          761145528413998835,
+          309358376390922493,
+          191291130215620539,
+          91443543205878844,
+          76865406027132186,
+          291996555518898803,
+          1082767491620509125,
+          472864811580149751,
+          661300780879970198
+        ],
+        "frames": [
+          {
+            "frame": 1,
+            "bbox": [
+              103,
+              108,
+              161,
+              167
+            ],
+            "margins_LRTB": [
+              103,
+              95,
+              108,
+              89
+            ]
+          },
+          {
+            "frame": 2,
+            "bbox": [
+              72,
+              99,
+              177,
+              160
+            ],
+            "margins_LRTB": [
+              72,
+              79,
+              99,
+              96
+            ]
+          },
+          {
+            "frame": 3,
+            "bbox": [
+              42,
+              95,
+              215,
+              179
+            ],
+            "margins_LRTB": [
+              42,
+              41,
+              95,
+              77
+            ]
+          },
+          {
+            "frame": 4,
+            "bbox": [
+              39,
+              100,
+              214,
+              176
+            ],
+            "margins_LRTB": [
+              39,
+              42,
+              100,
+              80
+            ]
+          },
+          {
+            "frame": 5,
+            "bbox": [
+              48,
+              99,
+              222,
+              169
+            ],
+            "margins_LRTB": [
+              48,
+              34,
+              99,
+              87
+            ]
+          },
+          {
+            "frame": 6,
+            "bbox": [
+              42,
+              106,
+              217,
+              177
+            ],
+            "margins_LRTB": [
+              42,
+              39,
+              106,
+              79
+            ]
+          },
+          {
+            "frame": 7,
+            "bbox": [
+              40,
+              105,
+              217,
+              177
+            ],
+            "margins_LRTB": [
+              40,
+              39,
+              105,
+              79
+            ]
+          },
+          {
+            "frame": 8,
+            "bbox": [
+              39,
+              105,
+              214,
+              174
+            ],
+            "margins_LRTB": [
+              39,
+              42,
+              105,
+              82
+            ]
+          },
+          {
+            "frame": 9,
+            "bbox": [
+              47,
+              103,
+              218,
+              168
+            ],
+            "margins_LRTB": [
+              47,
+              38,
+              103,
+              88
+            ]
+          },
+          {
+            "frame": 10,
+            "bbox": [
+              42,
+              102,
+              210,
+              168
+            ],
+            "margins_LRTB": [
+              42,
+              46,
+              102,
+              88
+            ]
+          },
+          {
+            "frame": 11,
+            "bbox": [
+              40,
+              102,
+              208,
+              168
+            ],
+            "margins_LRTB": [
+              40,
+              48,
+              102,
+              88
+            ]
+          },
+          {
+            "frame": 12,
+            "bbox": [
+              41,
+              102,
+              208,
+              166
+            ],
+            "margins_LRTB": [
+              41,
+              48,
+              102,
+              90
+            ]
+          },
+          {
+            "frame": 13,
+            "bbox": [
+              48,
+              88,
+              209,
+              150
+            ],
+            "margins_LRTB": [
+              48,
+              47,
+              88,
+              106
+            ]
+          },
+          {
+            "frame": 14,
+            "bbox": [
+              54,
+              92,
+              194,
+              155
+            ],
+            "margins_LRTB": [
+              54,
+              62,
+              92,
+              101
+            ]
+          },
+          {
+            "frame": 15,
+            "bbox": [
+              77,
+              90,
+              179,
+              150
+            ],
+            "margins_LRTB": [
+              77,
+              77,
+              90,
+              106
+            ]
+          },
+          {
+            "frame": 16,
+            "bbox": [
+              105,
+              104,
+              152,
+              138
+            ],
+            "margins_LRTB": [
+              105,
+              104,
+              104,
+              118
+            ]
+          }
+        ],
+        "placement": [
+          {
+            "frame": 1,
+            "top_left": [
+              103,
+              108
+            ],
+            "draw_scale": 0.5762452107279693,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 2,
+            "top_left": [
+              72,
+              99
+            ],
+            "draw_scale": 0.5762452107279693,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 3,
+            "top_left": [
+              42,
+              95
+            ],
+            "draw_scale": 0.5762452107279693,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 4,
+            "top_left": [
+              39,
+              100
+            ],
+            "draw_scale": 0.5762452107279693,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 5,
+            "top_left": [
+              48,
+              99
+            ],
+            "draw_scale": 0.5762452107279693,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 6,
+            "top_left": [
+              42,
+              106
+            ],
+            "draw_scale": 0.5762452107279693,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 7,
+            "top_left": [
+              40,
+              105
+            ],
+            "draw_scale": 0.5762452107279693,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 8,
+            "top_left": [
+              39,
+              105
+            ],
+            "draw_scale": 0.5762452107279693,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 9,
+            "top_left": [
+              47,
+              103
+            ],
+            "draw_scale": 0.5762452107279693,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 10,
+            "top_left": [
+              42,
+              102
+            ],
+            "draw_scale": 0.5762452107279693,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 11,
+            "top_left": [
+              40,
+              102
+            ],
+            "draw_scale": 0.5762452107279693,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 0.94
+          },
+          {
+            "frame": 12,
+            "top_left": [
+              41,
+              101
+            ],
+            "draw_scale": 0.5762452107279693,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 0.82
+          },
+          {
+            "frame": 13,
+            "top_left": [
+              48,
+              88
+            ],
+            "draw_scale": 0.5762452107279693,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 0.64
+          },
+          {
+            "frame": 14,
+            "top_left": [
+              54,
+              92
+            ],
+            "draw_scale": 0.5762452107279693,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 0.44
+          },
+          {
+            "frame": 15,
+            "top_left": [
+              76,
+              90
+            ],
+            "draw_scale": 0.5762452107279693,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 0.25
+          },
+          {
+            "frame": 16,
+            "top_left": [
+              103,
+              101
+            ],
+            "draw_scale": 0.5762452107279693,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 0.1
+          }
+        ],
+        "sha256": "7b18171c075894e92c51155186809926a90317723c59ec910c5970453424136f",
+        "separation_diagnostics": [
+          {
+            "horizontal_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "horizontal_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "horizontal_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 1,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 1,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 1,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 2,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 2,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 2,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 3,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 3,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 3,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 4,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 4,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 4,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          }
+        ]
+      },
+      {
+        "key": "JiuyaoXuanhuangTailSweepArc",
+        "label": "星尾横扫弧光",
+        "fps": 20,
+        "anchor": "ground",
+        "loop": false,
+        "prompt": "Effect: one LOW, wide horizontal CYAN/SILVER crescent pressure arc sweeping towardLEFT along an INVISIBLE ground line. Thin navy inner edge, 3-5 tiny star/feather-shaped light fragments, no physical tail fan or actual whole feather wings. Fixed ground baseline cell-localy216, centerx128; max188width/125height includingglow. F1 fine spark at groundcenter; F2-5 low crescent opens towardLEFT; F6-9 a broad flat curling horizontal arc with silver leading rim and cobalt/cyan underside; F10-13 arc stretches, thins and breaks into wisps; F14-16 a few fading star specksnearbaseline. No floor/groundtexture/dust/shadow. No full circularaura or bird.",
+        "file": "Effects/TailSweepArc.png",
+        "prefab": "Assets/Projects/Prefabs/SeparateEffort/JiuyaoXuanhuangTailSweepArcFX.prefab",
+        "pivot": [
+          0.5,
+          0.15625
+        ],
+        "scale": 0.6340640809443507,
+        "guid": "ae1b80a850b241ffb314ec3043f26155",
+        "sprite_ids": [
+          457074986441806948,
+          883879604160941389,
+          261949603043501283,
+          568257770585046183,
+          459278175625689499,
+          906702617244966143,
+          110563663548489518,
+          1041642922844423598,
+          176445857450225932,
+          574388191807139443,
+          462967953969156629,
+          438241363534445885,
+          194479320794268918,
+          231278854538698504,
+          1072908311561003920,
+          693879851570665890
+        ],
+        "frames": [
+          {
+            "frame": 1,
+            "bbox": [
+              108,
+              170,
+              180,
+              216
+            ],
+            "margins_LRTB": [
+              108,
+              76,
+              170,
+              40
+            ]
+          },
+          {
+            "frame": 2,
+            "bbox": [
+              97,
+              168,
+              192,
+              216
+            ],
+            "margins_LRTB": [
+              97,
+              64,
+              168,
+              40
+            ]
+          },
+          {
+            "frame": 3,
+            "bbox": [
+              61,
+              142,
+              181,
+              216
+            ],
+            "margins_LRTB": [
+              61,
+              75,
+              142,
+              40
+            ]
+          },
+          {
+            "frame": 4,
+            "bbox": [
+              42,
+              133,
+              195,
+              216
+            ],
+            "margins_LRTB": [
+              42,
+              61,
+              133,
+              40
+            ]
+          },
+          {
+            "frame": 5,
+            "bbox": [
+              51,
+              117,
+              216,
+              216
+            ],
+            "margins_LRTB": [
+              51,
+              40,
+              117,
+              40
+            ]
+          },
+          {
+            "frame": 6,
+            "bbox": [
+              44,
+              113,
+              219,
+              216
+            ],
+            "margins_LRTB": [
+              44,
+              37,
+              113,
+              40
+            ]
+          },
+          {
+            "frame": 7,
+            "bbox": [
+              35,
+              118,
+              216,
+              216
+            ],
+            "margins_LRTB": [
+              35,
+              40,
+              118,
+              40
+            ]
+          },
+          {
+            "frame": 8,
+            "bbox": [
+              34,
+              141,
+              203,
+              216
+            ],
+            "margins_LRTB": [
+              34,
+              53,
+              141,
+              40
+            ]
+          },
+          {
+            "frame": 9,
+            "bbox": [
+              50,
+              130,
+              222,
+              216
+            ],
+            "margins_LRTB": [
+              50,
+              34,
+              130,
+              40
+            ]
+          },
+          {
+            "frame": 10,
+            "bbox": [
+              53,
+              144,
+              218,
+              216
+            ],
+            "margins_LRTB": [
+              53,
+              38,
+              144,
+              40
+            ]
+          },
+          {
+            "frame": 11,
+            "bbox": [
+              46,
+              139,
+              202,
+              216
+            ],
+            "margins_LRTB": [
+              46,
+              54,
+              139,
+              40
+            ]
+          },
+          {
+            "frame": 12,
+            "bbox": [
+              46,
+              149,
+              201,
+              216
+            ],
+            "margins_LRTB": [
+              46,
+              55,
+              149,
+              40
+            ]
+          },
+          {
+            "frame": 13,
+            "bbox": [
+              65,
+              153,
+              193,
+              216
+            ],
+            "margins_LRTB": [
+              65,
+              63,
+              153,
+              40
+            ]
+          },
+          {
+            "frame": 14,
+            "bbox": [
+              64,
+              175,
+              190,
+              215
+            ],
+            "margins_LRTB": [
+              64,
+              66,
+              175,
+              41
+            ]
+          },
+          {
+            "frame": 15,
+            "bbox": [
+              92,
+              185,
+              190,
+              215
+            ],
+            "margins_LRTB": [
+              92,
+              66,
+              185,
+              41
+            ]
+          },
+          {
+            "frame": 16,
+            "bbox": [
+              91,
+              205,
+              140,
+              214
+            ],
+            "margins_LRTB": [
+              91,
+              116,
+              205,
+              42
+            ]
+          }
+        ],
+        "placement": [
+          {
+            "frame": 1,
+            "top_left": [
+              108,
+              170
+            ],
+            "draw_scale": 0.6340640809443507,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 2,
+            "top_left": [
+              97,
+              168
+            ],
+            "draw_scale": 0.6340640809443507,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 3,
+            "top_left": [
+              61,
+              142
+            ],
+            "draw_scale": 0.6340640809443507,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 4,
+            "top_left": [
+              42,
+              133
+            ],
+            "draw_scale": 0.6340640809443507,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 5,
+            "top_left": [
+              51,
+              117
+            ],
+            "draw_scale": 0.6340640809443507,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 6,
+            "top_left": [
+              44,
+              113
+            ],
+            "draw_scale": 0.6340640809443507,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 7,
+            "top_left": [
+              35,
+              118
+            ],
+            "draw_scale": 0.6340640809443507,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 8,
+            "top_left": [
+              34,
+              141
+            ],
+            "draw_scale": 0.6340640809443507,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 9,
+            "top_left": [
+              50,
+              130
+            ],
+            "draw_scale": 0.6340640809443507,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 10,
+            "top_left": [
+              53,
+              144
+            ],
+            "draw_scale": 0.6340640809443507,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 11,
+            "top_left": [
+              46,
+              139
+            ],
+            "draw_scale": 0.6340640809443507,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 0.94
+          },
+          {
+            "frame": 12,
+            "top_left": [
+              46,
+              149
+            ],
+            "draw_scale": 0.6340640809443507,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 0.82
+          },
+          {
+            "frame": 13,
+            "top_left": [
+              65,
+              153
+            ],
+            "draw_scale": 0.6340640809443507,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 0.64
+          },
+          {
+            "frame": 14,
+            "top_left": [
+              64,
+              175
+            ],
+            "draw_scale": 0.6340640809443507,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 0.44
+          },
+          {
+            "frame": 15,
+            "top_left": [
+              91,
+              184
+            ],
+            "draw_scale": 0.6340640809443507,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 0.25
+          },
+          {
+            "frame": 16,
+            "top_left": [
+              89,
+              203
+            ],
+            "draw_scale": 0.6340640809443507,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 0.1
+          }
+        ],
+        "sha256": "3546fa7e317aca0c81f984dde1e572877f1fa5a8fb94aad98c213fbf093a3620",
+        "separation_diagnostics": [
+          {
+            "horizontal_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "horizontal_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "horizontal_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 1,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 1,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 1,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 2,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 2,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 2,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 3,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 3,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 3,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 4,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 4,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 4,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          }
+        ]
+      },
+      {
+        "key": "JiuyaoXuanhuangStarDiveImpact",
+        "label": "星陨俯冲冲击",
+        "fps": 20,
+        "anchor": "ground",
+        "loop": false,
+        "prompt": "Effect: STAR DIVE LANDING IMPACT only. Fixedgroundpoint(128,216). A bright CYAN-WHITE flash, then a LOW radial/elliptical shock ring of navy/cyan feather SHARDS and small stone chips, edged by a thin FOUR-POINT star-shaped pressure rim. F1tiny bright impact point; F2-5 ring shoots sideways and shards erupt upward; F6-10 feathers/chips separate nearapex andbeginfalling; F11-14 star shock rim thins, debris falls; F15-16 faint embers vanish. Max188width/150height, no solid floor, crater, ground texture or backgroundshadow. Entireeffect abovefixedbaseline216, no characterbody/actualtalons/bird.",
+        "file": "Effects/StarDiveImpact.png",
+        "prefab": "Assets/Projects/Prefabs/SeparateEffort/JiuyaoXuanhuangStarDiveImpactFX.prefab",
+        "pivot": [
+          0.5,
+          0.15625
+        ],
+        "scale": 0.539568345323741,
+        "guid": "8382881321024ff896b8ca775de32490",
+        "sprite_ids": [
+          627752143509261603,
+          322164322918159457,
+          897633022390924744,
+          665968364385735160,
+          701552858315209061,
+          1053910305611726055,
+          188062143803633648,
+          1030127732670706719,
+          217950740560461670,
+          867254718595170902,
+          693899824807050105,
+          772560851710614904,
+          403167772903532382,
+          537864928922543931,
+          713805507637284196,
+          36689901748422522
+        ],
+        "frames": [
+          {
+            "frame": 1,
+            "bbox": [
+              90,
+              146,
+              174,
+              216
+            ],
+            "margins_LRTB": [
+              90,
+              82,
+              146,
+              40
+            ]
+          },
+          {
+            "frame": 2,
+            "bbox": [
+              85,
+              139,
+              171,
+              216
+            ],
+            "margins_LRTB": [
+              85,
+              85,
+              139,
+              40
+            ]
+          },
+          {
+            "frame": 3,
+            "bbox": [
+              61,
+              92,
+              192,
+              216
+            ],
+            "margins_LRTB": [
+              61,
+              64,
+              92,
+              40
+            ]
+          },
+          {
+            "frame": 4,
+            "bbox": [
+              41,
+              106,
+              204,
+              216
+            ],
+            "margins_LRTB": [
+              41,
+              52,
+              106,
+              40
+            ]
+          },
+          {
+            "frame": 5,
+            "bbox": [
+              49,
+              95,
+              215,
+              216
+            ],
+            "margins_LRTB": [
+              49,
+              41,
+              95,
+              40
+            ]
+          },
+          {
+            "frame": 6,
+            "bbox": [
+              58,
+              85,
+              208,
+              216
+            ],
+            "margins_LRTB": [
+              58,
+              48,
+              85,
+              40
+            ]
+          },
+          {
+            "frame": 7,
+            "bbox": [
+              55,
+              66,
+              197,
+              216
+            ],
+            "margins_LRTB": [
+              55,
+              59,
+              66,
+              40
+            ]
+          },
+          {
+            "frame": 8,
+            "bbox": [
+              55,
+              75,
+              188,
+              216
+            ],
+            "margins_LRTB": [
+              55,
+              68,
+              75,
+              40
+            ]
+          },
+          {
+            "frame": 9,
+            "bbox": [
+              67,
+              92,
+              198,
+              216
+            ],
+            "margins_LRTB": [
+              67,
+              58,
+              92,
+              40
+            ]
+          },
+          {
+            "frame": 10,
+            "bbox": [
+              68,
+              106,
+              193,
+              216
+            ],
+            "margins_LRTB": [
+              68,
+              63,
+              106,
+              40
+            ]
+          },
+          {
+            "frame": 11,
+            "bbox": [
+              61,
+              112,
+              187,
+              216
+            ],
+            "margins_LRTB": [
+              61,
+              69,
+              112,
+              40
+            ]
+          },
+          {
+            "frame": 12,
+            "bbox": [
+              63,
+              116,
+              183,
+              216
+            ],
+            "margins_LRTB": [
+              63,
+              73,
+              116,
+              40
+            ]
+          },
+          {
+            "frame": 13,
+            "bbox": [
+              77,
+              132,
+              189,
+              216
+            ],
+            "margins_LRTB": [
+              77,
+              67,
+              132,
+              40
+            ]
+          },
+          {
+            "frame": 14,
+            "bbox": [
+              81,
+              140,
+              183,
+              216
+            ],
+            "margins_LRTB": [
+              81,
+              73,
+              140,
+              40
+            ]
+          },
+          {
+            "frame": 15,
+            "bbox": [
+              75,
+              156,
+              181,
+              215
+            ],
+            "margins_LRTB": [
+              75,
+              75,
+              156,
+              41
+            ]
+          },
+          {
+            "frame": 16,
+            "bbox": [
+              82,
+              177,
+              169,
+              216
+            ],
+            "margins_LRTB": [
+              82,
+              87,
+              177,
+              40
+            ]
+          }
+        ],
+        "placement": [
+          {
+            "frame": 1,
+            "top_left": [
+              90,
+              146
+            ],
+            "draw_scale": 0.539568345323741,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 2,
+            "top_left": [
+              85,
+              139
+            ],
+            "draw_scale": 0.539568345323741,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 3,
+            "top_left": [
+              61,
+              92
+            ],
+            "draw_scale": 0.539568345323741,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 4,
+            "top_left": [
+              41,
+              106
+            ],
+            "draw_scale": 0.539568345323741,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 5,
+            "top_left": [
+              49,
+              95
+            ],
+            "draw_scale": 0.539568345323741,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 6,
+            "top_left": [
+              58,
+              85
+            ],
+            "draw_scale": 0.539568345323741,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 7,
+            "top_left": [
+              55,
+              66
+            ],
+            "draw_scale": 0.539568345323741,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 8,
+            "top_left": [
+              55,
+              75
+            ],
+            "draw_scale": 0.539568345323741,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 9,
+            "top_left": [
+              67,
+              92
+            ],
+            "draw_scale": 0.539568345323741,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 10,
+            "top_left": [
+              68,
+              106
+            ],
+            "draw_scale": 0.539568345323741,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 11,
+            "top_left": [
+              61,
+              112
+            ],
+            "draw_scale": 0.539568345323741,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 0.94
+          },
+          {
+            "frame": 12,
+            "top_left": [
+              63,
+              116
+            ],
+            "draw_scale": 0.539568345323741,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 0.82
+          },
+          {
+            "frame": 13,
+            "top_left": [
+              77,
+              132
+            ],
+            "draw_scale": 0.539568345323741,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 0.64
+          },
+          {
+            "frame": 14,
+            "top_left": [
+              81,
+              140
+            ],
+            "draw_scale": 0.539568345323741,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 0.44
+          },
+          {
+            "frame": 15,
+            "top_left": [
+              75,
+              155
+            ],
+            "draw_scale": 0.539568345323741,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 0.25
+          },
+          {
+            "frame": 16,
+            "top_left": [
+              80,
+              175
+            ],
+            "draw_scale": 0.539568345323741,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 0.1
+          }
+        ],
+        "sha256": "1c535bd0bcde040cc39666b5b7cb066468fa12fe23af2f172e31f270e929b8b5",
+        "separation_diagnostics": [
+          {
+            "horizontal_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "horizontal_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "horizontal_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 1,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 1,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 1,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 2,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 2,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 2,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 3,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 3,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 3,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 4,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 4,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 4,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          }
+        ]
+      },
+      {
+        "key": "JiuyaoXuanhuangAscendAura",
+        "label": "星曜升空光环",
+        "fps": 16,
+        "anchor": "center",
+        "loop": false,
+        "prompt": "Effect: SPECIAL-STATE ASCENSION star-energy activation ONLY, NO bird. A thin CYAN FOUR-POINT star ring/halo floating at center(128,128), three slim rising cyan wisps, small silverwhite star glints. Do not draw any wing/phoenix/body silhouette or peacocktail. F1tiny fourpoint core; F2-5 halo opens and wisps rise; F6-10 fullyopened clean star-rimmed halo with an EMPTY TRANSPARENT center tolayer behind the bird; F11-14 rim thins and wisps fade; F15-16 faint last stars. One-shot activation, not a permanent opaque disc, not backgroundglow. Maximum184x184includingwisps, allinside32..224.",
+        "file": "Effects/AscendAura.png",
+        "prefab": "Assets/Projects/Prefabs/SeparateEffort/JiuyaoXuanhuangAscendAuraFX.prefab",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "scale": 0.6323024054982818,
+        "guid": "214a73f6d8fd45f9961cbfdbd4303ec3",
+        "sprite_ids": [
+          77687294048598615,
+          564534759988996096,
+          529792783879622676,
+          157631818097849778,
+          926914983841891241,
+          994140005380834026,
+          57225647067193449,
+          753108625582989484,
+          718741030201064217,
+          548483249481267298,
+          845991012424220880,
+          245883221435272338,
+          994234595409237377,
+          266807736462577292,
+          695810991452055562,
+          562767062317769310
+        ],
+        "frames": [
+          {
+            "frame": 1,
+            "bbox": [
+              106,
+              121,
+              148,
+              175
+            ],
+            "margins_LRTB": [
+              106,
+              108,
+              121,
+              81
+            ]
+          },
+          {
+            "frame": 2,
+            "bbox": [
+              74,
+              79,
+              186,
+              193
+            ],
+            "margins_LRTB": [
+              74,
+              70,
+              79,
+              63
+            ]
+          },
+          {
+            "frame": 3,
+            "bbox": [
+              75,
+              74,
+              191,
+              202
+            ],
+            "margins_LRTB": [
+              75,
+              65,
+              74,
+              54
+            ]
+          },
+          {
+            "frame": 4,
+            "bbox": [
+              47,
+              64,
+              206,
+              209
+            ],
+            "margins_LRTB": [
+              47,
+              50,
+              64,
+              47
+            ]
+          },
+          {
+            "frame": 5,
+            "bbox": [
+              45,
+              58,
+              215,
+              207
+            ],
+            "margins_LRTB": [
+              45,
+              41,
+              58,
+              49
+            ]
+          },
+          {
+            "frame": 6,
+            "bbox": [
+              39,
+              49,
+              220,
+              210
+            ],
+            "margins_LRTB": [
+              39,
+              36,
+              49,
+              46
+            ]
+          },
+          {
+            "frame": 7,
+            "bbox": [
+              37,
+              43,
+              221,
+              212
+            ],
+            "margins_LRTB": [
+              37,
+              35,
+              43,
+              44
+            ]
+          },
+          {
+            "frame": 8,
+            "bbox": [
+              39,
+              51,
+              215,
+              208
+            ],
+            "margins_LRTB": [
+              39,
+              41,
+              51,
+              48
+            ]
+          },
+          {
+            "frame": 9,
+            "bbox": [
+              44,
+              52,
+              215,
+              208
+            ],
+            "margins_LRTB": [
+              44,
+              41,
+              52,
+              48
+            ]
+          },
+          {
+            "frame": 10,
+            "bbox": [
+              44,
+              58,
+              217,
+              204
+            ],
+            "margins_LRTB": [
+              44,
+              39,
+              58,
+              52
+            ]
+          },
+          {
+            "frame": 11,
+            "bbox": [
+              47,
+              76,
+              212,
+              203
+            ],
+            "margins_LRTB": [
+              47,
+              44,
+              76,
+              53
+            ]
+          },
+          {
+            "frame": 12,
+            "bbox": [
+              57,
+              75,
+              199,
+              201
+            ],
+            "margins_LRTB": [
+              57,
+              57,
+              75,
+              55
+            ]
+          },
+          {
+            "frame": 13,
+            "bbox": [
+              68,
+              103,
+              198,
+              186
+            ],
+            "margins_LRTB": [
+              68,
+              58,
+              103,
+              70
+            ]
+          },
+          {
+            "frame": 14,
+            "bbox": [
+              77,
+              106,
+              185,
+              177
+            ],
+            "margins_LRTB": [
+              77,
+              71,
+              106,
+              79
+            ]
+          },
+          {
+            "frame": 15,
+            "bbox": [
+              84,
+              106,
+              172,
+              157
+            ],
+            "margins_LRTB": [
+              84,
+              84,
+              106,
+              99
+            ]
+          },
+          {
+            "frame": 16,
+            "bbox": [
+              120,
+              128,
+              136,
+              146
+            ],
+            "margins_LRTB": [
+              120,
+              120,
+              128,
+              110
+            ]
+          }
+        ],
+        "placement": [
+          {
+            "frame": 1,
+            "top_left": [
+              106,
+              121
+            ],
+            "draw_scale": 0.6323024054982818,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 2,
+            "top_left": [
+              74,
+              79
+            ],
+            "draw_scale": 0.6323024054982818,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 3,
+            "top_left": [
+              75,
+              74
+            ],
+            "draw_scale": 0.6323024054982818,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 4,
+            "top_left": [
+              47,
+              64
+            ],
+            "draw_scale": 0.6323024054982818,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 5,
+            "top_left": [
+              45,
+              58
+            ],
+            "draw_scale": 0.6323024054982818,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 6,
+            "top_left": [
+              39,
+              49
+            ],
+            "draw_scale": 0.6323024054982818,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 7,
+            "top_left": [
+              37,
+              43
+            ],
+            "draw_scale": 0.6323024054982818,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 8,
+            "top_left": [
+              39,
+              51
+            ],
+            "draw_scale": 0.6323024054982818,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 9,
+            "top_left": [
+              44,
+              52
+            ],
+            "draw_scale": 0.6323024054982818,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 10,
+            "top_left": [
+              44,
+              58
+            ],
+            "draw_scale": 0.6323024054982818,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 11,
+            "top_left": [
+              47,
+              76
+            ],
+            "draw_scale": 0.6323024054982818,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 0.94
+          },
+          {
+            "frame": 12,
+            "top_left": [
+              57,
+              75
+            ],
+            "draw_scale": 0.6323024054982818,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 0.82
+          },
+          {
+            "frame": 13,
+            "top_left": [
+              68,
+              103
+            ],
+            "draw_scale": 0.6323024054982818,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 0.64
+          },
+          {
+            "frame": 14,
+            "top_left": [
+              77,
+              106
+            ],
+            "draw_scale": 0.6323024054982818,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 0.44
+          },
+          {
+            "frame": 15,
+            "top_left": [
+              83,
+              105
+            ],
+            "draw_scale": 0.6323024054982818,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 0.25
+          },
+          {
+            "frame": 16,
+            "top_left": [
+              118,
+              126
+            ],
+            "draw_scale": 0.6323024054982818,
+            "anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 0.1
+          }
+        ],
+        "sha256": "b02fed1b92779a94a6a7c9f372fd1ef66f539befc56d540b9818f1c8a37a787a",
+        "separation_diagnostics": [
+          {
+            "horizontal_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "horizontal_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "horizontal_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 1,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 1,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 1,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 2,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 2,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 2,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 3,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 3,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 3,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 4,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 4,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 4,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          }
+        ]
+      },
+      {
+        "key": "JiuyaoXuanhuangFeatherRainMarker",
+        "label": "羽雨落点预警",
+        "fps": 16,
+        "anchor": "ground",
+        "loop": false,
+        "prompt": "Effect: FALLING FEATHER-BLADE RAIN GROUND WARNING MARKER only. A THIN cyan FOUR-POINT star ring drawn as a low ground-perspective ellipse near fixed(128,210), emptycenter; it pulses brighter then bursts into SMALL navy/cyan FEATHER SHARDS. F1 faint thin ring; F2-8 ring pulses and brightens incrementally with four star points; F9-11 ringflashes cyanwhite; F12-16 small feather shards scatter and fade, F16 nearly gone. No actual falling feather projectile in this marker image (it uses a separate feather-blade asset). Max188width/150height anchoredgroundline216, allinside32..224; no bird, floor, texture, shadow or text.",
+        "file": "Effects/FeatherRainMarker.png",
+        "prefab": "Assets/Projects/Prefabs/SeparateEffort/JiuyaoXuanhuangFeatherRainMarkerFX.prefab",
+        "pivot": [
+          0.5,
+          0.15625
+        ],
+        "scale": 0.6410256410256411,
+        "guid": "b69c8990fc544d80820b05543f962ff2",
+        "sprite_ids": [
+          645318702278412499,
+          286462994119979421,
+          469270350601516908,
+          432209476108752415,
+          206817672758400290,
+          717858107282822152,
+          283806580864521396,
+          1080224485499452972,
+          793722720970577081,
+          1037150153978270318,
+          321249979920898043,
+          496554434575919297,
+          102319517372672236,
+          326055926127574963,
+          807606639789263404,
+          426146077573748438
+        ],
+        "frames": [
+          {
+            "frame": 1,
+            "bbox": [
+              53,
+              167,
+              197,
+              216
+            ],
+            "margins_LRTB": [
+              53,
+              59,
+              167,
+              40
+            ]
+          },
+          {
+            "frame": 2,
+            "bbox": [
+              53,
+              158,
+              201,
+              216
+            ],
+            "margins_LRTB": [
+              53,
+              55,
+              158,
+              40
+            ]
+          },
+          {
+            "frame": 3,
+            "bbox": [
+              50,
+              153,
+              204,
+              216
+            ],
+            "margins_LRTB": [
+              50,
+              52,
+              153,
+              40
+            ]
+          },
+          {
+            "frame": 4,
+            "bbox": [
+              49,
+              144,
+              207,
+              216
+            ],
+            "margins_LRTB": [
+              49,
+              49,
+              144,
+              40
+            ]
+          },
+          {
+            "frame": 5,
+            "bbox": [
+              43,
+              132,
+              211,
+              216
+            ],
+            "margins_LRTB": [
+              43,
+              45,
+              132,
+              40
+            ]
+          },
+          {
+            "frame": 6,
+            "bbox": [
+              40,
+              117,
+              212,
+              216
+            ],
+            "margins_LRTB": [
+              40,
+              44,
+              117,
+              40
+            ]
+          },
+          {
+            "frame": 7,
+            "bbox": [
+              40,
+              101,
+              214,
+              216
+            ],
+            "margins_LRTB": [
+              40,
+              42,
+              101,
+              40
+            ]
+          },
+          {
+            "frame": 8,
+            "bbox": [
+              39,
+              90,
+              217,
+              216
+            ],
+            "margins_LRTB": [
+              39,
+              39,
+              90,
+              40
+            ]
+          },
+          {
+            "frame": 9,
+            "bbox": [
+              43,
+              67,
+              213,
+              216
+            ],
+            "margins_LRTB": [
+              43,
+              43,
+              67,
+              40
+            ]
+          },
+          {
+            "frame": 10,
+            "bbox": [
+              48,
+              66,
+              214,
+              216
+            ],
+            "margins_LRTB": [
+              48,
+              42,
+              66,
+              40
+            ]
+          },
+          {
+            "frame": 11,
+            "bbox": [
+              39,
+              70,
+              213,
+              216
+            ],
+            "margins_LRTB": [
+              39,
+              43,
+              70,
+              40
+            ]
+          },
+          {
+            "frame": 12,
+            "bbox": [
+              45,
+              95,
+              205,
+              216
+            ],
+            "margins_LRTB": [
+              45,
+              51,
+              95,
+              40
+            ]
+          },
+          {
+            "frame": 13,
+            "bbox": [
+              59,
+              104,
+              196,
+              216
+            ],
+            "margins_LRTB": [
+              59,
+              60,
+              104,
+              40
+            ]
+          },
+          {
+            "frame": 14,
+            "bbox": [
+              70,
+              127,
+              193,
+              214
+            ],
+            "margins_LRTB": [
+              70,
+              63,
+              127,
+              42
+            ]
+          },
+          {
+            "frame": 15,
+            "bbox": [
+              76,
+              137,
+              186,
+              215
+            ],
+            "margins_LRTB": [
+              76,
+              70,
+              137,
+              41
+            ]
+          },
+          {
+            "frame": 16,
+            "bbox": [
+              75,
+              160,
+              182,
+              215
+            ],
+            "margins_LRTB": [
+              75,
+              74,
+              160,
+              41
+            ]
+          }
+        ],
+        "placement": [
+          {
+            "frame": 1,
+            "top_left": [
+              53,
+              167
+            ],
+            "draw_scale": 0.6410256410256411,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 2,
+            "top_left": [
+              53,
+              158
+            ],
+            "draw_scale": 0.6410256410256411,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 3,
+            "top_left": [
+              50,
+              153
+            ],
+            "draw_scale": 0.6410256410256411,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 4,
+            "top_left": [
+              49,
+              144
+            ],
+            "draw_scale": 0.6410256410256411,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 5,
+            "top_left": [
+              43,
+              132
+            ],
+            "draw_scale": 0.6410256410256411,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 6,
+            "top_left": [
+              40,
+              117
+            ],
+            "draw_scale": 0.6410256410256411,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 7,
+            "top_left": [
+              40,
+              101
+            ],
+            "draw_scale": 0.6410256410256411,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 8,
+            "top_left": [
+              39,
+              90
+            ],
+            "draw_scale": 0.6410256410256411,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 9,
+            "top_left": [
+              43,
+              67
+            ],
+            "draw_scale": 0.6410256410256411,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 10,
+            "top_left": [
+              48,
+              66
+            ],
+            "draw_scale": 0.6410256410256411,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 1
+          },
+          {
+            "frame": 11,
+            "top_left": [
+              39,
+              70
+            ],
+            "draw_scale": 0.6410256410256411,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 0.94
+          },
+          {
+            "frame": 12,
+            "top_left": [
+              45,
+              95
+            ],
+            "draw_scale": 0.6410256410256411,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 0.82
+          },
+          {
+            "frame": 13,
+            "top_left": [
+              59,
+              104
+            ],
+            "draw_scale": 0.6410256410256411,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 0.64
+          },
+          {
+            "frame": 14,
+            "top_left": [
+              70,
+              126
+            ],
+            "draw_scale": 0.6410256410256411,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 0.44
+          },
+          {
+            "frame": 15,
+            "top_left": [
+              74,
+              137
+            ],
+            "draw_scale": 0.6410256410256411,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 0.25
+          },
+          {
+            "frame": 16,
+            "top_left": [
+              72,
+              158
+            ],
+            "draw_scale": 0.6410256410256411,
+            "anchor": [
+              128,
+              216
+            ],
+            "alpha_gain": 0.1
+          }
+        ],
+        "sha256": "a2adc0b626818ae6c5617945efa3d5d7c7d96285a950e748bb27031edf54ba5f",
+        "separation_diagnostics": [
+          {
+            "horizontal_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "horizontal_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "horizontal_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 1,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 1,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 1,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 2,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 2,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 2,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 3,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 3,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 3,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 4,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 4,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 4,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          }
+        ]
+      }
+    ]
+  }
+}

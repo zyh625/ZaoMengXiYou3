@@ -49,6 +49,7 @@ public class PlayerManager : MonoBehaviour
     private bool defeatRequested, defeatLoaded;//先完成本次伤害和反伤，再在本帧切换失败场景
 
     public PlayerController CurrentPlayer => curPlayer > 0 && curPlayer <= players.Count ? players[curPlayer - 1] : null;//关卡和敌人使用的唯一当前角色
+    public bool TrainingMode {get;set;}//运行时练习专用，默认false；复用四角色切换与技能池。
     public IReadOnlyList<PlayerController> Players => players;//结算读取四人真实资源，不启用备用角色的输入与动作
     public IReadOnlyList<PlayerId> SwitchOrder => Array.AsReadOnly(switchOrder ?? Array.Empty<PlayerId>());//设置界面可读取当前顺序，通过SetSwitchOrder提交调整
     public event Action<PlayerController> CurrentPlayerChanged;//切换完成后通知关卡更新追击目标等引用
@@ -88,9 +89,9 @@ public class PlayerManager : MonoBehaviour
     public void InitPlayer(Transform tran)
     {
         if (initialized) return;
-        if (WuKong == null || Bajie == null || tran == null)
+        if (WuKong == null || tran == null)
         {
-            Debug.LogError("PlayerManager缺少悟空、八戒或出生点引用", this);
+            Debug.LogError("PlayerManager缺少悟空或出生点引用", this);
             return;
         }
 
@@ -98,11 +99,13 @@ public class PlayerManager : MonoBehaviour
         characters.transform.SetParent(transform, false);
         characters.SetActive(false);
         wukong = WuKong.gameObject.scene.IsValid() ? WuKong : Instantiate(WuKong, characters.transform);
-        bajie = Bajie.gameObject.scene.IsValid() ? Bajie : Instantiate(Bajie, characters.transform);
-        if (Sha != null) sha = Sha.gameObject.scene.IsValid() ? Sha : Instantiate(Sha, characters.transform);
-        if (Tang != null) tang = Tang.gameObject.scene.IsValid() ? Tang : Instantiate(Tang, characters.transform);
+        SaveData save = TrainingMode ? null : GameSession.EnsureSession().EnsureRuntimeData();
+        bool Unlocked(PlayerId id) => TrainingMode || save.IsPlayerUnlocked(id);
+        if (Bajie != null && Unlocked(PlayerId.BaJie)) bajie = Bajie.gameObject.scene.IsValid() ? Bajie : Instantiate(Bajie, characters.transform);
+        if (Sha != null && Unlocked(PlayerId.Sha)) sha = Sha.gameObject.scene.IsValid() ? Sha : Instantiate(Sha, characters.transform);
+        if (Tang != null && Unlocked(PlayerId.Tang)) tang = Tang.gameObject.scene.IsValid() ? Tang : Instantiate(Tang, characters.transform);
         players.Add(wukong);
-        players.Add(bajie);
+        if (bajie != null) players.Add(bajie);
         if (sha != null)
         {
             players.Add(sha);
@@ -115,7 +118,7 @@ public class PlayerManager : MonoBehaviour
         }
         ApplySwitchOrder(switchOrder);//漏填、重复或未配置的角色不会使实际可切换名单丢失成员
         InitEffectPools();//五种独立效果都从模板预热，不再只创建一份八戒领域
-        bajie.GetComponent<BajieCombat>().SetEffectManager(this);
+        if (bajie != null) bajie.GetComponent<BajieCombat>().SetEffectManager(this);
         foreach (PlayerController player in players)
         {
             player.transform.SetParent(characters.transform, true);
@@ -241,11 +244,18 @@ public class PlayerManager : MonoBehaviour
 
     public void FailCurrentPlayer()//关卡也可以使用同一个失败入口，避免重复切场景
     {
+        if(TrainingMode)return;//训练死亡由TrainingManager原地复活，不结算或进入失败场景。
         if (defeatRequested) return;
         BattleRun.Finish(false);//死亡立即冻结本轮数据，失败场景的停留时间不再计入闯关耗时
         GetComponent<GoldManager>()?.EndRun();//取消尚未完成的吸附，结束后不能补记金币
         defeatRequested = true;
         BindInput(null);
+    }
+    public void ReviveTrainingPlayer(Vector2 position)
+    {
+        if(!TrainingMode || CurrentPlayer==null)return;PlayerController player=CurrentPlayer;
+        player.gameObject.SetActive(false);player.transform.position=position;player.gameObject.SetActive(true);player.ResetForSwitch();
+        Rigidbody2D body=player.GetComponent<Rigidbody2D>();body.position=position;body.linearVelocity=Vector2.zero;player.GetComponent<PlayerResources>().ResetVigor();BindInput(player);BindHealth(player);CurrentPlayerChanged?.Invoke(player);
     }
 
     private void LateUpdate()

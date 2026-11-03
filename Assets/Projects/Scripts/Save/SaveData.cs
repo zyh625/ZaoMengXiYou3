@@ -44,6 +44,15 @@ public class SaveData
     public const int InitialGold = 10000;//只在新建存档时发放，读取旧档不会覆盖已有金币
     public List<PlayerData> players = new();
     public int gameLevel = 1;//最高可进入的关卡
+    public int rebirth = 0;//完成第9关后自愿再开一轮；旧JSON缺少此字段时为0。
+    public bool rebirthAvailable;//本轮第9关胜利后获得，延后选择可跨会话保留；成功轮回后消耗。
+    public int unlocked = -1;//角色位掩码；-1兼容旧档，Normalize按已解锁关卡与已有养成补全。
+    public bool IsPlayerUnlocked(PlayerId id) => Enum.IsDefined(typeof(PlayerId), id) && ((unlocked < 0 ? 1 : unlocked) & (1 << (int)id)) != 0;
+    public void UnlockAfterVictory(int level)
+    {
+        PlayerId? joined = level == 1 ? PlayerId.BaJie : level == 2 ? PlayerId.Tang : level == 3 ? PlayerId.Sha : null;
+        if (joined.HasValue) unlocked = Math.Max(0, unlocked) | (1 << (int)joined.Value) | 1;
+    }
     public string name;//存档名字,最多12个字母
     public string date;//最近一次游玩
     public int gold;//已经完整拾取入账的金币，地上和吸附中的金币不写进这里
@@ -65,6 +74,7 @@ public class SaveData
     public void Normalize()//读取旧JSON后补齐四角色和新增字段，不改动原本有效的等级、技能与金币
     {
         gameLevel = Math.Max(1, gameLevel);
+        rebirth = Math.Max(0, rebirth);
         gold = Math.Max(0, gold);
         name = name ?? string.Empty;
         date = date ?? string.Empty;
@@ -72,6 +82,13 @@ public class SaveData
         players.RemoveAll(player => player == null);
         foreach (PlayerData player in players) player.Normalize();
         foreach (PlayerId id in Enum.GetValues(typeof(PlayerId))) GetPlayer(id);
+        int joined = 1;
+        if (gameLevel >= 2) joined |= 1 << (int)PlayerId.BaJie;
+        if (gameLevel >= 3) joined |= 1 << (int)PlayerId.Tang;
+        if (gameLevel >= 4 || rebirth > 0) joined = 15;
+        foreach (PlayerData player in players)//不因新的解锁顺序丢掉老档已经培养的角色。
+            if (player.playerLevel > 1 || player.exp > 0f || Array.Exists(player.skillLevels, level => level > 0)) joined |= 1 << (int)player.id;
+        unlocked = (Math.Max(0, unlocked) | joined) & 15;
         if (defeatedBossLevels == null) defeatedBossLevels = new List<int>();
         HashSet<int> seen = new();//只在读盘或写盘前整理，掉落时直接读取记录
         defeatedBossLevels.RemoveAll(level => level < 1 || !seen.Add(level));

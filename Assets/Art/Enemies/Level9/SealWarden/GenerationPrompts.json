@@ -1,0 +1,80 @@
+{
+  "tool": "built-in image_gen",
+  "common_character": "Use case: identity-preserve. Create a production Unity 2D CHARACTER-ONLY sprite sheet from the attached identity reference. Preserve EXACT character, armor design, palette, props, line weight, painted cel shading and three-quarter LEFT-facing orientation. SealWarden: massive square-shouldered heavy BLACK and IVORY armor, antique GOLD cloud-scroll trim, red fissures; faceless tall white mask with fine red cracks and thin red eyes, no human skin. BOTH enormous CUBE seal gauntlets with gold frames and black SUN medallions, TWO tall rectangular back stelae with gold sun medallions. Exactly two arms, two boots, two cubes, two stelae in EVERY pose, no redesign or extra props.\nMANDATORY: exactly 16 sequential full-body figures, regular 4-column 4-row grid. PORTRAIT 1024x1536 RGBA PNG, each invisible cell256x384. Tiny complete figures, maximum178px wide and288px tall including gauntlets, stelae and ornaments. At least32px horizontal and40px vertical EMPTY transparent margins within EVERY cell including outer sheet edges. Fixed drawing scale, fixed cell-local ground baseline y328 from top, centered x128. Fully visible entire head, boots, both cubes, both stelae every time, no clipping or intercell mixing. LEFT-facing constant camera, no rotation/mirroring. Read left-to-right then top-to-bottom; incremental time progress including row transitions. NO labels, text, grid lines, borders, shadows, scenery, solid background or checkerboard. REAL transparent alpha.\nCharacter pose ONLY: NO emitted light, energy trails, magic circles, impact flashes, particles, dust, smoke, projectiles or external attack effects. Red armor cracks remain thin physical coloration, NOT glowing aura. Glints limited to material highlights. Keep solid mechanical parts fully opaque. ",
+  "common_effect": "Use case: stylized-concept. Independent transparent 2D game spell-effect animation sprite sheet for SealWarden. The reference is FACTION STYLE ONLY, DO NOT draw its character. Match crisp dark outlines and polished painted cel shading, BLACK/IVORY/ANTIQUE GOLD with fine crimson accents, abstract broken-SUN motifs. Exactly16 animation frames 4 columns x4 rows, portrait1024x1536 RGBA PNG, equal invisible256x384 cells. Every effect small inside own cell: width<=178, height<=288, EMPTY alpha margin>=32px left/right,>=40px top/bottom. Fixed cell-local center x128 and ground y328. Complete effects and all particles within own cell, no overlap, consistent scale. Real transparent alpha, NO opaque black backdrop, checkerboard, text, frame numbers or drawn grid lines. Chronological order left-to-right then top-to-bottom. NO enemy, humanoid silhouette or body. ",
+  "regeneration_layout": "Idle, SealPunch and DeployBoundary regenerated with miniature120px-wide180px-high instruction; final deterministic assembly fits full connected figures without painting or changing poses.",
+  "characters": [
+    {
+      "key": "Idle",
+      "fps": 10,
+      "loop": true,
+      "prompt": "IDLE heavy breathing loop,16 frames. F1 neutral both cube gauntlets hanging at sides; F2-5 chest rises slightly, shoulder plates lift and twin back stelae sway very slightly; F6-9 slow exhale gauntlets settle; F10-13 mask tilts a few degrees, sun medallion material highlights shift; F14-16 return EXACTLY to F1. Feet planted same positions, NO stepping. Subtle motion not body inflation.",
+      "source": "C:\\Users\\25786\\.codex\\generated_images\\01a1775f-e169-7cc0-bfbe-ed98100a0b0f\\exec-faa4decb-2f87-412e-bcde-018028fcf1ba.png"
+    },
+    {
+      "key": "Walk",
+      "fps": 10,
+      "loop": true,
+      "prompt": "WALK IN PLACE,16-frame heavy armored stomp loop. F1 left boot forward; F2-5 weight sinks onto left leg with deep body dip and both gauntlets swinging; F6-9 right leg passes with readable knee lift; F10-13 right boot lands with heavy bob, stelae jolt; F14-16 left leg comes through back to F1. Legs alternate clearly. Slow weighty walking NOT running. Root stays horizontally stationary and feet share ground baseline. Last to first seamless.",
+      "source": "C:\\Users\\25786\\.codex\\generated_images\\01a1775f-e169-7cc0-bfbe-ed98100a0b0f\\exec-b6a1b6f5-01ff-4bc1-8468-97956ccecce0.png"
+    },
+    {
+      "key": "SealPunch",
+      "fps": 14,
+      "loop": false,
+      "prompt": "One-shot STAGGERED SEAL PUNCH,16 frames. F1-4 raise left cube gauntlet; F5-7 drive LEFT punch straight forward toward SCREEN LEFT at chest height; F8-9 hold left arm extended; F10-11 draw left back while cocking right cube; F12-13 drive RIGHT punch toward SCREEN LEFT at lower waist height; F14-16 retract both to initial ready stance. Two separate clear punch beats at DIFFERENT heights. Keep both cube gauntlets attached, complete, same size. Both stelae remain on back. NO punch trails or impact graphics.",
+      "source": "C:\\Users\\25786\\.codex\\generated_images\\01a1775f-e169-7cc0-bfbe-ed98100a0b0f\\exec-e4ae308f-ff37-46b7-a823-f4adcdd7b93d.png"
+    },
+    {
+      "key": "DeployBoundary",
+      "fps": 14,
+      "loop": false,
+      "prompt": "One-shot DEPLOY BOUNDARY,16 chronological frames. F1-4 raise BOTH cube gauntlets overhead, complete silhouette shrinks neither grows; F5-8 slam both attached cube gauntlets down either side of body, knees brace; F9-12 the SAME TWO back stelae swing forward at hinged shoulders and lower to plant upright into the ground on either side; F13-16 hold planted crouch with both hands inside/on cubes. Exactly TWO stelae total, move those from back, DO NOT leave copies on back. No separately created wedges or magical boundary walls; no dust, no circles. Physical stelae remain fully visible inside each cell.",
+      "source": "C:\\Users\\25786\\.codex\\generated_images\\01a1775f-e169-7cc0-bfbe-ed98100a0b0f\\exec-b45032c0-ba37-4607-a715-136323aa65a5.png"
+    },
+    {
+      "key": "GateCompression",
+      "fps": 14,
+      "loop": false,
+      "prompt": "One-shot GATE COMPRESSION,16 frames. F1-4 bring both cube gauntlets together in front of chest, palms facing each other; F5-8 brace knees and push cubes inward; F9-13 hold compression, torso leaning, twin stelae trembling subtly; F14-16 release and return to ready stance. Cubes retain cubic gold/black construction and sun emblems, do not fuse them into one object. NO gate, wall, dust or energy graphics, poses only.",
+      "source": "C:\\Users\\25786\\.codex\\generated_images\\01a1775f-e169-7cc0-bfbe-ed98100a0b0f\\exec-6b828844-3a4e-45ea-b2d2-56fb27f56a7f.png"
+    },
+    {
+      "key": "Hit",
+      "fps": 16,
+      "loop": false,
+      "prompt": "SINGLE HIT REACTION16 frames, NOT an attack. F1 ready; F2 back stelae jolt; F3-6 torso shoved back toward screen RIGHT as impact comes from LEFT, mask tilts, both gauntlets swing outward; F7-9 one boot slides backward to brace; F10-13 settle; F14-16 return EXACTLY initial ready stance. No punch motion. No enemy/projectile/blood/sparks/motion lines.",
+      "source": "C:\\Users\\25786\\.codex\\generated_images\\01a1775f-e169-7cc0-bfbe-ed98100a0b0f\\exec-d90e93aa-8584-4cf0-a560-df3277e7fe3f.png"
+    },
+    {
+      "key": "Death",
+      "fps": 12,
+      "loop": false,
+      "prompt": "DEATH16 frames one-shot. F1-3 stagger backward gauntlets dragging; F4-7 legs buckle and twin stelae tip; F8-11 sink onto BOTH knees, both cube gauntlets meet ground; F12-15 fall FORWARD onto ground, twin stelae lower across the back; F16 final still collapsed pose. Natural continuous changing poses, not sixteen upright repeats. Both cubes and both stelae remain attached/complete same scale, no dismemberment. Entire horizontal collapsed body fits with margin. Do NOT fade alpha: final opaque fallen pose. No blood, dust, fracture debris or external effects.",
+      "source": "C:\\Users\\25786\\.codex\\generated_images\\01a1775f-e169-7cc0-bfbe-ed98100a0b0f\\exec-5d94109a-5b1d-4f12-9173-2c88e72cfe0e.png"
+    }
+  ],
+  "effects": [
+    {
+      "key": "SealPunchImpact",
+      "fps": 16,
+      "loop": false,
+      "prompt": "STAGGERED DOUBLE SEAL-PUNCH IMPACT, sixteen chronological frames. Effect only, NO character, hands, arms or physical gauntlets. Two successive compact angular antique-gold/ivory impact rings with black SUN seal imprint and fine crimson fissure streaks, punching toward screen LEFT. F1-3 small tightly coiling upper-height gold pressure streak; F4-6 first upper impact bursts toward LEFT; F7-8 upper ring breaks and fades; F9-10 second seal gathers lower by45px; F11-13 stronger lower impact expands LEFT; F14-16 both fragment into fading golden/crimson flecks, nearly gone final. Same drawing scale, no text or actual script glyphs, no floor shockwave/fire/lightning. All particles remain inside the cell.",
+      "source": "C:\\Users\\25786\\.codex\\generated_images\\01a1775f-e169-7cc0-bfbe-ed98100a0b0f\\exec-312cfd2f-f334-4f4e-9f0b-c8ea68da0c02.png"
+    },
+    {
+      "key": "BoundarySeal",
+      "fps": 16,
+      "loop": false,
+      "prompt": "DEPLOY BOUNDARY effect, sixteen chronological frames. No character, armor, hands or cube gauntlets. Exactly TWO short rectangular BLACK STONE / IVORY boundary stelae with antique GOLD frames and BLACK SUN medallions, matching the reference's back stelae as independent deployed objects, separated with an EMPTY passable center gap. F1-3 two small thin gold/crimson ground seal outlines telegraph positions; F4-7 twin stelae rise/settle into those positions with compact ivory-gold landing flashes; F8-11 both complete stelae hold planted, thin crimson seam pulse; F12-14 fissures spread and stone chips loosen; F15-16 pair breaks into small black/gold fragments and fades. Keep same pair and drawing scale. Blank middle corridor, NO wall connecting posts, no enclosing cage. No floor texture, letters, extra stelae or character. Both whole posts and every fragment inside cell.",
+      "source": "C:\\Users\\25786\\.codex\\generated_images\\01a1775f-e169-7cc0-bfbe-ed98100a0b0f\\exec-90ef0d01-44a5-4973-a9ae-3c27b4a37a0d.png"
+    },
+    {
+      "key": "GateCompression",
+      "fps": 16,
+      "loop": false,
+      "prompt": "GATE COMPRESSION effect only,16 chronological frames. No character, limbs, armor or cube gauntlets. Pair of upright angular translucent IVORY-GOLD boundary-force panels with dark broken-sun imprints and thin CRIMSON seam lines, aligned LEFT and RIGHT leaving a clear central gap. F1-4 faint gold contours brighten and rim lines turn red to telegraph; F5-8 BOTH panels slide inward symmetrically ONCE to compress gap, fixed target center not tracking; F9-11 narrow central gold-white compressed seal flash, panels nearly meet without filling whole cell; F12-14 pressure releases into angular fading fragments; F15-16 only faint flecks and transparent empty space. No physical stelae drawn, this is their energy action only. No portal, fire, smoke, ground, readable text or character. Same scale panels do not grow, all within cell.",
+      "source": "C:\\Users\\25786\\.codex\\generated_images\\01a1775f-e169-7cc0-bfbe-ed98100a0b0f\\exec-a796939e-c431-4739-9fea-000642805914.png"
+    }
+  ]
+}

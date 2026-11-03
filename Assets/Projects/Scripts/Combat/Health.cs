@@ -15,6 +15,9 @@ public class Health : MonoBehaviour,IDamage
     [SerializeField]private float curBlood;
     public float BeginBlood => beginBlood;
     public float CurBlood => curBlood;
+    public bool TrainingPreventHealthLoss {get;set;}//只免扣血，保留受击/击退/附加效果；正式人物默认关闭。
+    public float TrainingMinimumBlood {get;set;}//无限木桩的1血下限，默认0。
+    public float TrainingReportedDamage {get;private set;}//无限木桩报告经减伤后的完整伤害，避免1血后DPS归零。
     //关卡生成时按倍率改写血量上限（召唤天兵、轮回缩放）；必须在SetActive(true)之前调用，OnEnable会用新上限回满。
     public void SetBaseBlood(float value)
     {
@@ -246,6 +249,7 @@ public class Health : MonoBehaviour,IDamage
 
     private void ReceiveDamage(DamageInfo damage)//基础伤害、命中反应与附加效果分别结算
     {
+        TrainingReportedDamage=0f;
         if (die) return;
         if (IgnoresAttack(damage.Kind)) return;
         if (IsInvincible)//仍然拒绝整次命中，只额外通知护盾确实挡住了一次攻击
@@ -267,7 +271,9 @@ public class Health : MonoBehaviour,IDamage
             if (modifier.Key != null) damageMultiplier *= modifier.Value;
         float frozenMultiplier = Status != null ? Status.ConsumeFreezeBreak(damage) : 1f;//毒素与无敌拒绝的命中不会打碎冰块
         float previousBlood = curBlood;//霸体和反甲同样需要在扣血后更新界面
-        curBlood = Mathf.Max(0f, curBlood - originalDamage * damageMultiplier * vulnerabilityMultiplier * frozenMultiplier);
+        float evaluatedDamage=originalDamage * damageMultiplier * vulnerabilityMultiplier * frozenMultiplier;
+        curBlood = TrainingPreventHealthLoss?curBlood:Mathf.Max(Mathf.Min(beginBlood,Mathf.Max(0f,TrainingMinimumBlood)),curBlood-evaluatedDamage);
+        TrainingReportedDamage=TrainingMinimumBlood>0f?evaluatedDamage:previousBlood-curBlood;
         BattleRun.RecordDamage(this, damage, previousBlood - curBlood);//只统计实际扣除的血量，毒素和反伤沿用真实来源，不把过量伤害计入MVP
         bool killed = curBlood == 0f;//当前结算完成后再发送死亡事件，防止切场景打断反伤结算
         if (killed)
@@ -286,7 +292,8 @@ public class Health : MonoBehaviour,IDamage
         if (curBlood != previousBlood) HealthChanged?.Invoke(curBlood, beginBlood);
 
         float actualDamage = previousBlood - curBlood;//回调可能修改其他状态，整次命中始终保留同一笔实际伤害
-        if (actualDamage > 0f) DamageReceived?.Invoke(damage, actualDamage);
+        bool trainingFeedback=originalDamage>0f && (TrainingPreventHealthLoss || TrainingMinimumBlood>0f);
+        if (actualDamage > 0f || trainingFeedback) DamageReceived?.Invoke(damage, actualDamage);
 
         if (!die && !damage.IsReflected && !damage.IsPeriodic && damage.Effects != null)
             foreach (AttackEffect effect in damage.Effects)
@@ -305,7 +312,7 @@ public class Health : MonoBehaviour,IDamage
                         false, false, null, true));
             }
         }
-        if (actualDamage > 0f) DamageResolved?.Invoke(damage, actualDamage);
+        if (actualDamage > 0f || trainingFeedback) DamageResolved?.Invoke(damage, actualDamage);
         if (killed) Died?.Invoke(damage);
     }
 

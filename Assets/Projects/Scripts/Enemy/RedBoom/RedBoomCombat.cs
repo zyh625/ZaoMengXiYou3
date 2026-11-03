@@ -78,7 +78,7 @@ public sealed class RedBoomCombat : EnemyCombat
         if (skill < 0 || skill >= 3 || target == null || health == null || health.Dead || health.Attacked
             || CurrentSkill >= 0 || Time.time < readyAt[skill] || health.Status != null && health.Status.BlocksActions) return false;
         CurrentSkill = skill;
-        readyAt[skill] = Time.time + skillCooldowns[skill];
+        readyAt[skill] = Time.time + skillCooldowns[skill] * RebirthCooldownMultiplier;
         castAt = Time.time; released = false;
         FaceRight = target.transform.position.x >= transform.position.x;
         health.Status?.NotifyAttackStarted();

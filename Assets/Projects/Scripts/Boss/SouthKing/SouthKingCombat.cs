@@ -70,8 +70,8 @@ public class SouthKingCombat : BossCombat
         }
         FrostChanged?.Invoke();
     }
-    private float Cooldown(int index) => skillCooldowns != null && index >= 0 && index < skillCooldowns.Length
-        ? Mathf.Max(0f, skillCooldowns[index]) : 10f;
+    private float Cooldown(int index) => (skillCooldowns != null && index >= 0 && index < skillCooldowns.Length
+        ? Mathf.Max(0f, skillCooldowns[index]) : 10f) * RebirthCooldownMultiplier;
     public KingSkill GetReadySkill()
     {
         ResolveReferences();

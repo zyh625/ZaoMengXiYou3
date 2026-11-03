@@ -65,6 +65,7 @@ public class StageEnemyManager : LevelEnemyManager
             error = "请至少配置一个有效敌人池，并将数量和出生权重设置为正数。";
             return false;
         }
+        if (boss == null) return true;//仅RequiresBoss=false的教程管理器能够通过前面的基础检查。
         foreach (MonoBehaviour component in boss.GetComponentsInChildren<MonoBehaviour>(true))
         {
             if (!(component is IEnemyArenaBounds)) continue;
@@ -212,9 +213,9 @@ public class StageEnemyManager : LevelEnemyManager
                 Health prefabHealth = pool.config.prefab.GetComponent<Health>();
                 if (prefabHealth != null) baseBlood = prefabHealth.BeginBlood;//始终以预制体为基准，池成员反复复用不会层层叠乘
             }
-            health.SetBaseBlood(baseBlood * (summoned ? Mathf.Clamp(summonedHpScale, 0.05f, 1f) : 1f));
+            health.SetBaseBlood(baseBlood * (summoned ? Mathf.Clamp(summonedHpScale, 0.05f, 1f) : 1f) * RebirthScaling.Current.HP);
         }
         EnemyCombat combat = enemy.GetComponent<EnemyCombat>();
-        if (combat != null) combat.SetExternalDamageScale(summoned ? Mathf.Clamp(summonedDamageScale, 0f, 1f) : 1f);
+        if (combat != null) combat.SetExternalDamageScale((summoned ? Mathf.Clamp(summonedDamageScale, 0f, 1f) : 1f) * RebirthScaling.Current.Damage);
     }
 }

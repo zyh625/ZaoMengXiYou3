@@ -18,6 +18,7 @@ public class PlayerResources : MonoBehaviour
     private bool initialized;//组件的Awake先后顺序不影响资源读取或消费
     private PlayerBoost playerBoost;//无双期间统一锁住气力，所有扣费和恢复入口共用此判断
     public PlayerId Id => playerId;//无双等角色差异直接使用已有存档角色编号
+    public bool TrainingInfiniteResources {get;set;}//运行期专用，默认关闭，不进入存档或预制体序列化。
 
     public float CurrentMana { get { Initialize(); return currentMana; } }
     public float MaxMana { get { Initialize(); return maxMana; } }
@@ -26,7 +27,7 @@ public class PlayerResources : MonoBehaviour
     public float ExperienceToNextLevel { get { Initialize(); return experienceToNextLevel; } }
     public float CurrentVigor { get { Initialize(); return currentVigor; } }
     public float MaxVigor { get { Initialize(); return maxVigor; } }
-    public bool VigorLocked { get { Initialize(); return playerBoost != null && playerBoost.Active; } }//零气力开启无双后也能正常跑跳和释放组合技
+    public bool VigorLocked { get { Initialize(); return TrainingInfiniteResources || playerBoost != null && playerBoost.Active; } }//零气力开启无双后也能正常跑跳和释放组合技
     public float RunVigorPerSecond => Mathf.Max(0f, runVigorPerSecond);//移动系统读取配置，资源组件不自行判断动作
     public float JumpVigorCost => Mathf.Max(0f, jumpVigorCost);
     public float IdleVigorRecovery => Mathf.Max(0f, idleVigorRecovery);
@@ -45,13 +46,14 @@ public class PlayerResources : MonoBehaviour
         currentMana = maxMana;
         maxVigor = Mathf.Max(0f, maxVigor);
         currentVigor = maxVigor;
-        playerData = GameSession.EnsureSession().EnsureRuntimeData().GetPlayer(playerId);
+        playerData = TrainingSession.Active?TrainingSession.Player(playerId):GameSession.EnsureSession().EnsureRuntimeData().GetPlayer(playerId);
         experience = Mathf.Max(0f, playerData != null ? playerData.exp : experience);
     }
 
     public bool TrySpendMana(float amount)//法力不足不扣费；技能在确认开始时才调用一次
     {
         Initialize();
+        if(TrainingInfiniteResources)return true;
         amount = Mathf.Max(0f, amount);
         if (currentMana < amount) return false;
         if (amount == 0f) return true;

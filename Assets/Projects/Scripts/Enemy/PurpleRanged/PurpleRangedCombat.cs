@@ -24,7 +24,7 @@ public class PurpleRangedCombat : EnemyCombat
     public bool IsPhased => phaseActive && Time.time < phaseUntil && health != null && !health.Dead;
     public float LastShotTime => lastShotTime;//供测试和后续敌人行为读取，不公开改写冷却
     public override float DamageMultiplier => base.DamageMultiplier;//箭与近战共用怒气及绿色音符的临时攻击增幅
-    private float CurrentShootCooldown => Mathf.Max(0f, shootCooldown) * (Angry ? AngerCooldownMultiplier : 1f);
+    private float CurrentShootCooldown => Mathf.Max(0f, shootCooldown) * (Angry ? AngerCooldownMultiplier : 1f) * RebirthCooldownMultiplier;
     public bool CanShoot => !shotActive && health != null && !health.Dead && !health.Attacked
         && !(health.Status != null && health.Status.BlocksActions)
         && Time.time - lastShotTime >= CurrentShootCooldown && PlayerInArrowCheck();

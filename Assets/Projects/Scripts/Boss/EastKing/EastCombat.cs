@@ -90,7 +90,7 @@ public class EastCombat : BossCombat
 
     private float CooldownFor(int index)//错误或缺失的冷却配置不会造成越界或永久卡住
         => noteCooldowns != null && index < noteCooldowns.Length && !float.IsNaN(noteCooldowns[index])
-            ? Mathf.Max(0f, noteCooldowns[index]) * NoteCooldownMultiplier : 0f;
+            ? Mathf.Max(0f, noteCooldowns[index]) * NoteCooldownMultiplier * RebirthCooldownMultiplier : 0f;
 
     public bool BeginAttack(int index, bool right)//控制器真正切到弹琴动作时才消耗本招冷却
     {
@@ -128,7 +128,7 @@ public class EastCombat : BossCombat
         if (!castActive) return;
         castActive = false;
         currentNote = -1;
-        nextAttackTime = Time.time + Mathf.Max(0f, minimumAttackInterval);
+        nextAttackTime = Time.time + Mathf.Max(0f, minimumAttackInterval) * RebirthCooldownMultiplier;
     }
 
     public void ReportNoteResult(bool hit, int lifeVersion)//音符离手后独立结算，同一生命的每枚白、红音符只报告一次

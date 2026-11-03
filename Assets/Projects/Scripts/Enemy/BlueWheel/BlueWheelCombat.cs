@@ -33,7 +33,7 @@ public class BlueWheelCombat : EnemyCombat
     public float ShadowInterval => Mathf.Max(0.05f, shadowInterval);
     public Vector2 CatchPosition => (Vector2)transform.position + (IsHidden ? Vector2.zero
         : new Vector2((AttackFaceRight ? 1f : -1f) * Mathf.Abs(wheelOffset.x), wheelOffset.y));
-    private float CurrentThrowCooldown => Mathf.Max(0f, throwCooldown) * (Angry ? AngerCooldownMultiplier : 1f);
+    private float CurrentThrowCooldown => Mathf.Max(0f, throwCooldown) * (Angry ? AngerCooldownMultiplier : 1f) * RebirthCooldownMultiplier;
     protected override void Awake()
     {
         base.Awake();

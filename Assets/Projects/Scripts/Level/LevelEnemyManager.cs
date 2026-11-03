@@ -16,6 +16,7 @@ public abstract class LevelEnemyManager : MonoBehaviour
 
     public Transform CurBoss => curBoss;
     public int EnemyExtraOrder => enemyExtraOrder;
+    protected virtual bool RequiresBoss => true;
 
 #if UNITY_EDITOR
     public Transform BossPrefab => boss;//关卡测试窗口只读取本关配置，不自行维护敌人名单。
@@ -45,7 +46,7 @@ public abstract class LevelEnemyManager : MonoBehaviour
 
     public virtual bool ValidateConfiguration(out string error)//关卡通过统一接口检查配置，新增敌人管理器可继续扩展验证
     {
-        if (boss == null || bossBornLocation == null)
+        if (RequiresBoss && (boss == null || bossBornLocation == null))
         {
             error = "请为关卡配置Boss预制体和Boss出生点。";
             return false;
@@ -70,6 +71,7 @@ public abstract class LevelEnemyManager : MonoBehaviour
     protected T CreateEnemy<T>(T prefab) where T : EnemyController//统一初始化新池成员，保留子类所需的具体类型
     {
         T enemy = Instantiate(prefab);
+        ApplyRebirthStats(enemy.gameObject, prefab.gameObject);
         enemies.Add(enemy);
         BindRewards(enemy.gameObject, currentPlayers);
         enemy.GetComponentInChildren<SpriteRenderer>(true).sortingOrder += enemyExtraOrder++;
@@ -79,7 +81,9 @@ public abstract class LevelEnemyManager : MonoBehaviour
 
     protected virtual void InitBoss()
     {
+        if (boss == null) return;//教程关明确不配置Boss；普通关卡仍由ValidateConfiguration要求完整Boss引用。
         curBoss = Instantiate(boss);
+        ApplyRebirthStats(curBoss.gameObject, boss.gameObject);
         BindRewards(curBoss.gameObject, currentPlayers);
         curBoss.GetComponent<EnemyRewards>().SetBoss(true);//同一套奖励组件，Boss只使用已选存档的首杀掉落
         curBoss.transform.position = bossBornLocation.transform.position;
@@ -89,6 +93,15 @@ public abstract class LevelEnemyManager : MonoBehaviour
     }
 
     protected virtual void ConfigureBoss() { }//冲刺边界等Boss专属设置由具体关卡提供
+
+    protected static void ApplyRebirthStats(GameObject enemy, GameObject prefab, float hpScale = 1f, float damageScale = 1f)
+    {
+        RebirthScaling.Multipliers scales = RebirthScaling.Current;
+        Health health = enemy.GetComponent<Health>(), baseline = prefab.GetComponent<Health>();
+        if (health != null && baseline != null) health.SetBaseBlood(baseline.BeginBlood * hpScale * scales.HP);
+        EnemyCombat combat = enemy.GetComponent<EnemyCombat>();
+        if (combat != null) combat.SetExternalDamageScale(damageScale * scales.Damage);
+    }
 
     protected virtual void BindRewards(GameObject enemy, PlayerManager players)
     {

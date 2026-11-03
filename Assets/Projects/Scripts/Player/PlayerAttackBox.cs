@@ -18,6 +18,6 @@ public class PlayerAttackBox :AttackBox
         Health health = enemy as Health;//只按实际生命损失积累一次无双，不因暴击额外累计第二次
         float previousBlood = health != null ? health.CurBlood : 0f;
         enemy.TakeDamage(CreateDamageInfo(PC != null ? PC.transform : transform.root));
-        if (PC != null && (health == null || health.CurBlood < previousBlood)) PC.UpdateBoost();
+        if (PC != null && (health == null || health.CurBlood < previousBlood || TrainingSession.Active && health.TrainingMinimumBlood>0f && health.TrainingReportedDamage>0f)) PC.UpdateBoost();
     }
 }

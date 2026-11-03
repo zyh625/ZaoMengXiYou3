@@ -30,13 +30,13 @@ public class EnemyRewards : MonoBehaviour
 
     private void OnDied(DamageInfo damage)
     {
-        if (rewarded || !BattleRun.IsRunning) return;//死亡后的同帧残留毒伤不能在结算已冻结后继续追加经验或首杀奖励
+        if (TrainingSession.Active || rewarded || !BattleRun.IsRunning) return;//训练实例绝不发奖励，普通战斗规则保持不变。
         rewarded = true;
         BattleRun.RecordEnemyKill(isBoss);//死亡即统计击杀，不等死亡动画结束或对象池停用
         if (goldManager != null) goldManager.Drop(transform, isBoss);
         PlayerController player = playerManager == null ? null : playerManager.CurrentPlayer;
         if (player == null) return;
         PlayerResources resources = player.GetComponent<PlayerResources>();//切换不会转移或清空其他角色已有的经验
-        if (resources != null) resources.AddExperience(experienceReward);
+        if (resources != null) resources.AddExperience(experienceReward * RebirthScaling.Current.Experience);
     }
 }

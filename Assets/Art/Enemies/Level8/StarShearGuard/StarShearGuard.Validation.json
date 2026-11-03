@@ -1,0 +1,111 @@
+{
+  "status": "passed",
+  "character_sheets": 7,
+  "character_frames": 112,
+  "effect_sheets": 3,
+  "effect_frames": 48,
+  "independent_prefabs": 3,
+  "reference_sha256": "df34bb9a38d81241d64b022a044c451d4456f6cc03fea80f9e95cb143cf08337",
+  "checks": [
+    {
+      "file": "Idle.png",
+      "frames": 16,
+      "minimum_margin": 56,
+      "maximum_bbox": [
+        121,
+        156
+      ],
+      "sha256": "974b90f88f491b73df82b5e0f8c6f9fd0bdf81b80035765bd8fbe3ea63e15760"
+    },
+    {
+      "file": "Walk.png",
+      "frames": 16,
+      "minimum_margin": 54,
+      "maximum_bbox": [
+        131,
+        153
+      ],
+      "sha256": "1b8d3b7f28934d6b7792e0a89493b46efdbae9c02143855714096409d95da6e6"
+    },
+    {
+      "file": "OffbeatScissor.png",
+      "frames": 16,
+      "minimum_margin": 56,
+      "maximum_bbox": [
+        129,
+        175
+      ],
+      "sha256": "98aec3dbd3efb929204fe8657077844b26e76b8ff63475f5e732d1779304b941"
+    },
+    {
+      "file": "UpwardScissor.png",
+      "frames": 16,
+      "minimum_margin": 44,
+      "maximum_bbox": [
+        135,
+        185
+      ],
+      "sha256": "210e859c231215d3ce190f242bb7e88d12cc3e48f8332f4b71409e95589d9f95"
+    },
+    {
+      "file": "BackstepCut.png",
+      "frames": 16,
+      "minimum_margin": 36,
+      "maximum_bbox": [
+        168,
+        152
+      ],
+      "sha256": "72f7a86b36bc0bf20a8963208cffbc4858d8e5973b9edbad45bec7b49fbc1472"
+    },
+    {
+      "file": "Hit.png",
+      "frames": 16,
+      "minimum_margin": 36,
+      "maximum_bbox": [
+        141,
+        160
+      ],
+      "sha256": "7dd5a6cf2197dda758f7a8fefc007e31ce3540da81dcd328d2c62d7ca4a31ac8"
+    },
+    {
+      "file": "Death.png",
+      "frames": 16,
+      "minimum_margin": 50,
+      "maximum_bbox": [
+        125,
+        135
+      ],
+      "sha256": "c64e17cffd5e67ad6559268c0a2808c5e71387646226620bd11b8ae42d79c6ff"
+    },
+    {
+      "file": "Effects/OffbeatScissorFX.png",
+      "frames": 16,
+      "minimum_margin": 34,
+      "maximum_bbox": [
+        144,
+        124
+      ],
+      "sha256": "97881b2d8b5dea0f4ce04743a77789c328e04fb8c7cb49c7f624f894e4b3de23"
+    },
+    {
+      "file": "Effects/UpwardScissorFX.png",
+      "frames": 16,
+      "minimum_margin": 34,
+      "maximum_bbox": [
+        180,
+        167
+      ],
+      "sha256": "7ae017fbc017cca62d75916c40c017be9ac95bd6b40f9d668bf5b198492573d2"
+    },
+    {
+      "file": "Effects/BackstepCutFX.png",
+      "frames": 16,
+      "minimum_margin": 36,
+      "maximum_bbox": [
+        184,
+        119
+      ],
+      "sha256": "9476ab42ee741b145ce02b4a77c049f95eb43e0fe02253e77f3450d9609c314f"
+    }
+  ]
+}

@@ -81,7 +81,7 @@ public sealed class NorthCombat : BossCombat,IEnemyArenaBounds
     {
         PlayerController target=Target;
         if(skill<0 || skill>3 || CurrentSkill>=0 || !CanAct || target==null || Time.time<nextAttack || Time.time<readyAt[skill])return false;
-        CurrentSkill=skill;readyAt[skill]=Time.time+cooldowns[skill];AttackFaceRight=target.transform.position.x>=transform.position.x;released=jumped=false;
+        CurrentSkill=skill;readyAt[skill]=Time.time+cooldowns[skill]*RebirthCooldownMultiplier;AttackFaceRight=target.transform.position.x>=transform.position.x;released=jumped=false;
         movement.PrepareRain();vortexHits.Clear();health.Status?.NotifyAttackStarted();return true;
     }
     private Vector2 Muzzle(bool right)=>(Vector2)transform.position+new Vector2((right?1f:-1f)*Mathf.Abs(muzzle.localPosition.x),muzzle.localPosition.y);
@@ -119,7 +119,7 @@ public sealed class NorthCombat : BossCombat,IEnemyArenaBounds
     }
     public void CancelAttack()
     {
-        if(CurrentSkill>=0)nextAttack=Time.time+attackInterval;
+        if(CurrentSkill>=0)nextAttack=Time.time+attackInterval*RebirthCooldownMultiplier;
         if(bash!=null)bash.gameObject.SetActive(false);movement?.CancelRainJump();CurrentSkill=-1;released=jumped=false;vortexHits.Clear();
     }
     private void EnsureArena()
@@ -181,7 +181,7 @@ public sealed class NorthCombat : BossCombat,IEnemyArenaBounds
         health.SetDamageMultiplier(this,1.5f);movement.Stop();effects.HideShield();GuardChanged?.Invoke();
     }
     private void Restore()
-    {Cleanup();Phase=GuardPhase.Normal;nextAttack=Time.time+attackInterval;GuardChanged?.Invoke();}
+    {Cleanup();Phase=GuardPhase.Normal;nextAttack=Time.time+attackInterval*RebirthCooldownMultiplier;GuardChanged?.Invoke();}
     private void Cleanup()
     {health.RemoveDamageMultiplier(this);health.RemoveReflection(this);health.SetSuperArmor(this,false);Durability=guardElapsed=exposedRemaining=0f;effects.HideShield();}
     private void Died(DamageInfo damage){CancelAttack();Cleanup();Phase=GuardPhase.Normal;pending=0;GuardChanged?.Invoke();}
