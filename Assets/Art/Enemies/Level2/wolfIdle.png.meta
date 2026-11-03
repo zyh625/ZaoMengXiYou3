@@ -50,9 +50,6 @@ TextureImporter:
   - first:
       213: -7429388802131896490
     second: wolfIdle_15
-  - first:
-      213: 7550224373901895680
-    second: wolfIdle_16
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,12 +93,12 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -123,7 +120,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -136,7 +133,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -151,12 +148,12 @@ TextureImporter:
       name: wolfIdle_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 781
-        width: 365
-        height: 243
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 816
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.483146067, y: 0.477941176}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -173,12 +170,12 @@ TextureImporter:
       name: wolfIdle_1
       rect:
         serializedVersion: 2
-        x: 402
-        y: 781
-        width: 367
-        height: 243
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 445
+        y: 816
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.478651685, y: 0.477941176}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -195,12 +192,12 @@ TextureImporter:
       name: wolfIdle_2
       rect:
         serializedVersion: 2
-        x: 788
-        y: 771
-        width: 363
-        height: 253
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 890
+        y: 816
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.476404494, y: 0.477941176}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -217,12 +214,12 @@ TextureImporter:
       name: wolfIdle_3
       rect:
         serializedVersion: 2
-        x: 1177
-        y: 781
-        width: 359
-        height: 243
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1335
+        y: 816
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.476404494, y: 0.477941176}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -239,12 +236,12 @@ TextureImporter:
       name: wolfIdle_4
       rect:
         serializedVersion: 2
-        x: 32
-        y: 525
-        width: 365
-        height: 244
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 544
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.465168539, y: 0.477941176}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -261,12 +258,12 @@ TextureImporter:
       name: wolfIdle_5
       rect:
         serializedVersion: 2
-        x: 418
-        y: 525
-        width: 357
-        height: 243
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 445
+        y: 544
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.462921348, y: 0.477941176}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -283,12 +280,12 @@ TextureImporter:
       name: wolfIdle_6
       rect:
         serializedVersion: 2
-        x: 790
-        y: 513
-        width: 363
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 890
+        y: 544
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.476404494, y: 0.477941176}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -305,12 +302,12 @@ TextureImporter:
       name: wolfIdle_7
       rect:
         serializedVersion: 2
-        x: 932
-        y: 761
-        width: 7
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1335
+        y: 544
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.476404494, y: 0.477941176}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -327,12 +324,12 @@ TextureImporter:
       name: wolfIdle_8
       rect:
         serializedVersion: 2
-        x: 1166
-        y: 523
-        width: 370
-        height: 245
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 272
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.483146067, y: 0.477941176}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -349,12 +346,12 @@ TextureImporter:
       name: wolfIdle_9
       rect:
         serializedVersion: 2
-        x: 14
-        y: 269
-        width: 369
-        height: 243
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 445
+        y: 272
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.485393258, y: 0.477941176}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -371,12 +368,12 @@ TextureImporter:
       name: wolfIdle_10
       rect:
         serializedVersion: 2
-        x: 399
-        y: 269
-        width: 368
-        height: 242
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 890
+        y: 272
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.487640449, y: 0.477941176}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -393,12 +390,12 @@ TextureImporter:
       name: wolfIdle_11
       rect:
         serializedVersion: 2
-        x: 776
-        y: 257
-        width: 376
-        height: 255
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1335
+        y: 272
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.487640449, y: 0.477941176}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -415,12 +412,12 @@ TextureImporter:
       name: wolfIdle_12
       rect:
         serializedVersion: 2
-        x: 1166
-        y: 269
-        width: 370
-        height: 242
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 0
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.483146067, y: 0.474264706}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -437,12 +434,12 @@ TextureImporter:
       name: wolfIdle_13
       rect:
         serializedVersion: 2
-        x: 16
-        y: 13
-        width: 367
-        height: 244
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 445
+        y: 0
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.480898876, y: 0.474264706}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -459,12 +456,12 @@ TextureImporter:
       name: wolfIdle_14
       rect:
         serializedVersion: 2
-        x: 398
-        y: 13
-        width: 370
-        height: 244
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 890
+        y: 0
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.485393258, y: 0.474264706}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -481,12 +478,12 @@ TextureImporter:
       name: wolfIdle_15
       rect:
         serializedVersion: 2
-        x: 781
-        y: 13
-        width: 370
-        height: 244
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1335
+        y: 0
+        width: 445
+        height: 272
+      alignment: 9
+      pivot: {x: 0.485393258, y: 0.474264706}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -495,28 +492,6 @@ TextureImporter:
       bones: []
       spriteID: 657d9ae3f3285e890800000000000000
       internalID: -7429388802131896490
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wolfIdle_16
-      rect:
-        serializedVersion: 2
-        x: 1166
-        y: 13
-        width: 370
-        height: 244
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0082be4b019c7c860800000000000000
-      internalID: 7550224373901895680
       vertices: []
       indices: 
       edges: []
@@ -537,13 +512,6 @@ TextureImporter:
     nameFileIdTable:
       wolfIdle_0: 4003691017984201724
       wolfIdle_1: -3016911520790119641
-      wolfIdle_10: 9143058517839642038
-      wolfIdle_11: -1609786115074264035
-      wolfIdle_12: -8684724833632497311
-      wolfIdle_13: -774939062418005681
-      wolfIdle_14: -3446783330410125367
-      wolfIdle_15: -7429388802131896490
-      wolfIdle_16: 7550224373901895680
       wolfIdle_2: -1293886175191889064
       wolfIdle_3: -5034502224569788379
       wolfIdle_4: 2804203559323699611
@@ -552,6 +520,12 @@ TextureImporter:
       wolfIdle_7: 954306633311747162
       wolfIdle_8: -2818138640638337874
       wolfIdle_9: -5947307641683085984
+      wolfIdle_10: 9143058517839642038
+      wolfIdle_11: -1609786115074264035
+      wolfIdle_12: -8684724833632497311
+      wolfIdle_13: -774939062418005681
+      wolfIdle_14: -3446783330410125367
+      wolfIdle_15: -7429388802131896490
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,0 +1,532 @@
+fileFormatVersion: 2
+guid: 27113a3064f1f7b43a717f1c3e9d2ab0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: HitReaction_0
+  - first:
+      213: 21300002
+    second: HitReaction_1
+  - first:
+      213: 21300004
+    second: HitReaction_2
+  - first:
+      213: 21300006
+    second: HitReaction_3
+  - first:
+      213: 21300008
+    second: HitReaction_4
+  - first:
+      213: 21300010
+    second: HitReaction_5
+  - first:
+      213: 21300012
+    second: HitReaction_6
+  - first:
+      213: 21300014
+    second: HitReaction_7
+  - first:
+      213: 21300016
+    second: HitReaction_8
+  - first:
+      213: 21300018
+    second: HitReaction_9
+  - first:
+      213: 21300020
+    second: HitReaction_10
+  - first:
+      213: 21300022
+    second: HitReaction_11
+  - first:
+      213: 21300024
+    second: HitReaction_12
+  - first:
+      213: 21300026
+    second: HitReaction_13
+  - first:
+      213: 21300028
+    second: HitReaction_14
+  - first:
+      213: 21300030
+    second: HitReaction_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: HitReaction_0
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 1182
+        width: 227
+        height: 280
+      alignment: 9
+      pivot: {x: 0.583700441, y: 0.007142857}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 025f89e8889c5fcd87c8e9ada598c9eb
+      internalID: 21300000
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HitReaction_1
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 1182
+        width: 220
+        height: 280
+      alignment: 9
+      pivot: {x: 0.575000000, y: 0.007142857}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31a765fff7a853df81399f738fa7d3f7
+      internalID: 21300002
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HitReaction_2
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 1182
+        width: 218
+        height: 280
+      alignment: 9
+      pivot: {x: 0.545871560, y: 0.007142857}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4aad0eab5c8855de9a471f83b211da90
+      internalID: 21300004
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HitReaction_3
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 1182
+        width: 219
+        height: 279
+      alignment: 9
+      pivot: {x: 0.547945205, y: 0.007168459}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6da02136cd365d78bf2af10809862e72
+      internalID: 21300006
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HitReaction_4
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 798
+        width: 219
+        height: 276
+      alignment: 9
+      pivot: {x: 0.518264840, y: 0.007246377}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ca3d6edba295f698ce427d5f80b25d8
+      internalID: 21300008
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HitReaction_5
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 798
+        width: 220
+        height: 276
+      alignment: 9
+      pivot: {x: 0.511363636, y: 0.007246377}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d8456d45a975d4da4593639bbb7429a
+      internalID: 21300010
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HitReaction_6
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 798
+        width: 216
+        height: 243
+      alignment: 9
+      pivot: {x: 0.490740741, y: 0.008230453}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d7fc23be9c253e591a51e65e74bf915
+      internalID: 21300012
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HitReaction_7
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 798
+        width: 206
+        height: 226
+      alignment: 9
+      pivot: {x: 0.495145631, y: 0.008849558}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94d823d063e054ad85bdb25dc2fc5103
+      internalID: 21300014
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HitReaction_8
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 414
+        width: 212
+        height: 243
+      alignment: 9
+      pivot: {x: 0.502358491, y: 0.008230453}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76d8004ebd6f5482b1192296d1091ab8
+      internalID: 21300016
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HitReaction_9
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 414
+        width: 216
+        height: 261
+      alignment: 9
+      pivot: {x: 0.525462963, y: 0.007662835}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbb37e1d28025ebf8ffb7bc89ed186e0
+      internalID: 21300018
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HitReaction_10
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 414
+        width: 222
+        height: 269
+      alignment: 9
+      pivot: {x: 0.554054054, y: 0.007434944}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0a1529ed5b9594f9ab03a49ba7fe291
+      internalID: 21300020
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HitReaction_11
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 414
+        width: 216
+        height: 276
+      alignment: 9
+      pivot: {x: 0.564814815, y: 0.007246377}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74f1d91ba29e5cb892ecaf65da0fc3f2
+      internalID: 21300022
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HitReaction_12
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 30
+        width: 225
+        height: 282
+      alignment: 9
+      pivot: {x: 0.564444444, y: 0.007092199}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ae7b86cb02e534982c866a6335b7814
+      internalID: 21300024
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HitReaction_13
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 30
+        width: 223
+        height: 282
+      alignment: 9
+      pivot: {x: 0.565022422, y: 0.007092199}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3d48f7539d6588fa623480a8bf26a09
+      internalID: 21300026
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HitReaction_14
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 30
+        width: 223
+        height: 282
+      alignment: 9
+      pivot: {x: 0.569506726, y: 0.007092199}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 135ea3e057e958b4b52b53a0bc415de1
+      internalID: 21300028
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HitReaction_15
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 30
+        width: 223
+        height: 282
+      alignment: 9
+      pivot: {x: 0.576233184, y: 0.007092199}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcd5e58cc9f35ef68b0286be9a79e689
+      internalID: 21300030
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices:
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      HitReaction_0: 21300000
+      HitReaction_1: 21300002
+      HitReaction_2: 21300004
+      HitReaction_3: 21300006
+      HitReaction_4: 21300008
+      HitReaction_5: 21300010
+      HitReaction_6: 21300012
+      HitReaction_7: 21300014
+      HitReaction_8: 21300016
+      HitReaction_9: 21300018
+      HitReaction_10: 21300020
+      HitReaction_11: 21300022
+      HitReaction_12: 21300024
+      HitReaction_13: 21300026
+      HitReaction_14: 21300028
+      HitReaction_15: 21300030
+  mipmapLimitGroupName:
+  pSDRemoveMatte: 0
+  userData: WestKing finished sheets only; 2px alpha crop; foot baseline 352
+  assetBundleName:
+  assetBundleVariant:

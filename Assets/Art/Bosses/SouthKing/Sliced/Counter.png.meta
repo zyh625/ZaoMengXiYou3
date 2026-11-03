@@ -1,0 +1,531 @@
+fileFormatVersion: 2
+guid: aa96c8aa0aa85dabb4b4d61ddc49a872
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Counter_01
+  - first:
+      213: 21300002
+    second: Counter_02
+  - first:
+      213: 21300004
+    second: Counter_03
+  - first:
+      213: 21300006
+    second: Counter_04
+  - first:
+      213: 21300008
+    second: Counter_05
+  - first:
+      213: 21300010
+    second: Counter_06
+  - first:
+      213: 21300012
+    second: Counter_07
+  - first:
+      213: 21300014
+    second: Counter_08
+  - first:
+      213: 21300016
+    second: Counter_09
+  - first:
+      213: 21300018
+    second: Counter_10
+  - first:
+      213: 21300020
+    second: Counter_11
+  - first:
+      213: 21300022
+    second: Counter_12
+  - first:
+      213: 21300024
+    second: Counter_13
+  - first:
+      213: 21300026
+    second: Counter_14
+  - first:
+      213: 21300028
+    second: Counter_15
+  - first:
+      213: 21300030
+    second: Counter_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 9
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Counter_01
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 1510
+        width: 379
+        height: 385
+      alignment: 9
+      pivot: {x: 0.5540897098, y: 0.3298701299}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a87367fc2d25358babffafba8fe9a40
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Counter_02
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 1515
+        width: 318
+        height: 380
+      alignment: 9
+      pivot: {x: 0.6540880503, y: 0.3342105263}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97dafb91febe5968bb7860a04bb00ff1
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Counter_03
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 1523
+        width: 309
+        height: 372
+      alignment: 9
+      pivot: {x: 0.5889967638, y: 0.3413978495}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1496c0f648eb5b4891886f42575acb4a
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Counter_04
+      rect:
+        serializedVersion: 2
+        x: 1022
+        y: 1520
+        width: 318
+        height: 375
+      alignment: 9
+      pivot: {x: 0.2295597484, y: 0.3386666667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d565c66f8529523eaed965ead0e18d15
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Counter_05
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 1115
+        width: 386
+        height: 391
+      alignment: 9
+      pivot: {x: 0.4041450777, y: 0.3222506394}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 063690a9f70e5d98998b21d141f586af
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Counter_06
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 1141
+        width: 461
+        height: 365
+      alignment: 9
+      pivot: {x: 0.5336225597, y: 0.3452054795}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31e609e34a625a75976e708659bee50b
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Counter_07
+      rect:
+        serializedVersion: 2
+        x: 859
+        y: 1133
+        width: 464
+        height: 373
+      alignment: 9
+      pivot: {x: 0.5301724138, y: 0.3378016086}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f08e0e66c72569888e65b892010f0b3
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Counter_08
+      rect:
+        serializedVersion: 2
+        x: 1327
+        y: 1008
+        width: 430
+        height: 498
+      alignment: 9
+      pivot: {x: 0.4558139535, y: 0.2530120482}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0661318fa98f58d78b4c35a625dc3f6c
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Counter_09
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 450
+        width: 510
+        height: 554
+      alignment: 9
+      pivot: {x: 0.3725490196, y: 0.2274368231}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 907a7e97cc0051cb83cab5e4e1919d1f
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Counter_10
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 462
+        width: 484
+        height: 542
+      alignment: 9
+      pivot: {x: 0.4132231405, y: 0.2343173432}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3c5287516265225ade3147abb38a278
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Counter_11
+      rect:
+        serializedVersion: 2
+        x: 1006
+        y: 486
+        width: 453
+        height: 518
+      alignment: 9
+      pivot: {x: 0.4238410596, y: 0.2451737452}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 089aff912a125f8a9b778d58cfd6a997
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Counter_12
+      rect:
+        serializedVersion: 2
+        x: 1463
+        y: 493
+        width: 309
+        height: 511
+      alignment: 9
+      pivot: {x: 0.5469255663, y: 0.2465753425}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad63d539159d5d708dd0e6c2dfd29fe2
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Counter_13
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 4
+        width: 393
+        height: 442
+      alignment: 9
+      pivot: {x: 0.5216284987, y: 0.2873303167}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4cef77e5424573198fd36525ed43893
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Counter_14
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 57
+        width: 409
+        height: 389
+      alignment: 9
+      pivot: {x: 0.5696821516, y: 0.3264781491}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccea2dc477dc5fd1a08a6f69f0fadfa9
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Counter_15
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 47
+        width: 359
+        height: 399
+      alignment: 9
+      pivot: {x: 0.2200557103, y: 0.3157894737}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2779cf6c4815660ac7c581965f5ec0b
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Counter_16
+      rect:
+        serializedVersion: 2
+        x: 1177
+        y: 51
+        width: 354
+        height: 395
+      alignment: 9
+      pivot: {x: 0.2062146893, y: 0.3215189873}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b587be8495e758c9bc9dc15006fc7d22
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Counter_01: 21300000
+      Counter_02: 21300002
+      Counter_03: 21300004
+      Counter_04: 21300006
+      Counter_05: 21300008
+      Counter_06: 21300010
+      Counter_07: 21300012
+      Counter_08: 21300014
+      Counter_09: 21300016
+      Counter_10: 21300018
+      Counter_11: 21300020
+      Counter_12: 21300022
+      Counter_13: 21300024
+      Counter_14: 21300026
+      Counter_15: 21300028
+      Counter_16: 21300030
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: SouthKing per-frame alpha crop; 2px outline margin; aligned pivots
+  assetBundleName: 
+  assetBundleVariant: 

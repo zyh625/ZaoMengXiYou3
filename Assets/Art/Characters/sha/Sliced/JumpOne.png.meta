@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: f2064bd11a8a5fcb8aed65d6a8781103
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: JumpOne_01
+  - first:
+      213: 21300002
+    second: JumpOne_02
+  - first:
+      213: 21300004
+    second: JumpOne_03
+  - first:
+      213: 21300006
+    second: JumpOne_04
+  - first:
+      213: 21300008
+    second: JumpOne_05
+  - first:
+      213: 21300010
+    second: JumpOne_06
+  - first:
+      213: 21300012
+    second: JumpOne_07
+  - first:
+      213: 21300014
+    second: JumpOne_08
+  - first:
+      213: 21300016
+    second: JumpOne_09
+  - first:
+      213: 21300018
+    second: JumpOne_10
+  - first:
+      213: 21300020
+    second: JumpOne_11
+  - first:
+      213: 21300022
+    second: JumpOne_12
+  - first:
+      213: 21300024
+    second: JumpOne_13
+  - first:
+      213: 21300026
+    second: JumpOne_14
+  - first:
+      213: 21300028
+    second: JumpOne_15
+  - first:
+      213: 21300030
+    second: JumpOne_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 9
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: JumpOne_01
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 797
+        width: 325
+        height: 261
+      alignment: 9
+      pivot: {x: 0.3815384615, y: 0.4865900383}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: feb019c47dbf5f809d39c3298f0d2a0b
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpOne_02
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 797
+        width: 325
+        height: 261
+      alignment: 9
+      pivot: {x: 0.3692307692, y: 0.5095785441}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77d415b0e8fa5ea99835379707f6d10d
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpOne_03
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 797
+        width: 325
+        height: 261
+      alignment: 9
+      pivot: {x: 0.3630769231, y: 0.5555555556}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b9a9f5c5d705e308f7e45658f148996
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpOne_04
+      rect:
+        serializedVersion: 2
+        x: 989
+        y: 797
+        width: 325
+        height: 261
+      alignment: 9
+      pivot: {x: 0.4030769231, y: 0.4827586207}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5748d8213b785adba9d9e7d40a8be138
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpOne_05
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 532
+        width: 325
+        height: 261
+      alignment: 9
+      pivot: {x: 0.3476923077, y: 0.5134099617}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2bfa0134a33591f8d8e59b48e679670
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpOne_06
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 532
+        width: 325
+        height: 261
+      alignment: 9
+      pivot: {x: 0.3661538462, y: 0.5210727969}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40ea15232066523b8c4299093b962c79
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpOne_07
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 532
+        width: 325
+        height: 261
+      alignment: 9
+      pivot: {x: 0.3815384615, y: 0.5172413793}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8afb27dcc27453229c96cb380d117b92
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpOne_08
+      rect:
+        serializedVersion: 2
+        x: 989
+        y: 532
+        width: 325
+        height: 261
+      alignment: 9
+      pivot: {x: 0.3876923077, y: 0.5172413793}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dffb357b61d056df895f34b865cf3d6f
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpOne_09
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 267
+        width: 325
+        height: 261
+      alignment: 9
+      pivot: {x: 0.4584615385, y: 0.4827586207}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3090779a37405b67a46cf3836d89d2a5
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpOne_10
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 267
+        width: 325
+        height: 261
+      alignment: 9
+      pivot: {x: 0.4892307692, y: 0.4789272031}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e78f4dada1fe50e0a3e94de1e27906ca
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpOne_11
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 267
+        width: 325
+        height: 261
+      alignment: 9
+      pivot: {x: 0.4615384615, y: 0.4827586207}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8c89efcc24a50538858255ff2027722
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpOne_12
+      rect:
+        serializedVersion: 2
+        x: 989
+        y: 267
+        width: 325
+        height: 261
+      alignment: 9
+      pivot: {x: 0.4400000000, y: 0.4904214559}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2d992e3445c580a9f75762b3925b97d
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpOne_13
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 325
+        height: 261
+      alignment: 9
+      pivot: {x: 0.3815384615, y: 0.5747126437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7978e7eedd15e2c99bb783713310844
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpOne_14
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 2
+        width: 325
+        height: 261
+      alignment: 9
+      pivot: {x: 0.3630769231, y: 0.5440613027}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ab3896035e6585f860352721bf17895
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpOne_15
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 2
+        width: 325
+        height: 261
+      alignment: 9
+      pivot: {x: 0.3938461538, y: 0.5095785441}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3434c608b069535ba9522e8b8a345bc5
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpOne_16
+      rect:
+        serializedVersion: 2
+        x: 989
+        y: 2
+        width: 325
+        height: 261
+      alignment: 9
+      pivot: {x: 0.3661538462, y: 0.5095785441}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0fb72eeebd5547e888744a4ac22d28f
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      JumpOne_01: 21300000
+      JumpOne_02: 21300002
+      JumpOne_03: 21300004
+      JumpOne_04: 21300006
+      JumpOne_05: 21300008
+      JumpOne_06: 21300010
+      JumpOne_07: 21300012
+      JumpOne_08: 21300014
+      JumpOne_09: 21300016
+      JumpOne_10: 21300018
+      JumpOne_11: 21300020
+      JumpOne_12: 21300022
+      JumpOne_13: 21300024
+      JumpOne_14: 21300026
+      JumpOne_15: 21300028
+      JumpOne_16: 21300030
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

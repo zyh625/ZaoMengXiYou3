@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: c5a7da4dc0245db9aee2e6f3faf88e64
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: JumpTwo_01
+  - first:
+      213: 21300002
+    second: JumpTwo_02
+  - first:
+      213: 21300004
+    second: JumpTwo_03
+  - first:
+      213: 21300006
+    second: JumpTwo_04
+  - first:
+      213: 21300008
+    second: JumpTwo_05
+  - first:
+      213: 21300010
+    second: JumpTwo_06
+  - first:
+      213: 21300012
+    second: JumpTwo_07
+  - first:
+      213: 21300014
+    second: JumpTwo_08
+  - first:
+      213: 21300016
+    second: JumpTwo_09
+  - first:
+      213: 21300018
+    second: JumpTwo_10
+  - first:
+      213: 21300020
+    second: JumpTwo_11
+  - first:
+      213: 21300022
+    second: JumpTwo_12
+  - first:
+      213: 21300024
+    second: JumpTwo_13
+  - first:
+      213: 21300026
+    second: JumpTwo_14
+  - first:
+      213: 21300028
+    second: JumpTwo_15
+  - first:
+      213: 21300030
+    second: JumpTwo_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 9
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: JumpTwo_01
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 959
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.4987775061, y: 0.5119047619}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f6e331d383756378b4f39d7ceff84fb
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpTwo_02
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 959
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.4987775061, y: 0.5468253968}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 187d2423d6c2554a97de92373cdede79
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpTwo_03
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 959
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.4987775061, y: 0.5626984127}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cdf5be393235a49b902d1f7713f2f3f
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpTwo_04
+      rect:
+        serializedVersion: 2
+        x: 1241
+        y: 959
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.5354523227, y: 0.5944444444}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8ab15f9d137504da60f4ab5be1d1285
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpTwo_05
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 640
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.5085574572, y: 0.5039682540}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fe7fde4028950b2939cb2f78bc13239
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpTwo_06
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 640
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.4987775061, y: 0.5039682540}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc70e009cc495d4fa12ee6e5eb2d3372
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpTwo_07
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 640
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.4987775061, y: 0.5071428571}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 631a7912fbc351b2a9afe4ff3d46f6aa
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpTwo_08
+      rect:
+        serializedVersion: 2
+        x: 1241
+        y: 640
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.5281173594, y: 0.5039682540}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b812354303d50a9bac2b3da9b83f9cb
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpTwo_09
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 321
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.4547677262, y: 0.5023809524}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bea9a26dcde516e811f52fe71347d32
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpTwo_10
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 321
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.4987775061, y: 0.4992063492}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a4c45950d3958e9b5064929c519f7c2
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpTwo_11
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 321
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.4987775061, y: 0.5055555556}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4291a6e855f5530955e341f516aae29
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpTwo_12
+      rect:
+        serializedVersion: 2
+        x: 1241
+        y: 321
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.5281173594, y: 0.5150793651}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70408777f8165bb3a5e3453ad40d4666
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpTwo_13
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.5158924205, y: 0.4690476190}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08900bcc61dc59b798071bdf4abc38d2
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpTwo_14
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 2
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.4767726161, y: 0.4944444444}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8890fb35309b5c12b76efb6edd61a2e9
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpTwo_15
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 2
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.4987775061, y: 0.4595238095}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a556f18ecd551e7babd601d4fa21d53
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpTwo_16
+      rect:
+        serializedVersion: 2
+        x: 1241
+        y: 2
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.5110024450, y: 0.5007936508}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 963b315d77fb5fd995e91943e89d1106
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      JumpTwo_01: 21300000
+      JumpTwo_02: 21300002
+      JumpTwo_03: 21300004
+      JumpTwo_04: 21300006
+      JumpTwo_05: 21300008
+      JumpTwo_06: 21300010
+      JumpTwo_07: 21300012
+      JumpTwo_08: 21300014
+      JumpTwo_09: 21300016
+      JumpTwo_10: 21300018
+      JumpTwo_11: 21300020
+      JumpTwo_12: 21300022
+      JumpTwo_13: 21300024
+      JumpTwo_14: 21300026
+      JumpTwo_15: 21300028
+      JumpTwo_16: 21300030
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

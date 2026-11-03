@@ -10,18 +10,36 @@ public class Map : MonoBehaviour
     [SerializeField] private Image saveSucess;
     [SerializeField] private float saveDuration = 2f;//"保存游戏"逐渐消失
     [SerializeField] private float saveKeep = 2f;//"保存游戏"先一直显示
-    [SerializeField] private GameObject handBook;
+    [SerializeField] private GameObject handBook, skills;
+    [SerializeField] private Text rebirthLabel;
     private bool isSaving = false;
     private float beginSave = 0f;
     private GameSession instance;
+    public bool CanRebirth => instance != null && instance.CanRebirth;
+    public void EnterRebirth()
+    {
+        if(instance==null)instance=GameSession.instance;
+        if(instance==null || !Application.CanStreamedLevelBeLoaded("Level1Scene"))return;
+        if(instance.TryBeginRebirthFromMap())SceneManager.LoadScene("Level1Scene");
+    }
     private void Start()
     {
         beginAlpha = saveSucess.color.a;
-        instance = GameSession.instance;
-        for(int i = 0; i < instance.maxLevel; i++)
+        instance = GameSession.EnsureSession();
+        instance.DataChanged += RefreshRebirth;
+        RefreshRebirth();
+        for(int i = 0; buttons != null && i < Mathf.Min(instance.maxLevel, buttons.Length); i++)
         {
             buttons[i].gameObject.SetActive(true);//开启已经通关的关卡和下一关
         }
+    }
+    private void RefreshRebirth()
+    {
+        if (rebirthLabel != null) rebirthLabel.text = $"第 {(instance != null ? instance.Rebirth : 0)} 轮回";
+    }
+    private void OnDestroy()
+    {
+        if (instance != null) instance.DataChanged -= RefreshRebirth;
     }
     private void Update()
     {
@@ -41,27 +59,17 @@ public class Map : MonoBehaviour
             saveSucess.color = c;
         }
     }
-    public void Skills()//学习技能按键
-    {
-        instance.priScene = "MapScene";
-        SceneManager.LoadScene("SkillScene");
-    }
-    public void HandBook()//图鉴按键
-    {
-        handBook.SetActive(true);
-    }
-    public void BackToMap()//返回地图
-    {
-        handBook.SetActive(false);
-    }
+    public void Skills() => skills.SetActive(true);
+    public void HandBook()=>handBook.SetActive(true);
+    public void BackToMap()=>handBook.SetActive(false);
     public void Back()//返回主菜单按键，不保存
     {
-        instance.priScene = "MapScene";
+        instance.DiscardUnsavedProgress();//与设置中的返回主菜单一致，放弃未手动保存的本次修改
         SceneManager.LoadScene("MenuScene");
     }
     public void Save()//保存游戏按键
     {
-        SaveSystem.Save();
+        if (!SaveSystem.TrySave()) return;//只有真正写盘成功才显示保存成功，未选档直跑不误报
         saveSucess.gameObject.SetActive(true);
         isSaving = true;
         beginSave = Time.time;

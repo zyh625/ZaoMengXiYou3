@@ -1,0 +1,767 @@
+fileFormatVersion: 2
+guid: 427948f3d77f959468b764d5535a6ae7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5090187290119076814
+    second: FrostFormationName_0
+  - first:
+      213: -2680060095148153564
+    second: FrostFormationName_1
+  - first:
+      213: -3938116028745487600
+    second: FrostFormationName_2
+  - first:
+      213: 3231938400196577171
+    second: FrostFormationName_3
+  - first:
+      213: 1382505632944174738
+    second: FrostFormationName_4
+  - first:
+      213: 7224436969047095898
+    second: FrostFormationName_5
+  - first:
+      213: 2265323116168124959
+    second: FrostFormationName_6
+  - first:
+      213: -214629213845103884
+    second: FrostFormationName_7
+  - first:
+      213: -2734569074756516860
+    second: FrostFormationName_8
+  - first:
+      213: -8532831931243044303
+    second: FrostFormationName_9
+  - first:
+      213: -4661579618106373853
+    second: FrostFormationName_10
+  - first:
+      213: 4871714574060183843
+    second: FrostFormationName_11
+  - first:
+      213: -436710250949938435
+    second: FrostFormationName_12
+  - first:
+      213: -8788742741346356016
+    second: FrostFormationName_13
+  - first:
+      213: 5266273313493680965
+    second: FrostFormationName_14
+  - first:
+      213: -4985805028143469382
+    second: FrostFormationName_15
+  - first:
+      213: 6764152689526629565
+    second: FrostFormationName_16
+  - first:
+      213: -6681163309458806674
+    second: FrostFormationName_17
+  - first:
+      213: -2620709079967492480
+    second: FrostFormationName_18
+  - first:
+      213: -8351195299060476037
+    second: FrostFormationName_19
+  - first:
+      213: 1838442532734072682
+    second: FrostFormationName_20
+  - first:
+      213: 6565360510237306023
+    second: FrostFormationName_21
+  - first:
+      213: -4516403920081552501
+    second: FrostFormationName_22
+  - first:
+      213: -3114067303798519177
+    second: FrostFormationName_23
+  - first:
+      213: 1326607587137308957
+    second: FrostFormationName_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FrostFormationName_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1751
+        height: 885
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecb71c31f5af3a640800000000000000
+      internalID: 5090187290119076814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FrostFormationName_1
+      rect:
+        serializedVersion: 2
+        x: 829
+        y: 840
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 425aef30b838ecad0800000000000000
+      internalID: -2680060095148153564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FrostFormationName_2
+      rect:
+        serializedVersion: 2
+        x: 1193
+        y: 840
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01b6a5e36500959c0800000000000000
+      internalID: -3938116028745487600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FrostFormationName_3
+      rect:
+        serializedVersion: 2
+        x: 1199
+        y: 840
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39749a7f9d62adc20800000000000000
+      internalID: 3231938400196577171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FrostFormationName_4
+      rect:
+        serializedVersion: 2
+        x: 1086
+        y: 811
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2963d9f5c85af2310800000000000000
+      internalID: 1382505632944174738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FrostFormationName_5
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 805
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5a704a852b524460800000000000000
+      internalID: 7224436969047095898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FrostFormationName_6
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 799
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1a9ea83f5b007f10800000000000000
+      internalID: 2265323116168124959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FrostFormationName_7
+      rect:
+        serializedVersion: 2
+        x: 1667
+        y: 796
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fa575efddb750df0800000000000000
+      internalID: -214629213845103884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FrostFormationName_8
+      rect:
+        serializedVersion: 2
+        x: 1713
+        y: 170
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4048e553aebdc0ad0800000000000000
+      internalID: -2734569074756516860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FrostFormationName_9
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 130
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 132e522419a459980800000000000000
+      internalID: -8532831931243044303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FrostFormationName_10
+      rect:
+        serializedVersion: 2
+        x: 1691
+        y: 130
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3298192190ebe4fb0800000000000000
+      internalID: -4661579618106373853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FrostFormationName_11
+      rect:
+        serializedVersion: 2
+        x: 1699
+        y: 130
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32163f9f79ecb9340800000000000000
+      internalID: 4871714574060183843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FrostFormationName_12
+      rect:
+        serializedVersion: 2
+        x: 1707
+        y: 130
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df27b5e275e70f9f0800000000000000
+      internalID: -436710250949938435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FrostFormationName_13
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 112
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d4f1cf9a0d180680800000000000000
+      internalID: -8788742741346356016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FrostFormationName_14
+      rect:
+        serializedVersion: 2
+        x: 1199
+        y: 96
+        width: 12
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54309ec3daf851940800000000000000
+      internalID: 5266273313493680965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FrostFormationName_15
+      rect:
+        serializedVersion: 2
+        x: 1201
+        y: 114
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abce62a2ebcdecab0800000000000000
+      internalID: -4985805028143469382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FrostFormationName_16
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 90
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db4ecb978091fdd50800000000000000
+      internalID: 6764152689526629565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FrostFormationName_17
+      rect:
+        serializedVersion: 2
+        x: 1619
+        y: 85
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e68a55d4e5db743a0800000000000000
+      internalID: -6681163309458806674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FrostFormationName_18
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 61
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08695e41afe51abd0800000000000000
+      internalID: -2620709079967492480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FrostFormationName_19
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 63
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b77969d3f189a1c80800000000000000
+      internalID: -8351195299060476037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FrostFormationName_20
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 32
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6775973eb5738910800000000000000
+      internalID: 1838442532734072682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FrostFormationName_21
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 33
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ac621b6998dc1b50800000000000000
+      internalID: 6565360510237306023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FrostFormationName_22
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 21
+        width: 7
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8b7b5940928251c0800000000000000
+      internalID: -4516403920081552501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FrostFormationName_23
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 31
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77a4e66494c98c4d0800000000000000
+      internalID: -3114067303798519177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FrostFormationName_24
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 31
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1948a3629e096210800000000000000
+      internalID: 1326607587137308957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      FrostFormationName_0: 5090187290119076814
+      FrostFormationName_1: -2680060095148153564
+      FrostFormationName_10: -4661579618106373853
+      FrostFormationName_11: 4871714574060183843
+      FrostFormationName_12: -436710250949938435
+      FrostFormationName_13: -8788742741346356016
+      FrostFormationName_14: 5266273313493680965
+      FrostFormationName_15: -4985805028143469382
+      FrostFormationName_16: 6764152689526629565
+      FrostFormationName_17: -6681163309458806674
+      FrostFormationName_18: -2620709079967492480
+      FrostFormationName_19: -8351195299060476037
+      FrostFormationName_2: -3938116028745487600
+      FrostFormationName_20: 1838442532734072682
+      FrostFormationName_21: 6565360510237306023
+      FrostFormationName_22: -4516403920081552501
+      FrostFormationName_23: -3114067303798519177
+      FrostFormationName_24: 1326607587137308957
+      FrostFormationName_3: 3231938400196577171
+      FrostFormationName_4: 1382505632944174738
+      FrostFormationName_5: 7224436969047095898
+      FrostFormationName_6: 2265323116168124959
+      FrostFormationName_7: -214629213845103884
+      FrostFormationName_8: -2734569074756516860
+      FrostFormationName_9: -8532831931243044303
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

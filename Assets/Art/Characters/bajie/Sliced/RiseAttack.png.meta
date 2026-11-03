@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: 83a5b7fd2f3f5ccba5c50c200cc923e6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: RiseAttack_01
+  - first:
+      213: 21300002
+    second: RiseAttack_02
+  - first:
+      213: 21300004
+    second: RiseAttack_03
+  - first:
+      213: 21300006
+    second: RiseAttack_04
+  - first:
+      213: 21300008
+    second: RiseAttack_05
+  - first:
+      213: 21300010
+    second: RiseAttack_06
+  - first:
+      213: 21300012
+    second: RiseAttack_07
+  - first:
+      213: 21300014
+    second: RiseAttack_08
+  - first:
+      213: 21300016
+    second: RiseAttack_09
+  - first:
+      213: 21300018
+    second: RiseAttack_10
+  - first:
+      213: 21300020
+    second: RiseAttack_11
+  - first:
+      213: 21300022
+    second: RiseAttack_12
+  - first:
+      213: 21300024
+    second: RiseAttack_13
+  - first:
+      213: 21300026
+    second: RiseAttack_14
+  - first:
+      213: 21300028
+    second: RiseAttack_15
+  - first:
+      213: 21300030
+    second: RiseAttack_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 9
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: RiseAttack_01
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 959
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.4645476773, y: 0.5690476190}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 818b2922f3e75a769c13ff906e451862
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RiseAttack_02
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 959
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.4449877751, y: 0.5404761905}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43c311a2734e54289dfe61925cc46da4
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RiseAttack_03
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 959
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.4792176039, y: 0.5404761905}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72f0bc1ed8ee59df84cd6e20c4a68ceb
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RiseAttack_04
+      rect:
+        serializedVersion: 2
+        x: 1241
+        y: 959
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.4694376528, y: 0.5150793651}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8e184346a5755e6a0a38a1895861fde
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RiseAttack_05
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 640
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.4987775061, y: 0.5261904762}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f1e41e513df54a7ad5d7b532824bf98
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RiseAttack_06
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 640
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.4816625917, y: 0.5293650794}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65c3d2c8f3d358adbfc9fceedc10e805
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RiseAttack_07
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 640
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.4841075795, y: 0.5420634921}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c046963d27b452eabc1f1186072573d0
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RiseAttack_08
+      rect:
+        serializedVersion: 2
+        x: 1241
+        y: 640
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.4938875306, y: 0.5388888889}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2eaeb448608151bf84ab97c459d417e4
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RiseAttack_09
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 321
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.4669926650, y: 0.5404761905}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa78a1b61bba526884d8d33d6640f953
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RiseAttack_10
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 321
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.4694376528, y: 0.5309523810}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffec6cc9047d512985e52d033105e9d7
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RiseAttack_11
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 321
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.4547677262, y: 0.5531746032}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a6e179580d95a86a3c1a00067a3bd44
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RiseAttack_12
+      rect:
+        serializedVersion: 2
+        x: 1241
+        y: 321
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.4865525672, y: 0.5214285714}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bb069712775533aa6c2d70c084b81c3
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RiseAttack_13
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.5110024450, y: 0.4817460317}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 821110b8ddbf5d0595db53fd55cd6fb6
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RiseAttack_14
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 2
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.4669926650, y: 0.4785714286}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adaa03df931e550396f85593a2754ded
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RiseAttack_15
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 2
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.4523227384, y: 0.4785714286}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 976099bcfa4d56afacade1cef41e1c9c
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RiseAttack_16
+      rect:
+        serializedVersion: 2
+        x: 1241
+        y: 2
+        width: 409
+        height: 315
+      alignment: 9
+      pivot: {x: 0.4914425428, y: 0.4785714286}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e12dbc8043ec5a59a1f2d2a227694ac9
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      RiseAttack_01: 21300000
+      RiseAttack_02: 21300002
+      RiseAttack_03: 21300004
+      RiseAttack_04: 21300006
+      RiseAttack_05: 21300008
+      RiseAttack_06: 21300010
+      RiseAttack_07: 21300012
+      RiseAttack_08: 21300014
+      RiseAttack_09: 21300016
+      RiseAttack_10: 21300018
+      RiseAttack_11: 21300020
+      RiseAttack_12: 21300022
+      RiseAttack_13: 21300024
+      RiseAttack_14: 21300026
+      RiseAttack_15: 21300028
+      RiseAttack_16: 21300030
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

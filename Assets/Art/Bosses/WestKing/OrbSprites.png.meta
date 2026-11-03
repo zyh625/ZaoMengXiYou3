@@ -1,0 +1,532 @@
+fileFormatVersion: 2
+guid: 057c4b46a9fea88459911de07e9f656c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: OrbSprites_0
+  - first:
+      213: 21300002
+    second: OrbSprites_1
+  - first:
+      213: 21300004
+    second: OrbSprites_2
+  - first:
+      213: 21300006
+    second: OrbSprites_3
+  - first:
+      213: 21300008
+    second: OrbSprites_4
+  - first:
+      213: 21300010
+    second: OrbSprites_5
+  - first:
+      213: 21300012
+    second: OrbSprites_6
+  - first:
+      213: 21300014
+    second: OrbSprites_7
+  - first:
+      213: 21300016
+    second: OrbSprites_8
+  - first:
+      213: 21300018
+    second: OrbSprites_9
+  - first:
+      213: 21300020
+    second: OrbSprites_10
+  - first:
+      213: 21300022
+    second: OrbSprites_11
+  - first:
+      213: 21300024
+    second: OrbSprites_12
+  - first:
+      213: 21300026
+    second: OrbSprites_13
+  - first:
+      213: 21300028
+    second: OrbSprites_14
+  - first:
+      213: 21300030
+    second: OrbSprites_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: OrbSprites_0
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 1275
+        width: 204
+        height: 138
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 201cd8c49d38540a930b3bd35f4659ca
+      internalID: 21300000
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbSprites_1
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1265
+        width: 216
+        height: 157
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0229628eb51958d08733ae72e8341675
+      internalID: 21300002
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbSprites_2
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 1263
+        width: 226
+        height: 161
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc56a0642ad450728b9920af4620eda7
+      internalID: 21300004
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbSprites_3
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 1257
+        width: 238
+        height: 174
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69bc6b7991645164bf865c32491f6c11
+      internalID: 21300006
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbSprites_4
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 869
+        width: 232
+        height: 183
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 684380a644235b73bbbc2cd6a036a15f
+      internalID: 21300008
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbSprites_5
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 887
+        width: 243
+        height: 147
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc2ac015f17259c095a6de1ddfb227ab
+      internalID: 21300010
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbSprites_6
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 887
+        width: 207
+        height: 147
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17a33dee66335695a80c104a3f2b4cba
+      internalID: 21300012
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbSprites_7
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 886
+        width: 205
+        height: 148
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04e5094c6083529db564de25bb5a7cd8
+      internalID: 21300014
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbSprites_8
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 497
+        width: 214
+        height: 157
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8580771ddd750ebb9dc77e49a608ec8
+      internalID: 21300016
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbSprites_9
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 488
+        width: 244
+        height: 176
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6be0d6a8aa2355cdb18aad42f9b8f80f
+      internalID: 21300018
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbSprites_10
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 491
+        width: 244
+        height: 170
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b4ccf2a61575ccb9f4fca8e05c0436c
+      internalID: 21300020
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbSprites_11
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 503
+        width: 229
+        height: 146
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25d0c15050fd5f548266857e91afbaf1
+      internalID: 21300022
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbSprites_12
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 113
+        width: 216
+        height: 159
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 705ff68dcaa65744bda416ee5040d2cf
+      internalID: 21300024
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbSprites_13
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 117
+        width: 244
+        height: 149
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfc000abff235a30a3c593fc7c59a1e3
+      internalID: 21300026
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbSprites_14
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 119
+        width: 238
+        height: 145
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e6c7e54cebb5214aa23fb509cbeacb5
+      internalID: 21300028
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbSprites_15
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 126
+        width: 201
+        height: 132
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a2eebe50229550c9a61a1c7388b78ab
+      internalID: 21300030
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices:
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      OrbSprites_0: 21300000
+      OrbSprites_1: 21300002
+      OrbSprites_2: 21300004
+      OrbSprites_3: 21300006
+      OrbSprites_4: 21300008
+      OrbSprites_5: 21300010
+      OrbSprites_6: 21300012
+      OrbSprites_7: 21300014
+      OrbSprites_8: 21300016
+      OrbSprites_9: 21300018
+      OrbSprites_10: 21300020
+      OrbSprites_11: 21300022
+      OrbSprites_12: 21300024
+      OrbSprites_13: 21300026
+      OrbSprites_14: 21300028
+      OrbSprites_15: 21300030
+  mipmapLimitGroupName:
+  pSDRemoveMatte: 0
+  userData: WestKing finished sheets only; 2px alpha crop; foot baseline 352
+  assetBundleName:
+  assetBundleVariant:

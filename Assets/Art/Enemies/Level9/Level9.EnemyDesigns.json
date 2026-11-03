@@ -1,0 +1,231 @@
+{
+  "date": "2026-11-02",
+  "generator": "built-in image_gen",
+  "reference": "Assets/Art/Bosses/level9.png",
+  "reference_sha256": "2e46f7301d68008f1c5883bfc26e4ecd35254ad44645c26ae346d72c41536dfe",
+  "lore": "无相天阙最终关：白色无面面具、黑白帝袍、破碎日轮、帝印镇压与空间封锁。",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "ground_baseline_top_left": 1448,
+  "concepts": [
+    {
+      "name": "裂隙刃侍",
+      "role": "敏捷近战 / 延时切片 / 双锚换位",
+      "appearance": "前倾低重心，兜帽与裂纹白面，短甲分摆，双手各执一柄由残缺日轮制成的短柄弧刃。黑色占比最高，轮廓横向展开。",
+      "skills": [
+        {
+          "name": "折隙双斩",
+          "type": "基础近战",
+          "action": "双弧刃先低扫再斜切，第二击只向前补一小步；刀刃不脱手、不发飞轮。",
+          "telegraph": "交刃蓄势约 0.35 秒，第二击间隔约 0.25 秒。",
+          "counter": "第一击后穿身或退到刀尖外；第二击落空后有约 0.45 秒硬直。"
+        },
+        {
+          "name": "留痕合刃",
+          "type": "延时空间切片",
+          "action": "挥刃在前方固定位置留下窄竖折痕，约 0.7 秒后折痕合拢，仅结算一次；折痕不会追踪玩家。",
+          "telegraph": "先出现无伤害的细金折线，再转为清晰红色刃口。",
+          "counter": "看到金线后离开该窄面，或穿过近身空档打断本体；不是圆形标记爆炸。"
+        },
+        {
+          "name": "双锚换位",
+          "type": "站位扰动",
+          "action": "在自身两侧留下两个可见锚点，约 0.8 秒蓄势后沿既定两点换位；到达后短暂停顿，不能瞬移即命中。",
+          "telegraph": "两个落点同时显形，转移方向由举起的弧刃指示。",
+          "counter": "预判已标出的落点；起手与落点均可受击，不获得长时间隐身或无敌。"
+        }
+      ],
+      "weakness": "留痕与换位被打断时进入短暂裂面失衡；依靠预警与节奏，而不是闪现到背后强制命中。",
+      "animations": [
+        "Idle",
+        "Walk",
+        "FoldDoubleSlash",
+        "SeamCollapse",
+        "AnchorSwap",
+        "Hit",
+        "Death"
+      ],
+      "effects": [
+        "延时折痕",
+        "双锚换位预警",
+        "短距离换位残影"
+      ],
+      "key": "RiftBlade",
+      "file": "RiftBlade/Stand.png",
+      "bbox": [
+        96,
+        319,
+        928,
+        1448
+      ],
+      "transparent_margins_LRTB": [
+        96,
+        96,
+        319,
+        88
+      ],
+      "source_bbox": [
+        18,
+        90,
+        1022,
+        1452
+      ],
+      "uniform_resize_scale": 0.8286852589641435,
+      "guid": "714a7e9b25cc455cbcaa66e2676c77a1",
+      "sha256": "28655a57dc87cec4d30f4839da3df80f4d4fa66117686810b1bd1ea522b5d4c9",
+      "generation_common_prompt": "Use case: stylized-concept.\nAsset type: ONE full-body 2D Chinese fantasy action-game enemy identity reference, isolated transparent PNG. Exactly ONE character in ONE ready/idle pose; no animation sheet, grid, multiple frames, duplicates, turnaround or design-board.\nINPUT IMAGE ROLE: level9.png is the FACTION AND ART-STYLE reference, depicting the final boss Wuxiang Dijun (Formless Emperor). Design a NEW lesser enemy serving this boss, not a recolor, miniature copy or the emperor himself.\nFACTION LORE: the final stage is Wuxiang Tianque, the Formless Heavenly Palace. Ivory faceless masks with thin red fissures/eye slits, charcoal-black and ivory garments/armor with antique-gold trim and stylized cloud ornament, subtle dark-crimson seam cracks, broken-eclipse/fragmented sun motifs, oppressive imperial ritual geometry, space folds and boundary seals. Infer this theme from reference. Do not borrow furnace/fire or phoenix/blue-star themes from other stages.\nMATCH ART: same strong clean dark line weight, polished detailed cel shading, crisp shapes and hand-painted Chinese mythological 2D game illustration as reference. No photorealism, 3D rendering, watercolor haze, chibi or pixel art. Less regal ornament than the boss; clear readable enemy silhouette for later sprite animation.\nCOMPOSITION: portrait 1024x1536 RGBA PNG with REAL TRANSPARENT ALPHA. Three-quarter LEFT-facing, complete body centered, readable ready stance, consistent perspective. Head, mask, complete feet/shoes or robe tip, all weapons/props, trailing cloth and physical hovering ornaments visible. At least 8-10% completely empty transparent margin on all four sides. Do not crop, fill canvas edges or enlarge until equipment is cut. Leave roomy padding.\nOnly the enemy and its permanent physical costume/props. No spell effects, portals, attack arcs, floating UI, aura, dust, smoke, cast shadows, floor, scenery, background color/gradient/texture, drawn checkerboard, labels, lettering, readable text, watermark or border. The final background must be fully transparent, including between limbs and props. Fine ornamental abstract geometry is allowed, legible writing is not.\n",
+      "generation_character_prompt": "NEW CHARACTER: RIFTBLADE, the Rift-Blade Attendant. A lean, wiry masked imperial executioner in a LOW, forward-leaning agile ready stance. Narrow triangular silhouette, bent knees, separated visible black/gold tabi boots, long lean arms. Charcoal dominates, with ivory inner panels and restrained antique-gold trim; two short split cloak tails, fitted segmented lamellar vest and wrapped forearms, not floor-length imperial robes.\nHEAD: a compact angular ivory faceless porcelain mask under a shallow black cowl, one fine diagonal crimson fissure and narrow red eye slits; sleek swept-back head ribbons. No emperor crown, broad imperial tablet headdress or full circular halo.\nSIGNATURE PHYSICAL EQUIPMENT: TWO distinctive SHORT fractured-crescent cutting blades, one gripped in each hand. They look like two unequal sharpened segments of the boss's broken black eclipse disc: matte black centers, thin antique-gold cutting lips, small ivory inlay at the grip. One blade held low forward at image LEFT, the other held back near the hip, both entire blades and both hands clearly separated and visible. Short blades, not a huge scythe, swordstaff, boomerang, wheel or hammer. They are held, not floating/flying. A small broken-circle gold buckle and two ceramic shard plates on one shoulder subtly identify the emperor's faction.\nThe design must immediately read as a fast gap-cutting duelist using space-seam feints and delayed slash planes, without drawing these spells. Enemy-level status, not a boss. Serious dark-fantasy authority; no extra arms, wings, tail or creature anatomy."
+    },
+    {
+      "name": "缄印镇卫",
+      "role": "重装压阵 / 可破坏界楔 / 路线挤压",
+      "appearance": "宽方肩、下沉头位、三道红裂白面、两枚黑金重玺拳套；背部两条长方界碑可展开为封路界楔。轮廓方重，饰金比例较高。",
+      "skills": [
+        {
+          "name": "双玺错打",
+          "type": "重装近战",
+          "action": "左右重玺错拍短打，第一击推开身前目标，第二击打固定前方范围；不产生地面长波或落锤。",
+          "telegraph": "对应拳套先上抬，约 0.55 秒后出第一拳。",
+          "counter": "绕背或在两拳间退开；没有举盾免伤或全角度反击。"
+        },
+        {
+          "name": "立界双楔",
+          "type": "可破坏空间地形",
+          "action": "在前方两个预告位置立起低矮界楔，保留中间通路；每人最多一对，建议存续约 3 秒，可用攻击击碎，也可越过。",
+          "telegraph": "约 1 秒地面轮廓预警；不在玩家脚底或已占据的位置强行生成。",
+          "counter": "打碎任一界楔或跳过；不形成不可逃脱的完整牢笼。"
+        },
+        {
+          "name": "门阙挤压",
+          "type": "一次性路线收紧",
+          "action": "仅在双楔存在时使用；两楔约 0.8 秒预警后缓慢内收一次，目标区固定，不追随玩家，不连续结算接触伤害。",
+          "telegraph": "两楔的金边同步转红，本体双拳合拢蓄势。",
+          "counter": "起跳越过低楔，或击碎任一楔取消收拢并使镇卫硬直。"
+        }
+      ],
+      "weakness": "界楔是可攻击的副目标；被破坏时镇卫会失衡。威胁来自有限的场地重排，不靠厚盾、冲击波或全场增益。",
+      "animations": [
+        "Idle",
+        "Walk",
+        "StaggeredSealPunch",
+        "DeployBoundary",
+        "GateCompression",
+        "Hit",
+        "Death"
+      ],
+      "effects": [
+        "界楔落位预告",
+        "独立可破坏界楔",
+        "门阙内收提示"
+      ],
+      "key": "SealWarden",
+      "file": "SealWarden/Stand.png",
+      "bbox": [
+        96,
+        316,
+        928,
+        1448
+      ],
+      "transparent_margins_LRTB": [
+        96,
+        96,
+        316,
+        88
+      ],
+      "source_bbox": [
+        8,
+        82,
+        1016,
+        1454
+      ],
+      "uniform_resize_scale": 0.8253968253968254,
+      "guid": "a7bbe27af17d4b3c8f5324099013295a",
+      "sha256": "586ead59894b04ed64ff92d82a22be5f0e5f79b47909106af5903c435ccfa429",
+      "generation_common_prompt": "Use case: stylized-concept.\nAsset type: ONE full-body 2D Chinese fantasy action-game enemy identity reference, isolated transparent PNG. Exactly ONE character in ONE ready/idle pose; no animation sheet, grid, multiple frames, duplicates, turnaround or design-board.\nINPUT IMAGE ROLE: level9.png is the FACTION AND ART-STYLE reference, depicting the final boss Wuxiang Dijun (Formless Emperor). Design a NEW lesser enemy serving this boss, not a recolor, miniature copy or the emperor himself.\nFACTION LORE: the final stage is Wuxiang Tianque, the Formless Heavenly Palace. Ivory faceless masks with thin red fissures/eye slits, charcoal-black and ivory garments/armor with antique-gold trim and stylized cloud ornament, subtle dark-crimson seam cracks, broken-eclipse/fragmented sun motifs, oppressive imperial ritual geometry, space folds and boundary seals. Infer this theme from reference. Do not borrow furnace/fire or phoenix/blue-star themes from other stages.\nMATCH ART: same strong clean dark line weight, polished detailed cel shading, crisp shapes and hand-painted Chinese mythological 2D game illustration as reference. No photorealism, 3D rendering, watercolor haze, chibi or pixel art. Less regal ornament than the boss; clear readable enemy silhouette for later sprite animation.\nCOMPOSITION: portrait 1024x1536 RGBA PNG with REAL TRANSPARENT ALPHA. Three-quarter LEFT-facing, complete body centered, readable ready stance, consistent perspective. Head, mask, complete feet/shoes or robe tip, all weapons/props, trailing cloth and physical hovering ornaments visible. At least 8-10% completely empty transparent margin on all four sides. Do not crop, fill canvas edges or enlarge until equipment is cut. Leave roomy padding.\nOnly the enemy and its permanent physical costume/props. No spell effects, portals, attack arcs, floating UI, aura, dust, smoke, cast shadows, floor, scenery, background color/gradient/texture, drawn checkerboard, labels, lettering, readable text, watermark or border. The final background must be fully transparent, including between limbs and props. Fine ornamental abstract geometry is allowed, legible writing is not.\n",
+      "generation_character_prompt": "NEW CHARACTER: SEALWARDEN, the Silent-Seal Warden. A BROAD, squat, heavily armored imperial jailor; powerful stocky humanlike build, low center of gravity, spread planted boots, thick forearms, large squared shoulders. Wide rectangular silhouette clearly different from the lean assassin and tall robed caster.\nPALETTE/COSTUME: charcoal-black lacquered layered plate with broad antique-gold edges and abstract cloud relief; ivory porcelain plates at breast, knees and shoulder corners; short black/ivory waist apron, very short cape panels, no long flowing emperor robes. A small broken black-sun emblem on the sternum.\nHEAD: blunt IVORY RECTANGULAR FACELESS MASK with three fine vertical crimson crack marks and tiny red eye slits, head sunk between huge angular pauldrons. Low block-like gold/black ceremonial brow crest, not the emperor's flat long crown and hanging bead strings.\nSIGNATURE PHYSICAL EQUIPMENT: TWO LARGE SQUARE SEAL-GAUNTLETS fitted over and held by the hands, like paired black stone imperial stamp blocks with thick antique-gold corners and recessed abstract geometric seal faces. They are compact cuboid fist weapons with NO long handles, not hammers, shields or a cube held out on an open palm. The fists hang forward/out to either side in a bracing ready pose, both clearly visible. Two short rectangular boundary-tablet wedges are mechanically docked upright behind the shoulders like folded prison-gate posts: black ceramic/stone with gold framing, few ivory chips. They are mounted equipment, not glowing floating spell walls.\nThis lesser enemy controls routes with breakable paired boundary stakes and one slow closing gate crush; depict only the solid permanent equipment, no ground, summoned posts or spell effects. No shield, spear, giant hammer, banner, circle aura, flame or projectile. Heavy but not giant boss scale. All fists, mounted tablets and boots fully visible inside roomy transparent margins."
+    },
+    {
+      "name": "倒相织使",
+      "role": "高低空域交替 / 区域反相 / 队友易位",
+      "appearance": "修长悬浮身形，象牙白长袍与黑色内衬，半月眉冠、偏置残轮；左右分别托起黑梭与白梭，双梭明暗对应两种空间状态。",
+      "skills": [
+        {
+          "name": "阴阳分层",
+          "type": "可读的高低切换",
+          "action": "黑梭举起时只攻击预告区域的低层，白梭举起时只攻击其高层；每次施放交替，不发射普通飞弹。",
+          "telegraph": "对应梭与区域轮廓提前约 0.7 秒亮起；金色只预告，红色才是有效伤害。",
+          "counter": "低层用起跳越过，高层保持落地；区域在起手时锁定，随后不追踪。"
+        },
+        {
+          "name": "反相织域",
+          "type": "双拍区域节奏",
+          "action": "在同一小范围内先结算一次低层或高层，再于约 0.9 秒后反转为另一层；总计两拍，不无限维持。",
+          "telegraph": "梭的黑白次序和地面双段提示提前给出，不靠真假难辨的隐形判定。",
+          "counter": "离开区域、按顺序跳起/落地，或打断本体；不封死整张屏幕。"
+        },
+        {
+          "name": "易位敕令",
+          "type": "阵型重排",
+          "action": "与附近一名同阵营小怪连线蓄势约 1 秒，随后交换双方站位；只交换现有单位，不召出新怪，不回血或加攻。",
+          "telegraph": "两端位置和交换连线都可见，不能将单位换进玩家碰撞体内。",
+          "counter": "优先打断织使；交换后两者均有短恢复窗口。"
+        }
+      ],
+      "weakness": "低耐久，施法期间移动很慢；玩家可读双梭颜色与抬手方向。它制造行动节奏与站位变化，不承担插旗增益或落锤输出。",
+      "animations": [
+        "IdleHover",
+        "Glide",
+        "LowPhaseCast",
+        "HighPhaseCast",
+        "InvertField",
+        "AllyExchange",
+        "Hit",
+        "Death"
+      ],
+      "effects": [
+        "高低层区域预告",
+        "反相域",
+        "易位连线与落点提示"
+      ],
+      "key": "PhaseWeaver",
+      "file": "PhaseWeaver/Stand.png",
+      "bbox": [
+        97,
+        179,
+        927,
+        1447
+      ],
+      "transparent_margins_LRTB": [
+        97,
+        97,
+        179,
+        89
+      ],
+      "source_bbox": [
+        51,
+        33,
+        1012,
+        1499
+      ],
+      "uniform_resize_scale": 0.8657648283038502,
+      "guid": "76641949f8764a59bc7678ff39e13fdf",
+      "sha256": "830136ed05568d60791ee71b4b583367e8b5eecb0eec6192177ea9f3a0d7bbc1",
+      "generation_common_prompt": "Use case: stylized-concept.\nAsset type: ONE full-body 2D Chinese fantasy action-game enemy identity reference, isolated transparent PNG. Exactly ONE character in ONE ready/idle pose; no animation sheet, grid, multiple frames, duplicates, turnaround or design-board.\nINPUT IMAGE ROLE: level9.png is the FACTION AND ART-STYLE reference, depicting the final boss Wuxiang Dijun (Formless Emperor). Design a NEW lesser enemy serving this boss, not a recolor, miniature copy or the emperor himself.\nFACTION LORE: the final stage is Wuxiang Tianque, the Formless Heavenly Palace. Ivory faceless masks with thin red fissures/eye slits, charcoal-black and ivory garments/armor with antique-gold trim and stylized cloud ornament, subtle dark-crimson seam cracks, broken-eclipse/fragmented sun motifs, oppressive imperial ritual geometry, space folds and boundary seals. Infer this theme from reference. Do not borrow furnace/fire or phoenix/blue-star themes from other stages.\nMATCH ART: same strong clean dark line weight, polished detailed cel shading, crisp shapes and hand-painted Chinese mythological 2D game illustration as reference. No photorealism, 3D rendering, watercolor haze, chibi or pixel art. Less regal ornament than the boss; clear readable enemy silhouette for later sprite animation.\nCOMPOSITION: portrait 1024x1536 RGBA PNG with REAL TRANSPARENT ALPHA. Three-quarter LEFT-facing, complete body centered, readable ready stance, consistent perspective. Head, mask, complete feet/shoes or robe tip, all weapons/props, trailing cloth and physical hovering ornaments visible. At least 8-10% completely empty transparent margin on all four sides. Do not crop, fill canvas edges or enlarge until equipment is cut. Leave roomy padding.\nOnly the enemy and its permanent physical costume/props. No spell effects, portals, attack arcs, floating UI, aura, dust, smoke, cast shadows, floor, scenery, background color/gradient/texture, drawn checkerboard, labels, lettering, readable text, watermark or border. The final background must be fully transparent, including between limbs and props. Fine ornamental abstract geometry is allowed, legible writing is not.\n",
+      "generation_character_prompt": "NEW CHARACTER: PHASEWEAVER, the Inverse-Phase Weaver. A TALL, slender, slightly hovering ritual space-weaver, clearly a lesser enemy, with an elongated spindle/hourglass silhouette. Upright calm posture, shoulders narrow, long fitted sleeves, layered ivory robe panels over a charcoal inner garment, thin antique-gold cloud-scroll edging. EXACTLY TWO broad black-and-ivory sash tails drift gently sideways, not many tangled ribbons. Robe hem ends above two small downward-pointed ornate black shoes so the full lower body remains readable.\nHEAD: elongated smooth ivory faceless mask with a narrow VERTICAL dark-crimson seam and subtle red eye slits, black close-fitting hood/collar and a small asymmetric crescent-shaped gold brow clasp. No full imperial crown or long hanging pearl strings.\nSIGNATURE PHYSICAL PROPS: TWO contrasting small ceremonial SPACE-WEAVING SHUTTLES, one black with gold edge and one ivory with gold edge. They are solid elongated diamond/rhombus spindle-shaped ritual tools, one suspended just above each open hand, clearly separated and fully visible. Short physical fine silk cords attach each shuttle to the wrist cuffs; no laser threads, magic trails, needles, launched projectiles or floating book. Two or three black/gold broken eclipse fragments form a SMALL OFFSET INCOMPLETE crescent framework behind one shoulder, NOT a large round boss halo.\nThe design visually communicates alternating black/white spatial states and swapping ally positions, with refined asymmetric sleeve/prop contrast. No staff, banner pole, umbrella, bow, lantern, hammer, feather wings, battlefield portals, dome or spell effects. Keep the art style exactly matching the reference's crisp cel-shaded Chinese fantasy, not a modern tech robot or western sorceress."
+    }
+  ],
+  "checked_existing_archetypes": [
+    "刀兵连斩与弹反",
+    "射手毒箭与虚化",
+    "举盾防御",
+    "飞轮与隐身投掷",
+    "锁链牵引与震地冲击波",
+    "灯笼/标记/射线",
+    "青锤重击与落地气浪",
+    "战旗增益与召唤落锤"
+  ],
+  "combination_rule": "同一时间最多启用一组强空间封锁：门阙挤压与反相织域不能同时覆盖玩家；控制技能全部有预警、可破坏/打断或跳跃空档。",
+  "implementation_status": "Concept art and move design only; no combat scripts, scenes, animations or prefabs changed."
+}

@@ -1,0 +1,531 @@
+fileFormatVersion: 2
+guid: a4c8df77ccc554be818c5257c0bf0d33
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: BuffAttack_01
+  - first:
+      213: 21300002
+    second: BuffAttack_02
+  - first:
+      213: 21300004
+    second: BuffAttack_03
+  - first:
+      213: 21300006
+    second: BuffAttack_04
+  - first:
+      213: 21300008
+    second: BuffAttack_05
+  - first:
+      213: 21300010
+    second: BuffAttack_06
+  - first:
+      213: 21300012
+    second: BuffAttack_07
+  - first:
+      213: 21300014
+    second: BuffAttack_08
+  - first:
+      213: 21300016
+    second: BuffAttack_09
+  - first:
+      213: 21300018
+    second: BuffAttack_10
+  - first:
+      213: 21300020
+    second: BuffAttack_11
+  - first:
+      213: 21300022
+    second: BuffAttack_12
+  - first:
+      213: 21300024
+    second: BuffAttack_13
+  - first:
+      213: 21300026
+    second: BuffAttack_14
+  - first:
+      213: 21300028
+    second: BuffAttack_15
+  - first:
+      213: 21300030
+    second: BuffAttack_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 4096
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 9
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BuffAttack_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1260
+        width: 370
+        height: 420
+      alignment: 9
+      pivot: {x: 0.4864864865, y: 0.4976190476}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f9c4e2509435995a357222d32fc4e75
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuffAttack_02
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 1260
+        width: 370
+        height: 420
+      alignment: 9
+      pivot: {x: 0.4864864865, y: 0.4976190476}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a7f8e04a307541b98ee60a2491005f2
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuffAttack_03
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 1260
+        width: 370
+        height: 420
+      alignment: 9
+      pivot: {x: 0.4864864865, y: 0.4976190476}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31db57f4519c5fc6ba03504b8bf5038f
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuffAttack_04
+      rect:
+        serializedVersion: 2
+        x: 1110
+        y: 1260
+        width: 370
+        height: 420
+      alignment: 9
+      pivot: {x: 0.4864864865, y: 0.4976190476}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d127a532d9e5b76af2140cacbce8d48
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuffAttack_05
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 840
+        width: 370
+        height: 420
+      alignment: 9
+      pivot: {x: 0.4864864865, y: 0.4976190476}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8baafa193f0858578229ae00f7cbebd3
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuffAttack_06
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 840
+        width: 370
+        height: 420
+      alignment: 9
+      pivot: {x: 0.4864864865, y: 0.4976190476}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38482488fc8b5f488b986ebf97d6e576
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuffAttack_07
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 840
+        width: 370
+        height: 420
+      alignment: 9
+      pivot: {x: 0.4864864865, y: 0.4976190476}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5bb9594415e57c8a241cf8fc915cc6a
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuffAttack_08
+      rect:
+        serializedVersion: 2
+        x: 1110
+        y: 840
+        width: 370
+        height: 420
+      alignment: 9
+      pivot: {x: 0.4864864865, y: 0.4976190476}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39a136c44cc757ff8a958f85eeab67c1
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuffAttack_09
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 420
+        width: 370
+        height: 420
+      alignment: 9
+      pivot: {x: 0.4864864865, y: 0.4976190476}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9597988535c352ef861bf358ae6baa66
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuffAttack_10
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 420
+        width: 370
+        height: 420
+      alignment: 9
+      pivot: {x: 0.4864864865, y: 0.4976190476}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95005088d95059b4aee017855e45eb00
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuffAttack_11
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 420
+        width: 370
+        height: 420
+      alignment: 9
+      pivot: {x: 0.4864864865, y: 0.4976190476}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01c38bfd4dbb548fbac66a7f7649c77e
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuffAttack_12
+      rect:
+        serializedVersion: 2
+        x: 1110
+        y: 420
+        width: 370
+        height: 420
+      alignment: 9
+      pivot: {x: 0.4864864865, y: 0.4976190476}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3603167dea545ce6a9fa232a2089081d
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuffAttack_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 370
+        height: 420
+      alignment: 9
+      pivot: {x: 0.4864864865, y: 0.4976190476}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a17e00e4be915225b249eccead54a1e2
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuffAttack_14
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 0
+        width: 370
+        height: 420
+      alignment: 9
+      pivot: {x: 0.4864864865, y: 0.4976190476}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d30156447b7549ab4b4dc9d8dc477f9
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuffAttack_15
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 0
+        width: 370
+        height: 420
+      alignment: 9
+      pivot: {x: 0.4864864865, y: 0.4976190476}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 275b971ecaf050ccb9f2d308fcac22a8
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuffAttack_16
+      rect:
+        serializedVersion: 2
+        x: 1110
+        y: 0
+        width: 370
+        height: 420
+      alignment: 9
+      pivot: {x: 0.4864864865, y: 0.4976190476}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfe6687bf07957ac9467df032969bf2a
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      BuffAttack_01: 21300000
+      BuffAttack_02: 21300002
+      BuffAttack_03: 21300004
+      BuffAttack_04: 21300006
+      BuffAttack_05: 21300008
+      BuffAttack_06: 21300010
+      BuffAttack_07: 21300012
+      BuffAttack_08: 21300014
+      BuffAttack_09: 21300016
+      BuffAttack_10: 21300018
+      BuffAttack_11: 21300020
+      BuffAttack_12: 21300022
+      BuffAttack_13: 21300024
+      BuffAttack_14: 21300026
+      BuffAttack_15: 21300028
+      BuffAttack_16: 21300030
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: EastKing normalized complete isolated sprites. Body faces right; unchanged original sources.
+  assetBundleName: 
+  assetBundleVariant: 

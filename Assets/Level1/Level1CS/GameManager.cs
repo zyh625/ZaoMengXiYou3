@@ -1,9 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.InputSystem;
-using Unity.VisualScripting;
-using UnityEditor.PackageManager;
-
+using zmxy.Legacy;
 public class GameManager : MonoBehaviour
 {
 

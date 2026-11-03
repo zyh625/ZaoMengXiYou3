@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: d1c30df043775492a0ec565bf17824e3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: NormalAttackSprites_01
+  - first:
+      213: 21300002
+    second: NormalAttackSprites_02
+  - first:
+      213: 21300004
+    second: NormalAttackSprites_03
+  - first:
+      213: 21300006
+    second: NormalAttackSprites_04
+  - first:
+      213: 21300008
+    second: NormalAttackSprites_05
+  - first:
+      213: 21300010
+    second: NormalAttackSprites_06
+  - first:
+      213: 21300012
+    second: NormalAttackSprites_07
+  - first:
+      213: 21300014
+    second: NormalAttackSprites_08
+  - first:
+      213: 21300016
+    second: NormalAttackSprites_09
+  - first:
+      213: 21300018
+    second: NormalAttackSprites_10
+  - first:
+      213: 21300020
+    second: NormalAttackSprites_11
+  - first:
+      213: 21300022
+    second: NormalAttackSprites_12
+  - first:
+      213: 21300024
+    second: NormalAttackSprites_13
+  - first:
+      213: 21300026
+    second: NormalAttackSprites_14
+  - first:
+      213: 21300028
+    second: NormalAttackSprites_15
+  - first:
+      213: 21300030
+    second: NormalAttackSprites_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: NormalAttackSprites_01
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 830
+        width: 362
+        height: 272
+      alignment: 9
+      pivot: {x: 0.506906077348, y: 0.417279411765}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40362454c75d5ec0bc1a9de2b6596142
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalAttackSprites_02
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 830
+        width: 362
+        height: 272
+      alignment: 9
+      pivot: {x: 0.506906077348, y: 0.417279411765}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61a0286f5db0515cbd1d868510d44c29
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalAttackSprites_03
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 830
+        width: 362
+        height: 272
+      alignment: 9
+      pivot: {x: 0.506906077348, y: 0.417279411765}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06ad3f7947bc574da2af62aec6e776d8
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalAttackSprites_04
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 830
+        width: 362
+        height: 272
+      alignment: 9
+      pivot: {x: 0.506906077348, y: 0.417279411765}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d091cae5e1d5d41acd5af694186b850
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalAttackSprites_05
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 554
+        width: 362
+        height: 272
+      alignment: 9
+      pivot: {x: 0.506906077348, y: 0.417279411765}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01fda1914a405634a27e29889767867c
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalAttackSprites_06
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 554
+        width: 362
+        height: 272
+      alignment: 9
+      pivot: {x: 0.506906077348, y: 0.417279411765}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3a3db9f01d7533e95554cb8616b47bb
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalAttackSprites_07
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 554
+        width: 362
+        height: 272
+      alignment: 9
+      pivot: {x: 0.506906077348, y: 0.417279411765}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3c47bbd2e905aff8b3014b15cb96827
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalAttackSprites_08
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 554
+        width: 362
+        height: 272
+      alignment: 9
+      pivot: {x: 0.506906077348, y: 0.417279411765}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13357aacf9f75e63a42d56b5efe74d3a
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalAttackSprites_09
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 278
+        width: 362
+        height: 272
+      alignment: 9
+      pivot: {x: 0.506906077348, y: 0.417279411765}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edabacfbf0835f42a6699b89f147b277
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalAttackSprites_10
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 278
+        width: 362
+        height: 272
+      alignment: 9
+      pivot: {x: 0.506906077348, y: 0.417279411765}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b40271a14e105e3f8f98a26174e8325b
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalAttackSprites_11
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 278
+        width: 362
+        height: 272
+      alignment: 9
+      pivot: {x: 0.506906077348, y: 0.417279411765}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 721f610b057956d59a718ef18bbe8db6
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalAttackSprites_12
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 278
+        width: 362
+        height: 272
+      alignment: 9
+      pivot: {x: 0.506906077348, y: 0.417279411765}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9dd85ead6086576ba5ef7a72d566ed42
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalAttackSprites_13
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 362
+        height: 272
+      alignment: 9
+      pivot: {x: 0.506906077348, y: 0.417279411765}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e8229db62955fd7b64aaedcfa967503
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalAttackSprites_14
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 2
+        width: 362
+        height: 272
+      alignment: 9
+      pivot: {x: 0.506906077348, y: 0.417279411765}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8efea719f0cd58ff83043395e6d19845
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalAttackSprites_15
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 2
+        width: 362
+        height: 272
+      alignment: 9
+      pivot: {x: 0.506906077348, y: 0.417279411765}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1698aabc395e5588aaa0b0a1dd30fa9e
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalAttackSprites_16
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 2
+        width: 362
+        height: 272
+      alignment: 9
+      pivot: {x: 0.506906077348, y: 0.417279411765}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47875c83129f5129bfe299d622f11275
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      NormalAttackSprites_01: 21300000
+      NormalAttackSprites_02: 21300002
+      NormalAttackSprites_03: 21300004
+      NormalAttackSprites_04: 21300006
+      NormalAttackSprites_05: 21300008
+      NormalAttackSprites_06: 21300010
+      NormalAttackSprites_07: 21300012
+      NormalAttackSprites_08: 21300014
+      NormalAttackSprites_09: 21300016
+      NormalAttackSprites_10: 21300018
+      NormalAttackSprites_11: 21300020
+      NormalAttackSprites_12: 21300022
+      NormalAttackSprites_13: 21300024
+      NormalAttackSprites_14: 21300026
+      NormalAttackSprites_15: 21300028
+      NormalAttackSprites_16: 21300030
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

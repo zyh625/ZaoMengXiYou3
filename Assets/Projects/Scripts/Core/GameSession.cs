@@ -6,33 +6,186 @@ public class BattleData
     public int costTime;//过关耗时
     public int mvp;//本关的mvp
     public int playerState ;//总体平均过关状态
+    public int progress;//本轮失败闯关百分数，只用于结算，不进入SaveData
+    public bool victory;//本轮结果，只在当前进程传递给结算界面
 }
 
 public class GameSession : MonoBehaviour
 {
     public static GameSession instance;
     public BattleData battle = new();
-    public int curFile;//当前使用的存档
+    public int curFile = -1;//当前使用的存档，未经过选档流程时不关联任何磁盘槽
     public string priScene;//上一个场景
     public int maxLevel;
 
     public SaveData data;
+    public event Action DataChanged;//金币或技能购买真正发生变化后，当前打开的技能界面统一刷新
+    private bool fileSelected;//必须真实调用SelectFile才允许写盘，序列化的curFile值不能当成选档授权
+    public bool HasSelectedFile => fileSelected && curFile >= 0;
+    public int Rebirth => HasSelectedFile && data != null ? Math.Max(0, data.rebirth) : 0;
+    public bool CanRebirth => !TrainingSession.Active && HasSelectedFile && data != null && data.rebirthAvailable;
+
+    public void RegisterVictory(BattleData result)
+    {
+        if(TrainingSession.Active || data==null || result==null || result!=battle || !result.victory || result.curLevel<1 || result.curLevel>9)return;
+        data.gameLevel=Math.Max(data.gameLevel,Math.Min(9,result.curLevel+1));
+        data.UnlockAfterVictory(result.curLevel);
+        if(result.curLevel==9)data.rebirthAvailable=true;
+        maxLevel=data.gameLevel;NotifyDataChanged();
+    }
+
+    public bool TryBeginRebirth(BattleData result)//先持久化成功，再丢弃本轮统计；保存失败可以原地重试。
+    {
+        if (!CanRebirth || result == null || !result.victory || result.curLevel != 9) return false;
+        if (battle != result) return false;//已经消费的结算不能被再次点击累计轮回。
+        return CommitRebirth("VictoryScene");
+    }
+    public bool TryBeginRebirthFromMap()
+    {
+        if(!CanRebirth || UnityEngine.SceneManagement.SceneManager.GetActiveScene().name!="MapScene")return false;
+        return CommitRebirth("MapScene");
+    }
+    private bool CommitRebirth(string origin)
+    {
+        int previous = data.rebirth;
+        string previousDate = data.date;
+        bool previousQualification=data.rebirthAvailable;
+        data.rebirth = previous < int.MaxValue ? previous + 1 : int.MaxValue;
+        data.rebirthAvailable=false;
+        if (!SaveSystem.TrySave())
+        {
+            data.rebirth = previous;
+            data.date = previousDate;
+            data.rebirthAvailable=previousQualification;
+            return false;
+        }
+        GoldManager.Current?.EndRun();
+        BattleRun.Cancel();
+        battle = new BattleData { curLevel = 1 };
+        priScene = origin;
+        NotifyDataChanged();
+        return true;
+    }
     public void Awake()
     {
-        instance = instance != null ? instance : this;
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
+        DontDestroyOnLoad(gameObject);
     }
     public void SelectFile(int num,string n)//选中存档进入
     {
         if (instance != null&&instance!=this)
         {
-            Destroy(gameObject);
+            instance.SelectFile(num, n);//菜单再次载入时仍由原本跨场景会话接收选择
             return;
         }
+        if (num < 0) return;
         curFile = num;
         data = SaveSystem.Load(num) ?? SaveData.CreatNew(n);
+        data.Normalize();
+        battle = new BattleData();//切换存档不能沿用另一个档的临时结算
+        BattleRun.Cancel();
+        fileSelected = true;
         instance = this;
         maxLevel = data.gameLevel;
         DontDestroyOnLoad(gameObject);
+        NotifyDataChanged();//选择另一份存档后，已显示的数据也跟随当前存档切换
+    }
+
+    public static GameSession EnsureSession()//直接运行战斗场景也有完整内存数据，但不会创建或覆盖任何存档文件
+    {
+        if (instance == null) new GameObject("GameSession").AddComponent<GameSession>();
+        instance.EnsureRuntimeData();
+        return instance;
+    }
+
+    public SaveData EnsureRuntimeData()
+    {
+        if (data == null) data = SaveData.CreatNew(string.Empty);
+        data.Normalize();
+        if (battle == null) battle = new BattleData();
+        maxLevel = data.gameLevel;
+        return data;
+    }
+
+    public void ClearSelectedFile()//明确删除当前槽后，旧会话不能通过自动保存把该槽重新写回来
+    {
+        fileSelected = false;
+        curFile = -1;
+    }
+
+    public void DiscardUnsavedProgress()//返回主菜单只读恢复上次存档，丢弃本次未保存的金币、技能、经验和关卡进度
+    {
+        if (instance != null && instance != this)
+        {
+            instance.DiscardUnsavedProgress();//菜单里的重复会话组件不能覆盖跨场景的实际会话
+            return;
+        }
+        string savedName = HasSelectedFile && data != null ? data.name : string.Empty;//新建但尚未保存的槽只恢复初始数据
+        SaveData saved = HasSelectedFile ? SaveSystem.Load(curFile) : null;
+        data = saved ?? SaveData.CreatNew(savedName);
+        data.Normalize();
+        maxLevel = data.gameLevel;
+        battle = new BattleData();
+        priScene = string.Empty;
+        BattleRun.Cancel();//放弃本轮统计而不触发胜利、失败或自动保存
+        ClearSelectedFile();//返回选档后必须重新选择槽位，不能沿用旧授权误写文件
+        NotifyDataChanged();
+    }
+
+    public bool TryLearnSkill(PlayerId id, int skillNumber, int cost)//保留旧入口，实际价格统一读取等级配置，避免界面传入过期价格
+        => TryLearnSkill(id, skillNumber);
+
+    public bool TryLearnSkill(PlayerId id, int skillNumber)//技能编号从1开始，学习与金币扣费要么一起成功、要么都不变
+    {
+        SaveData save = EnsureRuntimeData();
+        SkillProgression progression = SkillProgression.Current;
+        if (!save.IsPlayerUnlocked(id) || !progression.HasSkill(id, skillNumber)) return false;
+        PlayerData player = save.GetPlayer(id);
+        int cost = progression.GetLevelData(id, skillNumber, 1).goldCost;//第一等级的价格就是学习费用
+        if (player == null || player.GetSkillLevel(skillNumber) != 0 || !save.TrySpendGold(cost)) return false;
+        player.SetSkillLevel(skillNumber, 1);
+        //学习先留在当前会话，只有地图主动保存或关卡胜败才写盘。
+        NotifyDataChanged();
+        return true;
+    }
+
+    public bool TryUpgradeSkill(PlayerId id, int skillNumber, int cost)//兼容已有按钮调用，升级价格以目标等级配置为准
+        => TryUpgradeSkill(id, skillNumber);
+
+    public bool TryUpgradeSkill(PlayerId id, int skillNumber)//未学习或已经满级时不会扣费，也不会发出数据更新通知
+    {
+        SaveData save = EnsureRuntimeData();
+        SkillProgression progression = SkillProgression.Current;
+        if (!save.IsPlayerUnlocked(id) || !progression.HasSkill(id, skillNumber)) return false;
+        PlayerData player = save.GetPlayer(id);
+        if (player == null) return false;
+        int level = player.GetSkillLevel(skillNumber);
+        if (level < 1 || level >= progression.MaxLevel) return false;
+        int cost = progression.GetLevelData(id, skillNumber, level + 1).goldCost;//升级按钮展示并扣除即将升到的那一级的价格
+        if (!save.TrySpendGold(cost)) return false;
+        player.SetSkillLevel(skillNumber, level + 1);
+        //升级与扣金币一起暂存，返回主菜单时可完整恢复上次存档。
+        NotifyDataChanged();
+        return true;
+    }
+
+    public void NotifyDataChanged() => DataChanged?.Invoke();//拾取金币等其他系统在真实变更当前存档数据后调用
+
+    public void UnlockLevel(int level)//解锁只会上升，失败和重玩低关卡都不会降低已有进度
+    {
+        SaveData save = EnsureRuntimeData();
+        save.gameLevel = Math.Max(save.gameLevel, Math.Max(1, level));
+        maxLevel = save.gameLevel;
+    }
+
+    private void OnDestroy()
+    {
+        if (instance == this) instance = null;
     }
     
 }

@@ -1,0 +1,377 @@
+fileFormatVersion: 2
+guid: 1fd5f54383655838bad0851fcbda0796
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: KnockbackSkill_01
+  - first:
+      213: 21300002
+    second: KnockbackSkill_02
+  - first:
+      213: 21300004
+    second: KnockbackSkill_03
+  - first:
+      213: 21300006
+    second: KnockbackSkill_04
+  - first:
+      213: 21300008
+    second: KnockbackSkill_05
+  - first:
+      213: 21300010
+    second: KnockbackSkill_06
+  - first:
+      213: 21300012
+    second: KnockbackSkill_07
+  - first:
+      213: 21300014
+    second: KnockbackSkill_08
+  - first:
+      213: 21300016
+    second: KnockbackSkill_09
+  - first:
+      213: 21300018
+    second: KnockbackSkill_10
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 9
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: KnockbackSkill_01
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 754
+        width: 656
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5000000000, y: 0.1141304348}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fbf4f19b3995398a8149a7883b88948
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnockbackSkill_02
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 754
+        width: 656
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5000000000, y: 0.1032608696}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4d14899927555e59b53505d851f330c
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnockbackSkill_03
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 566
+        width: 656
+        height: 184
+      alignment: 9
+      pivot: {x: 0.4954268293, y: 0.0760869565}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cbf6ef10ec758fc958ad9998e12657e
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnockbackSkill_04
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 566
+        width: 656
+        height: 184
+      alignment: 9
+      pivot: {x: 0.4984756098, y: 0.0489130435}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a731bb04eca35c1286f444665f0117aa
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnockbackSkill_05
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 378
+        width: 656
+        height: 184
+      alignment: 9
+      pivot: {x: 0.4984756098, y: 0.0434782609}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dae1399256b856658b65b30d1e3ac8da
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnockbackSkill_06
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 378
+        width: 656
+        height: 184
+      alignment: 9
+      pivot: {x: 0.4984756098, y: 0.0489130435}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 311bdc0c97c058b2b64aa47db521ae78
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnockbackSkill_07
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 190
+        width: 656
+        height: 184
+      alignment: 9
+      pivot: {x: 0.4984756098, y: 0.0489130435}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 057f3d12fda4512aa31f20a828f84da0
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnockbackSkill_08
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 190
+        width: 656
+        height: 184
+      alignment: 9
+      pivot: {x: 0.4984756098, y: 0.0434782609}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d213e179c6d85badb8b321631443ce55
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnockbackSkill_09
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 656
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5000000000, y: 0.0000000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 900828399f6a5753ad80371c0b97ace5
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnockbackSkill_10
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 2
+        width: 656
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5000000000, y: 0.0869565217}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afbb5cd777c75502b818a3baf3fffc68
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      KnockbackSkill_01: 21300000
+      KnockbackSkill_02: 21300002
+      KnockbackSkill_03: 21300004
+      KnockbackSkill_04: 21300006
+      KnockbackSkill_05: 21300008
+      KnockbackSkill_06: 21300010
+      KnockbackSkill_07: 21300012
+      KnockbackSkill_08: 21300014
+      KnockbackSkill_09: 21300016
+      KnockbackSkill_10: 21300018
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

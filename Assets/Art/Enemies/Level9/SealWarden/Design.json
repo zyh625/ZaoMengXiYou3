@@ -1,0 +1,68 @@
+{
+  "name": "缄印镇卫",
+  "role": "重装压阵 / 可破坏界楔 / 路线挤压",
+  "appearance": "宽方肩、下沉头位、三道红裂白面、两枚黑金重玺拳套；背部两条长方界碑可展开为封路界楔。轮廓方重，饰金比例较高。",
+  "skills": [
+    {
+      "name": "双玺错打",
+      "type": "重装近战",
+      "action": "左右重玺错拍短打，第一击推开身前目标，第二击打固定前方范围；不产生地面长波或落锤。",
+      "telegraph": "对应拳套先上抬，约 0.55 秒后出第一拳。",
+      "counter": "绕背或在两拳间退开；没有举盾免伤或全角度反击。"
+    },
+    {
+      "name": "立界双楔",
+      "type": "可破坏空间地形",
+      "action": "在前方两个预告位置立起低矮界楔，保留中间通路；每人最多一对，建议存续约 3 秒，可用攻击击碎，也可越过。",
+      "telegraph": "约 1 秒地面轮廓预警；不在玩家脚底或已占据的位置强行生成。",
+      "counter": "打碎任一界楔或跳过；不形成不可逃脱的完整牢笼。"
+    },
+    {
+      "name": "门阙挤压",
+      "type": "一次性路线收紧",
+      "action": "仅在双楔存在时使用；两楔约 0.8 秒预警后缓慢内收一次，目标区固定，不追随玩家，不连续结算接触伤害。",
+      "telegraph": "两楔的金边同步转红，本体双拳合拢蓄势。",
+      "counter": "起跳越过低楔，或击碎任一楔取消收拢并使镇卫硬直。"
+    }
+  ],
+  "weakness": "界楔是可攻击的副目标；被破坏时镇卫会失衡。威胁来自有限的场地重排，不靠厚盾、冲击波或全场增益。",
+  "animations": [
+    "Idle",
+    "Walk",
+    "StaggeredSealPunch",
+    "DeployBoundary",
+    "GateCompression",
+    "Hit",
+    "Death"
+  ],
+  "effects": [
+    "界楔落位预告",
+    "独立可破坏界楔",
+    "门阙内收提示"
+  ],
+  "key": "SealWarden",
+  "file": "SealWarden/Stand.png",
+  "bbox": [
+    96,
+    316,
+    928,
+    1448
+  ],
+  "transparent_margins_LRTB": [
+    96,
+    96,
+    316,
+    88
+  ],
+  "source_bbox": [
+    8,
+    82,
+    1016,
+    1454
+  ],
+  "uniform_resize_scale": 0.8253968253968254,
+  "guid": "a7bbe27af17d4b3c8f5324099013295a",
+  "sha256": "586ead59894b04ed64ff92d82a22be5f0e5f79b47909106af5903c435ccfa429",
+  "generation_common_prompt": "Use case: stylized-concept.\nAsset type: ONE full-body 2D Chinese fantasy action-game enemy identity reference, isolated transparent PNG. Exactly ONE character in ONE ready/idle pose; no animation sheet, grid, multiple frames, duplicates, turnaround or design-board.\nINPUT IMAGE ROLE: level9.png is the FACTION AND ART-STYLE reference, depicting the final boss Wuxiang Dijun (Formless Emperor). Design a NEW lesser enemy serving this boss, not a recolor, miniature copy or the emperor himself.\nFACTION LORE: the final stage is Wuxiang Tianque, the Formless Heavenly Palace. Ivory faceless masks with thin red fissures/eye slits, charcoal-black and ivory garments/armor with antique-gold trim and stylized cloud ornament, subtle dark-crimson seam cracks, broken-eclipse/fragmented sun motifs, oppressive imperial ritual geometry, space folds and boundary seals. Infer this theme from reference. Do not borrow furnace/fire or phoenix/blue-star themes from other stages.\nMATCH ART: same strong clean dark line weight, polished detailed cel shading, crisp shapes and hand-painted Chinese mythological 2D game illustration as reference. No photorealism, 3D rendering, watercolor haze, chibi or pixel art. Less regal ornament than the boss; clear readable enemy silhouette for later sprite animation.\nCOMPOSITION: portrait 1024x1536 RGBA PNG with REAL TRANSPARENT ALPHA. Three-quarter LEFT-facing, complete body centered, readable ready stance, consistent perspective. Head, mask, complete feet/shoes or robe tip, all weapons/props, trailing cloth and physical hovering ornaments visible. At least 8-10% completely empty transparent margin on all four sides. Do not crop, fill canvas edges or enlarge until equipment is cut. Leave roomy padding.\nOnly the enemy and its permanent physical costume/props. No spell effects, portals, attack arcs, floating UI, aura, dust, smoke, cast shadows, floor, scenery, background color/gradient/texture, drawn checkerboard, labels, lettering, readable text, watermark or border. The final background must be fully transparent, including between limbs and props. Fine ornamental abstract geometry is allowed, legible writing is not.\n",
+  "generation_character_prompt": "NEW CHARACTER: SEALWARDEN, the Silent-Seal Warden. A BROAD, squat, heavily armored imperial jailor; powerful stocky humanlike build, low center of gravity, spread planted boots, thick forearms, large squared shoulders. Wide rectangular silhouette clearly different from the lean assassin and tall robed caster.\nPALETTE/COSTUME: charcoal-black lacquered layered plate with broad antique-gold edges and abstract cloud relief; ivory porcelain plates at breast, knees and shoulder corners; short black/ivory waist apron, very short cape panels, no long flowing emperor robes. A small broken black-sun emblem on the sternum.\nHEAD: blunt IVORY RECTANGULAR FACELESS MASK with three fine vertical crimson crack marks and tiny red eye slits, head sunk between huge angular pauldrons. Low block-like gold/black ceremonial brow crest, not the emperor's flat long crown and hanging bead strings.\nSIGNATURE PHYSICAL EQUIPMENT: TWO LARGE SQUARE SEAL-GAUNTLETS fitted over and held by the hands, like paired black stone imperial stamp blocks with thick antique-gold corners and recessed abstract geometric seal faces. They are compact cuboid fist weapons with NO long handles, not hammers, shields or a cube held out on an open palm. The fists hang forward/out to either side in a bracing ready pose, both clearly visible. Two short rectangular boundary-tablet wedges are mechanically docked upright behind the shoulders like folded prison-gate posts: black ceramic/stone with gold framing, few ivory chips. They are mounted equipment, not glowing floating spell walls.\nThis lesser enemy controls routes with breakable paired boundary stakes and one slow closing gate crush; depict only the solid permanent equipment, no ground, summoned posts or spell effects. No shield, spear, giant hammer, banner, circle aura, flame or projectile. Heavy but not giant boss scale. All fists, mounted tablets and boots fully visible inside roomy transparent margins."
+}

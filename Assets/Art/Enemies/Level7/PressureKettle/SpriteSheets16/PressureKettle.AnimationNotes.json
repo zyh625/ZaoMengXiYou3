@@ -1,0 +1,1240 @@
+{
+  "character": "PressureKettle",
+  "name_zh": "泄压壶灵",
+  "date": "2026-11-02",
+  "generator": "built-in image_gen",
+  "reference": "../Stand.png",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "grid": [
+    4,
+    4
+  ],
+  "cell": [
+    256,
+    384
+  ],
+  "frame_order": "left-to-right, then top-to-bottom",
+  "baseline_top_left": 328,
+  "pivot": [
+    0.5,
+    0.14583333333333334
+  ],
+  "common_prompt": "Use case: identity-preserve. Asset: production 2D Unity CHARACTER-ONLY animation cutouts.\nREFERENCE: stand.png is the EXACT PressureKettle identity. Copy the same SMALL UPRIGHT living bronze tea/pressure KETTLE CONSTRUCT, a distinct pear-shaped teapot body, not a humanoid, goblin, dragon or monster face. NO HUMAN SKIN. Two SHORT clawed metal legs and two SMALL articulated mechanical arms. SAME proportions and detailed polished hand-painted cel shading with strong clean dark outlines.\nPRESERVE EXACT TOOLS/ANATOMY: ONE short CURVED TEAPOT SPOUT at chest level toward SCREEN LEFT, broad brass lip and clearly visible hollow opening, not a long gun, trunk or trumpet; ONE LARGE RIGID LOOP HANDLE on the BACK RIGHT; ONE small hinged dome LID with gold key-fret rim and knob, slightly raised over a thin ORANGE INTERNAL FURNACE GAP. TWO fierce orange glowing eyes sit ABOVE a small ribbed pressure vent, no human nose or mouth. The round pear belly has the same OCTAGONAL orange furnace door with gold bars, central round hub, hinges and trim. Aged dark bronze, jade-green VERDIGRIS patches, gold key-fret and cloud-scroll motifs, brass rims. Match all spout, handle, lid, hinges, furnace-bar arrangement and armor shapes exactly in every frame. Do not add a second spout, extra arms, a separate human head, new hat, armor costume or weapon.\nCamera stays THREE-QUARTER LEFT with no camera rotation. Same small DRAWING SCALE and mechanical body proportions across all16. Lid opens only as the specific action requires; attached by hinge except explicit death lid detachment. Handle remains attached, rigid except explicit death damage.\nLAYOUT: a roomy SQUARE 1536x1536 TRANSPARENT STAGING ATLAS, exactly FOUR columns x FOUR rows, 16 full-body poses in sixteen invisible 384x384 square regions, for deterministic final packing into a portrait 1024x1536 game sheet later. One complete kettle plus all parts in each region; read chronologically left-to-right top-to-bottom, smooth continuation across row breaks.\nThe COMPLETE kettle INCLUDING SPOUT, LOOP HANDLE, CLAWS and FULLY OPEN/DETACHED LID is SMALL inside the staging region, about 230px wide x230px tall at neutral. Absolute maximum270px width/height for any pose. Fixed small scale chosen fromF1 so open lid, springing poses and final sideways body all fit. At least50px transparent left/right margins and40px transparent top/bottom margins in EVERY region, including external canvas. Neutral soles share local baseline y=338. Consistent body center. Do not zoom, fill cells, crop parts, touch/overlap neighboring figures or touch outside edges. All parts fully visible every time.\nALPHA: real empty transparent pixels outside character. NO background color, gradient, scenery, floor, cast shadow or drawn checkerboard. No borders, grid, numbers, labels, text or watermark.\nBODY ONLY: NO steam, smoke, flames, fire outside furnace, bomb, projectile, sparks, motion lines, attack slash, shockwave, aura, impact, dust, enemy or extra object. Orange/white-hot glow must stay INSIDE eyes, belly door and lid aperture. The spout opening and throwing hand remain EMPTY. Physical poses and internal furnace brightness convey action. Spell effects will be separate assets, never baked into this atlas.\n",
+  "no_baked_spell_effects": true,
+  "animations": [
+    {
+      "key": "Idle",
+      "label": "待机呼吸",
+      "loop": true,
+      "fps": 10,
+      "action": "Animation: IDLE breathing LOOP,16 chronological frames. F1 neutral, lid slightly raised with thin orange gap, both short boots planted; F2-5 belly-door internal glow brightens and lid lifts a HAIR, rigid back handle rattles subtly; F6-9 slow exhale, pear body settles, spout tilts down a little; F10-13 small arms shift, ribbed front pressure vent flexes; F14-16 return EXACTLY toF1. Both feet remain planted at same spots, no stepping. Very small sequential mechanical breathing, no body inflation or redesign. No emitted steam.",
+      "file": "Idle.png",
+      "frame_count": 16,
+      "full_prompt_override": null,
+      "frames": [
+        {
+          "name": "Idle_0",
+          "frame": 1,
+          "unity_rect": {
+            "x": 0,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_1",
+          "frame": 2,
+          "unity_rect": {
+            "x": 256,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_2",
+          "frame": 3,
+          "unity_rect": {
+            "x": 512,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_3",
+          "frame": 4,
+          "unity_rect": {
+            "x": 768,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_4",
+          "frame": 5,
+          "unity_rect": {
+            "x": 0,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_5",
+          "frame": 6,
+          "unity_rect": {
+            "x": 256,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_6",
+          "frame": 7,
+          "unity_rect": {
+            "x": 512,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_7",
+          "frame": 8,
+          "unity_rect": {
+            "x": 768,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_8",
+          "frame": 9,
+          "unity_rect": {
+            "x": 0,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_9",
+          "frame": 10,
+          "unity_rect": {
+            "x": 256,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_10",
+          "frame": 11,
+          "unity_rect": {
+            "x": 512,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_11",
+          "frame": 12,
+          "unity_rect": {
+            "x": 768,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_12",
+          "frame": 13,
+          "unity_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_13",
+          "frame": 14,
+          "unity_rect": {
+            "x": 256,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_14",
+          "frame": 15,
+          "unity_rect": {
+            "x": 512,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Idle_15",
+          "frame": 16,
+          "unity_rect": {
+            "x": 768,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        }
+      ],
+      "runtime_fps": 10
+    },
+    {
+      "key": "Walk",
+      "label": "摇摆行走",
+      "loop": true,
+      "fps": 10,
+      "action": "Animation: WALK IN PLACE,16-frame waddling loop. F1 left short foot forward; F2-5 weight rolls onto left leg, upright pear-kettle body wobbles and left-pointing spout swings slightly; F6-9 right leg passes; F10-13 right foot lands with small bounce, large rigid back loop handle jiggles as part of same body; F14-16 left leg passes and closes seamlessly toF1. Short comedic weighty steps, no run, jump or camera rotation. Maintain exact kettle proportions and all props.",
+      "file": "Walk.png",
+      "frame_count": 16,
+      "full_prompt_override": null,
+      "frames": [
+        {
+          "name": "Walk_0",
+          "frame": 1,
+          "unity_rect": {
+            "x": 0,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_1",
+          "frame": 2,
+          "unity_rect": {
+            "x": 256,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_2",
+          "frame": 3,
+          "unity_rect": {
+            "x": 512,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_3",
+          "frame": 4,
+          "unity_rect": {
+            "x": 768,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_4",
+          "frame": 5,
+          "unity_rect": {
+            "x": 0,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_5",
+          "frame": 6,
+          "unity_rect": {
+            "x": 256,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_6",
+          "frame": 7,
+          "unity_rect": {
+            "x": 512,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_7",
+          "frame": 8,
+          "unity_rect": {
+            "x": 768,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_8",
+          "frame": 9,
+          "unity_rect": {
+            "x": 0,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_9",
+          "frame": 10,
+          "unity_rect": {
+            "x": 256,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_10",
+          "frame": 11,
+          "unity_rect": {
+            "x": 512,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_11",
+          "frame": 12,
+          "unity_rect": {
+            "x": 768,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_12",
+          "frame": 13,
+          "unity_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_13",
+          "frame": 14,
+          "unity_rect": {
+            "x": 256,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_14",
+          "frame": 15,
+          "unity_rect": {
+            "x": 512,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Walk_15",
+          "frame": 16,
+          "unity_rect": {
+            "x": 768,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        }
+      ],
+      "runtime_fps": 10
+    },
+    {
+      "key": "SteamJet",
+      "label": "蒸汽喷射姿势",
+      "loop": false,
+      "fps": 14,
+      "action": "Animation: one-shot STEAM JET CASTING POSTURE,16frames. F1 ready; F2-4 body leans BACK and curved spout rises to chest height pointing LEFT; F5-7 internal belly door flares orange-white and body jerks FORWARD; F8-12 HOLD the forward-leaning venting pose, little arms BRACED, lid rattling, open hollow spout remains empty; F13-16 straighten and lower spout back to ready. The spout/handle/lid stay intact and identical. DO NOT DRAW ANY STEAM, fog, smoke, plume, particles or projectile, only body pose and brighter INTERNAL glow.",
+      "file": "SteamJet.png",
+      "frame_count": 16,
+      "full_prompt_override": null,
+      "frames": [
+        {
+          "name": "SteamJet_0",
+          "frame": 1,
+          "unity_rect": {
+            "x": 0,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "SteamJet_1",
+          "frame": 2,
+          "unity_rect": {
+            "x": 256,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "SteamJet_2",
+          "frame": 3,
+          "unity_rect": {
+            "x": 512,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "SteamJet_3",
+          "frame": 4,
+          "unity_rect": {
+            "x": 768,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "SteamJet_4",
+          "frame": 5,
+          "unity_rect": {
+            "x": 0,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "SteamJet_5",
+          "frame": 6,
+          "unity_rect": {
+            "x": 256,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "SteamJet_6",
+          "frame": 7,
+          "unity_rect": {
+            "x": 512,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "SteamJet_7",
+          "frame": 8,
+          "unity_rect": {
+            "x": 768,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "SteamJet_8",
+          "frame": 9,
+          "unity_rect": {
+            "x": 0,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "SteamJet_9",
+          "frame": 10,
+          "unity_rect": {
+            "x": 256,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "SteamJet_10",
+          "frame": 11,
+          "unity_rect": {
+            "x": 512,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "SteamJet_11",
+          "frame": 12,
+          "unity_rect": {
+            "x": 768,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "SteamJet_12",
+          "frame": 13,
+          "unity_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "SteamJet_13",
+          "frame": 14,
+          "unity_rect": {
+            "x": 256,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "SteamJet_14",
+          "frame": 15,
+          "unity_rect": {
+            "x": 512,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "SteamJet_15",
+          "frame": 16,
+          "unity_rect": {
+            "x": 768,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        }
+      ],
+      "runtime_fps": 8
+    },
+    {
+      "key": "PressureBomb",
+      "label": "压力炸弹投掷姿势",
+      "loop": false,
+      "fps": 14,
+      "action": "Animation: one-shot PRESSURE BOMB THROW POSTURE,16frames. F1-4 crouch on short legs, hinged lid pops upward; F5-8 whole pear-kettle springs UP with BOTH FEET off baseline, lid swings fully OPEN on its BACK HINGE but remains attached, full open lid and loop handle visible; F9-12 perform a throwing gesture with the SCREEN-RIGHT mechanical arm as if launching something from the open lid, OPEN HAND EMPTY; F13-15 recoil, rock back, land and close lid toward ready; F16 settle exactly to ready. NO BOMB, thrown object, steam or fire drawn. Maintain small fixed drawing scale; full body and lid fit at jump apex.",
+      "file": "PressureBomb.png",
+      "frame_count": 16,
+      "full_prompt_override": "SPECIAL PRIORITY: every one of the 16 poses MUST show the ENTIRE CURVED TEAPOT SPOUT with its HOLLOW OPENING at SCREEN LEFT. The curved spout NEVER becomes an arm and NEVER disappears. There are THREE different appendages on the LEFT/RIGHT combined: one rigid curved teapot SPOUT plus two separate mechanical ARMS. The THROWING ARM is the arm on SCREEN RIGHT beside the BACK HANDLE; it raises up on the RIGHT side and gestures over that shoulder, never across or in front of the LEFT spout. The other small arm stays low. The back handle remains a separate large rigid loop.\nCreate EXACTLY16 chronological full-body poses of this reference kettle on a 4x4 transparent staging atlas, choose spacious 1536x1536 layout with clear gaps. One kettle only per pose, no extra items. Match the reference exactly, keep headless pear-shaped bronze body, orange eyes/vent, OCTAGONAL furnace door, short curved spout, back handle and hinged lid.\nThis is an EMPTY-HANDED THROW PREPARATION animation, not a punch or transformed spout. The lid and both hands are empty. NO bomb, projectile, steam, smoke, spark or external effect.\nTimeline: F1 ready. F2-4 crouch, lid starts opening. F5-8 spring upward with both small clawed feet off ground, lid fully OPEN ON HINGE, screen-right arm COCKED HIGH on the RIGHT beside handle, full spout at LEFT plainly visible with a dark oval hole. F9-12 extend the RIGHT-SIDE arm in a small throwing/releasing gesture ABOVE AND TO THE RIGHT of the belly, body still facing LEFT and spout at LEFT unchanged and unobscured. F13-15 recoil and lower RIGHT arm, close lid, land. F16 ready. Keep pose changes incremental. The movement can read as tossing over the right shoulder; preserve full spout identity over any dramatic cross-body throw. Camera does not rotate.\nUse case: identity-preserve. Asset: production 2D Unity CHARACTER-ONLY animation cutouts.\nREFERENCE: stand.png is the EXACT PressureKettle identity. Copy the same SMALL UPRIGHT living bronze tea/pressure KETTLE CONSTRUCT, a distinct pear-shaped teapot body, not a humanoid, goblin, dragon or monster face. NO HUMAN SKIN. Two SHORT clawed metal legs and two SMALL articulated mechanical arms. SAME proportions and detailed polished hand-painted cel shading with strong clean dark outlines.\nPRESERVE EXACT TOOLS/ANATOMY: ONE short CURVED TEAPOT SPOUT at chest level toward SCREEN LEFT, broad brass lip and clearly visible hollow opening, not a long gun, trunk or trumpet; ONE LARGE RIGID LOOP HANDLE on the BACK RIGHT; ONE small hinged dome LID with gold key-fret rim and knob, slightly raised over a thin ORANGE INTERNAL FURNACE GAP. TWO fierce orange glowing eyes sit ABOVE a small ribbed pressure vent, no human nose or mouth. The round pear belly has the same OCTAGONAL orange furnace door with gold bars, central round hub, hinges and trim. Aged dark bronze, jade-green VERDIGRIS patches, gold key-fret and cloud-scroll motifs, brass rims. Match all spout, handle, lid, hinges, furnace-bar arrangement and armor shapes exactly in every frame. Do not add a second spout, extra arms, a separate human head, new hat, armor costume or weapon.\nCamera stays THREE-QUARTER LEFT with no camera rotation. Same small DRAWING SCALE and mechanical body proportions across all16. Lid opens only as the specific action requires; attached by hinge except explicit death lid detachment. Handle remains attached, rigid except explicit death damage.\nLAYOUT: a roomy SQUARE 1536x1536 TRANSPARENT STAGING ATLAS, exactly FOUR columns x FOUR rows, 16 full-body poses in sixteen invisible 384x384 square regions, for deterministic final packing into a portrait 1024x1536 game sheet later. One complete kettle plus all parts in each region; read chronologically left-to-right top-to-bottom, smooth continuation across row breaks.\nThe COMPLETE kettle INCLUDING SPOUT, LOOP HANDLE, CLAWS and FULLY OPEN/DETACHED LID is SMALL inside the staging region, about 230px wide x230px tall at neutral. Absolute maximum270px width/height for any pose. Fixed small scale chosen fromF1 so open lid, springing poses and final sideways body all fit. At least50px transparent left/right margins and40px transparent top/bottom margins in EVERY region, including external canvas. Neutral soles share local baseline y=338. Consistent body center. Do not zoom, fill cells, crop parts, touch/overlap neighboring figures or touch outside edges. All parts fully visible every time.\nALPHA: real empty transparent pixels outside character. NO background color, gradient, scenery, floor, cast shadow or drawn checkerboard. No borders, grid, numbers, labels, text or watermark.\nBODY ONLY: NO steam, smoke, flames, fire outside furnace, bomb, projectile, sparks, motion lines, attack slash, shockwave, aura, impact, dust, enemy or extra object. Orange/white-hot glow must stay INSIDE eyes, belly door and lid aperture. The spout opening and throwing hand remain EMPTY. Physical poses and internal furnace brightness convey action. Spell effects will be separate assets, never baked into this atlas.\n",
+      "frames": [
+        {
+          "name": "PressureBomb_0",
+          "frame": 1,
+          "unity_rect": {
+            "x": 0,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "PressureBomb_1",
+          "frame": 2,
+          "unity_rect": {
+            "x": 256,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "PressureBomb_2",
+          "frame": 3,
+          "unity_rect": {
+            "x": 512,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "PressureBomb_3",
+          "frame": 4,
+          "unity_rect": {
+            "x": 768,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "PressureBomb_4",
+          "frame": 5,
+          "unity_rect": {
+            "x": 0,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "PressureBomb_5",
+          "frame": 6,
+          "unity_rect": {
+            "x": 256,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "PressureBomb_6",
+          "frame": 7,
+          "unity_rect": {
+            "x": 512,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "PressureBomb_7",
+          "frame": 8,
+          "unity_rect": {
+            "x": 768,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "PressureBomb_8",
+          "frame": 9,
+          "unity_rect": {
+            "x": 0,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "PressureBomb_9",
+          "frame": 10,
+          "unity_rect": {
+            "x": 256,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "PressureBomb_10",
+          "frame": 11,
+          "unity_rect": {
+            "x": 512,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "PressureBomb_11",
+          "frame": 12,
+          "unity_rect": {
+            "x": 768,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "PressureBomb_12",
+          "frame": 13,
+          "unity_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "PressureBomb_13",
+          "frame": 14,
+          "unity_rect": {
+            "x": 256,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "PressureBomb_14",
+          "frame": 15,
+          "unity_rect": {
+            "x": 512,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "PressureBomb_15",
+          "frame": 16,
+          "unity_rect": {
+            "x": 768,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        }
+      ],
+      "runtime_fps": 14
+    },
+    {
+      "key": "PressureRelease",
+      "label": "过压泄放姿势",
+      "loop": false,
+      "fps": 14,
+      "action": "Animation: one-shot PRESSURE RELEASE POSTURE,16frames. F1-4 upright pear body trembles, internal belly-door/lid aperture glow grows WHITE-HOT (inside apertures only); F5-7 hinged lid swings FULLY OPEN and small arms fling outward; F8-11 HOLD a burst pose, body arched BACK toward screenRIGHT, curved spout points UP, short feet still planted; F12-15 lid swings down and internal glow fades to normal orange; F16 return exactly to ready. No detached lid here. NO steam, smoke, flame, shockwave, spark, particle or external glow effect. Only physical body and internal light.",
+      "file": "PressureRelease.png",
+      "frame_count": 16,
+      "full_prompt_override": null,
+      "frames": [
+        {
+          "name": "PressureRelease_0",
+          "frame": 1,
+          "unity_rect": {
+            "x": 0,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "PressureRelease_1",
+          "frame": 2,
+          "unity_rect": {
+            "x": 256,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "PressureRelease_2",
+          "frame": 3,
+          "unity_rect": {
+            "x": 512,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "PressureRelease_3",
+          "frame": 4,
+          "unity_rect": {
+            "x": 768,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "PressureRelease_4",
+          "frame": 5,
+          "unity_rect": {
+            "x": 0,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "PressureRelease_5",
+          "frame": 6,
+          "unity_rect": {
+            "x": 256,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "PressureRelease_6",
+          "frame": 7,
+          "unity_rect": {
+            "x": 512,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "PressureRelease_7",
+          "frame": 8,
+          "unity_rect": {
+            "x": 768,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "PressureRelease_8",
+          "frame": 9,
+          "unity_rect": {
+            "x": 0,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "PressureRelease_9",
+          "frame": 10,
+          "unity_rect": {
+            "x": 256,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "PressureRelease_10",
+          "frame": 11,
+          "unity_rect": {
+            "x": 512,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "PressureRelease_11",
+          "frame": 12,
+          "unity_rect": {
+            "x": 768,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "PressureRelease_12",
+          "frame": 13,
+          "unity_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "PressureRelease_13",
+          "frame": 14,
+          "unity_rect": {
+            "x": 256,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "PressureRelease_14",
+          "frame": 15,
+          "unity_rect": {
+            "x": 512,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "PressureRelease_15",
+          "frame": 16,
+          "unity_rect": {
+            "x": 768,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        }
+      ],
+      "runtime_fps": 14
+    },
+    {
+      "key": "Hit",
+      "label": "受击摇晃",
+      "loop": false,
+      "fps": 16,
+      "action": "Animation: SINGLE HIT REACTION over16frames, NOT attacking. F1 ready; F2 lid bounces; F3-6 body rocks BACK toward SCREEN RIGHT from impact arriving LEFT, spout swings up a little and loop handle rattles; F7-9 wobble on short legs absorbing hit; F10-13 settle; F14-16 return EXACTLY to initial ready pose. Keep spout hollow/empty and lid/back handle attached. No jump attack, throwing or venting effect, no enemy, projectile, spark or motion line.",
+      "file": "Hit.png",
+      "frame_count": 16,
+      "full_prompt_override": null,
+      "frames": [
+        {
+          "name": "Hit_0",
+          "frame": 1,
+          "unity_rect": {
+            "x": 0,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_1",
+          "frame": 2,
+          "unity_rect": {
+            "x": 256,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_2",
+          "frame": 3,
+          "unity_rect": {
+            "x": 512,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_3",
+          "frame": 4,
+          "unity_rect": {
+            "x": 768,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_4",
+          "frame": 5,
+          "unity_rect": {
+            "x": 0,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_5",
+          "frame": 6,
+          "unity_rect": {
+            "x": 256,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_6",
+          "frame": 7,
+          "unity_rect": {
+            "x": 512,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_7",
+          "frame": 8,
+          "unity_rect": {
+            "x": 768,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_8",
+          "frame": 9,
+          "unity_rect": {
+            "x": 0,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_9",
+          "frame": 10,
+          "unity_rect": {
+            "x": 256,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_10",
+          "frame": 11,
+          "unity_rect": {
+            "x": 512,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_11",
+          "frame": 12,
+          "unity_rect": {
+            "x": 768,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_12",
+          "frame": 13,
+          "unity_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_13",
+          "frame": 14,
+          "unity_rect": {
+            "x": 256,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_14",
+          "frame": 15,
+          "unity_rect": {
+            "x": 512,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Hit_15",
+          "frame": 16,
+          "unity_rect": {
+            "x": 768,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        }
+      ],
+      "runtime_fps": 16
+    },
+    {
+      "key": "Death",
+      "label": "泄压熄火倒地",
+      "loop": false,
+      "fps": 12,
+      "action": "Animation: DEATH,16frames one-shot. F1-3 lid POPS OFF and body tips backward; retain ONE detached matching metal dome lid visibly above/beside the body inside its own cell, not disappearing or duplicating; F4-7 short legs buckle and octagonal furnace door/eyes visibly dim; F8-11 falls fully ONTO ITS SIDE toward LEFT, hollow curved spout clanging on implied ground; F12-15 attached back handle bends slightly from impact and last INTERNAL glow fades; F16 FINAL STILL SIDE-LYING INERT KETTLE with dark/cold furnace door and eyes, one detached lid lying beside it. Keep spout, all limbs, bent loop handle and detached lid fully visible and inside cell. No return to ready/kneeling in late frames. No blood, dismemberment, fire, smoke, debris or drawn impact effect.",
+      "file": "Death.png",
+      "frame_count": 16,
+      "full_prompt_override": null,
+      "frames": [
+        {
+          "name": "Death_0",
+          "frame": 1,
+          "unity_rect": {
+            "x": 0,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_1",
+          "frame": 2,
+          "unity_rect": {
+            "x": 256,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_2",
+          "frame": 3,
+          "unity_rect": {
+            "x": 512,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_3",
+          "frame": 4,
+          "unity_rect": {
+            "x": 768,
+            "y": 1152,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_4",
+          "frame": 5,
+          "unity_rect": {
+            "x": 0,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_5",
+          "frame": 6,
+          "unity_rect": {
+            "x": 256,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_6",
+          "frame": 7,
+          "unity_rect": {
+            "x": 512,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_7",
+          "frame": 8,
+          "unity_rect": {
+            "x": 768,
+            "y": 768,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_8",
+          "frame": 9,
+          "unity_rect": {
+            "x": 0,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_9",
+          "frame": 10,
+          "unity_rect": {
+            "x": 256,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_10",
+          "frame": 11,
+          "unity_rect": {
+            "x": 512,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_11",
+          "frame": 12,
+          "unity_rect": {
+            "x": 768,
+            "y": 384,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_12",
+          "frame": 13,
+          "unity_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_13",
+          "frame": 14,
+          "unity_rect": {
+            "x": 256,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_14",
+          "frame": 15,
+          "unity_rect": {
+            "x": 512,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        },
+        {
+          "name": "Death_15",
+          "frame": 16,
+          "unity_rect": {
+            "x": 768,
+            "y": 0,
+            "width": 256,
+            "height": 384
+          }
+        }
+      ],
+      "runtime_fps": 12
+    }
+  ]
+}

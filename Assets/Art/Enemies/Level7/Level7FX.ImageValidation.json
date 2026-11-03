@@ -1,0 +1,68 @@
+{
+  "status": "passed",
+  "effect_sheets": 5,
+  "frames": 80,
+  "prefab_bindings": 5,
+  "checks": [
+    {
+      "effect": "ClampGuardVentFlame",
+      "frames": 16,
+      "distinct_frames": 16,
+      "minimum_margin": 32,
+      "max_bbox": [
+        188,
+        143
+      ],
+      "last_frame_alpha_area_ratio": 0.00092,
+      "sha256": "9d2c29349f487ac5c2122b9bb8b83792fa9c094f28834a72f8c0de323d909f8a"
+    },
+    {
+      "effect": "RollingFurnaceImpact",
+      "frames": 16,
+      "distinct_frames": 16,
+      "minimum_margin": 34,
+      "max_bbox": [
+        187,
+        101
+      ],
+      "last_frame_alpha_area_ratio": 0.00141,
+      "sha256": "1daf41c509a1e72f1d1047f1d2300161996574f41a9ed633896e9da7c6e8f2b7"
+    },
+    {
+      "effect": "PressureKettleSteam",
+      "frames": 16,
+      "distinct_frames": 16,
+      "minimum_margin": 30,
+      "max_bbox": [
+        187,
+        147
+      ],
+      "last_frame_alpha_area_ratio": 0.00874,
+      "sha256": "e4cc2eb1899ac48f16f4d869d37847862daf762b477174e6aaf52c54e87d2305"
+    },
+    {
+      "effect": "PressureKettleBomb",
+      "frames": 16,
+      "distinct_frames": 16,
+      "minimum_margin": 29,
+      "max_bbox": [
+        134,
+        114
+      ],
+      "last_frame_alpha_area_ratio": 0.00526,
+      "sha256": "e5ef92a312378e212ff708e385ecaec48315d0c7b730868b6fbea71cf9b191a6"
+    },
+    {
+      "effect": "PressureKettleBurst",
+      "frames": 16,
+      "distinct_frames": 16,
+      "minimum_margin": 31,
+      "max_bbox": [
+        188,
+        183
+      ],
+      "last_frame_alpha_area_ratio": 0.00084,
+      "sha256": "8d50b47da0f6f53d481e465235ec8adf504e3f87414bb966f0ce302d658122f9"
+    }
+  ]
+}

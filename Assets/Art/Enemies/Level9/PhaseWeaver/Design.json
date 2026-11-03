@@ -1,0 +1,69 @@
+{
+  "name": "倒相织使",
+  "role": "高低空域交替 / 区域反相 / 队友易位",
+  "appearance": "修长悬浮身形，象牙白长袍与黑色内衬，半月眉冠、偏置残轮；左右分别托起黑梭与白梭，双梭明暗对应两种空间状态。",
+  "skills": [
+    {
+      "name": "阴阳分层",
+      "type": "可读的高低切换",
+      "action": "黑梭举起时只攻击预告区域的低层，白梭举起时只攻击其高层；每次施放交替，不发射普通飞弹。",
+      "telegraph": "对应梭与区域轮廓提前约 0.7 秒亮起；金色只预告，红色才是有效伤害。",
+      "counter": "低层用起跳越过，高层保持落地；区域在起手时锁定，随后不追踪。"
+    },
+    {
+      "name": "反相织域",
+      "type": "双拍区域节奏",
+      "action": "在同一小范围内先结算一次低层或高层，再于约 0.9 秒后反转为另一层；总计两拍，不无限维持。",
+      "telegraph": "梭的黑白次序和地面双段提示提前给出，不靠真假难辨的隐形判定。",
+      "counter": "离开区域、按顺序跳起/落地，或打断本体；不封死整张屏幕。"
+    },
+    {
+      "name": "易位敕令",
+      "type": "阵型重排",
+      "action": "与附近一名同阵营小怪连线蓄势约 1 秒，随后交换双方站位；只交换现有单位，不召出新怪，不回血或加攻。",
+      "telegraph": "两端位置和交换连线都可见，不能将单位换进玩家碰撞体内。",
+      "counter": "优先打断织使；交换后两者均有短恢复窗口。"
+    }
+  ],
+  "weakness": "低耐久，施法期间移动很慢；玩家可读双梭颜色与抬手方向。它制造行动节奏与站位变化，不承担插旗增益或落锤输出。",
+  "animations": [
+    "IdleHover",
+    "Glide",
+    "LowPhaseCast",
+    "HighPhaseCast",
+    "InvertField",
+    "AllyExchange",
+    "Hit",
+    "Death"
+  ],
+  "effects": [
+    "高低层区域预告",
+    "反相域",
+    "易位连线与落点提示"
+  ],
+  "key": "PhaseWeaver",
+  "file": "PhaseWeaver/Stand.png",
+  "bbox": [
+    97,
+    179,
+    927,
+    1447
+  ],
+  "transparent_margins_LRTB": [
+    97,
+    97,
+    179,
+    89
+  ],
+  "source_bbox": [
+    51,
+    33,
+    1012,
+    1499
+  ],
+  "uniform_resize_scale": 0.8657648283038502,
+  "guid": "76641949f8764a59bc7678ff39e13fdf",
+  "sha256": "830136ed05568d60791ee71b4b583367e8b5eecb0eec6192177ea9f3a0d7bbc1",
+  "generation_common_prompt": "Use case: stylized-concept.\nAsset type: ONE full-body 2D Chinese fantasy action-game enemy identity reference, isolated transparent PNG. Exactly ONE character in ONE ready/idle pose; no animation sheet, grid, multiple frames, duplicates, turnaround or design-board.\nINPUT IMAGE ROLE: level9.png is the FACTION AND ART-STYLE reference, depicting the final boss Wuxiang Dijun (Formless Emperor). Design a NEW lesser enemy serving this boss, not a recolor, miniature copy or the emperor himself.\nFACTION LORE: the final stage is Wuxiang Tianque, the Formless Heavenly Palace. Ivory faceless masks with thin red fissures/eye slits, charcoal-black and ivory garments/armor with antique-gold trim and stylized cloud ornament, subtle dark-crimson seam cracks, broken-eclipse/fragmented sun motifs, oppressive imperial ritual geometry, space folds and boundary seals. Infer this theme from reference. Do not borrow furnace/fire or phoenix/blue-star themes from other stages.\nMATCH ART: same strong clean dark line weight, polished detailed cel shading, crisp shapes and hand-painted Chinese mythological 2D game illustration as reference. No photorealism, 3D rendering, watercolor haze, chibi or pixel art. Less regal ornament than the boss; clear readable enemy silhouette for later sprite animation.\nCOMPOSITION: portrait 1024x1536 RGBA PNG with REAL TRANSPARENT ALPHA. Three-quarter LEFT-facing, complete body centered, readable ready stance, consistent perspective. Head, mask, complete feet/shoes or robe tip, all weapons/props, trailing cloth and physical hovering ornaments visible. At least 8-10% completely empty transparent margin on all four sides. Do not crop, fill canvas edges or enlarge until equipment is cut. Leave roomy padding.\nOnly the enemy and its permanent physical costume/props. No spell effects, portals, attack arcs, floating UI, aura, dust, smoke, cast shadows, floor, scenery, background color/gradient/texture, drawn checkerboard, labels, lettering, readable text, watermark or border. The final background must be fully transparent, including between limbs and props. Fine ornamental abstract geometry is allowed, legible writing is not.\n",
+  "generation_character_prompt": "NEW CHARACTER: PHASEWEAVER, the Inverse-Phase Weaver. A TALL, slender, slightly hovering ritual space-weaver, clearly a lesser enemy, with an elongated spindle/hourglass silhouette. Upright calm posture, shoulders narrow, long fitted sleeves, layered ivory robe panels over a charcoal inner garment, thin antique-gold cloud-scroll edging. EXACTLY TWO broad black-and-ivory sash tails drift gently sideways, not many tangled ribbons. Robe hem ends above two small downward-pointed ornate black shoes so the full lower body remains readable.\nHEAD: elongated smooth ivory faceless mask with a narrow VERTICAL dark-crimson seam and subtle red eye slits, black close-fitting hood/collar and a small asymmetric crescent-shaped gold brow clasp. No full imperial crown or long hanging pearl strings.\nSIGNATURE PHYSICAL PROPS: TWO contrasting small ceremonial SPACE-WEAVING SHUTTLES, one black with gold edge and one ivory with gold edge. They are solid elongated diamond/rhombus spindle-shaped ritual tools, one suspended just above each open hand, clearly separated and fully visible. Short physical fine silk cords attach each shuttle to the wrist cuffs; no laser threads, magic trails, needles, launched projectiles or floating book. Two or three black/gold broken eclipse fragments form a SMALL OFFSET INCOMPLETE crescent framework behind one shoulder, NOT a large round boss halo.\nThe design visually communicates alternating black/white spatial states and swapping ally positions, with refined asymmetric sleeve/prop contrast. No staff, banner pole, umbrella, bow, lantern, hammer, feather wings, battlefield portals, dome or spell effects. Keep the art style exactly matching the reference's crisp cel-shaded Chinese fantasy, not a modern tech robot or western sorceress."
+}

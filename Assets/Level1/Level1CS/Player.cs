@@ -1,10 +1,7 @@
-using System.Security.Cryptography;
-using TMPro;
-using Unity.VisualScripting;
+using zmxy.Legacy;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 public class Player : MonoBehaviour
 {

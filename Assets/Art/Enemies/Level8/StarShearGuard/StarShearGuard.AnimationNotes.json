@@ -1,0 +1,5336 @@
+{
+  "date": "2026-11-02",
+  "generator": "built-in image_gen",
+  "character": "StarShearGuard",
+  "reference": "Stand.png",
+  "reference_sha256": "df34bb9a38d81241d64b022a044c451d4456f6cc03fea80f9e95cb143cf08337",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "grid": [
+    4,
+    4
+  ],
+  "cell": [
+    256,
+    384
+  ],
+  "baseline_from_top": 328,
+  "pivot": [
+    0.5,
+    0.14583333333333334
+  ],
+  "ppu": 100,
+  "no_baked_attack_effects": true,
+  "common_prompt": "Use case: stylized-concept. Asset: production 2D Unity character animation sprite sheet.\nREFERENCE ROLE: attached Stand.png is the exact identity, silhouette, materials, anatomy, palette and ink/cel-shading reference for StarShearGuard. Animate this SAME bird warrior. The image takes precedence over generic descriptors: preserve the reference's swept ivory/silver-and-indigo feather crest, hooked black beak, fierce red eye(s), white layered feather collar, angular dark-indigo silver armor, cyan four-point sternum star, navy/silver feather waist armor and the two huge silver/navy/cyan FOREARM SHEARING BLADES with circular cyan-star pivots. EXACTLY TWO ARMS and TWO LEGS, three silver claws on each bird foot. No human skin or human face. No real wings, extra arms, long animal tail, shield, separate sword, helmet or additional weapon.\nBOTH BLADES ARE IDENTITY-CRITICAL: one fully attached to each forearm (except the final death detachment explicitly described); same curved silver feather-shear silhouette, navy bevels and cyan inlays as reference, same length and same cyan pivot placement. Keep EACH COMPLETE blade tip, handle/forearm joint and claw visible. Separate the two blade silhouettes slightly in depth/height even during closed scissor poses, so each can be counted and read; do not fuse them into one sword or grow more blades. Do not let a blade disappear behind the body.\nMANDATORY COMPOSITION: EXACTLY SIXTEEN full-body figures, regular FOUR COLUMN by FOUR ROW grid. PORTRAIT 1024x1536 RGBA PNG; sixteen invisible equal 256x384 logical cells. Read left-to-right, then next row; CONTINUOUS time through F4->5, F8->9 and F12->13. One complete warrior per cell, no extras or missing poses.\nMake each figure SMALL in its rectangle: ENTIRE body plus BOTH FULL blades, all toes and crest tips occupy no more than178px width (70%) and288px height (75%). Prefer kit width166px and height240px. At least32px EMPTY transparent left/right margins and40px EMPTY transparent top/bottom margins INSIDE EVERY cell including outside canvas edges. Entire anatomy and equipment must fit; never crop, overlap, touch a neighbor or enlarge characters to fill sheet. No visible grid, border, frame labels, numbering, watermark or text.\nONE FIXED DRAWING SCALE, fixed camera and three-quarter SCREEN-LEFT facing orientation throughout. The reference's beak and attacking direction point LEFT. Body anchor/pelvis center remains consistent. Ground baseline is cell-local y328; planted toes land there in every grounded pose. For the specified backstep hop ONLY, toes lift above that same ground line without changing drawing scale. No camera spin or mirroring to face right. Death may fall but stays within full cell.\nClean bold black outlines, crisp cel shading and painted silver feather facets, high contrast indigo and icy cyan accents EXACTLY matching reference. Real transparent ALPHA around and between all parts. NO colored background, scenery, floor, ground texture, cast shadow, checkerboard printed into art, dust, slash/spark effect, energy trails, motion lines, enemies or other characters. This is CHARACTER BODY animation only; tiny cyan stars are embedded armor ornaments, not external effects.\n",
+  "animations": [
+    {
+      "key": "Idle",
+      "label": "戒备待机",
+      "fps": 12,
+      "loop": true,
+      "action": "Animation: IDLE guarded breathing LOOP, 16 frames. F1 neutral, both forearm blades half-open at waist height, full blades visible. F2-5 chest rises gradually, feather collar ruffles, blades open slightly wider. F6-9 weight subtly shifts to one planted leg, crest sways. F10-13 two blades twitch by a small angle, red eyes narrow. F14-16 ease back exactly to F1. Both feet remain planted, no stepping, no sudden jumps between rows. F16 is an exact return to F1, not a new pose.",
+      "file": "Idle.png",
+      "frame_count": 16,
+      "scale": 0.461850994472528,
+      "final_prompt_override": null,
+      "sha256": "974b90f88f491b73df82b5e0f8c6f9fd0bdf81b80035765bd8fbe3ea63e15760",
+      "guid": "e51299a8ac7e4bfd838cbb811cc8c699",
+      "sprite_ids": [
+        94392591156398091,
+        353485244286731770,
+        211892081029398000,
+        801757664954511120,
+        506067462339940472,
+        771644359061348065,
+        361998041753224814,
+        184366995110319121,
+        986910407645336010,
+        287213535088948572,
+        352905357882514697,
+        342184591949783624,
+        839182951958214513,
+        1128750155886682193,
+        428565755985167081,
+        921641807647684931
+      ],
+      "frames": [
+        {
+          "frame": 1,
+          "bbox": [
+            73,
+            177,
+            190,
+            328
+          ],
+          "margins_LRTB": [
+            73,
+            66,
+            177,
+            56
+          ]
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            77,
+            174,
+            190,
+            328
+          ],
+          "margins_LRTB": [
+            77,
+            66,
+            174,
+            56
+          ]
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            76,
+            173,
+            190,
+            328
+          ],
+          "margins_LRTB": [
+            76,
+            66,
+            173,
+            56
+          ]
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            78,
+            172,
+            189,
+            328
+          ],
+          "margins_LRTB": [
+            78,
+            67,
+            172,
+            56
+          ]
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            76,
+            173,
+            193,
+            328
+          ],
+          "margins_LRTB": [
+            76,
+            63,
+            173,
+            56
+          ]
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            76,
+            174,
+            195,
+            328
+          ],
+          "margins_LRTB": [
+            76,
+            61,
+            174,
+            56
+          ]
+        },
+        {
+          "frame": 7,
+          "bbox": [
+            78,
+            174,
+            192,
+            328
+          ],
+          "margins_LRTB": [
+            78,
+            64,
+            174,
+            56
+          ]
+        },
+        {
+          "frame": 8,
+          "bbox": [
+            80,
+            172,
+            191,
+            328
+          ],
+          "margins_LRTB": [
+            80,
+            65,
+            172,
+            56
+          ]
+        },
+        {
+          "frame": 9,
+          "bbox": [
+            73,
+            177,
+            194,
+            328
+          ],
+          "margins_LRTB": [
+            73,
+            62,
+            177,
+            56
+          ]
+        },
+        {
+          "frame": 10,
+          "bbox": [
+            74,
+            180,
+            191,
+            328
+          ],
+          "margins_LRTB": [
+            74,
+            65,
+            180,
+            56
+          ]
+        },
+        {
+          "frame": 11,
+          "bbox": [
+            82,
+            180,
+            198,
+            328
+          ],
+          "margins_LRTB": [
+            82,
+            58,
+            180,
+            56
+          ]
+        },
+        {
+          "frame": 12,
+          "bbox": [
+            87,
+            180,
+            191,
+            328
+          ],
+          "margins_LRTB": [
+            87,
+            65,
+            180,
+            56
+          ]
+        },
+        {
+          "frame": 13,
+          "bbox": [
+            74,
+            175,
+            192,
+            328
+          ],
+          "margins_LRTB": [
+            74,
+            64,
+            175,
+            56
+          ]
+        },
+        {
+          "frame": 14,
+          "bbox": [
+            77,
+            176,
+            193,
+            328
+          ],
+          "margins_LRTB": [
+            77,
+            63,
+            176,
+            56
+          ]
+        },
+        {
+          "frame": 15,
+          "bbox": [
+            85,
+            172,
+            193,
+            328
+          ],
+          "margins_LRTB": [
+            85,
+            63,
+            172,
+            56
+          ]
+        },
+        {
+          "frame": 16,
+          "bbox": [
+            73,
+            177,
+            190,
+            328
+          ],
+          "margins_LRTB": [
+            73,
+            66,
+            177,
+            56
+          ]
+        }
+      ],
+      "placement": [
+        {
+          "frame": 1,
+          "x": 73,
+          "top": 177,
+          "draw_scale": 0.461850994472528,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            25,
+            56,
+            278,
+            382
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 2,
+          "x": 77,
+          "top": 174,
+          "draw_scale": 0.461850994472528,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            278,
+            49,
+            523,
+            383
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 3,
+          "x": 75,
+          "top": 173,
+          "draw_scale": 0.461850994472528,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            520,
+            48,
+            768,
+            383
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 4,
+          "x": 78,
+          "top": 172,
+          "draw_scale": 0.461850994472528,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            770,
+            46,
+            1011,
+            383
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 5,
+          "x": 76,
+          "top": 173,
+          "draw_scale": 0.461850994472528,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            21,
+            428,
+            275,
+            763
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 6,
+          "x": 76,
+          "top": 174,
+          "draw_scale": 0.461850994472528,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            276,
+            430,
+            533,
+            764
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 7,
+          "x": 78,
+          "top": 174,
+          "draw_scale": 0.461850994472528,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            525,
+            430,
+            772,
+            764
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 8,
+          "x": 79,
+          "top": 172,
+          "draw_scale": 0.461850994472528,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            771,
+            427,
+            1013,
+            764
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 9,
+          "x": 73,
+          "top": 177,
+          "draw_scale": 0.461850994472528,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            18,
+            810,
+            280,
+            1138
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 10,
+          "x": 74,
+          "top": 180,
+          "draw_scale": 0.461850994472528,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            272,
+            818,
+            525,
+            1139
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 11,
+          "x": 82,
+          "top": 180,
+          "draw_scale": 0.461850994472528,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            534,
+            818,
+            785,
+            1139
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 12,
+          "x": 87,
+          "top": 180,
+          "draw_scale": 0.461850994472528,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            787,
+            819,
+            1012,
+            1139
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 13,
+          "x": 74,
+          "top": 175,
+          "draw_scale": 0.461850994472528,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            26,
+            1176,
+            281,
+            1508
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 14,
+          "x": 76,
+          "top": 176,
+          "draw_scale": 0.461850994472528,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            281,
+            1180,
+            535,
+            1509
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 15,
+          "x": 85,
+          "top": 172,
+          "draw_scale": 0.461850994472528,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            543,
+            1171,
+            777,
+            1509
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 16,
+          "x": 81,
+          "top": 178,
+          "draw_scale": 0.461850994472528,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            779,
+            1185,
+            1018,
+            1509
+          ],
+          "source_parts": 1
+        }
+      ]
+    },
+    {
+      "key": "Walk",
+      "label": "轻捷鸟步",
+      "fps": 16,
+      "loop": true,
+      "action": "Animation: WALK IN PLACE LOOP, one complete smooth 16-frame quick bird-like walking stride, not running/flying. F1 LEFT foot forward heel/claw contact and right leg behind. F2-4 weight drops onto left leg with a small body bob; BOTH blades held steady ready. F5-8 right leg passes quickly under body and swings to front. F9 RIGHT foot lands in front with left leg behind. F10-12 weight settles onto right leg, crest bounces. F13-16 left leg passes under body and swings to close seamlessly to F1. Visible alternating leg articulation, torso upright, no traveling off center, no camera rotation. Full silver claws visible; two fixed-length blades remain separate.",
+      "file": "Walk.png",
+      "frame_count": 16,
+      "scale": 0.563458213256484,
+      "final_prompt_override": "Use case: stylized-concept. Asset: production 2D Unity character animation sprite sheet.\nREFERENCE ROLE: attached Stand.png is the exact identity, silhouette, materials, anatomy, palette and ink/cel-shading reference for StarShearGuard. Animate this SAME bird warrior. The image takes precedence over generic descriptors: preserve the reference's swept ivory/silver-and-indigo feather crest, hooked black beak, fierce red eye(s), white layered feather collar, angular dark-indigo silver armor, cyan four-point sternum star, navy/silver feather waist armor and the two huge silver/navy/cyan FOREARM SHEARING BLADES with circular cyan-star pivots. EXACTLY TWO ARMS and TWO LEGS, three silver claws on each bird foot. No human skin or human face. No real wings, extra arms, long animal tail, shield, separate sword, helmet or additional weapon.\nBOTH BLADES ARE IDENTITY-CRITICAL: one fully attached to each forearm (except the final death detachment explicitly described); same curved silver feather-shear silhouette, navy bevels and cyan inlays as reference, same length and same cyan pivot placement. Keep EACH COMPLETE blade tip, handle/forearm joint and claw visible. Separate the two blade silhouettes slightly in depth/height even during closed scissor poses, so each can be counted and read; do not fuse them into one sword or grow more blades. Do not let a blade disappear behind the body.\nMANDATORY COMPOSITION: EXACTLY SIXTEEN full-body figures, regular FOUR COLUMN by FOUR ROW grid. PORTRAIT 1024x1536 RGBA PNG; sixteen invisible equal 256x384 logical cells. Read left-to-right, then next row; CONTINUOUS time through F4->5, F8->9 and F12->13. One complete warrior per cell, no extras or missing poses.\nMake each figure SMALL in its rectangle: ENTIRE body plus BOTH FULL blades, all toes and crest tips occupy no more than178px width (70%) and288px height (75%). Prefer kit width166px and height240px. At least32px EMPTY transparent left/right margins and40px EMPTY transparent top/bottom margins INSIDE EVERY cell including outside canvas edges. Entire anatomy and equipment must fit; never crop, overlap, touch a neighbor or enlarge characters to fill sheet. No visible grid, border, frame labels, numbering, watermark or text.\nONE FIXED DRAWING SCALE, fixed camera and three-quarter SCREEN-LEFT facing orientation throughout. The reference's beak and attacking direction point LEFT. Body anchor/pelvis center remains consistent. Ground baseline is cell-local y328; planted toes land there in every grounded pose. For the specified backstep hop ONLY, toes lift above that same ground line without changing drawing scale. No camera spin or mirroring to face right. Death may fall but stays within full cell.\nClean bold black outlines, crisp cel shading and painted silver feather facets, high contrast indigo and icy cyan accents EXACTLY matching reference. Real transparent ALPHA around and between all parts. NO colored background, scenery, floor, ground texture, cast shadow, checkerboard printed into art, dust, slash/spark effect, energy trails, motion lines, enemies or other characters. This is CHARACTER BODY animation only; tiny cyan stars are embedded armor ornaments, not external effects.\n\nCRITICAL CORRECTION TO COMPOSITION: The warrior must be TINY, thumbnail sized in every logical cell, NOT fill the rectangle. Draw each WHOLE warrior including both very long blades around only120px wide x170px high in a256x384cell. At least60px transparent empty gutter at BOTH sides and80px above/below. The canvas should be MOSTLY EMPTY (over75% empty transparent). The weapons have to fit within that TINY120pxwide silhouette by making the WHOLE drawing smaller, not shortening/detaching blades. Exactly4 rows each containing4 little warriors (16 total). Fourth row MUST contain4 full poses. NO figure or blade may touch a gutter or outside border. Prefer larger EMPTY transparent space. No gray haze; real alpha0 background.\nAnimation: WALK IN PLACE LOOP, one complete smooth 16-frame quick bird-like walking stride, not running/flying. F1 LEFT foot forward heel/claw contact and right leg behind. F2-4 weight drops onto left leg with a small body bob; BOTH blades held steady ready. F5-8 right leg passes quickly under body and swings to front. F9 RIGHT foot lands in front with left leg behind. F10-12 weight settles onto right leg, crest bounces. F13-16 left leg passes under body and swings to close seamlessly to F1. Visible alternating leg articulation, torso upright, no traveling off center, no camera rotation. Full silver claws visible; two fixed-length blades remain separate.",
+      "sha256": "1b8d3b7f28934d6b7792e0a89493b46efdbae9c02143855714096409d95da6e6",
+      "guid": "eb9e5809978d42479c3b949031fda2cf",
+      "sprite_ids": [
+        534881306703328347,
+        795416358011044616,
+        1006776328495114808,
+        596740926025632312,
+        129171840352554778,
+        976609976643210868,
+        922194965507846633,
+        171367524042119200,
+        663099411272427063,
+        323097201121346432,
+        461302416095236485,
+        1097123193402680900,
+        750183926090403516,
+        891214930460763835,
+        44929789446471201,
+        869395529206300999
+      ],
+      "frames": [
+        {
+          "frame": 1,
+          "bbox": [
+            69,
+            176,
+            195,
+            328
+          ],
+          "margins_LRTB": [
+            69,
+            61,
+            176,
+            56
+          ]
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            74,
+            184,
+            196,
+            328
+          ],
+          "margins_LRTB": [
+            74,
+            60,
+            184,
+            56
+          ]
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            65,
+            189,
+            191,
+            328
+          ],
+          "margins_LRTB": [
+            65,
+            65,
+            189,
+            56
+          ]
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            70,
+            178,
+            187,
+            328
+          ],
+          "margins_LRTB": [
+            70,
+            69,
+            178,
+            56
+          ]
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            67,
+            175,
+            195,
+            328
+          ],
+          "margins_LRTB": [
+            67,
+            61,
+            175,
+            56
+          ]
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            75,
+            176,
+            202,
+            328
+          ],
+          "margins_LRTB": [
+            75,
+            54,
+            176,
+            56
+          ]
+        },
+        {
+          "frame": 7,
+          "bbox": [
+            75,
+            176,
+            200,
+            328
+          ],
+          "margins_LRTB": [
+            75,
+            56,
+            176,
+            56
+          ]
+        },
+        {
+          "frame": 8,
+          "bbox": [
+            71,
+            181,
+            196,
+            328
+          ],
+          "margins_LRTB": [
+            71,
+            60,
+            181,
+            56
+          ]
+        },
+        {
+          "frame": 9,
+          "bbox": [
+            72,
+            178,
+            198,
+            328
+          ],
+          "margins_LRTB": [
+            72,
+            58,
+            178,
+            56
+          ]
+        },
+        {
+          "frame": 10,
+          "bbox": [
+            72,
+            179,
+            202,
+            328
+          ],
+          "margins_LRTB": [
+            72,
+            54,
+            179,
+            56
+          ]
+        },
+        {
+          "frame": 11,
+          "bbox": [
+            67,
+            182,
+            198,
+            328
+          ],
+          "margins_LRTB": [
+            67,
+            58,
+            182,
+            56
+          ]
+        },
+        {
+          "frame": 12,
+          "bbox": [
+            65,
+            180,
+            188,
+            328
+          ],
+          "margins_LRTB": [
+            65,
+            68,
+            180,
+            56
+          ]
+        },
+        {
+          "frame": 13,
+          "bbox": [
+            72,
+            179,
+            198,
+            328
+          ],
+          "margins_LRTB": [
+            72,
+            58,
+            179,
+            56
+          ]
+        },
+        {
+          "frame": 14,
+          "bbox": [
+            74,
+            178,
+            192,
+            328
+          ],
+          "margins_LRTB": [
+            74,
+            64,
+            178,
+            56
+          ]
+        },
+        {
+          "frame": 15,
+          "bbox": [
+            72,
+            185,
+            194,
+            328
+          ],
+          "margins_LRTB": [
+            72,
+            62,
+            185,
+            56
+          ]
+        },
+        {
+          "frame": 16,
+          "bbox": [
+            69,
+            176,
+            195,
+            328
+          ],
+          "margins_LRTB": [
+            69,
+            61,
+            176,
+            56
+          ]
+        }
+      ],
+      "placement": [
+        {
+          "frame": 1,
+          "x": 68,
+          "top": 176,
+          "draw_scale": 0.563458213256484,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            18,
+            143,
+            244,
+            413
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 2,
+          "x": 74,
+          "top": 184,
+          "draw_scale": 0.563458213256484,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            288,
+            157,
+            504,
+            412
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 3,
+          "x": 65,
+          "top": 189,
+          "draw_scale": 0.563458213256484,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            530,
+            166,
+            753,
+            412
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 4,
+          "x": 70,
+          "top": 178,
+          "draw_scale": 0.563458213256484,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            785,
+            143,
+            993,
+            410
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 5,
+          "x": 67,
+          "top": 175,
+          "draw_scale": 0.563458213256484,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            17,
+            529,
+            244,
+            800
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 6,
+          "x": 75,
+          "top": 176,
+          "draw_scale": 0.563458213256484,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            275,
+            532,
+            500,
+            801
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 7,
+          "x": 75,
+          "top": 176,
+          "draw_scale": 0.563458213256484,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            529,
+            532,
+            750,
+            801
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 8,
+          "x": 71,
+          "top": 181,
+          "draw_scale": 0.563458213256484,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            777,
+            534,
+            999,
+            795
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 9,
+          "x": 71,
+          "top": 178,
+          "draw_scale": 0.563458213256484,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            22,
+            894,
+            250,
+            1160
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 10,
+          "x": 72,
+          "top": 179,
+          "draw_scale": 0.563458213256484,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            281,
+            898,
+            512,
+            1162
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 11,
+          "x": 66,
+          "top": 182,
+          "draw_scale": 0.563458213256484,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            534,
+            902,
+            768,
+            1161
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 12,
+          "x": 65,
+          "top": 180,
+          "draw_scale": 0.563458213256484,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            789,
+            898,
+            1007,
+            1160
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 13,
+          "x": 71,
+          "top": 179,
+          "draw_scale": 0.563458213256484,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            21,
+            1232,
+            247,
+            1497
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 14,
+          "x": 73,
+          "top": 178,
+          "draw_scale": 0.563458213256484,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            278,
+            1233,
+            490,
+            1499
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 15,
+          "x": 72,
+          "top": 185,
+          "draw_scale": 0.563458213256484,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            528,
+            1243,
+            745,
+            1496
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 16,
+          "x": 72,
+          "top": 179,
+          "draw_scale": 0.563458213256484,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            785,
+            1235,
+            997,
+            1500
+          ],
+          "source_parts": 1
+        }
+      ]
+    },
+    {
+      "key": "OffbeatScissor",
+      "label": "错拍双剪",
+      "fps": 12,
+      "loop": false,
+      "action": "Animation: one-shot OFFBEAT SCISSOR, 16 frames. TWO DISTINCT SNAPS separated by a readable HOLD, not a repeated same attack every cell. F1 ready. F2-4 open both blades gradually into a wide V in FRONT of chest, tips pointing upper LEFT and lower LEFT. F5-7 HOLD this visibly open V as clear telegraph. F8-9 the two forearm blades SNAP SHUT at CHEST height in front toward LEFT. F10-11 HOLD the closed chest-height pose; two complete parallel/near-crossing blade edges remain distinguishable. F12 open blades AGAIN lower at WAIST height, F13 second SNAP shut LOW at waist. F14-16 recover to the original ready stance. The upper and lower cuts are visibly different heights; tiny depth offset keeps both full blades countable. Feet grounded. No slash effect, blur or motion lines.",
+      "file": "OffbeatScissor.png",
+      "frame_count": 16,
+      "scale": 0.5099169350737413,
+      "final_prompt_override": null,
+      "sha256": "98aec3dbd3efb929204fe8657077844b26e76b8ff63475f5e732d1779304b941",
+      "guid": "f91b79c7cca7466c864ee6457316fb35",
+      "sprite_ids": [
+        978639988017367736,
+        498664270119840122,
+        1129239119529974976,
+        4293692037795755,
+        422587363724039740,
+        763568495911404143,
+        752776023867560720,
+        727540443610354346,
+        106162319135956112,
+        682454797903831738,
+        609078457039163371,
+        130125156259316573,
+        19890248171038583,
+        901092608398768563,
+        580459354839300995,
+        462777941279404536
+      ],
+      "frames": [
+        {
+          "frame": 1,
+          "bbox": [
+            73,
+            177,
+            190,
+            328
+          ],
+          "margins_LRTB": [
+            73,
+            66,
+            177,
+            56
+          ]
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            72,
+            172,
+            194,
+            328
+          ],
+          "margins_LRTB": [
+            72,
+            62,
+            172,
+            56
+          ]
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            66,
+            169,
+            195,
+            328
+          ],
+          "margins_LRTB": [
+            66,
+            61,
+            169,
+            56
+          ]
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            69,
+            153,
+            193,
+            328
+          ],
+          "margins_LRTB": [
+            69,
+            63,
+            153,
+            56
+          ]
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            71,
+            155,
+            197,
+            328
+          ],
+          "margins_LRTB": [
+            71,
+            59,
+            155,
+            56
+          ]
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            71,
+            164,
+            199,
+            328
+          ],
+          "margins_LRTB": [
+            71,
+            57,
+            164,
+            56
+          ]
+        },
+        {
+          "frame": 7,
+          "bbox": [
+            72,
+            166,
+            197,
+            328
+          ],
+          "margins_LRTB": [
+            72,
+            59,
+            166,
+            56
+          ]
+        },
+        {
+          "frame": 8,
+          "bbox": [
+            82,
+            168,
+            194,
+            328
+          ],
+          "margins_LRTB": [
+            82,
+            62,
+            168,
+            56
+          ]
+        },
+        {
+          "frame": 9,
+          "bbox": [
+            80,
+            177,
+            198,
+            328
+          ],
+          "margins_LRTB": [
+            80,
+            58,
+            177,
+            56
+          ]
+        },
+        {
+          "frame": 10,
+          "bbox": [
+            78,
+            175,
+            196,
+            328
+          ],
+          "margins_LRTB": [
+            78,
+            60,
+            175,
+            56
+          ]
+        },
+        {
+          "frame": 11,
+          "bbox": [
+            80,
+            177,
+            198,
+            328
+          ],
+          "margins_LRTB": [
+            80,
+            58,
+            177,
+            56
+          ]
+        },
+        {
+          "frame": 12,
+          "bbox": [
+            73,
+            179,
+            199,
+            328
+          ],
+          "margins_LRTB": [
+            73,
+            57,
+            179,
+            56
+          ]
+        },
+        {
+          "frame": 13,
+          "bbox": [
+            72,
+            180,
+            198,
+            328
+          ],
+          "margins_LRTB": [
+            72,
+            58,
+            180,
+            56
+          ]
+        },
+        {
+          "frame": 14,
+          "bbox": [
+            72,
+            173,
+            194,
+            328
+          ],
+          "margins_LRTB": [
+            72,
+            62,
+            173,
+            56
+          ]
+        },
+        {
+          "frame": 15,
+          "bbox": [
+            75,
+            175,
+            197,
+            328
+          ],
+          "margins_LRTB": [
+            75,
+            59,
+            175,
+            56
+          ]
+        },
+        {
+          "frame": 16,
+          "bbox": [
+            73,
+            177,
+            190,
+            328
+          ],
+          "margins_LRTB": [
+            73,
+            66,
+            177,
+            56
+          ]
+        }
+      ],
+      "placement": [
+        {
+          "frame": 1,
+          "x": 85,
+          "top": 173,
+          "draw_scale": 0.5099169350737413,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            20,
+            82,
+            254,
+            385
+          ],
+          "source_parts": 1,
+          "shared_ready": "Idle_0"
+        },
+        {
+          "frame": 2,
+          "x": 72,
+          "top": 172,
+          "draw_scale": 0.5099169350737413,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            269,
+            80,
+            509,
+            386
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 3,
+          "x": 66,
+          "top": 169,
+          "draw_scale": 0.5099169350737413,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            512,
+            74,
+            765,
+            386
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 4,
+          "x": 69,
+          "top": 153,
+          "draw_scale": 0.5099169350737413,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            764,
+            44,
+            1008,
+            387
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 5,
+          "x": 71,
+          "top": 155,
+          "draw_scale": 0.5099169350737413,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            16,
+            424,
+            263,
+            764
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 6,
+          "x": 71,
+          "top": 164,
+          "draw_scale": 0.5099169350737413,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            274,
+            443,
+            526,
+            764
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 7,
+          "x": 72,
+          "top": 166,
+          "draw_scale": 0.5099169350737413,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            537,
+            447,
+            783,
+            764
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 8,
+          "x": 82,
+          "top": 168,
+          "draw_scale": 0.5099169350737413,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            790,
+            450,
+            1010,
+            764
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 9,
+          "x": 80,
+          "top": 177,
+          "draw_scale": 0.5099169350737413,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            30,
+            827,
+            262,
+            1124
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 10,
+          "x": 77,
+          "top": 175,
+          "draw_scale": 0.5099169350737413,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            276,
+            823,
+            510,
+            1123
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 11,
+          "x": 80,
+          "top": 177,
+          "draw_scale": 0.5099169350737413,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            524,
+            828,
+            755,
+            1124
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 12,
+          "x": 73,
+          "top": 179,
+          "draw_scale": 0.5099169350737413,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            763,
+            831,
+            1010,
+            1124
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 13,
+          "x": 72,
+          "top": 180,
+          "draw_scale": 0.5099169350737413,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            21,
+            1202,
+            269,
+            1492
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 14,
+          "x": 72,
+          "top": 173,
+          "draw_scale": 0.5099169350737413,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            271,
+            1190,
+            511,
+            1494
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 15,
+          "x": 75,
+          "top": 175,
+          "draw_scale": 0.5099169350737413,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            526,
+            1193,
+            765,
+            1493
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 16,
+          "x": 88,
+          "top": 173,
+          "draw_scale": 0.5099169350737413,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            784,
+            1193,
+            1008,
+            1496
+          ],
+          "source_parts": 1,
+          "shared_ready": "Idle_0"
+        }
+      ]
+    },
+    {
+      "key": "UpwardScissor",
+      "label": "挑空上剪",
+      "fps": 12,
+      "loop": false,
+      "action": "Animation: one-shot UPWARD SCISSOR, 16 frames. F1 ready. F2-5 raise head slightly and swing BOTH full blades up into a V ABOVE THE CHEST but IN FRONT of face, directed up and SCREEN LEFT. F6-8 HOLD raised V telegraph. F9-11 scissor both blades SHUT in an UPWARD-FORWARD cut in FRONT of beak/face, distinct opposed blade silhouettes, not a sweep behind back. F12-14 follow through upward with body leaning back a little while still facing left. F15-16 recover to ready. Feet planted, no leap. Keep complete crest and both blade tips inside cell, no cropping at top; no slash effect.",
+      "file": "UpwardScissor.png",
+      "frame_count": 16,
+      "scale": 0.5900086002685697,
+      "final_prompt_override": "Use case: stylized-concept. Asset: production 2D Unity character animation sprite sheet.\nREFERENCE ROLE: attached Stand.png is the exact identity, silhouette, materials, anatomy, palette and ink/cel-shading reference for StarShearGuard. Animate this SAME bird warrior. The image takes precedence over generic descriptors: preserve the reference's swept ivory/silver-and-indigo feather crest, hooked black beak, fierce red eye(s), white layered feather collar, angular dark-indigo silver armor, cyan four-point sternum star, navy/silver feather waist armor and the two huge silver/navy/cyan FOREARM SHEARING BLADES with circular cyan-star pivots. EXACTLY TWO ARMS and TWO LEGS, three silver claws on each bird foot. No human skin or human face. No real wings, extra arms, long animal tail, shield, separate sword, helmet or additional weapon.\nBOTH BLADES ARE IDENTITY-CRITICAL: one fully attached to each forearm (except the final death detachment explicitly described); same curved silver feather-shear silhouette, navy bevels and cyan inlays as reference, same length and same cyan pivot placement. Keep EACH COMPLETE blade tip, handle/forearm joint and claw visible. Separate the two blade silhouettes slightly in depth/height even during closed scissor poses, so each can be counted and read; do not fuse them into one sword or grow more blades. Do not let a blade disappear behind the body.\nMANDATORY COMPOSITION: EXACTLY SIXTEEN full-body figures, regular FOUR COLUMN by FOUR ROW grid. PORTRAIT 1024x1536 RGBA PNG; sixteen invisible equal 256x384 logical cells. Read left-to-right, then next row; CONTINUOUS time through F4->5, F8->9 and F12->13. One complete warrior per cell, no extras or missing poses.\nMake each figure SMALL in its rectangle: ENTIRE body plus BOTH FULL blades, all toes and crest tips occupy no more than178px width (70%) and288px height (75%). Prefer kit width166px and height240px. At least32px EMPTY transparent left/right margins and40px EMPTY transparent top/bottom margins INSIDE EVERY cell including outside canvas edges. Entire anatomy and equipment must fit; never crop, overlap, touch a neighbor or enlarge characters to fill sheet. No visible grid, border, frame labels, numbering, watermark or text.\nONE FIXED DRAWING SCALE, fixed camera and three-quarter SCREEN-LEFT facing orientation throughout. The reference's beak and attacking direction point LEFT. Body anchor/pelvis center remains consistent. Ground baseline is cell-local y328; planted toes land there in every grounded pose. For the specified backstep hop ONLY, toes lift above that same ground line without changing drawing scale. No camera spin or mirroring to face right. Death may fall but stays within full cell.\nClean bold black outlines, crisp cel shading and painted silver feather facets, high contrast indigo and icy cyan accents EXACTLY matching reference. Real transparent ALPHA around and between all parts. NO colored background, scenery, floor, ground texture, cast shadow, checkerboard printed into art, dust, slash/spark effect, energy trails, motion lines, enemies or other characters. This is CHARACTER BODY animation only; tiny cyan stars are embedded armor ornaments, not external effects.\n\nCRITICAL CORRECTION TO COMPOSITION: The warrior must be TINY, thumbnail sized in every logical cell, NOT fill the rectangle. Draw each WHOLE warrior including both very long blades around only120px wide x170px high in a256x384cell. At least60px transparent empty gutter at BOTH sides and80px above/below. The canvas should be MOSTLY EMPTY (over75% empty transparent). The weapons have to fit within that TINY120pxwide silhouette by making the WHOLE drawing smaller, not shortening/detaching blades. Exactly4 rows each containing4 little warriors (16 total). Fourth row MUST contain4 full poses. NO figure or blade may touch a gutter or outside border. Prefer larger EMPTY transparent space. No gray haze; real alpha0 background.\nAnimation: one-shot UPWARD SCISSOR, 16 frames. F1 ready. F2-5 raise head slightly and swing BOTH full blades up into a V ABOVE THE CHEST but IN FRONT of face, directed up and SCREEN LEFT. F6-8 HOLD raised V telegraph. F9-11 scissor both blades SHUT in an UPWARD-FORWARD cut in FRONT of beak/face, distinct opposed blade silhouettes, not a sweep behind back. F12-14 follow through upward with body leaning back a little while still facing left. F15-16 recover to ready. Feet planted, no leap. Keep complete crest and both blade tips inside cell, no cropping at top; no slash effect.",
+      "sha256": "210e859c231215d3ce190f242bb7e88d12cc3e48f8332f4b71409e95589d9f95",
+      "guid": "224164edebca45a6bb02f33221213bd8",
+      "sprite_ids": [
+        198501962924416415,
+        913897184851270862,
+        238216348708690301,
+        533168351346733259,
+        646971438164773485,
+        632459865458944512,
+        338941296706653774,
+        177643996258448378,
+        934090234865871193,
+        150027637426938522,
+        268479982911483461,
+        1026342456684350847,
+        68795748685246574,
+        238972787107455261,
+        751681828732631363,
+        144873595048347606
+      ],
+      "frames": [
+        {
+          "frame": 1,
+          "bbox": [
+            73,
+            177,
+            190,
+            328
+          ],
+          "margins_LRTB": [
+            73,
+            66,
+            177,
+            56
+          ]
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            62,
+            172,
+            194,
+            328
+          ],
+          "margins_LRTB": [
+            62,
+            62,
+            172,
+            56
+          ]
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            70,
+            162,
+            194,
+            328
+          ],
+          "margins_LRTB": [
+            70,
+            62,
+            162,
+            56
+          ]
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            74,
+            153,
+            192,
+            328
+          ],
+          "margins_LRTB": [
+            74,
+            64,
+            153,
+            56
+          ]
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            72,
+            154,
+            191,
+            328
+          ],
+          "margins_LRTB": [
+            72,
+            65,
+            154,
+            56
+          ]
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            75,
+            154,
+            193,
+            328
+          ],
+          "margins_LRTB": [
+            75,
+            63,
+            154,
+            56
+          ]
+        },
+        {
+          "frame": 7,
+          "bbox": [
+            72,
+            159,
+            193,
+            328
+          ],
+          "margins_LRTB": [
+            72,
+            63,
+            159,
+            56
+          ]
+        },
+        {
+          "frame": 8,
+          "bbox": [
+            85,
+            159,
+            193,
+            328
+          ],
+          "margins_LRTB": [
+            85,
+            63,
+            159,
+            56
+          ]
+        },
+        {
+          "frame": 9,
+          "bbox": [
+            89,
+            174,
+            194,
+            328
+          ],
+          "margins_LRTB": [
+            89,
+            62,
+            174,
+            56
+          ]
+        },
+        {
+          "frame": 10,
+          "bbox": [
+            74,
+            170,
+            194,
+            328
+          ],
+          "margins_LRTB": [
+            74,
+            62,
+            170,
+            56
+          ]
+        },
+        {
+          "frame": 11,
+          "bbox": [
+            87,
+            155,
+            201,
+            328
+          ],
+          "margins_LRTB": [
+            87,
+            55,
+            155,
+            56
+          ]
+        },
+        {
+          "frame": 12,
+          "bbox": [
+            95,
+            143,
+            204,
+            328
+          ],
+          "margins_LRTB": [
+            95,
+            52,
+            143,
+            56
+          ]
+        },
+        {
+          "frame": 13,
+          "bbox": [
+            76,
+            162,
+            193,
+            328
+          ],
+          "margins_LRTB": [
+            76,
+            63,
+            162,
+            56
+          ]
+        },
+        {
+          "frame": 14,
+          "bbox": [
+            65,
+            176,
+            193,
+            328
+          ],
+          "margins_LRTB": [
+            65,
+            63,
+            176,
+            56
+          ]
+        },
+        {
+          "frame": 15,
+          "bbox": [
+            77,
+            175,
+            212,
+            328
+          ],
+          "margins_LRTB": [
+            77,
+            44,
+            175,
+            56
+          ]
+        },
+        {
+          "frame": 16,
+          "bbox": [
+            73,
+            177,
+            190,
+            328
+          ],
+          "margins_LRTB": [
+            73,
+            66,
+            177,
+            56
+          ]
+        }
+      ],
+      "placement": [
+        {
+          "frame": 1,
+          "x": 76,
+          "top": 173,
+          "draw_scale": 0.5900086002685697,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            26,
+            96,
+            253,
+            359
+          ],
+          "source_parts": 1,
+          "shared_ready": "Idle_0"
+        },
+        {
+          "frame": 2,
+          "x": 61,
+          "top": 172,
+          "draw_scale": 0.5900086002685697,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            278,
+            96,
+            504,
+            360
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 3,
+          "x": 70,
+          "top": 162,
+          "draw_scale": 0.5900086002685697,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            537,
+            79,
+            748,
+            360
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 4,
+          "x": 73,
+          "top": 153,
+          "draw_scale": 0.5900086002685697,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            790,
+            64,
+            991,
+            360
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 5,
+          "x": 72,
+          "top": 154,
+          "draw_scale": 0.5900086002685697,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            47,
+            439,
+            251,
+            734
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 6,
+          "x": 75,
+          "top": 154,
+          "draw_scale": 0.5900086002685697,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            304,
+            439,
+            504,
+            734
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 7,
+          "x": 72,
+          "top": 159,
+          "draw_scale": 0.5900086002685697,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            545,
+            448,
+            750,
+            734
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 8,
+          "x": 84,
+          "top": 159,
+          "draw_scale": 0.5900086002685697,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            811,
+            448,
+            996,
+            734
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 9,
+          "x": 88,
+          "top": 174,
+          "draw_scale": 0.5900086002685697,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            66,
+            851,
+            246,
+            1112
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 10,
+          "x": 74,
+          "top": 170,
+          "draw_scale": 0.5900086002685697,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            299,
+            845,
+            503,
+            1113
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 11,
+          "x": 87,
+          "top": 155,
+          "draw_scale": 0.5900086002685697,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            563,
+            819,
+            756,
+            1112
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 12,
+          "x": 94,
+          "top": 143,
+          "draw_scale": 0.5900086002685697,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            817,
+            800,
+            1004,
+            1113
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 13,
+          "x": 75,
+          "top": 162,
+          "draw_scale": 0.5900086002685697,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            37,
+            1193,
+            237,
+            1475
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 14,
+          "x": 65,
+          "top": 176,
+          "draw_scale": 0.5900086002685697,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            282,
+            1219,
+            499,
+            1476
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 15,
+          "x": 77,
+          "top": 175,
+          "draw_scale": 0.5900086002685697,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            529,
+            1218,
+            758,
+            1477
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 16,
+          "x": 76,
+          "top": 176,
+          "draw_scale": 0.5900086002685697,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            779,
+            1220,
+            1006,
+            1477
+          ],
+          "source_parts": 1,
+          "shared_ready": "Idle_0"
+        }
+      ]
+    },
+    {
+      "key": "BackstepCut",
+      "label": "退步反剪",
+      "fps": 14,
+      "loop": false,
+      "action": "Animation: one-shot BACKSTEP CUT,16 frames. F1 ready. F2-4 crouch, pull both blades inward while keeping both visible. F5-8 HOP BACKWARD toward SCREEN RIGHT: BOTH clawed feet visibly leave ground, knees tucked; body orientation stays three-quarter LEFT, no turn, no camera spin. F5 takeoff, F6-7 small apex with feet about24-28px above the fixed y328 ground, F8 descend. Keep horizontal retreat small INSIDE cell (about8-12px), same drawing scale. F9-11 LAND low and lunge FORWARD toward LEFT with ONE forearm blade leading, the other blade complete at side. F12-14 extend a short forward cut. F15-16 return to the original ground-ready stance at starting center. Ground baseline remains y328. No afterimage, invisibility, dust or slash effect; whole blades and all claws fit during hop and lunge.",
+      "file": "BackstepCut.png",
+      "frame_count": 16,
+      "scale": 0.5994236311239193,
+      "final_prompt_override": "Use case: stylized-concept. Asset: production 2D Unity character animation sprite sheet.\nREFERENCE ROLE: attached Stand.png is the exact identity, silhouette, materials, anatomy, palette and ink/cel-shading reference for StarShearGuard. Animate this SAME bird warrior. The image takes precedence over generic descriptors: preserve the reference's swept ivory/silver-and-indigo feather crest, hooked black beak, fierce red eye(s), white layered feather collar, angular dark-indigo silver armor, cyan four-point sternum star, navy/silver feather waist armor and the two huge silver/navy/cyan FOREARM SHEARING BLADES with circular cyan-star pivots. EXACTLY TWO ARMS and TWO LEGS, three silver claws on each bird foot. No human skin or human face. No real wings, extra arms, long animal tail, shield, separate sword, helmet or additional weapon.\nBOTH BLADES ARE IDENTITY-CRITICAL: one fully attached to each forearm (except the final death detachment explicitly described); same curved silver feather-shear silhouette, navy bevels and cyan inlays as reference, same length and same cyan pivot placement. Keep EACH COMPLETE blade tip, handle/forearm joint and claw visible. Separate the two blade silhouettes slightly in depth/height even during closed scissor poses, so each can be counted and read; do not fuse them into one sword or grow more blades. Do not let a blade disappear behind the body.\nMANDATORY COMPOSITION: EXACTLY SIXTEEN full-body figures, regular FOUR COLUMN by FOUR ROW grid. PORTRAIT 1024x1536 RGBA PNG; sixteen invisible equal 256x384 logical cells. Read left-to-right, then next row; CONTINUOUS time through F4->5, F8->9 and F12->13. One complete warrior per cell, no extras or missing poses.\nMake each figure SMALL in its rectangle: ENTIRE body plus BOTH FULL blades, all toes and crest tips occupy no more than178px width (70%) and288px height (75%). Prefer kit width166px and height240px. At least32px EMPTY transparent left/right margins and40px EMPTY transparent top/bottom margins INSIDE EVERY cell including outside canvas edges. Entire anatomy and equipment must fit; never crop, overlap, touch a neighbor or enlarge characters to fill sheet. No visible grid, border, frame labels, numbering, watermark or text.\nONE FIXED DRAWING SCALE, fixed camera and three-quarter SCREEN-LEFT facing orientation throughout. The reference's beak and attacking direction point LEFT. Body anchor/pelvis center remains consistent. Ground baseline is cell-local y328; planted toes land there in every grounded pose. For the specified backstep hop ONLY, toes lift above that same ground line without changing drawing scale. No camera spin or mirroring to face right. Death may fall but stays within full cell.\nClean bold black outlines, crisp cel shading and painted silver feather facets, high contrast indigo and icy cyan accents EXACTLY matching reference. Real transparent ALPHA around and between all parts. NO colored background, scenery, floor, ground texture, cast shadow, checkerboard printed into art, dust, slash/spark effect, energy trails, motion lines, enemies or other characters. This is CHARACTER BODY animation only; tiny cyan stars are embedded armor ornaments, not external effects.\n\nCRITICAL CORRECTION TO COMPOSITION: The warrior must be TINY, thumbnail sized in every logical cell, NOT fill the rectangle. Draw each WHOLE warrior including both very long blades around only120px wide x170px high in a256x384cell. At least60px transparent empty gutter at BOTH sides and80px above/below. The canvas should be MOSTLY EMPTY (over75% empty transparent). The weapons have to fit within that TINY120pxwide silhouette by making the WHOLE drawing smaller, not shortening/detaching blades. Exactly4 rows each containing4 little warriors (16 total). Fourth row MUST contain4 full poses. NO figure or blade may touch a gutter or outside border. Prefer larger EMPTY transparent space. No gray haze; real alpha0 background.\nAnimation: one-shot BACKSTEP CUT,16 frames. F1 ready. F2-4 crouch, pull both blades inward while keeping both visible. F5-8 HOP BACKWARD toward SCREEN RIGHT: BOTH clawed feet visibly leave ground, knees tucked; body orientation stays three-quarter LEFT, no turn, no camera spin. F5 takeoff, F6-7 small apex with feet about24-28px above the fixed y328 ground, F8 descend. Keep horizontal retreat small INSIDE cell (about8-12px), same drawing scale. F9-11 LAND low and lunge FORWARD toward LEFT with ONE forearm blade leading, the other blade complete at side. F12-14 extend a short forward cut. F15-16 return to the original ground-ready stance at starting center. Ground baseline remains y328. No afterimage, invisibility, dust or slash effect; whole blades and all claws fit during hop and lunge.",
+      "sha256": "72f7a86b36bc0bf20a8963208cffbc4858d8e5973b9edbad45bec7b49fbc1472",
+      "guid": "6af7a4f4f27c48a99a89eb26c1fab434",
+      "sprite_ids": [
+        746500473443856342,
+        968416358936462811,
+        848906719619861440,
+        117734754608232591,
+        179571545295703259,
+        932502690811514424,
+        1129591357526737476,
+        667744255477601848,
+        480939460804724741,
+        536198601539531525,
+        1123753996689223889,
+        425262263041404717,
+        37993920000149147,
+        99534876373955261,
+        189110733666959796,
+        30693911133428206
+      ],
+      "frames": [
+        {
+          "frame": 1,
+          "bbox": [
+            73,
+            177,
+            190,
+            328
+          ],
+          "margins_LRTB": [
+            73,
+            66,
+            177,
+            56
+          ]
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            83,
+            188,
+            207,
+            328
+          ],
+          "margins_LRTB": [
+            83,
+            49,
+            188,
+            56
+          ]
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            95,
+            197,
+            191,
+            328
+          ],
+          "margins_LRTB": [
+            95,
+            65,
+            197,
+            56
+          ]
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            98,
+            214,
+            188,
+            328
+          ],
+          "margins_LRTB": [
+            98,
+            68,
+            214,
+            56
+          ]
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            47,
+            164,
+            178,
+            316
+          ],
+          "margins_LRTB": [
+            47,
+            78,
+            164,
+            68
+          ]
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            83,
+            172,
+            194,
+            303
+          ],
+          "margins_LRTB": [
+            83,
+            62,
+            172,
+            81
+          ]
+        },
+        {
+          "frame": 7,
+          "bbox": [
+            67,
+            172,
+            194,
+            300
+          ],
+          "margins_LRTB": [
+            67,
+            62,
+            172,
+            84
+          ]
+        },
+        {
+          "frame": 8,
+          "bbox": [
+            65,
+            176,
+            190,
+            316
+          ],
+          "margins_LRTB": [
+            65,
+            66,
+            176,
+            68
+          ]
+        },
+        {
+          "frame": 9,
+          "bbox": [
+            64,
+            207,
+            190,
+            328
+          ],
+          "margins_LRTB": [
+            64,
+            66,
+            207,
+            56
+          ]
+        },
+        {
+          "frame": 10,
+          "bbox": [
+            36,
+            206,
+            204,
+            328
+          ],
+          "margins_LRTB": [
+            36,
+            52,
+            206,
+            56
+          ]
+        },
+        {
+          "frame": 11,
+          "bbox": [
+            38,
+            211,
+            194,
+            328
+          ],
+          "margins_LRTB": [
+            38,
+            62,
+            211,
+            56
+          ]
+        },
+        {
+          "frame": 12,
+          "bbox": [
+            39,
+            219,
+            189,
+            328
+          ],
+          "margins_LRTB": [
+            39,
+            67,
+            219,
+            56
+          ]
+        },
+        {
+          "frame": 13,
+          "bbox": [
+            62,
+            202,
+            203,
+            328
+          ],
+          "margins_LRTB": [
+            62,
+            53,
+            202,
+            56
+          ]
+        },
+        {
+          "frame": 14,
+          "bbox": [
+            61,
+            193,
+            191,
+            328
+          ],
+          "margins_LRTB": [
+            61,
+            65,
+            193,
+            56
+          ]
+        },
+        {
+          "frame": 15,
+          "bbox": [
+            66,
+            192,
+            190,
+            328
+          ],
+          "margins_LRTB": [
+            66,
+            66,
+            192,
+            56
+          ]
+        },
+        {
+          "frame": 16,
+          "bbox": [
+            73,
+            177,
+            190,
+            328
+          ],
+          "margins_LRTB": [
+            73,
+            66,
+            177,
+            56
+          ]
+        }
+      ],
+      "placement": [
+        {
+          "frame": 1,
+          "x": 65,
+          "top": 173,
+          "draw_scale": 0.5994236311239193,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            35,
+            138,
+            256,
+            396
+          ],
+          "source_parts": 1,
+          "shared_ready": "Idle_0"
+        },
+        {
+          "frame": 2,
+          "x": 83,
+          "top": 188,
+          "draw_scale": 0.5994236311239193,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            294,
+            160,
+            501,
+            393
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 3,
+          "x": 94,
+          "top": 197,
+          "draw_scale": 0.5994236311239193,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            582,
+            173,
+            744,
+            392
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 4,
+          "x": 97,
+          "top": 214,
+          "draw_scale": 0.5994236311239193,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            843,
+            200,
+            994,
+            390
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 5,
+          "x": 47,
+          "top": 164,
+          "draw_scale": 0.5994236311239193,
+          "flight_offset": 12,
+          "retreat_offset": 3,
+          "source_bbox": [
+            34,
+            530,
+            253,
+            783
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 6,
+          "x": 83,
+          "top": 172,
+          "draw_scale": 0.5994236311239193,
+          "flight_offset": 24,
+          "retreat_offset": 8,
+          "source_bbox": [
+            323,
+            510,
+            508,
+            731
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 7,
+          "x": 66,
+          "top": 172,
+          "draw_scale": 0.5994236311239193,
+          "flight_offset": 28,
+          "retreat_offset": 10,
+          "source_bbox": [
+            533,
+            522,
+            746,
+            736
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 8,
+          "x": 65,
+          "top": 176,
+          "draw_scale": 0.5994236311239193,
+          "flight_offset": 12,
+          "retreat_offset": 8,
+          "source_bbox": [
+            779,
+            558,
+            987,
+            792
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 9,
+          "x": 64,
+          "top": 207,
+          "draw_scale": 0.5994236311239193,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            35,
+            948,
+            247,
+            1150
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 10,
+          "x": 36,
+          "top": 206,
+          "draw_scale": 0.5994236311239193,
+          "flight_offset": 0,
+          "retreat_offset": -4,
+          "source_bbox": [
+            250,
+            944,
+            531,
+            1148
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 11,
+          "x": 38,
+          "top": 211,
+          "draw_scale": 0.5994236311239193,
+          "flight_offset": 0,
+          "retreat_offset": -6,
+          "source_bbox": [
+            508,
+            949,
+            768,
+            1145
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 12,
+          "x": 39,
+          "top": 219,
+          "draw_scale": 0.5994236311239193,
+          "flight_offset": 0,
+          "retreat_offset": -6,
+          "source_bbox": [
+            755,
+            968,
+            1005,
+            1150
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 13,
+          "x": 62,
+          "top": 202,
+          "draw_scale": 0.5994236311239193,
+          "flight_offset": 0,
+          "retreat_offset": -4,
+          "source_bbox": [
+            32,
+            1270,
+            268,
+            1481
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 14,
+          "x": 61,
+          "top": 193,
+          "draw_scale": 0.5994236311239193,
+          "flight_offset": 0,
+          "retreat_offset": -2,
+          "source_bbox": [
+            288,
+            1260,
+            506,
+            1485
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 15,
+          "x": 65,
+          "top": 192,
+          "draw_scale": 0.5994236311239193,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            538,
+            1260,
+            748,
+            1487
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 16,
+          "x": 66,
+          "top": 190,
+          "draw_scale": 0.5994236311239193,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            790,
+            1259,
+            996,
+            1489
+          ],
+          "source_parts": 1,
+          "shared_ready": "Idle_0"
+        }
+      ]
+    },
+    {
+      "key": "Hit",
+      "label": "单次受击",
+      "fps": 12,
+      "loop": false,
+      "action": "Animation: a SINGLE HIT REACTION across16 frames, NOT attacking. F1 ready. F2 collar feathers flare outward (remain attached, no flying particle feathers). F3-6 upper body recoils toward SCREEN RIGHT from a hit coming from LEFT, beak/head snaps back, both blades swing outward passively. F7-9 one foot slides slightly backward to brace. F10-13 straighten and draw blades back to ready. F14-16 return exactly to F1. Face remains left. Clear one flinch/recoil/recovery only, no enemy, projectile, slash, blood, spark, motion lines or impact effects.",
+      "file": "Hit.png",
+      "frame_count": 16,
+      "scale": 0.5076200119427785,
+      "final_prompt_override": null,
+      "sha256": "7dd5a6cf2197dda758f7a8fefc007e31ce3540da81dcd328d2c62d7ca4a31ac8",
+      "guid": "e95722445fe5456fba3801de124984cd",
+      "sprite_ids": [
+        624293989215105567,
+        515451305711706069,
+        1130029535578265300,
+        286124887618581785,
+        18000876205538020,
+        534423036354375584,
+        844690579534200191,
+        665977597865832050,
+        943130147427488778,
+        879659794742195045,
+        800738552580936582,
+        852176234018817388,
+        993821056406131584,
+        986766647562331440,
+        585252662780363864,
+        1126697718134409492
+      ],
+      "frames": [
+        {
+          "frame": 1,
+          "bbox": [
+            73,
+            177,
+            190,
+            328
+          ],
+          "margins_LRTB": [
+            73,
+            66,
+            177,
+            56
+          ]
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            76,
+            176,
+            209,
+            328
+          ],
+          "margins_LRTB": [
+            76,
+            47,
+            176,
+            56
+          ]
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            80,
+            178,
+            211,
+            328
+          ],
+          "margins_LRTB": [
+            80,
+            45,
+            178,
+            56
+          ]
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            69,
+            179,
+            209,
+            328
+          ],
+          "margins_LRTB": [
+            69,
+            47,
+            179,
+            56
+          ]
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            79,
+            177,
+            220,
+            328
+          ],
+          "margins_LRTB": [
+            79,
+            36,
+            177,
+            56
+          ]
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            75,
+            178,
+            211,
+            328
+          ],
+          "margins_LRTB": [
+            75,
+            45,
+            178,
+            56
+          ]
+        },
+        {
+          "frame": 7,
+          "bbox": [
+            79,
+            179,
+            208,
+            328
+          ],
+          "margins_LRTB": [
+            79,
+            48,
+            179,
+            56
+          ]
+        },
+        {
+          "frame": 8,
+          "bbox": [
+            76,
+            182,
+            198,
+            328
+          ],
+          "margins_LRTB": [
+            76,
+            58,
+            182,
+            56
+          ]
+        },
+        {
+          "frame": 9,
+          "bbox": [
+            71,
+            173,
+            206,
+            328
+          ],
+          "margins_LRTB": [
+            71,
+            50,
+            173,
+            56
+          ]
+        },
+        {
+          "frame": 10,
+          "bbox": [
+            72,
+            169,
+            200,
+            328
+          ],
+          "margins_LRTB": [
+            72,
+            56,
+            169,
+            56
+          ]
+        },
+        {
+          "frame": 11,
+          "bbox": [
+            73,
+            168,
+            196,
+            328
+          ],
+          "margins_LRTB": [
+            73,
+            60,
+            168,
+            56
+          ]
+        },
+        {
+          "frame": 12,
+          "bbox": [
+            73,
+            168,
+            195,
+            328
+          ],
+          "margins_LRTB": [
+            73,
+            61,
+            168,
+            56
+          ]
+        },
+        {
+          "frame": 13,
+          "bbox": [
+            73,
+            169,
+            196,
+            328
+          ],
+          "margins_LRTB": [
+            73,
+            60,
+            169,
+            56
+          ]
+        },
+        {
+          "frame": 14,
+          "bbox": [
+            73,
+            169,
+            194,
+            328
+          ],
+          "margins_LRTB": [
+            73,
+            62,
+            169,
+            56
+          ]
+        },
+        {
+          "frame": 15,
+          "bbox": [
+            73,
+            169,
+            194,
+            328
+          ],
+          "margins_LRTB": [
+            73,
+            62,
+            169,
+            56
+          ]
+        },
+        {
+          "frame": 16,
+          "bbox": [
+            73,
+            177,
+            190,
+            328
+          ],
+          "margins_LRTB": [
+            73,
+            66,
+            177,
+            56
+          ]
+        }
+      ],
+      "placement": [
+        {
+          "frame": 1,
+          "x": 68,
+          "top": 173,
+          "draw_scale": 0.5076200119427785,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            7,
+            70,
+            258,
+            376
+          ],
+          "source_parts": 1,
+          "shared_ready": "Idle_0"
+        },
+        {
+          "frame": 2,
+          "x": 75,
+          "top": 176,
+          "draw_scale": 0.5076200119427785,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            265,
+            76,
+            528,
+            376
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 3,
+          "x": 79,
+          "top": 178,
+          "draw_scale": 0.5076200119427785,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            516,
+            81,
+            778,
+            376
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 4,
+          "x": 68,
+          "top": 179,
+          "draw_scale": 0.5076200119427785,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            745,
+            82,
+            1022,
+            375
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 5,
+          "x": 78,
+          "top": 177,
+          "draw_scale": 0.5076200119427785,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            9,
+            447,
+            289,
+            744
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 6,
+          "x": 75,
+          "top": 178,
+          "draw_scale": 0.5076200119427785,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            261,
+            448,
+            531,
+            744
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 7,
+          "x": 78,
+          "top": 179,
+          "draw_scale": 0.5076200119427785,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            531,
+            452,
+            788,
+            746
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 8,
+          "x": 75,
+          "top": 182,
+          "draw_scale": 0.5076200119427785,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            774,
+            453,
+            1017,
+            741
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 9,
+          "x": 71,
+          "top": 173,
+          "draw_scale": 0.5076200119427785,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            12,
+            814,
+            277,
+            1119
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 10,
+          "x": 72,
+          "top": 169,
+          "draw_scale": 0.5076200119427785,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            268,
+            809,
+            522,
+            1122
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 11,
+          "x": 73,
+          "top": 168,
+          "draw_scale": 0.5076200119427785,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            522,
+            807,
+            764,
+            1122
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 12,
+          "x": 72,
+          "top": 168,
+          "draw_scale": 0.5076200119427785,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            772,
+            807,
+            1015,
+            1123
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 13,
+          "x": 73,
+          "top": 169,
+          "draw_scale": 0.5076200119427785,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            16,
+            1179,
+            259,
+            1493
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 14,
+          "x": 73,
+          "top": 169,
+          "draw_scale": 0.5076200119427785,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            275,
+            1179,
+            514,
+            1493
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 15,
+          "x": 73,
+          "top": 169,
+          "draw_scale": 0.5076200119427785,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            524,
+            1179,
+            763,
+            1492
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 16,
+          "x": 74,
+          "top": 168,
+          "draw_scale": 0.5076200119427785,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            778,
+            1178,
+            1017,
+            1493
+          ],
+          "source_parts": 1,
+          "shared_ready": "Idle_0"
+        }
+      ]
+    },
+    {
+      "key": "Death",
+      "label": "倒地死亡",
+      "fps": 12,
+      "loop": false,
+      "action": "Animation: DEATH,16 frames ONE SHOT, no loop or recovery. F1-3 stagger backward, both blades droop. F4-7 knees buckle, feather crest folds down. F8-11 sink onto ONE knee, both full blades touch/rest near ground in front of body. F12-15 collapse FORWARD toward screen LEFT onto side with folded legs, armor settling; ONE blade slips from its forearm MOUNT as a detached EQUIPMENT blade (not an arm), and lies beside body. BOTH ARMS remain attached and intact; all two complete blades remain present and countable in the cell, one on forearm and one beside body. F16 final still collapsed pose, do NOT rise again, do NOT duplicate standing F1. Keep body, head/beak, all three-clawed feet and both entire long blades inside own cell, small enough to fit fallen silhouette. No blood, severed limbs, dust, spark or effects.",
+      "file": "Death.png",
+      "frame_count": 16,
+      "scale": 0.4899636637012906,
+      "final_prompt_override": "Use case: stylized-concept. Asset: production 2D Unity character animation sprite sheet.\nREFERENCE ROLE: attached Stand.png is the exact identity, silhouette, materials, anatomy, palette and ink/cel-shading reference for StarShearGuard. Animate this SAME bird warrior. The image takes precedence over generic descriptors: preserve the reference's swept ivory/silver-and-indigo feather crest, hooked black beak, fierce red eye(s), white layered feather collar, angular dark-indigo silver armor, cyan four-point sternum star, navy/silver feather waist armor and the two huge silver/navy/cyan FOREARM SHEARING BLADES with circular cyan-star pivots. EXACTLY TWO ARMS and TWO LEGS, three silver claws on each bird foot. No human skin or human face. No real wings, extra arms, long animal tail, shield, separate sword, helmet or additional weapon.\nBOTH BLADES ARE IDENTITY-CRITICAL: one fully attached to each forearm (except the final death detachment explicitly described); same curved silver feather-shear silhouette, navy bevels and cyan inlays as reference, same length and same cyan pivot placement. Keep EACH COMPLETE blade tip, handle/forearm joint and claw visible. Separate the two blade silhouettes slightly in depth/height even during closed scissor poses, so each can be counted and read; do not fuse them into one sword or grow more blades. Do not let a blade disappear behind the body.\nMANDATORY COMPOSITION: EXACTLY SIXTEEN full-body figures, regular FOUR COLUMN by FOUR ROW grid. PORTRAIT 1024x1536 RGBA PNG; sixteen invisible equal 256x384 logical cells. Read left-to-right, then next row; CONTINUOUS time through F4->5, F8->9 and F12->13. One complete warrior per cell, no extras or missing poses.\nMake each figure SMALL in its rectangle: ENTIRE body plus BOTH FULL blades, all toes and crest tips occupy no more than178px width (70%) and288px height (75%). Prefer kit width166px and height240px. At least32px EMPTY transparent left/right margins and40px EMPTY transparent top/bottom margins INSIDE EVERY cell including outside canvas edges. Entire anatomy and equipment must fit; never crop, overlap, touch a neighbor or enlarge characters to fill sheet. No visible grid, border, frame labels, numbering, watermark or text.\nONE FIXED DRAWING SCALE, fixed camera and three-quarter SCREEN-LEFT facing orientation throughout. The reference's beak and attacking direction point LEFT. Body anchor/pelvis center remains consistent. Ground baseline is cell-local y328; planted toes land there in every grounded pose. For the specified backstep hop ONLY, toes lift above that same ground line without changing drawing scale. No camera spin or mirroring to face right. Death may fall but stays within full cell.\nClean bold black outlines, crisp cel shading and painted silver feather facets, high contrast indigo and icy cyan accents EXACTLY matching reference. Real transparent ALPHA around and between all parts. NO colored background, scenery, floor, ground texture, cast shadow, checkerboard printed into art, dust, slash/spark effect, energy trails, motion lines, enemies or other characters. This is CHARACTER BODY animation only; tiny cyan stars are embedded armor ornaments, not external effects.\n\nCRITICAL CORRECTION TO COMPOSITION: The warrior must be TINY, thumbnail sized in every logical cell, NOT fill the rectangle. Draw each WHOLE warrior including both very long blades around only120px wide x170px high in a256x384cell. At least60px transparent empty gutter at BOTH sides and80px above/below. The canvas should be MOSTLY EMPTY (over75% empty transparent). The weapons have to fit within that TINY120pxwide silhouette by making the WHOLE drawing smaller, not shortening/detaching blades. Exactly4 rows each containing4 little warriors (16 total). Fourth row MUST contain4 full poses. NO figure or blade may touch a gutter or outside border. Prefer larger EMPTY transparent space. No gray haze; real alpha0 background.\nAnimation: DEATH,16 frames ONE SHOT, no loop or recovery. F1-3 stagger backward, both blades droop. F4-7 knees buckle, feather crest folds down. F8-11 sink onto ONE knee, both full blades touch/rest near ground in front of body. F12-15 collapse FORWARD toward screen LEFT onto side with folded legs, armor settling; ONE blade slips from its forearm MOUNT as a detached EQUIPMENT blade (not an arm), and lies beside body. BOTH ARMS remain attached and intact; all two complete blades remain present and countable in the cell, one on forearm and one beside body. F16 final still collapsed pose, do NOT rise again, do NOT duplicate standing F1. Keep body, head/beak, all three-clawed feet and both entire long blades inside own cell, small enough to fit fallen silhouette. No blood, severed limbs, dust, spark or effects.\nEXACT ROW CHECKLIST: ROW1=F1,F2,F3,F4 four separate standing/stagger/buckle poses. ROW2=F5,F6,F7,F8 four separate progressively kneeling poses. ROW3=F9,F10,F11,F12 four separate one-knee/lowering-to-side poses. ROW4=F13,F14,F15,F16 FOUR separate fully collapsing/prone-final poses. DO NOT STOP AT THREE ROWS.16 full warriors. Detached blade only F12-16 and remains with its full intact warrior inside samecell. The final4 prone poses are DIFFERENT settling frames, not missing cells.",
+      "sha256": "c64e17cffd5e67ad6559268c0a2808c5e71387646226620bd11b8ae42d79c6ff",
+      "guid": "952c456a74d0423b9aafe28cc5a8b043",
+      "sprite_ids": [
+        406175402477242726,
+        27248581197138683,
+        675668767417694738,
+        291704018182060637,
+        404675711763054445,
+        660520363370327017,
+        656459394842592789,
+        1010774728445746103,
+        270365210416312696,
+        530789959649687633,
+        975606197198663558,
+        498931814733829702,
+        136891042509817570,
+        835806924901456948,
+        1053204156725700842,
+        345221731093809536
+      ],
+      "frames": [
+        {
+          "frame": 1,
+          "bbox": [
+            81,
+            193,
+            206,
+            328
+          ],
+          "margins_LRTB": [
+            81,
+            50,
+            193,
+            56
+          ]
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            90,
+            197,
+            199,
+            328
+          ],
+          "margins_LRTB": [
+            90,
+            57,
+            197,
+            56
+          ]
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            95,
+            210,
+            194,
+            328
+          ],
+          "margins_LRTB": [
+            95,
+            62,
+            210,
+            56
+          ]
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            97,
+            224,
+            189,
+            328
+          ],
+          "margins_LRTB": [
+            97,
+            67,
+            224,
+            56
+          ]
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            94,
+            221,
+            192,
+            328
+          ],
+          "margins_LRTB": [
+            94,
+            64,
+            221,
+            56
+          ]
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            90,
+            234,
+            195,
+            328
+          ],
+          "margins_LRTB": [
+            90,
+            61,
+            234,
+            56
+          ]
+        },
+        {
+          "frame": 7,
+          "bbox": [
+            89,
+            244,
+            201,
+            328
+          ],
+          "margins_LRTB": [
+            89,
+            55,
+            244,
+            56
+          ]
+        },
+        {
+          "frame": 8,
+          "bbox": [
+            72,
+            250,
+            184,
+            327
+          ],
+          "margins_LRTB": [
+            72,
+            72,
+            250,
+            57
+          ]
+        },
+        {
+          "frame": 9,
+          "bbox": [
+            72,
+            255,
+            184,
+            328
+          ],
+          "margins_LRTB": [
+            72,
+            72,
+            255,
+            56
+          ]
+        },
+        {
+          "frame": 10,
+          "bbox": [
+            71,
+            259,
+            183,
+            328
+          ],
+          "margins_LRTB": [
+            71,
+            73,
+            259,
+            56
+          ]
+        },
+        {
+          "frame": 11,
+          "bbox": [
+            75,
+            270,
+            180,
+            328
+          ],
+          "margins_LRTB": [
+            75,
+            76,
+            270,
+            56
+          ]
+        },
+        {
+          "frame": 12,
+          "bbox": [
+            69,
+            274,
+            187,
+            328
+          ],
+          "margins_LRTB": [
+            69,
+            69,
+            274,
+            56
+          ]
+        },
+        {
+          "frame": 13,
+          "bbox": [
+            71,
+            274,
+            185,
+            327
+          ],
+          "margins_LRTB": [
+            71,
+            71,
+            274,
+            57
+          ]
+        },
+        {
+          "frame": 14,
+          "bbox": [
+            69,
+            273,
+            187,
+            328
+          ],
+          "margins_LRTB": [
+            69,
+            69,
+            273,
+            56
+          ]
+        },
+        {
+          "frame": 15,
+          "bbox": [
+            73,
+            272,
+            182,
+            328
+          ],
+          "margins_LRTB": [
+            73,
+            74,
+            272,
+            56
+          ]
+        },
+        {
+          "frame": 16,
+          "bbox": [
+            71,
+            274,
+            185,
+            328
+          ],
+          "margins_LRTB": [
+            71,
+            71,
+            274,
+            56
+          ]
+        }
+      ],
+      "placement": [
+        {
+          "frame": 1,
+          "x": 81,
+          "top": 193,
+          "draw_scale": 0.4899636637012906,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            7,
+            110,
+            262,
+            386
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 2,
+          "x": 90,
+          "top": 197,
+          "draw_scale": 0.4899636637012906,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            286,
+            119,
+            509,
+            387
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 3,
+          "x": 95,
+          "top": 210,
+          "draw_scale": 0.4899636637012906,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            549,
+            148,
+            751,
+            388
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 4,
+          "x": 97,
+          "top": 224,
+          "draw_scale": 0.4899636637012906,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            807,
+            173,
+            994,
+            385
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 5,
+          "x": 94,
+          "top": 221,
+          "draw_scale": 0.4899636637012906,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            45,
+            552,
+            244,
+            771
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 6,
+          "x": 90,
+          "top": 234,
+          "draw_scale": 0.4899636637012906,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            285,
+            578,
+            499,
+            769
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 7,
+          "x": 89,
+          "top": 244,
+          "draw_scale": 0.4899636637012906,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            530,
+            592,
+            759,
+            764
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 8,
+          "x": 72,
+          "top": 250,
+          "draw_scale": 0.4899636637012906,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            775,
+            602,
+            1005,
+            761
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 9,
+          "x": 72,
+          "top": 255,
+          "draw_scale": 0.4899636637012906,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            16,
+            965,
+            245,
+            1115
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 10,
+          "x": 71,
+          "top": 259,
+          "draw_scale": 0.4899636637012906,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            272,
+            977,
+            503,
+            1117
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 11,
+          "x": 75,
+          "top": 270,
+          "draw_scale": 0.4899636637012906,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            531,
+            994,
+            748,
+            1113
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 12,
+          "x": 69,
+          "top": 274,
+          "draw_scale": 0.4899636637012906,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            765,
+            1009,
+            1006,
+            1119
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 13,
+          "x": 71,
+          "top": 274,
+          "draw_scale": 0.4899636637012906,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            9,
+            1327,
+            242,
+            1438
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 14,
+          "x": 69,
+          "top": 273,
+          "draw_scale": 0.4899636637012906,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            271,
+            1326,
+            511,
+            1439
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 15,
+          "x": 73,
+          "top": 272,
+          "draw_scale": 0.4899636637012906,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            535,
+            1326,
+            758,
+            1441
+          ],
+          "source_parts": 1
+        },
+        {
+          "frame": 16,
+          "x": 71,
+          "top": 274,
+          "draw_scale": 0.4899636637012906,
+          "flight_offset": 0,
+          "retreat_offset": 0,
+          "source_bbox": [
+            778,
+            1329,
+            1010,
+            1439
+          ],
+          "source_parts": 1
+        }
+      ]
+    }
+  ],
+  "effects": {
+    "common_prompt": "Use case: stylized-concept. Asset: independent 2D GAME SKILL EFFECT animation sprite sheet for StarShearGuard.\nReference attached bird warrior ONLY for visual style and color palette: icy CYAN, SILVER-WHITE highlights, thin DARK INDIGO edge shadows, crisp cel-shaded clean black/navy contours. DO NOT DRAW THE CHARACTER, any bird/head/body/eye/claw/feather costume, physical forearm blade, sword, pivot gem, weapon, silhouette or afterimage. Pure abstract CUTTING LIGHT ARCS only, no blood.\nEXACTLY16 sequential effect frames in4 columns x4 rows, square1024x1024 RGBA PNG, invisible256x256 cells, row-major left-to-right then top-to-bottom. Each COMPLETE effect INCLUDING small glints and glow is SMALL in own cell, maximum188px wide and188px tall, minimum32px EMPTY TRANSPARENT padding ALL4sides. Never crop or cross a cell boundary. Fixed scale and anchor, actual time progression, no16 identical icons.\nREAL TRANSPARENT ALPHA outside shapes and between arcs. No colored/gradient/cloud background, scenery, ground, cast shadow, checkerboard, border, grid, text, numbering, UI or watermark. Cel-shaded Chinese fantasy action game effect matching the exact attached silver/navy/cyan reference, not purple/green magic or orange fire. No explosive smoke, rocks, feathers or dust. The entire effect naturally starts, peaks and DISSIPATES, not a looping aura. Clearly LEFT-directed cuts. Keep clean narrow crescent edges and small controlled highlights; no photoreal bloom haze.\n",
+    "entries": [
+      {
+        "key": "StarShearGuardOffbeatScissor",
+        "label": "错拍双剪弧光",
+        "fps": 24,
+        "loop": false,
+        "anchor": "double_height",
+        "prompt": "One16-frame TWO-SNAP scissors cutting-light effect. First snap is at HIGH/CHEST position cell-local(128,96); second snap is LOWER/WAIST at(128,164). Each snap is TWO opposed thin cyan/silver crescent LIGHT ARCS closing into an X aimed screen LEFT, no physical blades. F1-2 first high pair flashes on, F3-4 high crossed arc peak; F5-8 first arc breaks and fades into 2-3 tiny cyan glints. F9-10 visibly QUIET pause, just faint dying glints, no big new arc. F11-13 a SECOND shorter pair snaps shut at LOW position(128,164), distinct low X/crescent. F14-16 low arcs thin and dissolve, F16 almost empty. Keep both phases on ONE fixed canvas scale/anchor. Total high arc size at most160x110, low arc140x90. Allglowandglints x32..224,y32..224. No bird or weapon, no persistent star/pivot emblem, no copied first arc after completion.",
+        "file": "Effects/OffbeatScissorFX.png",
+        "prefab": "Assets/Projects/Prefabs/SeparateEffort/StarShearGuardOffbeatScissorFX.prefab",
+        "pivot": [
+          0.5,
+          0.625
+        ],
+        "scale": 0.5636363636363636,
+        "guid": "36db4d51ac0445d88c1c1c95a2eb2aea",
+        "sprite_ids": [
+          1137842214242971572,
+          814122609105690469,
+          1054266267469780074,
+          918629526050608900,
+          843851488017475848,
+          589999358117476878,
+          1149880540963606377,
+          428541908011704013,
+          905512971220343751,
+          715614620642276740,
+          442268038824827409,
+          243312543747193707,
+          17585934089715593,
+          974791170105025021,
+          121680185001272724,
+          648519942234056198
+        ],
+        "sha256": "97881b2d8b5dea0f4ce04743a77789c328e04fb8c7cb49c7f624f894e4b3de23",
+        "frames": [
+          {
+            "frame": 1,
+            "bbox": [
+              71,
+              34,
+              185,
+              158
+            ],
+            "margins_LRTB": [
+              71,
+              71,
+              34,
+              98
+            ]
+          },
+          {
+            "frame": 2,
+            "bbox": [
+              60,
+              37,
+              197,
+              155
+            ],
+            "margins_LRTB": [
+              60,
+              59,
+              37,
+              101
+            ]
+          },
+          {
+            "frame": 3,
+            "bbox": [
+              57,
+              40,
+              199,
+              152
+            ],
+            "margins_LRTB": [
+              57,
+              57,
+              40,
+              104
+            ]
+          },
+          {
+            "frame": 4,
+            "bbox": [
+              60,
+              50,
+              195,
+              142
+            ],
+            "margins_LRTB": [
+              60,
+              61,
+              50,
+              114
+            ]
+          },
+          {
+            "frame": 5,
+            "bbox": [
+              77,
+              36,
+              198,
+              139
+            ],
+            "margins_LRTB": [
+              77,
+              58,
+              36,
+              117
+            ]
+          },
+          {
+            "frame": 6,
+            "bbox": [
+              90,
+              47,
+              196,
+              142
+            ],
+            "margins_LRTB": [
+              90,
+              60,
+              47,
+              114
+            ]
+          },
+          {
+            "frame": 7,
+            "bbox": [
+              85,
+              60,
+              186,
+              141
+            ],
+            "margins_LRTB": [
+              85,
+              70,
+              60,
+              115
+            ]
+          },
+          {
+            "frame": 8,
+            "bbox": [
+              98,
+              77,
+              187,
+              120
+            ],
+            "margins_LRTB": [
+              98,
+              69,
+              77,
+              136
+            ]
+          },
+          {
+            "frame": 9,
+            "bbox": [
+              104,
+              61,
+              158,
+              91
+            ],
+            "margins_LRTB": [
+              104,
+              98,
+              61,
+              165
+            ]
+          },
+          {
+            "frame": 10,
+            "bbox": [
+              81,
+              74,
+              132,
+              90
+            ],
+            "margins_LRTB": [
+              81,
+              124,
+              74,
+              166
+            ]
+          },
+          {
+            "frame": 11,
+            "bbox": [
+              65,
+              116,
+              191,
+              213
+            ],
+            "margins_LRTB": [
+              65,
+              65,
+              116,
+              43
+            ]
+          },
+          {
+            "frame": 12,
+            "bbox": [
+              62,
+              121,
+              194,
+              207
+            ],
+            "margins_LRTB": [
+              62,
+              62,
+              121,
+              49
+            ]
+          },
+          {
+            "frame": 13,
+            "bbox": [
+              56,
+              112,
+              200,
+              215
+            ],
+            "margins_LRTB": [
+              56,
+              56,
+              112,
+              41
+            ]
+          },
+          {
+            "frame": 14,
+            "bbox": [
+              67,
+              121,
+              188,
+              207
+            ],
+            "margins_LRTB": [
+              67,
+              68,
+              121,
+              49
+            ]
+          },
+          {
+            "frame": 15,
+            "bbox": [
+              93,
+              123,
+              188,
+              196
+            ],
+            "margins_LRTB": [
+              93,
+              68,
+              123,
+              60
+            ]
+          },
+          {
+            "frame": 16,
+            "bbox": [
+              93,
+              131,
+              162,
+              175
+            ],
+            "margins_LRTB": [
+              93,
+              94,
+              131,
+              81
+            ]
+          }
+        ],
+        "placement": [
+          {
+            "frame": 1,
+            "top_left": [
+              71,
+              34
+            ],
+            "draw_scale": 0.5636363636363636,
+            "phase_anchor": [
+              128,
+              96
+            ],
+            "alpha_gain": 1.0
+          },
+          {
+            "frame": 2,
+            "top_left": [
+              60,
+              37
+            ],
+            "draw_scale": 0.5636363636363636,
+            "phase_anchor": [
+              128,
+              96
+            ],
+            "alpha_gain": 1.0
+          },
+          {
+            "frame": 3,
+            "top_left": [
+              57,
+              40
+            ],
+            "draw_scale": 0.5636363636363636,
+            "phase_anchor": [
+              128,
+              96
+            ],
+            "alpha_gain": 1.0
+          },
+          {
+            "frame": 4,
+            "top_left": [
+              60,
+              50
+            ],
+            "draw_scale": 0.5636363636363636,
+            "phase_anchor": [
+              128,
+              96
+            ],
+            "alpha_gain": 1.0
+          },
+          {
+            "frame": 5,
+            "top_left": [
+              77,
+              36
+            ],
+            "draw_scale": 0.5636363636363636,
+            "phase_anchor": [
+              128,
+              96
+            ],
+            "alpha_gain": 0.88
+          },
+          {
+            "frame": 6,
+            "top_left": [
+              90,
+              47
+            ],
+            "draw_scale": 0.5636363636363636,
+            "phase_anchor": [
+              128,
+              96
+            ],
+            "alpha_gain": 0.7
+          },
+          {
+            "frame": 7,
+            "top_left": [
+              85,
+              60
+            ],
+            "draw_scale": 0.5636363636363636,
+            "phase_anchor": [
+              128,
+              96
+            ],
+            "alpha_gain": 0.48
+          },
+          {
+            "frame": 8,
+            "top_left": [
+              97,
+              77
+            ],
+            "draw_scale": 0.5636363636363636,
+            "phase_anchor": [
+              128,
+              96
+            ],
+            "alpha_gain": 0.28
+          },
+          {
+            "frame": 9,
+            "top_left": [
+              103,
+              60
+            ],
+            "draw_scale": 0.5636363636363636,
+            "phase_anchor": [
+              128,
+              96
+            ],
+            "alpha_gain": 0.18
+          },
+          {
+            "frame": 10,
+            "top_left": [
+              79,
+              72
+            ],
+            "draw_scale": 0.5636363636363636,
+            "phase_anchor": [
+              128,
+              96
+            ],
+            "alpha_gain": 0.12
+          },
+          {
+            "frame": 11,
+            "top_left": [
+              65,
+              116
+            ],
+            "draw_scale": 0.5636363636363636,
+            "phase_anchor": [
+              128,
+              164
+            ],
+            "alpha_gain": 1.0
+          },
+          {
+            "frame": 12,
+            "top_left": [
+              62,
+              121
+            ],
+            "draw_scale": 0.5636363636363636,
+            "phase_anchor": [
+              128,
+              164
+            ],
+            "alpha_gain": 1.0
+          },
+          {
+            "frame": 13,
+            "top_left": [
+              56,
+              112
+            ],
+            "draw_scale": 0.5636363636363636,
+            "phase_anchor": [
+              128,
+              164
+            ],
+            "alpha_gain": 1.0
+          },
+          {
+            "frame": 14,
+            "top_left": [
+              67,
+              121
+            ],
+            "draw_scale": 0.5636363636363636,
+            "phase_anchor": [
+              128,
+              164
+            ],
+            "alpha_gain": 0.65
+          },
+          {
+            "frame": 15,
+            "top_left": [
+              93,
+              123
+            ],
+            "draw_scale": 0.5636363636363636,
+            "phase_anchor": [
+              128,
+              164
+            ],
+            "alpha_gain": 0.35
+          },
+          {
+            "frame": 16,
+            "top_left": [
+              91,
+              129
+            ],
+            "draw_scale": 0.5636363636363636,
+            "phase_anchor": [
+              128,
+              164
+            ],
+            "alpha_gain": 0.12
+          }
+        ],
+        "separation_diagnostics": [
+          {
+            "horizontal_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "horizontal_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "horizontal_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 1,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 1,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 1,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 2,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 2,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 2,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 3,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 3,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 3,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 4,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 4,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 4,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          }
+        ],
+        "direction_mirrored": false,
+        "source_tail_repair": null
+      },
+      {
+        "key": "StarShearGuardUpwardScissor",
+        "label": "挑空上剪弧光",
+        "fps": 20,
+        "loop": false,
+        "anchor": "center",
+        "prompt": "One16-frame UPWARD-FORWARD scissors cutting-light burst aimed to UPPER SCREEN LEFT. Two opposed silver-white/cyan crescent LIGHT ARCS rise from lower-right around(178,190) to upper-left around(78,70), curl toward each other and close into an UPWARD angled cut near(105,95). They must read as a fast rising shearing cut in front, not a circular aura, portal, bird wing or physical sword. F1 tiny cyan glint at low-right origin; F2-5 slender paired arcs grow UP and LEFT; F6-9 both crescents snap together at the forward/upper apex, bright white narrow edges; F10-12 short tapering upward continuation separates into filaments; F13-15 wisps and a few tiny cyan glints dissipate; F16 almost empty. Fixed visualscale and localanchor(128,128); maximum188pxwidth/heightincludingglow, allinside32..224. No character/weapon/feathers/afterimage/dust.",
+        "file": "Effects/UpwardScissorFX.png",
+        "prefab": "Assets/Projects/Prefabs/SeparateEffort/StarShearGuardUpwardScissorFX.prefab",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "scale": 0.6799276672694394,
+        "guid": "ac8ed3a625ba4286acebfd823a8d9ba0",
+        "sprite_ids": [
+          888769244022270441,
+          1063644566382694984,
+          580166237464449849,
+          647779694119528470,
+          1085734635177670559,
+          708077822424791859,
+          93189301883930809,
+          681460304272624273,
+          340335106826540428,
+          998521133604091240,
+          35509589833904147,
+          447056431375153064,
+          184903108388521356,
+          530446324108531587,
+          1139391862312572618,
+          869878734007758019
+        ],
+        "sha256": "7ae017fbc017cca62d75916c40c017be9ac95bd6b40f9d668bf5b198492573d2",
+        "frames": [
+          {
+            "frame": 1,
+            "bbox": [
+              150,
+              174,
+              194,
+              218
+            ],
+            "margins_LRTB": [
+              150,
+              62,
+              174,
+              38
+            ]
+          },
+          {
+            "frame": 2,
+            "bbox": [
+              105,
+              142,
+              202,
+              221
+            ],
+            "margins_LRTB": [
+              105,
+              54,
+              142,
+              35
+            ]
+          },
+          {
+            "frame": 3,
+            "bbox": [
+              66,
+              93,
+              202,
+              222
+            ],
+            "margins_LRTB": [
+              66,
+              54,
+              93,
+              34
+            ]
+          },
+          {
+            "frame": 4,
+            "bbox": [
+              46,
+              60,
+              207,
+              222
+            ],
+            "margins_LRTB": [
+              46,
+              49,
+              60,
+              34
+            ]
+          },
+          {
+            "frame": 5,
+            "bbox": [
+              66,
+              52,
+              218,
+              212
+            ],
+            "margins_LRTB": [
+              66,
+              38,
+              52,
+              44
+            ]
+          },
+          {
+            "frame": 6,
+            "bbox": [
+              53,
+              49,
+              218,
+              214
+            ],
+            "margins_LRTB": [
+              53,
+              38,
+              49,
+              42
+            ]
+          },
+          {
+            "frame": 7,
+            "bbox": [
+              40,
+              47,
+              220,
+              214
+            ],
+            "margins_LRTB": [
+              40,
+              36,
+              47,
+              42
+            ]
+          },
+          {
+            "frame": 8,
+            "bbox": [
+              48,
+              52,
+              217,
+              207
+            ],
+            "margins_LRTB": [
+              48,
+              39,
+              52,
+              49
+            ]
+          },
+          {
+            "frame": 9,
+            "bbox": [
+              64,
+              45,
+              212,
+              193
+            ],
+            "margins_LRTB": [
+              64,
+              44,
+              45,
+              63
+            ]
+          },
+          {
+            "frame": 10,
+            "bbox": [
+              67,
+              50,
+              212,
+              197
+            ],
+            "margins_LRTB": [
+              67,
+              44,
+              50,
+              59
+            ]
+          },
+          {
+            "frame": 11,
+            "bbox": [
+              66,
+              51,
+              199,
+              188
+            ],
+            "margins_LRTB": [
+              66,
+              57,
+              51,
+              68
+            ]
+          },
+          {
+            "frame": 12,
+            "bbox": [
+              78,
+              50,
+              175,
+              178
+            ],
+            "margins_LRTB": [
+              78,
+              81,
+              50,
+              78
+            ]
+          },
+          {
+            "frame": 13,
+            "bbox": [
+              74,
+              48,
+              194,
+              172
+            ],
+            "margins_LRTB": [
+              74,
+              62,
+              48,
+              84
+            ]
+          },
+          {
+            "frame": 14,
+            "bbox": [
+              71,
+              51,
+              162,
+              168
+            ],
+            "margins_LRTB": [
+              71,
+              94,
+              51,
+              88
+            ]
+          },
+          {
+            "frame": 15,
+            "bbox": [
+              88,
+              82,
+              142,
+              116
+            ],
+            "margins_LRTB": [
+              88,
+              114,
+              82,
+              140
+            ]
+          },
+          {
+            "frame": 16,
+            "bbox": [
+              88,
+              82,
+              142,
+              115
+            ],
+            "margins_LRTB": [
+              88,
+              114,
+              82,
+              141
+            ]
+          }
+        ],
+        "placement": [
+          {
+            "frame": 1,
+            "top_left": [
+              150,
+              174
+            ],
+            "draw_scale": 0.6799276672694394,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1.0
+          },
+          {
+            "frame": 2,
+            "top_left": [
+              105,
+              142
+            ],
+            "draw_scale": 0.6799276672694394,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1.0
+          },
+          {
+            "frame": 3,
+            "top_left": [
+              66,
+              93
+            ],
+            "draw_scale": 0.6799276672694394,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1.0
+          },
+          {
+            "frame": 4,
+            "top_left": [
+              46,
+              60
+            ],
+            "draw_scale": 0.6799276672694394,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1.0
+          },
+          {
+            "frame": 5,
+            "top_left": [
+              66,
+              52
+            ],
+            "draw_scale": 0.6799276672694394,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1.0
+          },
+          {
+            "frame": 6,
+            "top_left": [
+              53,
+              49
+            ],
+            "draw_scale": 0.6799276672694394,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1.0
+          },
+          {
+            "frame": 7,
+            "top_left": [
+              40,
+              47
+            ],
+            "draw_scale": 0.6799276672694394,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1.0
+          },
+          {
+            "frame": 8,
+            "top_left": [
+              48,
+              52
+            ],
+            "draw_scale": 0.6799276672694394,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1.0
+          },
+          {
+            "frame": 9,
+            "top_left": [
+              64,
+              45
+            ],
+            "draw_scale": 0.6799276672694394,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1.0
+          },
+          {
+            "frame": 10,
+            "top_left": [
+              67,
+              50
+            ],
+            "draw_scale": 0.6799276672694394,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1.0
+          },
+          {
+            "frame": 11,
+            "top_left": [
+              66,
+              51
+            ],
+            "draw_scale": 0.6799276672694394,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 0.92
+          },
+          {
+            "frame": 12,
+            "top_left": [
+              78,
+              50
+            ],
+            "draw_scale": 0.6799276672694394,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 0.82
+          },
+          {
+            "frame": 13,
+            "top_left": [
+              74,
+              48
+            ],
+            "draw_scale": 0.6799276672694394,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 0.65
+          },
+          {
+            "frame": 14,
+            "top_left": [
+              71,
+              51
+            ],
+            "draw_scale": 0.6799276672694394,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 0.46
+          },
+          {
+            "frame": 15,
+            "top_left": [
+              87,
+              82
+            ],
+            "draw_scale": 0.6799276672694394,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 0.28
+          },
+          {
+            "frame": 16,
+            "top_left": [
+              87,
+              82
+            ],
+            "draw_scale": 0.6799276672694394,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 0.3
+          }
+        ],
+        "separation_diagnostics": [
+          {
+            "horizontal_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "horizontal_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "horizontal_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 1,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 1,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 1,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 2,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 2,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 2,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 3,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 3,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 3,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 4,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 4,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 4,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          }
+        ],
+        "direction_mirrored": false,
+        "source_tail_repair": "F16 continues the existing F15 painted wisps at 40% alpha; original generated source preserved."
+      },
+      {
+        "key": "StarShearGuardBackstepCut",
+        "label": "退步反剪短斩",
+        "fps": 20,
+        "loop": false,
+        "anchor": "vent",
+        "prompt": "One16-frame SHORT FORWARD COUNTER-CUT light burst toward SCREEN LEFT, following a backstep. Pure compact silver-white/cyan hooked slash crescent; no backward character afterimage or hop dust, and no long beam/projectile. Fixed right-side cut origin cell-local(210,128); the short sharp leading tip cuts toward LEFT to aboutx48, with a small thin curled return arc. F1 small concentrated cyan glint at right origin; F2-5 narrow cutting-light stroke darts LEFT and opens into short hookedcrescent; F6-9 compact crescent at full length with silver leadingedge/navyinneredge and 2-3 tiny icy glints; F10-12 stroke thins/shortens; F13-15 hook breaks into wisps and glints; F16 almost fullygone. Max188pxwide/130pxtall, at least32pxemptyedges. No bird/weapon/feathers/body echo/afterimage/dust. Celshaded crisp lightshape, no round explosion or aura.",
+        "file": "Effects/BackstepCutFX.png",
+        "prefab": "Assets/Projects/Prefabs/SeparateEffort/StarShearGuardBackstepCutFX.prefab",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "scale": 0.6642599277978339,
+        "guid": "2a6e29768c9a431f975f214adc74ac85",
+        "sprite_ids": [
+          646265443215877902,
+          202504643318370962,
+          170202571192569787,
+          759731678904173353,
+          611662564295072904,
+          1074738170406306204,
+          150466811057791878,
+          495509191454969888,
+          6228358602941736,
+          382866433780177035,
+          1137705375617177747,
+          644187308735628644,
+          929571990180901874,
+          988640491909038872,
+          672619355187026644,
+          231738829874236837
+        ],
+        "sha256": "9476ab42ee741b145ce02b4a77c049f95eb43e0fe02253e77f3450d9609c314f",
+        "frames": [
+          {
+            "frame": 1,
+            "bbox": [
+              95,
+              108,
+              160,
+              148
+            ],
+            "margins_LRTB": [
+              95,
+              96,
+              108,
+              108
+            ]
+          },
+          {
+            "frame": 2,
+            "bbox": [
+              78,
+              106,
+              178,
+              149
+            ],
+            "margins_LRTB": [
+              78,
+              78,
+              106,
+              107
+            ]
+          },
+          {
+            "frame": 3,
+            "bbox": [
+              56,
+              105,
+              201,
+              151
+            ],
+            "margins_LRTB": [
+              56,
+              55,
+              105,
+              105
+            ]
+          },
+          {
+            "frame": 4,
+            "bbox": [
+              61,
+              102,
+              195,
+              154
+            ],
+            "margins_LRTB": [
+              61,
+              61,
+              102,
+              102
+            ]
+          },
+          {
+            "frame": 5,
+            "bbox": [
+              54,
+              86,
+              201,
+              170
+            ],
+            "margins_LRTB": [
+              54,
+              55,
+              86,
+              86
+            ]
+          },
+          {
+            "frame": 6,
+            "bbox": [
+              44,
+              69,
+              213,
+              188
+            ],
+            "margins_LRTB": [
+              44,
+              43,
+              69,
+              68
+            ]
+          },
+          {
+            "frame": 7,
+            "bbox": [
+              36,
+              74,
+              220,
+              182
+            ],
+            "margins_LRTB": [
+              36,
+              36,
+              74,
+              74
+            ]
+          },
+          {
+            "frame": 8,
+            "bbox": [
+              37,
+              69,
+              218,
+              187
+            ],
+            "margins_LRTB": [
+              37,
+              38,
+              69,
+              69
+            ]
+          },
+          {
+            "frame": 9,
+            "bbox": [
+              45,
+              71,
+              210,
+              185
+            ],
+            "margins_LRTB": [
+              45,
+              46,
+              71,
+              71
+            ]
+          },
+          {
+            "frame": 10,
+            "bbox": [
+              45,
+              84,
+              210,
+              172
+            ],
+            "margins_LRTB": [
+              45,
+              46,
+              84,
+              84
+            ]
+          },
+          {
+            "frame": 11,
+            "bbox": [
+              50,
+              90,
+              205,
+              165
+            ],
+            "margins_LRTB": [
+              50,
+              51,
+              90,
+              91
+            ]
+          },
+          {
+            "frame": 12,
+            "bbox": [
+              57,
+              92,
+              200,
+              164
+            ],
+            "margins_LRTB": [
+              57,
+              56,
+              92,
+              92
+            ]
+          },
+          {
+            "frame": 13,
+            "bbox": [
+              56,
+              96,
+              201,
+              160
+            ],
+            "margins_LRTB": [
+              56,
+              55,
+              96,
+              96
+            ]
+          },
+          {
+            "frame": 14,
+            "bbox": [
+              64,
+              103,
+              192,
+              153
+            ],
+            "margins_LRTB": [
+              64,
+              64,
+              103,
+              103
+            ]
+          },
+          {
+            "frame": 15,
+            "bbox": [
+              61,
+              102,
+              195,
+              153
+            ],
+            "margins_LRTB": [
+              61,
+              61,
+              102,
+              103
+            ]
+          },
+          {
+            "frame": 16,
+            "bbox": [
+              82,
+              110,
+              174,
+              145
+            ],
+            "margins_LRTB": [
+              82,
+              82,
+              110,
+              111
+            ]
+          }
+        ],
+        "placement": [
+          {
+            "frame": 1,
+            "top_left": [
+              95,
+              108
+            ],
+            "draw_scale": 0.6642599277978339,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1.0
+          },
+          {
+            "frame": 2,
+            "top_left": [
+              78,
+              106
+            ],
+            "draw_scale": 0.6642599277978339,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1.0
+          },
+          {
+            "frame": 3,
+            "top_left": [
+              56,
+              105
+            ],
+            "draw_scale": 0.6642599277978339,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1.0
+          },
+          {
+            "frame": 4,
+            "top_left": [
+              61,
+              102
+            ],
+            "draw_scale": 0.6642599277978339,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1.0
+          },
+          {
+            "frame": 5,
+            "top_left": [
+              54,
+              86
+            ],
+            "draw_scale": 0.6642599277978339,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1.0
+          },
+          {
+            "frame": 6,
+            "top_left": [
+              44,
+              69
+            ],
+            "draw_scale": 0.6642599277978339,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1.0
+          },
+          {
+            "frame": 7,
+            "top_left": [
+              36,
+              74
+            ],
+            "draw_scale": 0.6642599277978339,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1.0
+          },
+          {
+            "frame": 8,
+            "top_left": [
+              37,
+              69
+            ],
+            "draw_scale": 0.6642599277978339,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1.0
+          },
+          {
+            "frame": 9,
+            "top_left": [
+              45,
+              71
+            ],
+            "draw_scale": 0.6642599277978339,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1.0
+          },
+          {
+            "frame": 10,
+            "top_left": [
+              45,
+              84
+            ],
+            "draw_scale": 0.6642599277978339,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 1.0
+          },
+          {
+            "frame": 11,
+            "top_left": [
+              50,
+              90
+            ],
+            "draw_scale": 0.6642599277978339,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 0.92
+          },
+          {
+            "frame": 12,
+            "top_left": [
+              57,
+              92
+            ],
+            "draw_scale": 0.6642599277978339,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 0.82
+          },
+          {
+            "frame": 13,
+            "top_left": [
+              56,
+              96
+            ],
+            "draw_scale": 0.6642599277978339,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 0.65
+          },
+          {
+            "frame": 14,
+            "top_left": [
+              64,
+              103
+            ],
+            "draw_scale": 0.6642599277978339,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 0.46
+          },
+          {
+            "frame": 15,
+            "top_left": [
+              60,
+              102
+            ],
+            "draw_scale": 0.6642599277978339,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 0.28
+          },
+          {
+            "frame": 16,
+            "top_left": [
+              80,
+              108
+            ],
+            "draw_scale": 0.6642599277978339,
+            "phase_anchor": [
+              128,
+              128
+            ],
+            "alpha_gain": 0.12
+          }
+        ],
+        "separation_diagnostics": [
+          {
+            "horizontal_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "horizontal_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "horizontal_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 1,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 1,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 1,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 2,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 2,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 2,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 3,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 3,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 3,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 4,
+            "vertical_boundary": 1,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 4,
+            "vertical_boundary": 2,
+            "opaque_crossed": 0
+          },
+          {
+            "row": 4,
+            "vertical_boundary": 3,
+            "opaque_crossed": 0
+          }
+        ],
+        "direction_mirrored": true,
+        "source_tail_repair": null
+      }
+    ]
+  }
+}

@@ -1,0 +1,325 @@
+fileFormatVersion: 2
+guid: f24361c228d55bba934d03b2ec7c822e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: AttackSkill_01
+  - first:
+      213: 21300002
+    second: AttackSkill_02
+  - first:
+      213: 21300004
+    second: AttackSkill_03
+  - first:
+      213: 21300006
+    second: AttackSkill_04
+  - first:
+      213: 21300008
+    second: AttackSkill_05
+  - first:
+      213: 21300010
+    second: AttackSkill_06
+  - first:
+      213: 21300012
+    second: AttackSkill_07
+  - first:
+      213: 21300014
+    second: AttackSkill_08
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 9
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: AttackSkill_01
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 563
+        width: 979
+        height: 183
+      alignment: 9
+      pivot: {x: 0.3677221655, y: 0.5000000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79ecb720f299593287d862d802c6bf0d
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AttackSkill_02
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 563
+        width: 979
+        height: 183
+      alignment: 9
+      pivot: {x: 0.2625127681, y: 0.4972677596}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b7239c2f50c5aebb6421135ede618fa
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AttackSkill_03
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 376
+        width: 979
+        height: 183
+      alignment: 9
+      pivot: {x: 0.1460674157, y: 0.5245901639}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ad9c1ad52c1581194a34e32518f3449
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AttackSkill_04
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 376
+        width: 979
+        height: 183
+      alignment: 9
+      pivot: {x: 0.0766087845, y: 0.5054644809}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df37fdfdea8c5befb62b9d3148c8fd95
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AttackSkill_05
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 189
+        width: 979
+        height: 183
+      alignment: 9
+      pivot: {x: 0.0755873340, y: 0.5109289617}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51c8021aa3775712bb6d213eacb04d9a
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AttackSkill_06
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 189
+        width: 979
+        height: 183
+      alignment: 9
+      pivot: {x: 0.0766087845, y: 0.5054644809}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f6f7e9bbd2f5bbd974876e591622eb4
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AttackSkill_07
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 979
+        height: 183
+      alignment: 9
+      pivot: {x: 0.0776302349, y: 0.5300546448}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3527ea2440c53d38734a250c4448509
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AttackSkill_08
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 2
+        width: 979
+        height: 183
+      alignment: 9
+      pivot: {x: 0.0776302349, y: 0.5300546448}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56966efeafe05b4eab457956b4664600
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      AttackSkill_01: 21300000
+      AttackSkill_02: 21300002
+      AttackSkill_03: 21300004
+      AttackSkill_04: 21300006
+      AttackSkill_05: 21300008
+      AttackSkill_06: 21300010
+      AttackSkill_07: 21300012
+      AttackSkill_08: 21300014
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

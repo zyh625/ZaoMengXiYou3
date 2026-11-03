@@ -8,6 +8,7 @@ public class MenuButton : MonoBehaviour
 {
     [SerializeField] TMP_InputField inputName;
     [SerializeField] TextMeshProUGUI[] fileInformantion;//存档信息
+    [SerializeField] private Text[] rebirthLabels;//独立中文行，不挤占原有昵称与日期。
     [SerializeField] private GameObject CreatFile;//创建存档界面，输入昵称
     [SerializeField] private GameObject selectUI;//存档界面
     [SerializeField] private GameObject coverUI;//存档界面
@@ -36,6 +37,8 @@ public class MenuButton : MonoBehaviour
                 haveFile[i] = false;
                 fileInformantion[i].SetText("");
             }
+            if (rebirthLabels != null && i < rebirthLabels.Length && rebirthLabels[i] != null)
+                rebirthLabels[i].text = $"第 {(data != null ? data.rebirth : 0)} 轮回";
         }
     }
     public void NewGame()//新游戏
@@ -104,6 +107,7 @@ public class MenuButton : MonoBehaviour
     {
         fileButtons[fileIndex].gameObject.SetActive(false);
         SaveSystem.Delete(fileIndex);
+        haveFile[fileIndex] = false;//覆盖后按新存档读取输入昵称，不能仍当作已存在的旧档进入
         CreatFile.SetActive(true);
     }
     public void AboutGame()//关于游戏

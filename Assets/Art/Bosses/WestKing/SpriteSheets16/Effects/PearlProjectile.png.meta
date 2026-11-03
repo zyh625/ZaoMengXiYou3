@@ -1,0 +1,532 @@
+fileFormatVersion: 2
+guid: 5adf59329ffe14b43bd504a544e6df04
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: PearlProjectile_0
+  - first:
+      213: 21300002
+    second: PearlProjectile_1
+  - first:
+      213: 21300004
+    second: PearlProjectile_2
+  - first:
+      213: 21300006
+    second: PearlProjectile_3
+  - first:
+      213: 21300008
+    second: PearlProjectile_4
+  - first:
+      213: 21300010
+    second: PearlProjectile_5
+  - first:
+      213: 21300012
+    second: PearlProjectile_6
+  - first:
+      213: 21300014
+    second: PearlProjectile_7
+  - first:
+      213: 21300016
+    second: PearlProjectile_8
+  - first:
+      213: 21300018
+    second: PearlProjectile_9
+  - first:
+      213: 21300020
+    second: PearlProjectile_10
+  - first:
+      213: 21300022
+    second: PearlProjectile_11
+  - first:
+      213: 21300024
+    second: PearlProjectile_12
+  - first:
+      213: 21300026
+    second: PearlProjectile_13
+  - first:
+      213: 21300028
+    second: PearlProjectile_14
+  - first:
+      213: 21300030
+    second: PearlProjectile_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PearlProjectile_0
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 1297
+        width: 146
+        height: 93
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8dc4ed41a9cd51a48020556db8ef3c28
+      internalID: 21300000
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PearlProjectile_1
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 1292
+        width: 156
+        height: 104
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a433bdf45e45a71b4d5cc3e8ddf4035
+      internalID: 21300002
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PearlProjectile_2
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 1291
+        width: 167
+        height: 106
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bc427628e7f504596acda80b2ed85d1
+      internalID: 21300004
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PearlProjectile_3
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 1287
+        width: 151
+        height: 113
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e02dc49aa217559f8e4b2c4f25a7e718
+      internalID: 21300006
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PearlProjectile_4
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 899
+        width: 164
+        height: 122
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1edb01bdbe6f5b43a49784bbc5eff8b4
+      internalID: 21300008
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PearlProjectile_5
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 907
+        width: 157
+        height: 105
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e1ca7ca46d156ee9ef3a8964f262af4
+      internalID: 21300010
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PearlProjectile_6
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 908
+        width: 156
+        height: 104
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0c86105e1ff5a0daf457f058399dba0
+      internalID: 21300012
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PearlProjectile_7
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 909
+        width: 143
+        height: 101
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc82c5fe5df75a51b31277d0dea15388
+      internalID: 21300014
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PearlProjectile_8
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 523
+        width: 159
+        height: 106
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b023d46f8bef5ae1a95f8cd5e819cd6c
+      internalID: 21300016
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PearlProjectile_9
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 519
+        width: 166
+        height: 113
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab7aaeffeab750ed97289b208f0ec4ea
+      internalID: 21300018
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PearlProjectile_10
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 519
+        width: 173
+        height: 113
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ad36acd269355dbb99a2183d9aebf69
+      internalID: 21300020
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PearlProjectile_11
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 525
+        width: 143
+        height: 101
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de1c8c4e2d875da19a6446472547572c
+      internalID: 21300022
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PearlProjectile_12
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 137
+        width: 162
+        height: 111
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c579457f3ffb53ccb2eb41c82ee08885
+      internalID: 21300024
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PearlProjectile_13
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 140
+        width: 157
+        height: 104
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ced2f31a0d465ca99735a06030fd1a19
+      internalID: 21300026
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PearlProjectile_14
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 143
+        width: 151
+        height: 97
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f686e2f3069750ac82946d41395665e7
+      internalID: 21300028
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PearlProjectile_15
+      rect:
+        serializedVersion: 2
+        x: 821
+        y: 143
+        width: 150
+        height: 97
+      alignment: 9
+      pivot: {x: 0.500000000, y: 0.500000000}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78f3c9ddb8b1501c8b8711ca1f083b4b
+      internalID: 21300030
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices:
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      PearlProjectile_0: 21300000
+      PearlProjectile_1: 21300002
+      PearlProjectile_2: 21300004
+      PearlProjectile_3: 21300006
+      PearlProjectile_4: 21300008
+      PearlProjectile_5: 21300010
+      PearlProjectile_6: 21300012
+      PearlProjectile_7: 21300014
+      PearlProjectile_8: 21300016
+      PearlProjectile_9: 21300018
+      PearlProjectile_10: 21300020
+      PearlProjectile_11: 21300022
+      PearlProjectile_12: 21300024
+      PearlProjectile_13: 21300026
+      PearlProjectile_14: 21300028
+      PearlProjectile_15: 21300030
+  mipmapLimitGroupName:
+  pSDRemoveMatte: 0
+  userData: WestKing finished sheets only; 2px alpha crop; foot baseline 352
+  assetBundleName:
+  assetBundleVariant:

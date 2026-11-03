@@ -1,0 +1,161 @@
+{
+  "status": "passed",
+  "character_sheets": 9,
+  "character_frames": 144,
+  "effect_sheets": 6,
+  "effect_frames": 96,
+  "visual_prefabs": 6,
+  "reference_preserved": true,
+  "checks": [
+    {
+      "file": "Idle.png",
+      "frame_count": 16,
+      "minimum_padding": 51,
+      "maximum_bbox": [
+        102,
+        109
+      ],
+      "sha256": "9c166d4008a297a0b1c3e8844cdc51560763d0df5d1ff8c5e2ab4de00535fa99"
+    },
+    {
+      "file": "Walk.png",
+      "frame_count": 16,
+      "minimum_padding": 53,
+      "maximum_bbox": [
+        96,
+        97
+      ],
+      "sha256": "d469925f2ff9ea9715704e2a2571ab738d3c9c7cbeb3e5c370743821ac54433b"
+    },
+    {
+      "file": "SkyDash.png",
+      "frame_count": 16,
+      "minimum_padding": 54,
+      "maximum_bbox": [
+        102,
+        112
+      ],
+      "sha256": "256fbb3f7059ac72c9d67fa9ec2c10c1162639c65eb1228fdd7a0c9650415b9e"
+    },
+    {
+      "file": "FeatherFan.png",
+      "frame_count": 16,
+      "minimum_padding": 48,
+      "maximum_bbox": [
+        123,
+        157
+      ],
+      "sha256": "aabaa6cad4dba1d371770ca40ac0a45a2b6e4069c7e5d908e4f4f71b94efbc49"
+    },
+    {
+      "file": "TailSweep.png",
+      "frame_count": 16,
+      "minimum_padding": 36,
+      "maximum_bbox": [
+        140,
+        175
+      ],
+      "sha256": "cb7cc50e0a6bbd2a39b082d0bd71a6c615a54fda21f308d5fc9a3462815489ac"
+    },
+    {
+      "file": "StarDive.png",
+      "frame_count": 16,
+      "minimum_padding": 54,
+      "maximum_bbox": [
+        106,
+        113
+      ],
+      "sha256": "b467192a74d1c82f00e97301f318b3d1e580b8046bfb7434b5bd96c790457f6d"
+    },
+    {
+      "file": "Ascend.png",
+      "frame_count": 16,
+      "minimum_padding": 56,
+      "maximum_bbox": [
+        115,
+        132
+      ],
+      "sha256": "ad4bb9fb62a569738fe84054d83ecd2f1cac4a8489d80fdc68280e2474109fa5"
+    },
+    {
+      "file": "Hit.png",
+      "frame_count": 16,
+      "minimum_padding": 47,
+      "maximum_bbox": [
+        115,
+        113
+      ],
+      "sha256": "350cd50dc297a9365a4811dfb7918137b076676f981e06f5ca4d11e05036dd54"
+    },
+    {
+      "file": "Death.png",
+      "frame_count": 16,
+      "minimum_padding": 46,
+      "maximum_bbox": [
+        111,
+        105
+      ],
+      "sha256": "e9266e85c9e9efceb439230109be9ab3a1718262800b36fc877ffa4a6cdc9e52"
+    },
+    {
+      "file": "Effects/SkyDashTrail.png",
+      "frame_count": 16,
+      "minimum_padding": 36,
+      "maximum_bbox": [
+        184,
+        85
+      ],
+      "sha256": "7e3ac948f0725747be2840f46acff411e7f2d7babecd77863a6a55c3a1ad9193"
+    },
+    {
+      "file": "Effects/FeatherBlade.png",
+      "frame_count": 16,
+      "minimum_padding": 34,
+      "maximum_bbox": [
+        177,
+        84
+      ],
+      "sha256": "7b18171c075894e92c51155186809926a90317723c59ec910c5970453424136f"
+    },
+    {
+      "file": "Effects/TailSweepArc.png",
+      "frame_count": 16,
+      "minimum_padding": 34,
+      "maximum_bbox": [
+        181,
+        103
+      ],
+      "sha256": "3546fa7e317aca0c81f984dde1e572877f1fa5a8fb94aad98c213fbf093a3620"
+    },
+    {
+      "file": "Effects/StarDiveImpact.png",
+      "frame_count": 16,
+      "minimum_padding": 40,
+      "maximum_bbox": [
+        166,
+        150
+      ],
+      "sha256": "1c535bd0bcde040cc39666b5b7cb066468fa12fe23af2f172e31f270e929b8b5"
+    },
+    {
+      "file": "Effects/AscendAura.png",
+      "frame_count": 16,
+      "minimum_padding": 35,
+      "maximum_bbox": [
+        184,
+        169
+      ],
+      "sha256": "b02fed1b92779a94a6a7c9f372fd1ef66f539befc56d540b9818f1c8a37a787a"
+    },
+    {
+      "file": "Effects/FeatherRainMarker.png",
+      "frame_count": 16,
+      "minimum_padding": 39,
+      "maximum_bbox": [
+        178,
+        150
+      ],
+      "sha256": "a2adc0b626818ae6c5617945efa3d5d7c7d96285a950e748bb27031edf54ba5f"
+    }
+  ]
+}

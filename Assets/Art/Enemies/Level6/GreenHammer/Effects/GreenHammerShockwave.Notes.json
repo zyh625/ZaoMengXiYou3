@@ -1,0 +1,567 @@
+{
+  "date": "2026-11-01",
+  "generator": "built-in image_gen",
+  "reference_role": "style and palette only",
+  "reference": "D:/Unity/Project/ZaoMengXiYou3/Assets/Art/Enemies/Level6/GreenHammer/Stand.png",
+  "prompt": "Use case: stylized-concept. Asset: production 2D game EFFECT-ONLY animation sprite sheet, a ONE-SHOT ground shockwave.\nINPUT REFERENCE ROLE: Stand.png is STYLE/PALETTE reference ONLY: match its strong clean dark outlines, polished hand-painted cel shading, deep jade-green and antique-gold colors used in a Chinese fantasy action game. Do NOT draw or borrow the reference's person, armor, face, hand, weapon, hammer, costume, UI or silhouette. The deliverable contains NO character, creature or weapon.\nMANDATORY CANVAS: square 1024x1024 RGBA PNG, REAL TRANSPARENT ALPHA. EXACTLY SIXTEEN distinct sequential effect frames in a regular FOUR COLUMN x FOUR ROW grid. Invisible square cells are 256x256. Read F1-16 left-to-right, then top-to-bottom, continuous animation across all row breaks. No grid lines, labels, numbers, lettering, frames, border or watermark.\nMANDATORY SMALL EFFECT: whole effect including ALL dust, crack, stone shards, rim light and embers occupies at most 178 pixels wide (70% of cell) and 153 pixels tall (60%). Horizontal center stays near cell-local x=128. Fixed flat impact ground baseline at cell-local y=216, close to bottom, across ALL 16 frames. The crack/contact footprint sits on this SAME baseline and nothing is drawn below it. Empty transparent padding on all FOUR sides of EVERY frame: at least24px, preferably39px left/right and40px beneath baseline. Preserve the SAME drawing scale and world-ground line for all16; the physical burst grows/shrinks naturally. Never zoom or normalize each frame to the same effect size. Leave very wide genuinely empty transparent gutters between all effects and at the outer canvas. No part may touch, overlap or enter another cell. No cropped particles.\nEFFECT DESIGN: a HEAVY JADE-GREEN GROUND SHOCKWAVE with a THIN ANTIQUE-GOLD RIM LIGHT, erupting gray-green/ochre dust and SMALL angular stone shards. It should read as a LOW HORIZONTAL PRESSURE WAVE pushing toward SCREEN LEFT: a low leading crescent/plough edge at the LEFT, stretched trailing green wisps and dust drawn out to the RIGHT. Strong weight, energetic but grounded, modest low height. This is NOT a circular buff ring, dome, sphere, vertical flame plume, smoke column or pool of fire. The crack is just a tiny isolated graphic line at the contact point, NOT a drawn floor slab or ground texture. Only the effect and its small debris on transparent pixels.\nANIMATION: ONE CONTINUOUS BURST, 16 frames, no loop, no repeated static icons:\nF1 tiny thin crack and one bright jade-white impact pinpoint at ground baseline; very little energy.\nF2 small ground bulge, the first short upward dust puff and 2-3 tiny stone chips.\nF3 bulge pushes left and rises modestly, dust/shards launch upward.\nF4 first low jade crescent forms with thin gold lip, dust erupts.\nF5-6 crescent expands SIDEWAYS to LEFT while a trailing jade sweep extends RIGHT, shards rise, peak growth begins.\nF7-8 widest and strongest LOW horizontal jade/gold crescent, heavy gray-green dust rolling back to RIGHT; at most153px total height, all tiny shards in bounds.\nF9-10 leading edge advances a little further LEFT while wave stretches horizontally and gets THINNER, dust starts settling.\nF11-12 energy weakens and thins, gold edge breaks in places, shards visibly descend.\nF13-14 coherent crescent breaks into a few low trailing green wisps, dust/shards fall toward same baseline.\nF15 only thin fading low wisps, a few settling grit pixels and faint gold embers.\nF16 almost fully dissipated: ONLY a few FAINT tiny jade/gold embers near the baseline. Do not leave a full ring, dust cloud, cracked slab or solid crescent in F16.\nVISUAL STYLE: crisp cel-shaded cartoon energy and chunky outlined debris, jade body with pale mint highlights and thin aged gold rim, limited restrained glow. Match reference art linework. No photorealistic smoke, overly soft airbrush haze, neon primary yellow/green background spill or thick yellow halo.\nBACKGROUND: truly EMPTY transparent alpha, NO background, scenery, ground plane/texture, floor shadow, black rectangle, color gradient or checkerboard printed into image. No character, weapon, UI or text in any frame.",
+  "file": "GreenHammerShockwave.png",
+  "canvas": [
+    1024,
+    1024
+  ],
+  "grid": [
+    4,
+    4
+  ],
+  "cell": [
+    256,
+    256
+  ],
+  "loop": false,
+  "fps": 16,
+  "duration_seconds": 1,
+  "pixels_per_unit": 100,
+  "ground_line_from_cell_top": 216,
+  "pivot": [
+    0.5,
+    0.15625
+  ],
+  "uniform_draw_scale": 0.572347266881029,
+  "guid": "dbcf9d990cea4a5ab86f680a00ab4273",
+  "sprite_ids": [
+    125217890208277251,
+    241117088218987616,
+    829378582007044143,
+    109775912191877661,
+    538732388224593643,
+    403214139460991600,
+    1111464781630417623,
+    816144189414515603,
+    621540678722333325,
+    723832115150346494,
+    941767440013279580,
+    285909949401107185,
+    363901205162907541,
+    431120472400993387,
+    291671982537912184,
+    1012527930006912310
+  ],
+  "sha256": "c4c1d2f0a217dad5090e3b8da891ff58e9d43c90133e3cca62d1439b30bb86c6",
+  "separation_diagnostics": [
+    {
+      "row": 1,
+      "boundary": 1,
+      "opaque_pixels_crossed": 0
+    },
+    {
+      "row": 1,
+      "boundary": 2,
+      "opaque_pixels_crossed": 0
+    },
+    {
+      "row": 1,
+      "boundary": 3,
+      "opaque_pixels_crossed": 0
+    },
+    {
+      "row": 2,
+      "boundary": 1,
+      "opaque_pixels_crossed": 0
+    },
+    {
+      "row": 2,
+      "boundary": 2,
+      "opaque_pixels_crossed": 0
+    },
+    {
+      "row": 2,
+      "boundary": 3,
+      "opaque_pixels_crossed": 0
+    },
+    {
+      "row": 3,
+      "boundary": 1,
+      "opaque_pixels_crossed": 0
+    },
+    {
+      "row": 3,
+      "boundary": 2,
+      "opaque_pixels_crossed": 0
+    },
+    {
+      "row": 3,
+      "boundary": 3,
+      "opaque_pixels_crossed": 0
+    },
+    {
+      "row": 4,
+      "boundary": 1,
+      "opaque_pixels_crossed": 0
+    },
+    {
+      "row": 4,
+      "boundary": 2,
+      "opaque_pixels_crossed": 0
+    },
+    {
+      "row": 4,
+      "boundary": 3,
+      "opaque_pixels_crossed": 0
+    }
+  ],
+  "frames": [
+    {
+      "frame": 1,
+      "bbox": [
+        91,
+        202,
+        167,
+        215
+      ],
+      "margins_LRTB": [
+        91,
+        89,
+        202,
+        41
+      ]
+    },
+    {
+      "frame": 2,
+      "bbox": [
+        82,
+        163,
+        187,
+        215
+      ],
+      "margins_LRTB": [
+        82,
+        69,
+        163,
+        41
+      ]
+    },
+    {
+      "frame": 3,
+      "bbox": [
+        55,
+        144,
+        179,
+        215
+      ],
+      "margins_LRTB": [
+        55,
+        77,
+        144,
+        41
+      ]
+    },
+    {
+      "frame": 4,
+      "bbox": [
+        41,
+        132,
+        200,
+        215
+      ],
+      "margins_LRTB": [
+        41,
+        56,
+        132,
+        41
+      ]
+    },
+    {
+      "frame": 5,
+      "bbox": [
+        50,
+        129,
+        215,
+        215
+      ],
+      "margins_LRTB": [
+        50,
+        41,
+        129,
+        41
+      ]
+    },
+    {
+      "frame": 6,
+      "bbox": [
+        47,
+        122,
+        214,
+        216
+      ],
+      "margins_LRTB": [
+        47,
+        42,
+        122,
+        40
+      ]
+    },
+    {
+      "frame": 7,
+      "bbox": [
+        40,
+        105,
+        217,
+        216
+      ],
+      "margins_LRTB": [
+        40,
+        39,
+        105,
+        40
+      ]
+    },
+    {
+      "frame": 8,
+      "bbox": [
+        42,
+        121,
+        213,
+        215
+      ],
+      "margins_LRTB": [
+        42,
+        43,
+        121,
+        41
+      ]
+    },
+    {
+      "frame": 9,
+      "bbox": [
+        51,
+        139,
+        217,
+        216
+      ],
+      "margins_LRTB": [
+        51,
+        39,
+        139,
+        40
+      ]
+    },
+    {
+      "frame": 10,
+      "bbox": [
+        48,
+        143,
+        214,
+        216
+      ],
+      "margins_LRTB": [
+        48,
+        42,
+        143,
+        40
+      ]
+    },
+    {
+      "frame": 11,
+      "bbox": [
+        44,
+        148,
+        213,
+        216
+      ],
+      "margins_LRTB": [
+        44,
+        43,
+        148,
+        40
+      ]
+    },
+    {
+      "frame": 12,
+      "bbox": [
+        47,
+        160,
+        208,
+        216
+      ],
+      "margins_LRTB": [
+        47,
+        48,
+        160,
+        40
+      ]
+    },
+    {
+      "frame": 13,
+      "bbox": [
+        56,
+        160,
+        208,
+        215
+      ],
+      "margins_LRTB": [
+        56,
+        48,
+        160,
+        41
+      ]
+    },
+    {
+      "frame": 14,
+      "bbox": [
+        55,
+        170,
+        206,
+        215
+      ],
+      "margins_LRTB": [
+        55,
+        50,
+        170,
+        41
+      ]
+    },
+    {
+      "frame": 15,
+      "bbox": [
+        54,
+        182,
+        206,
+        215
+      ],
+      "margins_LRTB": [
+        54,
+        50,
+        182,
+        41
+      ]
+    },
+    {
+      "frame": 16,
+      "bbox": [
+        91,
+        194,
+        153,
+        214
+      ],
+      "margins_LRTB": [
+        91,
+        103,
+        194,
+        42
+      ]
+    }
+  ],
+  "alignment": [
+    {
+      "frame": 1,
+      "draw_scale": 0.572347266881029,
+      "source_bbox": [
+        89,
+        244,
+        225,
+        296
+      ],
+      "x": 90,
+      "top": 186,
+      "ground_line": 216
+    },
+    {
+      "frame": 2,
+      "draw_scale": 0.572347266881029,
+      "source_bbox": [
+        389,
+        204,
+        572,
+        297
+      ],
+      "x": 82,
+      "top": 163,
+      "ground_line": 216
+    },
+    {
+      "frame": 3,
+      "draw_scale": 0.572347266881029,
+      "source_bbox": [
+        655,
+        172,
+        872,
+        297
+      ],
+      "x": 55,
+      "top": 144,
+      "ground_line": 216
+    },
+    {
+      "frame": 4,
+      "draw_scale": 0.572347266881029,
+      "source_bbox": [
+        942,
+        151,
+        1222,
+        298
+      ],
+      "x": 40,
+      "top": 132,
+      "ground_line": 216
+    },
+    {
+      "frame": 5,
+      "draw_scale": 0.572347266881029,
+      "source_bbox": [
+        20,
+        442,
+        309,
+        594
+      ],
+      "x": 50,
+      "top": 129,
+      "ground_line": 216
+    },
+    {
+      "frame": 6,
+      "draw_scale": 0.572347266881029,
+      "source_bbox": [
+        325,
+        427,
+        619,
+        591
+      ],
+      "x": 46,
+      "top": 122,
+      "ground_line": 216
+    },
+    {
+      "frame": 7,
+      "draw_scale": 0.572347266881029,
+      "source_bbox": [
+        627,
+        399,
+        938,
+        593
+      ],
+      "x": 39,
+      "top": 105,
+      "ground_line": 216
+    },
+    {
+      "frame": 8,
+      "draw_scale": 0.572347266881029,
+      "source_bbox": [
+        944,
+        427,
+        1244,
+        593
+      ],
+      "x": 41,
+      "top": 121,
+      "ground_line": 216
+    },
+    {
+      "frame": 9,
+      "draw_scale": 0.572347266881029,
+      "source_bbox": [
+        19,
+        747,
+        310,
+        884
+      ],
+      "x": 50,
+      "top": 138,
+      "ground_line": 216
+    },
+    {
+      "frame": 10,
+      "draw_scale": 0.572347266881029,
+      "source_bbox": [
+        328,
+        757,
+        620,
+        884
+      ],
+      "x": 47,
+      "top": 143,
+      "ground_line": 216
+    },
+    {
+      "frame": 11,
+      "draw_scale": 0.572347266881029,
+      "source_bbox": [
+        636,
+        768,
+        932,
+        886
+      ],
+      "x": 44,
+      "top": 148,
+      "ground_line": 216
+    },
+    {
+      "frame": 12,
+      "draw_scale": 0.572347266881029,
+      "source_bbox": [
+        954,
+        789,
+        1235,
+        887
+      ],
+      "x": 47,
+      "top": 160,
+      "ground_line": 216
+    },
+    {
+      "frame": 13,
+      "draw_scale": 0.572347266881029,
+      "source_bbox": [
+        28,
+        1075,
+        296,
+        1173
+      ],
+      "x": 55,
+      "top": 160,
+      "ground_line": 216
+    },
+    {
+      "frame": 14,
+      "draw_scale": 0.572347266881029,
+      "source_bbox": [
+        339,
+        1092,
+        605,
+        1172
+      ],
+      "x": 54,
+      "top": 170,
+      "ground_line": 216
+    },
+    {
+      "frame": 15,
+      "draw_scale": 0.572347266881029,
+      "source_bbox": [
+        654,
+        1112,
+        921,
+        1172
+      ],
+      "x": 54,
+      "top": 182,
+      "ground_line": 216
+    },
+    {
+      "frame": 16,
+      "draw_scale": 0.572347266881029,
+      "source_bbox": [
+        991,
+        1131,
+        1174,
+        1171
+      ],
+      "x": 68,
+      "top": 193,
+      "ground_line": 216
+    }
+  ],
+  "postprocessing": "User-authorized frame extraction, uniform global scaling, constant baseline, chroma/alpha cleanup, isolated first impact and faint last glints.",
+  "existing_gameplay_prefab": "Assets/Projects/Prefabs/SeparateEffort/GreenHammerShockwave.prefab",
+  "existing_prefab_changed": false
+}

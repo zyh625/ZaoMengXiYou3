@@ -1,0 +1,31 @@
+PASS: TwinAnchor starts
+PASS: no anchors before frame 5
+PASS: frame 5 releases two anchors and one silk
+PASS: anchors have 30 HP
+PASS: second spider cannot create a second on-screen silk
+PASS: silk deals exactly 8 once with multiple colliders
+PASS: reentry within 0.5 seconds is suppressed
+PASS: continuous contact does not retrigger
+PASS: 40 percent slow applied
+PASS: silk slow expires after one second
+PASS: reentry after cooldown deals one hit
+PASS: anchor death immediately removes whole silk and stuns owner
+PASS: reposition unavailable after anchor destroyed
+PASS: break stun still active at 0.7 seconds
+PASS: break stun ends at 0.8 seconds
+PASS: ThreeStarBind starts
+PASS: nodes remain locked when target moves
+PASS: first knot deals exactly 6
+PASS: same knot never pulses twice
+PASS: second node waits for 0.6 second interval
+PASS: knot slow expires after 1.5 seconds
+PASS: reposition requires intact silk
+PASS: reposition moves visibly over multiple physics steps
+PASS: taking damage interrupts reposition
+PASS: completed reposition has one second recovery
+PASS: reposition reaches the opposite anchor
+PASS: reposition recovery expires
+PASS: silk expires after ten seconds
+PASS: real controller and animation release TwinAnchor without manual frame sampling
+PASS: real controller interrupts casting on damage
+ALL PASS

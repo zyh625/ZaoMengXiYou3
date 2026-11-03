@@ -1,0 +1,16 @@
+{
+    "status": "passed",
+    "unityVersion": "6000.4.9f1",
+    "characterSheets": 9,
+    "characterFrames": 144,
+    "effectSheets": 5,
+    "effectFrames": 80,
+    "prefabs": 5,
+    "checks": [
+        "Native TextureImporter dimensions, Multiple mode, PPU and 224 named sprite rectangles validated.",
+        "Five prefabs load with no missing scripts, with 16 valid texture subasset references and assigned materials.",
+        "Play/Pause/Resume/Stop, following anchor placement, pool reactivation and reentrant completion replay validated in isolated prefab contents.",
+        "Visual-only assets; no scene, damage, collider, AI or runtime combat integration was changed or exercised."
+    ],
+    "error": ""
+}

@@ -1,0 +1,68 @@
+{
+  "name": "裂隙刃侍",
+  "role": "敏捷近战 / 延时切片 / 双锚换位",
+  "appearance": "前倾低重心，兜帽与裂纹白面，短甲分摆，双手各执一柄由残缺日轮制成的短柄弧刃。黑色占比最高，轮廓横向展开。",
+  "skills": [
+    {
+      "name": "折隙双斩",
+      "type": "基础近战",
+      "action": "双弧刃先低扫再斜切，第二击只向前补一小步；刀刃不脱手、不发飞轮。",
+      "telegraph": "交刃蓄势约 0.35 秒，第二击间隔约 0.25 秒。",
+      "counter": "第一击后穿身或退到刀尖外；第二击落空后有约 0.45 秒硬直。"
+    },
+    {
+      "name": "留痕合刃",
+      "type": "延时空间切片",
+      "action": "挥刃在前方固定位置留下窄竖折痕，约 0.7 秒后折痕合拢，仅结算一次；折痕不会追踪玩家。",
+      "telegraph": "先出现无伤害的细金折线，再转为清晰红色刃口。",
+      "counter": "看到金线后离开该窄面，或穿过近身空档打断本体；不是圆形标记爆炸。"
+    },
+    {
+      "name": "双锚换位",
+      "type": "站位扰动",
+      "action": "在自身两侧留下两个可见锚点，约 0.8 秒蓄势后沿既定两点换位；到达后短暂停顿，不能瞬移即命中。",
+      "telegraph": "两个落点同时显形，转移方向由举起的弧刃指示。",
+      "counter": "预判已标出的落点；起手与落点均可受击，不获得长时间隐身或无敌。"
+    }
+  ],
+  "weakness": "留痕与换位被打断时进入短暂裂面失衡；依靠预警与节奏，而不是闪现到背后强制命中。",
+  "animations": [
+    "Idle",
+    "Walk",
+    "FoldDoubleSlash",
+    "SeamCollapse",
+    "AnchorSwap",
+    "Hit",
+    "Death"
+  ],
+  "effects": [
+    "延时折痕",
+    "双锚换位预警",
+    "短距离换位残影"
+  ],
+  "key": "RiftBlade",
+  "file": "RiftBlade/Stand.png",
+  "bbox": [
+    96,
+    319,
+    928,
+    1448
+  ],
+  "transparent_margins_LRTB": [
+    96,
+    96,
+    319,
+    88
+  ],
+  "source_bbox": [
+    18,
+    90,
+    1022,
+    1452
+  ],
+  "uniform_resize_scale": 0.8286852589641435,
+  "guid": "714a7e9b25cc455cbcaa66e2676c77a1",
+  "sha256": "28655a57dc87cec4d30f4839da3df80f4d4fa66117686810b1bd1ea522b5d4c9",
+  "generation_common_prompt": "Use case: stylized-concept.\nAsset type: ONE full-body 2D Chinese fantasy action-game enemy identity reference, isolated transparent PNG. Exactly ONE character in ONE ready/idle pose; no animation sheet, grid, multiple frames, duplicates, turnaround or design-board.\nINPUT IMAGE ROLE: level9.png is the FACTION AND ART-STYLE reference, depicting the final boss Wuxiang Dijun (Formless Emperor). Design a NEW lesser enemy serving this boss, not a recolor, miniature copy or the emperor himself.\nFACTION LORE: the final stage is Wuxiang Tianque, the Formless Heavenly Palace. Ivory faceless masks with thin red fissures/eye slits, charcoal-black and ivory garments/armor with antique-gold trim and stylized cloud ornament, subtle dark-crimson seam cracks, broken-eclipse/fragmented sun motifs, oppressive imperial ritual geometry, space folds and boundary seals. Infer this theme from reference. Do not borrow furnace/fire or phoenix/blue-star themes from other stages.\nMATCH ART: same strong clean dark line weight, polished detailed cel shading, crisp shapes and hand-painted Chinese mythological 2D game illustration as reference. No photorealism, 3D rendering, watercolor haze, chibi or pixel art. Less regal ornament than the boss; clear readable enemy silhouette for later sprite animation.\nCOMPOSITION: portrait 1024x1536 RGBA PNG with REAL TRANSPARENT ALPHA. Three-quarter LEFT-facing, complete body centered, readable ready stance, consistent perspective. Head, mask, complete feet/shoes or robe tip, all weapons/props, trailing cloth and physical hovering ornaments visible. At least 8-10% completely empty transparent margin on all four sides. Do not crop, fill canvas edges or enlarge until equipment is cut. Leave roomy padding.\nOnly the enemy and its permanent physical costume/props. No spell effects, portals, attack arcs, floating UI, aura, dust, smoke, cast shadows, floor, scenery, background color/gradient/texture, drawn checkerboard, labels, lettering, readable text, watermark or border. The final background must be fully transparent, including between limbs and props. Fine ornamental abstract geometry is allowed, legible writing is not.\n",
+  "generation_character_prompt": "NEW CHARACTER: RIFTBLADE, the Rift-Blade Attendant. A lean, wiry masked imperial executioner in a LOW, forward-leaning agile ready stance. Narrow triangular silhouette, bent knees, separated visible black/gold tabi boots, long lean arms. Charcoal dominates, with ivory inner panels and restrained antique-gold trim; two short split cloak tails, fitted segmented lamellar vest and wrapped forearms, not floor-length imperial robes.\nHEAD: a compact angular ivory faceless porcelain mask under a shallow black cowl, one fine diagonal crimson fissure and narrow red eye slits; sleek swept-back head ribbons. No emperor crown, broad imperial tablet headdress or full circular halo.\nSIGNATURE PHYSICAL EQUIPMENT: TWO distinctive SHORT fractured-crescent cutting blades, one gripped in each hand. They look like two unequal sharpened segments of the boss's broken black eclipse disc: matte black centers, thin antique-gold cutting lips, small ivory inlay at the grip. One blade held low forward at image LEFT, the other held back near the hip, both entire blades and both hands clearly separated and visible. Short blades, not a huge scythe, swordstaff, boomerang, wheel or hammer. They are held, not floating/flying. A small broken-circle gold buckle and two ceramic shard plates on one shoulder subtly identify the emperor's faction.\nThe design must immediately read as a fast gap-cutting duelist using space-seam feints and delayed slash planes, without drawing these spells. Enemy-level status, not a boss. Serious dark-fantasy authority; no extra arms, wings, tail or creature anatomy."
+}
