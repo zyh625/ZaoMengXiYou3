@@ -1,0 +1,681 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ea7302a88f56248a1b33284c7df3cd, type: 3}
+  m_Name: ResonantStarOwl
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceProfile
+  displayName: ResonantStarOwl
+  description: "\u4FEE\u6539\u540E\u91CD\u65B0\u8FDB\u5165\u573A\u666F/\u8BAD\u7EC3\u76EE\u6807\u751F\u6548\uFF1B\u4E0D\u5199\u5165\u5B58\u6863\uFF0C\u4E0D\u4FEE\u6539\u4E34\u65F6\u72B6\u6001\u3002"
+  components:
+  - objectPath: 
+    componentType: ActorStatus
+    componentIndex: 0
+    parameters:
+    - path: frozenDuration
+      label: "frozenDuration \xB7 frozenDuration"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: meltFrameInterval
+      label: "meltFrameInterval \xB7 meltFrameInterval"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: frozenDamageMultiplier
+      label: "frozenDamageMultiplier \xB7 frozenDamageMultiplier"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: Health
+    componentIndex: 0
+    parameters:
+    - path: beginBlood
+      label: "\u57FA\u7840\u751F\u547D\u4E0A\u9650 \xB7 beginBlood"
+      value: 100
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: ActorStatus
+    componentIndex: 1
+    parameters:
+    - path: frozenDuration
+      label: "frozenDuration \xB7 frozenDuration"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: meltFrameInterval
+      label: "meltFrameInterval \xB7 meltFrameInterval"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: frozenDamageMultiplier
+      label: "frozenDamageMultiplier \xB7 frozenDamageMultiplier"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: EnemyRewards
+    componentIndex: 0
+    parameters:
+    - path: experienceReward
+      label: "\u51FB\u6740\u7ECF\u9A8C \xB7 experienceReward"
+      value: 24
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: ResonantStarOwlMovement
+    componentIndex: 0
+    parameters:
+    - path: moveSpeed
+      label: "\u79FB\u52A8\u901F\u5EA6 \xB7 moveSpeed"
+      value: 0.8999999761581421
+      integer: 0
+      boolean: 0
+    - path: backSpeed
+      label: "\u53D7\u51FB\u540E\u9000\u901F\u5EA6 \xB7 backSpeed"
+      value: 3.5
+      integer: 0
+      boolean: 0
+    - path: upSpeed
+      label: "\u8DF3\u8DC3\u901F\u5EA6 \xB7 upSpeed"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: slowSpeed
+      label: "slowSpeed \xB7 slowSpeed"
+      value: 0.44999998807907104
+      integer: 0
+      boolean: 0
+    - path: boostRatio
+      label: "boostRatio \xB7 boostRatio"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: minNormalY
+      label: "minNormalY \xB7 minNormalY"
+      value: 0.6000000238418579
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: ResonantStarOwlCombat
+    componentIndex: 0
+    parameters:
+    - path: angryFull
+      label: "angryFull \xB7 angryFull"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: angryRatio
+      label: "angryRatio \xB7 angryRatio"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: deltaAngry
+      label: "deltaAngry \xB7 deltaAngry"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: angryDuration
+      label: "angryDuration \xB7 angryDuration"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: delayRatio
+      label: "delayRatio \xB7 delayRatio"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: 'Cooldowns.Array.data[0]'
+      label: "Cooldowns \xB7 Cooldowns.Array.data[0]"
+      value: 7
+      integer: 0
+      boolean: 0
+    - path: 'Cooldowns.Array.data[1]'
+      label: "Cooldowns \xB7 Cooldowns.Array.data[1]"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: 'Cooldowns.Array.data[2]'
+      label: "Cooldowns \xB7 Cooldowns.Array.data[2]"
+      value: 9
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: ResonantStarOwlController
+    componentIndex: 0
+    parameters:
+    - path: Idle.loop
+      label: "Idle \xB7 Idle.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Idle.fps
+      label: "Idle \xB7 Idle.fps"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: Walk.loop
+      label: "Walk \xB7 Walk.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Walk.fps
+      label: "Walk \xB7 Walk.fps"
+      value: 14
+      integer: 0
+      boolean: 0
+    - path: Die.loop
+      label: "Die \xB7 Die.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: Die.fps
+      label: "Die \xB7 Die.fps"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: stopDistance
+      label: "\u505C\u6B62\u9760\u8FD1\u8DDD\u79BB \xB7 stopDistance"
+      value: 7
+      integer: 0
+      boolean: 0
+    - path: specialAttack
+      label: "specialAttack \xB7 specialAttack"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: stunnedFrame
+      label: "stunnedFrame \xB7 stunnedFrame"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: SoundRings.loop
+      label: "SoundRings \xB7 SoundRings.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: SoundRings.fps
+      label: "SoundRings \xB7 SoundRings.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: HighLowChime.loop
+      label: "HighLowChime \xB7 HighLowChime.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: HighLowChime.fps
+      label: "HighLowChime \xB7 HighLowChime.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: ResonanceBand.loop
+      label: "ResonanceBand \xB7 ResonanceBand.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: ResonanceBand.fps
+      label: "ResonanceBand \xB7 ResonanceBand.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: UnityEngine.Rigidbody2D
+    componentIndex: 0
+    parameters:
+    - path: m_Mass
+      label: "\u8D28\u91CF \xB7 m_Mass"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: m_GravityScale
+      label: "\u91CD\u529B\u500D\u7387 \xB7 m_GravityScale"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_LinearDamping
+      label: "\u6C34\u5E73\u963B\u5C3C \xB7 m_LinearDamping"
+      value: 0
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.100000023841858
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 1.100000023841858
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: -0.13999998569488525
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/Attacked
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.2999999523162842
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 1.2999999523162842
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 0
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: EnemyHealthBar
+    componentIndex: 0
+    parameters:
+    - path: seeDuration
+      label: "\u8840\u6761\u53D7\u4F24\u540E\u663E\u793A\u79D2\u6570"
+      value: 3.5
+      integer: 0
+      boolean: 0
+    - path: fadeDuration
+      label: "\u8840\u6761\u6DE1\u51FA\u79D2\u6570"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  numbers:
+  - key: ResonantStarOwlCombat.Target.1
+    label: Target / resolveAt = Time.time + 0.5f;
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:30
+    value: 0.5
+  - key: ResonantStarOwlCombat.ReadySkill.1
+    label: ReadySkill / if (dx < 4f || dx > 7f) return -1;
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:48
+    value: 4
+  - key: ResonantStarOwlCombat.ReadySkill.2
+    label: ReadySkill / if (dx < 4f || dx > 7f) return -1;
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:48
+    value: 7
+  - key: ResonantStarOwlCombat.ReadySkill.3
+    label: ReadySkill / if (jumps >= 2 && Time.time - lastJumpAt < 5f && Time.time
+      >= readyAt[2]) return 2;
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:49
+    value: 5
+  - key: ResonantStarOwlCombat.OnEnable.1
+    label: OnEnable / base.OnEnable(); CurrentSkill = -1; emitted = jumps = 0; wasJumping
+      = false; lastJumpAt = -99f;
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:60
+    value: 99
+  - key: ResonantStarOwlCombat.Update.1
+    label: Update / bool rising = jumping && target.GetComponent<Rigidbody2D>().linearVelocityY
+      > 0.1f;
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:68
+    value: 0.1
+  - key: ResonantStarOwlCombat.Update.2
+    label: 'Update / if (rising && !wasJumping) { jumps = Time.time-lastJumpAt <
+      5f ? jumps+1 : 1; lastJumpAt = Time.time; }'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:69
+    value: 5
+  - key: ResonantStarOwlCombat.AnimationFrame.1
+    label: 'AnimationFrame / float interval = CurrentSkill == 0 ? 0.4f : 0.5f;'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:90
+    value: 0.4
+  - key: ResonantStarOwlCombat.AnimationFrame.2
+    label: 'AnimationFrame / float interval = CurrentSkill == 0 ? 0.4f : 0.5f;'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:90
+    value: 0.5
+  - key: ResonantStarOwlCombat.AnimationFrame.3
+    label: AnimationFrame / if (CurrentSkill >= 0 && emitted < count && t + 0.0001f
+      >= 5f/16f + emitted*interval)
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:91
+    value: 0.0001
+  - key: ResonantStarOwlCombat.AnimationFrame.4
+    label: AnimationFrame / if (CurrentSkill >= 0 && emitted < count && t + 0.0001f
+      >= 5f/16f + emitted*interval)
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:91
+    value: 5
+  - key: ResonantStarOwlCombat.AnimationFrame.5
+    label: AnimationFrame / if (CurrentSkill >= 0 && emitted < count && t + 0.0001f
+      >= 5f/16f + emitted*interval)
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:91
+    value: 16
+  - key: ResonantStarOwlCombat.AnimationFrame.6
+    label: AnimationFrame / if (CurrentSkill == 0 && t >= 0.375f && t < 0.5875f)
+      return 5;
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:93
+    value: 0.375
+  - key: ResonantStarOwlCombat.AnimationFrame.7
+    label: AnimationFrame / if (CurrentSkill == 0 && t >= 0.375f && t < 0.5875f)
+      return 5;
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:93
+    value: 0.5875
+  - key: ResonantStarOwlCombat.AnimationFrame.8
+    label: AnimationFrame / if (CurrentSkill == 0 && t >= 0.775f && t < 0.9875f)
+      return 8;
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:94
+    value: 0.775
+  - key: ResonantStarOwlCombat.AnimationFrame.9
+    label: AnimationFrame / if (CurrentSkill == 0 && t >= 0.775f && t < 0.9875f)
+      return 8;
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:94
+    value: 0.9875
+  - key: ResonantStarOwlCombat.AnimationFrame.10
+    label: AnimationFrame / if (CurrentSkill == 1 && t >= 0.375f && t < 0.5625f)
+      return 5;
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:95
+    value: 0.375
+  - key: ResonantStarOwlCombat.AnimationFrame.11
+    label: AnimationFrame / if (CurrentSkill == 1 && t >= 0.375f && t < 0.5625f)
+      return 5;
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:95
+    value: 0.5625
+  - key: ResonantStarOwlCombat.AnimationFrame.12
+    label: AnimationFrame / if (CurrentSkill == 0) { t -= Mathf.Clamp(t-6f/16f,0f,0.2125f);
+      t -= Mathf.Clamp(Elapsed-0.775f,0f,0.2125f); }
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:96
+    value: 6
+  - key: ResonantStarOwlCombat.AnimationFrame.13
+    label: AnimationFrame / if (CurrentSkill == 0) { t -= Mathf.Clamp(t-6f/16f,0f,0.2125f);
+      t -= Mathf.Clamp(Elapsed-0.775f,0f,0.2125f); }
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:96
+    value: 16
+  - key: ResonantStarOwlCombat.AnimationFrame.14
+    label: AnimationFrame / if (CurrentSkill == 0) { t -= Mathf.Clamp(t-6f/16f,0f,0.2125f);
+      t -= Mathf.Clamp(Elapsed-0.775f,0f,0.2125f); }
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:96
+    value: 0.2125
+  - key: ResonantStarOwlCombat.AnimationFrame.15
+    label: AnimationFrame / if (CurrentSkill == 0) { t -= Mathf.Clamp(t-6f/16f,0f,0.2125f);
+      t -= Mathf.Clamp(Elapsed-0.775f,0f,0.2125f); }
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:96
+    value: 0.775
+  - key: ResonantStarOwlCombat.AnimationFrame.16
+    label: AnimationFrame / if (CurrentSkill == 0) { t -= Mathf.Clamp(t-6f/16f,0f,0.2125f);
+      t -= Mathf.Clamp(Elapsed-0.775f,0f,0.2125f); }
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:96
+    value: 0.2125
+  - key: ResonantStarOwlCombat.AnimationFrame.17
+    label: AnimationFrame / else if (CurrentSkill == 1) t -= Mathf.Clamp(t-6f/16f,0f,0.1875f);
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:97
+    value: 6
+  - key: ResonantStarOwlCombat.AnimationFrame.18
+    label: AnimationFrame / else if (CurrentSkill == 1) t -= Mathf.Clamp(t-6f/16f,0f,0.1875f);
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:97
+    value: 16
+  - key: ResonantStarOwlCombat.AnimationFrame.19
+    label: AnimationFrame / else if (CurrentSkill == 1) t -= Mathf.Clamp(t-6f/16f,0f,0.1875f);
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:97
+    value: 0.1875
+  - key: ResonantStarOwlCombat.AnimationFrame.20
+    label: AnimationFrame / else if (CurrentSkill == 2) t -= Mathf.Clamp(t-11f/16f,0f,1.5625f);
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:98
+    value: 11
+  - key: ResonantStarOwlCombat.AnimationFrame.21
+    label: AnimationFrame / else if (CurrentSkill == 2) t -= Mathf.Clamp(t-11f/16f,0f,1.5625f);
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:98
+    value: 16
+  - key: ResonantStarOwlCombat.AnimationFrame.22
+    label: AnimationFrame / else if (CurrentSkill == 2) t -= Mathf.Clamp(t-11f/16f,0f,1.5625f);
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:98
+    value: 1.5625
+  - key: ResonantStarOwlCombat.AnimationFrame.23
+    label: AnimationFrame / return Mathf.Clamp(Mathf.FloorToInt(t*16f+0.0001f),0,15);
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:99
+    value: 16
+  - key: ResonantStarOwlCombat.AnimationFrame.24
+    label: AnimationFrame / return Mathf.Clamp(Mathf.FloorToInt(t*16f+0.0001f),0,15);
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:99
+    value: 0.0001
+  - key: ResonantStarOwlCombat.Finished.1
+    label: 'Finished / public bool Finished => CurrentSkill >= 0 && Elapsed >= (CurrentSkill
+      == 0 ? 1.425f : CurrentSkill == 1 ? 1.1875f :'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:102
+    value: 1.425
+  - key: ResonantStarOwlCombat.Finished.2
+    label: 'Finished / public bool Finished => CurrentSkill >= 0 && Elapsed >= (CurrentSkill
+      == 0 ? 1.425f : CurrentSkill == 1 ? 1.1875f :'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:102
+    value: 1.1875
+  - key: ResonantStarOwlCombat.Finished.3
+    label: 'Finished / public bool Finished => CurrentSkill >= 0 && Elapsed >= (CurrentSkill
+      == 0 ? 1.425f : CurrentSkill == 1 ? 1.1875f :'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:102
+    value: 2.5625
+  - key: ResonantStarOwlCombat.SampleCast.1
+    label: 'SampleCast / float interval = CurrentSkill == 0 ? 0.4f : 0.5f;'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:107
+    value: 0.4
+  - key: ResonantStarOwlCombat.SampleCast.2
+    label: 'SampleCast / float interval = CurrentSkill == 0 ? 0.4f : 0.5f;'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:107
+    value: 0.5
+  - key: ResonantStarOwlCombat.SampleCast.3
+    label: SampleCast / while (emitted < max && Elapsed + 0.0001f >= 5f/16f + emitted*interval)
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:108
+    value: 0.0001
+  - key: ResonantStarOwlCombat.SampleCast.4
+    label: SampleCast / while (emitted < max && Elapsed + 0.0001f >= 5f/16f + emitted*interval)
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:108
+    value: 5
+  - key: ResonantStarOwlCombat.SampleCast.5
+    label: SampleCast / while (emitted < max && Elapsed + 0.0001f >= 5f/16f + emitted*interval)
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlCombat.cs:108
+    value: 16
+  - key: ResonantStarOwlController.ProcessSpecialState.1
+    label: 'ProcessSpecialState / float direction = Mathf.Abs(dx) < 4f ? -Mathf.Sign(dx)
+      : Mathf.Abs(dx) > 7f ? Mathf.Sign(dx) : 0f;'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlController.cs:28
+    value: 4
+  - key: ResonantStarOwlController.ProcessSpecialState.2
+    label: 'ProcessSpecialState / float direction = Mathf.Abs(dx) < 4f ? -Mathf.Sign(dx)
+      : Mathf.Abs(dx) > 7f ? Mathf.Sign(dx) : 0f;'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlController.cs:28
+    value: 7
+  - key: ResonantStarOwlController.ProcessSpecialState.3
+    label: ProcessSpecialState / movement.Hover(direction, EH.Slow, Mathf.Abs(dx)
+      < 3f);
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlController.cs:29
+    value: 3
+  - key: ResonantStarOwlEffect.Begin.1
+    label: 'Begin / beganAt = Time.time; duration = kind == 0 ? 1.2f : kind == 1
+      ? 0.35f : 2f;'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlEffect.cs:25
+    value: 1.2
+  - key: ResonantStarOwlEffect.Begin.2
+    label: 'Begin / beganAt = Time.time; duration = kind == 0 ? 1.2f : kind == 1
+      ? 0.35f : 2f;'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlEffect.cs:25
+    value: 0.35
+  - key: ResonantStarOwlEffect.Begin.3
+    label: 'Begin / beganAt = Time.time; duration = kind == 0 ? 1.2f : kind == 1
+      ? 0.35f : 2f;'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlEffect.cs:25
+    value: 2
+  - key: ResonantStarOwlEffect.Begin.4
+    label: Begin / previousRadius = 1.6f;
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlEffect.cs:26
+    value: 1.6
+  - key: ResonantStarOwlEffect.Begin.5
+    label: 'Begin / transform.position = kind == 0 ? source.CastOrigin : new Vector2(source.CastOrigin.x
+      + sign*(kind == 1 ? 3.9f : 4f)'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlEffect.cs:28
+    value: 3.9
+  - key: ResonantStarOwlEffect.Begin.6
+    label: 'Begin / transform.position = kind == 0 ? source.CastOrigin : new Vector2(source.CastOrigin.x
+      + sign*(kind == 1 ? 3.9f : 4f)'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlEffect.cs:28
+    value: 4
+  - key: ResonantStarOwlEffect.Begin.7
+    label: 'Begin / source.CastFloor + (kind == 1 ? (segment == 0 ? 0.55f : 2.6f)
+      : 2.5f));'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlEffect.cs:29
+    value: 0.55
+  - key: ResonantStarOwlEffect.Begin.8
+    label: 'Begin / source.CastFloor + (kind == 1 ? (segment == 0 ? 0.55f : 2.6f)
+      : 2.5f));'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlEffect.cs:29
+    value: 2.6
+  - key: ResonantStarOwlEffect.Begin.9
+    label: 'Begin / source.CastFloor + (kind == 1 ? (segment == 0 ? 0.55f : 2.6f)
+      : 2.5f));'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlEffect.cs:29
+    value: 2.5
+  - key: ResonantStarOwlEffect.Begin.10
+    label: 'Begin / size = kind == 1 ? new Vector2(6.2f,0.55f) : new Vector2(0.55f,1.6f);'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlEffect.cs:30
+    value: 6.2
+  - key: ResonantStarOwlEffect.Begin.11
+    label: 'Begin / size = kind == 1 ? new Vector2(6.2f,0.55f) : new Vector2(0.55f,1.6f);'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlEffect.cs:30
+    value: 0.55
+  - key: ResonantStarOwlEffect.Begin.12
+    label: 'Begin / size = kind == 1 ? new Vector2(6.2f,0.55f) : new Vector2(0.55f,1.6f);'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlEffect.cs:30
+    value: 0.55
+  - key: ResonantStarOwlEffect.Begin.13
+    label: 'Begin / size = kind == 1 ? new Vector2(6.2f,0.55f) : new Vector2(0.55f,1.6f);'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlEffect.cs:30
+    value: 1.6
+  - key: ResonantStarOwlEffect.FixedUpdate.1
+    label: FixedUpdate / float radius = Mathf.Lerp(1.6f,7f,elapsed/duration);
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlEffect.cs:50
+    value: 1.6
+  - key: ResonantStarOwlEffect.FixedUpdate.2
+    label: FixedUpdate / float radius = Mathf.Lerp(1.6f,7f,elapsed/duration);
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlEffect.cs:50
+    value: 7
+  - key: ResonantStarOwlEffect.FixedUpdate.3
+    label: FixedUpdate / CheckDamage(Mathf.Max(0f,previousRadius-0.18f),radius+0.18f);
+      previousRadius = radius;
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlEffect.cs:51
+    value: 0.18
+  - key: ResonantStarOwlEffect.FixedUpdate.4
+    label: FixedUpdate / CheckDamage(Mathf.Max(0f,previousRadius-0.18f),radius+0.18f);
+      previousRadius = radius;
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlEffect.cs:51
+    value: 0.18
+  - key: ResonantStarOwlEffect.UpdateVisual.1
+    label: UpdateVisual / visual.sprite = appearance.sprites[Mathf.Min(15,Mathf.FloorToInt(progress*16f))];
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlEffect.cs:61
+    value: 16
+  - key: ResonantStarOwlEffect.UpdateVisual.2
+    label: 'UpdateVisual / Vector2 dimensions = kind == 0 ? Vector2.one*(2f*Mathf.Lerp(1.6f,7f,progress))
+      : size;'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlEffect.cs:62
+    value: 2
+  - key: ResonantStarOwlEffect.UpdateVisual.3
+    label: 'UpdateVisual / Vector2 dimensions = kind == 0 ? Vector2.one*(2f*Mathf.Lerp(1.6f,7f,progress))
+      : size;'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlEffect.cs:62
+    value: 1.6
+  - key: ResonantStarOwlEffect.UpdateVisual.4
+    label: 'UpdateVisual / Vector2 dimensions = kind == 0 ? Vector2.one*(2f*Mathf.Lerp(1.6f,7f,progress))
+      : size;'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlEffect.cs:62
+    value: 7
+  - key: ResonantStarOwlEffect.CheckDamage.1
+    label: 'CheckDamage / hp.TakeDamage(new DamageInfo(OwnerAlive ? owner : transform,(kind
+      == 0 ? 8f : kind == 1 ? 10f : 6f)*multiplier,fals'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlEffect.cs:85
+    value: 8
+  - key: ResonantStarOwlEffect.CheckDamage.2
+    label: 'CheckDamage / hp.TakeDamage(new DamageInfo(OwnerAlive ? owner : transform,(kind
+      == 0 ? 8f : kind == 1 ? 10f : 6f)*multiplier,fals'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlEffect.cs:85
+    value: 10
+  - key: ResonantStarOwlEffect.CheckDamage.3
+    label: 'CheckDamage / hp.TakeDamage(new DamageInfo(OwnerAlive ? owner : transform,(kind
+      == 0 ? 8f : kind == 1 ? 10f : 6f)*multiplier,fals'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlEffect.cs:85
+    value: 6
+  - key: ResonantStarOwlMovement.StepFlight.1
+    label: StepFlight / var floor = Physics2D.Raycast(body.position + Vector2.up
+      * 3f, Vector2.down, 40f, 1 << 6);
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlMovement.cs:19
+    value: 3
+  - key: ResonantStarOwlMovement.StepFlight.2
+    label: StepFlight / var floor = Physics2D.Raycast(body.position + Vector2.up
+      * 3f, Vector2.down, 40f, 1 << 6);
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlMovement.cs:19
+    value: 40
+  - key: ResonantStarOwlMovement.StepFlight.3
+    label: 'StepFlight / FloorY = floor.collider != null ? floor.point.y : body.position.y
+      - 2.2f;'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlMovement.cs:20
+    value: 2.2
+  - key: ResonantStarOwlMovement.StepFlight.4
+    label: StepFlight / hoverY = FloorY + 2.2f; body.gravityScale = 0f; body.bodyType
+      = RigidbodyType2D.Kinematic;
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlMovement.cs:21
+    value: 2.2
+  - key: ResonantStarOwlMovement.Hover.1
+    label: 'Hover / float y = hoverY + (rise ? 0.65f : 0f) + Mathf.Sin(Time.time
+      * 2f) * 0.12f;'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlMovement.cs:36
+    value: 0.65
+  - key: ResonantStarOwlMovement.Hover.2
+    label: 'Hover / float y = hoverY + (rise ? 0.65f : 0f) + Mathf.Sin(Time.time
+      * 2f) * 0.12f;'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlMovement.cs:36
+    value: 2
+  - key: ResonantStarOwlMovement.Hover.3
+    label: 'Hover / float y = hoverY + (rise ? 0.65f : 0f) + Mathf.Sin(Time.time
+      * 2f) * 0.12f;'
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlMovement.cs:36
+    value: 0.12
+  - key: ResonantStarOwlMovement.Hover.4
+    label: Hover / Vector2 velocity = new Vector2(body.linearVelocity.x, Mathf.Clamp((y
+      - body.position.y) * 3f, -0.9f, 0.9f));
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlMovement.cs:37
+    value: 3
+  - key: ResonantStarOwlMovement.Hover.5
+    label: Hover / Vector2 velocity = new Vector2(body.linearVelocity.x, Mathf.Clamp((y
+      - body.position.y) * 3f, -0.9f, 0.9f));
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlMovement.cs:37
+    value: 0.9
+  - key: ResonantStarOwlMovement.Hover.6
+    label: Hover / Vector2 velocity = new Vector2(body.linearVelocity.x, Mathf.Clamp((y
+      - body.position.y) * 3f, -0.9f, 0.9f));
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlMovement.cs:37
+    value: 0.9
+  - key: ResonantStarOwlMovement.Hover.7
+    label: Hover / var wall = Physics2D.BoxCast(shape.bounds.center, shape.bounds.size,
+      0f, delta.normalized, delta.magnitude + 0.03f,
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlMovement.cs:43
+    value: 0.03
+  - key: ResonantStarOwlMovement.Hover.8
+    label: Hover / if (wall.collider != null) velocity *= Mathf.Clamp01((wall.distance
+      - 0.03f) / delta.magnitude);
+    source: Assets/Projects/Scripts/Enemy/ResonantStarOwl/ResonantStarOwlMovement.cs:44
+    value: 0.03
+  skills: []
+  relatedProfiles:
+  - {fileID: 11400000, guid: b3bbb297aa5c0e048af98be9a557ad07, type: 2}
+  - {fileID: 11400000, guid: 8c76dbb641110464ca4f4f3c3a188437, type: 2}
+  - {fileID: 11400000, guid: af56ce2dff994724abbd336b7e2cd336, type: 2}

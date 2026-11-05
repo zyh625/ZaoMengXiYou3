@@ -30,7 +30,7 @@ public class BlueWheelCombat : EnemyCombat
     public bool DoubleThrow { get; private set; }
     public int HideStartFrame => Mathf.Max(0, hideStartFrame);
     public int CatchFrame => Mathf.Max(0, catchFrame);
-    public float ShadowInterval => Mathf.Max(0.05f, shadowInterval);
+    public float ShadowInterval => Mathf.Max(BalanceRuntime.Number(this, "BlueWheelCombat.ShadowInterval.1", 0.05f), shadowInterval);
     public Vector2 CatchPosition => (Vector2)transform.position + (IsHidden ? Vector2.zero
         : new Vector2((AttackFaceRight ? 1f : -1f) * Mathf.Abs(wheelOffset.x), wheelOffset.y));
     private float CurrentThrowCooldown => Mathf.Max(0f, throwCooldown) * (Angry ? AngerCooldownMultiplier : 1f) * RebirthCooldownMultiplier;
@@ -112,7 +112,7 @@ public class BlueWheelCombat : EnemyCombat
                 : (Vector2)transform.position + new Vector2((AttackFaceRight ? 1f : -1f)
                     * (Mathf.Abs(wheelOffset.x) + Mathf.Max(0f, doubleSpacing) * i), wheelOffset.y);
             //隐身双轮都从本体产生，第二轮延后一个间距的飞行时间，避免重叠。
-            float delay = hidden && i > 0 ? Mathf.Max(0f, doubleSpacing) / Mathf.Max(0.01f, wheelPrefab.FlySpeed) : 0f;
+            float delay = hidden && i > 0 ? Mathf.Max(0f, doubleSpacing) / Mathf.Max(BalanceRuntime.Number(this, "BlueWheelCombat.EmitWheels.1", 0.01f), wheelPrefab.FlySpeed) : 0f;
             BlueBoomearng wheel = pool.Fire(wheelPrefab, this, position, AttackFaceRight, hidden, delay);
             if (wheel == null) continue;
             liveWheels.Add(wheel);

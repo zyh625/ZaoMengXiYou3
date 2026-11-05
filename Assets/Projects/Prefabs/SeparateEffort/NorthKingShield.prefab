@@ -115,6 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4566011624758489338}
   - component: {fileID: 6175997030377586176}
+  - component: {fileID: 225748209179774368}
   m_Layer: 0
   m_Name: NorthKingShield
   m_TagString: Untagged
@@ -171,3 +172,16 @@ MonoBehaviour:
     - {fileID: 167738286494907970, guid: 22b6662999e342e6ac936fdca0a95e0d, type: 3}
     loop: 1
     fps: 12
+--- !u!114 &225748209179774368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015663107783482609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 690cf9862ca451648a081c9c1597d91b, type: 2}

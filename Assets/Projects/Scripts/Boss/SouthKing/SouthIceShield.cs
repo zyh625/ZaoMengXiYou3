@@ -14,7 +14,7 @@ public class SouthIceShield : SouthKingEffect
     protected override bool ReportsAttackResult => false;
     protected override void OnLaunched()
     {
-        remaining = Mathf.Max(0.01f, durability); fading = false;
+        remaining = Mathf.Max(BalanceRuntime.Number(this, "SouthIceShield.OnLaunched.1", 0.01f), durability); fading = false;
         bodyRenderer = owner != null ? owner.transform.Find("Visual")?.GetComponent<SpriteRenderer>() : null;
         Place(); Show(0);
     }
@@ -23,11 +23,11 @@ public class SouthIceShield : SouthKingEffect
         if (bodyRenderer == null || Count == 0 || frames.sprites[0] == null) return;
         Collider2D bodyCollider = owner != null ? owner.GetComponent<Collider2D>() : null;
         Bounds body = bodyCollider != null ? bodyCollider.bounds : bodyRenderer.bounds;
-        float height = body.size.y * (bodyCollider != null ? Mathf.Max(0.1f, bodyHeightRatio) : 1f);
-        transform.position = new Vector3(body.center.x, body.min.y + height * 0.5f, owner.transform.position.z);
-        float size = height * Mathf.Max(0.1f, sizeRatio);
+        float height = body.size.y * (bodyCollider != null ? Mathf.Max(BalanceRuntime.Number(this, "SouthIceShield.Place.1", 0.1f), bodyHeightRatio) : 1f);
+        transform.position = new Vector3(body.center.x, body.min.y + height * BalanceRuntime.Number(this, "SouthIceShield.Place.2", 0.5f), owner.transform.position.z);
+        float size = height * Mathf.Max(BalanceRuntime.Number(this, "SouthIceShield.Place.3", 0.1f), sizeRatio);
         //逐帧贴边裁切后取整套动画的最大尺寸，避免第一帧裁小后把护盾整体放大。
-        float spriteSize = 0.01f;
+        float spriteSize = BalanceRuntime.Number(this, "SouthIceShield.Place.4", 0.01f);
         for (int i = 0; i < Count; i++)
             if (frames.sprites[i] != null)
                 spriteSize = Mathf.Max(spriteSize, frames.sprites[i].bounds.size.x, frames.sprites[i].bounds.size.y);
@@ -50,12 +50,12 @@ public class SouthIceShield : SouthKingEffect
         if (fading)
         {
             int frame = 12 + Mathf.FloorToInt((Time.time - fadeAt) * Fps);
-            if (frame >= 16) StopEffect(); else Show(frame);
+            if (frame >= BalanceRuntime.Number(this, "SouthIceShield.Tick.Parameter1", 16f)) StopEffect(); else Show(frame);
         }
         else
         {
-            float ratio = remaining / Mathf.Max(0.01f, durability);
-            int stage = ratio > 2f / 3f ? 0 : ratio > 1f / 3f ? 1 : 2;
+            float ratio = remaining / Mathf.Max(BalanceRuntime.Number(this, "SouthIceShield.Tick.1", 0.01f), durability);
+            int stage = ratio > BalanceRuntime.Number(this, "SouthIceShield.Tick.2", 2f) / BalanceRuntime.Number(this, "SouthIceShield.Tick.3", 3f) ? 0 : ratio > 1f / BalanceRuntime.Number(this, "SouthIceShield.Tick.4", 3f) ? 1 : 2;
             Show(stage * 4 + Mathf.FloorToInt(elapsed * Fps) % 4);
         }
     }

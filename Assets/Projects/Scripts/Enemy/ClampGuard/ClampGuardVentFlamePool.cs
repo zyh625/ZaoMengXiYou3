@@ -28,7 +28,7 @@ public sealed class ClampGuardVentFlamePool : MonoBehaviour
         host.cachedPrefab = prefab;
         var effect = host.pool.Get(prefab, host.activeRoot, host.inactiveRoot);
         effect.transform.position = position;
-        effect.transform.localScale = Vector3.one * (3f / 1.88f);
+        effect.transform.localScale = Vector3.one * (BalanceRuntime.Number(typeof(ClampGuardVentFlamePool), "ClampGuardVentFlamePool.Emit.1", 3f) / BalanceRuntime.Number(typeof(ClampGuardVentFlamePool), "ClampGuardVentFlamePool.Emit.2", 1.88f));
         effect.Play(follow, followOffset, faceRight, 0f);
         return effect;
     }

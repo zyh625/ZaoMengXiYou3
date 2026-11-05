@@ -22,10 +22,11 @@ public static class TrainingSession
     public static void End()
     {
         if(!Active)return;Active=false;players=null;EffectsEnabled=true;GamePause.Reset();
+        PlayerBoost.TrainingForceBoost = false;
         Debug.Log("TRAINING_END: original session data, gold, experience and progress retained; no settlement.");
     }
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]private static void Reset()
-    {Active=false;players=null;EffectsEnabled=true;SuppressedReads=SuppressedWrites=0;}
+    {Active=false;players=null;EffectsEnabled=true;SuppressedReads=SuppressedWrites=0;PlayerBoost.TrainingForceBoost = false;}
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]private static void Subscribe()
     {SceneManager.sceneLoaded-=Loaded;SceneManager.sceneLoaded+=Loaded;}
     private static void Loaded(Scene scene,LoadSceneMode mode){if(Active && scene.name!=SceneName && mode==LoadSceneMode.Single)End();}

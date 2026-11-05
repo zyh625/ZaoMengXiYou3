@@ -21,8 +21,8 @@ public sealed class RedBoomMark : MonoBehaviour
     {
         if (actor==null || actor.Dead || !actor.isActiveAndEnabled || actor.IsInvincible) return false;
         ClearTarget();
-        target=actor;targetBody=actor.GetComponent<Collider2D>();life=actor.LifeVersion;expiresAt=Time.time+4f;
-        target.SetDamageMultiplier(this,1.2f);
+        target=actor;targetBody=actor.GetComponent<Collider2D>();life=actor.LifeVersion;expiresAt=Time.time+BalanceRuntime.Number(this, "RedBoomMark.Apply.1", 4f);
+        target.SetDamageMultiplier(this,BalanceRuntime.Number(this, "RedBoomMark.Apply.2", 1.2f));
         target.DebuffsCleared+=Cancel;target.Died+=OnDied;
         SpriteRenderer renderer=spriteManager.GetComponent<SpriteRenderer>();
         if (source!=null) { renderer.sortingLayerID=source.sortingLayerID;renderer.sortingOrder=source.sortingOrder+3; }
@@ -38,8 +38,8 @@ public sealed class RedBoomMark : MonoBehaviour
     }
     private void LateUpdate() { if (target!=null) Follow(); }
     private void Follow() => transform.position = targetBody!=null
-        ? new Vector3(targetBody.bounds.center.x,targetBody.bounds.max.y+0.35f,0f)
-        : target.transform.position+Vector3.up*2.5f;
+        ? new Vector3(targetBody.bounds.center.x,targetBody.bounds.max.y+BalanceRuntime.Number(this, "RedBoomMark.Follow.1", 0.35f),0f)
+        : target.transform.position+Vector3.up*BalanceRuntime.Number(this, "RedBoomMark.Follow.2", 2.5f);
     private void OnDied(DamageInfo damage) => Cancel();
     public void Cancel() { if (gameObject.activeSelf) gameObject.SetActive(false); else ClearTarget(); }
     private void ClearTarget()

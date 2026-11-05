@@ -115,6 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 209337246595411620}
   - component: {fileID: 1040860151660856101}
+  - component: {fileID: 1494209985977317682}
   m_Layer: 0
   m_Name: ResonantStarOwlHighLowChime
   m_TagString: Untagged
@@ -172,3 +173,16 @@ MonoBehaviour:
     - {fileID: 676947325737253408, guid: 9f2698b0d9125a018ac8fe01a8d0475a, type: 3}
     loop: 0
     fps: 16
+--- !u!114 &1494209985977317682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7230226807281840119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: b3bbb297aa5c0e048af98be9a557ad07, type: 2}

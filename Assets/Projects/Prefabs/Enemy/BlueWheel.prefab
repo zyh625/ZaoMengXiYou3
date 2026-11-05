@@ -196,6 +196,7 @@ GameObject:
   - component: {fileID: 2130214738520138612}
   - component: {fileID: 6667210929993458511}
   - component: {fileID: 8910041002}
+  - component: {fileID: 176903377068328819}
   m_Layer: 11
   m_Name: BlueWheel
   m_TagString: Untagged
@@ -306,7 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25ea03d8aaa61a41b5c9155fe6f68df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  beginBlood: 200
+  beginBlood: 105
   curBlood: 0
   attackedUp: 0
 --- !u!114 &255902940780916626
@@ -321,7 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84f52c93662e4554ad3cb1f943419bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyRewards
-  experienceReward: 1
+  experienceReward: 11
   isBoss: 0
 --- !u!114 &8488622413663987039
 MonoBehaviour:
@@ -602,6 +603,34 @@ MonoBehaviour:
     - {fileID: 21300030, guid: cfd120e21fef5c3a8ce10ece40c87d89, type: 3}
     loop: 0
     fps: 12
+--- !u!114 &8910041002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252856287870807292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17948b3ea05c4b178854a40dff66eac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthBar
+  blood: {fileID: 8427651791739143042}
+  seeDuration: 3.5
+  fadeDuration: 1.5
+--- !u!114 &176903377068328819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252856287870807292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 727913a918cd4ef448ea02eaa239dfaa, type: 2}
 --- !u!1 &1392708345858447540
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,18 +859,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8133119d52b67742ae9eb793a2b2d2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpriteOutlineController
---- !u!114 &8910041002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1252856287870807292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17948b3ea05c4b178854a40dff66eac9, type: 3}
-  m_Name:
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthBar
-  blood: {fileID: 8427651791739143042}
-  seeDuration: 3.5
-  fadeDuration: 1.5

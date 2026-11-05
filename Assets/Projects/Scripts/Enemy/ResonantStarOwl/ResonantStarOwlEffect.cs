@@ -22,12 +22,12 @@ public sealed class ResonantStarOwlEffect : MonoBehaviour
     {
         owner = source.transform; ownerHealth = source.GetComponent<Health>(); ownerLife = ownerHealth.LifeVersion;
         kind = skill; segment = part; multiplier = source.DamageMultiplier; victims.Clear();
-        beganAt = Time.time; duration = kind == 0 ? 1.2f : kind == 1 ? 0.35f : 2f;
-        previousRadius = 1.6f;
+        beganAt = Time.time; duration = kind == 0 ? BalanceRuntime.Number(this, "ResonantStarOwlEffect.Begin.1", 1.2f) : kind == 1 ? BalanceRuntime.Number(this, "ResonantStarOwlEffect.Begin.2", 0.35f) : BalanceRuntime.Number(this, "ResonantStarOwlEffect.Begin.3", 2f);
+        previousRadius = BalanceRuntime.Number(this, "ResonantStarOwlEffect.Begin.4", 1.6f);
         float sign = source.FaceRight ? 1f : -1f;
-        transform.position = kind == 0 ? source.CastOrigin : new Vector2(source.CastOrigin.x + sign*(kind == 1 ? 3.9f : 4f),
-            source.CastFloor + (kind == 1 ? (segment == 0 ? 0.55f : 2.6f) : 2.5f));
-        size = kind == 1 ? new Vector2(6.2f,0.55f) : new Vector2(0.55f,1.6f);
+        transform.position = kind == 0 ? source.CastOrigin : new Vector2(source.CastOrigin.x + sign*(kind == 1 ? BalanceRuntime.Number(this, "ResonantStarOwlEffect.Begin.5", 3.9f) : BalanceRuntime.Number(this, "ResonantStarOwlEffect.Begin.6", 4f)),
+            source.CastFloor + (kind == 1 ? (segment == 0 ? BalanceRuntime.Number(this, "ResonantStarOwlEffect.Begin.7", 0.55f) : BalanceRuntime.Number(this, "ResonantStarOwlEffect.Begin.8", 2.6f)) : BalanceRuntime.Number(this, "ResonantStarOwlEffect.Begin.9", 2.5f)));
+        size = kind == 1 ? new Vector2(BalanceRuntime.Number(this, "ResonantStarOwlEffect.Begin.10", 6.2f),BalanceRuntime.Number(this, "ResonantStarOwlEffect.Begin.11", 0.55f)) : new Vector2(BalanceRuntime.Number(this, "ResonantStarOwlEffect.Begin.12", 0.55f),BalanceRuntime.Number(this, "ResonantStarOwlEffect.Begin.13", 1.6f));
         gameObject.SetActive(true); spriteManager.ChangeState(appearance); spriteManager.Pause();
         UpdateVisual();
         if (kind == 1) CheckDamage(0f,0f);
@@ -47,8 +47,8 @@ public sealed class ResonantStarOwlEffect : MonoBehaviour
         float elapsed = Mathf.Min(Time.time-beganAt,duration);
         if (kind == 0)
         {
-            float radius = Mathf.Lerp(1.6f,7f,elapsed/duration);
-            CheckDamage(Mathf.Max(0f,previousRadius-0.18f),radius+0.18f); previousRadius = radius;
+            float radius = Mathf.Lerp(BalanceRuntime.Number(this, "ResonantStarOwlEffect.FixedUpdate.1", 1.6f),BalanceRuntime.Number(this, "ResonantStarOwlEffect.FixedUpdate.2", 7f),elapsed/duration);
+            CheckDamage(Mathf.Max(0f,previousRadius-BalanceRuntime.Number(this, "ResonantStarOwlEffect.FixedUpdate.3", 0.18f)),radius+BalanceRuntime.Number(this, "ResonantStarOwlEffect.FixedUpdate.4", 0.18f)); previousRadius = radius;
         }
         else if (kind == 2) CheckDamage(0f,0f);
         if (Time.time-beganAt >= duration) Cancel();
@@ -58,8 +58,8 @@ public sealed class ResonantStarOwlEffect : MonoBehaviour
     {
         if (appearance == null || appearance.sprites.Length == 0) return;
         float progress = Mathf.Clamp01((Time.time-beganAt)/duration);
-        visual.sprite = appearance.sprites[Mathf.Min(15,Mathf.FloorToInt(progress*16f))];
-        Vector2 dimensions = kind == 0 ? Vector2.one*(2f*Mathf.Lerp(1.6f,7f,progress)) : size;
+        visual.sprite = appearance.sprites[Mathf.Min(15,Mathf.FloorToInt(progress*BalanceRuntime.Number(this, "ResonantStarOwlEffect.UpdateVisual.1", 16f)))];
+        Vector2 dimensions = kind == 0 ? Vector2.one*(BalanceRuntime.Number(this, "ResonantStarOwlEffect.UpdateVisual.2", 2f)*Mathf.Lerp(BalanceRuntime.Number(this, "ResonantStarOwlEffect.UpdateVisual.3", 1.6f),BalanceRuntime.Number(this, "ResonantStarOwlEffect.UpdateVisual.4", 7f),progress)) : size;
         Vector2 native = visual.sprite.bounds.size;
         visual.transform.localScale = new Vector3(dimensions.x/native.x,dimensions.y/native.y,1f);
         // Tight slices use a compensated pivot. Align the drawn energy with the query geometry.
@@ -82,7 +82,7 @@ public sealed class ResonantStarOwlEffect : MonoBehaviour
             if (kind == 0 && !IntersectsAnnulus(hit.bounds,transform.position,inner,outer)) continue;
             if (kind == 2 && !IsJumping(player)) continue;
             victims[hp] = hp.LifeVersion;
-            hp.TakeDamage(new DamageInfo(OwnerAlive ? owner : transform,(kind == 0 ? 8f : kind == 1 ? 10f : 6f)*multiplier,false,kind:DamageKind.Skill));
+            hp.TakeDamage(new DamageInfo(OwnerAlive ? owner : transform,(kind == 0 ? BalanceRuntime.Number(this, "ResonantStarOwlEffect.CheckDamage.1", 8f) : kind == 1 ? BalanceRuntime.Number(this, "ResonantStarOwlEffect.CheckDamage.2", 10f) : BalanceRuntime.Number(this, "ResonantStarOwlEffect.CheckDamage.3", 6f))*multiplier,false,kind:DamageKind.Skill));
             if (kind == 2 && !hp.Dead && !hp.IsInvincible)
             {
                 var move = player.GetComponent<PlayerMovement>(); move.ClearJump();

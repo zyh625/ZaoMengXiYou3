@@ -20,7 +20,7 @@ public sealed class RedBoomMovement : EnemyMovement
     {
         Health health = GetComponent<Health>();
         if (health != null && health.LifeVersion != blinkLife) { blinkLife = health.LifeVersion; blinkAt = 0f; }
-        if (Time.time < blinkAt || Mathf.Abs(delta) >= 3f || health == null || health.Dead || health.Attacked
+        if (Time.time < blinkAt || Mathf.Abs(delta) >= BalanceRuntime.Number(this, "RedBoomMovement.TryBlink.1", 3f) || health == null || health.Dead || health.Attacked
             || IsExternallyControlled || health.Status != null && health.Status.BlocksMovement || !IsOnGroundNow()) return false;
         Collider2D own = BodyCollider;
         if (own == null) return false;
@@ -38,15 +38,15 @@ public sealed class RedBoomMovement : EnemyMovement
         }
         if (center.x - shape.extents.x < limits.x || center.x + shape.extents.x > limits.y) return false;
         ContactFilter2D filter = new(); filter.SetLayerMask((1 << 6) | (1 << 11)); filter.useTriggers = false;
-        int count = own.Cast(direction,filter,casts,blinkDistance+0.025f);
+        int count = own.Cast(direction,filter,casts,blinkDistance+BalanceRuntime.Number(this, "RedBoomMovement.TryBlink.2", 0.025f));
         for (int i=0;i<count;i++)
-            if (Vector2.Dot(casts[i].normal,direction)<-0.01f && casts[i].distance<blinkDistance+0.025f) return false;
-        count = Physics2D.OverlapBox(center, (Vector2)shape.size-Vector2.one*0.04f, 0f, filter, overlaps);
+            if (Vector2.Dot(casts[i].normal,direction)<-BalanceRuntime.Number(this, "RedBoomMovement.TryBlink.3", 0.01f) && casts[i].distance<blinkDistance+BalanceRuntime.Number(this, "RedBoomMovement.TryBlink.4", 0.025f)) return false;
+        count = Physics2D.OverlapBox(center, (Vector2)shape.size-Vector2.one*BalanceRuntime.Number(this, "RedBoomMovement.TryBlink.5", 0.04f), 0f, filter, overlaps);
         for (int i=0;i<count;i++) if (overlaps[i]!=own && overlaps[i].attachedRigidbody!=body) return false;
         for (int side=-1;side<=1;side+=2)
         {
-            RaycastHit2D ground = Physics2D.Raycast(new Vector2(center.x+side*(shape.extents.x-0.04f),shape.min.y+0.15f),Vector2.down,0.35f,1 << 6);
-            if (ground.collider == null || ground.normal.y < 0.6f || Mathf.Abs(ground.point.y-shape.min.y)>0.15f) return false;
+            RaycastHit2D ground = Physics2D.Raycast(new Vector2(center.x+side*(shape.extents.x-BalanceRuntime.Number(this, "RedBoomMovement.TryBlink.6", 0.04f)),shape.min.y+BalanceRuntime.Number(this, "RedBoomMovement.TryBlink.7", 0.15f)),Vector2.down,BalanceRuntime.Number(this, "RedBoomMovement.TryBlink.8", 0.35f),1 << 6);
+            if (ground.collider == null || ground.normal.y < BalanceRuntime.Number(this, "RedBoomMovement.TryBlink.9", 0.6f) || Mathf.Abs(ground.point.y-shape.min.y)>BalanceRuntime.Number(this, "RedBoomMovement.TryBlink.10", 0.15f)) return false;
         }
         transform.position = new Vector3(destination.x,destination.y,transform.position.z);
         body.position = destination;

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3711772693495503735}
   - component: {fileID: 4585737409691213737}
   - component: {fileID: 2059890086003004184}
-  - component: {fileID: 8990002001}
   - component: {fileID: 1830901952704753216}
   - component: {fileID: 6453350514829635126}
   m_Layer: 9
@@ -94,25 +93,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a3102d7fa29c949bf6c3889653d8e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackBox
-  Attack: 2
+  Attack: 7
   knockback: 1
   launch: 0
   effects: []
---- !u!114 &8990002001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1485962845190815698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17948b3ea05c4b178854a40dff66eac9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthBar
-  blood: {fileID: 4568142407981128715}
-  seeDuration: 3.5
-  fadeDuration: 1.5
 --- !u!114 &1830901952704753216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -516,7 +500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a3102d7fa29c949bf6c3889653d8e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackBox
-  Attack: 3
+  Attack: 9
   knockback: 1
   launch: 0
   effects: []
@@ -849,6 +833,8 @@ GameObject:
   - component: {fileID: 8749716191397917322}
   - component: {fileID: 8178195544370210404}
   - component: {fileID: 1533444093193897607}
+  - component: {fileID: 914784142763594427}
+  - component: {fileID: 7166708544970925251}
   m_Layer: 11
   m_Name: PurpleHeavenly
   m_TagString: Untagged
@@ -959,7 +945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25ea03d8aaa61a41b5c9155fe6f68df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  beginBlood: 200
+  beginBlood: 110
   curBlood: 0
   attackedUp: 0
 --- !u!114 &5864450115382166998
@@ -974,7 +960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84f52c93662e4554ad3cb1f943419bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyRewards
-  experienceReward: 1
+  experienceReward: 10
   isBoss: 0
 --- !u!114 &101947502990276010
 MonoBehaviour:
@@ -1192,3 +1178,31 @@ MonoBehaviour:
   hitGap: 0.5
   parryDuration: 0.8
   parryRecovery: 0.12
+--- !u!114 &914784142763594427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7590330901536619158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 009f69b83ae65a543ad227ce4bbdef5a, type: 2}
+--- !u!114 &7166708544970925251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7590330901536619158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17948b3ea05c4b178854a40dff66eac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthBar
+  blood: {fileID: 4568142407981128715}
+  seeDuration: 3.5
+  fadeDuration: 1.5

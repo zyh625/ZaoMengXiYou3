@@ -1,0 +1,477 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ea7302a88f56248a1b33284c7df3cd, type: 3}
+  m_Name: BlueWheel
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceProfile
+  displayName: BlueWheel
+  description: "\u4FEE\u6539\u540E\u91CD\u65B0\u8FDB\u5165\u573A\u666F/\u8BAD\u7EC3\u76EE\u6807\u751F\u6548\uFF1B\u4E0D\u5199\u5165\u5B58\u6863\uFF0C\u4E0D\u4FEE\u6539\u4E34\u65F6\u72B6\u6001\u3002"
+  components:
+  - objectPath: 
+    componentType: Health
+    componentIndex: 0
+    parameters:
+    - path: beginBlood
+      label: "\u57FA\u7840\u751F\u547D\u4E0A\u9650 \xB7 beginBlood"
+      value: 105
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: EnemyRewards
+    componentIndex: 0
+    parameters:
+    - path: experienceReward
+      label: "\u51FB\u6740\u7ECF\u9A8C \xB7 experienceReward"
+      value: 11
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: ActorStatus
+    componentIndex: 0
+    parameters:
+    - path: frozenDuration
+      label: "frozenDuration \xB7 frozenDuration"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: meltFrameInterval
+      label: "meltFrameInterval \xB7 meltFrameInterval"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: frozenDamageMultiplier
+      label: "frozenDamageMultiplier \xB7 frozenDamageMultiplier"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: BlueMovement
+    componentIndex: 0
+    parameters:
+    - path: moveSpeed
+      label: "\u79FB\u52A8\u901F\u5EA6 \xB7 moveSpeed"
+      value: 1.2999999523162842
+      integer: 0
+      boolean: 0
+    - path: backSpeed
+      label: "\u53D7\u51FB\u540E\u9000\u901F\u5EA6 \xB7 backSpeed"
+      value: 3.5
+      integer: 0
+      boolean: 0
+    - path: upSpeed
+      label: "\u8DF3\u8DC3\u901F\u5EA6 \xB7 upSpeed"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: slowSpeed
+      label: "slowSpeed \xB7 slowSpeed"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: boostRatio
+      label: "boostRatio \xB7 boostRatio"
+      value: 1.600000023841858
+      integer: 0
+      boolean: 0
+    - path: minNormalY
+      label: "minNormalY \xB7 minNormalY"
+      value: 0.6000000238418579
+      integer: 0
+      boolean: 0
+    - path: hiddenSpeedMultiplier
+      label: "hiddenSpeedMultiplier \xB7 hiddenSpeedMultiplier"
+      value: 1.2000000476837158
+      integer: 0
+      boolean: 0
+    - path: hiddenDistance
+      label: "hiddenDistance \xB7 hiddenDistance"
+      value: 4
+      integer: 0
+      boolean: 0
+    - path: patrolWidth
+      label: "patrolWidth \xB7 patrolWidth"
+      value: 3
+      integer: 0
+      boolean: 0
+    - path: turnTolerance
+      label: "turnTolerance \xB7 turnTolerance"
+      value: 0.15000000596046448
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: BlueWheelCombat
+    componentIndex: 0
+    parameters:
+    - path: angryFull
+      label: "angryFull \xB7 angryFull"
+      value: 100
+      integer: 0
+      boolean: 0
+    - path: angryRatio
+      label: "angryRatio \xB7 angryRatio"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: deltaAngry
+      label: "deltaAngry \xB7 deltaAngry"
+      value: 8
+      integer: 0
+      boolean: 0
+    - path: angryDuration
+      label: "angryDuration \xB7 angryDuration"
+      value: 7
+      integer: 0
+      boolean: 0
+    - path: delayRatio
+      label: "delayRatio \xB7 delayRatio"
+      value: 0.6000000238418579
+      integer: 0
+      boolean: 0
+    - path: throwCooldown
+      label: "throwCooldown \xB7 throwCooldown"
+      value: 8
+      integer: 0
+      boolean: 0
+    - path: doubleChance
+      label: "doubleChance \xB7 doubleChance"
+      value: 0.25
+      integer: 0
+      boolean: 0
+    - path: throwRange
+      label: "throwRange \xB7 throwRange"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: wheelOffset.x
+      label: "wheelOffset \xB7 wheelOffset.x"
+      value: 2.5
+      integer: 0
+      boolean: 0
+    - path: wheelOffset.y
+      label: "wheelOffset \xB7 wheelOffset.y"
+      value: 0.5
+      integer: 0
+      boolean: 0
+    - path: doubleSpacing
+      label: "doubleSpacing \xB7 doubleSpacing"
+      value: 3
+      integer: 0
+      boolean: 0
+    - path: releaseFrame
+      label: "releaseFrame \xB7 releaseFrame"
+      value: 7
+      integer: 1
+      boolean: 0
+    - path: catchFrame
+      label: "catchFrame \xB7 catchFrame"
+      value: 7
+      integer: 1
+      boolean: 0
+    - path: hideCooldown
+      label: "hideCooldown \xB7 hideCooldown"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: hideStartFrame
+      label: "hideStartFrame \xB7 hideStartFrame"
+      value: 12
+      integer: 1
+      boolean: 0
+    - path: shadowInterval
+      label: "shadowInterval \xB7 shadowInterval"
+      value: 1.5
+      integer: 0
+      boolean: 0
+    - path: shadowAlpha
+      label: "shadowAlpha \xB7 shadowAlpha"
+      value: 0.30000001192092896
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: BlueWheelController
+    componentIndex: 0
+    parameters:
+    - path: Idle.loop
+      label: "Idle \xB7 Idle.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Idle.fps
+      label: "Idle \xB7 Idle.fps"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: Walk.loop
+      label: "Walk \xB7 Walk.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Walk.fps
+      label: "Walk \xB7 Walk.fps"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: Die.loop
+      label: "Die \xB7 Die.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: Die.fps
+      label: "Die \xB7 Die.fps"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: stopDistance
+      label: "\u505C\u6B62\u9760\u8FD1\u8DDD\u79BB \xB7 stopDistance"
+      value: 5
+      integer: 0
+      boolean: 0
+    - path: specialAttack
+      label: "specialAttack \xB7 specialAttack"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: stunnedFrame
+      label: "stunnedFrame \xB7 stunnedFrame"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: SingleThrow.loop
+      label: "SingleThrow \xB7 SingleThrow.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: SingleThrow.fps
+      label: "SingleThrow \xB7 SingleThrow.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: SingleBack.loop
+      label: "SingleBack \xB7 SingleBack.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: SingleBack.fps
+      label: "SingleBack \xB7 SingleBack.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: DoubleThrow.loop
+      label: "DoubleThrow \xB7 DoubleThrow.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: DoubleThrow.fps
+      label: "DoubleThrow \xB7 DoubleThrow.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: DoubleBack.loop
+      label: "DoubleBack \xB7 DoubleBack.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: DoubleBack.fps
+      label: "DoubleBack \xB7 DoubleBack.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: Hide.loop
+      label: "Hide \xB7 Hide.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: Hide.fps
+      label: "Hide \xB7 Hide.fps"
+      value: 12
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: EnemyHealthBar
+    componentIndex: 0
+    parameters:
+    - path: seeDuration
+      label: "seeDuration \xB7 seeDuration"
+      value: 3.5
+      integer: 0
+      boolean: 0
+    - path: fadeDuration
+      label: "fadeDuration \xB7 fadeDuration"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: UnityEngine.Rigidbody2D
+    componentIndex: 0
+    parameters:
+    - path: m_Mass
+      label: "\u8D28\u91CF \xB7 m_Mass"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: m_GravityScale
+      label: "\u91CD\u529B\u500D\u7387 \xB7 m_GravityScale"
+      value: 0.8999999761581421
+      integer: 0
+      boolean: 0
+    - path: m_LinearDamping
+      label: "\u6C34\u5E73\u963B\u5C3C \xB7 m_LinearDamping"
+      value: 0
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.7427606582641602
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 3.190620183944702
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0.04990243911743164
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: -0.12376844882965088
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/Attacked
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.6200000047683716
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 3.4600000381469727
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 0.009999999776482582
+      integer: 0
+      boolean: 0
+  numbers:
+  - key: BlueBoomearng.FlySpeed.1
+    label: FlySpeed / public float FlySpeed => Mathf.Max(0.01f, flySpeed);
+    source: Assets/Projects/Scripts/Enemy/BlueWheel/BlueBoomearng.cs:30
+    value: 0.01
+  - key: BlueBoomearng.FixedUpdate.1
+    label: FixedUpdate / step = Mathf.Min(step, Mathf.Max(0f, Mathf.Max(0.1f, outboundDistance)
+      - travelled));
+    source: Assets/Projects/Scripts/Enemy/BlueWheel/BlueBoomearng.cs:114
+    value: 0.1
+  - key: BlueBoomearng.FixedUpdate.2
+    label: FixedUpdate / if (hiddenCast && (reachedEdge || travelled >= Mathf.Max(0.1f,
+      outboundDistance)))
+    source: Assets/Projects/Scripts/Enemy/BlueWheel/BlueBoomearng.cs:129
+    value: 0.1
+  - key: BlueBoomearng.FixedUpdate.3
+    label: FixedUpdate / BeginReturn(Vector2.Distance(to, TargetPosition) / Mathf.Max(0.01f,
+      returnSpeed), true);
+    source: Assets/Projects/Scripts/Enemy/BlueWheel/BlueBoomearng.cs:130
+    value: 0.01
+  - key: BlueBoomearng.MakeFree.1
+    label: 'MakeFree / direction = new Vector2(Mathf.Abs(lastDirection.x) > 0.001f
+      ? Mathf.Sign(lastDirection.x) : Mathf.Sign(direction.x)'
+    source: Assets/Projects/Scripts/Enemy/BlueWheel/BlueBoomearng.cs:159
+    value: 0.001
+  - key: BlueBoomearng.SaveDirection.1
+    label: SaveDirection / if (delta.sqrMagnitude > 0.000001f) lastDirection = delta.normalized;
+    source: Assets/Projects/Scripts/Enemy/BlueWheel/BlueBoomearng.cs:166
+    value: 0.000001
+  - key: BlueBoomearng.SaveDirection.2
+    label: SaveDirection / if (sr != null && Mathf.Abs(lastDirection.x) > 0.001f)
+      sr.flipX = (lastDirection.x > 0f) != sourceFacesRight;
+    source: Assets/Projects/Scripts/Enemy/BlueWheel/BlueBoomearng.cs:167
+    value: 0.001
+  - key: BlueBoomearng.ClampToBounds.1
+    label: ClampToBounds / if (left > right) left = right = (bounds.x + bounds.y)
+      * 0.5f - offset;
+    source: Assets/Projects/Scripts/Enemy/BlueWheel/BlueBoomearng.cs:180
+    value: 0.5
+  - key: BlueBoomearng.CheckPlayerHit.1
+    label: CheckPlayerHit / if (!target.Contains(start) && (delta.sqrMagnitude <=
+      0.000001f
+    source: Assets/Projects/Scripts/Enemy/BlueWheel/BlueBoomearng.cs:199
+    value: 0.000001
+  - key: BlueMovement.PatrolHidden.1
+    label: PatrolHidden / if ((transform.position.x - playerX) * patrolSide < -0.5f)
+    source: Assets/Projects/Scripts/Enemy/BlueWheel/BlueMovement.cs:39
+    value: 0.5
+  - key: BlueMovement.PatrolHidden.2
+    label: PatrolHidden / float near = playerX + patrolSide * Mathf.Max(0.5f, hiddenDistance);
+    source: Assets/Projects/Scripts/Enemy/BlueWheel/BlueMovement.cs:44
+    value: 0.5
+  - key: BlueMovement.PatrolHidden.3
+    label: PatrolHidden / float far = playerX + patrolSide * (Mathf.Max(0.5f, hiddenDistance)
+      + Mathf.Max(0.2f, patrolWidth));
+    source: Assets/Projects/Scripts/Enemy/BlueWheel/BlueMovement.cs:45
+    value: 0.5
+  - key: BlueMovement.PatrolHidden.4
+    label: PatrolHidden / float far = playerX + patrolSide * (Mathf.Max(0.5f, hiddenDistance)
+      + Mathf.Max(0.2f, patrolWidth));
+    source: Assets/Projects/Scripts/Enemy/BlueWheel/BlueMovement.cs:45
+    value: 0.2
+  - key: BlueMovement.PatrolHidden.5
+    label: 'PatrolHidden / float margin = BodyCollider != null ? BodyCollider.bounds.extents.x
+      + 0.2f : 1f;'
+    source: Assets/Projects/Scripts/Enemy/BlueWheel/BlueMovement.cs:48
+    value: 0.2
+  - key: BlueMovement.PatrolHidden.6
+    label: PatrolHidden / if (Mathf.Abs(distance) <= Mathf.Max(0.02f, turnTolerance))
+    source: Assets/Projects/Scripts/Enemy/BlueWheel/BlueMovement.cs:59
+    value: 0.02
+  - key: BlueMovement.PatrolHidden.7
+    label: PatrolHidden / if (Mathf.Abs(distance) <= Mathf.Max(0.02f, turnTolerance))
+    source: Assets/Projects/Scripts/Enemy/BlueWheel/BlueMovement.cs:65
+    value: 0.02
+  - key: BlueMovement.PatrolHidden.8
+    label: PatrolHidden / float limit = distance / Mathf.Max(0.0001f, Time.fixedDeltaTime);
+    source: Assets/Projects/Scripts/Enemy/BlueWheel/BlueMovement.cs:76
+    value: 0.0001
+  - key: BlueWheelCombat.ShadowInterval.1
+    label: ShadowInterval / public float ShadowInterval => Mathf.Max(0.05f, shadowInterval);
+    source: Assets/Projects/Scripts/Enemy/BlueWheel/BlueWheelCombat.cs:33
+    value: 0.05
+  - key: BlueWheelCombat.EmitWheels.1
+    label: 'EmitWheels / float delay = hidden && i > 0 ? Mathf.Max(0f, doubleSpacing)
+      / Mathf.Max(0.01f, wheelPrefab.FlySpeed) : 0f;'
+    source: Assets/Projects/Scripts/Enemy/BlueWheel/BlueWheelCombat.cs:115
+    value: 0.01
+  - key: BlueWheelController.BuildHiddenLoop.1
+    label: 'BuildHiddenLoop / fps = count / (combat != null ? combat.ShadowInterval
+      : 1.5f) };'
+    source: Assets/Projects/Scripts/Enemy/BlueWheel/BlueWheelController.cs:23
+    value: 1.5
+  - key: BlueWheelController.SkillOver.1
+    label: 'SkillOver / combat.BeginReturn(returning != null ? returning.fps : 16f);'
+    source: Assets/Projects/Scripts/Enemy/BlueWheel/BlueWheelController.cs:82
+    value: 16
+  skills: []
+  relatedProfiles:
+  - {fileID: 11400000, guid: ce6295c0787a0784cbed640914fa66ef, type: 2}

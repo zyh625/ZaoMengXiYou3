@@ -22,9 +22,9 @@ public sealed class RebirthEntry : MonoBehaviour
     public void ConfirmRebirth()
     {
         if(entering||session==null||!session.CanRebirth)return;
-        if(!Application.CanStreamedLevelBeLoaded("Level1Scene")){if(message!=null)message.text="第1关尚未加入构建列表";return;}
+        if(!Application.CanStreamedLevelBeLoaded("RebirthScene")){if(message!=null)message.text="轮回漫画场景尚未加入构建列表";return;}
         entering=true;bool saved=SceneManager.GetActiveScene().name=="MapScene"?session.TryBeginRebirthFromMap():session.TryBeginRebirth(session.battle);
         if(!saved){entering=false;if(message!=null)message.text="保存失败，轮回资格已保留，请重试";Refresh();return;}
-        Refresh();SceneManager.LoadScene("Level1Scene");
+        Refresh();SceneManager.LoadScene("RebirthScene");
     }
 }

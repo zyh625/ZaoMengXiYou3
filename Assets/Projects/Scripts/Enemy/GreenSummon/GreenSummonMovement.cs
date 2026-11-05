@@ -21,7 +21,7 @@ public sealed class GreenSummonMovement : EnemyMovement
     {
         Health hp=GetComponent<Health>();
         if(hp!=null && hp.LifeVersion!=life){life=hp.LifeVersion;readyAt=0f;IsRetreating=false;}
-        if(IsRetreating || Time.time<readyAt || Mathf.Abs(delta)>=3f || hp==null || hp.Dead || hp.Attacked
+        if(IsRetreating || Time.time<readyAt || Mathf.Abs(delta)>=BalanceRuntime.Number(this, "GreenSummonMovement.TryRetreat.1", 3f) || hp==null || hp.Dead || hp.Attacked
             || IsExternallyControlled || hp.Status!=null && hp.Status.BlocksMovement || !IsOnGroundNow())return false;
         Bounds shape=BodyCollider.bounds;direction=delta>=0f?-1f:1f;destination=body.position.x+direction*retreatDistance;
         Vector2 center=(Vector2)shape.center+Vector2.right*(direction*retreatDistance);
@@ -34,17 +34,17 @@ public sealed class GreenSummonMovement : EnemyMovement
         }
         if(center.x-shape.extents.x<bounds.x || center.x+shape.extents.x>bounds.y)return false;
         ContactFilter2D filter=new();filter.SetLayerMask((1<<6)|(1<<11));filter.useTriggers=false;
-        int count=BodyCollider.Cast(Vector2.right*direction,filter,casts,retreatDistance+0.025f);
-        for(int i=0;i<count;i++)if(Vector2.Dot(casts[i].normal,Vector2.right*direction)<-0.01f)return false;
-        count=Physics2D.OverlapBox(center,(Vector2)shape.size-Vector2.one*0.04f,0f,filter,overlaps);
+        int count=BodyCollider.Cast(Vector2.right*direction,filter,casts,retreatDistance+BalanceRuntime.Number(this, "GreenSummonMovement.TryRetreat.2", 0.025f));
+        for(int i=0;i<count;i++)if(Vector2.Dot(casts[i].normal,Vector2.right*direction)<-BalanceRuntime.Number(this, "GreenSummonMovement.TryRetreat.3", 0.01f))return false;
+        count=Physics2D.OverlapBox(center,(Vector2)shape.size-Vector2.one*BalanceRuntime.Number(this, "GreenSummonMovement.TryRetreat.4", 0.04f),0f,filter,overlaps);
         for(int i=0;i<count;i++)if(overlaps[i]!=BodyCollider && overlaps[i].attachedRigidbody!=body)return false;
         //整条3u路径均有同层地面，避免跨过缺口后虽然终点有地却在中途坠落。
-        for(float advance=0.5f;advance<=retreatDistance+0.01f;advance+=0.5f)
+        for(float advance=BalanceRuntime.Number(this, "GreenSummonMovement.TryRetreat.5", 0.5f);advance<=retreatDistance+BalanceRuntime.Number(this, "GreenSummonMovement.TryRetreat.6", 0.01f);advance+=BalanceRuntime.Number(this, "GreenSummonMovement.TryRetreat.7", 0.5f))
         for(int side=-1;side<=1;side+=2)
         {
-            float probeX=shape.center.x+direction*advance+side*(shape.extents.x-0.04f);
-            RaycastHit2D floor=Physics2D.Raycast(new Vector2(probeX,shape.min.y+0.15f),Vector2.down,0.35f,1<<6);
-            if(floor.collider==null || floor.normal.y<0.6f || Mathf.Abs(floor.point.y-shape.min.y)>0.15f)return false;
+            float probeX=shape.center.x+direction*advance+side*(shape.extents.x-BalanceRuntime.Number(this, "GreenSummonMovement.TryRetreat.8", 0.04f));
+            RaycastHit2D floor=Physics2D.Raycast(new Vector2(probeX,shape.min.y+BalanceRuntime.Number(this, "GreenSummonMovement.TryRetreat.9", 0.15f)),Vector2.down,BalanceRuntime.Number(this, "GreenSummonMovement.TryRetreat.10", 0.35f),1<<6);
+            if(floor.collider==null || floor.normal.y<BalanceRuntime.Number(this, "GreenSummonMovement.TryRetreat.11", 0.6f) || Mathf.Abs(floor.point.y-shape.min.y)>BalanceRuntime.Number(this, "GreenSummonMovement.TryRetreat.12", 0.15f))return false;
         }
         IsRetreating=true;readyAt=Time.time+retreatCooldown;body.linearVelocityX=direction*retreatDistance/retreatDuration;return true;
     }
@@ -53,9 +53,9 @@ public sealed class GreenSummonMovement : EnemyMovement
         if(!IsRetreating)return;
         float speed=retreatDistance/retreatDuration,remaining=(destination-body.position.x)*direction;
         ContactFilter2D filter=new();filter.SetLayerMask((1<<6)|(1<<11));filter.useTriggers=false;
-        int count=BodyCollider.Cast(Vector2.right*direction,filter,casts,Mathf.Max(0f,Mathf.Min(remaining,speed*Time.fixedDeltaTime))+0.025f);
-        for(int i=0;i<count;i++)if(Vector2.Dot(casts[i].normal,Vector2.right*direction)<-0.01f){CancelRetreat();return;}
-        if(remaining<=speed*Time.fixedDeltaTime+0.001f)
+        int count=BodyCollider.Cast(Vector2.right*direction,filter,casts,Mathf.Max(0f,Mathf.Min(remaining,speed*Time.fixedDeltaTime))+BalanceRuntime.Number(this, "GreenSummonMovement.StepRetreat.1", 0.025f));
+        for(int i=0;i<count;i++)if(Vector2.Dot(casts[i].normal,Vector2.right*direction)<-BalanceRuntime.Number(this, "GreenSummonMovement.StepRetreat.2", 0.01f)){CancelRetreat();return;}
+        if(remaining<=speed*Time.fixedDeltaTime+BalanceRuntime.Number(this, "GreenSummonMovement.StepRetreat.3", 0.001f))
         {
             Vector2 position=body.position;position.x=destination;transform.position=new Vector3(position.x,position.y,transform.position.z);body.position=position;
             CancelRetreat();Physics2D.SyncTransforms();return;

@@ -161,6 +161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1996839316827809970}
   - component: {fileID: 272011658428531682}
+  - component: {fileID: 7581793125043532501}
   m_Layer: 0
   m_Name: ConstellationWeaverStarKnot
   m_TagString: Untagged
@@ -197,3 +198,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConstellationWeaverArea
   line: {fileID: 8856072937010225261}
+--- !u!114 &7581793125043532501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5626270115833971106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: af948c5b9779f974a879d31370ade41d, type: 2}

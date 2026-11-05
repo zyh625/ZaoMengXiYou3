@@ -100,7 +100,7 @@ public static class TutorialLevelSetup
         GameObject note = new("TutorialNotice", typeof(RectTransform), typeof(Text), typeof(RebirthText)); note.transform.SetParent(canvas.transform, false);
         RectTransform rect = note.GetComponent<RectTransform>(); rect.anchorMin = rect.anchorMax = new Vector2(0.5f, 0f); rect.anchoredPosition = new Vector2(0f, 24f); rect.sizeDelta = new Vector2(1050f, 42f);
         Text text = note.GetComponent<Text>(); text.font = Resources.GetBuiltinResource<UnityEngine.Font>("LegacyRuntime.ttf"); text.fontSize = 20; text.alignment = TextAnchor.MiddleCenter; text.color = Color.white; text.raycastTarget = false;
-        text.text = "清完三波狼后前往出口，按交互键离开。通关解锁猪八戒；Q/E 切换已加入的伙伴。";
+        text.text = "清完三波狼后前往出口，按交互键离开。通关解锁猪八戒，数字键 1–4 切换已加入的伙伴。";
         RepairPresentation(scene);
         stage.ResolveSceneReferences(); if (!stage.ValidateConfiguration(out string error)) throw new InvalidOperationException(error);
         EditorSceneManager.MarkSceneDirty(scene); if (!EditorSceneManager.SaveScene(scene, PathName)) throw new InvalidOperationException("Save tutorial scene failed");

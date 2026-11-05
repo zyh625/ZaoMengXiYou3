@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ea7302a88f56248a1b33284c7df3cd, type: 3}
+  m_Name: RedBoomLantern
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceProfile
+  displayName: RedBoomLantern
+  description: "\u4FEE\u6539\u540E\u91CD\u65B0\u8FDB\u5165\u573A\u666F/\u8BAD\u7EC3\u76EE\u6807\u751F\u6548\uFF1B\u4E0D\u5199\u5165\u5B58\u6863\uFF0C\u4E0D\u4FEE\u6539\u4E34\u65F6\u72B6\u6001\u3002"
+  components:
+  - objectPath: 
+    componentType: RedBoomLantern
+    componentIndex: 0
+    parameters:
+    - path: flight.loop
+      label: "flight \xB7 flight.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: flight.fps
+      label: "flight \xB7 flight.fps"
+      value: 14
+      integer: 0
+      boolean: 0
+    - path: explosion.loop
+      label: "explosion \xB7 explosion.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: explosion.fps
+      label: "explosion \xB7 explosion.fps"
+      value: 20
+      integer: 0
+      boolean: 0
+    - path: fire.loop
+      label: "fire \xB7 fire.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: fire.fps
+      label: "fire \xB7 fire.fps"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: flightTime
+      label: "flightTime \xB7 flightTime"
+      value: 0.8999999761581421
+      integer: 0
+      boolean: 0
+    - path: gravity
+      label: "gravity \xB7 gravity"
+      value: 18
+      integer: 0
+      boolean: 0
+    - path: explosionDamage
+      label: "explosionDamage \xB7 explosionDamage"
+      value: 18
+      integer: 0
+      boolean: 0
+    - path: radius
+      label: "\u4F5C\u7528\u534A\u5F84 \xB7 radius"
+      value: 2.200000047683716
+      integer: 0
+      boolean: 0
+    - path: fuseDuration
+      label: "fuseDuration \xB7 fuseDuration"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: fireDuration
+      label: "fireDuration \xB7 fireDuration"
+      value: 3
+      integer: 0
+      boolean: 0
+    - path: fireInterval
+      label: "fireInterval \xB7 fireInterval"
+      value: 0.5
+      integer: 0
+      boolean: 0
+    - path: fireTickDamage
+      label: "fireTickDamage \xB7 fireTickDamage"
+      value: 5
+      integer: 0
+      boolean: 0
+    - path: blastNativeWidth
+      label: "blastNativeWidth \xB7 blastNativeWidth"
+      value: 1.399999976158142
+      integer: 0
+      boolean: 0
+  numbers: []
+  skills: []
+  relatedProfiles: []

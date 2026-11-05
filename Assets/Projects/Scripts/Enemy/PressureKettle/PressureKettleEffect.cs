@@ -65,9 +65,9 @@ public sealed class PressureKettleEffect : MonoBehaviour
         transform.position = source.Origin;
         // Source art points LEFT. Root mirroring also mirrors the physical cone.
         // The existing cone is authored at radius 3.5; scale it with the tunable range.
-        float coneScale = steamRange / 3.5f;
+        float coneScale = steamRange / BalanceRuntime.Number(this, "PressureKettleEffect.BeginSteam.1", 3.5f);
         transform.localScale = new Vector3((faceRight ? -1f : 1f) * coneScale, coneScale, 1f);
-        visual.transform.localScale = Vector3.one * (3.5f / nativeWidth);
+        visual.transform.localScale = Vector3.one * (BalanceRuntime.Number(this, "PressureKettleEffect.BeginSteam.2", 3.5f) / nativeWidth);
         cone.enabled = true;
         nextTick = Time.time + steamTickInterval; expiresAt = Time.time + steamTickInterval * steamTicks;
     }
@@ -75,20 +75,20 @@ public sealed class PressureKettleEffect : MonoBehaviour
     {
         Prepare(source); phase = Phase.Flying; transform.position = source.Origin;
         Collider2D shape = target.GetComponent<Collider2D>();
-        Vector2 aim = shape != null ? new Vector2(shape.bounds.center.x, shape.bounds.min.y + 0.12f) : (Vector2)target.transform.position;
-        RaycastHit2D floor = Physics2D.Raycast(aim, Vector2.down, 30f, 1 << 6);
-        if (floor.collider != null) aim.y = floor.point.y + 0.12f;
-        const float flightTime = 0.9f, gravity = 18f;
+        Vector2 aim = shape != null ? new Vector2(shape.bounds.center.x, shape.bounds.min.y + BalanceRuntime.Number(this, "PressureKettleEffect.Launch.1", 0.12f)) : (Vector2)target.transform.position;
+        RaycastHit2D floor = Physics2D.Raycast(aim, Vector2.down, BalanceRuntime.Number(this, "PressureKettleEffect.Launch.2", 30f), 1 << 6);
+        if (floor.collider != null) aim.y = floor.point.y + BalanceRuntime.Number(this, "PressureKettleEffect.Launch.3", 0.12f);
+        float flightTime = BalanceRuntime.Number(this, "PressureKettleEffect.Launch.4", 0.9f), gravity = BalanceRuntime.Number(this, "PressureKettleEffect.Launch.5", 18f);
         velocity = new Vector2((aim.x - transform.position.x) / flightTime,
-            (aim.y - transform.position.y + gravity * flightTime * flightTime / 2f) / flightTime);
-        expiresAt = Time.time + 8f;
+            (aim.y - transform.position.y + gravity * flightTime * flightTime / BalanceRuntime.Number(this, "PressureKettleEffect.Launch.6", 2f)) / flightTime);
+        expiresAt = Time.time + BalanceRuntime.Number(this, "PressureKettleEffect.Launch.7", 8f);
         AlignBombVisual();
     }
     public void BeginBurst(PressureKettleCombat source)
     {
         Prepare(source); phase = Phase.Blast;
-        transform.position = (Vector2)source.transform.position + Vector2.up * 0.85f;
-        visual.transform.localScale = Vector3.one * (burstRadius * 2f / nativeWidth);
+        transform.position = (Vector2)source.transform.position + Vector2.up * BalanceRuntime.Number(this, "PressureKettleEffect.BeginBurst.1", 0.85f);
+        visual.transform.localScale = Vector3.one * (burstRadius * BalanceRuntime.Number(this, "PressureKettleEffect.BeginBurst.2", 2f) / nativeWidth);
         expiresAt = Time.time + appearance.sprites.Length / appearance.fps;
         ExplosionCount = 1; ExplodedAt = Time.time;
         DamageArea(burstDamage, burstRadius, burstKnockback);
@@ -108,7 +108,7 @@ public sealed class PressureKettleEffect : MonoBehaviour
             if (!OwnerAlive || caster == null || caster.CurrentSkill != 0) { Cancel(); return; }
             transform.position = caster.Origin;
             Physics2D.SyncTransforms();
-            while (TickCount < steamTicks && Time.time + 0.0001f >= nextTick)
+            while (TickCount < steamTicks && Time.time + BalanceRuntime.Number(this, "PressureKettleEffect.FixedUpdate.1", 0.0001f) >= nextTick)
             {
                 nextTick += steamTickInterval; TickCount++;
                 DamageArea(steamDamage, steamRange, steamKnockback);
@@ -120,22 +120,22 @@ public sealed class PressureKettleEffect : MonoBehaviour
         {
             if (Time.time >= expiresAt) { Cancel(); return; }
             float dt = Time.fixedDeltaTime;
-            Vector2 from = transform.position, delta = velocity * dt + Vector2.down * (9f * dt * dt);
-            velocity += Vector2.down * (18f * dt);
+            Vector2 from = transform.position, delta = velocity * dt + Vector2.down * (BalanceRuntime.Number(this, "PressureKettleEffect.FixedUpdate.2", 9f) * dt * dt);
+            velocity += Vector2.down * (BalanceRuntime.Number(this, "PressureKettleEffect.FixedUpdate.3", 18f) * dt);
             ContactFilter2D filter = new(); filter.SetLayerMask(1 << 6); filter.useTriggers = false;
-            int count = Physics2D.CircleCast(from, 0.12f, delta.normalized, filter, casts, delta.magnitude);
+            int count = Physics2D.CircleCast(from, BalanceRuntime.Number(this, "PressureKettleEffect.FixedUpdate.4", 0.12f), delta.normalized, filter, casts, delta.magnitude);
             int nearest = -1;
             for (int i = 0; i < count; i++) if (nearest < 0 || casts[i].distance < casts[nearest].distance) nearest = i;
             if (nearest < 0) transform.position = from + delta;
             else
             {
-                RaycastHit2D hit = casts[nearest]; transform.position = hit.centroid + hit.normal * 0.01f;
-                if (hit.normal.y >= 0.5f)
+                RaycastHit2D hit = casts[nearest]; transform.position = hit.centroid + hit.normal * BalanceRuntime.Number(this, "PressureKettleEffect.FixedUpdate.5", 0.01f);
+                if (hit.normal.y >= BalanceRuntime.Number(this, "PressureKettleEffect.FixedUpdate.6", 0.5f))
                 {
                     phase = Phase.Fuse; HasLanded = true; LandedAt = Time.time; detonateAt = Time.time + bombFuse;
                     spriteManager.Pause();
                 }
-                else { if (Mathf.Abs(hit.normal.x) > 0.1f) velocity.x = 0f; if (hit.normal.y < 0f) velocity.y = Mathf.Min(0f, velocity.y); }
+                else { if (Mathf.Abs(hit.normal.x) > BalanceRuntime.Number(this, "PressureKettleEffect.FixedUpdate.7", 0.1f)) velocity.x = 0f; if (hit.normal.y < 0f) velocity.y = Mathf.Min(0f, velocity.y); }
             }
         }
         else if (phase == Phase.Fuse && Time.time >= detonateAt)
@@ -143,8 +143,8 @@ public sealed class PressureKettleEffect : MonoBehaviour
             // Commit the phase BEFORE applying damage (events may reenter or recycle actors).
             phase = Phase.Blast; ExplosionCount++; ExplodedAt = Time.time;
             visual.flipX = false;
-            visual.transform.localScale = Vector3.one * (bombRadius * 2f / nativeWidth);
-            visual.transform.localPosition = (Vector3)(explosionOffset * (bombRadius * 2f / nativeWidth));
+            visual.transform.localScale = Vector3.one * (bombRadius * BalanceRuntime.Number(this, "PressureKettleEffect.FixedUpdate.8", 2f) / nativeWidth);
+            visual.transform.localPosition = (Vector3)(explosionOffset * (bombRadius * BalanceRuntime.Number(this, "PressureKettleEffect.FixedUpdate.9", 2f) / nativeWidth));
             spriteManager.ChangeState(explosion);
             expiresAt = Time.time + explosion.sprites.Length / explosion.fps;
             DamageArea(bombDamage, bombRadius, false);

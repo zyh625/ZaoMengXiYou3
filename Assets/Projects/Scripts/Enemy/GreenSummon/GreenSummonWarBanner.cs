@@ -34,7 +34,7 @@ public sealed class GreenSummonWarBanner : MonoBehaviour
         if(!BattleRun.IsRunning || health.Dead || Time.time>=until){gameObject.SetActive(false);return;}
         //旗杆插地后固定在世界位置，携带/碰撞不让旗子跟随施法者或漂移。
         transform.position=anchor;body.position=anchor;body.linearVelocity=Vector2.zero;
-        if(Time.time>=refreshAt){refreshAt=Time.time+0.1f;RefreshBuffs();}
+        if(Time.time>=refreshAt){refreshAt=Time.time+BalanceRuntime.Number(this, "GreenSummonWarBanner.FixedUpdate.1", 0.1f);RefreshBuffs();}
     }
     private void RefreshBuffs()
     {
@@ -47,7 +47,7 @@ public sealed class GreenSummonWarBanner : MonoBehaviour
             seen.Add(hp);bool tracked=false;
             for(int i=0;i<recipients.Count;i++)if(recipients[i].Health==hp && recipients[i].Life==hp.LifeVersion){tracked=true;break;}
             if(!tracked)recipients.Add(new Recipient(hp,combat));
-            combat.ApplyAttackBuff(this,1.15f,0.35f);hp.SetDamageMultiplier(this,0.9f);
+            combat.ApplyAttackBuff(this,BalanceRuntime.Number(this, "GreenSummonWarBanner.RefreshBuffs.1", 1.15f),BalanceRuntime.Number(this, "GreenSummonWarBanner.RefreshBuffs.2", 0.35f));hp.SetDamageMultiplier(this,BalanceRuntime.Number(this, "GreenSummonWarBanner.RefreshBuffs.3", 0.9f));
         }
         for(int i=recipients.Count-1;i>=0;i--)
         {

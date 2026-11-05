@@ -13,48 +13,48 @@ MonoBehaviour:
   m_Name: TrainingEnemyCatalog
   m_EditorClassIdentifier: Assembly-CSharp::TrainingEnemyCatalog
   enemies:
-  - displayName: Wolf
+  - displayName: 野狼
     prefab: {fileID: 72155393252631779, guid: 7539dfc3e2b5a9741b5d2ffba94374f9, type: 3}
     summonFallback: 0
-  - displayName: Tiger
+  - displayName: 虎妖
     prefab: {fileID: 4002307308678540438, guid: 5eac2fd519f23044e9bcb6bf339c0761, type: 3}
     summonFallback: 0
-  - displayName: PurpleHeavenly
+  - displayName: 紫衣天兵
     prefab: {fileID: 8749716191397917322, guid: 6f30a5f76861efc4399db1dd915997fa, type: 3}
     summonFallback: 1
-  - displayName: PurpleRanged
+  - displayName: 紫衣神射手
     prefab: {fileID: 6659212435133434578, guid: 01caf6ad698bebd4199b9cf244cb1332, type: 3}
     summonFallback: 0
-  - displayName: BlueShield
+  - displayName: 巨盾天兵
     prefab: {fileID: 7723312172617347381, guid: cd24e8590c5c24c40b42f3ff3d1fffa7, type: 3}
     summonFallback: 0
-  - displayName: BlueWheel
+  - displayName: 飞轮天兵
     prefab: {fileID: 6667210929993458511, guid: 9d1a739ce966ec042961fc34b75032af, type: 3}
     summonFallback: 0
-  - displayName: RedChain
+  - displayName: 链锤天兵
     prefab: {fileID: 3353396248113333374, guid: 31607d6023818eb40a90030b25a23b1f, type: 3}
     summonFallback: 0
-  - displayName: RedBoom
+  - displayName: 自爆天灯
     prefab: {fileID: 8997148001468336414, guid: a9f718b0863aedf4382a6a0d55b56384, type: 3}
     summonFallback: 0
-  - displayName: TitanSpirit
+  - displayName: 巨灵神 [BOSS]
     prefab: {fileID: 2599317045132471061, guid: 56e7d78870acb8f4a8d2fbd143206786, type: 3}
     summonFallback: 0
-  - displayName: EastKing
+  - displayName: 增长天王 [BOSS]
     prefab: {fileID: 5399767337060103239, guid: 96efc7be8b6b08248b81831598cf9d2c, type: 3}
     summonFallback: 0
-  - displayName: SouthKing
+  - displayName: 广目天王 [BOSS]
     prefab: {fileID: 2839156499423305932, guid: d1dffba3100de784b8de32cf1475e299, type: 3}
     summonFallback: 0
-  - displayName: WestKing
+  - displayName: 多闻天王 [BOSS]
     prefab: {fileID: 7547640797894205072, guid: 9125f288eda78404595b642eb8e77860, type: 3}
     summonFallback: 0
-  - displayName: NorthKing
+  - displayName: 持国天王 [BOSS]
     prefab: {fileID: 2320806661853947972, guid: 02d6b12ac18eecb43a05ba136e61541f, type: 3}
     summonFallback: 0
-  - displayName: GreenHammer
+  - displayName: 绿锤傀儡
     prefab: {fileID: 1679713791832123608, guid: 225bd3eb2f7925748a32043f50cc1cd6, type: 3}
     summonFallback: 0
-  - displayName: GreenSummon
+  - displayName: 唤灵法师
     prefab: {fileID: 3678276064028669358, guid: a26421e0219ed5a4abc114d3c92b93ee, type: 3}
     summonFallback: 0

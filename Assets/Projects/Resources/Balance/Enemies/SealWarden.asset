@@ -1,0 +1,720 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ea7302a88f56248a1b33284c7df3cd, type: 3}
+  m_Name: SealWarden
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceProfile
+  displayName: "\u7F04\u5370\u9547\u536B / SealWarden"
+  description: "\u4FEE\u6539\u540E\u91CD\u65B0\u8FDB\u5165\u573A\u666F/\u8BAD\u7EC3\u76EE\u6807\u751F\u6548\uFF1B\u4E0D\u5199\u5165\u5B58\u6863\uFF0C\u4E0D\u4FEE\u6539\u4E34\u65F6\u72B6\u6001\u3002"
+  components:
+  - objectPath: 
+    componentType: Health
+    componentIndex: 0
+    parameters:
+    - path: beginBlood
+      label: "\u57FA\u7840\u751F\u547D\u4E0A\u9650 \xB7 beginBlood"
+      value: 176
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: ActorStatus
+    componentIndex: 0
+    parameters:
+    - path: frozenDuration
+      label: "frozenDuration \xB7 frozenDuration"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: meltFrameInterval
+      label: "meltFrameInterval \xB7 meltFrameInterval"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: frozenDamageMultiplier
+      label: "frozenDamageMultiplier \xB7 frozenDamageMultiplier"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: EnemyRewards
+    componentIndex: 0
+    parameters:
+    - path: experienceReward
+      label: "\u51FB\u6740\u7ECF\u9A8C \xB7 experienceReward"
+      value: 26
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: SealWardenMovement
+    componentIndex: 0
+    parameters:
+    - path: moveSpeed
+      label: "\u79FB\u52A8\u901F\u5EA6 \xB7 moveSpeed"
+      value: 0.699999988079071
+      integer: 0
+      boolean: 0
+    - path: backSpeed
+      label: "\u53D7\u51FB\u540E\u9000\u901F\u5EA6 \xB7 backSpeed"
+      value: 3.5
+      integer: 0
+      boolean: 0
+    - path: upSpeed
+      label: "\u8DF3\u8DC3\u901F\u5EA6 \xB7 upSpeed"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: slowSpeed
+      label: "slowSpeed \xB7 slowSpeed"
+      value: 0.3499999940395355
+      integer: 0
+      boolean: 0
+    - path: boostRatio
+      label: "boostRatio \xB7 boostRatio"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: minNormalY
+      label: "minNormalY \xB7 minNormalY"
+      value: 0.6000000238418579
+      integer: 0
+      boolean: 0
+    - path: hovering
+      label: "hovering \xB7 hovering"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: hoverHeight
+      label: "hoverHeight \xB7 hoverHeight"
+      value: 1.600000023841858
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: SealWardenCombat
+    componentIndex: 0
+    parameters:
+    - path: 'attackDelay.Array.data[0]'
+      label: "\u653B\u51FB\u51B7\u5374/\u95F4\u9694 \xB7 attackDelay.Array.data[0]"
+      value: 4.5
+      integer: 0
+      boolean: 0
+    - path: 'attackDelay.Array.data[1]'
+      label: "\u653B\u51FB\u51B7\u5374/\u95F4\u9694 \xB7 attackDelay.Array.data[1]"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: 'AttackOpenIdx.Array.data[0]'
+      label: "\u5F00\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackOpenIdx.Array.data[0]"
+      value: 5
+      integer: 1
+      boolean: 0
+    - path: 'AttackOpenIdx.Array.data[1]'
+      label: "\u5F00\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackOpenIdx.Array.data[1]"
+      value: 10
+      integer: 1
+      boolean: 0
+    - path: 'AttackShutIdx.Array.data[0]'
+      label: "\u5173\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackShutIdx.Array.data[0]"
+      value: 8
+      integer: 1
+      boolean: 0
+    - path: 'AttackShutIdx.Array.data[1]'
+      label: "\u5173\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackShutIdx.Array.data[1]"
+      value: 14
+      integer: 1
+      boolean: 0
+    - path: angryFull
+      label: "angryFull \xB7 angryFull"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: angryRatio
+      label: "angryRatio \xB7 angryRatio"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: deltaAngry
+      label: "deltaAngry \xB7 deltaAngry"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: angryDuration
+      label: "angryDuration \xB7 angryDuration"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: delayRatio
+      label: "delayRatio \xB7 delayRatio"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: attackInterval
+      label: "\u666E\u901A\u62DB\u5F0F\u95F4\u9694 \xB7 attackInterval"
+      value: 0.30000001192092896
+      integer: 0
+      boolean: 0
+    - path: 'cooldowns.Array.data[0]'
+      label: "\u5404\u6280\u80FD\u51B7\u5374\uFF08\u79D2\uFF09 \xB7 cooldowns.Array.data[0]"
+      value: 4.5
+      integer: 0
+      boolean: 0
+    - path: 'cooldowns.Array.data[1]'
+      label: "\u5404\u6280\u80FD\u51B7\u5374\uFF08\u79D2\uFF09 \xB7 cooldowns.Array.data[1]"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: 'cooldowns.Array.data[2]'
+      label: "\u5404\u6280\u80FD\u51B7\u5374\uFF08\u79D2\uFF09 \xB7 cooldowns.Array.data[2]"
+      value: 15
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: SealWardenController
+    componentIndex: 0
+    parameters:
+    - path: Idle.loop
+      label: "Idle \xB7 Idle.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Idle.fps
+      label: "Idle \xB7 Idle.fps"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: Walk.loop
+      label: "Walk \xB7 Walk.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Walk.fps
+      label: "Walk \xB7 Walk.fps"
+      value: 14
+      integer: 0
+      boolean: 0
+    - path: Die.loop
+      label: "Die \xB7 Die.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: Die.fps
+      label: "Die \xB7 Die.fps"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: stopDistance
+      label: "\u505C\u6B62\u9760\u8FD1\u8DDD\u79BB \xB7 stopDistance"
+      value: 1.7999999523162842
+      integer: 0
+      boolean: 0
+    - path: specialAttack
+      label: "specialAttack \xB7 specialAttack"
+      value: -1
+      integer: 1
+      boolean: 0
+    - path: stunnedFrame
+      label: "stunnedFrame \xB7 stunnedFrame"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: skillAnimations.Array.data[0].loop
+      label: "skillAnimations \xB7 skillAnimations.Array.data[0].loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: skillAnimations.Array.data[0].fps
+      label: "skillAnimations \xB7 skillAnimations.Array.data[0].fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: skillAnimations.Array.data[1].loop
+      label: "skillAnimations \xB7 skillAnimations.Array.data[1].loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: skillAnimations.Array.data[1].fps
+      label: "skillAnimations \xB7 skillAnimations.Array.data[1].fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: skillAnimations.Array.data[2].loop
+      label: "skillAnimations \xB7 skillAnimations.Array.data[2].loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: skillAnimations.Array.data[2].fps
+      label: "skillAnimations \xB7 skillAnimations.Array.data[2].fps"
+      value: 16
+      integer: 0
+      boolean: 0
+  - objectPath: Attack1
+    componentType: LateStageAttackBox
+    componentIndex: 0
+    parameters:
+    - path: Attack
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: launch
+      label: "launch \xB7 launch"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: index
+      label: "index \xB7 index"
+      value: 0
+      integer: 1
+      boolean: 0
+  - objectPath: Attack2
+    componentType: LateStageAttackBox
+    componentIndex: 0
+    parameters:
+    - path: Attack
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack"
+      value: 20
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: launch
+      label: "launch \xB7 launch"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: index
+      label: "index \xB7 index"
+      value: 1
+      integer: 1
+      boolean: 0
+  - objectPath: BoundarySealPool
+    componentType: LateStageEffectPool
+    componentIndex: 0
+    parameters:
+    - path: prewarm
+      label: "prewarm \xB7 prewarm"
+      value: 4
+      integer: 1
+      boolean: 0
+  - objectPath: GateCompressionPool
+    componentType: LateStageEffectPool
+    componentIndex: 0
+    parameters:
+    - path: prewarm
+      label: "prewarm \xB7 prewarm"
+      value: 4
+      integer: 1
+      boolean: 0
+  - objectPath: SealPunchImpactPool
+    componentType: LateStageEffectPool
+    componentIndex: 0
+    parameters:
+    - path: prewarm
+      label: "prewarm \xB7 prewarm"
+      value: 4
+      integer: 1
+      boolean: 0
+  - objectPath: 
+    componentType: UnityEngine.Rigidbody2D
+    componentIndex: 0
+    parameters:
+    - path: m_Mass
+      label: "\u8D28\u91CF \xB7 m_Mass"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: m_GravityScale
+      label: "\u91CD\u529B\u500D\u7387 \xB7 m_GravityScale"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: m_LinearDamping
+      label: "\u6C34\u5E73\u963B\u5C3C \xB7 m_LinearDamping"
+      value: 0
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.2000000476837158
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 1.899999976158142
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 0.949999988079071
+      integer: 0
+      boolean: 0
+  - objectPath: Attacked
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.3200000524520874
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 1.899999976158142
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 0.949999988079071
+      integer: 0
+      boolean: 0
+  - objectPath: Attack1
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 1.7000000476837158
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 1.2000000476837158
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 0.8500000238418579
+      integer: 0
+      boolean: 0
+  - objectPath: Check1
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1
+      integer: 0
+      boolean: 0
+  - objectPath: Attack2
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 1.7000000476837158
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 1.2000000476837158
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 0.8500000238418579
+      integer: 0
+      boolean: 0
+  - objectPath: Check2
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: EnemyHealthBar
+    componentIndex: 0
+    parameters:
+    - path: seeDuration
+      label: "\u8840\u6761\u53D7\u4F24\u540E\u663E\u793A\u79D2\u6570"
+      value: 3.5
+      integer: 0
+      boolean: 0
+    - path: fadeDuration
+      label: "\u8840\u6761\u6DE1\u51FA\u79D2\u6570"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  numbers:
+  - key: SealWardenCombat.SelectSkill.1
+    label: SelectSkill / protected override int SelectSkill(float d)=>HasWedges&&Ready(2)?2:d<=2.7f&&Ready(0)?0:!HasWedges&&d<=7&&Ready(1)?1
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:13
+    value: 2.7
+  - key: SealWardenCombat.OnBegin.1
+    label: OnBegin / if(i==1){center=Ground(Position+Vector2.right*Face*3f);FX(0,center,4,.8f,Color.yellow);minSkillEnd=clock+1f;}
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:18
+    value: 3
+  - key: SealWardenCombat.OnBegin.2
+    label: OnBegin / if(i==1){center=Ground(Position+Vector2.right*Face*3f);FX(0,center,4,.8f,Color.yellow);minSkillEnd=clock+1f;}
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:18
+    value: 0.8
+  - key: SealWardenCombat.OnBegin.3
+    label: OnBegin / if(i==2){compressing=true;minSkillEnd=clock+1.1f;FX(1,center+Vector2.up*.5f,4,.8f,Color.yellow);}
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:19
+    value: 1.1
+  - key: SealWardenCombat.OnBegin.4
+    label: OnBegin / if(i==2){compressing=true;minSkillEnd=clock+1.1f;FX(1,center+Vector2.up*.5f,4,.8f,Color.yellow);}
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:19
+    value: 0.5
+  - key: SealWardenCombat.OnBegin.5
+    label: OnBegin / if(i==2){compressing=true;minSkillEnd=clock+1.1f;FX(1,center+Vector2.up*.5f,4,.8f,Color.yellow);}
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:19
+    value: 0.8
+  - key: SealWardenCombat.HoldFrame.1
+    label: HoldFrame / public override bool HoldFrame(int f)=>Skill==0&&f>=10&&punchAt>=0&&clock<punchAt+.5f
+      || base.HoldFrame(f);
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:21
+    value: 0.5
+  - key: SealWardenCombat.OnFrame.1
+    label: OnFrame / Window(0,f,6,8,16,new Vector2(2,1.7f),new Vector2(1.2f,.85f),true);
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:26
+    value: 16
+  - key: SealWardenCombat.OnFrame.2
+    label: OnFrame / Window(0,f,6,8,16,new Vector2(2,1.7f),new Vector2(1.2f,.85f),true);
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:26
+    value: 2
+  - key: SealWardenCombat.OnFrame.3
+    label: OnFrame / Window(0,f,6,8,16,new Vector2(2,1.7f),new Vector2(1.2f,.85f),true);
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:26
+    value: 1.7
+  - key: SealWardenCombat.OnFrame.4
+    label: OnFrame / Window(0,f,6,8,16,new Vector2(2,1.7f),new Vector2(1.2f,.85f),true);
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:26
+    value: 1.2
+  - key: SealWardenCombat.OnFrame.5
+    label: OnFrame / Window(0,f,6,8,16,new Vector2(2,1.7f),new Vector2(1.2f,.85f),true);
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:26
+    value: 0.85
+  - key: SealWardenCombat.OnFrame.6
+    label: OnFrame / if(Once(0,f>=6)){punchAt=clock;FX(2,Position+new Vector2(Face*1.4f,1),2,.4f);}
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:27
+    value: 1.4
+  - key: SealWardenCombat.OnFrame.7
+    label: OnFrame / if(Once(0,f>=6)){punchAt=clock;FX(2,Position+new Vector2(Face*1.4f,1),2,.4f);}
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:27
+    value: 0.4
+  - key: SealWardenCombat.OnFrame.8
+    label: OnFrame / if(punchAt>=0&&clock>=punchAt+.5f)Window(1,f,11,14,20,new Vector2(2,1.7f),new
+      Vector2(1.2f,.85f));
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:28
+    value: 0.5
+  - key: SealWardenCombat.OnFrame.9
+    label: OnFrame / if(punchAt>=0&&clock>=punchAt+.5f)Window(1,f,11,14,20,new Vector2(2,1.7f),new
+      Vector2(1.2f,.85f));
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:28
+    value: 20
+  - key: SealWardenCombat.OnFrame.10
+    label: OnFrame / if(punchAt>=0&&clock>=punchAt+.5f)Window(1,f,11,14,20,new Vector2(2,1.7f),new
+      Vector2(1.2f,.85f));
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:28
+    value: 2
+  - key: SealWardenCombat.OnFrame.11
+    label: OnFrame / if(punchAt>=0&&clock>=punchAt+.5f)Window(1,f,11,14,20,new Vector2(2,1.7f),new
+      Vector2(1.2f,.85f));
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:28
+    value: 1.7
+  - key: SealWardenCombat.OnFrame.12
+    label: OnFrame / if(punchAt>=0&&clock>=punchAt+.5f)Window(1,f,11,14,20,new Vector2(2,1.7f),new
+      Vector2(1.2f,.85f));
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:28
+    value: 1.2
+  - key: SealWardenCombat.OnFrame.13
+    label: OnFrame / if(punchAt>=0&&clock>=punchAt+.5f)Window(1,f,11,14,20,new Vector2(2,1.7f),new
+      Vector2(1.2f,.85f));
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:28
+    value: 0.85
+  - key: SealWardenCombat.OnFrame.14
+    label: OnFrame / else if(Skill==1&&Once(0,Elapsed>=.8f))Deploy();
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:30
+    value: 0.8
+  - key: SealWardenCombat.OnFrame.15
+    label: OnFrame / if(!HasWedges || Target!=null&&Target.GetComponent<BoxCollider2D>().bounds.min.y>center.y+1.05f){BreakCompression(t
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:34
+    value: 1.05
+  - key: SealWardenCombat.OnFrame.16
+    label: OnFrame / if(Elapsed>=.8f&&HasWedges)
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:35
+    value: 0.8
+  - key: SealWardenCombat.OnFrame.17
+    label: OnFrame / float t=Mathf.Clamp01((Elapsed-.8f)/.25f);
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:37
+    value: 0.8
+  - key: SealWardenCombat.OnFrame.18
+    label: OnFrame / float t=Mathf.Clamp01((Elapsed-.8f)/.25f);
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:37
+    value: 0.25
+  - key: SealWardenCombat.OnFrame.19
+    label: OnFrame / left.transform.position=Vector2.Lerp(center+Vector2.left*1.8f,center+Vector2.left*.6f,t);
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:38
+    value: 1.8
+  - key: SealWardenCombat.OnFrame.20
+    label: OnFrame / left.transform.position=Vector2.Lerp(center+Vector2.left*1.8f,center+Vector2.left*.6f,t);
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:38
+    value: 0.6
+  - key: SealWardenCombat.OnFrame.21
+    label: OnFrame / right.transform.position=Vector2.Lerp(center+Vector2.right*1.8f,center+Vector2.right*.6f,t);
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:39
+    value: 1.8
+  - key: SealWardenCombat.OnFrame.22
+    label: OnFrame / right.transform.position=Vector2.Lerp(center+Vector2.right*1.8f,center+Vector2.right*.6f,t);
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:39
+    value: 0.6
+  - key: SealWardenCombat.OnFrame.23
+    label: OnFrame / if(Once(0,Elapsed>=1.05f))
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:41
+    value: 1.05
+  - key: SealWardenCombat.OnFrame.24
+    label: OnFrame / compressing=false;CompressionCount++;Area(center+Vector2.up*.55f,new
+      Vector2(3.6f,1.1f),14,0,true);
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:43
+    value: 0.55
+  - key: SealWardenCombat.OnFrame.25
+    label: OnFrame / compressing=false;CompressionCount++;Area(center+Vector2.up*.55f,new
+      Vector2(3.6f,1.1f),14,0,true);
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:43
+    value: 3.6
+  - key: SealWardenCombat.OnFrame.26
+    label: OnFrame / compressing=false;CompressionCount++;Area(center+Vector2.up*.55f,new
+      Vector2(3.6f,1.1f),14,0,true);
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:43
+    value: 1.1
+  - key: SealWardenCombat.OnFrame.27
+    label: OnFrame / compressing=false;CompressionCount++;Area(center+Vector2.up*.55f,new
+      Vector2(3.6f,1.1f),14,0,true);
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:43
+    value: 14
+  - key: SealWardenCombat.OnFrame.28
+    label: OnFrame / FX(1,center+Vector2.up*.55f,3.6f,.5f,Color.red);ClearWedges();
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:44
+    value: 0.55
+  - key: SealWardenCombat.OnFrame.29
+    label: OnFrame / FX(1,center+Vector2.up*.55f,3.6f,.5f,Color.red);ClearWedges();
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:44
+    value: 3.6
+  - key: SealWardenCombat.OnFrame.30
+    label: OnFrame / FX(1,center+Vector2.up*.55f,3.6f,.5f,Color.red);ClearWedges();
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:44
+    value: 0.5
+  - key: SealWardenCombat.Deploy.1
+    label: Deploy / if(!move.SafeSpot(center+Vector2.left*1.8f,out var a)||!move.SafeSpot(center+Vector2.right*1.8f,out
+      var b))return;
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:55
+    value: 1.8
+  - key: SealWardenCombat.Deploy.2
+    label: Deploy / if(!move.SafeSpot(center+Vector2.left*1.8f,out var a)||!move.SafeSpot(center+Vector2.right*1.8f,out
+      var b))return;
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:55
+    value: 1.8
+  - key: SealWardenCombat.Deploy.3
+    label: Deploy / left.Activate(a,3f,LostWedge);right.Activate(b,3f,LostWedge);
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:57
+    value: 3
+  - key: SealWardenCombat.Deploy.4
+    label: Deploy / left.Activate(a,3f,LostWedge);right.Activate(b,3f,LostWedge);
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:57
+    value: 3
+  - key: SealWardenCombat.BreakCompression.1
+    label: BreakCompression / {if(stagger)recoveryUntil=clock+1.5f;compressing=false;if(Skill==2)CancelSkill();}
+    source: Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:61
+    value: 1.5
+  - key: SealWardenCombat.HoldFrame.Parameter1
+    label: "HoldFrame / \u4F24\u5BB3/\u5224\u5B9A\u53C2\u6570 10"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:21
+    value: 10
+  - key: SealWardenCombat.OnFrame.Parameter1
+    label: "OnFrame / \u5E27\u7D22\u5F15 6"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:26
+    value: 6
+  - key: SealWardenCombat.OnFrame.Parameter2
+    label: "OnFrame / \u5E27\u7D22\u5F15 8"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:26
+    value: 8
+  - key: SealWardenCombat.OnFrame.Parameter3
+    label: "OnFrame / \u4F24\u5BB3/\u5224\u5B9A\u53C2\u6570 6"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:27
+    value: 6
+  - key: SealWardenCombat.OnFrame.Parameter4
+    label: "OnFrame / \u5E27\u7D22\u5F15 11"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:28
+    value: 11
+  - key: SealWardenCombat.OnFrame.Parameter5
+    label: "OnFrame / \u5E27\u7D22\u5F15 14"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Enemy/SealWarden/SealWardenCombat.cs:28
+    value: 14
+  skills: []
+  relatedProfiles:
+  - {fileID: 11400000, guid: 956d7ded757d19a449a18e528d16f14a, type: 2}
+  - {fileID: 11400000, guid: 8bbf41b064f54ff4285e063d263a584c, type: 2}
+  - {fileID: 11400000, guid: 7159ee1256af3854fa0d16380db1cf73, type: 2}
+  - {fileID: 11400000, guid: deb893139e0d96d43933a4aaf52f1507, type: 2}

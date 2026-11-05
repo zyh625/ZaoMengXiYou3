@@ -33,7 +33,7 @@ public class VictoryControl : MonoBehaviour
             rebirthButton.gameObject.SetActive(CanRebirth);
             rebirthButton.interactable = CanRebirth && instance != null && instance.HasSelectedFile;
         }
-        if (nextLevelButton != null) nextLevelButton.gameObject.SetActive(result.curLevel != 9);
+        if (nextLevelButton != null) nextLevelButton.gameObject.SetActive(!CanRebirth);
         if (rebirthMessage != null)
         {
             bool joined = result.victory && result.curLevel >= 1 && result.curLevel <= 3;
@@ -44,7 +44,7 @@ public class VictoryControl : MonoBehaviour
             if (joined)
             {
                 string companion = result.curLevel == 1 ? "猪八戒" : result.curLevel == 2 ? "唐僧" : "沙僧";
-                rebirthMessage.text = "伙伴已解锁：" + companion + "（Q/E 切换）";
+                rebirthMessage.text = "伙伴已解锁：" + companion + "（数字键 1–4 切换）";
             }
         }
     }
@@ -81,9 +81,9 @@ public class VictoryControl : MonoBehaviour
     public void EnterRebirth()
     {
         if (enteringRebirth || !CanRebirth || instance == null) return;
-        if (!Application.CanStreamedLevelBeLoaded("Level1Scene"))
+        if (!Application.CanStreamedLevelBeLoaded("RebirthScene"))
         {
-            if (rebirthMessage != null) rebirthMessage.text = "第1关未加入构建列表，暂时无法进入";
+            if (rebirthMessage != null) rebirthMessage.text = "轮回漫画场景未加入构建列表，暂时无法进入";
             return;
         }
         enteringRebirth = true;
@@ -94,6 +94,6 @@ public class VictoryControl : MonoBehaviour
             return;
         }
         if (rebirthButton != null) rebirthButton.interactable = false;
-        SceneManager.LoadScene("Level1Scene");
+        SceneManager.LoadScene("RebirthScene");
     }
 }

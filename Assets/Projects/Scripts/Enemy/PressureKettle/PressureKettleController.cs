@@ -35,7 +35,7 @@ public sealed class PressureKettleController : EnemyController
         if (EH.Status != null && EH.Status.BlocksMovement)
         { movement.Stop(); SetState(EnemyState.Idle); return true; }
         SetState(EnemyState.Walk);
-        movement.MoveInRange(delta, Mathf.Abs(delta) < 3.5f, EH.Slow);
+        movement.MoveInRange(delta, Mathf.Abs(delta) < BalanceRuntime.Number(this, "PressureKettleController.ProcessSpecialState.1", 3.5f), EH.Slow);
         return true;
     }
     protected override bool SkillReady => state != EnemyState.Skill && combat.ReadySkill >= 0 && !EH.Attacked

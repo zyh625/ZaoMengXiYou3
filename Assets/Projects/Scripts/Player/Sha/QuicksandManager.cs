@@ -58,7 +58,7 @@ public class QuicksandManager : MonoBehaviour
         }
         present.Clear();
         float deltaTime = Time.fixedDeltaTime;
-        float interval = Mathf.Max(0.01f, poisonInterval);
+        float interval = Mathf.Max(BalanceRuntime.Number(this, "QuicksandManager.FixedUpdate.1", 0.01f), poisonInterval);
         foreach (EnemyMovement enemy in EnemyMovement.ActiveEnemies)
         {
             if (!ShaEffectUtility.CanBeHit(enemy) || !enemy.IsOnGroundNow()) continue;//关闭受击箱和无敌期间不新增减速、牵引与毒层
@@ -70,7 +70,7 @@ public class QuicksandManager : MonoBehaviour
                 poisonElapsed.Remove(enemy);//同一个池对象的新生命从零累计这一秒
             affectedLifeVersions[enemy] = enemy.LifeVersion;
             affected.Add(enemy);
-            float distanceRatio = Mathf.Clamp01(Mathf.Abs(deltaX) / Mathf.Max(0.01f, radius));
+            float distanceRatio = Mathf.Clamp01(Mathf.Abs(deltaX) / Mathf.Max(BalanceRuntime.Number(this, "QuicksandManager.FixedUpdate.2", 0.01f), radius));
             float moveRatio = (1f - edgeSlowAmount) * distanceRatio;//边缘保留40%移速，靠近中心逐渐降为零
             float pullVelocity = Mathf.Sign(deltaX) * Mathf.Min(pullSpeed, Mathf.Abs(deltaX) / deltaTime);
             enemy.SetQuicksand(this, moveRatio, pullVelocity, origin.x);//敌人系统同时钳制自主移动与牵引，避免跨过中心后抖动

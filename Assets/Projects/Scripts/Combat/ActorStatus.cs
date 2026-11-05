@@ -110,7 +110,7 @@ public class ActorStatus : MonoBehaviour
         }
         while (IsMelting && Time.time >= nextMeltAt)
         {
-            nextMeltAt += Mathf.Max(0.01f, meltFrameInterval);
+            nextMeltAt += Mathf.Max(BalanceRuntime.Number(this, "ActorStatus.Update.1", 0.01f), meltFrameInterval);
             AdvanceMelt();
         }
         SyncPoisonVisual();
@@ -120,7 +120,7 @@ public class ActorStatus : MonoBehaviour
     {
         phase = IcePhase.Melting;
         meltFrame = 0;
-        nextMeltAt = Time.time + Mathf.Max(0.01f, meltFrameInterval);
+        nextMeltAt = Time.time + Mathf.Max(BalanceRuntime.Number(this, "ActorStatus.BeginMelting.1", 0.01f), meltFrameInterval);
         if (iceView != null) iceView.ShowMeltingFrame(meltFrame);
         Changed?.Invoke();
     }

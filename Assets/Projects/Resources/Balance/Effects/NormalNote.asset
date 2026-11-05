@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ea7302a88f56248a1b33284c7df3cd, type: 3}
+  m_Name: NormalNote
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceProfile
+  displayName: NormalNote
+  description: "\u4FEE\u6539\u540E\u91CD\u65B0\u8FDB\u5165\u573A\u666F/\u8BAD\u7EC3\u76EE\u6807\u751F\u6548\uFF1B\u4E0D\u5199\u5165\u5B58\u6863\uFF0C\u4E0D\u4FEE\u6539\u4E34\u65F6\u72B6\u6001\u3002"
+  components:
+  - objectPath: 
+    componentType: EastNoteManager
+    componentIndex: 0
+    parameters:
+    - path: flight.loop
+      label: "flight \xB7 flight.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: flight.fps
+      label: "flight \xB7 flight.fps"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: flySpeed
+      label: "flySpeed \xB7 flySpeed"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: lifetime
+      label: "\u5B58\u5728\u65F6\u95F4 \xB7 lifetime"
+      value: 5
+      integer: 0
+      boolean: 0
+    - path: damage
+      label: "\u4F24\u5BB3 \xB7 damage"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: sourceFacesRight
+      label: "sourceFacesRight \xB7 sourceFacesRight"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: hitWidthRatio
+      label: "hitWidthRatio \xB7 hitWidthRatio"
+      value: 0.6499999761581421
+      integer: 0
+      boolean: 0
+    - path: hitHeightRatio
+      label: "hitHeightRatio \xB7 hitHeightRatio"
+      value: 0.6499999761581421
+      integer: 0
+      boolean: 0
+    - path: minimumHitSize
+      label: "minimumHitSize \xB7 minimumHitSize"
+      value: 0.11999999731779099
+      integer: 0
+      boolean: 0
+  numbers: []
+  skills: []
+  relatedProfiles: []

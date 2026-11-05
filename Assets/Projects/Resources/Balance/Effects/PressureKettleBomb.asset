@@ -1,0 +1,174 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ea7302a88f56248a1b33284c7df3cd, type: 3}
+  m_Name: PressureKettleBomb
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceProfile
+  displayName: PressureKettleBomb
+  description: "\u4FEE\u6539\u540E\u91CD\u65B0\u8FDB\u5165\u573A\u666F/\u8BAD\u7EC3\u76EE\u6807\u751F\u6548\uFF1B\u4E0D\u5199\u5165\u5B58\u6863\uFF0C\u4E0D\u4FEE\u6539\u4E34\u65F6\u72B6\u6001\u3002"
+  components:
+  - objectPath: 
+    componentType: PressureKettleEffect
+    componentIndex: 0
+    parameters:
+    - path: appearance.loop
+      label: "appearance \xB7 appearance.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: appearance.fps
+      label: "appearance \xB7 appearance.fps"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: explosion.loop
+      label: "explosion \xB7 explosion.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: explosion.fps
+      label: "explosion \xB7 explosion.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: flightOffsets.Array.data[0].x
+      label: "flightOffsets \xB7 flightOffsets.Array.data[0].x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: flightOffsets.Array.data[0].y
+      label: "flightOffsets \xB7 flightOffsets.Array.data[0].y"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: flightOffsets.Array.data[1].x
+      label: "flightOffsets \xB7 flightOffsets.Array.data[1].x"
+      value: 0.14000000059604645
+      integer: 0
+      boolean: 0
+    - path: flightOffsets.Array.data[1].y
+      label: "flightOffsets \xB7 flightOffsets.Array.data[1].y"
+      value: -0.3100000023841858
+      integer: 0
+      boolean: 0
+    - path: flightOffsets.Array.data[2].x
+      label: "flightOffsets \xB7 flightOffsets.Array.data[2].x"
+      value: 0.28999999165534973
+      integer: 0
+      boolean: 0
+    - path: flightOffsets.Array.data[2].y
+      label: "flightOffsets \xB7 flightOffsets.Array.data[2].y"
+      value: -0.5
+      integer: 0
+      boolean: 0
+    - path: flightOffsets.Array.data[3].x
+      label: "flightOffsets \xB7 flightOffsets.Array.data[3].x"
+      value: 0.44999998807907104
+      integer: 0
+      boolean: 0
+    - path: flightOffsets.Array.data[3].y
+      label: "flightOffsets \xB7 flightOffsets.Array.data[3].y"
+      value: -0.5
+      integer: 0
+      boolean: 0
+    - path: flightOffsets.Array.data[4].x
+      label: "flightOffsets \xB7 flightOffsets.Array.data[4].x"
+      value: 0.5899999737739563
+      integer: 0
+      boolean: 0
+    - path: flightOffsets.Array.data[4].y
+      label: "flightOffsets \xB7 flightOffsets.Array.data[4].y"
+      value: -0.3100000023841858
+      integer: 0
+      boolean: 0
+    - path: flightOffsets.Array.data[5].x
+      label: "flightOffsets \xB7 flightOffsets.Array.data[5].x"
+      value: 0.7099999785423279
+      integer: 0
+      boolean: 0
+    - path: flightOffsets.Array.data[5].y
+      label: "flightOffsets \xB7 flightOffsets.Array.data[5].y"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: explosionOffset.x
+      label: "explosionOffset \xB7 explosionOffset.x"
+      value: 0.7099999785423279
+      integer: 0
+      boolean: 0
+    - path: explosionOffset.y
+      label: "explosionOffset \xB7 explosionOffset.y"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: nativeWidth
+      label: "nativeWidth \xB7 nativeWidth"
+      value: 1.3799999952316284
+      integer: 0
+      boolean: 0
+    - path: steamDamage
+      label: "steamDamage \xB7 steamDamage"
+      value: 3
+      integer: 0
+      boolean: 0
+    - path: steamTickInterval
+      label: "steamTickInterval \xB7 steamTickInterval"
+      value: 0.25
+      integer: 0
+      boolean: 0
+    - path: steamTicks
+      label: "steamTicks \xB7 steamTicks"
+      value: 4
+      integer: 1
+      boolean: 0
+    - path: steamRange
+      label: "steamRange \xB7 steamRange"
+      value: 3.5
+      integer: 0
+      boolean: 0
+    - path: steamKnockback
+      label: "steamKnockback \xB7 steamKnockback"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: bombDamage
+      label: "bombDamage \xB7 bombDamage"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: bombFuse
+      label: "bombFuse \xB7 bombFuse"
+      value: 0.6000000238418579
+      integer: 0
+      boolean: 0
+    - path: bombRadius
+      label: "bombRadius \xB7 bombRadius"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: burstDamage
+      label: "burstDamage \xB7 burstDamage"
+      value: 11
+      integer: 0
+      boolean: 0
+    - path: burstRadius
+      label: "burstRadius \xB7 burstRadius"
+      value: 4
+      integer: 0
+      boolean: 0
+    - path: burstKnockback
+      label: "burstKnockback \xB7 burstKnockback"
+      value: 1
+      integer: 0
+      boolean: 1
+  numbers: []
+  skills: []
+  relatedProfiles: []

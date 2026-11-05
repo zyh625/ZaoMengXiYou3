@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 1536495672}
   - component: {fileID: 1710638919}
   - component: {fileID: 2042102701}
+  - component: {fileID: 110347864679099509}
   m_Layer: 0
-  m_Name: PlayerManager
+  m_Name: PlayerSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,3 +90,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   groundSearchDistance: 100
+--- !u!114 &110347864679099509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536495671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 21d6f90853367d749b7668f7e699e82a, type: 2}

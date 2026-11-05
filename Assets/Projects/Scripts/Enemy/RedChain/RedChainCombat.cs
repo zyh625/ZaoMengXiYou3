@@ -5,8 +5,8 @@ public sealed class RedChainCombat : EnemyCombat
     [SerializeField] private RedChainAttackBox[] hitBoxes;
     [SerializeField] private RedChainShockWaveEmitter shockWave;
     private bool sampled;
-    private static readonly int[] openFrames = { 6, 8, 8 };
-    private static readonly float[] windups = { 0.6f, 0.8f, 0.9f };
+[SerializeField]private int[] openFrames = { 6, 8, 8 };
+[SerializeField]private float[] windups = { 0.6f, 0.8f, 0.9f };
     protected override bool UsesAnger => false;
     public int OpenFrame => Attack >= 0 ? openFrames[Attack] : 0;
     public float Windup => Attack >= 0 ? windups[Attack] : 0f;
@@ -16,10 +16,10 @@ public sealed class RedChainCombat : EnemyCombat
         if (AttackRequest == null || AttackRequest.Length != 3) return false;
         int chosen = -1;
         float distance = Mathf.Abs(deltaX);
-        if (distance > 6f) { if (AttackRequest[1]) chosen = 1; }
-        else if (distance >= 2.5f)
+        if (distance > BalanceRuntime.Number(this, "RedChainCombat.SelectRequest.1", 6f)) { if (AttackRequest[1]) chosen = 1; }
+        else if (distance >= BalanceRuntime.Number(this, "RedChainCombat.SelectRequest.2", 2.5f))
         {
-            if (AttackRequest[0] && AttackRequest[2]) chosen = Random.value < 0.5f ? 0 : 2;
+            if (AttackRequest[0] && AttackRequest[2]) chosen = Random.value < BalanceRuntime.Number(this, "RedChainCombat.SelectRequest.3", 0.5f) ? 0 : 2;
             else if (AttackRequest[0]) chosen = 0;
             else if (AttackRequest[2]) chosen = 2;
         }

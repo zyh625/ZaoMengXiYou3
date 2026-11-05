@@ -35,7 +35,7 @@ public class SouthKingCombat : BossCombat
     public KingSkill Skill { get; private set; } = KingSkill.None;
     public CounterStage Counter { get; private set; }
     public float Frost => Mathf.Clamp(frost, 0f, MaxFrost);
-    public float MaxFrost => Mathf.Max(0.01f, frostFull);
+    public float MaxFrost => Mathf.Max(BalanceRuntime.Number(this, "SouthKingCombat.MaxFrost.1", 0.01f), frostFull);
     public bool FrostActive => frostActive;
     public float NormalFreezeChance => Mathf.Clamp01(frostActive ? frostFreezeChance : normalFreezeChance);
     public float FreezeDuration => Mathf.Max(0f, freezeDuration);
@@ -71,7 +71,7 @@ public class SouthKingCombat : BossCombat
         FrostChanged?.Invoke();
     }
     private float Cooldown(int index) => (skillCooldowns != null && index >= 0 && index < skillCooldowns.Length
-        ? Mathf.Max(0f, skillCooldowns[index]) : 10f) * RebirthCooldownMultiplier;
+        ? Mathf.Max(0f, skillCooldowns[index]) : BalanceRuntime.Number(this, "SouthKingCombat.Cooldown.1", 10f)) * RebirthCooldownMultiplier;
     public KingSkill GetReadySkill()
     {
         ResolveReferences();
@@ -129,7 +129,7 @@ public class SouthKingCombat : BossCombat
     public void EnterCounterGuard()
     {
         if (Skill != KingSkill.Counter || Counter != CounterStage.Windup || !CanAct) return;
-        Counter = CounterStage.Guard; guardUntil = Time.time + Mathf.Max(0.01f, counterWait);
+        Counter = CounterStage.Guard; guardUntil = Time.time + Mathf.Max(BalanceRuntime.Number(this, "SouthKingCombat.EnterCounterGuard.1", 0.01f), counterWait);
     }
     public bool GuardExpired => Counter == CounterStage.Guard && Time.time >= guardUntil;
     public void BeginCounterRecovery()
@@ -138,7 +138,7 @@ public class SouthKingCombat : BossCombat
         if (Counter == CounterStage.Riposte && !counterHit) HitCounter();//跨过有效帧时也不能漏掉已经完成的反击。
         Counter = CounterStage.Recovery; health?.RemoveInvincibility(this);
     }
-    public void ProtectCounter(float duration) => health?.GrantInvincibility(this, Mathf.Max(0.1f, duration));
+    public void ProtectCounter(float duration) => health?.GrantInvincibility(this, Mathf.Max(BalanceRuntime.Number(this, "SouthKingCombat.ProtectCounter.1", 0.1f), duration));
     private bool BlockDamage(DamageInfo damage)
     {
         if (health == null || health.Dead) return false;
@@ -147,7 +147,7 @@ public class SouthKingCombat : BossCombat
         {
             Counter = CounterStage.Riposte;
             float sourceX = damage.Source != null ? damage.Source.position.x - transform.position.x : movement.DeltaX;
-            if (Mathf.Abs(sourceX) > 0.01f) AttackFaceRight = sourceX > 0f;//识破时锁定本次攻击来源，绕到背后的攻击也不会让反击挥空到旧方向。
+            if (Mathf.Abs(sourceX) > BalanceRuntime.Number(this, "SouthKingCombat.BlockDamage.1", 0.01f)) AttackFaceRight = sourceX > 0f;//识破时锁定本次攻击来源，绕到背后的攻击也不会让反击挥空到旧方向。
             ProtectCounter(1f);//控制器按实际反击片段时长扩展，离开阶段时显式移除。
             AddFrost(frostOnDamaged); CounterRecognized?.Invoke();
             return true;//扣血、破冰和施加异常之前识破整次命中。
@@ -165,8 +165,8 @@ public class SouthKingCombat : BossCombat
         PlayerController target = CurrentPlayer;
         Collider2D body = target != null ? target.GetComponent<Collider2D>() : null;
         Health targetHealth = target != null ? target.GetComponent<Health>() : null;
-        Vector3 center = transform.position + Vector3.right * (AttackFaceRight ? 1f : -1f) * counterHitSize.x * 0.4f;
-        Bounds area = new(center, new Vector3(Mathf.Max(0.1f, counterHitSize.x), Mathf.Max(0.1f, counterHitSize.y), 1f));
+        Vector3 center = transform.position + Vector3.right * (AttackFaceRight ? 1f : -1f) * counterHitSize.x * BalanceRuntime.Number(this, "SouthKingCombat.HitCounter.1", 0.4f);
+        Bounds area = new(center, new Vector3(Mathf.Max(BalanceRuntime.Number(this, "SouthKingCombat.HitCounter.2", 0.1f), counterHitSize.x), Mathf.Max(BalanceRuntime.Number(this, "SouthKingCombat.HitCounter.3", 0.1f), counterHitSize.y), 1f));
         bool hit = false;
         if (target != null && target.CanReceiveHit && body != null && targetHealth != null && !targetHealth.Dead
             && area.Intersects(body.bounds))
@@ -201,7 +201,7 @@ public class SouthKingCombat : BossCombat
     {
         if (deadFrozen || frostActive || health == null || health.Dead || !isActiveAndEnabled || amount <= 0f) return;
         frost = Mathf.Min(MaxFrost, frost + amount);
-        if (frost >= MaxFrost) { frostActive = true; frostUntil = Time.time + Mathf.Max(0.01f, frostDuration); }
+        if (frost >= MaxFrost) { frostActive = true; frostUntil = Time.time + Mathf.Max(BalanceRuntime.Number(this, "SouthKingCombat.AddFrost.1", 0.01f), frostDuration); }
         FrostChanged?.Invoke();
     }
     private void Update()

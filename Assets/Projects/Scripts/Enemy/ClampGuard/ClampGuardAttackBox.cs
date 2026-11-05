@@ -28,10 +28,10 @@ public sealed class ClampGuardAttackBox : EnemyAttackBox
         if (hp == null || hp.Dead || hitEnemies.Contains(hp)) return;
         if (attackIndex == 2)
         {
-            Vector2 origin = (Vector2)owner.transform.position + new Vector2(owner.AttackFaceRight ? .45f : -.45f, 1.1f);
+            Vector2 origin = (Vector2)owner.transform.position + new Vector2(owner.AttackFaceRight ? BalanceRuntime.Number(this, "ClampGuardAttackBox.TryAttack.1", 0.45f) : -BalanceRuntime.Number(this, "ClampGuardAttackBox.TryAttack.2", 0.45f), BalanceRuntime.Number(this, "ClampGuardAttackBox.TryAttack.3", 1.1f));
             Vector2 p = hit.ClosestPoint(origin) - origin;
             float forward = p.x * (owner.AttackFaceRight ? 1f : -1f);
-            if (forward < 0f || forward > 3f || Mathf.Abs(p.y) > .12f + forward * .4f) return;
+            if (forward < 0f || forward > BalanceRuntime.Number(this, "ClampGuardAttackBox.TryAttack.4", 3f) || Mathf.Abs(p.y) > BalanceRuntime.Number(this, "ClampGuardAttackBox.TryAttack.5", 0.12f) + forward * BalanceRuntime.Number(this, "ClampGuardAttackBox.TryAttack.6", 0.4f)) return;
         }
         if (!hitEnemies.Add(hp)) return;
         if (attackIndex == 1)

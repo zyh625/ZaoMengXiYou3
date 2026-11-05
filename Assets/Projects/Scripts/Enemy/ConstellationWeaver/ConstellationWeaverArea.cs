@@ -18,16 +18,16 @@ public sealed class ConstellationWeaverArea : MonoBehaviour
         pulsed = false; expiry = float.PositiveInfinity; inside.Clear(); previous.Clear(); nextHit.Clear();
         transform.position = a; gameObject.SetActive(true); line.enabled = true;
         line.useWorldSpace = true; line.positionCount = silk ? 2 : 33;
-        if (silk) { line.SetPosition(0, a); line.SetPosition(1, b); expiry = Time.time + 10f; }
+        if (silk) { line.SetPosition(0, a); line.SetPosition(1, b); expiry = Time.time + BalanceRuntime.Number(this, "ConstellationWeaverArea.Show.1", 10f); }
         else for (int i = 0; i < 33; i++)
-        { float angle = i * Mathf.PI / 16f; line.SetPosition(i, a + new Vector2(Mathf.Cos(angle) * 0.75f, Mathf.Sin(angle) * 0.08f)); }
-        SetColor(0.25f);
+        { float angle = i * Mathf.PI / BalanceRuntime.Number(this, "ConstellationWeaverArea.Show.2", 16f); line.SetPosition(i, a + new Vector2(Mathf.Cos(angle) * BalanceRuntime.Number(this, "ConstellationWeaverArea.Show.3", 0.75f), Mathf.Sin(angle) * BalanceRuntime.Number(this, "ConstellationWeaverArea.Show.4", 0.08f))); }
+        SetColor(BalanceRuntime.Number(this, "ConstellationWeaverArea.Show.5", 0.25f));
     }
-    private void SetColor(float alpha) => line.startColor = line.endColor = new Color(0.15f, 0.85f, 1f, alpha);
+    private void SetColor(float alpha) => line.startColor = line.endColor = new Color(BalanceRuntime.Number(this, "ConstellationWeaverArea.SetColor.1", 0.15f), BalanceRuntime.Number(this, "ConstellationWeaverArea.SetColor.2", 0.85f), 1f, alpha);
     public void Pulse()
     {
         if (pulsed || !gameObject.activeSelf) return;
-        pulsed = true; expiry = Time.time + 0.25f; SetColor(0.55f); Query(true);
+        pulsed = true; expiry = Time.time + BalanceRuntime.Number(this, "ConstellationWeaverArea.Pulse.1", 0.25f); SetColor(BalanceRuntime.Number(this, "ConstellationWeaverArea.Pulse.2", 0.55f)); Query(true);
     }
     private void FixedUpdate()
     {
@@ -37,8 +37,8 @@ public sealed class ConstellationWeaverArea : MonoBehaviour
     private void Query(bool pulse)
     {
         ContactFilter2D filter = new(); filter.SetLayerMask(1 << 3); filter.useTriggers = true;
-        Vector2 center = pulse ? from : (from + to) * 0.5f;
-        Vector2 size = new(pulse ? 1.5f : Mathf.Abs(to.x - from.x), 0.24f);
+        Vector2 center = pulse ? from : (from + to) * BalanceRuntime.Number(this, "ConstellationWeaverArea.Query.1", 0.5f);
+        Vector2 size = new(pulse ? BalanceRuntime.Number(this, "ConstellationWeaverArea.Query.2", 1.5f) : Mathf.Abs(to.x - from.x), BalanceRuntime.Number(this, "ConstellationWeaverArea.Query.3", 0.24f));
         int count = Physics2D.OverlapBox(center, size, 0f, filter, hits); inside.Clear();
         for (int i = 0; i < count; i++)
         {
@@ -47,10 +47,10 @@ public sealed class ConstellationWeaverArea : MonoBehaviour
             var hp = player.GetComponent<Health>();
             if (hp == null || hp.Dead || !inside.Add(hp)) continue;
             if (!pulse && (previous.Contains(hp) || nextHit.TryGetValue(hp, out float time) && Time.time < time)) continue;
-            nextHit[hp] = Time.time + 0.5f;
+            nextHit[hp] = Time.time + BalanceRuntime.Number(this, "ConstellationWeaverArea.Query.4", 0.5f);
             float before = hp.CurBlood;
-            hp.TakeDamage(new DamageInfo(owner.transform, (pulse ? 6f : 8f) * scale, false, kind: DamageKind.Skill));
-            if (hp.CurBlood < before && !hp.Dead) ConstellationWeaverSlow.Apply(hp, pulse ? 1.5f : 1f);
+            hp.TakeDamage(new DamageInfo(owner.transform, (pulse ? BalanceRuntime.Number(this, "ConstellationWeaverArea.Query.5", 6f) : BalanceRuntime.Number(this, "ConstellationWeaverArea.Query.6", 8f)) * scale, false, kind: DamageKind.Skill));
+            if (hp.CurBlood < before && !hp.Dead) ConstellationWeaverSlow.Apply(hp, pulse ? BalanceRuntime.Number(this, "ConstellationWeaverArea.Query.7", 1.5f) : 1f);
             if (!gameObject.activeSelf) return; // Reflection/death can synchronously recycle the whole trap.
         }
         previous.Clear(); foreach (var hp in inside) previous.Add(hp);

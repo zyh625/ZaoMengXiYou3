@@ -61,7 +61,7 @@ public class BlueShieldCombat : EnemyCombat
     {
         if (damage.Source == null || movement == null) return true;
         float deltaX = damage.Source.position.x - transform.position.x;
-        if (Mathf.Abs(deltaX) <= 0.001f) return true;
+        if (Mathf.Abs(deltaX) <= BalanceRuntime.Number(this, "BlueShieldCombat.IsFrontHit.1", 0.001f)) return true;
         return (deltaX > 0f) == movement.FaceRight;
     }
 

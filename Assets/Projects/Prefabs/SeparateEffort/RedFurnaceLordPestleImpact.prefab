@@ -115,6 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 581414347455603037}
   - component: {fileID: 6395373390792900789}
+  - component: {fileID: 7331056753784489681}
   m_Layer: 0
   m_Name: RedFurnaceLordPestleImpact
   m_TagString: Untagged
@@ -173,3 +174,16 @@ MonoBehaviour:
   spriteManager: {fileID: 1040093860711055059}
   visual: {fileID: 2798137197275215064}
   nativeWidth: 1.75
+--- !u!114 &7331056753784489681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8877614737371276280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: f3c6e42aaa386f149b5e901f534d159d, type: 2}

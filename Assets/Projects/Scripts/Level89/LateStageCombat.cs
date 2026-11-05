@@ -82,12 +82,12 @@ public abstract class LateStageCombat : EnemyCombat,IEnemyArenaBounds
     protected virtual void OnBegin(int i){}
     public void SampleFrame(int frame){if(Skill>=0&&!hp.Dead&&!Frozen&&!OrdinaryInterrupted)OnFrame(frame);}
     protected abstract void OnFrame(int frame);
-    public virtual bool HoldFrame(int frame)=>Skill>=0&&frame>=15&&clock<minSkillEnd;
+    public virtual bool HoldFrame(int frame)=>Skill>=0&&frame>=BalanceRuntime.Number(this, "LateStageCombat.HoldFrame.Parameter1", 15f)&&clock<minSkillEnd;
     public virtual void FinishSkill(){if(Skill<0)return;int old=Skill;CloseBoxes();Skill=-1;move.DashVelocity=0;nextAttack=clock+attackInterval*RebirthCooldownMultiplier;OnFinished(old);}
     protected virtual void OnFinished(int i){}
     public virtual void CancelSkill()
     {
-        if(Skill>=0){OnCancelled(Skill);Skill=-1;nextAttack=clock+.2f;events.Clear();}
+        if(Skill>=0){OnCancelled(Skill);Skill=-1;nextAttack=clock+BalanceRuntime.Number(this, "LateStageCombat.CancelSkill.1", 0.2f);events.Clear();}
         CloseBoxes();if(move!=null)move.DashVelocity=0;
     }
     protected virtual void OnCancelled(int i){}
@@ -136,14 +136,14 @@ public abstract class LateStageCombat : EnemyCombat,IEnemyArenaBounds
         return count;
     }
     protected void Later(float delay,Vector2 at,Vector2 size,float damage,int tag=0,float radius=0,bool back=false,Health guard=null)
-    {events.Add(new Scheduled{Due=clock+delay,Position=at,Size=size,Damage=damage,Radius=radius,Back=back,Tag=tag,Guard=guard,HasGuard=guard!=null,Life=guard!=null?guard.LifeVersion:0});minSkillEnd=Mathf.Max(minSkillEnd,clock+delay+.05f);}
-    protected void LaterAction(float delay,Action action){events.Add(new Scheduled{Due=clock+delay,Action=action});minSkillEnd=Mathf.Max(minSkillEnd,clock+delay+.05f);}
+    {events.Add(new Scheduled{Due=clock+delay,Position=at,Size=size,Damage=damage,Radius=radius,Back=back,Tag=tag,Guard=guard,HasGuard=guard!=null,Life=guard!=null?guard.LifeVersion:0});minSkillEnd=Mathf.Max(minSkillEnd,clock+delay+BalanceRuntime.Number(this, "LateStageCombat.Later.1", 0.05f));}
+    protected void LaterAction(float delay,Action action){events.Add(new Scheduled{Due=clock+delay,Action=action});minSkillEnd=Mathf.Max(minSkillEnd,clock+delay+BalanceRuntime.Number(this, "LateStageCombat.LaterAction.1", 0.05f));}
     protected virtual void EventResolved(int tag){}
     protected LateStageEffect FX(int index,Vector2 at,float width,float duration,Color? tint=null)
     {return index>=0&&index<effectPools.Length&&effectPools[index]!=null?effectPools[index].Play(at,width,duration,AttackFaceRight,tint??Color.white):null;}
     protected void Fire(Vector2 at,Vector2 velocity,float damage,int effect,float life=2f)
-    {shots.Add(new Shot{At=at,Velocity=velocity,Damage=damage,Remaining=life,Fx=FX(effect,at,.65f,life)});}
-    protected Vector2 Ground(Vector2 at)=>new(ClampArenaX(at.x),LateStageMovement.FindFloor(at)+.03f);
+    {shots.Add(new Shot{At=at,Velocity=velocity,Damage=damage,Remaining=life,Fx=FX(effect,at,BalanceRuntime.Number(this, "LateStageCombat.Fire.1", 0.65f),life)});}
+    protected Vector2 Ground(Vector2 at)=>new(ClampArenaX(at.x),LateStageMovement.FindFloor(at)+BalanceRuntime.Number(this, "LateStageCombat.Ground.1", 0.03f));
     private void Update()
     {
         if(hp.Dead)return;
@@ -161,7 +161,7 @@ public abstract class LateStageCombat : EnemyCombat,IEnemyArenaBounds
         for(int i=shots.Count-1;i>=0;i--)
         {
             if(i>=shots.Count)break;var s=shots[i];Vector2 delta=s.Velocity*Time.deltaTime;bool end=false;
-            int n=Physics2D.CircleCast(s.At,.12f,delta.normalized,new ContactFilter2D{useTriggers=true},rayHits,delta.magnitude);
+            int n=Physics2D.CircleCast(s.At,BalanceRuntime.Number(this, "LateStageCombat.Update.1", 0.12f),delta.normalized,new ContactFilter2D{useTriggers=true},rayHits,delta.magnitude);
             for(int j=0;j<n;j++)
             {
                 var hit=rayHits[j];if(hit.collider.gameObject.layer==6&&!hit.collider.isTrigger){end=true;break;}

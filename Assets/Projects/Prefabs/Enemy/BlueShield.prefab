@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a3102d7fa29c949bf6c3889653d8e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackBox
-  Attack: 3
+  Attack: 9
   knockback: 1
   launch: 0
   effects: []
@@ -521,6 +521,7 @@ GameObject:
   - component: {fileID: 7723312172617347381}
   - component: {fileID: 4351587885091758330}
   - component: {fileID: 8910041001}
+  - component: {fileID: 4078185592507039858}
   m_Layer: 11
   m_Name: BlueShield
   m_TagString: Untagged
@@ -607,7 +608,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.0017848015}
+  m_Offset: {x: 0, y: 0.051863074}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -631,7 +632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25ea03d8aaa61a41b5c9155fe6f68df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  beginBlood: 200
+  beginBlood: 130
   curBlood: 0
   attackedUp: 0
 --- !u!114 &7288722860684391226
@@ -646,7 +647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84f52c93662e4554ad3cb1f943419bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyRewards
-  experienceReward: 1
+  experienceReward: 12
   isBoss: 0
 --- !u!114 &53016286792354314
 MonoBehaviour:
@@ -875,6 +876,34 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   LandedThisFrame: 0
+--- !u!114 &8910041001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7162422767831297267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17948b3ea05c4b178854a40dff66eac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthBar
+  blood: {fileID: 8037116677248098351}
+  seeDuration: 3.5
+  fadeDuration: 1.5
+--- !u!114 &4078185592507039858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7162422767831297267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 22fe25e99f957a149982791b66876395, type: 2}
 --- !u!1 &7888180005625955133
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,18 +995,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030b40b434b4be1459e1ad323c915891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyCheckAttack
---- !u!114 &8910041001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7162422767831297267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17948b3ea05c4b178854a40dff66eac9, type: 3}
-  m_Name:
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthBar
-  blood: {fileID: 8037116677248098351}
-  seeDuration: 3.5
-  fadeDuration: 1.5

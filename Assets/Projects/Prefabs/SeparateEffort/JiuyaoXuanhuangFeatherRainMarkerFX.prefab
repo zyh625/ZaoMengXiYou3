@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 212000}
   - component: {fileID: 114100}
   - component: {fileID: 114200}
+  - component: {fileID: 4903405581101282407}
   m_Layer: 0
   m_Name: JiuyaoXuanhuangFeatherRainMarkerFX
   m_TagString: Untagged
@@ -147,3 +148,16 @@ MonoBehaviour:
   completed:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4903405581101282407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 4c93ba7c2a5f67f41b641a0e5890fb86, type: 2}

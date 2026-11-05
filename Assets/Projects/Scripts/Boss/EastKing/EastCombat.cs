@@ -33,7 +33,7 @@ public class EastCombat : BossCombat
     public int CurrentNoteIndex => currentNote;
     public float LastAttackStartedAt => lastAttackStartedAt;
     public float StringEnergy => Mathf.Clamp(stringEnergy, 0f, MaxStringEnergy);
-    public float MaxStringEnergy => Mathf.Max(0.01f, stringEnergyFull);
+    public float MaxStringEnergy => Mathf.Max(BalanceRuntime.Number(this, "EastCombat.MaxStringEnergy.1", 0.01f), stringEnergyFull);
     public bool RapidStringsActive => rapidStringsActive && health != null && !health.Dead;
     public float NoteCooldownMultiplier => RapidStringsActive ? Mathf.Clamp01(rapidStringsCooldownRatio) : 1f;//四招共用动态倍率，结束后立即恢复原配置
     public event Action StringEnergyChanged;//特殊状态条只订阅实际变化，不逐帧查找Boss
@@ -150,7 +150,7 @@ public class EastCombat : BossCombat
         if (stringEnergy >= MaxStringEnergy)
         {
             rapidStringsActive = true;
-            rapidStringsUntil = Time.time + Mathf.Max(0.01f, rapidStringsDuration);
+            rapidStringsUntil = Time.time + Mathf.Max(BalanceRuntime.Number(this, "EastCombat.AddStringEnergy.1", 0.01f), rapidStringsDuration);
         }
         StringEnergyChanged?.Invoke();
     }

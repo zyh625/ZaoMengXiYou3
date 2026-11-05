@@ -95,7 +95,7 @@ MonoBehaviour:
   knockback: 1
   launch: 0
   effects:
-  - {fileID: 11400000, guid: 99e74adeb92852dfa4e6cf36b65e554f, type: 2}
+  - {fileID: 11400000, guid: 34e6559cd5bed3748b9b34de402e7177, type: 2}
 --- !u!1 &9143200001
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,7 +282,7 @@ MonoBehaviour:
   knockback: 1
   launch: 1
   effects:
-  - {fileID: 11400000, guid: 99e74adeb92852dfa4e6cf36b65e554f, type: 2}
+  - {fileID: 11400000, guid: 34e6559cd5bed3748b9b34de402e7177, type: 2}
 --- !u!1 &611057614873515140
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,7 +387,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.01}
+  m_Offset: {x: 0, y: 0.38}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -397,7 +397,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.23, y: 2.16}
+  m_Size: {x: 1.88, y: 2.97}
   m_EdgeRadius: 0
 --- !u!1 &1902257788353459579
 GameObject:
@@ -507,6 +507,7 @@ GameObject:
   - component: {fileID: 7058120141080007257}
   - component: {fileID: 2839156499423305932}
   - component: {fileID: 5440772396022913753}
+  - component: {fileID: 3236641701283727659}
   m_Layer: 11
   m_Name: SouthKing
   m_TagString: Untagged
@@ -631,7 +632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84f52c93662e4554ad3cb1f943419bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyRewards
-  experienceReward: 1
+  experienceReward: 200
   isBoss: 1
 --- !u!114 &8288706268580847572
 MonoBehaviour:
@@ -955,6 +956,19 @@ MonoBehaviour:
     m_Bits: 64
   LandedThisFrame: 0
   thrustSpeed: 6
+--- !u!114 &3236641701283727659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2897115849293216373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 66b22aaeea460484b93cead9c7c41c11, type: 2}
 --- !u!1 &6554541186112710357
 GameObject:
   m_ObjectHideFlags: 0
@@ -1259,4 +1273,4 @@ MonoBehaviour:
   knockback: 1
   launch: 0
   effects:
-  - {fileID: 11400000, guid: 99e74adeb92852dfa4e6cf36b65e554f, type: 2}
+  - {fileID: 11400000, guid: 34e6559cd5bed3748b9b34de402e7177, type: 2}

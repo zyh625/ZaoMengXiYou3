@@ -30,8 +30,8 @@ public class GoldCoin : MonoBehaviour
         ResolveVisual();
         manager = owner;
         amount = Mathf.Max(0, value);
-        lifetime = Mathf.Max(0.01f, existTime);
-        absorbDuration = Mathf.Max(0.01f, absorbTime);
+        lifetime = Mathf.Max(BalanceRuntime.Number(this, "GoldCoin.Spawn.1", 0.01f), existTime);
+        absorbDuration = Mathf.Max(BalanceRuntime.Number(this, "GoldCoin.Spawn.2", 0.01f), absorbTime);
         spawnedAt = Time.time;
         absorbing = false;
         running = true;
@@ -67,9 +67,9 @@ public class GoldCoin : MonoBehaviour
         if (sr != null) destination -= sr.bounds.center - transform.position;//底部pivot只用于落地，吸附终点必须让金币图片中心对齐角色图片中心
         destination.z = transform.position.z;
         float progress = Mathf.Clamp01((Time.time - absorbBeganAt) / absorbDuration);
-        float eased = progress * progress * (3f - 2f * progress);//起步和收尾平滑，角色移动或切人时目标仍持续更新
+        float eased = progress * progress * (BalanceRuntime.Number(this, "GoldCoin.LateUpdate.1", 3f) - BalanceRuntime.Number(this, "GoldCoin.LateUpdate.2", 2f) * progress);//起步和收尾平滑，角色移动或切人时目标仍持续更新
         Vector3 position = Vector3.Lerp(absorbStart, destination, eased);
-        position.y += Mathf.Sin(progress * Mathf.PI) * 0.2f;//从地面略微抬起后收向人物图片中心
+        position.y += Mathf.Sin(progress * Mathf.PI) * BalanceRuntime.Number(this, "GoldCoin.LateUpdate.3", 0.2f);//从地面略微抬起后收向人物图片中心
         transform.position = position;
         if (progress >= 1f) manager.CompletePickup(this);
     }

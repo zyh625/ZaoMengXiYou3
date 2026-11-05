@@ -34,18 +34,18 @@ public sealed class RedBoomLantern : MonoBehaviour
         owner=source.transform;ownerHealth=source.GetComponent<Health>();ownerLife=ownerHealth.LifeVersion;
         scale=source.DamageMultiplier;
         Collider2D targetBody=target.GetComponent<Collider2D>();
-        Vector2 aim=new(targetBody.bounds.center.x,targetBody.bounds.min.y+0.15f);
-        RaycastHit2D floor=Physics2D.Raycast(aim,Vector2.down,30f,1 << 6);
-        if (floor.collider!=null) aim.y=floor.point.y+0.12f;
-        float t=Mathf.Max(0.1f,flightTime);
-        velocity=new Vector2((aim.x-from.x)/t,(aim.y-from.y+gravity*t*t/2f)/t);
+        Vector2 aim=new(targetBody.bounds.center.x,targetBody.bounds.min.y+BalanceRuntime.Number(this, "RedBoomLantern.Launch.1", 0.15f));
+        RaycastHit2D floor=Physics2D.Raycast(aim,Vector2.down,BalanceRuntime.Number(this, "RedBoomLantern.Launch.2", 30f),1 << 6);
+        if (floor.collider!=null) aim.y=floor.point.y+BalanceRuntime.Number(this, "RedBoomLantern.Launch.3", 0.12f);
+        float t=Mathf.Max(BalanceRuntime.Number(this, "RedBoomLantern.Launch.4", 0.1f),flightTime);
+        velocity=new Vector2((aim.x-from.x)/t,(aim.y-from.y+gravity*t*t/BalanceRuntime.Number(this, "RedBoomLantern.Launch.5", 2f))/t);
         transform.position=from;transform.localScale=Vector3.one;
         visual.transform.localPosition=Vector3.zero;visual.transform.localScale=Vector3.one;
         visual.flipX=aim.x>from.x;fireRing.enabled=false;
         SpriteRenderer renderer=source.GetComponentInChildren<SpriteRenderer>();
         if (renderer!=null) { visual.sortingLayerID=renderer.sortingLayerID;visual.sortingOrder=renderer.sortingOrder+1; }
         phase=Phase.Flying;HasLanded=HasExploded=fireAnimation=false;FireTicks=0;
-        fallbackAt=Time.time+8f;
+        fallbackAt=Time.time+BalanceRuntime.Number(this, "RedBoomLantern.Launch.6", 8f);
         gameObject.SetActive(true);spriteManager.ChangeState(flight);
     }
     private void FixedUpdate()
@@ -55,18 +55,18 @@ public sealed class RedBoomLantern : MonoBehaviour
             if (Time.time>=fallbackAt) { gameObject.SetActive(false);return; }
             float dt=Time.fixedDeltaTime;
             Vector2 from=transform.position;
-            Vector2 delta=velocity*dt+Vector2.down*(gravity*dt*dt/2f);
+            Vector2 delta=velocity*dt+Vector2.down*(gravity*dt*dt/BalanceRuntime.Number(this, "RedBoomLantern.FixedUpdate.1", 2f));
             velocity+=Vector2.down*(gravity*dt);
             ContactFilter2D filter=new();filter.SetLayerMask(1 << 6);filter.useTriggers=false;
-            int count=Physics2D.CircleCast(from,0.12f,delta.normalized,filter,casts,delta.magnitude);
+            int count=Physics2D.CircleCast(from,BalanceRuntime.Number(this, "RedBoomLantern.FixedUpdate.2", 0.12f),delta.normalized,filter,casts,delta.magnitude);
             int closest=-1;
             for(int i=0;i<count;i++) if (closest<0 || casts[i].distance<casts[closest].distance) closest=i;
             if (closest>=0)
             {
                 RaycastHit2D hit=casts[closest];
-                transform.position=hit.centroid+hit.normal*0.01f;
-                if (hit.normal.y>=0.5f) Land(hit.point.y);
-                else { if (Mathf.Abs(hit.normal.x)>0.1f) velocity.x=0f; if(hit.normal.y<0f)velocity.y=Mathf.Min(velocity.y,0f); }
+                transform.position=hit.centroid+hit.normal*BalanceRuntime.Number(this, "RedBoomLantern.FixedUpdate.3", 0.01f);
+                if (hit.normal.y>=BalanceRuntime.Number(this, "RedBoomLantern.FixedUpdate.4", 0.5f)) Land(hit.point.y);
+                else { if (Mathf.Abs(hit.normal.x)>BalanceRuntime.Number(this, "RedBoomLantern.FixedUpdate.5", 0.1f)) velocity.x=0f; if(hit.normal.y<0f)velocity.y=Mathf.Min(velocity.y,0f); }
             }
             else transform.position=from+delta;
             return;
@@ -76,7 +76,7 @@ public sealed class RedBoomLantern : MonoBehaviour
             if (Time.time>=detonateAt) Explode();
             return;
         }
-        while(nextTick<=expiresAt+0.0001f && Time.time>=nextTick)
+        while(nextTick<=expiresAt+BalanceRuntime.Number(this, "RedBoomLantern.FixedUpdate.6", 0.0001f) && Time.time>=nextTick)
         {
             nextTick+=fireInterval;FireTicks++;
             DamageArea(false);
@@ -88,7 +88,7 @@ public sealed class RedBoomLantern : MonoBehaviour
     private void Land(float y)
     {
         groundY=y;phase=Phase.Fuse;HasLanded=true;LandedAt=Time.time;
-        transform.position=new Vector3(transform.position.x,y+0.3f,0f);
+        transform.position=new Vector3(transform.position.x,y+BalanceRuntime.Number(this, "RedBoomLantern.Land.1", 0.3f),0f);
         detonateAt=Time.time+fuseDuration;
     }
     private void Explode()
@@ -96,8 +96,8 @@ public sealed class RedBoomLantern : MonoBehaviour
         phase=Phase.Fire;HasExploded=true;ExplodedAt=Time.time;
         expiresAt=Time.time+fireDuration;nextTick=Time.time+fireInterval;
         fireVisualAt=Time.time+explosion.sprites.Length/Mathf.Max(1f,explosion.fps);
-        transform.position=new Vector3(transform.position.x,groundY+0.1f,0f);
-        visual.transform.localScale=new Vector3(radius*2f/blastNativeWidth,1.4f,1f);
+        transform.position=new Vector3(transform.position.x,groundY+BalanceRuntime.Number(this, "RedBoomLantern.Explode.1", 0.1f),0f);
+        visual.transform.localScale=new Vector3(radius*BalanceRuntime.Number(this, "RedBoomLantern.Explode.2", 2f)/blastNativeWidth,BalanceRuntime.Number(this, "RedBoomLantern.Explode.3", 1.4f),1f);
         spriteManager.ChangeState(explosion);
         fireRing.enabled=true;
         DamageArea(true);
@@ -106,7 +106,7 @@ public sealed class RedBoomLantern : MonoBehaviour
     {
         ContactFilter2D filter=RedBoomHitUtility.PlayerFilter;
         int count=blast ? Physics2D.OverlapCircle(transform.position,radius,filter,overlaps)
-            : Physics2D.OverlapBox(new Vector2(transform.position.x,groundY+0.3f),new Vector2(radius*2f,0.6f),0f,filter,overlaps);
+            : Physics2D.OverlapBox(new Vector2(transform.position.x,groundY+BalanceRuntime.Number(this, "RedBoomLantern.DamageArea.1", 0.3f)),new Vector2(radius*BalanceRuntime.Number(this, "RedBoomLantern.DamageArea.2", 2f),BalanceRuntime.Number(this, "RedBoomLantern.DamageArea.3", 0.6f)),0f,filter,overlaps);
         damaged.Clear();
         for(int i=0;i<count;i++)
         {

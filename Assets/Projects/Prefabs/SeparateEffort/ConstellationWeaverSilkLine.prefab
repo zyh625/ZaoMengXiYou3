@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5113914760247252735}
   - component: {fileID: 1332749614907346051}
+  - component: {fileID: 1362333359893442333}
   m_Layer: 0
   m_Name: ConstellationWeaverSilkLine
   m_TagString: Untagged
@@ -46,6 +47,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConstellationWeaverArea
   line: {fileID: 6486941300922794816}
+--- !u!114 &1362333359893442333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739741815781215892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 670dbfbc5ef8b524698f11944c5d98dc, type: 2}
 --- !u!1 &3447748295415151140
 GameObject:
   m_ObjectHideFlags: 0

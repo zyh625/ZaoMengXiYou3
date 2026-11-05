@@ -131,7 +131,7 @@ public class YieldManager : MonoBehaviour
 
         bool standing = YieldOpened && protectedPlayer != null && protectedPlayer.gameObject.activeInHierarchy
             && protectedMovement != null && protectedMovement.AirState() == 0
-            && protectedBody != null && Mathf.Abs(protectedBody.linearVelocityY) <= 0.1f
+            && protectedBody != null && Mathf.Abs(protectedBody.linearVelocityY) <= BalanceRuntime.Number(this, "YieldManager.RefreshProtection.1", 0.1f)
             && protectedCollider != null && yieldRenderer != null && protectedHealth != null && !protectedHealth.Dead;
         if (standing)
         {

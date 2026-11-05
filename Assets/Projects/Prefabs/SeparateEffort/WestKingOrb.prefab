@@ -372,6 +372,7 @@ GameObject:
   - component: {fileID: 4186830696413356745}
   - component: {fileID: 2557783055943150236}
   - component: {fileID: 5771329101249621212}
+  - component: {fileID: 2192290770661166671}
   m_Layer: 11
   m_Name: WestKingOrb
   m_TagString: Untagged
@@ -650,3 +651,16 @@ MonoBehaviour:
   stunnedFrame: 0
   muzzle: {fileID: 3012334149506107958}
   ray: {fileID: 6902589373224479623}
+--- !u!114 &2192290770661166671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5387245917778683969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 26d0839c99655c344ae416b8381460aa, type: 2}

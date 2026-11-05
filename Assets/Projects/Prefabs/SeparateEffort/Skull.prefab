@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1367480816}
   - component: {fileID: 1367480815}
   - component: {fileID: 1367480818}
+  - component: {fileID: 574111039711100381}
   m_Layer: 11
   m_Name: Skull
   m_TagString: Untagged
@@ -149,3 +150,16 @@ MonoBehaviour:
   minimumBounceTime: 0.12
   poisonDuration: 5
   poisonDamagePerStack: 1
+--- !u!114 &574111039711100381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367480814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 4e2cb82562a7e4545a75852dad339912, type: 2}

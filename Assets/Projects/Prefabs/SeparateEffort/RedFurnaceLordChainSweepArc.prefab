@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7633896598794735927}
   - component: {fileID: 960370411763539562}
+  - component: {fileID: 5230518095309830180}
   m_Layer: 0
   m_Name: RedFurnaceLordChainSweepArc
   m_TagString: Untagged
@@ -68,6 +69,19 @@ MonoBehaviour:
   spriteManager: {fileID: 2500334006492301454}
   visual: {fileID: 5488257919698524556}
   nativeWidth: 1.81
+--- !u!114 &5230518095309830180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3274670236476842316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: f2ddfbbc76a7b5542a682bbdf0ab7c03, type: 2}
 --- !u!1 &8935867656671953492
 GameObject:
   m_ObjectHideFlags: 0

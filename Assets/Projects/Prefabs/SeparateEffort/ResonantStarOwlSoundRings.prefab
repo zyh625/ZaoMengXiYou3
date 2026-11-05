@@ -115,6 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2625187377998192955}
   - component: {fileID: 6601027870113275831}
+  - component: {fileID: 352776999550444184}
   m_Layer: 0
   m_Name: ResonantStarOwlSoundRings
   m_TagString: Untagged
@@ -172,3 +173,16 @@ MonoBehaviour:
     - {fileID: 676947325737253408, guid: 516d7dcf86a65ca9ac085a177671f915, type: 3}
     loop: 0
     fps: 16
+--- !u!114 &352776999550444184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4589535943279788952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: af56ce2dff994724abbd336b7e2cd336, type: 2}

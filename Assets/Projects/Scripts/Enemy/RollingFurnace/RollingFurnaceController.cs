@@ -58,9 +58,9 @@ public sealed class RollingFurnaceController : EnemyController
         {
             if (TrainingPassive || EH.Attacked || state == EnemyState.Attacked && !SM.IsFinished || !movement.IsOnGroundNow()) return false;
             float distance = Mathf.Abs(movement.DeltaX);
-            if (distance >= 3f && distance <= 8f && BeginRoll(movement.DeltaX)) return true;
-            if (distance >= 2f && distance <= 4f && BeginSlam()) return true;
-            if (distance < 2f) // Leave space for the telegraphed attacks rather than stacking on the player.
+            if (distance >= BalanceRuntime.Number(this, "RollingFurnaceController.ProcessSpecialState.1", 3f) && distance <= BalanceRuntime.Number(this, "RollingFurnaceController.ProcessSpecialState.2", 8f) && BeginRoll(movement.DeltaX)) return true;
+            if (distance >= BalanceRuntime.Number(this, "RollingFurnaceController.ProcessSpecialState.3", 2f) && distance <= BalanceRuntime.Number(this, "RollingFurnaceController.ProcessSpecialState.4", 4f) && BeginSlam()) return true;
+            if (distance < BalanceRuntime.Number(this, "RollingFurnaceController.ProcessSpecialState.5", 2f)) // Leave space for the telegraphed attacks rather than stacking on the player.
             {
                 float walk = -Mathf.Sign(movement.DeltaX);
                 if (walk == 0f) walk = transform.position.x > patrolOrigin ? -1f : 1f;
@@ -74,11 +74,11 @@ public sealed class RollingFurnaceController : EnemyController
         switch (action)
         {
             case FurnaceAction.RollWindup:
-                movement.HoldStill(); Pose(RollCharge, (int)(elapsed * 16f));
-                if (elapsed >= .5f) { movement.BeginRoll(direction); combat.OpenRoll(false); Enter(FurnaceAction.Rolling); }
+                movement.HoldStill(); Pose(RollCharge, (int)(elapsed * BalanceRuntime.Number(this, "RollingFurnaceController.ProcessSpecialState.6", 16f)));
+                if (elapsed >= BalanceRuntime.Number(this, "RollingFurnaceController.ProcessSpecialState.7", 0.5f)) { movement.BeginRoll(direction); combat.OpenRoll(false); Enter(FurnaceAction.Rolling); }
                 break;
             case FurnaceAction.Rolling:
-                Pose(RollCharge, 8 + (int)(elapsed * 24f) % 4);
+                Pose(RollCharge, 8 + (int)(elapsed * BalanceRuntime.Number(this, "RollingFurnaceController.ProcessSpecialState.8", 24f)) % 4);
                 int result = movement.StepRoll();
                 if (result == 1) { combat.CloseBoxes(); EH.SetSuperArmor(this, false); Enter(FurnaceAction.WallStun); HoldHitPose(); }
                 else if (result == 2) RecoverRoll();
@@ -88,7 +88,7 @@ public sealed class RollingFurnaceController : EnemyController
                 movement.HoldStill(); EH.AttackedEnd(); HoldHitPose();
                 if (elapsed >= 1f)
                 {
-                    if (!rebound && movement.Remaining > .001f)
+                    if (!rebound && movement.Remaining > BalanceRuntime.Number(this, "RollingFurnaceController.ProcessSpecialState.9", 0.001f))
                     {
                         rebound = true; direction = -direction; SM.ChangeSpriteFace(direction > 0f);
                         movement.Rebound(); EH.SetSuperArmor(this, true); combat.OpenRoll(true); Enter(FurnaceAction.Rolling);
@@ -97,24 +97,24 @@ public sealed class RollingFurnaceController : EnemyController
                 }
                 break;
             case FurnaceAction.RollRecovery:
-                Pose(RollCharge, 12 + (int)(elapsed * 16f)); if (elapsed >= .25f) Finish(); break;
+                Pose(RollCharge, 12 + (int)(elapsed * BalanceRuntime.Number(this, "RollingFurnaceController.ProcessSpecialState.10", 16f))); if (elapsed >= BalanceRuntime.Number(this, "RollingFurnaceController.ProcessSpecialState.11", 0.25f)) Finish(); break;
             case FurnaceAction.SlamWindup:
-                movement.Stop(); Pose(BounceSlam, (int)(elapsed * 16f));
-                if (elapsed >= 5f / 16f) { movement.Jump(); Enter(FurnaceAction.SlamAir); }
+                movement.Stop(); Pose(BounceSlam, (int)(elapsed * BalanceRuntime.Number(this, "RollingFurnaceController.ProcessSpecialState.12", 16f)));
+                if (elapsed >= BalanceRuntime.Number(this, "RollingFurnaceController.ProcessSpecialState.13", 5f) / BalanceRuntime.Number(this, "RollingFurnaceController.ProcessSpecialState.14", 16f)) { movement.Jump(); Enter(FurnaceAction.SlamAir); }
                 break;
             case FurnaceAction.SlamAir:
                 // Hold the descending illustration until physical contact; never hit on a timer in mid-air.
-                Pose(BounceSlam, Mathf.Min(10, 5 + (int)(elapsed * 10f)));
-                if (elapsed > .08f && !movement.IsOnGroundNow()) jumped = true;
+                Pose(BounceSlam, Mathf.Min(10, 5 + (int)(elapsed * BalanceRuntime.Number(this, "RollingFurnaceController.ProcessSpecialState.15", 10f))));
+                if (elapsed > BalanceRuntime.Number(this, "RollingFurnaceController.ProcessSpecialState.16", 0.08f) && !movement.IsOnGroundNow()) jumped = true;
                 if (jumped && movement.IsOnGroundNow())
                 { movement.Stop(); combat.Land(transform.position); Enter(FurnaceAction.SlamRecovery); Pose(BounceSlam, 11); }
-                else if (elapsed > 5f) CancelAction();
+                else if (elapsed > BalanceRuntime.Number(this, "RollingFurnaceController.ProcessSpecialState.17", 5f)) CancelAction();
                 break;
             case FurnaceAction.SlamRecovery:
-                Pose(BounceSlam, 11 + (int)(elapsed * 16f)); if (elapsed >= 5f / 16f) Finish(); break;
+                Pose(BounceSlam, 11 + (int)(elapsed * BalanceRuntime.Number(this, "RollingFurnaceController.ProcessSpecialState.18", 16f))); if (elapsed >= BalanceRuntime.Number(this, "RollingFurnaceController.ProcessSpecialState.19", 5f) / BalanceRuntime.Number(this, "RollingFurnaceController.ProcessSpecialState.20", 16f)) Finish(); break;
             case FurnaceAction.Vent:
                 movement.Stop(); EH.AttackedEnd(); combat.AdvanceVent(Time.time);
-                Pose(ShellVent, combat.Vent == RollingFurnaceCombat.VentPhase.Closed ? Mathf.Min(11, (int)(elapsed * 16f)) : Mathf.Min(15, 12 + (int)((elapsed - 2f) * 16f)));
+                Pose(ShellVent, combat.Vent == RollingFurnaceCombat.VentPhase.Closed ? Mathf.Min(11, (int)(elapsed * BalanceRuntime.Number(this, "RollingFurnaceController.ProcessSpecialState.21", 16f))) : Mathf.Min(15, 12 + (int)((elapsed - BalanceRuntime.Number(this, "RollingFurnaceController.ProcessSpecialState.22", 2f)) * BalanceRuntime.Number(this, "RollingFurnaceController.ProcessSpecialState.23", 16f))));
                 if (combat.Vent == RollingFurnaceCombat.VentPhase.None) Finish();
                 break;
         }

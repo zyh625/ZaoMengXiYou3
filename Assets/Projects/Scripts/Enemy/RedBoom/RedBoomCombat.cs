@@ -10,8 +10,8 @@ public sealed class RedBoomCombat : EnemyCombat
     [SerializeField, Min(1f)] private float rayRange = 10f;
     [SerializeField, Min(0.05f)] private float rayHeight = 0.55f;
     [SerializeField] private float[] skillCooldowns = { 5f, 7f, 12f };
-    private static readonly float[] windups = { 0.9f, 0.5f, 0.6f };
-    private static readonly int[] releaseFrames = { 12, 8, 9 };
+[SerializeField]private float[] windups = { 0.9f, 0.5f, 0.6f };
+[SerializeField]private int[] releaseFrames = { 12, 8, 9 };
     private readonly float[] readyAt = new float[3];
     private readonly Collider2D[] hits = new Collider2D[32];
     private readonly HashSet<Health> hitHealths = new(16);
@@ -37,7 +37,7 @@ public sealed class RedBoomCombat : EnemyCombat
             if (party != null && party.isActiveAndEnabled) return party.CurrentPlayer;
             if (fallback != null && fallback.isActiveAndEnabled && !fallback.GetComponent<Health>().Dead) return fallback;
             if (Time.time < resolveAt) return null;
-            resolveAt = Time.time + 0.5f;
+            resolveAt = Time.time + BalanceRuntime.Number(this, "RedBoomCombat.Target.1", 0.5f);
             party = FindAnyObjectByType<PlayerManager>();
             if (party != null && party.isActiveAndEnabled) return party.CurrentPlayer;
             foreach (PlayerController player in FindObjectsByType<PlayerController>())
@@ -45,7 +45,7 @@ public sealed class RedBoomCombat : EnemyCombat
             return null;
         }
     }
-    public bool InRange => Target != null && Mathf.Abs(Target.transform.position.x - transform.position.x) is >= 4f and <= 7f;
+    public bool InRange => Target != null && (Mathf.Abs(Target.transform.position.x - transform.position.x) >= BalanceRuntime.Number(this, "RedBoomCombat.InRange.Range1.Minimum", 4f) && Mathf.Abs(Target.transform.position.x - transform.position.x) <= BalanceRuntime.Number(this, "RedBoomCombat.InRange.Range1.Maximum", 7f));
     public int ReadySkill
     {
         get
@@ -88,7 +88,7 @@ public sealed class RedBoomCombat : EnemyCombat
             Vector2 direction = FaceRight ? Vector2.right : Vector2.left;
             rayTo = rayFrom + direction * rayRange;
             RaycastHit2D wall = Physics2D.Raycast(rayFrom, direction, rayRange, 1 << 6);
-            if (wall.collider != null) rayTo = wall.point - direction * 0.02f;
+            if (wall.collider != null) rayTo = wall.point - direction * BalanceRuntime.Number(this, "RedBoomCombat.BeginCast.1", 0.02f);
             warning = RedBoomEffectPool.GetOrCreate().Warn(rayPrefab, rayFrom, rayTo, GetComponentInChildren<SpriteRenderer>());
         }
         return true;
@@ -107,7 +107,7 @@ public sealed class RedBoomCombat : EnemyCombat
             warning?.Flash();
             Vector2 size = new(Mathf.Abs(rayTo.x - rayFrom.x), rayHeight);
             ContactFilter2D filter = RedBoomHitUtility.PlayerFilter;
-            int count = Physics2D.OverlapBox((rayFrom + rayTo) / 2f, size, 0f, filter, hits);
+            int count = Physics2D.OverlapBox((rayFrom + rayTo) / BalanceRuntime.Number(this, "RedBoomCombat.SampleFrame.1", 2f), size, 0f, filter, hits);
             hitHealths.Clear();
             float scale = DamageMultiplier;
             for (int i = 0; i < count; i++)
@@ -115,7 +115,7 @@ public sealed class RedBoomCombat : EnemyCombat
                 Health victim = RedBoomHitUtility.PlayerHealth(hits[i]);
                 if (victim == null || !hitHealths.Add(victim)) continue;
                 float before = victim.CurBlood;
-                victim.TakeDamage(new DamageInfo(transform, 12f * scale, false));
+                victim.TakeDamage(new DamageInfo(transform, BalanceRuntime.Number(this, "RedBoomCombat.SampleFrame.2", 12f) * scale, false));
                 if (victim.CurBlood < before && !victim.Dead) RedBoomBurn.Apply(victim, transform, scale);
             }
         }

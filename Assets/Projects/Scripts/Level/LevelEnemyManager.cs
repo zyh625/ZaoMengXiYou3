@@ -58,6 +58,7 @@ public abstract class LevelEnemyManager : MonoBehaviour
     public virtual void InitEnemies(CameraManager camera, Transform target, PlayerManager players = null)
     {
         if (initialized) return;
+        BalanceRuntime.ApplyLevel(this);
         CM = camera;
         currentTarget = target;
         currentPlayers = players;
@@ -71,6 +72,7 @@ public abstract class LevelEnemyManager : MonoBehaviour
     protected T CreateEnemy<T>(T prefab) where T : EnemyController//统一初始化新池成员，保留子类所需的具体类型
     {
         T enemy = Instantiate(prefab);
+        enemy.GetComponent<BalanceBinding>()?.ApplyOnce();
         ApplyRebirthStats(enemy.gameObject, prefab.gameObject);
         enemies.Add(enemy);
         BindRewards(enemy.gameObject, currentPlayers);
@@ -83,6 +85,7 @@ public abstract class LevelEnemyManager : MonoBehaviour
     {
         if (boss == null) return;//教程关明确不配置Boss；普通关卡仍由ValidateConfiguration要求完整Boss引用。
         curBoss = Instantiate(boss);
+        curBoss.GetComponent<BalanceBinding>()?.ApplyOnce();
         ApplyRebirthStats(curBoss.gameObject, boss.gameObject);
         BindRewards(curBoss.gameObject, currentPlayers);
         curBoss.GetComponent<EnemyRewards>().SetBoss(true);//同一套奖励组件，Boss只使用已选存档的首杀掉落
@@ -98,7 +101,7 @@ public abstract class LevelEnemyManager : MonoBehaviour
     {
         RebirthScaling.Multipliers scales = RebirthScaling.Current;
         Health health = enemy.GetComponent<Health>(), baseline = prefab.GetComponent<Health>();
-        if (health != null && baseline != null) health.SetBaseBlood(baseline.BeginBlood * hpScale * scales.HP);
+        if (health != null && baseline != null) health.SetBaseBlood(BalanceRuntime.BaseBlood(prefab, baseline.BeginBlood) * hpScale * scales.HP);
         EnemyCombat combat = enemy.GetComponent<EnemyCombat>();
         if (combat != null) combat.SetExternalDamageScale(damageScale * scales.Damage);
     }

@@ -25,6 +25,8 @@ public class PlayerBoost : MonoBehaviour
     private PlayerCombat combat;//攻击增益只通过来源倍率接入
     private ActorBoostTrail boostTrail;//公共拖尾组件可独立用于敌人，不把角色类型写进美术控制器
 
+    public static bool TrainingForceBoost { get; set; }
+
     public float Energy { get { Initialize(); return boostEnergy; } }
     public float MaxEnergy => Mathf.Max(1f, boostFull);
     public bool Active => boost;
@@ -50,12 +52,41 @@ public class PlayerBoost : MonoBehaviour
     {
         Initialize();
         boostRequest = false;
-        health.Died += OnDied;
-        Changed?.Invoke();
+        if (health != null) health.Died += OnDied;
+        if (TrainingForceBoost)
+        {
+            StartBoostImmediate();
+        }
+        else
+        {
+            Changed?.Invoke();
+        }
     }
 
     public void RequestBoost() => boostRequest = true;//不直接改动画，保证控制器能够统一处理优先级
     public void ClearRequest() => boostRequest = false;//冻结只丢弃尚未响应的空格，不清空能量或提前结束已生效的无双
+
+    public void StartBoostImmediate()
+    {
+        Initialize();
+        if (health != null)
+        {
+            health.ClearDebuffs();
+            health.AttackedEnd();
+        }
+        boost = true;
+        boostEnergy = MaxEnergy;
+        ApplyBoost();
+        Changed?.Invoke();
+    }
+
+    public void StopBoostImmediate()
+    {
+        Initialize();
+        EndBoost();
+        boostEnergy = 0f;
+        Changed?.Invoke();
+    }
 
     public bool ConsumeRequest()//成功开启时返回true，控制器据此退出当前受击动画
     {
@@ -82,16 +113,27 @@ public class PlayerBoost : MonoBehaviour
 
     private void Update()
     {
-        if (health.Dead)
+        if (health != null && health.Dead)
         {
             boostRequest = false;
             EndBoost();
             return;
         }
+        if (TrainingForceBoost)
+        {
+            boostEnergy = MaxEnergy;
+            if (!boost)
+            {
+                boost = true;
+                ApplyBoost();
+                Changed?.Invoke();
+            }
+            return;
+        }
         float previous = boostEnergy;//以秒计时，不依赖运行帧数
         if (boost)
         {
-            boostEnergy = Mathf.Max(0f, boostEnergy - MaxEnergy / Mathf.Max(0.01f, boostTime) * Time.deltaTime);
+            boostEnergy = Mathf.Max(0f, boostEnergy - MaxEnergy / Mathf.Max(BalanceRuntime.Number(this, "PlayerBoost.Update.1", 0.01f), boostTime) * Time.deltaTime);
             if (boostEnergy <= 0f)
             {
                 EndBoost();
@@ -105,21 +147,27 @@ public class PlayerBoost : MonoBehaviour
 
     private void ApplyBoost()//统一移速与拖尾之外，角色额外能力各自登记来源
     {
-        if (movement != null) movement.SetMoveMultiplier(this, moveMultiplier);
+        float speed = BalanceRuntime.Number(this, "PlayerBoost.moveMultiplier", moveMultiplier);
+        if (movement != null) movement.SetMoveMultiplier(this, speed);
         if (boostTrail != null) boostTrail.SetActive(true);
+        if (resources == null) resources = GetComponent<PlayerResources>();
+        if (resources == null) return;
         switch (resources.Id)
         {
             case PlayerId.WuKong:
-                if (combat != null) combat.SetCriticalChanceBonus(this, wukongCriticalChance);
+                float crit = BalanceRuntime.Number(this, "PlayerBoost.wukongCriticalChance", wukongCriticalChance);
+                if (combat != null) combat.SetCriticalChanceBonus(this, crit);
                 break;
             case PlayerId.BaJie:
-                health.SetDamageMultiplier(this, bajieDamageMultiplier);
+                float dmgMul = BalanceRuntime.Number(this, "PlayerBoost.bajieDamageMultiplier", bajieDamageMultiplier);
+                if (health != null) health.SetDamageMultiplier(this, dmgMul);
                 break;
             case PlayerId.Sha:
-                health.SetSuperArmor(this, shaSuperArmor);
+                if (health != null) health.SetSuperArmor(this, shaSuperArmor);
                 break;
             case PlayerId.Tang:
-                if (combat != null) combat.SetAttackMultiplier(this, tangAttackMultiplier);
+                float atkMul = BalanceRuntime.Number(this, "PlayerBoost.tangAttackMultiplier", tangAttackMultiplier);
+                if (combat != null) combat.SetAttackMultiplier(this, atkMul);
                 break;
         }
     }
@@ -128,8 +176,11 @@ public class PlayerBoost : MonoBehaviour
     {
         if (!boost) return;
         boost = false;
-        health.SetSuperArmor(this, false);
-        health.RemoveDamageMultiplier(this);
+        if (health != null)
+        {
+            health.SetSuperArmor(this, false);
+            health.RemoveDamageMultiplier(this);
+        }
         if (movement != null) movement.RemoveMoveMultiplier(this);
         if (combat != null)
         {
@@ -143,6 +194,18 @@ public class PlayerBoost : MonoBehaviour
     public void ResetBoost()//换人清空无双、待处理请求及本来源增益，不留下满槽或激活状态
     {
         Initialize();
+        if (TrainingForceBoost)
+        {
+            boostRequest = false;
+            boostEnergy = MaxEnergy;
+            if (!boost)
+            {
+                boost = true;
+                ApplyBoost();
+            }
+            Changed?.Invoke();
+            return;
+        }
         bool changed = boost || boostRequest || boostEnergy != 0f;//已清空后再次禁用不发送重复通知
         boostRequest = false;
         boostEnergy = 0f;
@@ -158,7 +221,9 @@ public class PlayerBoost : MonoBehaviour
     private void OnDisable()
     {
         if (!initialized) return;
-        health.Died -= OnDied;
-        ResetBoost();//换人和外部停用均结束效果并清空无双能量
+        if (health != null) health.Died -= OnDied;
+        if (boost) EndBoost();
+        boostRequest = false;
+        if (!TrainingForceBoost) boostEnergy = 0f;
     }
 }

@@ -1,5 +1,121 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1001}
+  - component: {fileID: 1002}
+  - component: {fileID: 6911367611449884825}
+  m_Layer: 0
+  m_Name: WuxiangDijunSealMark
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2001}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fa9ca343e52592186c5b9d9094529f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LateStageEffect
+  frames:
+    sprites:
+    - {fileID: -8071926763041308637, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
+    - {fileID: -490404203644244786, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
+    - {fileID: 3584757648040039739, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
+    - {fileID: -1510330911491768820, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
+    - {fileID: 3492715481732180509, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
+    - {fileID: 3912497682000033187, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
+    - {fileID: 5354250151657528905, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
+    - {fileID: 7317388917723519436, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
+    - {fileID: -5436745313971384069, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
+    - {fileID: -2769114697200774546, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
+    - {fileID: -3594801507366652852, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
+    - {fileID: -7610286957118107739, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
+    - {fileID: -4638777903873292644, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
+    - {fileID: 6660574797878621478, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
+    - {fileID: -7982613863900481375, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
+    - {fileID: -7769142594691440922, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
+    loop: 0
+    fps: 16
+  spriteManager: {fileID: 2003}
+  visual: {fileID: 2002}
+  nativeWidth: 1.55
+  placeholderAspect: {x: 1, y: 1}
+--- !u!114 &6911367611449884825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 7c287a275d8d7f849a56150953767a49, type: 2}
+--- !u!1 &2000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001}
+  - component: {fileID: 2002}
+  - component: {fileID: 2003}
+  m_Layer: 0
+  m_Name: Visual
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2002
 SpriteRenderer:
   serializedVersion: 2
@@ -72,105 +188,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpriteManager
   sr: {fileID: 2002}
---- !u!114 &1002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fa9ca343e52592186c5b9d9094529f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LateStageEffect
-  frames:
-    sprites:
-    - {fileID: -8071926763041308637, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
-    - {fileID: -490404203644244786, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
-    - {fileID: 3584757648040039739, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
-    - {fileID: -1510330911491768820, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
-    - {fileID: 3492715481732180509, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
-    - {fileID: 3912497682000033187, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
-    - {fileID: 5354250151657528905, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
-    - {fileID: 7317388917723519436, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
-    - {fileID: -5436745313971384069, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
-    - {fileID: -2769114697200774546, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
-    - {fileID: -3594801507366652852, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
-    - {fileID: -7610286957118107739, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
-    - {fileID: -4638777903873292644, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
-    - {fileID: 6660574797878621478, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
-    - {fileID: -7982613863900481375, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
-    - {fileID: -7769142594691440922, guid: a1bfb2931fb547d38411f27fedea710e, type: 3}
-    loop: 0
-    fps: 16
-  spriteManager: {fileID: 2003}
-  visual: {fileID: 2002}
-  nativeWidth: 1.55
-  placeholderAspect: {x: 1, y: 1}
---- !u!1 &1000
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1001}
-  - component: {fileID: 1002}
-  m_Layer: 0
-  m_Name: WuxiangDijunSealMark
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1001
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2001}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2000
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2001}
-  - component: {fileID: 2002}
-  - component: {fileID: 2003}
-  m_Layer: 0
-  m_Name: Visual
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2001
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2000}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1001}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

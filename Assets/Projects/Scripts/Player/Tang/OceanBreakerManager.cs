@@ -42,14 +42,14 @@ public class OceanBreakerManager : MonoBehaviour
         int last = Mathf.Min(bodyFrame, 11);
         for (int frame = first; frame <= last && casting; frame++) DamageFrame(frame - 4);
         if (!casting) return;
-        if (bodyFrame >= 4 && bodyFrame <= 11)
+        if (bodyFrame >= BalanceRuntime.Number(this, "OceanBreakerManager.SyncFrame.Parameter1", 4f) && bodyFrame <= 11)
         {
             DamageFrame(bodyFrame - 4);//同一动作帧内进入水柱的敌人同样会受到一次攻击。
             if (casting) TangSkillEffectUtility.Show(SM, sr, animation, bodyFrame - 4);
         }
         else TangSkillEffectUtility.Hide(SM, sr);
         lastBodyFrame = bodyFrame;
-        if (bodyFrame >= 12) StopEffect();//本体第13帧到来时立即关闭，不等整套本体动画结束。
+        if (bodyFrame >= BalanceRuntime.Number(this, "OceanBreakerManager.SyncFrame.Parameter2", 12f)) StopEffect();//本体第13帧到来时立即关闭，不等整套本体动画结束。
     }
 
     private void DamageFrame(int frame)//扫过当前水柱实际覆盖的路径，命中过的同一生命不重复结算。

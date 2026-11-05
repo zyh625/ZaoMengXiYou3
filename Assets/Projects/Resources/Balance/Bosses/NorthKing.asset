@@ -1,0 +1,728 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ea7302a88f56248a1b33284c7df3cd, type: 3}
+  m_Name: NorthKing
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceProfile
+  displayName: "\u591A\u95FB\u5929\u738B / NorthKing"
+  description: "\u4FEE\u6539\u540E\u91CD\u65B0\u8FDB\u5165\u573A\u666F/\u8BAD\u7EC3\u76EE\u6807\u751F\u6548\uFF1B\u4E0D\u5199\u5165\u5B58\u6863\uFF0C\u4E0D\u4FEE\u6539\u4E34\u65F6\u72B6\u6001\u3002"
+  components:
+  - objectPath: 
+    componentType: ActorStatus
+    componentIndex: 0
+    parameters:
+    - path: frozenDuration
+      label: "frozenDuration \xB7 frozenDuration"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: meltFrameInterval
+      label: "meltFrameInterval \xB7 meltFrameInterval"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: frozenDamageMultiplier
+      label: "frozenDamageMultiplier \xB7 frozenDamageMultiplier"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: Health
+    componentIndex: 0
+    parameters:
+    - path: beginBlood
+      label: "\u57FA\u7840\u751F\u547D\u4E0A\u9650 \xB7 beginBlood"
+      value: 1400
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: EnemyRewards
+    componentIndex: 0
+    parameters:
+    - path: experienceReward
+      label: "\u51FB\u6740\u7ECF\u9A8C \xB7 experienceReward"
+      value: 240
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: NorthMovement
+    componentIndex: 0
+    parameters:
+    - path: moveSpeed
+      label: "\u79FB\u52A8\u901F\u5EA6 \xB7 moveSpeed"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: backSpeed
+      label: "\u53D7\u51FB\u540E\u9000\u901F\u5EA6 \xB7 backSpeed"
+      value: 3.5
+      integer: 0
+      boolean: 0
+    - path: upSpeed
+      label: "\u8DF3\u8DC3\u901F\u5EA6 \xB7 upSpeed"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: slowSpeed
+      label: "slowSpeed \xB7 slowSpeed"
+      value: 0.5
+      integer: 0
+      boolean: 0
+    - path: boostRatio
+      label: "boostRatio \xB7 boostRatio"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: minNormalY
+      label: "minNormalY \xB7 minNormalY"
+      value: 0.6000000238418579
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: NorthCombat
+    componentIndex: 0
+    parameters:
+    - path: 'attackDelay.Array.data[0]'
+      label: "\u653B\u51FB\u51B7\u5374/\u95F4\u9694 \xB7 attackDelay.Array.data[0]"
+      value: 4
+      integer: 0
+      boolean: 0
+    - path: 'AttackOpenIdx.Array.data[0]'
+      label: "\u5F00\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackOpenIdx.Array.data[0]"
+      value: 5
+      integer: 1
+      boolean: 0
+    - path: 'AttackShutIdx.Array.data[0]'
+      label: "\u5173\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackShutIdx.Array.data[0]"
+      value: 9
+      integer: 1
+      boolean: 0
+    - path: angryFull
+      label: "angryFull \xB7 angryFull"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: angryRatio
+      label: "angryRatio \xB7 angryRatio"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: deltaAngry
+      label: "deltaAngry \xB7 deltaAngry"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: angryDuration
+      label: "angryDuration \xB7 angryDuration"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: delayRatio
+      label: "delayRatio \xB7 delayRatio"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: attackInterval
+      label: "\u666E\u901A\u62DB\u5F0F\u95F4\u9694 \xB7 attackInterval"
+      value: 2.200000047683716
+      integer: 0
+      boolean: 0
+    - path: 'cooldowns.Array.data[0]'
+      label: "\u5404\u6280\u80FD\u51B7\u5374\uFF08\u79D2\uFF09 \xB7 cooldowns.Array.data[0]"
+      value: 4
+      integer: 0
+      boolean: 0
+    - path: 'cooldowns.Array.data[1]'
+      label: "\u5404\u6280\u80FD\u51B7\u5374\uFF08\u79D2\uFF09 \xB7 cooldowns.Array.data[1]"
+      value: 9
+      integer: 0
+      boolean: 0
+    - path: 'cooldowns.Array.data[2]'
+      label: "\u5404\u6280\u80FD\u51B7\u5374\uFF08\u79D2\uFF09 \xB7 cooldowns.Array.data[2]"
+      value: 8
+      integer: 0
+      boolean: 0
+    - path: 'cooldowns.Array.data[3]'
+      label: "\u5404\u6280\u80FD\u51B7\u5374\uFF08\u79D2\uFF09 \xB7 cooldowns.Array.data[3]"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: 'releaseFrames.Array.data[0]'
+      label: "\u91CA\u653E\u5E27 \xB7 releaseFrames.Array.data[0]"
+      value: 5
+      integer: 1
+      boolean: 0
+    - path: 'releaseFrames.Array.data[1]'
+      label: "\u91CA\u653E\u5E27 \xB7 releaseFrames.Array.data[1]"
+      value: 4
+      integer: 1
+      boolean: 0
+    - path: 'releaseFrames.Array.data[2]'
+      label: "\u91CA\u653E\u5E27 \xB7 releaseFrames.Array.data[2]"
+      value: 7
+      integer: 1
+      boolean: 0
+    - path: 'releaseFrames.Array.data[3]'
+      label: "\u91CA\u653E\u5E27 \xB7 releaseFrames.Array.data[3]"
+      value: 11
+      integer: 1
+      boolean: 0
+  - objectPath: 
+    componentType: NorthController
+    componentIndex: 0
+    parameters:
+    - path: Idle.loop
+      label: "Idle \xB7 Idle.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Idle.fps
+      label: "Idle \xB7 Idle.fps"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: Walk.loop
+      label: "Walk \xB7 Walk.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Walk.fps
+      label: "Walk \xB7 Walk.fps"
+      value: 14
+      integer: 0
+      boolean: 0
+    - path: Die.loop
+      label: "Die \xB7 Die.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: Die.fps
+      label: "Die \xB7 Die.fps"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: stopDistance
+      label: "\u505C\u6B62\u9760\u8FD1\u8DDD\u79BB \xB7 stopDistance"
+      value: 3.799999952316284
+      integer: 0
+      boolean: 0
+    - path: specialAttack
+      label: "specialAttack \xB7 specialAttack"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: stunnedFrame
+      label: "stunnedFrame \xB7 stunnedFrame"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: UmbrellaBash.loop
+      label: "UmbrellaBash \xB7 UmbrellaBash.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: UmbrellaBash.fps
+      label: "UmbrellaBash \xB7 UmbrellaBash.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: UmbrellaVortex.loop
+      label: "UmbrellaVortex \xB7 UmbrellaVortex.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: UmbrellaVortex.fps
+      label: "UmbrellaVortex \xB7 UmbrellaVortex.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: RibVolley.loop
+      label: "RibVolley \xB7 RibVolley.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: RibVolley.fps
+      label: "RibVolley \xB7 RibVolley.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: RainCurtain.loop
+      label: "RainCurtain \xB7 RainCurtain.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: RainCurtain.fps
+      label: "RainCurtain \xB7 RainCurtain.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: Guard.loop
+      label: "Guard \xB7 Guard.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: Guard.fps
+      label: "Guard \xB7 Guard.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: VortexSpin.loop
+      label: "VortexSpin \xB7 VortexSpin.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: VortexSpin.fps
+      label: "VortexSpin \xB7 VortexSpin.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: VortexRecovery.loop
+      label: "VortexRecovery \xB7 VortexRecovery.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: VortexRecovery.fps
+      label: "VortexRecovery \xB7 VortexRecovery.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/UmbrellaBash
+    componentType: NorthBashBox
+    componentIndex: 0
+    parameters:
+    - path: Attack
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack"
+      value: 25
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: launch
+      label: "launch \xB7 launch"
+      value: 0
+      integer: 0
+      boolean: 1
+  - objectPath: 
+    componentType: UnityEngine.Rigidbody2D
+    componentIndex: 0
+    parameters:
+    - path: m_Mass
+      label: "\u8D28\u91CF \xB7 m_Mass"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: m_GravityScale
+      label: "\u91CD\u529B\u500D\u7387 \xB7 m_GravityScale"
+      value: 0.8999999761581421
+      integer: 0
+      boolean: 0
+    - path: m_LinearDamping
+      label: "\u6C34\u5E73\u963B\u5C3C \xB7 m_LinearDamping"
+      value: 0
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.399999976158142
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 2.6500000953674316
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1.3250000476837158
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/Attacked
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.5499999523162842
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 2.799999952316284
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1.399999976158142
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/UmbrellaBash
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 4
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 2.200000047683716
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 2.700000047683716
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1.2000000476837158
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/BashCheck
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 4
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  numbers:
+  - key: NorthCombat.GuardRemaining.1
+    label: GuardRemaining / public float GuardRemaining=>IsGuarding?Mathf.Max(0f,6f-guardElapsed):0f;
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:32
+    value: 6
+  - key: NorthCombat.Channeling.1
+    label: Channeling / public bool Channeling=>CurrentSkill==1 && released && Time.time<channelUntil-0.0001f;
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:38
+    value: 0.0001
+  - key: NorthCombat.Target.1
+    label: Target / if(Time.time<resolveAt)return null;resolveAt=Time.time+0.5f;players=FindAnyObjectByType<PlayerManager>();
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:48
+    value: 0.5
+  - key: NorthCombat.ReadyAttack.1
+    label: ReadyAttack / if(health.ratio<=0.4f && distance<=14f && Time.time>=readyAt[3])return
+      3;
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:63
+    value: 0.4
+  - key: NorthCombat.ReadyAttack.2
+    label: ReadyAttack / if(health.ratio<=0.4f && distance<=14f && Time.time>=readyAt[3])return
+      3;
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:63
+    value: 14
+  - key: NorthCombat.ReadyAttack.3
+    label: ReadyAttack / if(distance<3f && Time.time>=readyAt[1])return 1;
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:64
+    value: 3
+  - key: NorthCombat.ReadyAttack.4
+    label: ReadyAttack / if(distance<=6f && Time.time>=readyAt[1])return 1;
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:67
+    value: 6
+  - key: NorthCombat.ReadyAttack.5
+    label: ReadyAttack / if(distance<=5f && Time.time>=readyAt[0])return 0;
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:68
+    value: 5
+  - key: NorthCombat.ReadyAttack.6
+    label: ReadyAttack / return distance<=14f && Time.time>=readyAt[3]?3:-1;
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:69
+    value: 14
+  - key: NorthCombat.SampleFrame.1
+    label: SampleFrame / case 1:channelUntil=Time.time+2f;break;
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:103
+    value: 2
+  - key: NorthCombat.FixedUpdate.1
+    label: FixedUpdate / if((position-center).sqrMagnitude>36f)return;
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:113
+    value: 36
+  - key: NorthCombat.FixedUpdate.2
+    label: FixedUpdate / if(((Vector2)shape.ClosestPoint(center)-center).sqrMagnitude>2.25f)return;
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:116
+    value: 2.25
+  - key: NorthCombat.FixedUpdate.3
+    label: FixedUpdate / vortexHits[hp]=(hp.LifeVersion,Time.time+0.4f);hp.TakeDamage(new
+      DamageInfo(transform,8f*DamageMultiplier,false,fal
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:118
+    value: 0.4
+  - key: NorthCombat.FixedUpdate.4
+    label: FixedUpdate / vortexHits[hp]=(hp.LifeVersion,Time.time+0.4f);hp.TakeDamage(new
+      DamageInfo(transform,8f*DamageMultiplier,false,fal
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:118
+    value: 8
+  - key: NorthCombat.EnsureArena.1
+    label: EnsureArena / arena=cm!=null?new Vector2(cm.EdgeL-cm.CameraHalf,cm.EdgeR+cm.CameraHalf):new
+      Vector2(transform.position.x-10f,tran
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:128
+    value: 10
+  - key: NorthCombat.EnsureArena.2
+    label: EnsureArena / arena=cm!=null?new Vector2(cm.EdgeL-cm.CameraHalf,cm.EdgeR+cm.CameraHalf):new
+      Vector2(transform.position.x-10f,tran
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:128
+    value: 10
+  - key: NorthCombat.Front.1
+    label: Front / {if(damage.Source==null)return false;float delta=damage.Source.position.x-transform.position.x;return
+      Mathf.Abs(del
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:131
+    value: 0.001
+  - key: NorthCombat.PrepareHit.1
+    label: PrepareHit / health.SetDamageMultiplier(this,0.1f);health.SetReflection(this,0.2f);
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:138
+    value: 0.1
+  - key: NorthCombat.PrepareHit.2
+    label: PrepareHit / health.SetDamageMultiplier(this,0.1f);health.SetReflection(this,0.2f);
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:138
+    value: 0.2
+  - key: NorthCombat.OnDamage.1
+    label: OnDamage / if(health.ratio<=0.7f && (latched&1)==0){latched|=1;pending|=1;}
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:146
+    value: 0.7
+  - key: NorthCombat.OnDamage.2
+    label: OnDamage / if(health.ratio<=0.4f && (latched&2)==0){latched|=2;pending|=2;}
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:147
+    value: 0.4
+  - key: NorthCombat.BeginGuard.1
+    label: BeginGuard / pending&=pending==3?2:0;CancelAttack();movement.Stop();Phase=GuardPhase.Guarding;Durability=150f;guardElapsed=0f;ne
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:162
+    value: 150
+  - key: NorthCombat.BeginGuard.2
+    label: BeginGuard / pending&=pending==3?2:0;CancelAttack();movement.Stop();Phase=GuardPhase.Guarding;Durability=150f;guardElapsed=0f;ne
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:162
+    value: 2
+  - key: NorthCombat.Update.1
+    label: Update / if(GuardTimerPaused)return;guardElapsed=Mathf.Min(6f,guardElapsed+Time.deltaTime);
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:173
+    value: 6
+  - key: NorthCombat.Update.2
+    label: Update / while(guardElapsed+0.0001f>=nextGuardVolley && nextGuardVolley<=6f)
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:174
+    value: 0.0001
+  - key: NorthCombat.Update.3
+    label: Update / while(guardElapsed+0.0001f>=nextGuardVolley && nextGuardVolley<=6f)
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:174
+    value: 6
+  - key: NorthCombat.Update.4
+    label: Update / {nextGuardVolley+=2f;GuardVolleys++;effects.Fan(this,Muzzle(GuardFaceRight),GuardFaceRight,3);}
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:175
+    value: 2
+  - key: NorthCombat.Update.5
+    label: Update / if(guardElapsed>=6f)Restore();else GuardChanged?.Invoke();
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:176
+    value: 6
+  - key: NorthCombat.BreakGuard.1
+    label: BreakGuard / Phase=GuardPhase.Exposed;Durability=0f;guardElapsed=0f;exposedRemaining=3f;health.RemoveDamageMultiplier(this);heal
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:180
+    value: 3
+  - key: NorthCombat.BreakGuard.2
+    label: BreakGuard / health.SetDamageMultiplier(this,1.5f);movement.Stop();effects.HideShield();GuardChanged?.Invoke();
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:181
+    value: 1.5
+  - key: NorthEffects.Fan.1
+    label: Fan / float angle=Mathf.Lerp(count==3?-18f:-24f,count==3?18f:24f,i/(float)(count-1))*Mathf.Deg2Rad;
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthEffects.cs:15
+    value: 18
+  - key: NorthEffects.Fan.2
+    label: Fan / float angle=Mathf.Lerp(count==3?-18f:-24f,count==3?18f:24f,i/(float)(count-1))*Mathf.Deg2Rad;
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthEffects.cs:15
+    value: 24
+  - key: NorthEffects.Fan.3
+    label: Fan / float angle=Mathf.Lerp(count==3?-18f:-24f,count==3?18f:24f,i/(float)(count-1))*Mathf.Deg2Rad;
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthEffects.cs:15
+    value: 18
+  - key: NorthEffects.Fan.4
+    label: Fan / float angle=Mathf.Lerp(count==3?-18f:-24f,count==3?18f:24f,i/(float)(count-1))*Mathf.Deg2Rad;
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthEffects.cs:15
+    value: 24
+  - key: NorthEffects.Rain.1
+    label: Rain / float x=Mathf.Lerp(arena.x+1f,arena.y-1f,(i+0.5f)/6f);RaycastHit2D
+      ground=Physics2D.Raycast(new Vector2(x,source.tr
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthEffects.cs:23
+    value: 0.5
+  - key: NorthEffects.Rain.2
+    label: Rain / float x=Mathf.Lerp(arena.x+1f,arena.y-1f,(i+0.5f)/6f);RaycastHit2D
+      ground=Physics2D.Raycast(new Vector2(x,source.tr
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthEffects.cs:23
+    value: 6
+  - key: NorthEffects.Rain.3
+    label: Rain / float x=Mathf.Lerp(arena.x+1f,arena.y-1f,(i+0.5f)/6f);RaycastHit2D
+      ground=Physics2D.Raycast(new Vector2(x,source.tr
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthEffects.cs:23
+    value: 15
+  - key: NorthEffects.Rain.4
+    label: Rain / float x=Mathf.Lerp(arena.x+1f,arena.y-1f,(i+0.5f)/6f);RaycastHit2D
+      ground=Physics2D.Raycast(new Vector2(x,source.tr
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthEffects.cs:23
+    value: 40
+  - key: NorthEffects.Rain.5
+    label: Rain / if(ground.collider==null){x=source.transform.position.x;ground=Physics2D.Raycast((Vector2)source.transform.position
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthEffects.cs:24
+    value: 2
+  - key: NorthEffects.Rain.6
+    label: Rain / if(ground.collider==null){x=source.transform.position.x;ground=Physics2D.Raycast((Vector2)source.transform.position
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthEffects.cs:24
+    value: 40
+  - key: NorthKingRain.Launch.1
+    label: Launch / owner=source.GetComponent<Health>();life=owner.LifeVersion;damage=12f*source.DamageMultiplier;Landing=landing;floor
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthKingRain.cs:17
+    value: 12
+  - key: NorthKingRain.Launch.2
+    label: Launch / transform.position=landing+Vector2.up*7f;expires=Time.time+4f;gameObject.SetActive(true);spriteManager.ChangeState(
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthKingRain.cs:18
+    value: 7
+  - key: NorthKingRain.Launch.3
+    label: Launch / transform.position=landing+Vector2.up*7f;expires=Time.time+4f;gameObject.SetActive(true);spriteManager.ChangeState(
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthKingRain.cs:18
+    value: 4
+  - key: NorthKingRain.FixedUpdate.1
+    label: FixedUpdate / if(Impacted)return;float step=9f*Time.fixedDeltaTime;Vector2
+      point=transform.position;
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthKingRain.cs:23
+    value: 9
+  - key: NorthKingRain.FixedUpdate.2
+    label: FixedUpdate / RaycastHit2D ground=Physics2D.Raycast(point,Vector2.down,step+0.02f,1<<6);
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthKingRain.cs:24
+    value: 0.02
+  - key: NorthKingRib.Launch.1
+    label: Launch / owner=source.GetComponent<Health>();life=owner.LifeVersion;direction=velocity.normalized;damage=10f*source.DamageMu
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthKingRib.cs:16
+    value: 10
+  - key: NorthKingRib.Launch.2
+    label: Launch / visual.flipX=direction.x>0f;visual.transform.localRotation=Quaternion.Euler(0f,0f,Mathf.Atan2(direction.y,direction
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthKingRib.cs:17
+    value: 180
+  - key: NorthKingRib.FixedUpdate.1
+    label: FixedUpdate / float step=Mathf.Min(8f*Time.fixedDeltaTime,14f-distance);ContactFilter2D
+      filter=new();filter.SetLayerMask((1<<3)|(
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthKingRib.cs:23
+    value: 8
+  - key: NorthKingRib.FixedUpdate.2
+    label: FixedUpdate / float step=Mathf.Min(8f*Time.fixedDeltaTime,14f-distance);ContactFilter2D
+      filter=new();filter.SetLayerMask((1<<3)|(
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthKingRib.cs:23
+    value: 14
+  - key: NorthKingRib.FixedUpdate.3
+    label: FixedUpdate / int count=Physics2D.CircleCast(transform.position,0.12f,direction,filter,hits,step),nearest=-1;
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthKingRib.cs:24
+    value: 0.12
+  - key: NorthKingRib.FixedUpdate.4
+    label: FixedUpdate / transform.position+=(Vector3)(direction*step);distance+=step;if(distance>=14f)gameObject.SetActive(false);
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthKingRib.cs:37
+    value: 14
+  - key: NorthKingShield.Follow.1
+    label: Follow / private void Follow(){transform.position=owner.transform.position+new
+      Vector3(owner.GuardFaceRight?1f:-1f,0.15f);}
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthKingShield.cs:15
+    value: 0.15
+  - key: NorthMovement.BeginRainJump.1
+    label: BeginRainJump / {if(IsRainJumping)return;body.linearVelocity=new Vector2(0f,3.2f);jumpedAt=Time.time;IsRainJumping=true;RainLanded=
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthMovement.cs:11
+    value: 3.2
+  - key: NorthMovement.StepRainJump.1
+    label: StepRainJump / if(Time.time-jumpedAt>0.1f && body.linearVelocityY<=0.1f
+      && IsOnGroundNow())
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthMovement.cs:15
+    value: 0.1
+  - key: NorthMovement.StepRainJump.2
+    label: StepRainJump / if(Time.time-jumpedAt>0.1f && body.linearVelocityY<=0.1f
+      && IsOnGroundNow())
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthMovement.cs:15
+    value: 0.1
+  - key: NorthVortexPull.RemovePrevious.1
+    label: RemovePrevious / if(body!=null && added!=0f && Mathf.Abs(body.linearVelocityX-result)<0.25f)body.linearVelocityX-=added;
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthVortexPull.cs:20
+    value: 0.25
+  - key: NorthVortexPull.Apply.1
+    label: Apply / float pull=Mathf.Clamp(delta/Time.fixedDeltaTime,-2.5f,2.5f),before=body.linearVelocityX,total=before+pull;
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthVortexPull.cs:28
+    value: 2.5
+  - key: NorthVortexPull.Apply.2
+    label: Apply / float pull=Mathf.Clamp(delta/Time.fixedDeltaTime,-2.5f,2.5f),before=body.linearVelocityX,total=before+pull;
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthVortexPull.cs:28
+    value: 2.5
+  - key: NorthVortexPull.Apply.3
+    label: Apply / if(Mathf.Abs(total)>0.001f)
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthVortexPull.cs:29
+    value: 0.001
+  - key: NorthVortexPull.Apply.4
+    label: Apply / int count=shape.Cast(dir,filter,hits,Mathf.Abs(total)*Time.fixedDeltaTime+0.025f);
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthVortexPull.cs:32
+    value: 0.025
+  - key: NorthVortexPull.Apply.5
+    label: Apply / for(int i=0;i<count;i++)if(Vector2.Dot(hits[i].normal,dir)<-0.01f)
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthVortexPull.cs:33
+    value: 0.01
+  - key: NorthVortexPull.Apply.6
+    label: Apply / total=dir.x*Mathf.Min(Mathf.Abs(total),Mathf.Max(0f,hits[i].distance-0.025f)/Time.fixedDeltaTime);
+    source: Assets/Projects/Scripts/Boss/NorthKing/NorthVortexPull.cs:34
+    value: 0.025
+  - key: NorthCombat.SampleFrame.Parameter1
+    label: "SampleFrame / \u4F24\u5BB3/\u5224\u5B9A\u53C2\u6570 3"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:93
+    value: 3
+  - key: NorthCombat.SampleFrame.Parameter2
+    label: "SampleFrame / \u4F24\u5BB3/\u5224\u5B9A\u53C2\u6570 9"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:96
+    value: 9
+  - key: NorthCombat.ReadyAttack.Range1.Minimum
+    label: "AI\u65BD\u6CD5\u8DDD\u79BB\u4E0B\u9650 / ReadyAttack"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:65
+    value: 3
+  - key: NorthCombat.ReadyAttack.Range1.Maximum
+    label: "AI\u65BD\u6CD5\u8DDD\u79BB\u4E0A\u9650 / ReadyAttack"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:65
+    value: 5
+  - key: NorthCombat.ReadyAttack.Range2.Minimum
+    label: "AI\u65BD\u6CD5\u8DDD\u79BB\u4E0B\u9650 / ReadyAttack"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:66
+    value: 3
+  - key: NorthCombat.ReadyAttack.Range2.Maximum
+    label: "AI\u65BD\u6CD5\u8DDD\u79BB\u4E0A\u9650 / ReadyAttack"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Boss/NorthKing/NorthCombat.cs:66
+    value: 12
+  skills: []
+  relatedProfiles:
+  - {fileID: 11400000, guid: 61129a44d1ed4c4449f573d853074458, type: 2}
+  - {fileID: 11400000, guid: cd03aed5daadd064fba281e0b4d0bac4, type: 2}
+  - {fileID: 11400000, guid: 84780d6daf85240428e60070e4169bde, type: 2}
+  - {fileID: 11400000, guid: 690cf9862ca451648a081c9c1597d91b, type: 2}
+  - {fileID: 11400000, guid: 60e402e280d3aac428ac4b524280028d, type: 2}
+  - {fileID: 11400000, guid: 3dc2a6fefac22d54989f4ea4dd872d1e, type: 2}

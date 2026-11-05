@@ -37,7 +37,7 @@ public sealed class WestEffectPool : MonoBehaviour
         Prepare();
         for(int i=0;i<3;i++)
         {
-            Vector2 position=new(Mathf.Lerp(limits.x+1.5f,limits.y-1.5f,(i+0.5f)/3f),floor+Random.Range(2.6f,4.2f));
+            Vector2 position=new(Mathf.Lerp(limits.x+BalanceRuntime.Number(this, "WestEffectPool.SpawnOrbs.1", 1.5f),limits.y-BalanceRuntime.Number(this, "WestEffectPool.SpawnOrbs.2", 1.5f),(i+BalanceRuntime.Number(this, "WestEffectPool.SpawnOrbs.3", 0.5f))/BalanceRuntime.Number(this, "WestEffectPool.SpawnOrbs.4", 3f)),floor+Random.Range(BalanceRuntime.Number(this, "WestEffectPool.SpawnOrbs.5", 2.6f),BalanceRuntime.Number(this, "WestEffectPool.SpawnOrbs.6", 4.2f)));
             orbs[i].Spawn(owner,position);
         }
     }

@@ -11,8 +11,21 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image level1, level2;//头像下等级的十位和个位，个位数时只显示level2
     [SerializeField] private Image[] skillIcons = new Image[3];//UIO对应的技能图标，仅替换sprite，不改现有布局
     [SerializeField] private Image[] skillBlocks = new Image[3];//UIO对应的冷却遮罩，通过剩余冷却比例更新fillAmount
+    [SerializeField] private CharacterSlot[] characterSlots;
+
+    [System.Serializable]
+    private sealed class CharacterSlot
+    {
+        public Image portrait = null, cooldown = null;
+        [System.NonSerialized] public Sprite originalSprite;
+        [System.NonSerialized] public Color originalColor;
+        [System.NonSerialized] public Outline activeOutline;
+        [System.NonSerialized] public TextMeshProUGUI timer;
+        [System.NonSerialized] public int displayedSeconds;
+    }
 
     private PlayerUI player;
+    private PlayerManager party;
     private PlayerController currentPlayer;//停用UI后重新启用时恢复当前角色的绑定
     private Health health;//只订阅当前角色，备用角色的属性变化不能覆盖界面
     private PlayerResources resources;//法力和经验共用角色资源组件的变化通知
@@ -21,9 +34,38 @@ public class UIManager : MonoBehaviour
     private float[] previousSkillRatios;//记录当前绑定期间实际观察到的冷却，刚切入已就绪技能不闪烁
     private int[] completionFlashFrames;//结束闪烁保持一个渲染帧，下一帧才把遮罩重新清零
 
-    public void BindPlayer(PlayerController curPlayer)//换人时在同一个入口切换图片、数据与订阅
+    private void Awake()
+    {
+        if (characterSlots == null) return;
+        foreach (CharacterSlot slot in characterSlots)
+        {
+            if (slot?.portrait == null || slot.cooldown == null) continue;
+            slot.originalSprite = slot.portrait.sprite;
+            slot.originalColor = slot.portrait.color;
+            slot.activeOutline = slot.portrait.gameObject.AddComponent<Outline>();
+            slot.activeOutline.effectColor = new Color(1f, 0.79f, 0.28f, 1f);
+            slot.activeOutline.effectDistance = new Vector2(1.5f, 1.5f);
+            slot.activeOutline.enabled = false;
+
+            GameObject counter = new("CooldownSeconds", typeof(RectTransform), typeof(TextMeshProUGUI));
+            var rect = (RectTransform)counter.transform;
+            rect.SetParent(slot.cooldown.transform, false);
+            rect.anchorMin = Vector2.zero;
+            rect.anchorMax = Vector2.one;
+            rect.offsetMin = rect.offsetMax = Vector2.zero;
+            slot.timer = counter.GetComponent<TextMeshProUGUI>();
+            slot.timer.font = TMP_Settings.defaultFontAsset;
+            slot.timer.fontSize = 18f;
+            slot.timer.alignment = TextAlignmentOptions.Center;
+            slot.timer.raycastTarget = false;
+            counter.SetActive(false);
+        }
+    }
+
+    public void BindPlayer(PlayerController curPlayer, PlayerManager manager = null)//换人时在同一个入口切换图片、数据与订阅
     {
         UnbindPlayer();
+        if (manager != null) party = manager;
         currentPlayer = curPlayer;
         if (curPlayer == null) return;
         player = curPlayer.GetComponent<PlayerUI>();
@@ -43,6 +85,7 @@ public class UIManager : MonoBehaviour
     public void SetPlayer(PlayerController curPlayer) => BindPlayer(curPlayer);//保留旧关卡入口
     public void InitPlayer()
     {
+        RefreshCharacterBar();
         RefreshSkillBar();//换人时立即显示新角色图标与原有冷却剩余时间
         if (player == null) return;
         player.SetUI(playerStates, texts, playerAngry);
@@ -108,6 +151,33 @@ public class UIManager : MonoBehaviour
 
     private void OnDisable() => UnbindPlayer();
 
+    private void RefreshCharacterBar()
+    {
+        if (party == null || characterSlots == null) return;
+        var order = party.SwitchOrder;
+        if (characterSlots.Length != order.Count) return;
+        for (int i = 0; i < characterSlots.Length; i++)
+        {
+            CharacterSlot slot = characterSlots[i];
+            if (slot?.timer == null) continue;
+            PlayerId id = order[i];
+            PlayerController character = party.GetCharacter(id);
+            bool available = character != null && !character.GetComponent<Health>().Dead;
+            bool active = available && character == party.CurrentPlayer;
+            float remaining = party.GetSwitchCooldownRemaining(id, out float ratio);
+            int seconds = available && !active ? Mathf.CeilToInt(remaining) : 0;
+
+            slot.portrait.sprite = characterSlots[(int)id]?.originalSprite;
+            slot.portrait.color = available ? slot.originalColor : slot.originalColor * new Color(0.4f, 0.4f, 0.4f, 1f);
+            slot.activeOutline.enabled = active;
+            slot.cooldown.fillAmount = seconds > 0 ? ratio : 0f;
+            if (slot.displayedSeconds == seconds) continue;
+            slot.displayedSeconds = seconds;
+            slot.timer.gameObject.SetActive(seconds > 0);
+            if (seconds > 0) slot.timer.SetText("{0}", seconds);
+        }
+    }
+
     private void RefreshSkillBar()//仅配置技能遮罩的填充方式，不改变尺寸、位置、背景或材质
     {
         if (skillIcons != null)
@@ -141,6 +211,7 @@ public class UIManager : MonoBehaviour
     }
     private void LateUpdate()//使用渲染帧更新倒计时，冷却完成的闪烁才会真正显示一帧
     {
+        RefreshCharacterBar();
         if (combat == null || skillBlocks == null) return;
         if (previousSkillRatios == null || previousSkillRatios.Length != skillBlocks.Length) RefreshSkillBar();
         for (int i = 0; i < skillBlocks.Length; i++)

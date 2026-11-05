@@ -112,7 +112,7 @@ public class SouthKingController : BossController
     private void OnCounterRecognized()
     {
         movement.Stop(); EH.AttackedEnd();
-        combat.ProtectCounter(counterRiposte.sprites.Length / Mathf.Max(1f, counterRiposte.fps) + Time.fixedDeltaTime * 2f);
+        combat.ProtectCounter(counterRiposte.sprites.Length / Mathf.Max(1f, counterRiposte.fps) + Time.fixedDeltaTime * BalanceRuntime.Number(this, "SouthKingController.OnCounterRecognized.1", 2f));
         SM.ChangeSpriteFace(combat.AttackFaceRight); SM.ChangeState(counterRiposte);
     }
     protected override void SpecialAttackOver()
@@ -127,7 +127,7 @@ public class SouthKingController : BossController
     private void RefreshFrost()
     {
         if (outline == null) return;
-        outline.SetOutlineColor(new Color(0.15f, 0.65f, 1f, 1f));
+        outline.SetOutlineColor(new Color(BalanceRuntime.Number(this, "SouthKingController.RefreshFrost.1", 0.15f), BalanceRuntime.Number(this, "SouthKingController.RefreshFrost.2", 0.65f), 1f, 1f));
         outline.SetOutline(combat != null && combat.FrostActive && !EH.Dead);
     }
     private void OnDied(DamageInfo damage) { EH.RemoveInvincibility(movement); if (outline != null) outline.SetOutline(false); }

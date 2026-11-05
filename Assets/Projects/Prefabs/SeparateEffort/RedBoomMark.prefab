@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3093838029813434413}
   - component: {fileID: 2924669755048268032}
+  - component: {fileID: 1616604490843671593}
   m_Layer: 0
   m_Name: RedBoomMark
   m_TagString: Untagged
@@ -59,6 +60,19 @@ MonoBehaviour:
     loop: 0
     fps: 18
   spriteManager: {fileID: 206286578885441295}
+--- !u!114 &1616604490843671593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823051148266582143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 10d7a338940e68140b8c9b69b16d8f5c, type: 2}
 --- !u!1 &6694628099618729433
 GameObject:
   m_ObjectHideFlags: 0

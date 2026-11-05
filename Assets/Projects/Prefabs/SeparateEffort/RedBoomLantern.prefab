@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7337264912438345194}
   - component: {fileID: 4994984175880697452}
+  - component: {fileID: 2917997544379599679}
   m_Layer: 0
   m_Name: RedBoomLantern
   m_TagString: Untagged
@@ -102,6 +103,19 @@ MonoBehaviour:
   fireInterval: 0.5
   fireTickDamage: 5
   blastNativeWidth: 1.4
+--- !u!114 &2917997544379599679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985736563280214929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: ecf86080db5f87f43b83dd6951ad5484, type: 2}
 --- !u!1 &5342144976715142222
 GameObject:
   m_ObjectHideFlags: 0

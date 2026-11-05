@@ -315,6 +315,7 @@ GameObject:
   - component: {fileID: 7309098930680721146}
   - component: {fileID: 1543687785868856884}
   - component: {fileID: 6068544201881904654}
+  - component: {fileID: 2799170095281247629}
   m_Layer: 11
   m_Name: RedFurnaceLord
   m_TagString: Enemy
@@ -404,7 +405,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 1.325}
+  m_Offset: {x: 0, y: 1.3050001}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -785,6 +786,19 @@ MonoBehaviour:
     - {fileID: 7483363142473959995, guid: b1b7dc6b5b92eb74284e1510df82c102, type: 3}
     loop: 0
     fps: 12
+--- !u!114 &2799170095281247629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3048219465313564033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 86415a41428c468498bf50a043b2d30a, type: 2}
 --- !u!1 &3586042531330124562
 GameObject:
   m_ObjectHideFlags: 0

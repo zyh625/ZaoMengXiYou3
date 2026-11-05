@@ -1,0 +1,885 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ea7302a88f56248a1b33284c7df3cd, type: 3}
+  m_Name: JiuyaoXuanhuang
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceProfile
+  displayName: "\u4E5D\u66DC\u7384\u51F0 / JiuyaoXuanhuang"
+  description: "\u4FEE\u6539\u540E\u91CD\u65B0\u8FDB\u5165\u573A\u666F/\u8BAD\u7EC3\u76EE\u6807\u751F\u6548\uFF1B\u4E0D\u5199\u5165\u5B58\u6863\uFF0C\u4E0D\u4FEE\u6539\u4E34\u65F6\u72B6\u6001\u3002"
+  components:
+  - objectPath: 
+    componentType: Health
+    componentIndex: 0
+    parameters:
+    - path: beginBlood
+      label: "\u57FA\u7840\u751F\u547D\u4E0A\u9650 \xB7 beginBlood"
+      value: 1490
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: ActorStatus
+    componentIndex: 0
+    parameters:
+    - path: frozenDuration
+      label: "frozenDuration \xB7 frozenDuration"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: meltFrameInterval
+      label: "meltFrameInterval \xB7 meltFrameInterval"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: frozenDamageMultiplier
+      label: "frozenDamageMultiplier \xB7 frozenDamageMultiplier"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: EnemyRewards
+    componentIndex: 0
+    parameters:
+    - path: experienceReward
+      label: "\u51FB\u6740\u7ECF\u9A8C \xB7 experienceReward"
+      value: 280
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: JiuyaoMovement
+    componentIndex: 0
+    parameters:
+    - path: moveSpeed
+      label: "\u79FB\u52A8\u901F\u5EA6 \xB7 moveSpeed"
+      value: 1.2000000476837158
+      integer: 0
+      boolean: 0
+    - path: backSpeed
+      label: "\u53D7\u51FB\u540E\u9000\u901F\u5EA6 \xB7 backSpeed"
+      value: 3.5
+      integer: 0
+      boolean: 0
+    - path: upSpeed
+      label: "\u8DF3\u8DC3\u901F\u5EA6 \xB7 upSpeed"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: slowSpeed
+      label: "slowSpeed \xB7 slowSpeed"
+      value: 0.6000000238418579
+      integer: 0
+      boolean: 0
+    - path: boostRatio
+      label: "boostRatio \xB7 boostRatio"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: minNormalY
+      label: "minNormalY \xB7 minNormalY"
+      value: 0.6000000238418579
+      integer: 0
+      boolean: 0
+    - path: hovering
+      label: "hovering \xB7 hovering"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: hoverHeight
+      label: "hoverHeight \xB7 hoverHeight"
+      value: 1.600000023841858
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: JiuyaoCombat
+    componentIndex: 0
+    parameters:
+    - path: 'attackDelay.Array.data[0]'
+      label: "\u653B\u51FB\u51B7\u5374/\u95F4\u9694 \xB7 attackDelay.Array.data[0]"
+      value: 5
+      integer: 0
+      boolean: 0
+    - path: 'attackDelay.Array.data[1]'
+      label: "\u653B\u51FB\u51B7\u5374/\u95F4\u9694 \xB7 attackDelay.Array.data[1]"
+      value: 9
+      integer: 0
+      boolean: 0
+    - path: 'attackDelay.Array.data[2]'
+      label: "\u653B\u51FB\u51B7\u5374/\u95F4\u9694 \xB7 attackDelay.Array.data[2]"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: 'AttackOpenIdx.Array.data[0]'
+      label: "\u5F00\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackOpenIdx.Array.data[0]"
+      value: 4
+      integer: 1
+      boolean: 0
+    - path: 'AttackOpenIdx.Array.data[1]'
+      label: "\u5F00\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackOpenIdx.Array.data[1]"
+      value: 6
+      integer: 1
+      boolean: 0
+    - path: 'AttackOpenIdx.Array.data[2]'
+      label: "\u5F00\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackOpenIdx.Array.data[2]"
+      value: 9
+      integer: 1
+      boolean: 0
+    - path: 'AttackShutIdx.Array.data[0]'
+      label: "\u5173\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackShutIdx.Array.data[0]"
+      value: 11
+      integer: 1
+      boolean: 0
+    - path: 'AttackShutIdx.Array.data[1]'
+      label: "\u5173\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackShutIdx.Array.data[1]"
+      value: 11
+      integer: 1
+      boolean: 0
+    - path: 'AttackShutIdx.Array.data[2]'
+      label: "\u5173\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackShutIdx.Array.data[2]"
+      value: 12
+      integer: 1
+      boolean: 0
+    - path: angryFull
+      label: "angryFull \xB7 angryFull"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: angryRatio
+      label: "angryRatio \xB7 angryRatio"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: deltaAngry
+      label: "deltaAngry \xB7 deltaAngry"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: angryDuration
+      label: "angryDuration \xB7 angryDuration"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: delayRatio
+      label: "delayRatio \xB7 delayRatio"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: attackInterval
+      label: "\u666E\u901A\u62DB\u5F0F\u95F4\u9694 \xB7 attackInterval"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: 'cooldowns.Array.data[0]'
+      label: "\u5404\u6280\u80FD\u51B7\u5374\uFF08\u79D2\uFF09 \xB7 cooldowns.Array.data[0]"
+      value: 5
+      integer: 0
+      boolean: 0
+    - path: 'cooldowns.Array.data[1]'
+      label: "\u5404\u6280\u80FD\u51B7\u5374\uFF08\u79D2\uFF09 \xB7 cooldowns.Array.data[1]"
+      value: 7
+      integer: 0
+      boolean: 0
+    - path: 'cooldowns.Array.data[2]'
+      label: "\u5404\u6280\u80FD\u51B7\u5374\uFF08\u79D2\uFF09 \xB7 cooldowns.Array.data[2]"
+      value: 9
+      integer: 0
+      boolean: 0
+    - path: 'cooldowns.Array.data[3]'
+      label: "\u5404\u6280\u80FD\u51B7\u5374\uFF08\u79D2\uFF09 \xB7 cooldowns.Array.data[3]"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: ascendDuration
+      label: "ascendDuration \xB7 ascendDuration"
+      value: 8
+      integer: 0
+      boolean: 0
+    - path: ascendRainInterval
+      label: "ascendRainInterval \xB7 ascendRainInterval"
+      value: 2.5
+      integer: 0
+      boolean: 0
+    - path: landingRecovery
+      label: "landingRecovery \xB7 landingRecovery"
+      value: 2.5
+      integer: 0
+      boolean: 0
+    - path: dashSpeed
+      label: "dashSpeed \xB7 dashSpeed"
+      value: 14
+      integer: 0
+      boolean: 0
+    - path: featherSpeed
+      label: "featherSpeed \xB7 featherSpeed"
+      value: 11
+      integer: 0
+      boolean: 0
+    - path: fanStartDegrees
+      label: "fanStartDegrees \xB7 fanStartDegrees"
+      value: -24
+      integer: 0
+      boolean: 0
+    - path: fanStepDegrees
+      label: "fanStepDegrees \xB7 fanStepDegrees"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: fanProjectileCount
+      label: "fanProjectileCount \xB7 fanProjectileCount"
+      value: 4
+      integer: 1
+      boolean: 0
+  - objectPath: 
+    componentType: JiuyaoController
+    componentIndex: 0
+    parameters:
+    - path: Idle.loop
+      label: "Idle \xB7 Idle.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Idle.fps
+      label: "Idle \xB7 Idle.fps"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: Walk.loop
+      label: "Walk \xB7 Walk.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Walk.fps
+      label: "Walk \xB7 Walk.fps"
+      value: 14
+      integer: 0
+      boolean: 0
+    - path: Die.loop
+      label: "Die \xB7 Die.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: Die.fps
+      label: "Die \xB7 Die.fps"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: stopDistance
+      label: "\u505C\u6B62\u9760\u8FD1\u8DDD\u79BB \xB7 stopDistance"
+      value: 3
+      integer: 0
+      boolean: 0
+    - path: specialAttack
+      label: "specialAttack \xB7 specialAttack"
+      value: -1
+      integer: 1
+      boolean: 0
+    - path: stunnedFrame
+      label: "stunnedFrame \xB7 stunnedFrame"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: skillAnimations.Array.data[0].loop
+      label: "skillAnimations \xB7 skillAnimations.Array.data[0].loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: skillAnimations.Array.data[0].fps
+      label: "skillAnimations \xB7 skillAnimations.Array.data[0].fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: skillAnimations.Array.data[1].loop
+      label: "skillAnimations \xB7 skillAnimations.Array.data[1].loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: skillAnimations.Array.data[1].fps
+      label: "skillAnimations \xB7 skillAnimations.Array.data[1].fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: skillAnimations.Array.data[2].loop
+      label: "skillAnimations \xB7 skillAnimations.Array.data[2].loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: skillAnimations.Array.data[2].fps
+      label: "skillAnimations \xB7 skillAnimations.Array.data[2].fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: skillAnimations.Array.data[3].loop
+      label: "skillAnimations \xB7 skillAnimations.Array.data[3].loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: skillAnimations.Array.data[3].fps
+      label: "skillAnimations \xB7 skillAnimations.Array.data[3].fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: skillAnimations.Array.data[4].loop
+      label: "skillAnimations \xB7 skillAnimations.Array.data[4].loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: skillAnimations.Array.data[4].fps
+      label: "skillAnimations \xB7 skillAnimations.Array.data[4].fps"
+      value: 16
+      integer: 0
+      boolean: 0
+  - objectPath: Attack1
+    componentType: LateStageAttackBox
+    componentIndex: 0
+    parameters:
+    - path: Attack
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack"
+      value: 28
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: launch
+      label: "launch \xB7 launch"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: index
+      label: "index \xB7 index"
+      value: 0
+      integer: 1
+      boolean: 0
+  - objectPath: Attack2
+    componentType: LateStageAttackBox
+    componentIndex: 0
+    parameters:
+    - path: Attack
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack"
+      value: 22
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: launch
+      label: "launch \xB7 launch"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: index
+      label: "index \xB7 index"
+      value: 1
+      integer: 1
+      boolean: 0
+  - objectPath: Attack3
+    componentType: LateStageAttackBox
+    componentIndex: 0
+    parameters:
+    - path: Attack
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack"
+      value: 30
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: launch
+      label: "launch \xB7 launch"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: index
+      label: "index \xB7 index"
+      value: 2
+      integer: 1
+      boolean: 0
+  - objectPath: AscendAuraPool
+    componentType: LateStageEffectPool
+    componentIndex: 0
+    parameters:
+    - path: prewarm
+      label: "prewarm \xB7 prewarm"
+      value: 4
+      integer: 1
+      boolean: 0
+  - objectPath: FeatherBladePool
+    componentType: LateStageEffectPool
+    componentIndex: 0
+    parameters:
+    - path: prewarm
+      label: "prewarm \xB7 prewarm"
+      value: 4
+      integer: 1
+      boolean: 0
+  - objectPath: FeatherRainMarkerPool
+    componentType: LateStageEffectPool
+    componentIndex: 0
+    parameters:
+    - path: prewarm
+      label: "prewarm \xB7 prewarm"
+      value: 4
+      integer: 1
+      boolean: 0
+  - objectPath: SkyDashTrailPool
+    componentType: LateStageEffectPool
+    componentIndex: 0
+    parameters:
+    - path: prewarm
+      label: "prewarm \xB7 prewarm"
+      value: 4
+      integer: 1
+      boolean: 0
+  - objectPath: StarDiveImpactPool
+    componentType: LateStageEffectPool
+    componentIndex: 0
+    parameters:
+    - path: prewarm
+      label: "prewarm \xB7 prewarm"
+      value: 4
+      integer: 1
+      boolean: 0
+  - objectPath: TailSweepArcPool
+    componentType: LateStageEffectPool
+    componentIndex: 0
+    parameters:
+    - path: prewarm
+      label: "prewarm \xB7 prewarm"
+      value: 4
+      integer: 1
+      boolean: 0
+  - objectPath: 
+    componentType: UnityEngine.Rigidbody2D
+    componentIndex: 0
+    parameters:
+    - path: m_Mass
+      label: "\u8D28\u91CF \xB7 m_Mass"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: m_GravityScale
+      label: "\u91CD\u529B\u500D\u7387 \xB7 m_GravityScale"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: m_LinearDamping
+      label: "\u6C34\u5E73\u963B\u5C3C \xB7 m_LinearDamping"
+      value: 0
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.600000023841858
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 2.799999952316284
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1.399999976158142
+      integer: 0
+      boolean: 0
+  - objectPath: Attacked
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.7599999904632568
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 2.799999952316284
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1.399999976158142
+      integer: 0
+      boolean: 0
+  - objectPath: Attack1
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 3
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 1.2999999523162842
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0.5
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 0.6499999761581421
+      integer: 0
+      boolean: 0
+  - objectPath: Check1
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1
+      integer: 0
+      boolean: 0
+  - objectPath: Attack2
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 1.100000023841858
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 0.550000011920929
+      integer: 0
+      boolean: 0
+  - objectPath: Check2
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1
+      integer: 0
+      boolean: 0
+  - objectPath: Attack3
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 5
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 5
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 0
+      integer: 0
+      boolean: 0
+  - objectPath: Check3
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1
+      integer: 0
+      boolean: 0
+  numbers:
+  - key: JiuyaoCombat.DamageResolved.1
+    label: DamageResolved / if(hp.ratio<=.7f&&(thresholds&1)==0){thresholds|=1;pending++;}
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:30
+    value: 0.7
+  - key: JiuyaoCombat.DamageResolved.2
+    label: DamageResolved / if(hp.ratio<=.4f&&(thresholds&2)==0){thresholds|=2;pending++;}
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:31
+    value: 0.4
+  - key: JiuyaoCombat.OnFrame.1
+    label: OnFrame / if(Once(0,f>=5)){move.DashVelocity=Face*14;FX(3,Position+Vector2.up,3,.55f);}
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:38
+    value: 0.55
+  - key: JiuyaoCombat.OnFrame.2
+    label: OnFrame / Window(0,f,5,11,28,new Vector2(3,1.3f),new Vector2(.5f,.65f),true);
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:39
+    value: 28
+  - key: JiuyaoCombat.OnFrame.3
+    label: OnFrame / Window(0,f,5,11,28,new Vector2(3,1.3f),new Vector2(.5f,.65f),true);
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:39
+    value: 3
+  - key: JiuyaoCombat.OnFrame.4
+    label: OnFrame / Window(0,f,5,11,28,new Vector2(3,1.3f),new Vector2(.5f,.65f),true);
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:39
+    value: 1.3
+  - key: JiuyaoCombat.OnFrame.5
+    label: OnFrame / Window(0,f,5,11,28,new Vector2(3,1.3f),new Vector2(.5f,.65f),true);
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:39
+    value: 0.5
+  - key: JiuyaoCombat.OnFrame.6
+    label: OnFrame / Window(0,f,5,11,28,new Vector2(3,1.3f),new Vector2(.5f,.65f),true);
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:39
+    value: 0.65
+  - key: JiuyaoCombat.OnFrame.7
+    label: OnFrame / Vector2 muzzle=Position+new Vector2(Face,1.3f);
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:44
+    value: 1.3
+  - key: JiuyaoCombat.OnFrame.8
+    label: OnFrame / for(int i=0;i<4;i++){float a=(-24+i*16)*Mathf.Deg2Rad;Fire(muzzle,new
+      Vector2(Face*Mathf.Cos(a),Mathf.Sin(a))*11,12
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:45
+    value: 12
+  - key: JiuyaoCombat.OnFrame.9
+    label: OnFrame / float range=(arenaRight-arenaLeft)*.5f;
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:49
+    value: 0.5
+  - key: JiuyaoCombat.OnFrame.10
+    label: OnFrame / Window(1,f,7,11,22,new Vector2(range,1.1f),new Vector2(range*.5f,.55f),true);
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:50
+    value: 22
+  - key: JiuyaoCombat.OnFrame.11
+    label: OnFrame / Window(1,f,7,11,22,new Vector2(range,1.1f),new Vector2(range*.5f,.55f),true);
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:50
+    value: 1.1
+  - key: JiuyaoCombat.OnFrame.12
+    label: OnFrame / Window(1,f,7,11,22,new Vector2(range,1.1f),new Vector2(range*.5f,.55f),true);
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:50
+    value: 0.5
+  - key: JiuyaoCombat.OnFrame.13
+    label: OnFrame / Window(1,f,7,11,22,new Vector2(range,1.1f),new Vector2(range*.5f,.55f),true);
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:50
+    value: 0.55
+  - key: JiuyaoCombat.OnFrame.14
+    label: OnFrame / if(Once(0,f>=7))FX(5,Position+new Vector2(Face*range*.5f,.4f),range,.65f);
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:51
+    value: 0.5
+  - key: JiuyaoCombat.OnFrame.15
+    label: OnFrame / if(Once(0,f>=7))FX(5,Position+new Vector2(Face*range*.5f,.4f),range,.65f);
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:51
+    value: 0.4
+  - key: JiuyaoCombat.OnFrame.16
+    label: OnFrame / if(Once(0,f>=7))FX(5,Position+new Vector2(Face*range*.5f,.4f),range,.65f);
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:51
+    value: 0.65
+  - key: JiuyaoCombat.OnFrame.17
+    label: OnFrame / {diving=false;move.Altitude=0;var land=Ground(diveAt);move.Teleport(land);FX(4,land,5,.8f);}
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:57
+    value: 0.8
+  - key: JiuyaoCombat.OnFrame.18
+    label: OnFrame / if(released[1])Window(2,f,10,12,30,new Vector2(5,5),Vector2.zero,true,2.5f);
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:58
+    value: 30
+  - key: JiuyaoCombat.OnFrame.19
+    label: OnFrame / if(released[1])Window(2,f,10,12,30,new Vector2(5,5),Vector2.zero,true,2.5f);
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:58
+    value: 5
+  - key: JiuyaoCombat.OnFrame.20
+    label: OnFrame / if(released[1])Window(2,f,10,12,30,new Vector2(5,5),Vector2.zero,true,2.5f);
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:58
+    value: 5
+  - key: JiuyaoCombat.OnFrame.21
+    label: OnFrame / if(released[1])Window(2,f,10,12,30,new Vector2(5,5),Vector2.zero,true,2.5f);
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:58
+    value: 2.5
+  - key: JiuyaoCombat.TickActor.1
+    label: TickActor / {var at=Ground(center+Vector2.right*(i*2+Random.Range(-.3f,.3f)));FX(2,at,1.2f,.7f,Color.yellow);Later(.7f,at+Vecto
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:73
+    value: 0.3
+  - key: JiuyaoCombat.TickActor.2
+    label: TickActor / {var at=Ground(center+Vector2.right*(i*2+Random.Range(-.3f,.3f)));FX(2,at,1.2f,.7f,Color.yellow);Later(.7f,at+Vecto
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:73
+    value: 0.3
+  - key: JiuyaoCombat.TickActor.3
+    label: TickActor / {var at=Ground(center+Vector2.right*(i*2+Random.Range(-.3f,.3f)));FX(2,at,1.2f,.7f,Color.yellow);Later(.7f,at+Vecto
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:73
+    value: 1.2
+  - key: JiuyaoCombat.TickActor.4
+    label: TickActor / {var at=Ground(center+Vector2.right*(i*2+Random.Range(-.3f,.3f)));FX(2,at,1.2f,.7f,Color.yellow);Later(.7f,at+Vecto
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:73
+    value: 0.7
+  - key: JiuyaoCombat.TickActor.5
+    label: TickActor / {var at=Ground(center+Vector2.right*(i*2+Random.Range(-.3f,.3f)));FX(2,at,1.2f,.7f,Color.yellow);Later(.7f,at+Vecto
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:73
+    value: 0.7
+  - key: JiuyaoCombat.TickActor.6
+    label: TickActor / {var at=Ground(center+Vector2.right*(i*2+Random.Range(-.3f,.3f)));FX(2,at,1.2f,.7f,Color.yellow);Later(.7f,at+Vecto
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:73
+    value: 0.5
+  - key: JiuyaoCombat.TickActor.7
+    label: TickActor / {var at=Ground(center+Vector2.right*(i*2+Random.Range(-.3f,.3f)));FX(2,at,1.2f,.7f,Color.yellow);Later(.7f,at+Vecto
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:73
+    value: 1.1
+  - key: JiuyaoCombat.TickActor.8
+    label: TickActor / {var at=Ground(center+Vector2.right*(i*2+Random.Range(-.3f,.3f)));FX(2,at,1.2f,.7f,Color.yellow);Later(.7f,at+Vecto
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:73
+    value: 1.3
+  - key: JiuyaoCombat.StartAscend.1
+    label: StartAscend / AscendStarts++;SpecialVersion++;hp.SetDamageMultiplier(this,.5f);hp.SetSuperArmor(this,true);move.Altitude=5;
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:83
+    value: 0.5
+  - key: JiuyaoCombat.LandAscend.1
+    label: LandAscend / Area(at,new Vector2(6,6),32,3,true);FX(4,at,6,1);
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:90
+    value: 6
+  - key: JiuyaoCombat.LandAscend.2
+    label: LandAscend / Area(at,new Vector2(6,6),32,3,true);FX(4,at,6,1);
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:90
+    value: 6
+  - key: JiuyaoCombat.LandAscend.3
+    label: LandAscend / Area(at,new Vector2(6,6),32,3,true);FX(4,at,6,1);
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:90
+    value: 32
+  - key: JiuyaoCombat.LandAscend.4
+    label: LandAscend / hp.RemoveDamageMultiplier(this);hp.SetDamageMultiplier(this,1.5f);
+    source: Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:91
+    value: 1.5
+  - key: JiuyaoCombat.OnFrame.Parameter1
+    label: "OnFrame / \u4F24\u5BB3/\u5224\u5B9A\u53C2\u6570 5"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:38
+    value: 5
+  - key: JiuyaoCombat.OnFrame.Parameter2
+    label: "OnFrame / \u5E27\u7D22\u5F15 5"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:39
+    value: 5
+  - key: JiuyaoCombat.OnFrame.Parameter3
+    label: "OnFrame / \u5E27\u7D22\u5F15 11"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:39
+    value: 11
+  - key: JiuyaoCombat.OnFrame.Parameter4
+    label: "OnFrame / \u4F24\u5BB3/\u5224\u5B9A\u53C2\u6570 12"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:40
+    value: 12
+  - key: JiuyaoCombat.OnFrame.Parameter5
+    label: "OnFrame / \u4F24\u5BB3/\u5224\u5B9A\u53C2\u6570 7"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:42
+    value: 7
+  - key: JiuyaoCombat.OnFrame.Parameter6
+    label: "OnFrame / \u5E27\u7D22\u5F15 7"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:50
+    value: 7
+  - key: JiuyaoCombat.OnFrame.Parameter7
+    label: "OnFrame / \u5E27\u7D22\u5F15 11"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:50
+    value: 11
+  - key: JiuyaoCombat.OnFrame.Parameter8
+    label: "OnFrame / \u4F24\u5BB3/\u5224\u5B9A\u53C2\u6570 7"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:51
+    value: 7
+  - key: JiuyaoCombat.OnFrame.Parameter9
+    label: "OnFrame / \u4F24\u5BB3/\u5224\u5B9A\u53C2\u6570 3"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:55
+    value: 3
+  - key: JiuyaoCombat.OnFrame.Parameter10
+    label: "OnFrame / \u4F24\u5BB3/\u5224\u5B9A\u53C2\u6570 10"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:56
+    value: 10
+  - key: JiuyaoCombat.OnFrame.Parameter11
+    label: "OnFrame / \u5E27\u7D22\u5F15 10"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:58
+    value: 10
+  - key: JiuyaoCombat.OnFrame.Parameter12
+    label: "OnFrame / \u5E27\u7D22\u5F15 12"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:58
+    value: 12
+  - key: JiuyaoCombat.TickActor.Parameter1
+    label: "TickActor / \u4F24\u5BB3/\u5224\u5B9A\u53C2\u6570 10"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Boss/JiuyaoXuanhuang/JiuyaoCombat.cs:73
+    value: 10
+  skills: []
+  relatedProfiles:
+  - {fileID: 11400000, guid: d672a0c094103a8458e520ebba238102, type: 2}
+  - {fileID: 11400000, guid: 0710f8108f7e55440bac438d2f2acd3d, type: 2}
+  - {fileID: 11400000, guid: 2ed3b0a7e6dacb0409440df45bdf44ac, type: 2}
+  - {fileID: 11400000, guid: e46cbc4457e51e8459de976a5cf5d60c, type: 2}
+  - {fileID: 11400000, guid: 5c45432737681eb4f90e65864fa3a3e7, type: 2}
+  - {fileID: 11400000, guid: 4c93ba7c2a5f67f41b641a0e5890fb86, type: 2}
+  - {fileID: 11400000, guid: 186edcf38a4472345b437f7b922a7c7f, type: 2}
+  - {fileID: 11400000, guid: dd216abcbdc9b444cb01cbd5e28c354a, type: 2}
+  - {fileID: 11400000, guid: 5d70eb35082eaac4fa1bed4c8ce656ee, type: 2}
+  - {fileID: 11400000, guid: 318f20ce184ed6a46a696e03ae001830, type: 2}
+  - {fileID: 11400000, guid: b87ff041531eae344bcc604e4dea2794, type: 2}
+  - {fileID: 11400000, guid: 2cb0de1c7ea5afd4db152b479a42c0db, type: 2}

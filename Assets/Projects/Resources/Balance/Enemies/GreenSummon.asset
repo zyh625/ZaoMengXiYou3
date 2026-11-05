@@ -1,0 +1,484 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ea7302a88f56248a1b33284c7df3cd, type: 3}
+  m_Name: GreenSummon
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceProfile
+  displayName: "\u9752\u5E61\u4EE4\u4F7F / GreenSummon"
+  description: "\u4FEE\u6539\u540E\u91CD\u65B0\u8FDB\u5165\u573A\u666F/\u8BAD\u7EC3\u76EE\u6807\u751F\u6548\uFF1B\u4E0D\u5199\u5165\u5B58\u6863\uFF0C\u4E0D\u4FEE\u6539\u4E34\u65F6\u72B6\u6001\u3002"
+  components:
+  - objectPath: 
+    componentType: ActorStatus
+    componentIndex: 0
+    parameters:
+    - path: frozenDuration
+      label: "frozenDuration \xB7 frozenDuration"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: meltFrameInterval
+      label: "meltFrameInterval \xB7 meltFrameInterval"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: frozenDamageMultiplier
+      label: "frozenDamageMultiplier \xB7 frozenDamageMultiplier"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: Health
+    componentIndex: 0
+    parameters:
+    - path: beginBlood
+      label: "\u57FA\u7840\u751F\u547D\u4E0A\u9650 \xB7 beginBlood"
+      value: 88
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: EnemyRewards
+    componentIndex: 0
+    parameters:
+    - path: experienceReward
+      label: "\u51FB\u6740\u7ECF\u9A8C \xB7 experienceReward"
+      value: 20
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: GreenSummonMovement
+    componentIndex: 0
+    parameters:
+    - path: moveSpeed
+      label: "\u79FB\u52A8\u901F\u5EA6 \xB7 moveSpeed"
+      value: 0.800000011920929
+      integer: 0
+      boolean: 0
+    - path: backSpeed
+      label: "\u53D7\u51FB\u540E\u9000\u901F\u5EA6 \xB7 backSpeed"
+      value: 3.5
+      integer: 0
+      boolean: 0
+    - path: upSpeed
+      label: "\u8DF3\u8DC3\u901F\u5EA6 \xB7 upSpeed"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: slowSpeed
+      label: "slowSpeed \xB7 slowSpeed"
+      value: 0.4000000059604645
+      integer: 0
+      boolean: 0
+    - path: boostRatio
+      label: "boostRatio \xB7 boostRatio"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: minNormalY
+      label: "minNormalY \xB7 minNormalY"
+      value: 0.6000000238418579
+      integer: 0
+      boolean: 0
+    - path: retreatDistance
+      label: "retreatDistance \xB7 retreatDistance"
+      value: 3
+      integer: 0
+      boolean: 0
+    - path: retreatCooldown
+      label: "retreatCooldown \xB7 retreatCooldown"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: retreatDuration
+      label: "retreatDuration \xB7 retreatDuration"
+      value: 0.25
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: GreenSummonCombat
+    componentIndex: 0
+    parameters:
+    - path: angryFull
+      label: "angryFull \xB7 angryFull"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: angryRatio
+      label: "angryRatio \xB7 angryRatio"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: deltaAngry
+      label: "deltaAngry \xB7 deltaAngry"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: angryDuration
+      label: "angryDuration \xB7 angryDuration"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: delayRatio
+      label: "delayRatio \xB7 delayRatio"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: 'skillCooldowns.Array.data[0]'
+      label: "\u5404\u6280\u80FD\u51B7\u5374\uFF08\u79D2\uFF09 \xB7 skillCooldowns.Array.data[0]"
+      value: 8
+      integer: 0
+      boolean: 0
+    - path: 'skillCooldowns.Array.data[1]'
+      label: "\u5404\u6280\u80FD\u51B7\u5374\uFF08\u79D2\uFF09 \xB7 skillCooldowns.Array.data[1]"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: 'skillCooldowns.Array.data[2]'
+      label: "\u5404\u6280\u80FD\u51B7\u5374\uFF08\u79D2\uFF09 \xB7 skillCooldowns.Array.data[2]"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: 'releaseFrames.Array.data[0]'
+      label: "\u91CA\u653E\u5E27 \xB7 releaseFrames.Array.data[0]"
+      value: 9
+      integer: 1
+      boolean: 0
+    - path: 'releaseFrames.Array.data[1]'
+      label: "\u91CA\u653E\u5E27 \xB7 releaseFrames.Array.data[1]"
+      value: 7
+      integer: 1
+      boolean: 0
+    - path: 'releaseFrames.Array.data[2]'
+      label: "\u91CA\u653E\u5E27 \xB7 releaseFrames.Array.data[2]"
+      value: 15
+      integer: 1
+      boolean: 0
+  - objectPath: 
+    componentType: GreenSummonController
+    componentIndex: 0
+    parameters:
+    - path: Idle.loop
+      label: "Idle \xB7 Idle.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Idle.fps
+      label: "Idle \xB7 Idle.fps"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: Walk.loop
+      label: "Walk \xB7 Walk.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Walk.fps
+      label: "Walk \xB7 Walk.fps"
+      value: 14
+      integer: 0
+      boolean: 0
+    - path: Die.loop
+      label: "Die \xB7 Die.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: Die.fps
+      label: "Die \xB7 Die.fps"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: stopDistance
+      label: "\u505C\u6B62\u9760\u8FD1\u8DDD\u79BB \xB7 stopDistance"
+      value: 7
+      integer: 0
+      boolean: 0
+    - path: specialAttack
+      label: "specialAttack \xB7 specialAttack"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: stunnedFrame
+      label: "stunnedFrame \xB7 stunnedFrame"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: SummonedHammerStrike.loop
+      label: "SummonedHammerStrike \xB7 SummonedHammerStrike.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: SummonedHammerStrike.fps
+      label: "SummonedHammerStrike \xB7 SummonedHammerStrike.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: BannerWave.loop
+      label: "BannerWave \xB7 BannerWave.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: BannerWave.fps
+      label: "BannerWave \xB7 BannerWave.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: WarBanner.loop
+      label: "WarBanner \xB7 WarBanner.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: WarBanner.fps
+      label: "WarBanner \xB7 WarBanner.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: UnityEngine.Rigidbody2D
+    componentIndex: 0
+    parameters:
+    - path: m_Mass
+      label: "\u8D28\u91CF \xB7 m_Mass"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: m_GravityScale
+      label: "\u91CD\u529B\u500D\u7387 \xB7 m_GravityScale"
+      value: 0.8999999761581421
+      integer: 0
+      boolean: 0
+    - path: m_LinearDamping
+      label: "\u6C34\u5E73\u963B\u5C3C \xB7 m_LinearDamping"
+      value: 0
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.0499999523162842
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 2.049999952316284
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1.024999976158142
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/Attacked
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.2999999523162842
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 2.25
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1.125
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/SkillCheck
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 14
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 4
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1.2000000476837158
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: EnemyHealthBar
+    componentIndex: 0
+    parameters:
+    - path: seeDuration
+      label: "\u8840\u6761\u53D7\u4F24\u540E\u663E\u793A\u79D2\u6570"
+      value: 3.5
+      integer: 0
+      boolean: 0
+    - path: fadeDuration
+      label: "\u8840\u6761\u6DE1\u51FA\u79D2\u6570"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  numbers:
+  - key: GreenSummonCombat.Target.1
+    label: Target / resolveAt=Time.time+0.5f;party=FindAnyObjectByType<PlayerManager>();
+    source: Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonCombat.cs:34
+    value: 0.5
+  - key: GreenSummonCombat.ResolveHammer.1
+    label: ResolveHammer / int count=Physics2D.OverlapCircle(point,2.5f,GreenSummonHitUtility.Players,hits);unique.Clear();
+    source: Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonCombat.cs:85
+    value: 2.5
+  - key: GreenSummonCombat.ResolveHammer.2
+    label: ResolveHammer / victim.TakeDamage(new DamageInfo(source,22f*multiplier,false,false,null,false,false,DamageKind.Skill));
+    source: Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonCombat.cs:89
+    value: 22
+  - key: GreenSummonController.ProcessSpecialState.1
+    label: ProcessSpecialState / if(Mathf.Abs(delta)<3f && movement.TryRetreat(delta))
+    source: Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonController.cs:25
+    value: 3
+  - key: GreenSummonController.ProcessSpecialState.2
+    label: ProcessSpecialState / SetState(EnemyState.Walk);movement.MoveInRange(delta,Mathf.Abs(delta)<4f,EH.Slow);return
+      true;
+    source: Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonController.cs:32
+    value: 4
+  - key: GreenSummonHammer.HasWarningAt.1
+    label: HasWarningAt / {foreach(GreenSummonHammer h in active)if(h!=null && h.gameObject.activeInHierarchy
+      && !h.HasStruck && (h.Position-
+    source: Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonHammer.cs:21
+    value: 6.25
+  - key: GreenSummonMovement.TryRetreat.1
+    label: TryRetreat / if(IsRetreating || Time.time<readyAt || Mathf.Abs(delta)>=3f
+      || hp==null || hp.Dead || hp.Attacked
+    source: Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonMovement.cs:24
+    value: 3
+  - key: GreenSummonMovement.TryRetreat.2
+    label: TryRetreat / int count=BodyCollider.Cast(Vector2.right*direction,filter,casts,retreatDistance+0.025f);
+    source: Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonMovement.cs:37
+    value: 0.025
+  - key: GreenSummonMovement.TryRetreat.3
+    label: TryRetreat / for(int i=0;i<count;i++)if(Vector2.Dot(casts[i].normal,Vector2.right*direction)<-0.01f)return
+      false;
+    source: Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonMovement.cs:38
+    value: 0.01
+  - key: GreenSummonMovement.TryRetreat.4
+    label: TryRetreat / count=Physics2D.OverlapBox(center,(Vector2)shape.size-Vector2.one*0.04f,0f,filter,overlaps);
+    source: Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonMovement.cs:39
+    value: 0.04
+  - key: GreenSummonMovement.TryRetreat.5
+    label: TryRetreat / for(float advance=0.5f;advance<=retreatDistance+0.01f;advance+=0.5f)
+    source: Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonMovement.cs:42
+    value: 0.5
+  - key: GreenSummonMovement.TryRetreat.6
+    label: TryRetreat / for(float advance=0.5f;advance<=retreatDistance+0.01f;advance+=0.5f)
+    source: Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonMovement.cs:42
+    value: 0.01
+  - key: GreenSummonMovement.TryRetreat.7
+    label: TryRetreat / for(float advance=0.5f;advance<=retreatDistance+0.01f;advance+=0.5f)
+    source: Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonMovement.cs:42
+    value: 0.5
+  - key: GreenSummonMovement.TryRetreat.8
+    label: TryRetreat / float probeX=shape.center.x+direction*advance+side*(shape.extents.x-0.04f);
+    source: Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonMovement.cs:45
+    value: 0.04
+  - key: GreenSummonMovement.TryRetreat.9
+    label: TryRetreat / RaycastHit2D floor=Physics2D.Raycast(new Vector2(probeX,shape.min.y+0.15f),Vector2.down,0.35f,1<<6);
+    source: Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonMovement.cs:46
+    value: 0.15
+  - key: GreenSummonMovement.TryRetreat.10
+    label: TryRetreat / RaycastHit2D floor=Physics2D.Raycast(new Vector2(probeX,shape.min.y+0.15f),Vector2.down,0.35f,1<<6);
+    source: Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonMovement.cs:46
+    value: 0.35
+  - key: GreenSummonMovement.TryRetreat.11
+    label: TryRetreat / if(floor.collider==null || floor.normal.y<0.6f || Mathf.Abs(floor.point.y-shape.min.y)>0.15f)return
+      false;
+    source: Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonMovement.cs:47
+    value: 0.6
+  - key: GreenSummonMovement.TryRetreat.12
+    label: TryRetreat / if(floor.collider==null || floor.normal.y<0.6f || Mathf.Abs(floor.point.y-shape.min.y)>0.15f)return
+      false;
+    source: Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonMovement.cs:47
+    value: 0.15
+  - key: GreenSummonMovement.StepRetreat.1
+    label: StepRetreat / int count=BodyCollider.Cast(Vector2.right*direction,filter,casts,Mathf.Max(0f,Mathf.Min(remaining,speed*Time.fixedD
+    source: Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonMovement.cs:56
+    value: 0.025
+  - key: GreenSummonMovement.StepRetreat.2
+    label: StepRetreat / for(int i=0;i<count;i++)if(Vector2.Dot(casts[i].normal,Vector2.right*direction)<-0.01f){CancelRetreat();return;}
+    source: Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonMovement.cs:57
+    value: 0.01
+  - key: GreenSummonMovement.StepRetreat.3
+    label: StepRetreat / if(remaining<=speed*Time.fixedDeltaTime+0.001f)
+    source: Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonMovement.cs:58
+    value: 0.001
+  - key: GreenSummonWarBanner.FixedUpdate.1
+    label: FixedUpdate / if(Time.time>=refreshAt){refreshAt=Time.time+0.1f;RefreshBuffs();}
+    source: Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonWarBanner.cs:37
+    value: 0.1
+  - key: GreenSummonWarBanner.RefreshBuffs.1
+    label: RefreshBuffs / combat.ApplyAttackBuff(this,1.15f,0.35f);hp.SetDamageMultiplier(this,0.9f);
+    source: Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonWarBanner.cs:50
+    value: 1.15
+  - key: GreenSummonWarBanner.RefreshBuffs.2
+    label: RefreshBuffs / combat.ApplyAttackBuff(this,1.15f,0.35f);hp.SetDamageMultiplier(this,0.9f);
+    source: Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonWarBanner.cs:50
+    value: 0.35
+  - key: GreenSummonWarBanner.RefreshBuffs.3
+    label: RefreshBuffs / combat.ApplyAttackBuff(this,1.15f,0.35f);hp.SetDamageMultiplier(this,0.9f);
+    source: Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonWarBanner.cs:50
+    value: 0.9
+  - key: GreenSummonWave.Launch.1
+    label: Launch / direction=right?Vector2.right:Vector2.left;damage=14f*source.DamageMultiplier;travelled=0f;HitPlayer=false;
+    source: Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonWave.cs:20
+    value: 14
+  - key: GreenSummonWave.FixedUpdate.1
+    label: FixedUpdate / int count=Physics2D.CircleCast(transform.position,0.18f,direction,filter,hits,distance),nearest=-1;
+    source: Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonWave.cs:28
+    value: 0.18
+  - key: GreenSummonCombat.InRange.Range1.Minimum
+    label: "AI\u65BD\u6CD5\u8DDD\u79BB\u4E0B\u9650 / InRange"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonCombat.cs:42
+    value: 4
+  - key: GreenSummonCombat.InRange.Range1.Maximum
+    label: "AI\u65BD\u6CD5\u8DDD\u79BB\u4E0A\u9650 / InRange"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonCombat.cs:42
+    value: 7
+  - key: GreenSummonController.ProcessSpecialState.Range1.Minimum
+    label: "AI\u65BD\u6CD5\u8DDD\u79BB\u4E0B\u9650 / ProcessSpecialState"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonController.cs:29
+    value: 4
+  - key: GreenSummonController.ProcessSpecialState.Range1.Maximum
+    label: "AI\u65BD\u6CD5\u8DDD\u79BB\u4E0A\u9650 / ProcessSpecialState"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Enemy/GreenSummon/GreenSummonController.cs:29
+    value: 7
+  skills: []
+  relatedProfiles:
+  - {fileID: 11400000, guid: a589c885a468c8849ac8bf9a8edcbf08, type: 2}
+  - {fileID: 11400000, guid: 38d6478fd10158846a3851d2d8f6fbbe, type: 2}
+  - {fileID: 11400000, guid: b0d3dd2b07ea13a488ac60327756b07a, type: 2}
+  - {fileID: 11400000, guid: ec686d2961a18114cb9036ff7ad2345a, type: 2}
+  - {fileID: 11400000, guid: 06d021b023c7f824b81b6a91e9544762, type: 2}

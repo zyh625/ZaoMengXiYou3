@@ -5,8 +5,8 @@ using UnityEngine;
 [DisallowMultipleComponent, DefaultExecutionOrder(1500)]
 public sealed class ClampGuardGrab : MonoBehaviour
 {
-    public const float Duration = 1.5f;
-    private const float Skin = .025f;
+    public static float Duration => BalanceRuntime.Number(typeof(ClampGuardGrab), "ClampGuardGrab.Duration", 1.5f);
+    private static float Skin => BalanceRuntime.Number(typeof(ClampGuardGrab), "ClampGuardGrab.Skin", 0.025f);
     private ClampGuardCombat source;
     private Health health, sourceHealth;
     private PlayerController player;
@@ -41,7 +41,7 @@ public sealed class ClampGuardGrab : MonoBehaviour
         if (sourceHealth == null || sourceHealth.Dead) return false;
         source = owner; sourceLife = sourceHealth.LifeVersion; victimLife = health.LifeVersion;
         duration = owner.GrabDuration; tickInterval = owner.GrabTickInterval; tickDamage = owner.GrabTickDamage;
-        tickLimit = Mathf.Max(0, Mathf.FloorToInt(duration / tickInterval + .0001f));
+        tickLimit = Mathf.Max(0, Mathf.FloorToInt(duration / tickInterval + BalanceRuntime.Number(this, "ClampGuardGrab.Begin.1", 0.0001f)));
         scale = owner.DamageMultiplier; beganAt = Time.time; nextTick = beganAt + tickInterval; ticks = 0; ThrowsApplied = 0;
         savedGravity = body.gravityScale; expectedPosition = body.position; ownerPosition = owner.transform.position;
         holding = true; movement?.SetMoveMultiplier(this, 0f); body.gravityScale = 0f; body.linearVelocity = Vector2.zero;
@@ -51,19 +51,19 @@ public sealed class ClampGuardGrab : MonoBehaviour
         || sourceHealth.LifeVersion != sourceLife || health == null || health.Dead || health.LifeVersion != victimLife
         || !player.isActiveAndEnabled || !health.CanReceiveControl(ControlStrength.Strong)
         || (health.Status?.BlocksMovement ?? false) || (GetComponent<ActorStun>()?.IsStunned ?? false)
-        || ((Vector2)source.transform.position - ownerPosition).sqrMagnitude > .16f;
+        || ((Vector2)source.transform.position - ownerPosition).sqrMagnitude > BalanceRuntime.Number(this, "ClampGuardGrab.Invalid.1", 0.16f);
     private bool Displaced()
     {
-        if ((body.position - expectedPosition).sqrMagnitude > .0144f
-            || ((Vector2)transform.position - expectedPosition).sqrMagnitude > .0144f) return true;
+        if ((body.position - expectedPosition).sqrMagnitude > BalanceRuntime.Number(this, "ClampGuardGrab.Displaced.1", 0.0144f)
+            || ((Vector2)transform.position - expectedPosition).sqrMagnitude > BalanceRuntime.Number(this, "ClampGuardGrab.Displaced.2", 0.0144f)) return true;
         // Wukong's dash writes velocity; AirSlash and other teleports write position.
-        return player.State() == PlayerState.Skill && body.linearVelocity.sqrMagnitude > .25f;
+        return player.State() == PlayerState.Skill && body.linearVelocity.sqrMagnitude > BalanceRuntime.Number(this, "ClampGuardGrab.Displaced.3", 0.25f);
     }
     private void FixedUpdate()
     {
         if (!holding) return;
         if (Invalid || Displaced()) { Cancel(); return; }
-        while (holding && ticks < tickLimit && Time.time + .0001f >= nextTick)
+        while (holding && ticks < tickLimit && Time.time + BalanceRuntime.Number(this, "ClampGuardGrab.FixedUpdate.1", 0.0001f) >= nextTick)
         {
             ticks++; nextTick = beganAt + (ticks + 1) * tickInterval;
             health.TakeDamage(new DamageInfo(source.transform, tickDamage * scale, false, false, null, false, true, DamageKind.Skill));
@@ -73,16 +73,16 @@ public sealed class ClampGuardGrab : MonoBehaviour
         float side = source.AttackFaceRight ? 1f : -1f;
         Collider2D ownerBox = source.GetComponent<Collider2D>();
         float offset = bodyCollider.bounds.center.x - body.position.x;
-        float destination = ownerBox.bounds.center.x + side * (ownerBox.bounds.extents.x + bodyCollider.bounds.extents.x + .12f) - offset;
+        float destination = ownerBox.bounds.center.x + side * (ownerBox.bounds.extents.x + bodyCollider.bounds.extents.x + BalanceRuntime.Number(this, "ClampGuardGrab.FixedUpdate.2", 0.12f)) - offset;
         float remaining = side * (body.position.x - destination);
         if (remaining > 0f)
         {
-            float step = Mathf.Min(remaining, 12f * Time.fixedDeltaTime);
+            float step = Mathf.Min(remaining, BalanceRuntime.Number(this, "ClampGuardGrab.FixedUpdate.3", 12f) * Time.fixedDeltaTime);
             Vector2 direction = Vector2.left * side;
             var filter = new ContactFilter2D(); filter.SetLayerMask((1 << 6) | (1 << 11)); filter.useTriggers = false;
             int count = bodyCollider.Cast(direction, filter, casts, step + Skin);
             for (int i = 0; i < count; i++)
-                if (Vector2.Dot(casts[i].normal, direction) < -.01f)
+                if (Vector2.Dot(casts[i].normal, direction) < -BalanceRuntime.Number(this, "ClampGuardGrab.FixedUpdate.4", 0.01f))
                     step = Mathf.Min(step, Mathf.Max(0f, casts[i].distance - Skin));
             expectedPosition += direction * step;
         }
@@ -106,24 +106,24 @@ public sealed class ClampGuardGrab : MonoBehaviour
         float side = source.AttackFaceRight ? 1f : -1f;
         Collider2D ownerBox = source.GetComponent<Collider2D>();
         Vector2 target = body.position;
-        target.x = ownerBox.bounds.center.x - side * (ownerBox.bounds.extents.x + bodyCollider.bounds.extents.x + .35f)
+        target.x = ownerBox.bounds.center.x - side * (ownerBox.bounds.extents.x + bodyCollider.bounds.extents.x + BalanceRuntime.Number(this, "ClampGuardGrab.ThrowBehind.1", 0.35f))
             - (bodyCollider.bounds.center.x - body.position.x);
-        target.y += .18f;
+        target.y += BalanceRuntime.Number(this, "ClampGuardGrab.ThrowBehind.2", 0.18f);
         Vector2 displacement = target - body.position;
         var filter = new ContactFilter2D(); filter.SetLayerMask(1 << 6); filter.useTriggers = false;
         int count = bodyCollider.Cast(displacement.normalized, filter, casts, displacement.magnitude + Skin);
         bool safe = true;
         for (int i = 0; i < count; i++)
-            if (Vector2.Dot(casts[i].normal, displacement.normalized) < -.01f && casts[i].distance < displacement.magnitude) safe = false;
+            if (Vector2.Dot(casts[i].normal, displacement.normalized) < -BalanceRuntime.Number(this, "ClampGuardGrab.ThrowBehind.3", 0.01f) && casts[i].distance < displacement.magnitude) safe = false;
         Vector2 center = (Vector2)bodyCollider.bounds.center + displacement;
-        int overlaps = Physics2D.OverlapBox(center, (Vector2)bodyCollider.bounds.size * .94f, 0f, filter, solids);
+        int overlaps = Physics2D.OverlapBox(center, (Vector2)bodyCollider.bounds.size * BalanceRuntime.Number(this, "ClampGuardGrab.ThrowBehind.4", 0.94f), 0f, filter, solids);
         if (overlaps > 0) safe = false;
         // Release before writing the throw so callbacks cannot throw the same target twice.
         Cancel();
         if (!safe || health.Dead || !isActiveAndEnabled) return;
         ThrowsApplied++; body.position = target;
         transform.position = new Vector3(target.x, target.y, transform.position.z);
-        body.linearVelocity = new Vector2(-side * 3f, 2f);
+        body.linearVelocity = new Vector2(-side * BalanceRuntime.Number(this, "ClampGuardGrab.ThrowBehind.5", 3f), BalanceRuntime.Number(this, "ClampGuardGrab.ThrowBehind.6", 2f));
     }
     public void CancelFrom(ClampGuardCombat owner) { if (source == owner) Cancel(); }
     public void Cancel()

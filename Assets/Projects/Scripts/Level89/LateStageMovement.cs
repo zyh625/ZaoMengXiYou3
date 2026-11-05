@@ -17,16 +17,16 @@ public class LateStageMovement : EnemyMovement
         FloorY=FindFloor(transform.position);if(hovering)Altitude=hoverHeight;
     }
     public static float FindFloor(Vector2 at)
-    {var hit=Physics2D.Raycast(at+Vector2.up*8f,Vector2.down,60f,1<<6);return hit.collider!=null?hit.point.y:at.y;}
+    {var hit=Physics2D.Raycast(at+Vector2.up*BalanceRuntime.Number(typeof(LateStageMovement), "LateStageMovement.FindFloor.1", 8f),Vector2.down,BalanceRuntime.Number(typeof(LateStageMovement), "LateStageMovement.FindFloor.2", 60f),1<<6);return hit.collider!=null?hit.point.y:at.y;}
     public bool SafeSpot(Vector2 desired,out Vector2 result,bool checkActors=true,Transform other=null)
     {
-        Prepare();result=new Vector2(desired.x,FindFloor(desired)+.03f+(hovering?hoverHeight:0f));
+        Prepare();result=new Vector2(desired.x,FindFloor(desired)+BalanceRuntime.Number(this, "LateStageMovement.SafeSpot.1", 0.03f)+(hovering?hoverHeight:0f));
         var floor=Physics2D.Raycast(new Vector2(result.x,result.y+5),Vector2.down,30,1<<6);
         if(floor.collider==null)return false;
         var shape=GetComponent<BoxCollider2D>();Vector2 center=result+shape.offset;
         var filter=new ContactFilter2D{useTriggers=false};filter.SetLayerMask(1<<6);
-        var hits=new Collider2D[16];int n=Physics2D.OverlapBox(center,shape.size*.92f,0,filter,hits);
-        for(int i=0;i<n;i++)if(hits[i]!=null && hits[i].bounds.max.y>result.y+.15f)return false;
+        var hits=new Collider2D[16];int n=Physics2D.OverlapBox(center,shape.size*BalanceRuntime.Number(this, "LateStageMovement.SafeSpot.2", 0.92f),0,filter,hits);
+        for(int i=0;i<n;i++)if(hits[i]!=null && hits[i].bounds.max.y>result.y+BalanceRuntime.Number(this, "LateStageMovement.SafeSpot.3", 0.15f))return false;
         if(checkActors)
         {
             n=Physics2D.OverlapBox(center,shape.size,0,new ContactFilter2D{useTriggers=false},hits);
@@ -45,7 +45,7 @@ public class LateStageMovement : EnemyMovement
         var c=GetComponent<LateStageCombat>();
         if(c!=null)
         {
-            float x=c.ClampArenaX(body.position.x,GetComponent<BoxCollider2D>().bounds.extents.x+.05f);
+            float x=c.ClampArenaX(body.position.x,GetComponent<BoxCollider2D>().bounds.extents.x+BalanceRuntime.Number(this, "LateStageMovement.FixedUpdate.1", 0.05f));
             if(x!=body.position.x){body.position=new Vector2(x,body.position.y);body.linearVelocityX=0;}
         }
         if(c!=null&&(c.Skill>=0||c.SpecialActive||c.Recovering))Stop();
@@ -55,10 +55,10 @@ public class LateStageMovement : EnemyMovement
         {
             float dx=DashVelocity*Time.fixedDeltaTime;
             var filter=new ContactFilter2D{useTriggers=false};filter.SetLayerMask(1<<6);
-            int n=GetComponent<BoxCollider2D>().Cast(Vector2.right*Mathf.Sign(dx),filter,castHits,Mathf.Abs(dx)+.02f);
-            for(int i=0;i<n;i++)if(castHits[i].normal.x*Mathf.Sign(dx)<-.1f)dx=Mathf.Sign(dx)*Mathf.Min(Mathf.Abs(dx),Mathf.Max(0,castHits[i].distance-.02f));
+            int n=GetComponent<BoxCollider2D>().Cast(Vector2.right*Mathf.Sign(dx),filter,castHits,Mathf.Abs(dx)+BalanceRuntime.Number(this, "LateStageMovement.FixedUpdate.2", 0.02f));
+            for(int i=0;i<n;i++)if(castHits[i].normal.x*Mathf.Sign(dx)<-BalanceRuntime.Number(this, "LateStageMovement.FixedUpdate.3", 0.1f))dx=Mathf.Sign(dx)*Mathf.Min(Mathf.Abs(dx),Mathf.Max(0,castHits[i].distance-BalanceRuntime.Number(this, "LateStageMovement.FixedUpdate.4", 0.02f)));
             Vector2 destination=body.position+Vector2.right*dx;
-            if(c!=null)destination.x=c.ClampArenaX(destination.x,GetComponent<BoxCollider2D>().bounds.extents.x+.05f);
+            if(c!=null)destination.x=c.ClampArenaX(destination.x,GetComponent<BoxCollider2D>().bounds.extents.x+BalanceRuntime.Number(this, "LateStageMovement.FixedUpdate.5", 0.05f));
             body.position=destination;body.linearVelocityX=0;
         }
     }

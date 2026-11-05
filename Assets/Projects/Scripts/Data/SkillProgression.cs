@@ -60,17 +60,32 @@ public class SkillProgression : ScriptableObject
         }
     }
 
-    public int MaxLevel => Mathf.Max(1, maxLevel);
+    public int MaxLevel => Mathf.Max(1, Mathf.RoundToInt(BalanceRuntime.Load("Common/Progression")?.Get("Skills.MaxLevel", maxLevel) ?? maxLevel));
 
     public bool HasSkill(PlayerId player, int skillNumber)//购买入口验证技能定义，新增第四招时无需改存档数组长度判断
     {
         if (!Enum.IsDefined(typeof(PlayerId), player) || skillNumber < 1) return false;
+        var profile = BalanceRuntime.Player(player);
+        if (profile != null && profile.skills.Length > 0)
+        {
+            foreach (var definition in profile.skills) if (definition != null && definition.skillNumber == skillNumber) return true;
+            return false;
+        }
         BuildDefinitions();
         return definitions.ContainsKey((player, skillNumber)) || definitions.Count == 0 && skillNumber <= 3;
     }
 
     public SkillLevelData GetLevelData(PlayerId player, int skillNumber, int level)
     {
+        var profile = BalanceRuntime.Player(player);
+        if (profile != null)
+            foreach (var entry in profile.skills)
+                if (entry != null && entry.skillNumber == skillNumber && entry.levels != null && entry.levels.Length > 0)
+                {
+                    var value = entry.levels[Mathf.Min(Mathf.Clamp(level, 1, MaxLevel) - 1, entry.levels.Length - 1)];
+                    value.goldCost = Mathf.Max(0, value.goldCost);value.manaCost = Mathf.Max(0, value.manaCost);value.cooldown = Mathf.Max(0, value.cooldown);
+                    return value;
+                }
         BuildDefinitions();
         if (definitions.TryGetValue((player, skillNumber), out SkillDefinition definition)
             && definition.levels != null && definition.levels.Length > 0)

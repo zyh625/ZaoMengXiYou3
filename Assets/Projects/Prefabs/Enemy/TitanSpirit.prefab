@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 721026002003}
   - component: {fileID: 381027001}
   - component: {fileID: 728102900001}
+  - component: {fileID: 7590021559241460645}
   m_Layer: 11
   m_Name: TitanSpirit
   m_TagString: Untagged
@@ -185,6 +186,51 @@ MonoBehaviour:
     - {fileID: -570246880, guid: 3865e37cc18a4c6ea8afb016c2e45e2b, type: 3}
     loop: 1
     fps: 12
+  Attacked:
+    sprites:
+    - {fileID: 3248395381300062551, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
+    - {fileID: 1066278561425547925, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
+    - {fileID: 8822577844710651248, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
+    - {fileID: -8656574144240594219, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
+    - {fileID: -7065593094990129760, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
+    - {fileID: -7344673643262551062, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
+    - {fileID: 8326893660112587480, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
+    - {fileID: 21300009, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
+    - {fileID: 21300013, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
+    - {fileID: 21300014, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
+    - {fileID: 21300015, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
+    - {fileID: -580009157, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
+    - {fileID: 1818567605, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
+    - {fileID: 103859986, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
+    - {fileID: -1228245784, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
+    - {fileID: 807900489, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
+    loop: 0
+    fps: 16
+  Die:
+    sprites:
+    - {fileID: -1815625823664879899, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
+    - {fileID: 8754631090437682804, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
+    - {fileID: 5542297916538816281, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
+    - {fileID: -1778436320341457493, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
+    - {fileID: 21300004, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
+    - {fileID: 21300005, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
+    - {fileID: 21300006, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
+    - {fileID: 21300007, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
+    - {fileID: 21300008, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
+    - {fileID: 21300009, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
+    - {fileID: 21300010, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
+    - {fileID: 21300011, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
+    - {fileID: 21300012, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
+    - {fileID: 21300013, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
+    - {fileID: 21300014, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
+    - {fileID: 21300015, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
+    loop: 0
+    fps: 12
+  state: 0
+  stopDistance: 1
+  attackedBox: {fileID: 4409679433834577535}
+  specialAttack: 1
+  stunnedFrame: 0
   Boost:
     sprites:
     - {fileID: -66238934464334820, guid: d9c18428514e43aca98ded5beca7583e, type: 3}
@@ -225,26 +271,6 @@ MonoBehaviour:
     - {fileID: 1897036728, guid: 513530aaadb14ade87a0589907f117e6, type: 3}
     loop: 1
     fps: 16
-  Attacked:
-    sprites:
-    - {fileID: 3248395381300062551, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
-    - {fileID: 1066278561425547925, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
-    - {fileID: 8822577844710651248, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
-    - {fileID: -8656574144240594219, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
-    - {fileID: -7065593094990129760, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
-    - {fileID: -7344673643262551062, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
-    - {fileID: 8326893660112587480, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
-    - {fileID: 21300009, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
-    - {fileID: 21300013, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
-    - {fileID: 21300014, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
-    - {fileID: 21300015, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
-    - {fileID: -580009157, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
-    - {fileID: 1818567605, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
-    - {fileID: 103859986, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
-    - {fileID: -1228245784, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
-    - {fileID: 807900489, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
-    loop: 0
-    fps: 16
   Attack:
     sprites:
     - {fileID: 21300000, guid: 48e10ae4f33f475e8bdb247fdcd691ee, type: 3}
@@ -265,26 +291,6 @@ MonoBehaviour:
     - {fileID: 21300015, guid: 48e10ae4f33f475e8bdb247fdcd691ee, type: 3}
     loop: 0
     fps: 16
-  Die:
-    sprites:
-    - {fileID: -1815625823664879899, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
-    - {fileID: 8754631090437682804, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
-    - {fileID: 5542297916538816281, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
-    - {fileID: -1778436320341457493, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
-    - {fileID: 21300004, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
-    - {fileID: 21300005, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
-    - {fileID: 21300006, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
-    - {fileID: 21300007, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
-    - {fileID: 21300008, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
-    - {fileID: 21300009, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
-    - {fileID: 21300010, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
-    - {fileID: 21300011, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
-    - {fileID: 21300012, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
-    - {fileID: 21300013, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
-    - {fileID: 21300014, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
-    - {fileID: 21300015, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
-    loop: 0
-    fps: 12
   Tremor:
     sprites:
     - {fileID: 21300000, guid: 4f057b85219d4343abc6cc37e441961b, type: 3}
@@ -305,16 +311,13 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 9f9846233fa945e096571ffd513c6a71, type: 3}
     loop: 0
     fps: 16
-  stopDistance: 1
+  skillCooldown: 10
   boostRatio: 2
   boostDuration: 8
-  attackedBox: {fileID: 4409679433834577535}
-  specialAttack: 1
   bloodRatio:
   - 0.75
   - 0.45
   - 0.1
-  skillCooldown: 10
 --- !u!61 &8244158712673735814
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -349,7 +352,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.13499987}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -385,8 +388,8 @@ MonoBehaviour:
   LandedThisFrame: 0
   lungeDuration: 8
   lungeSpeed: 14
-  AttackFaceRight: 0
   rageMoveMultiplier: 1.3
+  AttackFaceRight: 0
 --- !u!114 &4220270715921572395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,7 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25ea03d8aaa61a41b5c9155fe6f68df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  beginBlood: 1000
+  beginBlood: 600
   curBlood: 0
   attackedUp: 0
 --- !u!50 &5804191365804309771
@@ -471,6 +474,69 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &721026002003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3160951888307286059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84f52c93662e4554ad3cb1f943419bb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyRewards
+  experienceReward: 120
+  isBoss: 0
+--- !u!114 &381027001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3160951888307286059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f60275e7f7a84198ac9dd54df86fff3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActorStatus
+  frozenPrefab: {fileID: 3100005, guid: 2a29fce56c755ea0a3ae3897a63b2046, type: 3}
+  poisonPrefab: {fileID: 3100005, guid: f1706eac82535e8489d4077cf1477dd8, type: 3}
+  frozenDuration: 2
+  meltFrameInterval: 1
+  frozenDamageMultiplier: 1.5
+--- !u!114 &728102900001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3160951888307286059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bfbf237d2074e2da9f1808626d90fe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActorBoostTrail
+  bodyRenderer: {fileID: 1978585071845675765}
+  trailMaterial: {fileID: 2100000, guid: 57e97ad083884ca6b7c0874eab10368f, type: 2}
+  trailColor: {r: 0, g: 0, b: 0, a: 0.16}
+  afterimageDuration: 0.2
+  minimumMoveSpeed: 0.03
+  prewarmCount: 16
+  sortingOffset: -1
+--- !u!114 &7590021559241460645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3160951888307286059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 5d557d49b4542bf4e9d6d7c1a8c131e8, type: 2}
 --- !u!1 &4341026058392549906
 GameObject:
   m_ObjectHideFlags: 0
@@ -771,7 +837,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a3102d7fa29c949bf6c3889653d8e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackBox
-  Attack: 1
+  Attack: 10
   knockback: 1
   launch: 0
   effects: []
@@ -866,7 +932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a3102d7fa29c949bf6c3889653d8e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackBox
-  Attack: 3
+  Attack: 15
   knockback: 1
   launch: 0
   effects: []
@@ -1052,7 +1118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a3102d7fa29c949bf6c3889653d8e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackBox
-  Attack: 2
+  Attack: 12
   knockback: 1
   launch: 0
   effects: []
@@ -1172,52 +1238,3 @@ Transform:
   - {fileID: 2447309528226129910}
   m_Father: {fileID: 4626295359888217067}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &721026002003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3160951888307286059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84f52c93662e4554ad3cb1f943419bb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyRewards
-  experienceReward: 1
---- !u!114 &381027001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3160951888307286059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f60275e7f7a84198ac9dd54df86fff3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ActorStatus
-  frozenPrefab: {fileID: 3100005, guid: 2a29fce56c755ea0a3ae3897a63b2046, type: 3}
-  poisonPrefab: {fileID: 3100005, guid: f1706eac82535e8489d4077cf1477dd8, type: 3}
-  frozenDuration: 2
-  meltFrameInterval: 1
-  frozenDamageMultiplier: 1.5
---- !u!114 &728102900001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3160951888307286059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bfbf237d2074e2da9f1808626d90fe3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ActorBoostTrail
-  bodyRenderer: {fileID: 1978585071845675765}
-  trailMaterial: {fileID: 2100000, guid: 57e97ad083884ca6b7c0874eab10368f, type: 2}
-  trailColor: {r: 0, g: 0, b: 0, a: 0.16}
-  afterimageDuration: 0.2
-  minimumMoveSpeed: 0.03
-  prewarmCount: 16
-  sortingOffset: -1

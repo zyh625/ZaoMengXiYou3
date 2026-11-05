@@ -1,0 +1,906 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ea7302a88f56248a1b33284c7df3cd, type: 3}
+  m_Name: RedFurnaceLord
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceProfile
+  displayName: RedFurnaceLord
+  description: "\u4FEE\u6539\u540E\u91CD\u65B0\u8FDB\u5165\u573A\u666F/\u8BAD\u7EC3\u76EE\u6807\u751F\u6548\uFF1B\u4E0D\u5199\u5165\u5B58\u6863\uFF0C\u4E0D\u4FEE\u6539\u4E34\u65F6\u72B6\u6001\u3002"
+  components:
+  - objectPath: 
+    componentType: ActorStatus
+    componentIndex: 0
+    parameters:
+    - path: frozenDuration
+      label: "frozenDuration \xB7 frozenDuration"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: meltFrameInterval
+      label: "meltFrameInterval \xB7 meltFrameInterval"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: frozenDamageMultiplier
+      label: "frozenDamageMultiplier \xB7 frozenDamageMultiplier"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: Health
+    componentIndex: 0
+    parameters:
+    - path: beginBlood
+      label: "\u57FA\u7840\u751F\u547D\u4E0A\u9650 \xB7 beginBlood"
+      value: 1310
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: EnemyRewards
+    componentIndex: 0
+    parameters:
+    - path: experienceReward
+      label: "\u51FB\u6740\u7ECF\u9A8C \xB7 experienceReward"
+      value: 260
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: RedFurnaceLordMovement
+    componentIndex: 0
+    parameters:
+    - path: moveSpeed
+      label: "\u79FB\u52A8\u901F\u5EA6 \xB7 moveSpeed"
+      value: 0.8999999761581421
+      integer: 0
+      boolean: 0
+    - path: backSpeed
+      label: "\u53D7\u51FB\u540E\u9000\u901F\u5EA6 \xB7 backSpeed"
+      value: 3.5
+      integer: 0
+      boolean: 0
+    - path: upSpeed
+      label: "\u8DF3\u8DC3\u901F\u5EA6 \xB7 upSpeed"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: slowSpeed
+      label: "slowSpeed \xB7 slowSpeed"
+      value: 0.44999998807907104
+      integer: 0
+      boolean: 0
+    - path: boostRatio
+      label: "boostRatio \xB7 boostRatio"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: minNormalY
+      label: "minNormalY \xB7 minNormalY"
+      value: 0.6000000238418579
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: RedFurnaceLordCombat
+    componentIndex: 0
+    parameters:
+    - path: 'attackDelay.Array.data[0]'
+      label: "\u653B\u51FB\u51B7\u5374/\u95F4\u9694 \xB7 attackDelay.Array.data[0]"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: 'attackDelay.Array.data[1]'
+      label: "\u653B\u51FB\u51B7\u5374/\u95F4\u9694 \xB7 attackDelay.Array.data[1]"
+      value: 9
+      integer: 0
+      boolean: 0
+    - path: 'attackDelay.Array.data[2]'
+      label: "\u653B\u51FB\u51B7\u5374/\u95F4\u9694 \xB7 attackDelay.Array.data[2]"
+      value: 8
+      integer: 0
+      boolean: 0
+    - path: 'AttackOpenIdx.Array.data[0]'
+      label: "\u5F00\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackOpenIdx.Array.data[0]"
+      value: 7
+      integer: 1
+      boolean: 0
+    - path: 'AttackOpenIdx.Array.data[1]'
+      label: "\u5F00\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackOpenIdx.Array.data[1]"
+      value: 5
+      integer: 1
+      boolean: 0
+    - path: 'AttackOpenIdx.Array.data[2]'
+      label: "\u5F00\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackOpenIdx.Array.data[2]"
+      value: 6
+      integer: 1
+      boolean: 0
+    - path: 'AttackShutIdx.Array.data[0]'
+      label: "\u5173\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackShutIdx.Array.data[0]"
+      value: 11
+      integer: 1
+      boolean: 0
+    - path: 'AttackShutIdx.Array.data[1]'
+      label: "\u5173\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackShutIdx.Array.data[1]"
+      value: 12
+      integer: 1
+      boolean: 0
+    - path: 'AttackShutIdx.Array.data[2]'
+      label: "\u5173\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackShutIdx.Array.data[2]"
+      value: 11
+      integer: 1
+      boolean: 0
+    - path: angryFull
+      label: "angryFull \xB7 angryFull"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: angryRatio
+      label: "angryRatio \xB7 angryRatio"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: deltaAngry
+      label: "deltaAngry \xB7 deltaAngry"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: angryDuration
+      label: "angryDuration \xB7 angryDuration"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: delayRatio
+      label: "delayRatio \xB7 delayRatio"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: baseHealth
+      label: "baseHealth \xB7 baseHealth"
+      value: 1310
+      integer: 0
+      boolean: 0
+    - path: experienceReward
+      label: "\u51FB\u6740\u7ECF\u9A8C \xB7 experienceReward"
+      value: 260
+      integer: 0
+      boolean: 0
+    - path: moveSpeed
+      label: "\u79FB\u52A8\u901F\u5EA6 \xB7 moveSpeed"
+      value: 0.8999999761581421
+      integer: 0
+      boolean: 0
+    - path: attackInterval
+      label: "\u666E\u901A\u62DB\u5F0F\u95F4\u9694 \xB7 attackInterval"
+      value: 2.200000047683716
+      integer: 0
+      boolean: 0
+    - path: smashPreferredMin
+      label: "smashPreferredMin \xB7 smashPreferredMin"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: smashRange
+      label: "smashRange \xB7 smashRange"
+      value: 4
+      integer: 0
+      boolean: 0
+    - path: rangedRange
+      label: "rangedRange \xB7 rangedRange"
+      value: 7
+      integer: 0
+      boolean: 0
+    - path: pestleDamage
+      label: "pestleDamage \xB7 pestleDamage"
+      value: 34
+      integer: 0
+      boolean: 0
+    - path: pestleRadius
+      label: "pestleRadius \xB7 pestleRadius"
+      value: 2.5999999046325684
+      integer: 0
+      boolean: 0
+    - path: pestleCooldown
+      label: "pestleCooldown \xB7 pestleCooldown"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: pestleOpenFrame
+      label: "pestleOpenFrame \xB7 pestleOpenFrame"
+      value: 8
+      integer: 1
+      boolean: 0
+    - path: pestleCloseFrame
+      label: "pestleCloseFrame \xB7 pestleCloseFrame"
+      value: 11
+      integer: 1
+      boolean: 0
+    - path: breathDamage
+      label: "breathDamage \xB7 breathDamage"
+      value: 8
+      integer: 0
+      boolean: 0
+    - path: breathTick
+      label: "breathTick \xB7 breathTick"
+      value: 0.5
+      integer: 0
+      boolean: 0
+    - path: breathDuration
+      label: "breathDuration \xB7 breathDuration"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: breathRange
+      label: "breathRange \xB7 breathRange"
+      value: 5
+      integer: 0
+      boolean: 0
+    - path: breathHalfAngle
+      label: "breathHalfAngle \xB7 breathHalfAngle"
+      value: 35
+      integer: 0
+      boolean: 0
+    - path: breathCooldown
+      label: "breathCooldown \xB7 breathCooldown"
+      value: 9
+      integer: 0
+      boolean: 0
+    - path: breathOpenFrame
+      label: "breathOpenFrame \xB7 breathOpenFrame"
+      value: 6
+      integer: 1
+      boolean: 0
+    - path: breathCloseFrame
+      label: "breathCloseFrame \xB7 breathCloseFrame"
+      value: 12
+      integer: 1
+      boolean: 0
+    - path: chainDamage
+      label: "chainDamage \xB7 chainDamage"
+      value: 24
+      integer: 0
+      boolean: 0
+    - path: chainRange
+      label: "chainRange \xB7 chainRange"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: chainPull
+      label: "chainPull \xB7 chainPull"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: chainFrontOffset
+      label: "chainFrontOffset \xB7 chainFrontOffset"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: chainCooldown
+      label: "chainCooldown \xB7 chainCooldown"
+      value: 8
+      integer: 0
+      boolean: 0
+    - path: chainOpenFrame
+      label: "chainOpenFrame \xB7 chainOpenFrame"
+      value: 7
+      integer: 1
+      boolean: 0
+    - path: chainCloseFrame
+      label: "chainCloseFrame \xB7 chainCloseFrame"
+      value: 11
+      integer: 1
+      boolean: 0
+    - path: firstCoreThreshold
+      label: "firstCoreThreshold \xB7 firstCoreThreshold"
+      value: 0.699999988079071
+      integer: 0
+      boolean: 0
+    - path: secondCoreThreshold
+      label: "secondCoreThreshold \xB7 secondCoreThreshold"
+      value: 0.4000000059604645
+      integer: 0
+      boolean: 0
+    - path: coreDuration
+      label: "coreDuration \xB7 coreDuration"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: coreDamageMultiplier
+      label: "coreDamageMultiplier \xB7 coreDamageMultiplier"
+      value: 1.5
+      integer: 0
+      boolean: 0
+    - path: coreActiveFrame
+      label: "coreActiveFrame \xB7 coreActiveFrame"
+      value: 8
+      integer: 1
+      boolean: 0
+    - path: auraDamage
+      label: "auraDamage \xB7 auraDamage"
+      value: 8
+      integer: 0
+      boolean: 0
+    - path: auraTick
+      label: "auraTick \xB7 auraTick"
+      value: 0.5
+      integer: 0
+      boolean: 0
+    - path: auraRadius
+      label: "auraRadius \xB7 auraRadius"
+      value: 3
+      integer: 0
+      boolean: 0
+    - path: burstDamage
+      label: "burstDamage \xB7 burstDamage"
+      value: 35
+      integer: 0
+      boolean: 0
+    - path: burstRadius
+      label: "burstRadius \xB7 burstRadius"
+      value: 4
+      integer: 0
+      boolean: 0
+    - path: muzzleOffset.x
+      label: "muzzleOffset \xB7 muzzleOffset.x"
+      value: 0.800000011920929
+      integer: 0
+      boolean: 0
+    - path: muzzleOffset.y
+      label: "muzzleOffset \xB7 muzzleOffset.y"
+      value: 1.5
+      integer: 0
+      boolean: 0
+    - path: attackHeight
+      label: "attackHeight \xB7 attackHeight"
+      value: 2.5999999046325684
+      integer: 0
+      boolean: 0
+    - path: impactHeight
+      label: "impactHeight \xB7 impactHeight"
+      value: 1.399999976158142
+      integer: 0
+      boolean: 0
+    - path: effectDuration
+      label: "effectDuration \xB7 effectDuration"
+      value: 1
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: RedFurnaceLordController
+    componentIndex: 0
+    parameters:
+    - path: Idle.loop
+      label: "Idle \xB7 Idle.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Idle.fps
+      label: "Idle \xB7 Idle.fps"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: Walk.loop
+      label: "Walk \xB7 Walk.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Walk.fps
+      label: "Walk \xB7 Walk.fps"
+      value: 14
+      integer: 0
+      boolean: 0
+    - path: Die.loop
+      label: "Die \xB7 Die.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: Die.fps
+      label: "Die \xB7 Die.fps"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: stopDistance
+      label: "\u505C\u6B62\u9760\u8FD1\u8DDD\u79BB \xB7 stopDistance"
+      value: 1.2000000476837158
+      integer: 0
+      boolean: 0
+    - path: specialAttack
+      label: "specialAttack \xB7 specialAttack"
+      value: -1
+      integer: 1
+      boolean: 0
+    - path: stunnedFrame
+      label: "stunnedFrame \xB7 stunnedFrame"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: PestleSmash.loop
+      label: "PestleSmash \xB7 PestleSmash.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: PestleSmash.fps
+      label: "PestleSmash \xB7 PestleSmash.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: FurnaceBreath.loop
+      label: "FurnaceBreath \xB7 FurnaceBreath.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: FurnaceBreath.fps
+      label: "FurnaceBreath \xB7 FurnaceBreath.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: ChainSweep.loop
+      label: "ChainSweep \xB7 ChainSweep.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: ChainSweep.fps
+      label: "ChainSweep \xB7 ChainSweep.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: FurnaceOpen.loop
+      label: "FurnaceOpen \xB7 FurnaceOpen.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: FurnaceOpen.fps
+      label: "FurnaceOpen \xB7 FurnaceOpen.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: Hit.loop
+      label: "Hit \xB7 Hit.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: Hit.fps
+      label: "Hit \xB7 Hit.fps"
+      value: 18
+      integer: 0
+      boolean: 0
+    - path: Death.loop
+      label: "Death \xB7 Death.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: Death.fps
+      label: "Death \xB7 Death.fps"
+      value: 12
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/PestleSmash
+    componentType: RedFurnaceLordAttackBox
+    componentIndex: 0
+    parameters:
+    - path: Attack
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack"
+      value: 34
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: launch
+      label: "launch \xB7 launch"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: skill
+      label: "skill \xB7 skill"
+      value: 0
+      integer: 1
+      boolean: 0
+  - objectPath: Combat/FurnaceBreath
+    componentType: RedFurnaceLordAttackBox
+    componentIndex: 0
+    parameters:
+    - path: Attack
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack"
+      value: 8
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: launch
+      label: "launch \xB7 launch"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: skill
+      label: "skill \xB7 skill"
+      value: 1
+      integer: 1
+      boolean: 0
+  - objectPath: Combat/ChainSweep
+    componentType: RedFurnaceLordAttackBox
+    componentIndex: 0
+    parameters:
+    - path: Attack
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack"
+      value: 24
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: launch
+      label: "launch \xB7 launch"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: skill
+      label: "skill \xB7 skill"
+      value: 2
+      integer: 1
+      boolean: 0
+  - objectPath: PestleImpactPool
+    componentType: RedFurnaceLordEffectPool
+    componentIndex: 0
+    parameters:
+    - path: prewarm
+      label: "prewarm \xB7 prewarm"
+      value: 1
+      integer: 1
+      boolean: 0
+  - objectPath: FurnaceBreathPool
+    componentType: RedFurnaceLordEffectPool
+    componentIndex: 0
+    parameters:
+    - path: prewarm
+      label: "prewarm \xB7 prewarm"
+      value: 1
+      integer: 1
+      boolean: 0
+  - objectPath: ChainSweepArcPool
+    componentType: RedFurnaceLordEffectPool
+    componentIndex: 0
+    parameters:
+    - path: prewarm
+      label: "prewarm \xB7 prewarm"
+      value: 1
+      integer: 1
+      boolean: 0
+  - objectPath: CoreBurstPool
+    componentType: RedFurnaceLordEffectPool
+    componentIndex: 0
+    parameters:
+    - path: prewarm
+      label: "prewarm \xB7 prewarm"
+      value: 1
+      integer: 1
+      boolean: 0
+  - objectPath: 
+    componentType: UnityEngine.Rigidbody2D
+    componentIndex: 0
+    parameters:
+    - path: m_Mass
+      label: "\u8D28\u91CF \xB7 m_Mass"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: m_GravityScale
+      label: "\u91CD\u529B\u500D\u7387 \xB7 m_GravityScale"
+      value: 0.8999999761581421
+      integer: 0
+      boolean: 0
+    - path: m_LinearDamping
+      label: "\u6C34\u5E73\u963B\u5C3C \xB7 m_LinearDamping"
+      value: 0
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.5
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 2.6500000953674316
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1.3050000667572021
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/Attacked
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.649999976158142
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 2.799999952316284
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1.399999976158142
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/PestleSmash
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 5.199999809265137
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 1.399999976158142
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 0.699999988079071
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/PestleSmashCheck
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 8
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 4
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/FurnaceBreath
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 5
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 5.199999809265137
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 3.299999952316284
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/FurnaceBreathCheck
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 14
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 4
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/ChainSweep
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 2.5999999046325684
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 3
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1.2999999523162842
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/ChainSweepCheck
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 14
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 4
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  numbers:
+  - key: RedFurnaceLordCombat.ConfigureBoxes.1
+    label: ConfigureBoxes / skillBoxes[0].size = new Vector2(pestleRadius * 2f, impactHeight);
+    source: Assets/Projects/Scripts/Boss/RedFurnaceLord/RedFurnaceLordCombat.cs:109
+    value: 2
+  - key: RedFurnaceLordCombat.ConfigureBoxes.2
+    label: ConfigureBoxes / skillBoxes[0].offset = new Vector2(0f, impactHeight *
+      .5f);
+    source: Assets/Projects/Scripts/Boss/RedFurnaceLord/RedFurnaceLordCombat.cs:110
+    value: 0.5
+  - key: RedFurnaceLordCombat.ConfigureBoxes.3
+    label: ConfigureBoxes / skillBoxes[1].size = new Vector2(breathRange, attackHeight
+      * 2f);
+    source: Assets/Projects/Scripts/Boss/RedFurnaceLord/RedFurnaceLordCombat.cs:111
+    value: 2
+  - key: RedFurnaceLordCombat.ConfigureBoxes.4
+    label: ConfigureBoxes / skillBoxes[1].offset = new Vector2(sign * (Mathf.Abs(muzzleOffset.x)
+      + breathRange * .5f), muzzleOffset.y);
+    source: Assets/Projects/Scripts/Boss/RedFurnaceLord/RedFurnaceLordCombat.cs:112
+    value: 0.5
+  - key: RedFurnaceLordCombat.ConfigureBoxes.5
+    label: ConfigureBoxes / skillBoxes[2].offset = new Vector2(sign * chainRange
+      * .5f, attackHeight * .5f);
+    source: Assets/Projects/Scripts/Boss/RedFurnaceLord/RedFurnaceLordCombat.cs:114
+    value: 0.5
+  - key: RedFurnaceLordCombat.ConfigureBoxes.6
+    label: ConfigureBoxes / skillBoxes[2].offset = new Vector2(sign * chainRange
+      * .5f, attackHeight * .5f);
+    source: Assets/Projects/Scripts/Boss/RedFurnaceLord/RedFurnaceLordCombat.cs:114
+    value: 0.5
+  - key: RedFurnaceLordCombat.SampleFrame.1
+    label: SampleFrame / if (CurrentSkill == 0) pestleImpact.Play(transform.position,
+      pestleRadius * 2f, AttackFaceRight, effectDuration);
+    source: Assets/Projects/Scripts/Boss/RedFurnaceLord/RedFurnaceLordCombat.cs:126
+    value: 2
+  - key: RedFurnaceLordCombat.SampleFrame.2
+    label: 'SampleFrame / else if (CurrentSkill == 1) furnaceBreath.Play(Muzzle +
+      Vector2.right * (AttackFaceRight ? 1 : -1) * breathRange * '
+    source: Assets/Projects/Scripts/Boss/RedFurnaceLord/RedFurnaceLordCombat.cs:127
+    value: 0.5
+  - key: RedFurnaceLordCombat.SampleFrame.3
+    label: 'SampleFrame / else chainSweepArc.Play((Vector2)transform.position + new
+      Vector2((AttackFaceRight ? 1 : -1) * chainRange * .5f, at'
+    source: Assets/Projects/Scripts/Boss/RedFurnaceLord/RedFurnaceLordCombat.cs:128
+    value: 0.5
+  - key: RedFurnaceLordCombat.SampleFrame.4
+    label: 'SampleFrame / else chainSweepArc.Play((Vector2)transform.position + new
+      Vector2((AttackFaceRight ? 1 : -1) * chainRange * .5f, at'
+    source: Assets/Projects/Scripts/Boss/RedFurnaceLord/RedFurnaceLordCombat.cs:128
+    value: 0.5
+  - key: RedFurnaceLordCombat.Pull.1
+    label: Pull / if (hits[i].normal.x * Mathf.Sign(dx) < -.1f)
+    source: Assets/Projects/Scripts/Boss/RedFurnaceLord/RedFurnaceLordCombat.cs:164
+    value: 0.1
+  - key: RedFurnaceLordCombat.Pull.2
+    label: Pull / dx = Mathf.Sign(dx) * Mathf.Min(Mathf.Abs(dx), Mathf.Max(0f, hits[i].distance
+      - .02f));
+    source: Assets/Projects/Scripts/Boss/RedFurnaceLord/RedFurnaceLordCombat.cs:165
+    value: 0.02
+  - key: RedFurnaceLordCombat.EndCore.1
+    label: EndCore / coreBurst.Play((Vector2)transform.position + Vector2.up, burstRadius
+      * 2f, AttackFaceRight, effectDuration);
+    source: Assets/Projects/Scripts/Boss/RedFurnaceLord/RedFurnaceLordCombat.cs:201
+    value: 2
+  - key: RedFurnaceLordCombat.Update.1
+    label: Update / if (coreActive) while (auraElapsed + .0001f >= Mathf.Max(.01f,
+      auraTick))
+    source: Assets/Projects/Scripts/Boss/RedFurnaceLord/RedFurnaceLordCombat.cs:214
+    value: 0.0001
+  - key: RedFurnaceLordCombat.Update.2
+    label: Update / if (coreActive) while (auraElapsed + .0001f >= Mathf.Max(.01f,
+      auraTick))
+    source: Assets/Projects/Scripts/Boss/RedFurnaceLord/RedFurnaceLordCombat.cs:214
+    value: 0.01
+  - key: RedFurnaceLordCombat.Update.3
+    label: Update / { auraElapsed -= Mathf.Max(.01f, auraTick); AuraTicks++; DamageRadius(auraRadius,
+      auraDamage, false); }
+    source: Assets/Projects/Scripts/Boss/RedFurnaceLord/RedFurnaceLordCombat.cs:215
+    value: 0.01
+  - key: RedFurnaceLordCombat.Update.4
+    label: Update / while (breathAccumulator + .0001f >= Mathf.Max(.01f, breathTick))
+    source: Assets/Projects/Scripts/Boss/RedFurnaceLord/RedFurnaceLordCombat.cs:226
+    value: 0.0001
+  - key: RedFurnaceLordCombat.Update.5
+    label: Update / while (breathAccumulator + .0001f >= Mathf.Max(.01f, breathTick))
+    source: Assets/Projects/Scripts/Boss/RedFurnaceLord/RedFurnaceLordCombat.cs:226
+    value: 0.01
+  - key: RedFurnaceLordCombat.Update.6
+    label: Update / breathAccumulator -= Mathf.Max(.01f, breathTick); BreathTicks++;
+    source: Assets/Projects/Scripts/Boss/RedFurnaceLord/RedFurnaceLordCombat.cs:228
+    value: 0.01
+  - key: RedFurnaceLordEffect.Play.1
+    label: Play / transform.localScale = Vector3.one * (width / Mathf.Max(.01f, nativeWidth));
+    source: Assets/Projects/Scripts/Boss/RedFurnaceLord/RedFurnaceLordEffect.cs:14
+    value: 0.01
+  - key: RedFurnaceLordUI.Refresh.1
+    label: 'Refresh / ? Mathf.Clamp01(combat.CoreRemaining / Mathf.Max(.01f, combat.CoreDuration))
+      : 0f;'
+    source: Assets/Projects/Scripts/Boss/RedFurnaceLord/RedFurnaceLordUI.cs:21
+    value: 0.01
+  skills: []
+  relatedProfiles:
+  - {fileID: 11400000, guid: f2ddfbbc76a7b5542a682bbdf0ab7c03, type: 2}
+  - {fileID: 11400000, guid: 23e448f66a36fa643b540abfc56e3379, type: 2}
+  - {fileID: 11400000, guid: 0804eafc37990f04382515553dc5966d, type: 2}
+  - {fileID: 11400000, guid: f3c6e42aaa386f149b5e901f534d159d, type: 2}

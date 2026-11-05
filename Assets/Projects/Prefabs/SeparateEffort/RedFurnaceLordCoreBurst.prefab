@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1236557058792767812}
   - component: {fileID: 7943177887126342769}
+  - component: {fileID: 7333848692541819343}
   m_Layer: 0
   m_Name: RedFurnaceLordCoreBurst
   m_TagString: Untagged
@@ -68,6 +69,19 @@ MonoBehaviour:
   spriteManager: {fileID: 7827634090749722719}
   visual: {fileID: 860304857119446369}
   nativeWidth: 1.77
+--- !u!114 &7333848692541819343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671536232046192826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 23e448f66a36fa643b540abfc56e3379, type: 2}
 --- !u!1 &4973922602109061061
 GameObject:
   m_ObjectHideFlags: 0

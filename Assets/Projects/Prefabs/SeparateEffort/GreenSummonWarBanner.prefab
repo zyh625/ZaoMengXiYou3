@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 6477371840991300418}
   - component: {fileID: 4774173289047484397}
   - component: {fileID: 3833600976617344953}
+  - component: {fileID: 4600248403620730267}
   m_Layer: 11
   m_Name: GreenSummonWarBanner
   m_TagString: Untagged
@@ -386,6 +387,19 @@ MonoBehaviour:
   lifetime: 8
   radius: 5
   gripHeight: 0.95
+--- !u!114 &4600248403620730267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3825642007126049816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: b0d3dd2b07ea13a488ac60327756b07a, type: 2}
 --- !u!1 &4001813720471568033
 GameObject:
   m_ObjectHideFlags: 0

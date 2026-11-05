@@ -393,7 +393,7 @@ public class EnemyMovement : MonoBehaviour
     private bool CheckGround()
     {
         float y = body.linearVelocityY;
-        if (Mathf.Abs(y) > 0.1f)
+        if (Mathf.Abs(y) > BalanceRuntime.Number(this, "EnemyMovement.CheckGround.1", 0.1f))
             return false;
         int count = body.GetContacts(groundFilter, contacts);
         for (int i = 0; i < count; i++)
@@ -406,7 +406,7 @@ public class EnemyMovement : MonoBehaviour
     public int AirState()//-1下落，0在地面，1上升
     {
         if (isGround) return 0;
-        return body.linearVelocityY > 0.1f ? 1 : -1;
+        return body.linearVelocityY > BalanceRuntime.Number(this, "EnemyMovement.AirState.1", 0.1f) ? 1 : -1;
     }
     private void OnDisable()
     {
@@ -454,7 +454,7 @@ public class EnemyMovement : MonoBehaviour
             float limit = distance / Time.fixedDeltaTime;
             if (distance > 0f && velocity > limit) velocity = limit;
             else if (distance < 0f && velocity < limit) velocity = limit;
-            else if (Mathf.Abs(distance) < 0.001f && field.Value.Ratio <= 0.001f) velocity = 0f;
+            else if (Mathf.Abs(distance) < BalanceRuntime.Number(this, "EnemyMovement.EndMotionStep.1", 0.001f) && field.Value.Ratio <= BalanceRuntime.Number(this, "EnemyMovement.EndMotionStep.2", 0.001f)) velocity = 0f;
         }
         body.linearVelocity = new Vector2(velocity, body.linearVelocityY);
         appliedFieldVelocity = velocity - original;
@@ -463,7 +463,7 @@ public class EnemyMovement : MonoBehaviour
     private void RemoveAppliedFieldVelocity()//物理碰撞若已改写横速，不再减去旧拉力以免产生反向弹动
     {
         if (body != null && !Mathf.Approximately(appliedFieldVelocity, 0f)
-            && Mathf.Abs(body.linearVelocityX - previousFieldResult) < 0.001f)
+            && Mathf.Abs(body.linearVelocityX - previousFieldResult) < BalanceRuntime.Number(this, "EnemyMovement.RemoveAppliedFieldVelocity.1", 0.001f))
             body.linearVelocity = new Vector2(body.linearVelocityX - appliedFieldVelocity, body.linearVelocityY);
         appliedFieldVelocity = 0f;
     }

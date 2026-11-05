@@ -106,12 +106,12 @@ public sealed class RedFurnaceLordCombat : EnemyCombat
     private void ConfigureBoxes()
     {
         float sign = AttackFaceRight ? 1f : -1f;
-        skillBoxes[0].size = new Vector2(pestleRadius * 2f, impactHeight);
-        skillBoxes[0].offset = new Vector2(0f, impactHeight * .5f);
-        skillBoxes[1].size = new Vector2(breathRange, attackHeight * 2f);
-        skillBoxes[1].offset = new Vector2(sign * (Mathf.Abs(muzzleOffset.x) + breathRange * .5f), muzzleOffset.y);
+        skillBoxes[0].size = new Vector2(pestleRadius * BalanceRuntime.Number(this, "RedFurnaceLordCombat.ConfigureBoxes.1", 2f), impactHeight);
+        skillBoxes[0].offset = new Vector2(0f, impactHeight * BalanceRuntime.Number(this, "RedFurnaceLordCombat.ConfigureBoxes.2", 0.5f));
+        skillBoxes[1].size = new Vector2(breathRange, attackHeight * BalanceRuntime.Number(this, "RedFurnaceLordCombat.ConfigureBoxes.3", 2f));
+        skillBoxes[1].offset = new Vector2(sign * (Mathf.Abs(muzzleOffset.x) + breathRange * BalanceRuntime.Number(this, "RedFurnaceLordCombat.ConfigureBoxes.4", 0.5f)), muzzleOffset.y);
         skillBoxes[2].size = new Vector2(chainRange, attackHeight);
-        skillBoxes[2].offset = new Vector2(sign * chainRange * .5f, attackHeight * .5f);
+        skillBoxes[2].offset = new Vector2(sign * chainRange * BalanceRuntime.Number(this, "RedFurnaceLordCombat.ConfigureBoxes.5", 0.5f), attackHeight * BalanceRuntime.Number(this, "RedFurnaceLordCombat.ConfigureBoxes.6", 0.5f));
     }
     public void SampleFrame(int index)
     {
@@ -123,9 +123,9 @@ public sealed class RedFurnaceLordCombat : EnemyCombat
         if (!released && frame >= open)
         {
             released = true;
-            if (CurrentSkill == 0) pestleImpact.Play(transform.position, pestleRadius * 2f, AttackFaceRight, effectDuration);
-            else if (CurrentSkill == 1) furnaceBreath.Play(Muzzle + Vector2.right * (AttackFaceRight ? 1 : -1) * breathRange * .5f, breathRange, AttackFaceRight, breathDuration);
-            else chainSweepArc.Play((Vector2)transform.position + new Vector2((AttackFaceRight ? 1 : -1) * chainRange * .5f, attackHeight * .5f), chainRange, AttackFaceRight, effectDuration);
+            if (CurrentSkill == 0) pestleImpact.Play(transform.position, pestleRadius * BalanceRuntime.Number(this, "RedFurnaceLordCombat.SampleFrame.1", 2f), AttackFaceRight, effectDuration);
+            else if (CurrentSkill == 1) furnaceBreath.Play(Muzzle + Vector2.right * (AttackFaceRight ? 1 : -1) * breathRange * BalanceRuntime.Number(this, "RedFurnaceLordCombat.SampleFrame.2", 0.5f), breathRange, AttackFaceRight, breathDuration);
+            else chainSweepArc.Play((Vector2)transform.position + new Vector2((AttackFaceRight ? 1 : -1) * chainRange * BalanceRuntime.Number(this, "RedFurnaceLordCombat.SampleFrame.3", 0.5f), attackHeight * BalanceRuntime.Number(this, "RedFurnaceLordCombat.SampleFrame.4", 0.5f)), chainRange, AttackFaceRight, effectDuration);
         }
         bool active = frame >= open && frame <= close && (CurrentSkill != 1 || breathElapsed < breathDuration);
         skillBoxes[CurrentSkill].gameObject.SetActive(active);
@@ -161,8 +161,8 @@ public sealed class RedFurnaceLordCombat : EnemyCombat
         var filter = new ContactFilter2D { useTriggers = false }; filter.SetLayerMask(1 << 6);
         var hits = new RaycastHit2D[8]; int count = shape.Cast(Vector2.right * Mathf.Sign(dx), filter, hits, Mathf.Abs(dx));
         for (int i = 0; i < count; i++)
-            if (hits[i].normal.x * Mathf.Sign(dx) < -.1f)
-                dx = Mathf.Sign(dx) * Mathf.Min(Mathf.Abs(dx), Mathf.Max(0f, hits[i].distance - .02f));
+            if (hits[i].normal.x * Mathf.Sign(dx) < -BalanceRuntime.Number(this, "RedFurnaceLordCombat.Pull.1", 0.1f))
+                dx = Mathf.Sign(dx) * Mathf.Min(Mathf.Abs(dx), Mathf.Max(0f, hits[i].distance - BalanceRuntime.Number(this, "RedFurnaceLordCombat.Pull.2", 0.02f)));
         Vector2 to = from + Vector2.right * dx;
         if (body != null) { body.position = to; body.linearVelocityX = 0f; } else player.transform.position = to;
     }
@@ -198,7 +198,7 @@ public sealed class RedFurnaceLordCombat : EnemyCombat
         if (burst && !burstReleased && !health.Dead)
         {
             burstReleased = true; BurstCount++;
-            coreBurst.Play((Vector2)transform.position + Vector2.up, burstRadius * 2f, AttackFaceRight, effectDuration);
+            coreBurst.Play((Vector2)transform.position + Vector2.up, burstRadius * BalanceRuntime.Number(this, "RedFurnaceLordCombat.EndCore.1", 2f), AttackFaceRight, effectDuration);
             DamageRadius(burstRadius, burstDamage, true);
         }
         CoreChanged?.Invoke();
@@ -211,8 +211,8 @@ public sealed class RedFurnaceLordCombat : EnemyCombat
             if (ControlInterrupted) { EndCore(true); return; }
             float step = Mathf.Min(Time.deltaTime, Mathf.Max(0f, coreDuration - coreElapsed));
             coreElapsed += step; auraElapsed += step;
-            if (coreActive) while (auraElapsed + .0001f >= Mathf.Max(.01f, auraTick))
-            { auraElapsed -= Mathf.Max(.01f, auraTick); AuraTicks++; DamageRadius(auraRadius, auraDamage, false); }
+            if (coreActive) while (auraElapsed + BalanceRuntime.Number(this, "RedFurnaceLordCombat.Update.1", 0.0001f) >= Mathf.Max(BalanceRuntime.Number(this, "RedFurnaceLordCombat.Update.2", 0.01f), auraTick))
+            { auraElapsed -= Mathf.Max(BalanceRuntime.Number(this, "RedFurnaceLordCombat.Update.3", 0.01f), auraTick); AuraTicks++; DamageRadius(auraRadius, auraDamage, false); }
             if (coreElapsed >= coreDuration) EndCore(true); else CoreChanged?.Invoke();
             return;
         }
@@ -223,9 +223,9 @@ public sealed class RedFurnaceLordCombat : EnemyCombat
         if (CurrentSkill != 1 || !released) return;
         float elapsed = Mathf.Min(Time.deltaTime, Mathf.Max(0f, breathDuration - breathElapsed));
         breathElapsed += elapsed; breathAccumulator += elapsed;
-        while (breathAccumulator + .0001f >= Mathf.Max(.01f, breathTick))
+        while (breathAccumulator + BalanceRuntime.Number(this, "RedFurnaceLordCombat.Update.4", 0.0001f) >= Mathf.Max(BalanceRuntime.Number(this, "RedFurnaceLordCombat.Update.5", 0.01f), breathTick))
         {
-            breathAccumulator -= Mathf.Max(.01f, breathTick); BreathTicks++;
+            breathAccumulator -= Mathf.Max(BalanceRuntime.Number(this, "RedFurnaceLordCombat.Update.6", 0.01f), breathTick); BreathTicks++;
             DamageCone();
         }
         if (breathElapsed >= breathDuration) skillBoxes[1].gameObject.SetActive(false);

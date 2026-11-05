@@ -12,11 +12,13 @@ public class MenuButton : MonoBehaviour
     [SerializeField] private GameObject CreatFile;//创建存档界面，输入昵称
     [SerializeField] private GameObject selectUI;//存档界面
     [SerializeField] private GameObject coverUI;//存档界面
+    [SerializeField] private GameObject aboutGame;//关于游戏
     [SerializeField] private Button[] buttons;//新游戏开启第一个，继续游戏开启第二个
     [SerializeField] private Button[] fileButtons;//存档按钮
     private bool[] haveFile = new bool[6];
     private float alpha;
     private int fileIndex = -1;//选中存档
+    private bool enteringGame;
     void Start()
     {
         alpha = fileButtons[0].image.color.a;
@@ -51,7 +53,7 @@ public class MenuButton : MonoBehaviour
     {
         buttons[0].gameObject.SetActive(false);
         buttons[1].gameObject.SetActive(false);
-        selectUI.SetActive(false);
+        selectUI.SetActive(false);aboutGame.SetActive(false);
         Return();
     }
     public void EnsureCover()//确定覆盖存档
@@ -110,35 +112,35 @@ public class MenuButton : MonoBehaviour
         haveFile[fileIndex] = false;//覆盖后按新存档读取输入昵称，不能仍当作已存在的旧档进入
         CreatFile.SetActive(true);
     }
-    public void AboutGame()//关于游戏
-    {
-
-    }
-    public  void ExitGame()//退出游戏
-    {
-        Application.Quit();
-    }
+    public void AboutGame()=>aboutGame.SetActive(true);//关于游戏
+    public void ExitGame()=>Application.Quit();//退出游戏
     public void StartGame()
     {
-        if (!haveFile[fileIndex])
+        if (enteringGame || fileIndex < 0 || fileIndex >= haveFile.Length) return;
+
+        bool creating = !haveFile[fileIndex];
+        string destination = creating ? "FirstScene" : "MapScene";
+        if (!Application.CanStreamedLevelBeLoaded(destination))
         {
-            string n = inputName.text;
-            if (n.Length == 0 || n.Length > 12)
-            {
-                //警告
-                return;
-            }
-            else if (CheckName(n))
-            {
-                //警告
-                return;
-            }
-            GameSession.instance.SelectFile(fileIndex, n);
+            Debug.LogError($"场景 {destination} 未加入构建列表");
+            return;
         }
-        else 
-            GameSession.instance.SelectFile(fileIndex, "");
-        GameSession.instance.priScene = "ManuScene";
-        SceneManager.LoadScene("MapScene");
+
+        string name = creating ? inputName.text : string.Empty;
+        if (creating && (string.IsNullOrWhiteSpace(name) || name.Length > 12 || CheckName(name))) return;
+
+        GameSession session = GameSession.EnsureSession();
+        session.SelectFile(fileIndex, name);
+        if (creating)
+        {
+            session.battle.curLevel = 1;
+            if (!SaveSystem.TrySave()) return;
+            haveFile[fileIndex] = true;
+        }
+
+        enteringGame = true;
+        session.priScene = "MenuScene";
+        SceneManager.LoadScene(destination);
     }
     private void TurnOn(bool b)
     {
@@ -149,7 +151,7 @@ public class MenuButton : MonoBehaviour
     {
         for(int i = 0; i < 6; i++)
         {
-            if (haveFile[i] && SaveSystem.Load(i).name == n) return true;
+            if (haveFile[i] && SaveSystem.Load(i)?.name == n) return true;
         }
         return false;
     }

@@ -12,7 +12,7 @@ public sealed class RedBoomRay : MonoBehaviour
     public bool IsWarning { get; private set; }
     public void Warn(Vector2 from, Vector2 to, SpriteRenderer source)
     {
-        transform.position = (from+to)/2f;
+        transform.position = (from+to)/BalanceRuntime.Number(this, "RedBoomRay.Warn.1", 2f);
         transform.localScale = Vector3.one;
         visual.transform.localScale = new Vector3(Mathf.Abs(to.x-from.x)/nativeWidth,1f,1f);
         visual.flipX = to.x>from.x; //原图射线朝左。
@@ -22,7 +22,7 @@ public sealed class RedBoomRay : MonoBehaviour
             warningLine.sortingLayerID=source.sortingLayerID;warningLine.sortingOrder=source.sortingOrder+1;
         }
         warningLine.SetPosition(0,from);warningLine.SetPosition(1,to);
-        expiresAt=Time.time+3f;
+        expiresAt=Time.time+BalanceRuntime.Number(this, "RedBoomRay.Warn.2", 3f);
         IsWarning=true;
         gameObject.SetActive(true);
         visual.enabled=false;warningLine.enabled=true;

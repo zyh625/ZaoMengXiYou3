@@ -12,6 +12,9 @@ public class Map : MonoBehaviour
     [SerializeField] private float saveKeep = 2f;//"保存游戏"先一直显示
     [SerializeField] private GameObject handBook, skills;
     [SerializeField] private Text rebirthLabel;
+    [SerializeField] private GameObject rebirthTime;
+    [SerializeField] private Image time1, time2_1, time2_2;
+    [SerializeField] private Sprite[] rebirthDigits;
     private bool isSaving = false;
     private float beginSave = 0f;
     private GameSession instance;
@@ -19,27 +22,43 @@ public class Map : MonoBehaviour
     public void EnterRebirth()
     {
         if(instance==null)instance=GameSession.instance;
-        if(instance==null || !Application.CanStreamedLevelBeLoaded("Level1Scene"))return;
-        if(instance.TryBeginRebirthFromMap())SceneManager.LoadScene("Level1Scene");
+        if(instance==null || !Application.CanStreamedLevelBeLoaded("RebirthScene"))return;
+        if(instance.TryBeginRebirthFromMap())SceneManager.LoadScene("RebirthScene");
     }
     private void Start()
     {
         beginAlpha = saveSucess.color.a;
         instance = GameSession.EnsureSession();
-        instance.DataChanged += RefreshRebirth;
-        RefreshRebirth();
-        for(int i = 0; buttons != null && i < Mathf.Min(instance.maxLevel, buttons.Length); i++)
-        {
-            buttons[i].gameObject.SetActive(true);//开启已经通关的关卡和下一关
-        }
+        instance.DataChanged += RefreshProgress;
+        RefreshProgress();
     }
-    private void RefreshRebirth()
+    private void RefreshProgress()
     {
-        if (rebirthLabel != null) rebirthLabel.text = $"第 {(instance != null ? instance.Rebirth : 0)} 轮回";
+        for (int i = 0; buttons != null && i < buttons.Length; i++)
+            if (buttons[i] != null) buttons[i].gameObject.SetActive(i < instance.maxLevel);
+
+        int count = instance.Rebirth;
+        if (rebirthLabel != null)
+        {
+            rebirthLabel.text = $"第 {count} 轮回";
+            rebirthLabel.gameObject.SetActive(rebirthTime == null && count > 0);
+        }
+        if (rebirthTime == null) return;
+
+        SetRebirthDigit(time1, count > 0 && count < 10, count % 10);
+        SetRebirthDigit(time2_1, count >= 10, count / 10);
+        SetRebirthDigit(time2_2, count >= 10, count % 10);
+        rebirthTime.SetActive(count > 0);
+    }
+    private void SetRebirthDigit(Image image, bool visible, int digit)
+    {
+        if (image == null) return;
+        if (visible) image.sprite = rebirthDigits[digit];
+        image.gameObject.SetActive(visible);
     }
     private void OnDestroy()
     {
-        if (instance != null) instance.DataChanged -= RefreshRebirth;
+        if (instance != null) instance.DataChanged -= RefreshProgress;
     }
     private void Update()
     {
@@ -76,8 +95,10 @@ public class Map : MonoBehaviour
     }
     public void EnterLevel(int level)//进入游戏的按键
     {
-        instance.battle.curLevel= level;
+        if (instance == null || level < 1 || level > instance.maxLevel) return;
         string sceneName = "Level" + level.ToString() + "Scene";
+        if (!Application.CanStreamedLevelBeLoaded(sceneName)) return;
+        instance.battle.curLevel = level;
         instance.priScene = "MapScene";
         SceneManager.LoadScene(sceneName);
     }

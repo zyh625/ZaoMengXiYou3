@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 7758857140323345201}
   - component: {fileID: 325268422343030363}
   - component: {fileID: 3329130117739052200}
+  - component: {fileID: 2987539691539503991}
   m_Layer: 8
   m_Name: GreenHammerShockwave
   m_TagString: Untagged
@@ -241,3 +242,16 @@ MonoBehaviour:
   effects: []
   shape: 2
   instantOnly: 1
+--- !u!114 &2987539691539503991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3505769192677103841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 36dd23a55d9e7874fb611fa4bf9ab2c5, type: 2}

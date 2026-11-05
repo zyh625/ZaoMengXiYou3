@@ -9,8 +9,8 @@ public sealed class WestCombat : BossCombat,IEnemyArenaBounds
     [SerializeField] private Transform muzzle;
     [SerializeField] private float attackInterval=2.2f;
     [SerializeField] private float[] cooldowns={4f,6f,10f,9f};
-    private static readonly float[] windups={0.7f,0.6f,1f,0.4f};
-    private static readonly int[] releaseFrames={11,9,12,6};
+[SerializeField]private float[] windups={0.7f,0.6f,1f,0.4f};
+[SerializeField]private int[] releaseFrames={11,9,12,6};
     private readonly float[] readyAt=new float[4];
     private Health health;
     private WestMovement movement;
@@ -49,7 +49,7 @@ public sealed class WestCombat : BossCombat,IEnemyArenaBounds
         {
             if(players!=null && players.isActiveAndEnabled)return players.CurrentPlayer;
             if(fallback!=null && fallback.isActiveAndEnabled && !fallback.GetComponent<Health>().Dead)return fallback;
-            if(Time.time<resolveAt)return null;resolveAt=Time.time+0.5f;
+            if(Time.time<resolveAt)return null;resolveAt=Time.time+BalanceRuntime.Number(this, "WestCombat.Target.1", 0.5f);
             players=FindAnyObjectByType<PlayerManager>();if(players!=null && players.isActiveAndEnabled)return players.CurrentPlayer;
             foreach(PlayerController p in FindObjectsByType<PlayerController>())if(p.isActiveAndEnabled && !p.GetComponent<Health>().Dead){fallback=p;return p;}
             return null;
@@ -68,7 +68,7 @@ public sealed class WestCombat : BossCombat,IEnemyArenaBounds
             float distance=Mathf.Abs(target.transform.position.x-transform.position.x);
             for(int step=0;step<4;step++)
             {
-                int i=(nextSkill+step)%4;float range=i==1?14f:i==3?4.5f:7f;
+                int i=(nextSkill+step)%4;float range=i==1?BalanceRuntime.Number(this, "WestCombat.ReadyAttack.1", 14f):i==3?BalanceRuntime.Number(this, "WestCombat.ReadyAttack.2", 4.5f):BalanceRuntime.Number(this, "WestCombat.ReadyAttack.3", 7f);
                 if(Time.time>=readyAt[i] && distance<=range)return i;
             }
             return -1;
@@ -97,7 +97,7 @@ public sealed class WestCombat : BossCombat,IEnemyArenaBounds
     {
         if(CurrentSkill<0)return;
         if(!CanAct){CancelAttack();return;}
-        if(CurrentSkill==0 && released && frame>=14)claw.gameObject.SetActive(false);
+        if(CurrentSkill==0 && released && frame>=BalanceRuntime.Number(this, "WestCombat.SampleFrame.Parameter1", 14f))claw.gameObject.SetActive(false);
         if(released || frame<ReleaseFrame || Time.time<castAt+Windup)return;
         released=true;Vector2 origin=(Vector2)transform.position+new Vector2((AttackFaceRight?1f:-1f)*Mathf.Abs(muzzle.localPosition.x),muzzle.localPosition.y);
         switch(CurrentSkill)
@@ -106,7 +106,7 @@ public sealed class WestCombat : BossCombat,IEnemyArenaBounds
                 BoxCollider2D box=claw.GetComponent<BoxCollider2D>();Vector2 offset=box.offset;offset.x=Mathf.Abs(offset.x)*(AttackFaceRight?1f:-1f);box.offset=offset;
                 claw.gameObject.SetActive(true);Physics2D.SyncTransforms();claw.Sample();break;
             case 1:pool.Pearl(origin,false);break;
-            case 2:breath=pool.Flame(transform.position,AttackFaceRight);channelUntil=Time.time+2f;break;
+            case 2:breath=pool.Flame(transform.position,AttackFaceRight);channelUntil=Time.time+BalanceRuntime.Number(this, "WestCombat.SampleFrame.1", 2f);break;
             case 3:pool.Pearl(origin,true);break;
         }
     }
@@ -120,22 +120,22 @@ public sealed class WestCombat : BossCombat,IEnemyArenaBounds
     private void OnDamage(DamageInfo damage,float actual)
     {
         if(health.Dead)return;
-        if(health.ratio<=0.7f && (latchedWards&1)==0){latchedWards|=1;pendingWards|=1;}
-        if(health.ratio<=0.3f && (latchedWards&2)==0){latchedWards|=2;pendingWards|=2;}
+        if(health.ratio<=BalanceRuntime.Number(this, "WestCombat.OnDamage.1", 0.7f) && (latchedWards&1)==0){latchedWards|=1;pendingWards|=1;}
+        if(health.ratio<=BalanceRuntime.Number(this, "WestCombat.OnDamage.2", 0.3f) && (latchedWards&2)==0){latchedWards|=2;pendingWards|=2;}
         if(!IsSpecial)BeginWard();
     }
     private void BeginWard()
     {
         if(pendingWards==0 || health.Dead)return;
         pendingWards&=pendingWards==3?2:0;WardStarts++;
-        CancelAttack();movement.Stop();Phase=WardPhase.Guarding;wardRemaining=12f;nextRay=8f;
-        health.SetDamageMultiplier(this,0.3f);health.SetSuperArmor(this,true);
+        CancelAttack();movement.Stop();Phase=WardPhase.Guarding;wardRemaining=BalanceRuntime.Number(this, "WestCombat.BeginWard.1", 12f);nextRay=BalanceRuntime.Number(this, "WestCombat.BeginWard.2", 8f);
+        health.SetDamageMultiplier(this,BalanceRuntime.Number(this, "WestCombat.BeginWard.3", 0.3f));health.SetSuperArmor(this,true);
         if(!arenaSet)
         {
             CameraManager cm=Camera.main!=null?Camera.main.GetComponent<CameraManager>():null;
-            arena=cm!=null?new Vector2(cm.EdgeL-cm.CameraHalf,cm.EdgeR+cm.CameraHalf):new Vector2(transform.position.x-10f,transform.position.x+10f);
+            arena=cm!=null?new Vector2(cm.EdgeL-cm.CameraHalf,cm.EdgeR+cm.CameraHalf):new Vector2(transform.position.x-BalanceRuntime.Number(this, "WestCombat.BeginWard.4", 10f),transform.position.x+BalanceRuntime.Number(this, "WestCombat.BeginWard.5", 10f));
         }
-        RaycastHit2D ground=Physics2D.Raycast((Vector2)transform.position+Vector2.up,Vector2.down,30f,1<<6);
+        RaycastHit2D ground=Physics2D.Raycast((Vector2)transform.position+Vector2.up,Vector2.down,BalanceRuntime.Number(this, "WestCombat.BeginWard.6", 30f),1<<6);
         pool.SpawnOrbs(arena,ground.collider!=null?ground.point.y:transform.position.y);
         WardChanged?.Invoke();
     }
@@ -155,7 +155,7 @@ public sealed class WestCombat : BossCombat,IEnemyArenaBounds
         if(wardRemaining<=0f){Timeout();return;}
         if(wardRemaining<=nextRay)
         {
-            nextRay-=4f;int choice=UnityEngine.Random.Range(0,ActiveOrbs);
+            nextRay-=BalanceRuntime.Number(this, "WestCombat.Update.1", 4f);int choice=UnityEngine.Random.Range(0,ActiveOrbs);
             foreach(WestKingOrb orb in pool.Orbs)if(orb.Alive && choice--==0){orb.Warn();break;}
         }
         WardChanged?.Invoke();
@@ -168,13 +168,13 @@ public sealed class WestCombat : BossCombat,IEnemyArenaBounds
     private void Expose()
     {
         Phase=WardPhase.Exposed;pool.ClearOrbs();health.RemoveDamageMultiplier(this);health.SetSuperArmor(this,false);
-        health.SetDamageMultiplier(this,1.5f);exposedRemaining=3f;movement.Stop();WardChanged?.Invoke();
+        health.SetDamageMultiplier(this,BalanceRuntime.Number(this, "WestCombat.Expose.1", 1.5f));exposedRemaining=BalanceRuntime.Number(this, "WestCombat.Expose.2", 3f);movement.Stop();WardChanged?.Invoke();
     }
     private void Timeout()
     {
         //先退出护珠，防止伤害回调重入后重复惩罚；只命中结算时的当前角色。
         Restore();TimeoutHits++;PlayerController player=Target;
-        if(player!=null && player.CanReceiveHit)player.GetComponent<Health>().TakeDamage(new DamageInfo(transform,35f*DamageMultiplier,true,false,null,false,false,DamageKind.Skill));
+        if(player!=null && player.CanReceiveHit)player.GetComponent<Health>().TakeDamage(new DamageInfo(transform,BalanceRuntime.Number(this, "WestCombat.Timeout.1", 35f)*DamageMultiplier,true,false,null,false,false,DamageKind.Skill));
     }
     private void Restore()
     {

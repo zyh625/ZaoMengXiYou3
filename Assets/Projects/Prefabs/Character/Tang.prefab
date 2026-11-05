@@ -173,7 +173,6 @@ MonoBehaviour:
     width: 9.74
     height: 1.83
   damage: 20
-  localOffset: {x: 0.9, y: -0.25}
 --- !u!1 &3293135356796326911
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,6 +574,7 @@ GameObject:
   - component: {fileID: 7261026002003}
   - component: {fileID: 381027001}
   - component: {fileID: 728102810004}
+  - component: {fileID: 1059088419145881144}
   m_Layer: 11
   m_Name: Tang
   m_TagString: Untagged
@@ -636,7 +636,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.16303879}
+  m_Offset: {x: 0, y: 0.14335698}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1184,6 +1184,19 @@ MonoBehaviour:
   minimumMoveSpeed: 0.03
   prewarmCount: 16
   sortingOffset: -1
+--- !u!114 &1059088419145881144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6696739410814842435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 2a1b86b33ac614549b59c3704329c949, type: 2}
 --- !u!1 &7553675406581453529
 GameObject:
   m_ObjectHideFlags: 0
@@ -1369,4 +1382,3 @@ MonoBehaviour:
     width: 5.89
     height: 1.52
   damage: 10
-  localOffset: {x: 0, y: -0.9046342}

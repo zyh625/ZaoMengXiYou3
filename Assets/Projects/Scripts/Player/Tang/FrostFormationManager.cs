@@ -51,15 +51,15 @@ public class FrostFormationManager : MonoBehaviour
             int first = Mathf.Max(lastBodyFrame + 1, 4);
             int last = Mathf.Min(bodyFrame, 11);
             for (int frame = first; frame <= last && casting; frame++) FreezeFrame(frame - 4);
-            if (bodyFrame >= 4 && bodyFrame <= 11) FreezeFrame(bodyFrame - 4);
-            if (bodyFrame >= 12) Shatter();//即使渲染跳过第13帧，也不能漏掉已经完成的碎裂阶段。
+            if (bodyFrame >= BalanceRuntime.Number(this, "FrostFormationManager.SyncFrame.Parameter1", 4f) && bodyFrame <= 11) FreezeFrame(bodyFrame - 4);
+            if (bodyFrame >= BalanceRuntime.Number(this, "FrostFormationManager.SyncFrame.Parameter2", 12f)) Shatter();//即使渲染跳过第13帧，也不能漏掉已经完成的碎裂阶段。
         }
         if (!casting) return;
-        if (bodyFrame >= 4 && bodyFrame <= 13)
+        if (bodyFrame >= BalanceRuntime.Number(this, "FrostFormationManager.SyncFrame.Parameter3", 4f) && bodyFrame <= 13)
             TangSkillEffectUtility.Show(SM, sr, animation, bodyFrame - 4);
         else TangSkillEffectUtility.Hide(SM, sr);
         lastBodyFrame = bodyFrame;
-        if (bodyFrame >= 14) StopEffect();//本体第15帧起玄冰阵不再显示或命中。
+        if (bodyFrame >= BalanceRuntime.Number(this, "FrostFormationManager.SyncFrame.Parameter4", 14f)) StopEffect();//本体第15帧起玄冰阵不再显示或命中。
     }
 
     private void FreezeFrame(int frame)//前四帧逐步扩大，后四帧沿用第四帧的范围。

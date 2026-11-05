@@ -1,5 +1,56 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1001}
+  - component: {fileID: 1002}
+  - component: {fileID: 1009}
+  - component: {fileID: 1003}
+  - component: {fileID: 1004}
+  - component: {fileID: 1005}
+  - component: {fileID: 1006}
+  - component: {fileID: 1007}
+  - component: {fileID: 1008}
+  - component: {fileID: 3422776565755262185}
+  m_Layer: 11
+  m_Name: WuxiangDijun
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2001}
+  - {fileID: 3001}
+  - {fileID: 4001}
+  - {fileID: 5001}
+  - {fileID: 6001}
+  - {fileID: 6101}
+  - {fileID: 6201}
+  - {fileID: 6301}
+  - {fileID: 6401}
+  - {fileID: 6501}
+  - {fileID: 6601}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1002
 Rigidbody2D:
   serializedVersion: 5
@@ -140,6 +191,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  LandedThisFrame: 0
   hovering: 0
   hoverHeight: 1.6
 --- !u!114 &1007
@@ -156,12 +208,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WuxiangCombat
   AttackBoxes:
   - {fileID: 4002}
-  CheckAttackLogic:
-  - {fileID: 5003}
   attackDelay:
   - 7
+  CheckAttackLogic:
+  - {fileID: 5003}
   AttackOpenIdx: 06000000
   AttackShutIdx: 0b000000
+  AttackRequest: 
+  angryFull: 0
+  angryRatio: 0
+  deltaAngry: 0
+  angryDuration: 0
+  delayRatio: 0
+  curAngry: 0
+  AngryRequest: 0
+  AttackFaceRight: 0
   skillBoxes:
   - {fileID: 4002}
   effectPools:
@@ -192,9 +253,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e9bf5b1d09d5656ac23e534c694283c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WuxiangController
-  stopDistance: 3
-  specialAttack: -1
-  attackedBox: {fileID: 3002}
   Idle:
     sprites:
     - {fileID: -3258812180475146043, guid: 375cef35e49d4f8eb33d56a2e91ae2d3, type: 3}
@@ -275,6 +333,11 @@ MonoBehaviour:
     - {fileID: 7376574260468686806, guid: a7f984e36ce84014b766de1e24726e19, type: 3}
     loop: 0
     fps: 12
+  state: 0
+  stopDistance: 3
+  attackedBox: {fileID: 3002}
+  specialAttack: -1
+  stunnedFrame: 0
   skillAnimations:
   - sprites:
     - {fileID: 5215935159196517822, guid: 5b9f49e2db254161813afeeb78ea0d74, type: 3}
@@ -428,6 +491,52 @@ MonoBehaviour:
     - {fileID: -1450926175895287192, guid: 56326205e45b421c96cb4b7bbd51d5d7, type: 3}
     loop: 0
     fps: 16
+--- !u!114 &3422776565755262185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: f862304a6ee9f7048b898742e593d4cb, type: 2}
+--- !u!1 &2000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001}
+  - component: {fileID: 2002}
+  - component: {fileID: 2003}
+  m_Layer: 0
+  m_Name: Visual
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.023239, z: 0}
+  m_LocalScale: {x: -2.323944, y: 2.323944, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2002
 SpriteRenderer:
   serializedVersion: 2
@@ -500,6 +609,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpriteManager
   sr: {fileID: 2002}
+--- !u!1 &3000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3001}
+  - component: {fileID: 3002}
+  m_Layer: 7
+  m_Name: Attacked
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3000}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &3002
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -544,8 +685,41 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.6500000000000001, y: 3}
+  m_Size: {x: 1.65, y: 3}
   m_EdgeRadius: 0
+--- !u!1 &4000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4001}
+  - component: {fileID: 4002}
+  - component: {fileID: 4003}
+  m_Layer: 8
+  m_Name: Attack1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &4001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4000}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &4002
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -606,7 +780,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LateStageAttackBox
   Attack: 25
   knockback: 1
+  launch: 0
+  effects: []
   index: 0
+--- !u!1 &5000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5001}
+  - component: {fileID: 5002}
+  - component: {fileID: 5003}
+  m_Layer: 10
+  m_Name: Check1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5000}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &5002
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -665,285 +874,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030b40b434b4be1459e1ad323c915891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyCheckAttack
---- !u!114 &6002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c7462bb6fbb5dccbcd9d436cbb30590, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LateStageEffectPool
-  prefab: {fileID: 1002, guid: fbf3351626f353fdbdc8d88e753fa034, type: 3}
-  prewarm: 4
---- !u!114 &6102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c7462bb6fbb5dccbcd9d436cbb30590, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LateStageEffectPool
-  prefab: {fileID: 1002, guid: d72842f26b9754febd2984b073022879, type: 3}
-  prewarm: 4
---- !u!114 &6202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c7462bb6fbb5dccbcd9d436cbb30590, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LateStageEffectPool
-  prefab: {fileID: 1002, guid: a68a23761fba5aeaafa15dea49ea3e5c, type: 3}
-  prewarm: 4
---- !u!114 &6302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c7462bb6fbb5dccbcd9d436cbb30590, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LateStageEffectPool
-  prefab: {fileID: 1002, guid: 0875981e69e254f09bf7b456cf30690c, type: 3}
-  prewarm: 4
---- !u!114 &6402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c7462bb6fbb5dccbcd9d436cbb30590, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LateStageEffectPool
-  prefab: {fileID: 1002, guid: 596f433b9a1d5721b5de1adc8d9384f6, type: 3}
-  prewarm: 4
---- !u!114 &6502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c7462bb6fbb5dccbcd9d436cbb30590, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LateStageEffectPool
-  prefab: {fileID: 1002, guid: 59872d4e17ee50aab9815b79b358c9fc, type: 3}
-  prewarm: 4
---- !u!114 &6602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c7462bb6fbb5dccbcd9d436cbb30590, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LateStageEffectPool
-  prefab: {fileID: 1002, guid: 533f4b8a4c4952a09c05258e8a6064c6, type: 3}
-  prewarm: 4
---- !u!1 &1000
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1001}
-  - component: {fileID: 1002}
-  - component: {fileID: 1009}
-  - component: {fileID: 1003}
-  - component: {fileID: 1004}
-  - component: {fileID: 1005}
-  - component: {fileID: 1006}
-  - component: {fileID: 1007}
-  - component: {fileID: 1008}
-  m_Layer: 11
-  m_Name: WuxiangDijun
-  m_TagString: Enemy
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1001
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2001}
-  - {fileID: 3001}
-  - {fileID: 4001}
-  - {fileID: 5001}
-  - {fileID: 6001}
-  - {fileID: 6101}
-  - {fileID: 6201}
-  - {fileID: 6301}
-  - {fileID: 6401}
-  - {fileID: 6501}
-  - {fileID: 6601}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2000
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2001}
-  - component: {fileID: 2002}
-  - component: {fileID: 2003}
-  m_Layer: 0
-  m_Name: Visual
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2001
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2000}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.023239, z: 0}
-  m_LocalScale: {x: -2.323944, y: 2.323944, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1001}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3000
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3001}
-  - component: {fileID: 3002}
-  m_Layer: 7
-  m_Name: Attacked
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3001
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3000}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1001}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4000
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4001}
-  - component: {fileID: 4002}
-  - component: {fileID: 4003}
-  m_Layer: 8
-  m_Name: Attack1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &4001
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4000}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1001}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &5000
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5001}
-  - component: {fileID: 5002}
-  - component: {fileID: 5003}
-  m_Layer: 10
-  m_Name: Check1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5001
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5000}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1001}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6000
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,6 +906,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1001}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c7462bb6fbb5dccbcd9d436cbb30590, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LateStageEffectPool
+  prefab: {fileID: 1002, guid: fbf3351626f353fdbdc8d88e753fa034, type: 3}
+  prewarm: 4
 --- !u!1 &6100
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,6 +952,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1001}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c7462bb6fbb5dccbcd9d436cbb30590, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LateStageEffectPool
+  prefab: {fileID: 1002, guid: d72842f26b9754febd2984b073022879, type: 3}
+  prewarm: 4
 --- !u!1 &6200
 GameObject:
   m_ObjectHideFlags: 0
@@ -1040,6 +998,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1001}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c7462bb6fbb5dccbcd9d436cbb30590, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LateStageEffectPool
+  prefab: {fileID: 1002, guid: a68a23761fba5aeaafa15dea49ea3e5c, type: 3}
+  prewarm: 4
 --- !u!1 &6300
 GameObject:
   m_ObjectHideFlags: 0
@@ -1072,6 +1044,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1001}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c7462bb6fbb5dccbcd9d436cbb30590, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LateStageEffectPool
+  prefab: {fileID: 1002, guid: 0875981e69e254f09bf7b456cf30690c, type: 3}
+  prewarm: 4
 --- !u!1 &6400
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,6 +1090,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1001}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c7462bb6fbb5dccbcd9d436cbb30590, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LateStageEffectPool
+  prefab: {fileID: 1002, guid: 596f433b9a1d5721b5de1adc8d9384f6, type: 3}
+  prewarm: 4
 --- !u!1 &6500
 GameObject:
   m_ObjectHideFlags: 0
@@ -1136,6 +1136,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1001}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c7462bb6fbb5dccbcd9d436cbb30590, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LateStageEffectPool
+  prefab: {fileID: 1002, guid: 59872d4e17ee50aab9815b79b358c9fc, type: 3}
+  prewarm: 4
 --- !u!1 &6600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1168,3 +1182,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1001}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c7462bb6fbb5dccbcd9d436cbb30590, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LateStageEffectPool
+  prefab: {fileID: 1002, guid: 533f4b8a4c4952a09c05258e8a6064c6, type: 3}
+  prewarm: 4

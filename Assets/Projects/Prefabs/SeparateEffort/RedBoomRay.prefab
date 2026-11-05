@@ -115,6 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5015729552527635079}
   - component: {fileID: 2207835011779779045}
+  - component: {fileID: 7690035336566064988}
   m_Layer: 0
   m_Name: RedBoomRay
   m_TagString: Untagged
@@ -167,6 +168,19 @@ MonoBehaviour:
   visual: {fileID: 529685582414860413}
   warningLine: {fileID: 8427263196567840110}
   nativeWidth: 1.4
+--- !u!114 &7690035336566064988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5947829371643759396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: a68ddd642b2fd1f469092b0ad802133e, type: 2}
 --- !u!1 &8147266590230985131
 GameObject:
   m_ObjectHideFlags: 0

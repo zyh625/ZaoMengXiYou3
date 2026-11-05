@@ -42,7 +42,7 @@ public sealed class PressureKettleCombat : EnemyCombat
             if (party != null && party.isActiveAndEnabled && Alive(party.CurrentPlayer)) return party.CurrentPlayer;
             if (Alive(fallback)) return fallback;
             if (Time.time < resolveAt) return null;
-            resolveAt = Time.time + 0.5f;
+            resolveAt = Time.time + BalanceRuntime.Number(this, "PressureKettleCombat.Target.1", 0.5f);
             party = FindAnyObjectByType<PlayerManager>();
             if (party != null && Alive(party.CurrentPlayer)) return party.CurrentPlayer;
             foreach (PlayerController player in FindObjectsByType<PlayerController>())
@@ -52,7 +52,7 @@ public sealed class PressureKettleCombat : EnemyCombat
     }
     private static bool Alive(PlayerController player) => player != null && player.isActiveAndEnabled
         && player.TryGetComponent(out Health hp) && !hp.Dead;
-    public bool InRange => Target != null && Mathf.Abs(Target.transform.position.x - transform.position.x) is >= 3.5f and <= 7f;
+    public bool InRange => Target != null && (Mathf.Abs(Target.transform.position.x - transform.position.x) >= BalanceRuntime.Number(this, "PressureKettleCombat.InRange.Range1.Minimum", 3.5f) && Mathf.Abs(Target.transform.position.x - transform.position.x) <= BalanceRuntime.Number(this, "PressureKettleCombat.InRange.Range1.Maximum", 7f));
     public int ReadySkill
     {
         get
@@ -64,7 +64,7 @@ public sealed class PressureKettleCombat : EnemyCombat
             if (!InRange) return -1;
             // The spout is ahead of the body: never waste a short cone on a distant target.
             float distance = Mathf.Abs(Target.transform.position.x - transform.position.x);
-            if (Time.time >= readyAt[0] && distance <= 3.5f + Mathf.Abs(muzzle.localPosition.x)) return 0;
+            if (Time.time >= readyAt[0] && distance <= BalanceRuntime.Number(this, "PressureKettleCombat.ReadySkill.1", 3.5f) + Mathf.Abs(muzzle.localPosition.x)) return 0;
             return Time.time >= readyAt[1] ? 1 : -1;
         }
     }

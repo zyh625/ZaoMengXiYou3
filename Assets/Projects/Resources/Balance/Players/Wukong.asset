@@ -1,0 +1,1247 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ea7302a88f56248a1b33284c7df3cd, type: 3}
+  m_Name: Wukong
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceProfile
+  displayName: "\u5B59\u609F\u7A7A / Wukong"
+  description: "\u4FEE\u6539\u540E\u91CD\u65B0\u8FDB\u5165\u573A\u666F/\u8BAD\u7EC3\u76EE\u6807\u751F\u6548\uFF1B\u4E0D\u5199\u5165\u5B58\u6863\uFF0C\u4E0D\u4FEE\u6539\u4E34\u65F6\u72B6\u6001\u3002"
+  components:
+  - objectPath: 
+    componentType: WukongController
+    componentIndex: 0
+    parameters:
+    - path: Idle.loop
+      label: "Idle \xB7 Idle.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Idle.fps
+      label: "Idle \xB7 Idle.fps"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: Walk.loop
+      label: "Walk \xB7 Walk.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Walk.fps
+      label: "Walk \xB7 Walk.fps"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: Run.loop
+      label: "Run \xB7 Run.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Run.fps
+      label: "Run \xB7 Run.fps"
+      value: 24
+      integer: 0
+      boolean: 0
+    - path: JumpOne.loop
+      label: "JumpOne \xB7 JumpOne.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: JumpOne.fps
+      label: "JumpOne \xB7 JumpOne.fps"
+      value: 25
+      integer: 0
+      boolean: 0
+    - path: JumpTwo.loop
+      label: "JumpTwo \xB7 JumpTwo.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: JumpTwo.fps
+      label: "JumpTwo \xB7 JumpTwo.fps"
+      value: 35
+      integer: 0
+      boolean: 0
+    - path: Die.loop
+      label: "Die \xB7 Die.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: Die.fps
+      label: "Die \xB7 Die.fps"
+      value: 15
+      integer: 0
+      boolean: 0
+    - path: Drop.loop
+      label: "Drop \xB7 Drop.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Drop.fps
+      label: "Drop \xB7 Drop.fps"
+      value: 5
+      integer: 0
+      boolean: 0
+    - path: Rise.loop
+      label: "Rise \xB7 Rise.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Rise.fps
+      label: "Rise \xB7 Rise.fps"
+      value: 5
+      integer: 0
+      boolean: 0
+    - path: Land.loop
+      label: "Land \xB7 Land.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: Land.fps
+      label: "Land \xB7 Land.fps"
+      value: 20
+      integer: 0
+      boolean: 0
+    - path: RiseAttack.loop
+      label: "RiseAttack \xB7 RiseAttack.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: RiseAttack.fps
+      label: "RiseAttack \xB7 RiseAttack.fps"
+      value: 20
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: WukongMovement
+    componentIndex: 0
+    parameters:
+    - path: walkSpeed
+      label: "\u8D70\u8DEF\u901F\u5EA6 \xB7 walkSpeed"
+      value: 4.800000190734863
+      integer: 0
+      boolean: 0
+    - path: runSpeed
+      label: "\u8DD1\u6B65\u901F\u5EA6 \xB7 runSpeed"
+      value: 7.699999809265137
+      integer: 0
+      boolean: 0
+    - path: backSpeed
+      label: "\u53D7\u51FB\u540E\u9000\u901F\u5EA6 \xB7 backSpeed"
+      value: 5
+      integer: 0
+      boolean: 0
+    - path: flySlow
+      label: "flySlow \xB7 flySlow"
+      value: 0.5699999928474426
+      integer: 0
+      boolean: 0
+    - path: quickDown
+      label: "quickDown \xB7 quickDown"
+      value: 3.5
+      integer: 0
+      boolean: 0
+    - path: upSpeed
+      label: "\u8DF3\u8DC3\u901F\u5EA6 \xB7 upSpeed"
+      value: 6.800000190734863
+      integer: 0
+      boolean: 0
+    - path: maxJumpTime
+      label: "maxJumpTime \xB7 maxJumpTime"
+      value: 2
+      integer: 1
+      boolean: 0
+    - path: doubleMoveGap
+      label: "doubleMoveGap \xB7 doubleMoveGap"
+      value: 0.20000000298023224
+      integer: 0
+      boolean: 0
+    - path: minNormalY
+      label: "minNormalY \xB7 minNormalY"
+      value: 0.6000000238418579
+      integer: 0
+      boolean: 0
+    - path: backStartIdx
+      label: "backStartIdx \xB7 backStartIdx"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: backEndIdx
+      label: "backEndIdx \xB7 backEndIdx"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: attackedUpSpeed
+      label: "attackedUpSpeed \xB7 attackedUpSpeed"
+      value: 5
+      integer: 0
+      boolean: 0
+    - path: flameFlashSpeed
+      label: "flameFlashSpeed \xB7 flameFlashSpeed"
+      value: 12.800000190734863
+      integer: 0
+      boolean: 0
+    - path: airSlashHorizon
+      label: "airSlashHorizon \xB7 airSlashHorizon"
+      value: 11
+      integer: 0
+      boolean: 0
+    - path: airSlashUp
+      label: "airSlashUp \xB7 airSlashUp"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: airSlashDown
+      label: "airSlashDown \xB7 airSlashDown"
+      value: 15
+      integer: 0
+      boolean: 0
+    - path: comboSpeed
+      label: "comboSpeed \xB7 comboSpeed"
+      value: 2
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: WukongCombat
+    componentIndex: 0
+    parameters:
+    - path: allAttacks.Array.data[0].animation.loop
+      label: "allAttacks \xB7 allAttacks.Array.data[0].animation.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[0].animation.fps
+      label: "allAttacks \xB7 allAttacks.Array.data[0].animation.fps"
+      value: 28
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[0].openFrame
+      label: "allAttacks \xB7 allAttacks.Array.data[0].openFrame"
+      value: 5
+      integer: 1
+      boolean: 0
+    - path: allAttacks.Array.data[0].closeFrame
+      label: "allAttacks \xB7 allAttacks.Array.data[0].closeFrame"
+      value: 13
+      integer: 1
+      boolean: 0
+    - path: allAttacks.Array.data[0].advancesThaw
+      label: "allAttacks \xB7 allAttacks.Array.data[0].advancesThaw"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[0].continuous
+      label: "allAttacks \xB7 allAttacks.Array.data[0].continuous"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[0].vigorCost
+      label: "allAttacks \xB7 allAttacks.Array.data[0].vigorCost"
+      value: 20
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[0].vigorPerSecond
+      label: "allAttacks \xB7 allAttacks.Array.data[0].vigorPerSecond"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[1].animation.loop
+      label: "allAttacks \xB7 allAttacks.Array.data[1].animation.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[1].animation.fps
+      label: "allAttacks \xB7 allAttacks.Array.data[1].animation.fps"
+      value: 22
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[1].openFrame
+      label: "allAttacks \xB7 allAttacks.Array.data[1].openFrame"
+      value: 6
+      integer: 1
+      boolean: 0
+    - path: allAttacks.Array.data[1].closeFrame
+      label: "allAttacks \xB7 allAttacks.Array.data[1].closeFrame"
+      value: 9
+      integer: 1
+      boolean: 0
+    - path: allAttacks.Array.data[1].advancesThaw
+      label: "allAttacks \xB7 allAttacks.Array.data[1].advancesThaw"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[1].continuous
+      label: "allAttacks \xB7 allAttacks.Array.data[1].continuous"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[1].vigorCost
+      label: "allAttacks \xB7 allAttacks.Array.data[1].vigorCost"
+      value: 20
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[1].vigorPerSecond
+      label: "allAttacks \xB7 allAttacks.Array.data[1].vigorPerSecond"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[2].animation.loop
+      label: "allAttacks \xB7 allAttacks.Array.data[2].animation.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[2].animation.fps
+      label: "allAttacks \xB7 allAttacks.Array.data[2].animation.fps"
+      value: 22
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[2].openFrame
+      label: "allAttacks \xB7 allAttacks.Array.data[2].openFrame"
+      value: 4
+      integer: 1
+      boolean: 0
+    - path: allAttacks.Array.data[2].closeFrame
+      label: "allAttacks \xB7 allAttacks.Array.data[2].closeFrame"
+      value: 12
+      integer: 1
+      boolean: 0
+    - path: allAttacks.Array.data[2].advancesThaw
+      label: "allAttacks \xB7 allAttacks.Array.data[2].advancesThaw"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[2].continuous
+      label: "allAttacks \xB7 allAttacks.Array.data[2].continuous"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[2].vigorCost
+      label: "allAttacks \xB7 allAttacks.Array.data[2].vigorCost"
+      value: 20
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[2].vigorPerSecond
+      label: "allAttacks \xB7 allAttacks.Array.data[2].vigorPerSecond"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[3].animation.loop
+      label: "allAttacks \xB7 allAttacks.Array.data[3].animation.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[3].animation.fps
+      label: "allAttacks \xB7 allAttacks.Array.data[3].animation.fps"
+      value: 31
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[3].openFrame
+      label: "allAttacks \xB7 allAttacks.Array.data[3].openFrame"
+      value: 4
+      integer: 1
+      boolean: 0
+    - path: allAttacks.Array.data[3].closeFrame
+      label: "allAttacks \xB7 allAttacks.Array.data[3].closeFrame"
+      value: 10
+      integer: 1
+      boolean: 0
+    - path: allAttacks.Array.data[3].advancesThaw
+      label: "allAttacks \xB7 allAttacks.Array.data[3].advancesThaw"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[3].continuous
+      label: "allAttacks \xB7 allAttacks.Array.data[3].continuous"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[3].vigorCost
+      label: "allAttacks \xB7 allAttacks.Array.data[3].vigorCost"
+      value: 20
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[3].vigorPerSecond
+      label: "allAttacks \xB7 allAttacks.Array.data[3].vigorPerSecond"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[4].animation.loop
+      label: "allAttacks \xB7 allAttacks.Array.data[4].animation.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[4].animation.fps
+      label: "allAttacks \xB7 allAttacks.Array.data[4].animation.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[4].openFrame
+      label: "allAttacks \xB7 allAttacks.Array.data[4].openFrame"
+      value: 3
+      integer: 1
+      boolean: 0
+    - path: allAttacks.Array.data[4].closeFrame
+      label: "allAttacks \xB7 allAttacks.Array.data[4].closeFrame"
+      value: 5
+      integer: 1
+      boolean: 0
+    - path: allAttacks.Array.data[4].advancesThaw
+      label: "allAttacks \xB7 allAttacks.Array.data[4].advancesThaw"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[4].continuous
+      label: "allAttacks \xB7 allAttacks.Array.data[4].continuous"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[4].vigorCost
+      label: "allAttacks \xB7 allAttacks.Array.data[4].vigorCost"
+      value: 20
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[4].vigorPerSecond
+      label: "allAttacks \xB7 allAttacks.Array.data[4].vigorPerSecond"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[5].animation.loop
+      label: "allAttacks \xB7 allAttacks.Array.data[5].animation.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[5].animation.fps
+      label: "allAttacks \xB7 allAttacks.Array.data[5].animation.fps"
+      value: 30
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[5].openFrame
+      label: "allAttacks \xB7 allAttacks.Array.data[5].openFrame"
+      value: 4
+      integer: 1
+      boolean: 0
+    - path: allAttacks.Array.data[5].closeFrame
+      label: "allAttacks \xB7 allAttacks.Array.data[5].closeFrame"
+      value: 12
+      integer: 1
+      boolean: 0
+    - path: allAttacks.Array.data[5].advancesThaw
+      label: "allAttacks \xB7 allAttacks.Array.data[5].advancesThaw"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[5].continuous
+      label: "allAttacks \xB7 allAttacks.Array.data[5].continuous"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[5].vigorCost
+      label: "allAttacks \xB7 allAttacks.Array.data[5].vigorCost"
+      value: 20
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[5].vigorPerSecond
+      label: "allAttacks \xB7 allAttacks.Array.data[5].vigorPerSecond"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[6].animation.loop
+      label: "allAttacks \xB7 allAttacks.Array.data[6].animation.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[6].animation.fps
+      label: "allAttacks \xB7 allAttacks.Array.data[6].animation.fps"
+      value: 14
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[6].openFrame
+      label: "allAttacks \xB7 allAttacks.Array.data[6].openFrame"
+      value: 12
+      integer: 1
+      boolean: 0
+    - path: allAttacks.Array.data[6].closeFrame
+      label: "allAttacks \xB7 allAttacks.Array.data[6].closeFrame"
+      value: 15
+      integer: 1
+      boolean: 0
+    - path: allAttacks.Array.data[6].advancesThaw
+      label: "allAttacks \xB7 allAttacks.Array.data[6].advancesThaw"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[6].continuous
+      label: "allAttacks \xB7 allAttacks.Array.data[6].continuous"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[6].vigorCost
+      label: "allAttacks \xB7 allAttacks.Array.data[6].vigorCost"
+      value: 20
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[6].vigorPerSecond
+      label: "allAttacks \xB7 allAttacks.Array.data[6].vigorPerSecond"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[7].animation.loop
+      label: "allAttacks \xB7 allAttacks.Array.data[7].animation.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[7].animation.fps
+      label: "allAttacks \xB7 allAttacks.Array.data[7].animation.fps"
+      value: 14
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[7].openFrame
+      label: "allAttacks \xB7 allAttacks.Array.data[7].openFrame"
+      value: 4
+      integer: 1
+      boolean: 0
+    - path: allAttacks.Array.data[7].closeFrame
+      label: "allAttacks \xB7 allAttacks.Array.data[7].closeFrame"
+      value: 14
+      integer: 1
+      boolean: 0
+    - path: allAttacks.Array.data[7].advancesThaw
+      label: "allAttacks \xB7 allAttacks.Array.data[7].advancesThaw"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[7].continuous
+      label: "allAttacks \xB7 allAttacks.Array.data[7].continuous"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[7].vigorCost
+      label: "allAttacks \xB7 allAttacks.Array.data[7].vigorCost"
+      value: 20
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[7].vigorPerSecond
+      label: "allAttacks \xB7 allAttacks.Array.data[7].vigorPerSecond"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[8].animation.loop
+      label: "allAttacks \xB7 allAttacks.Array.data[8].animation.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[8].animation.fps
+      label: "allAttacks \xB7 allAttacks.Array.data[8].animation.fps"
+      value: 20
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[8].openFrame
+      label: "allAttacks \xB7 allAttacks.Array.data[8].openFrame"
+      value: 6
+      integer: 1
+      boolean: 0
+    - path: allAttacks.Array.data[8].closeFrame
+      label: "allAttacks \xB7 allAttacks.Array.data[8].closeFrame"
+      value: 11
+      integer: 1
+      boolean: 0
+    - path: allAttacks.Array.data[8].advancesThaw
+      label: "allAttacks \xB7 allAttacks.Array.data[8].advancesThaw"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[8].continuous
+      label: "allAttacks \xB7 allAttacks.Array.data[8].continuous"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[8].vigorCost
+      label: "allAttacks \xB7 allAttacks.Array.data[8].vigorCost"
+      value: 20
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[8].vigorPerSecond
+      label: "allAttacks \xB7 allAttacks.Array.data[8].vigorPerSecond"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: attackValid
+      label: "attackValid \xB7 attackValid"
+      value: 0.5
+      integer: 0
+      boolean: 0
+    - path: attackDelay
+      label: "\u653B\u51FB\u51B7\u5374/\u95F4\u9694 \xB7 attackDelay"
+      value: 0.699999988079071
+      integer: 0
+      boolean: 0
+    - path: attackMemory
+      label: "attackMemory \xB7 attackMemory"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: criticalChance
+      label: "\u66B4\u51FB\u6982\u7387 \xB7 criticalChance"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: criticalMultiplier
+      label: "\u66B4\u51FB\u500D\u7387 \xB7 criticalMultiplier"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: 'SkillThreeState.Array.data[0]'
+      label: "SkillThreeState \xB7 SkillThreeState.Array.data[0]"
+      value: 2
+      integer: 1
+      boolean: 0
+    - path: 'SkillThreeState.Array.data[1]'
+      label: "SkillThreeState \xB7 SkillThreeState.Array.data[1]"
+      value: 13
+      integer: 1
+      boolean: 0
+    - path: 'SkillThreeState.Array.data[2]'
+      label: "SkillThreeState \xB7 SkillThreeState.Array.data[2]"
+      value: 14
+      integer: 1
+      boolean: 0
+    - path: skillThreeGroundRatio
+      label: "skillThreeGroundRatio \xB7 skillThreeGroundRatio"
+      value: 1.5
+      integer: 0
+      boolean: 0
+    - path: SkillThreeGroundOpenIdx
+      label: "SkillThreeGroundOpenIdx \xB7 SkillThreeGroundOpenIdx"
+      value: 15
+      integer: 1
+      boolean: 0
+    - path: Skill1ImmuneBegin
+      label: "Skill1ImmuneBegin \xB7 Skill1ImmuneBegin"
+      value: 4
+      integer: 1
+      boolean: 0
+    - path: Skill1ImmuneEnd
+      label: "Skill1ImmuneEnd \xB7 Skill1ImmuneEnd"
+      value: 11
+      integer: 1
+      boolean: 0
+    - path: Skill3ImmuneBegin
+      label: "Skill3ImmuneBegin \xB7 Skill3ImmuneBegin"
+      value: 2
+      integer: 1
+      boolean: 0
+    - path: Skill3ImmuneEnd
+      label: "Skill3ImmuneEnd \xB7 Skill3ImmuneEnd"
+      value: 12
+      integer: 1
+      boolean: 0
+  - objectPath: 
+    componentType: PlayerInteract
+    componentIndex: 0
+    parameters:
+    - path: InteractMemory
+      label: "InteractMemory \xB7 InteractMemory"
+      value: 0.6000000238418579
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: Health
+    componentIndex: 0
+    parameters:
+    - path: beginBlood
+      label: "\u57FA\u7840\u751F\u547D\u4E0A\u9650 \xB7 beginBlood"
+      value: 100
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: PlayerResources
+    componentIndex: 0
+    parameters:
+    - path: maxMana
+      label: "\u6700\u5927\u6CD5\u529B \xB7 maxMana"
+      value: 100
+      integer: 0
+      boolean: 0
+    - path: experienceToNextLevel
+      label: "experienceToNextLevel \xB7 experienceToNextLevel"
+      value: 100
+      integer: 0
+      boolean: 0
+    - path: maxVigor
+      label: "\u6700\u5927\u6C14\u529B \xB7 maxVigor"
+      value: 100
+      integer: 0
+      boolean: 0
+    - path: runVigorPerSecond
+      label: "\u5954\u8DD1\u6C14\u529B/\u79D2 \xB7 runVigorPerSecond"
+      value: 5
+      integer: 0
+      boolean: 0
+    - path: jumpVigorCost
+      label: "\u8DF3\u8DC3\u6C14\u529B \xB7 jumpVigorCost"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: idleVigorRecovery
+      label: "\u9759\u6B62\u6C14\u529B\u6062\u590D/\u79D2 \xB7 idleVigorRecovery"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: attackedVigorRecovery
+      label: "\u53D7\u51FB\u6C14\u529B\u6062\u590D/\u79D2 \xB7 attackedVigorRecovery"
+      value: 10
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: PlayerBoost
+    componentIndex: 0
+    parameters:
+    - path: boostFull
+      label: "\u65E0\u53CC\u80FD\u91CF\u4E0A\u9650 \xB7 boostFull"
+      value: 100
+      integer: 0
+      boolean: 0
+    - path: deltaBoost
+      label: "\u6BCF\u6B21\u6709\u6548\u547D\u4E2D\u589E\u52A0\u65E0\u53CC \xB7 deltaBoost"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: boostReduce
+      label: "\u65E0\u53CC\u80FD\u91CF\u6BCF\u79D2\u8870\u51CF \xB7 boostReduce"
+      value: 0.009999999776482582
+      integer: 0
+      boolean: 0
+    - path: boostTime
+      label: "\u65E0\u53CC\u6301\u7EED\u79D2\u6570 \xB7 boostTime"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: bajieDamageMultiplier
+      label: "bajieDamageMultiplier \xB7 bajieDamageMultiplier"
+      value: 0.5
+      integer: 0
+      boolean: 0
+    - path: moveMultiplier
+      label: "moveMultiplier \xB7 moveMultiplier"
+      value: 1.2999999523162842
+      integer: 0
+      boolean: 0
+    - path: wukongCriticalChance
+      label: "wukongCriticalChance \xB7 wukongCriticalChance"
+      value: 0.30000001192092896
+      integer: 0
+      boolean: 0
+    - path: tangAttackMultiplier
+      label: "tangAttackMultiplier \xB7 tangAttackMultiplier"
+      value: 1.2000000476837158
+      integer: 0
+      boolean: 0
+    - path: shaSuperArmor
+      label: "shaSuperArmor \xB7 shaSuperArmor"
+      value: 1
+      integer: 0
+      boolean: 1
+  - objectPath: 
+    componentType: ActorStatus
+    componentIndex: 0
+    parameters:
+    - path: frozenDuration
+      label: "frozenDuration \xB7 frozenDuration"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: meltFrameInterval
+      label: "meltFrameInterval \xB7 meltFrameInterval"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: frozenDamageMultiplier
+      label: "frozenDamageMultiplier \xB7 frozenDamageMultiplier"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: ActorBoostTrail
+    componentIndex: 0
+    parameters:
+    - path: trailColor.r
+      label: "trailColor \xB7 trailColor.r"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: trailColor.g
+      label: "trailColor \xB7 trailColor.g"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: trailColor.b
+      label: "trailColor \xB7 trailColor.b"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: trailColor.a
+      label: "trailColor \xB7 trailColor.a"
+      value: 0.1599999964237213
+      integer: 0
+      boolean: 0
+    - path: afterimageDuration
+      label: "afterimageDuration \xB7 afterimageDuration"
+      value: 0.20000000298023224
+      integer: 0
+      boolean: 0
+    - path: minimumMoveSpeed
+      label: "minimumMoveSpeed \xB7 minimumMoveSpeed"
+      value: 0.029999999329447746
+      integer: 0
+      boolean: 0
+    - path: prewarmCount
+      label: "prewarmCount \xB7 prewarmCount"
+      value: 16
+      integer: 1
+      boolean: 0
+    - path: sortingOffset
+      label: "sortingOffset \xB7 sortingOffset"
+      value: -1
+      integer: 1
+      boolean: 0
+  - objectPath: CombatBox/NormalAttack
+    componentType: PlayerAttackBox
+    componentIndex: 0
+    parameters:
+    - path: Attack
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack"
+      value: 15
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: launch
+      label: "launch \xB7 launch"
+      value: 0
+      integer: 0
+      boolean: 1
+  - objectPath: CombatBox/SkillOne
+    componentType: PlayerAttackBox
+    componentIndex: 0
+    parameters:
+    - path: Attack
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack"
+      value: 28
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: launch
+      label: "launch \xB7 launch"
+      value: 0
+      integer: 0
+      boolean: 1
+  - objectPath: CombatBox/SkillTwo
+    componentType: PlayerAttackBox
+    componentIndex: 0
+    parameters:
+    - path: Attack
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack"
+      value: 14
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: launch
+      label: "launch \xB7 launch"
+      value: 0
+      integer: 0
+      boolean: 1
+  - objectPath: CombatBox/SkillThree
+    componentType: PlayerAttackBox
+    componentIndex: 0
+    parameters:
+    - path: Attack
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack"
+      value: 13
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: launch
+      label: "launch \xB7 launch"
+      value: 0
+      integer: 0
+      boolean: 1
+  - objectPath: CombatBox/ComboOne
+    componentType: PlayerAttackBox
+    componentIndex: 0
+    parameters:
+    - path: Attack
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: launch
+      label: "launch \xB7 launch"
+      value: 1
+      integer: 0
+      boolean: 1
+  - objectPath: CombatBox/ComboTwo
+    componentType: PlayerAttackBox
+    componentIndex: 0
+    parameters:
+    - path: Attack
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: launch
+      label: "launch \xB7 launch"
+      value: 0
+      integer: 0
+      boolean: 1
+  - objectPath: CombatBox/RiseAttack
+    componentType: PlayerAttackBox
+    componentIndex: 0
+    parameters:
+    - path: Attack
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack"
+      value: 3
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: launch
+      label: "launch \xB7 launch"
+      value: 0
+      integer: 0
+      boolean: 1
+  - objectPath: 
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 0.7321662902832031
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 1.6766536235809326
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: -0.079673171043396
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: UnityEngine.Rigidbody2D
+    componentIndex: 0
+    parameters:
+    - path: m_Mass
+      label: "\u8D28\u91CF \xB7 m_Mass"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: m_GravityScale
+      label: "\u91CD\u529B\u500D\u7387 \xB7 m_GravityScale"
+      value: 1.0499999523162842
+      integer: 0
+      boolean: 0
+    - path: m_LinearDamping
+      label: "\u6C34\u5E73\u963B\u5C3C \xB7 m_LinearDamping"
+      value: 0
+      integer: 0
+      boolean: 0
+  - objectPath: CombatBox/NormalAttack
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.0694713592529297
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 1.6343038082122803
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0.5699999928474426
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: -0.028694748878479004
+      integer: 0
+      boolean: 0
+  - objectPath: CombatBox/SkillOne
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.010293960571289
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 0.942549467086792
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0.5327864289283752
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: -0.0909198522567749
+      integer: 0
+      boolean: 0
+  - objectPath: CombatBox/SkillTwo
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 0.9958670139312744
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 1.504191279411316
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0.7252917885780334
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: -0.13637953996658325
+      integer: 0
+      boolean: 0
+  - objectPath: CombatBox/SkillThree
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.5124564170837402
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 1.3430155515670776
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0.05372500419616699
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: -0.04752618074417114
+      integer: 0
+      boolean: 0
+  - objectPath: CombatBox/ComboOne
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 0.9788153171539307
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 2.0751092433929443
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0.7454859018325806
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 0.10718667507171631
+      integer: 0
+      boolean: 0
+  - objectPath: CombatBox/ComboTwo
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.4031076431274414
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 1.3185031414031982
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0.729248046875
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: -0.034039855003356934
+      integer: 0
+      boolean: 0
+  - objectPath: CombatBox/RiseAttack
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.0377326011657715
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 1.792398452758789
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0.6320321559906006
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 0.009433507919311523
+      integer: 0
+      boolean: 0
+  - objectPath: CombatBox/Attacked
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 0.7712416648864746
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 1.6921396255493164
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 0.023462533950805664
+      integer: 0
+      boolean: 0
+  numbers: []
+  skills:
+  - player: 0
+    skillNumber: 1
+    levels:
+    - goldCost: 100
+      manaCost: 15
+      cooldown: 5
+    - goldCost: 150
+      manaCost: 17
+      cooldown: 5
+    - goldCost: 250
+      manaCost: 19
+      cooldown: 4
+    - goldCost: 400
+      manaCost: 21
+      cooldown: 4
+    - goldCost: 600
+      manaCost: 23
+      cooldown: 3
+    - goldCost: 900
+      manaCost: 25
+      cooldown: 3
+  - player: 0
+    skillNumber: 2
+    levels:
+    - goldCost: 100
+      manaCost: 20
+      cooldown: 7
+    - goldCost: 150
+      manaCost: 22
+      cooldown: 6
+    - goldCost: 250
+      manaCost: 24
+      cooldown: 6
+    - goldCost: 400
+      manaCost: 26
+      cooldown: 5
+    - goldCost: 600
+      manaCost: 28
+      cooldown: 5
+    - goldCost: 900
+      manaCost: 30
+      cooldown: 4
+  - player: 0
+    skillNumber: 3
+    levels:
+    - goldCost: 100
+      manaCost: 38
+      cooldown: 13
+    - goldCost: 150
+      manaCost: 42
+      cooldown: 12
+    - goldCost: 250
+      manaCost: 46
+      cooldown: 11
+    - goldCost: 400
+      manaCost: 50
+      cooldown: 10
+    - goldCost: 600
+      manaCost: 54
+      cooldown: 9
+    - goldCost: 900
+      manaCost: 58
+      cooldown: 8
+  relatedProfiles: []

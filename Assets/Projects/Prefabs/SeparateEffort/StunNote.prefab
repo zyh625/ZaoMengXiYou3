@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4032976467522609609}
   - component: {fileID: 2489582012899513790}
   - component: {fileID: 8910001002}
+  - component: {fileID: 4520711107035853011}
   m_Layer: 0
   m_Name: StunNote
   m_TagString: Untagged
@@ -134,3 +135,16 @@ MonoBehaviour:
   minimumHitSize: 0.12
   trackingSpeed: 3.5
   stunDuration: 1
+--- !u!114 &4520711107035853011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508948591347385793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 2a2d69d2d1befe54198ab2e62c802d78, type: 2}

@@ -16,7 +16,7 @@ public sealed class WestController : BossController
     private void Scale(SpriteData clip)
     {
         if(clip?.sprites==null || clip.sprites.Length==0)return;
-        float scale=visualHeight/Mathf.Max(0.1f,clip.sprites[0].bounds.size.y);
+        float scale=visualHeight/Mathf.Max(BalanceRuntime.Number(this, "WestController.Scale.1", 0.1f),clip.sprites[0].bounds.size.y);
         SM.transform.localScale=new Vector3(-scale,scale,1f); //各成品图画幅占比不同，只在换动作时校准本体高度，脚底不变。
     }
     protected override SpriteData ResolveStateAnimation(EnemyState next,SpriteData fallback){Scale(fallback);return fallback;}

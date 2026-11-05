@@ -13,13 +13,13 @@ public sealed class LateStageEffect : MonoBehaviour
     private bool paused;
     public void Play(Vector2 at, float width, float duration, bool right, Color tint)
     {
-        transform.position=at; transform.localScale=Vector3.one*(width/Mathf.Max(.01f,nativeWidth));
+        transform.position=at; transform.localScale=Vector3.one*(width/Mathf.Max(BalanceRuntime.Number(this, "LateStageEffect.Play.1", 0.01f),nativeWidth));
         remaining=duration;paused=false;visual.flipX=right; visual.color=tint;
         gameObject.SetActive(true);
         if(frames!=null&&frames.sprites!=null&&frames.sprites.Length>0)spriteManager.ChangeState(frames);
         else
         {
-            if(placeholder==null)placeholder=Sprite.Create(Texture2D.whiteTexture,new Rect(0,0,2,2),new Vector2(.5f,.5f),2);
+            if(placeholder==null)placeholder=Sprite.Create(Texture2D.whiteTexture,new Rect(0,0,2,2),new Vector2(BalanceRuntime.Number(this, "LateStageEffect.Play.2", 0.5f),BalanceRuntime.Number(this, "LateStageEffect.Play.3", 0.5f)),2);
             visual.sprite=placeholder;visual.transform.localScale=new Vector3(placeholderAspect.x,placeholderAspect.y,1);
         }
     }

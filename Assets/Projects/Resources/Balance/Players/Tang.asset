@@ -1,0 +1,857 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ea7302a88f56248a1b33284c7df3cd, type: 3}
+  m_Name: Tang
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceProfile
+  displayName: "\u5510\u50E7 / Tang"
+  description: "\u4FEE\u6539\u540E\u91CD\u65B0\u8FDB\u5165\u573A\u666F/\u8BAD\u7EC3\u76EE\u6807\u751F\u6548\uFF1B\u4E0D\u5199\u5165\u5B58\u6863\uFF0C\u4E0D\u4FEE\u6539\u4E34\u65F6\u72B6\u6001\u3002"
+  components:
+  - objectPath: 
+    componentType: PlayerInteract
+    componentIndex: 0
+    parameters:
+    - path: InteractMemory
+      label: "InteractMemory \xB7 InteractMemory"
+      value: 0.6000000238418579
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: Health
+    componentIndex: 0
+    parameters:
+    - path: beginBlood
+      label: "\u57FA\u7840\u751F\u547D\u4E0A\u9650 \xB7 beginBlood"
+      value: 100
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: TangMovement
+    componentIndex: 0
+    parameters:
+    - path: walkSpeed
+      label: "\u8D70\u8DEF\u901F\u5EA6 \xB7 walkSpeed"
+      value: 4.800000190734863
+      integer: 0
+      boolean: 0
+    - path: runSpeed
+      label: "\u8DD1\u6B65\u901F\u5EA6 \xB7 runSpeed"
+      value: 7.699999809265137
+      integer: 0
+      boolean: 0
+    - path: backSpeed
+      label: "\u53D7\u51FB\u540E\u9000\u901F\u5EA6 \xB7 backSpeed"
+      value: 5
+      integer: 0
+      boolean: 0
+    - path: flySlow
+      label: "flySlow \xB7 flySlow"
+      value: 0.5699999928474426
+      integer: 0
+      boolean: 0
+    - path: quickDown
+      label: "quickDown \xB7 quickDown"
+      value: 3.5
+      integer: 0
+      boolean: 0
+    - path: upSpeed
+      label: "\u8DF3\u8DC3\u901F\u5EA6 \xB7 upSpeed"
+      value: 6.800000190734863
+      integer: 0
+      boolean: 0
+    - path: maxJumpTime
+      label: "maxJumpTime \xB7 maxJumpTime"
+      value: 2
+      integer: 1
+      boolean: 0
+    - path: doubleMoveGap
+      label: "doubleMoveGap \xB7 doubleMoveGap"
+      value: 0.20000000298023224
+      integer: 0
+      boolean: 0
+    - path: minNormalY
+      label: "minNormalY \xB7 minNormalY"
+      value: 0.6000000238418579
+      integer: 0
+      boolean: 0
+    - path: backStartIdx
+      label: "backStartIdx \xB7 backStartIdx"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: backEndIdx
+      label: "backEndIdx \xB7 backEndIdx"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: attackedUpSpeed
+      label: "attackedUpSpeed \xB7 attackedUpSpeed"
+      value: 5
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: TangController
+    componentIndex: 0
+    parameters:
+    - path: Idle.loop
+      label: "Idle \xB7 Idle.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Idle.fps
+      label: "Idle \xB7 Idle.fps"
+      value: 5
+      integer: 0
+      boolean: 0
+    - path: Walk.loop
+      label: "Walk \xB7 Walk.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Walk.fps
+      label: "Walk \xB7 Walk.fps"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: Run.loop
+      label: "Run \xB7 Run.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Run.fps
+      label: "Run \xB7 Run.fps"
+      value: 18
+      integer: 0
+      boolean: 0
+    - path: JumpOne.loop
+      label: "JumpOne \xB7 JumpOne.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: JumpOne.fps
+      label: "JumpOne \xB7 JumpOne.fps"
+      value: 25
+      integer: 0
+      boolean: 0
+    - path: JumpTwo.loop
+      label: "JumpTwo \xB7 JumpTwo.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: JumpTwo.fps
+      label: "JumpTwo \xB7 JumpTwo.fps"
+      value: 35
+      integer: 0
+      boolean: 0
+    - path: Die.loop
+      label: "Die \xB7 Die.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: Die.fps
+      label: "Die \xB7 Die.fps"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: Drop.loop
+      label: "Drop \xB7 Drop.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Drop.fps
+      label: "Drop \xB7 Drop.fps"
+      value: 20
+      integer: 0
+      boolean: 0
+    - path: Rise.loop
+      label: "Rise \xB7 Rise.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Rise.fps
+      label: "Rise \xB7 Rise.fps"
+      value: 20
+      integer: 0
+      boolean: 0
+    - path: Land.loop
+      label: "Land \xB7 Land.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: Land.fps
+      label: "Land \xB7 Land.fps"
+      value: 20
+      integer: 0
+      boolean: 0
+    - path: RiseAttack.loop
+      label: "RiseAttack \xB7 RiseAttack.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: RiseAttack.fps
+      label: "RiseAttack \xB7 RiseAttack.fps"
+      value: 20
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: TangCombat
+    componentIndex: 0
+    parameters:
+    - path: allAttacks.Array.data[0].animation.loop
+      label: "allAttacks \xB7 allAttacks.Array.data[0].animation.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[0].animation.fps
+      label: "allAttacks \xB7 allAttacks.Array.data[0].animation.fps"
+      value: 22
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[0].openFrame
+      label: "allAttacks \xB7 allAttacks.Array.data[0].openFrame"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: allAttacks.Array.data[0].closeFrame
+      label: "allAttacks \xB7 allAttacks.Array.data[0].closeFrame"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: allAttacks.Array.data[0].advancesThaw
+      label: "allAttacks \xB7 allAttacks.Array.data[0].advancesThaw"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[0].continuous
+      label: "allAttacks \xB7 allAttacks.Array.data[0].continuous"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[0].vigorCost
+      label: "allAttacks \xB7 allAttacks.Array.data[0].vigorCost"
+      value: 20
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[0].vigorPerSecond
+      label: "allAttacks \xB7 allAttacks.Array.data[0].vigorPerSecond"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[1].animation.loop
+      label: "allAttacks \xB7 allAttacks.Array.data[1].animation.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[1].animation.fps
+      label: "allAttacks \xB7 allAttacks.Array.data[1].animation.fps"
+      value: 14
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[1].openFrame
+      label: "allAttacks \xB7 allAttacks.Array.data[1].openFrame"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: allAttacks.Array.data[1].closeFrame
+      label: "allAttacks \xB7 allAttacks.Array.data[1].closeFrame"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: allAttacks.Array.data[1].advancesThaw
+      label: "allAttacks \xB7 allAttacks.Array.data[1].advancesThaw"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[1].continuous
+      label: "allAttacks \xB7 allAttacks.Array.data[1].continuous"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[1].vigorCost
+      label: "allAttacks \xB7 allAttacks.Array.data[1].vigorCost"
+      value: 20
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[1].vigorPerSecond
+      label: "allAttacks \xB7 allAttacks.Array.data[1].vigorPerSecond"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[2].animation.loop
+      label: "allAttacks \xB7 allAttacks.Array.data[2].animation.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[2].animation.fps
+      label: "allAttacks \xB7 allAttacks.Array.data[2].animation.fps"
+      value: 14
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[2].openFrame
+      label: "allAttacks \xB7 allAttacks.Array.data[2].openFrame"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: allAttacks.Array.data[2].closeFrame
+      label: "allAttacks \xB7 allAttacks.Array.data[2].closeFrame"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: allAttacks.Array.data[2].advancesThaw
+      label: "allAttacks \xB7 allAttacks.Array.data[2].advancesThaw"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[2].continuous
+      label: "allAttacks \xB7 allAttacks.Array.data[2].continuous"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[2].vigorCost
+      label: "allAttacks \xB7 allAttacks.Array.data[2].vigorCost"
+      value: 20
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[2].vigorPerSecond
+      label: "allAttacks \xB7 allAttacks.Array.data[2].vigorPerSecond"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[3].animation.loop
+      label: "allAttacks \xB7 allAttacks.Array.data[3].animation.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[3].animation.fps
+      label: "allAttacks \xB7 allAttacks.Array.data[3].animation.fps"
+      value: 14
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[3].openFrame
+      label: "allAttacks \xB7 allAttacks.Array.data[3].openFrame"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: allAttacks.Array.data[3].closeFrame
+      label: "allAttacks \xB7 allAttacks.Array.data[3].closeFrame"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: allAttacks.Array.data[3].advancesThaw
+      label: "allAttacks \xB7 allAttacks.Array.data[3].advancesThaw"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[3].continuous
+      label: "allAttacks \xB7 allAttacks.Array.data[3].continuous"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[3].vigorCost
+      label: "allAttacks \xB7 allAttacks.Array.data[3].vigorCost"
+      value: 20
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[3].vigorPerSecond
+      label: "allAttacks \xB7 allAttacks.Array.data[3].vigorPerSecond"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[4].animation.loop
+      label: "allAttacks \xB7 allAttacks.Array.data[4].animation.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[4].animation.fps
+      label: "allAttacks \xB7 allAttacks.Array.data[4].animation.fps"
+      value: 20
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[4].openFrame
+      label: "allAttacks \xB7 allAttacks.Array.data[4].openFrame"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: allAttacks.Array.data[4].closeFrame
+      label: "allAttacks \xB7 allAttacks.Array.data[4].closeFrame"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: allAttacks.Array.data[4].advancesThaw
+      label: "allAttacks \xB7 allAttacks.Array.data[4].advancesThaw"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[4].continuous
+      label: "allAttacks \xB7 allAttacks.Array.data[4].continuous"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: allAttacks.Array.data[4].vigorCost
+      label: "allAttacks \xB7 allAttacks.Array.data[4].vigorCost"
+      value: 20
+      integer: 0
+      boolean: 0
+    - path: allAttacks.Array.data[4].vigorPerSecond
+      label: "allAttacks \xB7 allAttacks.Array.data[4].vigorPerSecond"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: attackValid
+      label: "attackValid \xB7 attackValid"
+      value: 0.800000011920929
+      integer: 0
+      boolean: 0
+    - path: attackDelay
+      label: "\u653B\u51FB\u51B7\u5374/\u95F4\u9694 \xB7 attackDelay"
+      value: 0.699999988079071
+      integer: 0
+      boolean: 0
+    - path: attackMemory
+      label: "attackMemory \xB7 attackMemory"
+      value: 1.2000000476837158
+      integer: 0
+      boolean: 0
+    - path: criticalChance
+      label: "\u66B4\u51FB\u6982\u7387 \xB7 criticalChance"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: criticalMultiplier
+      label: "\u66B4\u51FB\u500D\u7387 \xB7 criticalMultiplier"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: normalAttackFrame
+      label: "normalAttackFrame \xB7 normalAttackFrame"
+      value: 9
+      integer: 1
+      boolean: 0
+    - path: riseAttackFrame
+      label: "riseAttackFrame \xB7 riseAttackFrame"
+      value: 10
+      integer: 1
+      boolean: 0
+    - path: riseAttackSpawnOffset.x
+      label: "riseAttackSpawnOffset \xB7 riseAttackSpawnOffset.x"
+      value: 2.200000047683716
+      integer: 0
+      boolean: 0
+    - path: riseAttackSpawnOffset.y
+      label: "riseAttackSpawnOffset \xB7 riseAttackSpawnOffset.y"
+      value: 0.20000000298023224
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: PlayerResources
+    componentIndex: 0
+    parameters:
+    - path: maxMana
+      label: "\u6700\u5927\u6CD5\u529B \xB7 maxMana"
+      value: 100
+      integer: 0
+      boolean: 0
+    - path: experienceToNextLevel
+      label: "experienceToNextLevel \xB7 experienceToNextLevel"
+      value: 100
+      integer: 0
+      boolean: 0
+    - path: maxVigor
+      label: "\u6700\u5927\u6C14\u529B \xB7 maxVigor"
+      value: 100
+      integer: 0
+      boolean: 0
+    - path: runVigorPerSecond
+      label: "\u5954\u8DD1\u6C14\u529B/\u79D2 \xB7 runVigorPerSecond"
+      value: 5
+      integer: 0
+      boolean: 0
+    - path: jumpVigorCost
+      label: "\u8DF3\u8DC3\u6C14\u529B \xB7 jumpVigorCost"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: idleVigorRecovery
+      label: "\u9759\u6B62\u6C14\u529B\u6062\u590D/\u79D2 \xB7 idleVigorRecovery"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: attackedVigorRecovery
+      label: "\u53D7\u51FB\u6C14\u529B\u6062\u590D/\u79D2 \xB7 attackedVigorRecovery"
+      value: 10
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: PlayerBoost
+    componentIndex: 0
+    parameters:
+    - path: boostFull
+      label: "\u65E0\u53CC\u80FD\u91CF\u4E0A\u9650 \xB7 boostFull"
+      value: 100
+      integer: 0
+      boolean: 0
+    - path: deltaBoost
+      label: "\u6BCF\u6B21\u6709\u6548\u547D\u4E2D\u589E\u52A0\u65E0\u53CC \xB7 deltaBoost"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: boostReduce
+      label: "\u65E0\u53CC\u80FD\u91CF\u6BCF\u79D2\u8870\u51CF \xB7 boostReduce"
+      value: 0.009999999776482582
+      integer: 0
+      boolean: 0
+    - path: boostTime
+      label: "\u65E0\u53CC\u6301\u7EED\u79D2\u6570 \xB7 boostTime"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: bajieDamageMultiplier
+      label: "bajieDamageMultiplier \xB7 bajieDamageMultiplier"
+      value: 0.5
+      integer: 0
+      boolean: 0
+    - path: moveMultiplier
+      label: "moveMultiplier \xB7 moveMultiplier"
+      value: 1.2999999523162842
+      integer: 0
+      boolean: 0
+    - path: wukongCriticalChance
+      label: "wukongCriticalChance \xB7 wukongCriticalChance"
+      value: 0.30000001192092896
+      integer: 0
+      boolean: 0
+    - path: tangAttackMultiplier
+      label: "tangAttackMultiplier \xB7 tangAttackMultiplier"
+      value: 1.2000000476837158
+      integer: 0
+      boolean: 0
+    - path: shaSuperArmor
+      label: "shaSuperArmor \xB7 shaSuperArmor"
+      value: 1
+      integer: 0
+      boolean: 1
+  - objectPath: 
+    componentType: ActorStatus
+    componentIndex: 0
+    parameters:
+    - path: frozenDuration
+      label: "frozenDuration \xB7 frozenDuration"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: meltFrameInterval
+      label: "meltFrameInterval \xB7 meltFrameInterval"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: frozenDamageMultiplier
+      label: "frozenDamageMultiplier \xB7 frozenDamageMultiplier"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: ActorBoostTrail
+    componentIndex: 0
+    parameters:
+    - path: trailColor.r
+      label: "trailColor \xB7 trailColor.r"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: trailColor.g
+      label: "trailColor \xB7 trailColor.g"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: trailColor.b
+      label: "trailColor \xB7 trailColor.b"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: trailColor.a
+      label: "trailColor \xB7 trailColor.a"
+      value: 0.1599999964237213
+      integer: 0
+      boolean: 0
+    - path: afterimageDuration
+      label: "afterimageDuration \xB7 afterimageDuration"
+      value: 0.20000000298023224
+      integer: 0
+      boolean: 0
+    - path: minimumMoveSpeed
+      label: "minimumMoveSpeed \xB7 minimumMoveSpeed"
+      value: 0.029999999329447746
+      integer: 0
+      boolean: 0
+    - path: prewarmCount
+      label: "prewarmCount \xB7 prewarmCount"
+      value: 16
+      integer: 1
+      boolean: 0
+    - path: sortingOffset
+      label: "sortingOffset \xB7 sortingOffset"
+      value: -1
+      integer: 1
+      boolean: 0
+  - objectPath: Protection
+    componentType: ProtectionManager
+    componentIndex: 0
+    parameters:
+    - path: normal.loop
+      label: "normal \xB7 normal.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: normal.fps
+      label: "normal \xB7 normal.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: highlight.loop
+      label: "highlight \xB7 highlight.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: highlight.fps
+      label: "highlight \xB7 highlight.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: warning.loop
+      label: "warning \xB7 warning.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: warning.fps
+      label: "warning \xB7 warning.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: perfectWindow
+      label: "perfectWindow \xB7 perfectWindow"
+      value: 0.20000000298023224
+      integer: 0
+      boolean: 0
+    - path: duration
+      label: "\u6301\u7EED\u65F6\u95F4 \xB7 duration"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: warningDuration
+      label: "warningDuration \xB7 warningDuration"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: cooldownReduction
+      label: "cooldownReduction \xB7 cooldownReduction"
+      value: 0.20000000298023224
+      integer: 0
+      boolean: 0
+  - objectPath: OceanBreaker
+    componentType: OceanBreakerManager
+    componentIndex: 0
+    parameters:
+    - path: animation.loop
+      label: "animation \xB7 animation.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: animation.fps
+      label: "animation \xB7 animation.fps"
+      value: 14
+      integer: 0
+      boolean: 0
+    - path: damage
+      label: "\u4F24\u5BB3 \xB7 damage"
+      value: 20
+      integer: 0
+      boolean: 0
+  - objectPath: FrostFormation
+    componentType: FrostFormationManager
+    componentIndex: 0
+    parameters:
+    - path: animation.loop
+      label: "animation \xB7 animation.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: animation.fps
+      label: "animation \xB7 animation.fps"
+      value: 14
+      integer: 0
+      boolean: 0
+    - path: damage
+      label: "\u4F24\u5BB3 \xB7 damage"
+      value: 10
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 0.8399999737739563
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 1.9595140218734741
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 0.14335697889328003
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: UnityEngine.Rigidbody2D
+    componentIndex: 0
+    parameters:
+    - path: m_Mass
+      label: "\u8D28\u91CF \xB7 m_Mass"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: m_GravityScale
+      label: "\u91CD\u529B\u500D\u7387 \xB7 m_GravityScale"
+      value: 1.0499999523162842
+      integer: 0
+      boolean: 0
+    - path: m_LinearDamping
+      label: "\u6C34\u5E73\u963B\u5C3C \xB7 m_LinearDamping"
+      value: 0
+      integer: 0
+      boolean: 0
+  - objectPath: CombatBox/Attacked
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 0.7712416648864746
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 1.6921396255493164
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 0.023462533950805664
+      integer: 0
+      boolean: 0
+  numbers:
+  - key: TangNormalAttackManager.FixedUpdate.1
+    label: FixedUpdate / float step = Mathf.Min(Mathf.Max(0.01f, flySpeed) * Time.fixedDeltaTime,
+    source: Assets/Projects/Scripts/Player/Tang/TangNormalAttackManager.cs:66
+    value: 0.01
+  - key: FrostFormationManager.SyncFrame.Parameter1
+    label: "SyncFrame / \u4F24\u5BB3/\u5224\u5B9A\u53C2\u6570 4"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Player/Tang/FrostFormationManager.cs:54
+    value: 4
+  - key: FrostFormationManager.SyncFrame.Parameter2
+    label: "SyncFrame / \u4F24\u5BB3/\u5224\u5B9A\u53C2\u6570 12"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Player/Tang/FrostFormationManager.cs:55
+    value: 12
+  - key: FrostFormationManager.SyncFrame.Parameter3
+    label: "SyncFrame / \u4F24\u5BB3/\u5224\u5B9A\u53C2\u6570 4"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Player/Tang/FrostFormationManager.cs:58
+    value: 4
+  - key: FrostFormationManager.SyncFrame.Parameter4
+    label: "SyncFrame / \u4F24\u5BB3/\u5224\u5B9A\u53C2\u6570 14"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Player/Tang/FrostFormationManager.cs:62
+    value: 14
+  - key: OceanBreakerManager.SyncFrame.Parameter1
+    label: "SyncFrame / \u4F24\u5BB3/\u5224\u5B9A\u53C2\u6570 4"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Player/Tang/OceanBreakerManager.cs:45
+    value: 4
+  - key: OceanBreakerManager.SyncFrame.Parameter2
+    label: "SyncFrame / \u4F24\u5BB3/\u5224\u5B9A\u53C2\u6570 12"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Player/Tang/OceanBreakerManager.cs:52
+    value: 12
+  skills:
+  - player: 3
+    skillNumber: 1
+    levels:
+    - goldCost: 100
+      manaCost: 22
+      cooldown: 10
+    - goldCost: 150
+      manaCost: 24
+      cooldown: 9
+    - goldCost: 250
+      manaCost: 26
+      cooldown: 8
+    - goldCost: 400
+      manaCost: 28
+      cooldown: 8
+    - goldCost: 600
+      manaCost: 30
+      cooldown: 7
+    - goldCost: 900
+      manaCost: 32
+      cooldown: 6
+  - player: 3
+    skillNumber: 2
+    levels:
+    - goldCost: 100
+      manaCost: 26
+      cooldown: 8
+    - goldCost: 150
+      manaCost: 29
+      cooldown: 7
+    - goldCost: 250
+      manaCost: 32
+      cooldown: 7
+    - goldCost: 400
+      manaCost: 35
+      cooldown: 6
+    - goldCost: 600
+      manaCost: 38
+      cooldown: 6
+    - goldCost: 900
+      manaCost: 42
+      cooldown: 5
+  - player: 3
+    skillNumber: 3
+    levels:
+    - goldCost: 100
+      manaCost: 42
+      cooldown: 12
+    - goldCost: 150
+      manaCost: 47
+      cooldown: 11
+    - goldCost: 250
+      manaCost: 52
+      cooldown: 10
+    - goldCost: 400
+      manaCost: 57
+      cooldown: 9
+    - goldCost: 600
+      manaCost: 62
+      cooldown: 9
+    - goldCost: 900
+      manaCost: 68
+      cooldown: 8
+  relatedProfiles:
+  - {fileID: 11400000, guid: 0b65ae1d7dda6894e9b16f261d6d3cf1, type: 2}

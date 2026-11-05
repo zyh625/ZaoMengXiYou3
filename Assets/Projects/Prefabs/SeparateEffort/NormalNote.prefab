@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6353909306940828230}
   - component: {fileID: 1146497334325242458}
   - component: {fileID: 8910001001}
+  - component: {fileID: 5175230088158226431}
   m_Layer: 0
   m_Name: NormalNote
   m_TagString: Untagged
@@ -132,3 +133,16 @@ MonoBehaviour:
   hitWidthRatio: 0.65
   hitHeightRatio: 0.65
   minimumHitSize: 0.12
+--- !u!114 &5175230088158226431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7311886391300197542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 3eace0dfef925b847abfa1e001a77fb8, type: 2}

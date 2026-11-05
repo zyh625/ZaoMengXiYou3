@@ -1,0 +1,852 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ea7302a88f56248a1b33284c7df3cd, type: 3}
+  m_Name: WestKing
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceProfile
+  displayName: "\u5E7F\u76EE\u5929\u738B / WestKing"
+  description: "\u4FEE\u6539\u540E\u91CD\u65B0\u8FDB\u5165\u573A\u666F/\u8BAD\u7EC3\u76EE\u6807\u751F\u6548\uFF1B\u4E0D\u5199\u5165\u5B58\u6863\uFF0C\u4E0D\u4FEE\u6539\u4E34\u65F6\u72B6\u6001\u3002"
+  components:
+  - objectPath: 
+    componentType: ActorStatus
+    componentIndex: 0
+    parameters:
+    - path: frozenDuration
+      label: "frozenDuration \xB7 frozenDuration"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: meltFrameInterval
+      label: "meltFrameInterval \xB7 meltFrameInterval"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: frozenDamageMultiplier
+      label: "frozenDamageMultiplier \xB7 frozenDamageMultiplier"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: Health
+    componentIndex: 0
+    parameters:
+    - path: beginBlood
+      label: "\u57FA\u7840\u751F\u547D\u4E0A\u9650 \xB7 beginBlood"
+      value: 1100
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: EnemyRewards
+    componentIndex: 0
+    parameters:
+    - path: experienceReward
+      label: "\u51FB\u6740\u7ECF\u9A8C \xB7 experienceReward"
+      value: 220
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: WestMovement
+    componentIndex: 0
+    parameters:
+    - path: moveSpeed
+      label: "\u79FB\u52A8\u901F\u5EA6 \xB7 moveSpeed"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: backSpeed
+      label: "\u53D7\u51FB\u540E\u9000\u901F\u5EA6 \xB7 backSpeed"
+      value: 3.5
+      integer: 0
+      boolean: 0
+    - path: upSpeed
+      label: "\u8DF3\u8DC3\u901F\u5EA6 \xB7 upSpeed"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: slowSpeed
+      label: "slowSpeed \xB7 slowSpeed"
+      value: 0.5
+      integer: 0
+      boolean: 0
+    - path: boostRatio
+      label: "boostRatio \xB7 boostRatio"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: minNormalY
+      label: "minNormalY \xB7 minNormalY"
+      value: 0.6000000238418579
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: WestCombat
+    componentIndex: 0
+    parameters:
+    - path: 'attackDelay.Array.data[0]'
+      label: "\u653B\u51FB\u51B7\u5374/\u95F4\u9694 \xB7 attackDelay.Array.data[0]"
+      value: 4
+      integer: 0
+      boolean: 0
+    - path: 'AttackOpenIdx.Array.data[0]'
+      label: "\u5F00\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackOpenIdx.Array.data[0]"
+      value: 11
+      integer: 1
+      boolean: 0
+    - path: 'AttackShutIdx.Array.data[0]'
+      label: "\u5173\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackShutIdx.Array.data[0]"
+      value: 14
+      integer: 1
+      boolean: 0
+    - path: angryFull
+      label: "angryFull \xB7 angryFull"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: angryRatio
+      label: "angryRatio \xB7 angryRatio"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: deltaAngry
+      label: "deltaAngry \xB7 deltaAngry"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: angryDuration
+      label: "angryDuration \xB7 angryDuration"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: delayRatio
+      label: "delayRatio \xB7 delayRatio"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: attackInterval
+      label: "\u666E\u901A\u62DB\u5F0F\u95F4\u9694 \xB7 attackInterval"
+      value: 2.200000047683716
+      integer: 0
+      boolean: 0
+    - path: 'cooldowns.Array.data[0]'
+      label: "\u5404\u6280\u80FD\u51B7\u5374\uFF08\u79D2\uFF09 \xB7 cooldowns.Array.data[0]"
+      value: 4
+      integer: 0
+      boolean: 0
+    - path: 'cooldowns.Array.data[1]'
+      label: "\u5404\u6280\u80FD\u51B7\u5374\uFF08\u79D2\uFF09 \xB7 cooldowns.Array.data[1]"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: 'cooldowns.Array.data[2]'
+      label: "\u5404\u6280\u80FD\u51B7\u5374\uFF08\u79D2\uFF09 \xB7 cooldowns.Array.data[2]"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: 'cooldowns.Array.data[3]'
+      label: "\u5404\u6280\u80FD\u51B7\u5374\uFF08\u79D2\uFF09 \xB7 cooldowns.Array.data[3]"
+      value: 9
+      integer: 0
+      boolean: 0
+    - path: 'windups.Array.data[0]'
+      label: "\u524D\u6447\u79D2\u6570 \xB7 windups.Array.data[0]"
+      value: 0.699999988079071
+      integer: 0
+      boolean: 0
+    - path: 'windups.Array.data[1]'
+      label: "\u524D\u6447\u79D2\u6570 \xB7 windups.Array.data[1]"
+      value: 0.6000000238418579
+      integer: 0
+      boolean: 0
+    - path: 'windups.Array.data[2]'
+      label: "\u524D\u6447\u79D2\u6570 \xB7 windups.Array.data[2]"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: 'windups.Array.data[3]'
+      label: "\u524D\u6447\u79D2\u6570 \xB7 windups.Array.data[3]"
+      value: 0.4000000059604645
+      integer: 0
+      boolean: 0
+    - path: 'releaseFrames.Array.data[0]'
+      label: "\u91CA\u653E\u5E27 \xB7 releaseFrames.Array.data[0]"
+      value: 11
+      integer: 1
+      boolean: 0
+    - path: 'releaseFrames.Array.data[1]'
+      label: "\u91CA\u653E\u5E27 \xB7 releaseFrames.Array.data[1]"
+      value: 9
+      integer: 1
+      boolean: 0
+    - path: 'releaseFrames.Array.data[2]'
+      label: "\u91CA\u653E\u5E27 \xB7 releaseFrames.Array.data[2]"
+      value: 12
+      integer: 1
+      boolean: 0
+    - path: 'releaseFrames.Array.data[3]'
+      label: "\u91CA\u653E\u5E27 \xB7 releaseFrames.Array.data[3]"
+      value: 6
+      integer: 1
+      boolean: 0
+  - objectPath: 
+    componentType: WestController
+    componentIndex: 0
+    parameters:
+    - path: Idle.loop
+      label: "Idle \xB7 Idle.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Idle.fps
+      label: "Idle \xB7 Idle.fps"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: Walk.loop
+      label: "Walk \xB7 Walk.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Walk.fps
+      label: "Walk \xB7 Walk.fps"
+      value: 14
+      integer: 0
+      boolean: 0
+    - path: Die.loop
+      label: "Die \xB7 Die.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: Die.fps
+      label: "Die \xB7 Die.fps"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: stopDistance
+      label: "\u505C\u6B62\u9760\u8FD1\u8DDD\u79BB \xB7 stopDistance"
+      value: 5.5
+      integer: 0
+      boolean: 0
+    - path: specialAttack
+      label: "specialAttack \xB7 specialAttack"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: stunnedFrame
+      label: "stunnedFrame \xB7 stunnedFrame"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: DragonClaw.loop
+      label: "DragonClaw \xB7 DragonClaw.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: DragonClaw.fps
+      label: "DragonClaw \xB7 DragonClaw.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: PearlToss.loop
+      label: "PearlToss \xB7 PearlToss.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: PearlToss.fps
+      label: "PearlToss \xB7 PearlToss.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: DragonBreath.loop
+      label: "DragonBreath \xB7 DragonBreath.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: DragonBreath.fps
+      label: "DragonBreath \xB7 DragonBreath.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: PearlOrbit.loop
+      label: "PearlOrbit \xB7 PearlOrbit.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: PearlOrbit.fps
+      label: "PearlOrbit \xB7 PearlOrbit.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: Ward.loop
+      label: "Ward \xB7 Ward.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: Ward.fps
+      label: "Ward \xB7 Ward.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: HitReaction.loop
+      label: "HitReaction \xB7 HitReaction.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: HitReaction.fps
+      label: "HitReaction \xB7 HitReaction.fps"
+      value: 18
+      integer: 0
+      boolean: 0
+    - path: visualHeight
+      label: "visualHeight \xB7 visualHeight"
+      value: 2.9000000953674316
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/DragonClaw
+    componentType: WestClawBox
+    componentIndex: 0
+    parameters:
+    - path: Attack
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack"
+      value: 25
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: launch
+      label: "launch \xB7 launch"
+      value: 0
+      integer: 0
+      boolean: 1
+  - objectPath: 
+    componentType: UnityEngine.Rigidbody2D
+    componentIndex: 0
+    parameters:
+    - path: m_Mass
+      label: "\u8D28\u91CF \xB7 m_Mass"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: m_GravityScale
+      label: "\u91CD\u529B\u500D\u7387 \xB7 m_GravityScale"
+      value: 0.8999999761581421
+      integer: 0
+      boolean: 0
+    - path: m_LinearDamping
+      label: "\u6C34\u5E73\u963B\u5C3C \xB7 m_LinearDamping"
+      value: 0
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.399999976158142
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 2.6500000953674316
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1.3250000476837158
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/Attacked
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.5499999523162842
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 2.799999952316284
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1.399999976158142
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/DragonClaw
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 7
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 2.200000047683716
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 4.199999809265137
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1.2000000476837158
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/ClawCheck
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 14
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 4
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  numbers:
+  - key: WestCombat.Target.1
+    label: Target / if(Time.time<resolveAt)return null;resolveAt=Time.time+0.5f;
+    source: Assets/Projects/Scripts/Boss/WestKing/WestCombat.cs:52
+    value: 0.5
+  - key: WestCombat.ReadyAttack.1
+    label: ReadyAttack / int i=(nextSkill+step)%4;float range=i==1?14f:i==3?4.5f:7f;
+    source: Assets/Projects/Scripts/Boss/WestKing/WestCombat.cs:71
+    value: 14
+  - key: WestCombat.ReadyAttack.2
+    label: ReadyAttack / int i=(nextSkill+step)%4;float range=i==1?14f:i==3?4.5f:7f;
+    source: Assets/Projects/Scripts/Boss/WestKing/WestCombat.cs:71
+    value: 4.5
+  - key: WestCombat.ReadyAttack.3
+    label: ReadyAttack / int i=(nextSkill+step)%4;float range=i==1?14f:i==3?4.5f:7f;
+    source: Assets/Projects/Scripts/Boss/WestKing/WestCombat.cs:71
+    value: 7
+  - key: WestCombat.SampleFrame.1
+    label: SampleFrame / case 2:breath=pool.Flame(transform.position,AttackFaceRight);channelUntil=Time.time+2f;break;
+    source: Assets/Projects/Scripts/Boss/WestKing/WestCombat.cs:109
+    value: 2
+  - key: WestCombat.OnDamage.1
+    label: OnDamage / if(health.ratio<=0.7f && (latchedWards&1)==0){latchedWards|=1;pendingWards|=1;}
+    source: Assets/Projects/Scripts/Boss/WestKing/WestCombat.cs:123
+    value: 0.7
+  - key: WestCombat.OnDamage.2
+    label: OnDamage / if(health.ratio<=0.3f && (latchedWards&2)==0){latchedWards|=2;pendingWards|=2;}
+    source: Assets/Projects/Scripts/Boss/WestKing/WestCombat.cs:124
+    value: 0.3
+  - key: WestCombat.BeginWard.1
+    label: BeginWard / CancelAttack();movement.Stop();Phase=WardPhase.Guarding;wardRemaining=12f;nextRay=8f;
+    source: Assets/Projects/Scripts/Boss/WestKing/WestCombat.cs:131
+    value: 12
+  - key: WestCombat.BeginWard.2
+    label: BeginWard / CancelAttack();movement.Stop();Phase=WardPhase.Guarding;wardRemaining=12f;nextRay=8f;
+    source: Assets/Projects/Scripts/Boss/WestKing/WestCombat.cs:131
+    value: 8
+  - key: WestCombat.BeginWard.3
+    label: BeginWard / health.SetDamageMultiplier(this,0.3f);health.SetSuperArmor(this,true);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestCombat.cs:132
+    value: 0.3
+  - key: WestCombat.BeginWard.4
+    label: BeginWard / arena=cm!=null?new Vector2(cm.EdgeL-cm.CameraHalf,cm.EdgeR+cm.CameraHalf):new
+      Vector2(transform.position.x-10f,tran
+    source: Assets/Projects/Scripts/Boss/WestKing/WestCombat.cs:136
+    value: 10
+  - key: WestCombat.BeginWard.5
+    label: BeginWard / arena=cm!=null?new Vector2(cm.EdgeL-cm.CameraHalf,cm.EdgeR+cm.CameraHalf):new
+      Vector2(transform.position.x-10f,tran
+    source: Assets/Projects/Scripts/Boss/WestKing/WestCombat.cs:136
+    value: 10
+  - key: WestCombat.BeginWard.6
+    label: BeginWard / RaycastHit2D ground=Physics2D.Raycast((Vector2)transform.position+Vector2.up,Vector2.down,30f,1<<6);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestCombat.cs:138
+    value: 30
+  - key: WestCombat.Update.1
+    label: Update / nextRay-=4f;int choice=UnityEngine.Random.Range(0,ActiveOrbs);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestCombat.cs:158
+    value: 4
+  - key: WestCombat.Expose.1
+    label: Expose / health.SetDamageMultiplier(this,1.5f);exposedRemaining=3f;movement.Stop();WardChanged?.Invoke();
+    source: Assets/Projects/Scripts/Boss/WestKing/WestCombat.cs:171
+    value: 1.5
+  - key: WestCombat.Expose.2
+    label: Expose / health.SetDamageMultiplier(this,1.5f);exposedRemaining=3f;movement.Stop();WardChanged?.Invoke();
+    source: Assets/Projects/Scripts/Boss/WestKing/WestCombat.cs:171
+    value: 3
+  - key: WestCombat.Timeout.1
+    label: Timeout / if(player!=null && player.CanReceiveHit)player.GetComponent<Health>().TakeDamage(new
+      DamageInfo(transform,35f*Damag
+    source: Assets/Projects/Scripts/Boss/WestKing/WestCombat.cs:177
+    value: 35
+  - key: WestController.Scale.1
+    label: Scale / float scale=visualHeight/Mathf.Max(0.1f,clip.sprites[0].bounds.size.y);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestController.cs:19
+    value: 0.1
+  - key: WestEffectPool.SpawnOrbs.1
+    label: SpawnOrbs / Vector2 position=new(Mathf.Lerp(limits.x+1.5f,limits.y-1.5f,(i+0.5f)/3f),floor+Random.Range(2.6f,4.2f));
+    source: Assets/Projects/Scripts/Boss/WestKing/WestEffectPool.cs:40
+    value: 1.5
+  - key: WestEffectPool.SpawnOrbs.2
+    label: SpawnOrbs / Vector2 position=new(Mathf.Lerp(limits.x+1.5f,limits.y-1.5f,(i+0.5f)/3f),floor+Random.Range(2.6f,4.2f));
+    source: Assets/Projects/Scripts/Boss/WestKing/WestEffectPool.cs:40
+    value: 1.5
+  - key: WestEffectPool.SpawnOrbs.3
+    label: SpawnOrbs / Vector2 position=new(Mathf.Lerp(limits.x+1.5f,limits.y-1.5f,(i+0.5f)/3f),floor+Random.Range(2.6f,4.2f));
+    source: Assets/Projects/Scripts/Boss/WestKing/WestEffectPool.cs:40
+    value: 0.5
+  - key: WestEffectPool.SpawnOrbs.4
+    label: SpawnOrbs / Vector2 position=new(Mathf.Lerp(limits.x+1.5f,limits.y-1.5f,(i+0.5f)/3f),floor+Random.Range(2.6f,4.2f));
+    source: Assets/Projects/Scripts/Boss/WestKing/WestEffectPool.cs:40
+    value: 3
+  - key: WestEffectPool.SpawnOrbs.5
+    label: SpawnOrbs / Vector2 position=new(Mathf.Lerp(limits.x+1.5f,limits.y-1.5f,(i+0.5f)/3f),floor+Random.Range(2.6f,4.2f));
+    source: Assets/Projects/Scripts/Boss/WestKing/WestEffectPool.cs:40
+    value: 2.6
+  - key: WestEffectPool.SpawnOrbs.6
+    label: SpawnOrbs / Vector2 position=new(Mathf.Lerp(limits.x+1.5f,limits.y-1.5f,(i+0.5f)/3f),floor+Random.Range(2.6f,4.2f));
+    source: Assets/Projects/Scripts/Boss/WestKing/WestEffectPool.cs:40
+    value: 4.2
+  - key: WestKingBurn.Apply.1
+    label: Apply / {Burn b=effect.entries[i];b.Until=Time.time+2f;b.Damage=1.5f*scale;effect.entries[i]=b;return;}
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingBurn.cs:19
+    value: 2
+  - key: WestKingBurn.Apply.2
+    label: Apply / {Burn b=effect.entries[i];b.Until=Time.time+2f;b.Damage=1.5f*scale;effect.entries[i]=b;return;}
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingBurn.cs:19
+    value: 1.5
+  - key: WestKingBurn.Apply.3
+    label: Apply / effect.entries.Add(new Burn{Owner=owner,Until=Time.time+2f,Next=Time.time+0.5f,Damage=1.5f*scale});
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingBurn.cs:20
+    value: 2
+  - key: WestKingBurn.Apply.4
+    label: Apply / effect.entries.Add(new Burn{Owner=owner,Until=Time.time+2f,Next=Time.time+0.5f,Damage=1.5f*scale});
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingBurn.cs:20
+    value: 0.5
+  - key: WestKingBurn.Apply.5
+    label: Apply / effect.entries.Add(new Burn{Owner=owner,Until=Time.time+2f,Next=Time.time+0.5f,Damage=1.5f*scale});
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingBurn.cs:20
+    value: 1.5
+  - key: WestKingBurn.Update.1
+    label: Update / while(b.Next<=b.Until+0.0001f && Time.time>=b.Next)
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingBurn.cs:31
+    value: 0.0001
+  - key: WestKingBurn.Update.2
+    label: Update / b.Next+=0.5f;health.TakeDamage(new DamageInfo(b.Owner.transform,b.Damage,false,false,null,false,true,DamageKind.Ski
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingBurn.cs:33
+    value: 0.5
+  - key: WestKingFlame.Launch.1
+    label: Launch / began=Time.time;streamEnd=began+2f;end=pulse?began+0.4f:streamEnd+4f;nextTick=began+0.5f;
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingFlame.cs:26
+    value: 2
+  - key: WestKingFlame.Launch.2
+    label: Launch / began=Time.time;streamEnd=began+2f;end=pulse?began+0.4f:streamEnd+4f;nextTick=began+0.5f;
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingFlame.cs:26
+    value: 0.4
+  - key: WestKingFlame.Launch.3
+    label: Launch / began=Time.time;streamEnd=began+2f;end=pulse?began+0.4f:streamEnd+4f;nextTick=began+0.5f;
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingFlame.cs:26
+    value: 4
+  - key: WestKingFlame.Launch.4
+    label: Launch / began=Time.time;streamEnd=began+2f;end=pulse?began+0.4f:streamEnd+4f;nextTick=began+0.5f;
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingFlame.cs:26
+    value: 0.5
+  - key: WestKingFlame.Launch.5
+    label: Launch / transform.position=pulse?position:position+new Vector2((right?1f:-1f)*length/2f,0.65f);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingFlame.cs:27
+    value: 2
+  - key: WestKingFlame.Launch.6
+    label: Launch / transform.position=pulse?position:position+new Vector2((right?1f:-1f)*length/2f,0.65f);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingFlame.cs:27
+    value: 0.65
+  - key: WestKingFlame.Launch.7
+    label: Launch / visual.transform.localScale=new Vector3((pulse?radius*2f:length)/nativeWidth,pulse?0.8f:1.4f,1f);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingFlame.cs:28
+    value: 2
+  - key: WestKingFlame.Launch.8
+    label: Launch / visual.transform.localScale=new Vector3((pulse?radius*2f:length)/nativeWidth,pulse?0.8f:1.4f,1f);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingFlame.cs:28
+    value: 0.8
+  - key: WestKingFlame.Launch.9
+    label: Launch / visual.transform.localScale=new Vector3((pulse?radius*2f:length)/nativeWidth,pulse?0.8f:1.4f,1f);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingFlame.cs:28
+    value: 1.4
+  - key: WestKingFlame.StopStream.1
+    label: StopStream / streamEnd=Mathf.Min(streamEnd,Time.time);end=streamEnd+4f;nextTick=Time.time+0.5f;StartGround();
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingFlame.cs:35
+    value: 4
+  - key: WestKingFlame.StopStream.2
+    label: StopStream / streamEnd=Mathf.Min(streamEnd,Time.time);end=streamEnd+4f;nextTick=Time.time+0.5f;StartGround();
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingFlame.cs:35
+    value: 0.5
+  - key: WestKingFlame.StartGround.1
+    label: StartGround / fire=true;visual.transform.localScale=new Vector3(length/nativeWidth,0.65f,1f);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingFlame.cs:39
+    value: 0.65
+  - key: WestKingFlame.StartGround.2
+    label: StartGround / transform.position=anchor+new Vector2((right?1f:-1f)*length/2f,0.3f);spriteManager.ChangeState(ground);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingFlame.cs:40
+    value: 2
+  - key: WestKingFlame.StartGround.3
+    label: StartGround / transform.position=anchor+new Vector2((right?1f:-1f)*length/2f,0.3f);spriteManager.ChangeState(ground);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingFlame.cs:40
+    value: 0.3
+  - key: WestKingFlame.FixedUpdate.1
+    label: FixedUpdate / while(nextTick<=end+0.0001f && Time.time>=nextTick)
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingFlame.cs:47
+    value: 0.0001
+  - key: WestKingFlame.FixedUpdate.2
+    label: FixedUpdate / bool streamTick=nextTick<=streamEnd+0.0001f;nextTick+=0.5f;
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingFlame.cs:49
+    value: 0.0001
+  - key: WestKingFlame.FixedUpdate.3
+    label: FixedUpdate / bool streamTick=nextTick<=streamEnd+0.0001f;nextTick+=0.5f;
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingFlame.cs:49
+    value: 0.5
+  - key: WestKingFlame.FixedUpdate.4
+    label: FixedUpdate / Vector2 center=anchor+new Vector2((right?1f:-1f)*length/2f,streamTick?0.65f:0.3f);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingFlame.cs:52
+    value: 2
+  - key: WestKingFlame.FixedUpdate.5
+    label: FixedUpdate / Vector2 center=anchor+new Vector2((right?1f:-1f)*length/2f,streamTick?0.65f:0.3f);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingFlame.cs:52
+    value: 0.65
+  - key: WestKingFlame.FixedUpdate.6
+    label: FixedUpdate / Vector2 center=anchor+new Vector2((right?1f:-1f)*length/2f,streamTick?0.65f:0.3f);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingFlame.cs:52
+    value: 0.3
+  - key: WestKingFlame.FixedUpdate.7
+    label: FixedUpdate / WestHitUtility.Area(owner,center,new Vector2(length,streamTick?1.3f:0.6f),0f,10f*scale,true,hits,unique);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingFlame.cs:53
+    value: 1.3
+  - key: WestKingFlame.FixedUpdate.8
+    label: FixedUpdate / WestHitUtility.Area(owner,center,new Vector2(length,streamTick?1.3f:0.6f),0f,10f*scale,true,hits,unique);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingFlame.cs:53
+    value: 0.6
+  - key: WestKingFlame.FixedUpdate.9
+    label: FixedUpdate / WestHitUtility.Area(owner,center,new Vector2(length,streamTick?1.3f:0.6f),0f,10f*scale,true,hits,unique);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingFlame.cs:53
+    value: 10
+  - key: WestKingOrb.Warn.1
+    label: Warn / Vector2 direction=(target-start).normalized;end=start+direction*20f;
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingOrb.cs:31
+    value: 20
+  - key: WestKingOrb.Warn.2
+    label: Warn / RaycastHit2D wall=Physics2D.Raycast(start,direction,20f,1<<6);if(wall.collider!=null)end=wall.point-direction*0.02f
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingOrb.cs:32
+    value: 20
+  - key: WestKingOrb.Warn.3
+    label: Warn / RaycastHit2D wall=Physics2D.Raycast(start,direction,20f,1<<6);if(wall.collider!=null)end=wall.point-direction*0.02f
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingOrb.cs:32
+    value: 0.02
+  - key: WestKingOrb.Warn.4
+    label: Warn / remaining=0.8f;warningFrame=Time.frameCount;IsWarning=true;flash=0f;
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingOrb.cs:33
+    value: 0.8
+  - key: WestKingOrb.Warn.5
+    label: Warn / ray.startWidth=ray.endWidth=0.035f;ray.startColor=ray.endColor=new
+      Color(1f,0.1f,0.02f,0.95f);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingOrb.cs:34
+    value: 0.035
+  - key: WestKingOrb.Warn.6
+    label: Warn / ray.startWidth=ray.endWidth=0.035f;ray.startColor=ray.endColor=new
+      Color(1f,0.1f,0.02f,0.95f);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingOrb.cs:34
+    value: 0.1
+  - key: WestKingOrb.Warn.7
+    label: Warn / ray.startWidth=ray.endWidth=0.035f;ray.startColor=ray.endColor=new
+      Color(1f,0.1f,0.02f,0.95f);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingOrb.cs:34
+    value: 0.02
+  - key: WestKingOrb.Warn.8
+    label: Warn / ray.startWidth=ray.endWidth=0.035f;ray.startColor=ray.endColor=new
+      Color(1f,0.1f,0.02f,0.95f);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingOrb.cs:34
+    value: 0.95
+  - key: WestKingOrb.Update.1
+    label: Update / IsWarning=false;Shots++;flash=0.15f;ray.startWidth=ray.endWidth=0.18f;
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingOrb.cs:46
+    value: 0.15
+  - key: WestKingOrb.Update.2
+    label: Update / IsWarning=false;Shots++;flash=0.15f;ray.startWidth=ray.endWidth=0.18f;
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingOrb.cs:46
+    value: 0.18
+  - key: WestKingOrb.Update.3
+    label: Update / int count=Physics2D.OverlapBox((start+end)/2f,new Vector2(direction.magnitude,0.4f),angle,WestHitUtility.Players,hi
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingOrb.cs:48
+    value: 2
+  - key: WestKingOrb.Update.4
+    label: Update / int count=Physics2D.OverlapBox((start+end)/2f,new Vector2(direction.magnitude,0.4f),angle,WestHitUtility.Players,hi
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingOrb.cs:48
+    value: 0.4
+  - key: WestKingOrb.Update.5
+    label: Update / float before=victim.CurBlood;victim.TakeDamage(new DamageInfo(owner.transform,12f*scale,false,false,null,false,fals
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingOrb.cs:53
+    value: 12
+  - key: WestKingPearl.Launch.1
+    label: Launch / orbit=orbiting;began=Time.time;expires=began+(orbit?5f:8f);Bounces=Explosions=OrbitHits=0;nextContact.Clear();
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingPearl.cs:26
+    value: 5
+  - key: WestKingPearl.Launch.2
+    label: Launch / orbit=orbiting;began=Time.time;expires=began+(orbit?5f:8f);Bounces=Explosions=OrbitHits=0;nextContact.Clear();
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingPearl.cs:26
+    value: 8
+  - key: WestKingPearl.Launch.3
+    label: Launch / PlayerController target=source.Target;float targetX=target!=null?target.transform.position.x:from.x+(source.AttackF
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingPearl.cs:27
+    value: 6
+  - key: WestKingPearl.Launch.4
+    label: Launch / PlayerController target=source.Target;float targetX=target!=null?target.transform.position.x:from.x+(source.AttackF
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingPearl.cs:27
+    value: 6
+  - key: WestKingPearl.Launch.5
+    label: Launch / RaycastHit2D floor=Physics2D.Raycast(new Vector2(targetX,from.y+2f),Vector2.down,30f,1<<6);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingPearl.cs:28
+    value: 2
+  - key: WestKingPearl.Launch.6
+    label: Launch / RaycastHit2D floor=Physics2D.Raycast(new Vector2(targetX,from.y+2f),Vector2.down,30f,1<<6);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingPearl.cs:28
+    value: 30
+  - key: WestKingPearl.Launch.7
+    label: Launch / float targetY=floor.collider!=null?floor.point.y+0.2f:from.y-1f;
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingPearl.cs:29
+    value: 0.2
+  - key: WestKingPearl.Launch.8
+    label: Launch / const float t=0.9f;velocity=new Vector2((targetX-from.x)/t,(targetY-from.y+18f*t*t/2f)/t);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingPearl.cs:30
+    value: 0.9
+  - key: WestKingPearl.Launch.9
+    label: Launch / const float t=0.9f;velocity=new Vector2((targetX-from.x)/t,(targetY-from.y+18f*t*t/2f)/t);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingPearl.cs:30
+    value: 18
+  - key: WestKingPearl.Launch.10
+    label: Launch / const float t=0.9f;velocity=new Vector2((targetX-from.x)/t,(targetY-from.y+18f*t*t/2f)/t);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingPearl.cs:30
+    value: 2
+  - key: WestKingPearl.FixedUpdate.1
+    label: FixedUpdate / const float gravity=18f;float dt=Time.fixedDeltaTime;Vector2
+      from=transform.position;
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingPearl.cs:38
+    value: 18
+  - key: WestKingPearl.FixedUpdate.2
+    label: FixedUpdate / Vector2 delta=velocity*dt+Vector2.down*(gravity*dt*dt/2f);velocity+=Vector2.down*gravity*dt;
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingPearl.cs:39
+    value: 2
+  - key: WestKingPearl.FixedUpdate.3
+    label: FixedUpdate / int count=Physics2D.CircleCast(from,0.2f,delta.normalized,filter,casts,delta.magnitude);int
+      nearest=-1;
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingPearl.cs:41
+    value: 0.2
+  - key: WestKingPearl.FixedUpdate.4
+    label: FixedUpdate / RaycastHit2D hit=casts[nearest];transform.position=hit.centroid+hit.normal*0.025f;
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingPearl.cs:44
+    value: 0.025
+  - key: WestKingPearl.FixedUpdate.5
+    label: FixedUpdate / if(hit.normal.y<0.5f){velocity=Vector2.Reflect(velocity,hit.normal)*0.8f;return;}
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingPearl.cs:45
+    value: 0.5
+  - key: WestKingPearl.FixedUpdate.6
+    label: FixedUpdate / if(hit.normal.y<0.5f){velocity=Vector2.Reflect(velocity,hit.normal)*0.8f;return;}
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingPearl.cs:45
+    value: 0.8
+  - key: WestKingPearl.FixedUpdate.7
+    label: FixedUpdate / bool final=Bounces>=2;float radius=final?2.2f:1.2f;
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingPearl.cs:47
+    value: 2.2
+  - key: WestKingPearl.FixedUpdate.8
+    label: FixedUpdate / bool final=Bounces>=2;float radius=final?2.2f:1.2f;
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingPearl.cs:47
+    value: 1.2
+  - key: WestKingPearl.FixedUpdate.9
+    label: FixedUpdate / DamageLanding(radius,final?22f:16f);owner.Effects.Flame(hit.point,velocity.x>0f,true,radius);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingPearl.cs:48
+    value: 22
+  - key: WestKingPearl.FixedUpdate.10
+    label: FixedUpdate / DamageLanding(radius,final?22f:16f);owner.Effects.Flame(hit.point,velocity.x>0f,true,radius);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingPearl.cs:48
+    value: 16
+  - key: WestKingPearl.FixedUpdate.11
+    label: FixedUpdate / velocity=new Vector2(target!=null?Mathf.Clamp((target.transform.position.x-transform.position.x)/0.7f,-6f,6f):veloc
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingPearl.cs:51
+    value: 0.7
+  - key: WestKingPearl.FixedUpdate.12
+    label: FixedUpdate / velocity=new Vector2(target!=null?Mathf.Clamp((target.transform.position.x-transform.position.x)/0.7f,-6f,6f):veloc
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingPearl.cs:51
+    value: 6
+  - key: WestKingPearl.FixedUpdate.13
+    label: FixedUpdate / velocity=new Vector2(target!=null?Mathf.Clamp((target.transform.position.x-transform.position.x)/0.7f,-6f,6f):veloc
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingPearl.cs:51
+    value: 6
+  - key: WestKingPearl.FixedUpdate.14
+    label: FixedUpdate / velocity=new Vector2(target!=null?Mathf.Clamp((target.transform.position.x-transform.position.x)/0.7f,-6f,6f):veloc
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingPearl.cs:51
+    value: 0.5
+  - key: WestKingPearl.FixedUpdate.15
+    label: FixedUpdate / velocity=new Vector2(target!=null?Mathf.Clamp((target.transform.position.x-transform.position.x)/0.7f,-6f,6f):veloc
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingPearl.cs:51
+    value: 6.5
+  - key: WestKingPearl.Orbit.1
+    label: Orbit / transform.position=center+new Vector2(Mathf.Cos(angle)*2.4f,Mathf.Sin(angle)*0.9f);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingPearl.cs:66
+    value: 2.4
+  - key: WestKingPearl.Orbit.2
+    label: Orbit / transform.position=center+new Vector2(Mathf.Cos(angle)*2.4f,Mathf.Sin(angle)*0.9f);
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingPearl.cs:66
+    value: 0.9
+  - key: WestKingPearl.Orbit.3
+    label: Orbit / int count=Physics2D.OverlapCircle(transform.position,0.4f,WestHitUtility.Players,hits);unique.Clear();
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingPearl.cs:67
+    value: 0.4
+  - key: WestKingPearl.Orbit.4
+    label: Orbit / nextContact[hp]=Time.time+0.5f;OrbitHits++;
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingPearl.cs:72
+    value: 0.5
+  - key: WestKingPearl.Orbit.5
+    label: Orbit / hp.TakeDamage(new DamageInfo(owner.transform,14f*scale,false,false,null,false,false,DamageKind.Skill));
+    source: Assets/Projects/Scripts/Boss/WestKing/WestKingPearl.cs:73
+    value: 14
+  - key: WestCombat.SampleFrame.Parameter1
+    label: "SampleFrame / \u4F24\u5BB3/\u5224\u5B9A\u53C2\u6570 14"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Boss/WestKing/WestCombat.cs:100
+    value: 14
+  skills: []
+  relatedProfiles:
+  - {fileID: 11400000, guid: 9f0e0ba27d034bf4685aba226c49050a, type: 2}
+  - {fileID: 11400000, guid: 26d0839c99655c344ae416b8381460aa, type: 2}
+  - {fileID: 11400000, guid: 3eab0885f9b302f429b30a4307537d8a, type: 2}

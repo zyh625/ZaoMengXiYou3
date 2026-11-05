@@ -408,6 +408,7 @@ GameObject:
   - component: {fileID: 7261026002001}
   - component: {fileID: 381027001}
   - component: {fileID: 728102810001}
+  - component: {fileID: 4789933338003858303}
   m_Layer: 11
   m_Name: WuKong
   m_TagString: Untagged
@@ -466,7 +467,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.066307425}
+  m_Offset: {x: 0, y: -0.07967317}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -739,7 +740,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WukongCombat
   allAttacks:
   - id: NormalAttack1
-    advancesThaw: 1
     animation:
       sprites:
       - {fileID: 2598868237486306103, guid: 1936c6b8688b3c8429eb4313bea1dd4a, type: 3}
@@ -766,11 +766,11 @@ MonoBehaviour:
     manaCost: 10
     cooldown: 10
     skillIcon: {fileID: 0}
+    advancesThaw: 1
     continuous: 0
     vigorCost: 20
     vigorPerSecond: 10
   - id: NormalAttack2
-    advancesThaw: 1
     animation:
       sprites:
       - {fileID: 8960278200517875464, guid: 95ee39ab22764794f8bc53fb27b9ab63, type: 3}
@@ -793,11 +793,11 @@ MonoBehaviour:
     manaCost: 10
     cooldown: 10
     skillIcon: {fileID: 0}
+    advancesThaw: 1
     continuous: 0
     vigorCost: 20
     vigorPerSecond: 10
   - id: NormalAttack3
-    advancesThaw: 1
     animation:
       sprites:
       - {fileID: 2943770825191874051, guid: 8a312a7a1e0830442bcd085659512a4c, type: 3}
@@ -824,11 +824,11 @@ MonoBehaviour:
     manaCost: 10
     cooldown: 10
     skillIcon: {fileID: 0}
+    advancesThaw: 1
     continuous: 0
     vigorCost: 20
     vigorPerSecond: 10
   - id: ComboAttack1
-    advancesThaw: 1
     animation:
       sprites:
       - {fileID: -2443684859017980272, guid: 10d36a7a0392b5d4fbc1761be4423428, type: 3}
@@ -855,11 +855,11 @@ MonoBehaviour:
     manaCost: 10
     cooldown: 10
     skillIcon: {fileID: 0}
+    advancesThaw: 1
     continuous: 0
     vigorCost: 20
     vigorPerSecond: 10
   - id: ComboAttack2
-    advancesThaw: 1
     animation:
       sprites:
       - {fileID: -8423004158879062408, guid: f9e95d115fc419e478f1bedaa84fb28c, type: 3}
@@ -879,11 +879,11 @@ MonoBehaviour:
     manaCost: 10
     cooldown: 10
     skillIcon: {fileID: 0}
+    advancesThaw: 1
     continuous: 1
     vigorCost: 20
     vigorPerSecond: 10
   - id: Skill1
-    advancesThaw: 1
     animation:
       sprites:
       - {fileID: -2221492823137081727, guid: e97e4a3e144e7624ebd86ca9f0b5af97, type: 3}
@@ -910,11 +910,11 @@ MonoBehaviour:
     manaCost: 10
     cooldown: 10
     skillIcon: {fileID: -613594421, guid: ecaba4787e124ba4681c6de64e60c847, type: 3}
+    advancesThaw: 1
     continuous: 0
     vigorCost: 20
     vigorPerSecond: 10
   - id: Skill2
-    advancesThaw: 1
     animation:
       sprites:
       - {fileID: -2773545345626424459, guid: 8275c8faf37a2b84abfd715359e16027, type: 3}
@@ -941,11 +941,11 @@ MonoBehaviour:
     manaCost: 10
     cooldown: 10
     skillIcon: {fileID: -3538031661370155844, guid: 09a48a462c46b1f40a8a06d53b467ed2, type: 3}
+    advancesThaw: 1
     continuous: 0
     vigorCost: 20
     vigorPerSecond: 10
   - id: Skill3
-    advancesThaw: 1
     animation:
       sprites:
       - {fileID: -3634195805419237982, guid: 16594a01ea3730c45b511ccca20e9170, type: 3}
@@ -976,11 +976,11 @@ MonoBehaviour:
     manaCost: 10
     cooldown: 10
     skillIcon: {fileID: -4403827252363246863, guid: 28f60c4591c6611489877f962b627a76, type: 3}
+    advancesThaw: 1
     continuous: 0
     vigorCost: 20
     vigorPerSecond: 10
   - id: RiseAttack1
-    advancesThaw: 1
     animation:
       sprites:
       - {fileID: -1771056877392275372, guid: ec3199a0883248247b8654fc58623407, type: 3}
@@ -1007,6 +1007,7 @@ MonoBehaviour:
     manaCost: 10
     cooldown: 10
     skillIcon: {fileID: 0}
+    advancesThaw: 1
     continuous: 0
     vigorCost: 20
     vigorPerSecond: 10
@@ -1017,6 +1018,8 @@ MonoBehaviour:
   attackDelay: 0.7
   attackMemory: 1
   Skilled: -1
+  criticalChance: 0
+  criticalMultiplier: 2
   SkillThreeState: 020000000d0000000e000000
   SkillThreeCur: 0
   skillThreeGroundRatio: 1.5
@@ -1025,8 +1028,6 @@ MonoBehaviour:
   Skill1ImmuneEnd: 11
   Skill3ImmuneBegin: 2
   Skill3ImmuneEnd: 12
-  criticalChance: 0
-  criticalMultiplier: 2
 --- !u!114 &8196437942897686354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1108,11 +1109,60 @@ MonoBehaviour:
   boostReduce: 0.01
   boostTime: 10
   bajieDamageMultiplier: 0.5
-  tangAttackMultiplier: 1.2
-  boostEnergy: 0
   moveMultiplier: 1.3
   wukongCriticalChance: 0.3
+  tangAttackMultiplier: 1.2
   shaSuperArmor: 1
+  boostEnergy: 0
+--- !u!114 &381027001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4060810627522325961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f60275e7f7a84198ac9dd54df86fff3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActorStatus
+  frozenPrefab: {fileID: 3100005, guid: 2a29fce56c755ea0a3ae3897a63b2046, type: 3}
+  poisonPrefab: {fileID: 3100005, guid: f1706eac82535e8489d4077cf1477dd8, type: 3}
+  frozenDuration: 2
+  meltFrameInterval: 1
+  frozenDamageMultiplier: 1.5
+--- !u!114 &728102810001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4060810627522325961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bfbf237d2074e2da9f1808626d90fe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActorBoostTrail
+  bodyRenderer: {fileID: 7385226655740497723}
+  trailMaterial: {fileID: 2100000, guid: 57e97ad083884ca6b7c0874eab10368f, type: 2}
+  trailColor: {r: 0, g: 0, b: 0, a: 0.16}
+  afterimageDuration: 0.2
+  minimumMoveSpeed: 0.03
+  prewarmCount: 16
+  sortingOffset: -1
+--- !u!114 &4789933338003858303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4060810627522325961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 010576c25109831489a763a8d4c45ca0, type: 2}
 --- !u!1 &5563318888257719882
 GameObject:
   m_ObjectHideFlags: 0
@@ -1299,7 +1349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4829aae24ea081f4fad41667c806cd2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttackBox
-  Attack: 11111
+  Attack: 28
   knockback: 1
   launch: 0
   effects: []
@@ -1627,39 +1677,3 @@ MonoBehaviour:
   knockback: 1
   launch: 1
   effects: []
---- !u!114 &381027001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4060810627522325961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f60275e7f7a84198ac9dd54df86fff3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ActorStatus
-  frozenPrefab: {fileID: 3100005, guid: 2a29fce56c755ea0a3ae3897a63b2046, type: 3}
-  poisonPrefab: {fileID: 3100005, guid: f1706eac82535e8489d4077cf1477dd8, type: 3}
-  frozenDuration: 2
-  meltFrameInterval: 1
-  frozenDamageMultiplier: 1.5
---- !u!114 &728102810001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4060810627522325961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bfbf237d2074e2da9f1808626d90fe3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ActorBoostTrail
-  bodyRenderer: {fileID: 7385226655740497723}
-  trailMaterial: {fileID: 2100000, guid: 57e97ad083884ca6b7c0874eab10368f, type: 2}
-  trailColor: {r: 0, g: 0, b: 0, a: 0.16}
-  afterimageDuration: 0.2
-  minimumMoveSpeed: 0.03
-  prewarmCount: 16
-  sortingOffset: -1

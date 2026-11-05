@@ -30,6 +30,7 @@ public sealed class PrefabPool<T> where T : MonoBehaviour
     private T Create(T prefab, Transform activeRoot, Transform inactiveRoot)
     {
         T instance = Object.Instantiate(prefab, inactiveRoot);//在停用容器中创建，初始化前不会运行OnEnable或产生可见特效
+        instance.GetComponent<BalanceBinding>()?.ApplyOnce();//Apply base tuning before Launch writes this lease's runtime values.
         instance.gameObject.SetActive(false);
         instance.transform.SetParent(activeRoot, false);//保留预制体本来的局部缩放，生成位置由各自Launch入口设置
         instances.Add(instance);

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6296027870107459576}
   - component: {fileID: 6353909306940828230}
   - component: {fileID: 8913101001}
+  - component: {fileID: 6925249218061784360}
   m_Layer: 0
   m_Name: SouthSwordFormation
   m_TagString: Untagged
@@ -119,16 +120,69 @@ MonoBehaviour:
     loop: 0
     fps: 12
   frameBounds:
-  - {x: -2.2700000000, y: 0.7800000000, width: 4.8200000000, height: 1.3200000000}
-  - {x: -2.4700000000, y: 0.4400000000, width: 4.8400000000, height: 2.0100000000}
-  - {x: -2.2700000000, y: 0.3900000000, width: 4.8200000000, height: 2.2500000000}
-  - {x: -2.4600000000, y: 0.1900000000, width: 4.8200000000, height: 2.4300000000}
-  - {x: -2.2700000000, y: -0.0300000000, width: 4.8200000000, height: 2.6500000000}
-  - {x: -2.4700000000, y: -0.1900000000, width: 4.8300000000, height: 2.7900000000}
-  - {x: -2.2700000000, y: 0.1800000000, width: 4.8100000000, height: 1.3200000000}
-  - {x: -2.4600000000, y: 0.1700000000, width: 4.8200000000, height: 1.3300000000}
-  - {x: -2.2700000000, y: 0.5600000000, width: 4.8100000000, height: 1.3200000000}
-  - {x: 0.0000000000, y: 0.0000000000, width: 0.0000000000, height: 0.0000000000}
+  - serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  - serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  - serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  - serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  - serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  - serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  - serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  - serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  - serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  - serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
   fallSpeed: 9
   damage: 18
-  frozenEffect: {fileID: 11400000, guid: 9b4fe5563eee5e1a9ac7475422386311, type: 2}
+  frozenEffect: {fileID: 11400000, guid: eb02442a4e11c2e48b2bc77d28433636, type: 2}
+--- !u!114 &6925249218061784360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7311886391300197542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: bb2a633b3a30eb941bb62751b7c13cbe, type: 2}

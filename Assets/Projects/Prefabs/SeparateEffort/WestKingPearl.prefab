@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1454789383853960245}
   - component: {fileID: 6292874345466819483}
+  - component: {fileID: 6379460799410819855}
   m_Layer: 0
   m_Name: WestKingPearl
   m_TagString: Untagged
@@ -67,6 +68,19 @@ MonoBehaviour:
     fps: 16
   spriteManager: {fileID: 984259907125473787}
   visual: {fileID: 3011111543020905236}
+--- !u!114 &6379460799410819855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3611697362170495938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 3eab0885f9b302f429b30a4307537d8a, type: 2}
 --- !u!1 &6812187029386256802
 GameObject:
   m_ObjectHideFlags: 0

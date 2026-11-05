@@ -34,7 +34,7 @@ public class SouthIceSpikes : SouthKingEffect
     {
         if (shattered || frozenPlayer != null || !Area(frame, out Bounds area)
             || !TryPlayer(out _, out Health health, out Collider2D body) || !area.Intersects(body.bounds)) return;
-        float remaining = Mathf.Max(0.1f, activeFrames / Fps - (Time.time - beganAt) + 0.2f);
+        float remaining = Mathf.Max(BalanceRuntime.Number(this, "SouthIceSpikes.Freeze.1", 0.1f), activeFrames / Fps - (Time.time - beganAt) + BalanceRuntime.Number(this, "SouthIceSpikes.Freeze.2", 0.2f));
         if (health.Status != null && health.Status.ApplyFreeze(this, remaining))
         { frozenPlayer = health; frozenLife = health.LifeVersion; }
     }

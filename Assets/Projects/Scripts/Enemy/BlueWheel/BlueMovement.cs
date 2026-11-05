@@ -36,16 +36,16 @@ public class BlueMovement : EnemyMovement
         if (cameraManager == null && Camera.main != null)
             cameraManager = Camera.main.GetComponent<CameraManager>();
         float playerX = transform.position.x + DeltaX;
-        if ((transform.position.x - playerX) * patrolSide < -0.5f)
+        if ((transform.position.x - playerX) * patrolSide < -BalanceRuntime.Number(this, "BlueMovement.PatrolHidden.1", 0.5f))
         {
             patrolSide = -patrolSide;
             towardFar = true;//玩家越过敌人后向新的外侧退开，不横穿玩家去追旧端点。
         }
-        float near = playerX + patrolSide * Mathf.Max(0.5f, hiddenDistance);
-        float far = playerX + patrolSide * (Mathf.Max(0.5f, hiddenDistance) + Mathf.Max(0.2f, patrolWidth));
+        float near = playerX + patrolSide * Mathf.Max(BalanceRuntime.Number(this, "BlueMovement.PatrolHidden.2", 0.5f), hiddenDistance);
+        float far = playerX + patrolSide * (Mathf.Max(BalanceRuntime.Number(this, "BlueMovement.PatrolHidden.3", 0.5f), hiddenDistance) + Mathf.Max(BalanceRuntime.Number(this, "BlueMovement.PatrolHidden.4", 0.2f), patrolWidth));
         if (cameraManager != null && cameraManager.CameraHalf > 0f)
         {
-            float margin = BodyCollider != null ? BodyCollider.bounds.extents.x + 0.2f : 1f;
+            float margin = BodyCollider != null ? BodyCollider.bounds.extents.x + BalanceRuntime.Number(this, "BlueMovement.PatrolHidden.5", 0.2f) : 1f;
             float left = cameraManager.EdgeL - cameraManager.CameraHalf + margin;
             float right = cameraManager.EdgeR + cameraManager.CameraHalf - margin;
             if (left <= right)
@@ -56,13 +56,13 @@ public class BlueMovement : EnemyMovement
         }
         float destination = towardFar ? far : near;
         float distance = destination - transform.position.x;
-        if (Mathf.Abs(distance) <= Mathf.Max(0.02f, turnTolerance))
+        if (Mathf.Abs(distance) <= Mathf.Max(BalanceRuntime.Number(this, "BlueMovement.PatrolHidden.6", 0.02f), turnTolerance))
         {
             towardFar = !towardFar;
             destination = towardFar ? far : near;
             distance = destination - transform.position.x;
         }
-        if (Mathf.Abs(distance) <= Mathf.Max(0.02f, turnTolerance))
+        if (Mathf.Abs(distance) <= Mathf.Max(BalanceRuntime.Number(this, "BlueMovement.PatrolHidden.7", 0.02f), turnTolerance))
         {
             PatrolDirection = 0f;
             Stop();
@@ -73,7 +73,7 @@ public class BlueMovement : EnemyMovement
         if (body != null)
         {
             Vector2 velocity = body.linearVelocity;
-            float limit = distance / Mathf.Max(0.0001f, Time.fixedDeltaTime);
+            float limit = distance / Mathf.Max(BalanceRuntime.Number(this, "BlueMovement.PatrolHidden.8", 0.0001f), Time.fixedDeltaTime);
             velocity.x = distance > 0f ? Mathf.Min(velocity.x, limit) : Mathf.Max(velocity.x, limit);
             body.linearVelocity = velocity;//再高的自身移速也只抵达端点，不跨点反复转向；流沙仍交给共用末步结算。
         }

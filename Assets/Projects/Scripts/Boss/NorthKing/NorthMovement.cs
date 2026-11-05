@@ -8,11 +8,11 @@ public sealed class NorthMovement : EnemyMovement
     public bool RainLanded {get;private set;}
     public void PrepareRain(){RainLanded=false;}
     public void BeginRainJump()
-    {if(IsRainJumping)return;body.linearVelocity=new Vector2(0f,3.2f);jumpedAt=Time.time;IsRainJumping=true;RainLanded=false;}
+    {if(IsRainJumping)return;body.linearVelocity=new Vector2(0f,BalanceRuntime.Number(this, "NorthMovement.BeginRainJump.1", 3.2f));jumpedAt=Time.time;IsRainJumping=true;RainLanded=false;}
     public void StepRainJump()
     {
         if(!IsRainJumping)return;
-        if(Time.time-jumpedAt>0.1f && body.linearVelocityY<=0.1f && IsOnGroundNow())
+        if(Time.time-jumpedAt>BalanceRuntime.Number(this, "NorthMovement.StepRainJump.1", 0.1f) && body.linearVelocityY<=BalanceRuntime.Number(this, "NorthMovement.StepRainJump.2", 0.1f) && IsOnGroundNow())
         {IsRainJumping=false;RainLanded=true;Stop();}
     }
     public void CancelRainJump()

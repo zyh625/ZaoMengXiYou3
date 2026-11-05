@@ -14,11 +14,11 @@ public sealed class ClampGuardCombat : EnemyCombat
     [SerializeField, Min(.01f)] private float burnDuration = 2f, burnTickInterval = 1f;//灼烧时长与间隔。
     public float ClampRootDuration => clampRootDuration;
     public float GrabDuration => grabDuration;
-    public float GrabTickInterval => Mathf.Max(.01f, grabTickInterval);
+    public float GrabTickInterval => Mathf.Max(BalanceRuntime.Number(this, "ClampGuardCombat.GrabTickInterval.1", 0.01f), grabTickInterval);
     public float GrabTickDamage => grabTickDamage;
     public float BurnTickDamage => burnTickDamage;
     public float BurnDuration => burnDuration;
-    public float BurnTickInterval => Mathf.Max(.01f, burnTickInterval);
+    public float BurnTickInterval => Mathf.Max(BalanceRuntime.Number(this, "ClampGuardCombat.BurnTickInterval.1", 0.01f), burnTickInterval);
     private Health health;
     private ClampGuardController controller;
     private ClampGuardGrab tether;
@@ -45,7 +45,7 @@ public sealed class ClampGuardCombat : EnemyCombat
         health.ApplyNextHitVulnerability(this, 0f, 1f);
         if (damage.IsPeriodic || damage.Source == null) return;
         float delta = damage.Source.position.x - transform.position.x;
-        if (Mathf.Abs(delta) < .02f) return;
+        if (Mathf.Abs(delta) < BalanceRuntime.Number(this, "ClampGuardCombat.PrepareArmor.1", 0.02f)) return;
         bool front = (delta > 0f) == controller.FacingRight;
         if (front) health.SetDamageMultiplier(this, frontDamageMultiplier);
         else health.ApplyNextHitVulnerability(this, rearDamageBonus, 1f);
@@ -55,9 +55,9 @@ public sealed class ClampGuardCombat : EnemyCombat
     public static int EligibleMask(float distance, int ready)
     {
         distance = Mathf.Abs(distance); int result = 0;
-        if (distance <= 2.5f && (ready & 1) != 0) result |= 1;
-        if (distance >= 3f && distance <= 5f && (ready & 2) != 0) result |= 2;
-        if (distance <= 5f && (ready & 4) != 0) result |= 4;
+        if (distance <= BalanceRuntime.Number(typeof(ClampGuardCombat), "ClampGuardCombat.EligibleMask.1", 2.5f) && (ready & 1) != 0) result |= 1;
+        if (distance >= BalanceRuntime.Number(typeof(ClampGuardCombat), "ClampGuardCombat.EligibleMask.2", 3f) && distance <= BalanceRuntime.Number(typeof(ClampGuardCombat), "ClampGuardCombat.EligibleMask.3", 5f) && (ready & 2) != 0) result |= 2;
+        if (distance <= BalanceRuntime.Number(typeof(ClampGuardCombat), "ClampGuardCombat.EligibleMask.4", 5f) && (ready & 4) != 0) result |= 4;
         return result;
     }
     public bool SelectRequest(float delta)
@@ -84,7 +84,7 @@ public sealed class ClampGuardCombat : EnemyCombat
             if (attack == 2)
             {
                 FlamesEmitted++;
-                var offset = new Vector3(AttackFaceRight ? .45f : -.45f, 1.1f, 0f);
+                var offset = new Vector3(AttackFaceRight ? BalanceRuntime.Number(this, "ClampGuardCombat.SampleFrame.1", 0.45f) : -BalanceRuntime.Number(this, "ClampGuardCombat.SampleFrame.2", 0.45f), BalanceRuntime.Number(this, "ClampGuardCombat.SampleFrame.3", 1.1f), 0f);
                 ClampGuardVentFlamePool.Emit(ventFlamePrefab, transform.position + offset, AttackFaceRight, transform, offset);
             }
             hitBoxes[attack].SampleNow();

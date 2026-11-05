@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3123260008574739465}
   - component: {fileID: 7612090627882221661}
   - component: {fileID: 1932124984412508560}
+  - component: {fileID: 1223883864933325979}
   m_Layer: 11
   m_Name: Boomerang 1
   m_TagString: Untagged
@@ -118,6 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4afba001ac453cb47a4812a86f7e8c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlueBoomearng
+  SM: {fileID: 7612090627882221661}
   flight:
     sprites:
     - {fileID: 21300000, guid: 6f2f0bf681055584a65d909c5a530215, type: 3}
@@ -130,7 +132,6 @@ MonoBehaviour:
     - {fileID: 21300014, guid: 6f2f0bf681055584a65d909c5a530215, type: 3}
     loop: 1
     fps: 12
-  SM: {fileID: 7612090627882221661}
   damage: 10
   flySpeed: 10
   outboundDistance: 9
@@ -141,3 +142,16 @@ MonoBehaviour:
   hitWidthRatio: 0.65
   hitHeightRatio: 0.65
   minimumHitSize: 0.15
+--- !u!114 &1223883864933325979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6419014179988089293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: ce6295c0787a0784cbed640914fa66ef, type: 2}

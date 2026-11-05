@@ -10,7 +10,7 @@ public sealed class RollingFurnaceCombat : EnemyCombat
     private Health health;
     private float rollReadyAt, slamReadyAt, ventReadyAt, ventStartedAt, accumulatedDamage;
     public VentPhase Vent { get; private set; }
-    public bool VentReady => accumulatedDamage >= 40f && Time.time >= ventReadyAt;
+    public bool VentReady => accumulatedDamage >= BalanceRuntime.Number(this, "RollingFurnaceCombat.VentReady.1", 40f) && Time.time >= ventReadyAt;
     public bool RollReady => Time.time >= rollReadyAt;
     public bool SlamReady => Time.time >= slamReadyAt;
     protected override bool UsesAnger => false;
@@ -36,22 +36,22 @@ public sealed class RollingFurnaceCombat : EnemyCombat
     public void Land(Vector2 position)
     {
         slamBox.gameObject.SetActive(true); Physics2D.SyncTransforms(); slamBox.SampleNow();
-        slamBox.gameObject.SetActive(false); shockwaves.Emit(position, 5f);
+        slamBox.gameObject.SetActive(false); shockwaves.Emit(position, BalanceRuntime.Number(this, "RollingFurnaceCombat.Land.1", 5f));
     }
     public bool BeginVent()
     {
         if (!VentReady) return false;
         CloseBoxes(); accumulatedDamage = 0f; ventStartedAt = Time.time;
         ventReadyAt = Time.time + ventCooldown; Vent = VentPhase.Closed;
-        health.SetDamageMultiplier(this, .2f); health.SetSuperArmor(this, true); return true;
+        health.SetDamageMultiplier(this, BalanceRuntime.Number(this, "RollingFurnaceCombat.BeginVent.1", 0.2f)); health.SetSuperArmor(this, true); return true;
     }
     public void AdvanceVent(float now)
     {
         if (Vent == VentPhase.None) return;
-        if (now >= ventStartedAt + 3f) { EndVent(); return; }
-        if (now >= ventStartedAt + 2f && Vent == VentPhase.Closed)
+        if (now >= ventStartedAt + BalanceRuntime.Number(this, "RollingFurnaceCombat.AdvanceVent.1", 3f)) { EndVent(); return; }
+        if (now >= ventStartedAt + BalanceRuntime.Number(this, "RollingFurnaceCombat.AdvanceVent.2", 2f) && Vent == VentPhase.Closed)
         {
-            Vent = VentPhase.Open; health.SetDamageMultiplier(this, 1.5f);
+            Vent = VentPhase.Open; health.SetDamageMultiplier(this, BalanceRuntime.Number(this, "RollingFurnaceCombat.AdvanceVent.3", 1.5f));
             health.SetSuperArmor(this, false); health.AttackedEnd();
         }
     }

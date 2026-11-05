@@ -101,10 +101,10 @@ public class StatusEffectView : MonoBehaviour
         Vector2 size = new(bounds.size.x * sizeRatio.x, bounds.size.y * sizeRatio.y);
         if (anchorToBodyCollider && bodyCollider != null)//攻击拖影变宽时毒雾仍只笼罩胸口，不随武器范围放大到全屏
         {
-            size.x = Mathf.Min(size.x, bodyCollider.bounds.size.x * 1.5f);
-            size.y = Mathf.Min(size.y, bodyCollider.bounds.size.y * 0.6f);
+            size.x = Mathf.Min(size.x, bodyCollider.bounds.size.x * BalanceRuntime.Number(this, "StatusEffectView.FollowTarget.1", 1.5f));
+            size.y = Mathf.Min(size.y, bodyCollider.bounds.size.y * BalanceRuntime.Number(this, "StatusEffectView.FollowTarget.2", 0.6f));
         }
-        transform.localScale = new Vector3(size.x / Mathf.Max(0.01f, reference.x), size.y / Mathf.Max(0.01f, reference.y), 1f);
+        transform.localScale = new Vector3(size.x / Mathf.Max(BalanceRuntime.Number(this, "StatusEffectView.FollowTarget.3", 0.01f), reference.x), size.y / Mathf.Max(BalanceRuntime.Number(this, "StatusEffectView.FollowTarget.4", 0.01f), reference.y), 1f);
         if (bodyRenderer == null) return;
         sr.sortingLayerID = bodyRenderer.sortingLayerID;
         sr.sortingOrder = bodyRenderer.sortingOrder + sortingOffset;

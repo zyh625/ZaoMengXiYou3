@@ -12,7 +12,7 @@ public sealed class ConstellationWeaverSlow : MonoBehaviour
         var slow = victim.GetComponent<ConstellationWeaverSlow>();
         if (slow == null) slow = victim.gameObject.AddComponent<ConstellationWeaverSlow>();
         slow.until = Mathf.Max(slow.until, Time.time + duration);
-        slow.movement?.SetMoveMultiplier(slow, 0.6f);
+        slow.movement?.SetMoveMultiplier(slow, BalanceRuntime.Number(typeof(ConstellationWeaverSlow), "ConstellationWeaverSlow.Apply.1", 0.6f));
     }
     private void Awake()
     {

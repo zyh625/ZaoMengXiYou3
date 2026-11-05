@@ -125,14 +125,14 @@ public class SkullManager : MonoBehaviour//沙僧的麻痹药剂预制体
             float distance = delta.sqrMagnitude;
             if (distance > range * range) continue;
             int count = HitCount(enemy);
-            if (count < bestCount || count == bestCount && distance < bestDistance - 0.0001f)
+            if (count < bestCount || count == bestCount && distance < bestDistance - BalanceRuntime.Number(this, "SkullManager.FindTarget.1", 0.0001f))
             {
                 bestCount = count;
                 bestDistance = distance;
                 candidates.Clear();
                 candidates.Add(enemy);
             }
-            else if (count == bestCount && Mathf.Abs(distance - bestDistance) <= 0.0001f)
+            else if (count == bestCount && Mathf.Abs(distance - bestDistance) <= BalanceRuntime.Number(this, "SkullManager.FindTarget.2", 0.0001f))
                 candidates.Add(enemy);
         }
         return candidates.Count == 0 ? null : candidates[Random.Range(0, candidates.Count)];
@@ -186,18 +186,18 @@ internal static class ShaEffectUtility
         => enemy != null && enemy.CanReceiveHit;
 
     internal static Bounds GetBounds(EnemyMovement enemy) => enemy.BodyCollider != null
-        ? enemy.BodyCollider.bounds : new Bounds(enemy.transform.position, Vector3.one * 0.5f);
+        ? enemy.BodyCollider.bounds : new Bounds(enemy.transform.position, Vector3.one * BalanceRuntime.Number(typeof(ShaEffectUtility), "ShaEffectUtility.GetBounds.1", 0.5f));
 
     internal static Vector2 Center(EnemyMovement enemy) => GetBounds(enemy).center;
 
     internal static bool SegmentHits(EnemyMovement enemy, Vector2 from, Vector2 to, float radius)//扫掠线段避免高速能量波穿过薄碰撞箱
     {
         Bounds bounds = GetBounds(enemy);
-        bounds.Expand(Mathf.Max(0f, radius) * 2f);
+        bounds.Expand(Mathf.Max(0f, radius) * BalanceRuntime.Number(typeof(ShaEffectUtility), "ShaEffectUtility.SegmentHits.1", 2f));
         Vector3 start = new(from.x, from.y, bounds.center.z);
         if (bounds.Contains(start)) return true;
         Vector2 delta = to - from;
-        if (delta.sqrMagnitude <= 0.0000001f) return false;
+        if (delta.sqrMagnitude <= BalanceRuntime.Number(typeof(ShaEffectUtility), "ShaEffectUtility.SegmentHits.2", 1E-07f)) return false;
         return bounds.IntersectRay(new Ray(start, new Vector3(delta.x, delta.y, 0f).normalized), out float distance)
             && distance <= delta.magnitude;
     }

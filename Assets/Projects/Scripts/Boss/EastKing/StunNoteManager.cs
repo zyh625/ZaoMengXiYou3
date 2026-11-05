@@ -27,10 +27,10 @@ public class StunNoteManager : EastNoteManager
         if (TryGetPlayer(out _, out Collider2D body))
         {
             Vector2 aim = (Vector2)body.bounds.center - from;
-            if (aim.sqrMagnitude > 0.000001f) direction = aim.normalized;
+            if (aim.sqrMagnitude > BalanceRuntime.Number(this, "StunNoteManager.FixedUpdate.1", 1E-06f)) direction = aim.normalized;
         }
         FaceDirection(direction);
-        Vector2 to = from + direction * (Mathf.Max(0.01f, trackingSpeed) * Time.fixedDeltaTime);
+        Vector2 to = from + direction * (Mathf.Max(BalanceRuntime.Number(this, "StunNoteManager.FixedUpdate.2", 0.01f), trackingSpeed) * Time.fixedDeltaTime);
         if (SweepPlayer(from, to, out Health player, out _))
         {
             OnPlayerContact(player);

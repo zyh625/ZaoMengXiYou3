@@ -29,7 +29,7 @@ public sealed class GreenHammerAttackBox : EnemyAttackBox
         {
             //Box为半径3的外接矩形；按触发体最近点过滤四角，保留真正的圆形范围。
             Vector2 center=GetComponent<BoxCollider2D>().bounds.center;
-            if((hit.ClosestPoint(center)-center).sqrMagnitude>9f)return;
+            if((hit.ClosestPoint(center)-center).sqrMagnitude>BalanceRuntime.Number(this, "GreenHammerAttackBox.TryAttack.1", 9f))return;
         }
         if(waveOwner==null){base.TryAttack(hit);return;}
         if(!hitEnemies.Add(hp))return;

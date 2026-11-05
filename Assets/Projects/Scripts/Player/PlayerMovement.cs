@@ -133,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (health != null && health.Status != null && health.Status.BlocksActions) return;
         float value = ctx.ReadValue<float>();
-        int dir = value > 0.5f ? 1 : value < -0.5f ? -1 : 0;
+        int dir = value > BalanceRuntime.Number(this, "PlayerMovement.OnMove.1", 0.5f) ? 1 : value < -BalanceRuntime.Number(this, "PlayerMovement.OnMove.2", 0.5f) ? -1 : 0;
         if (moveDirect == dir) return;
         if (dir == 0)//等价于松开按键
         {
@@ -150,7 +150,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void SyncMoveInput(float value)//解除冻结或位移锁时读取当前真实按键，不沿用冻结期间的双击跑步手势
     {
-        moveDirect = value > 0.5f ? 1 : value < -0.5f ? -1 : 0;
+        moveDirect = value > BalanceRuntime.Number(this, "PlayerMovement.SyncMoveInput.1", 0.5f) ? 1 : value < -BalanceRuntime.Number(this, "PlayerMovement.SyncMoveInput.2", 0.5f) ? -1 : 0;
         if (moveDirect != 0) right = moveDirect > 0;
         runRequest = false;
         lastLeft = lastRight = -1f;
@@ -237,7 +237,7 @@ public class PlayerMovement : MonoBehaviour
     private bool CheckGround()
     {
         float y = body.linearVelocityY;
-        if (Mathf.Abs(y) > 0.1f)
+        if (Mathf.Abs(y) > BalanceRuntime.Number(this, "PlayerMovement.CheckGround.1", 0.1f))
             return false;
         int count = body.GetContacts(groundFilter, contacts);
         for(int i = 0; i < count; i++)
@@ -253,7 +253,7 @@ public class PlayerMovement : MonoBehaviour
     public int AirState()//-1下落，0在地面，1上升
     {
         if (isGround) return 0;
-        return body.linearVelocityY > 0.1f ? 1 : -1;
+        return body.linearVelocityY > BalanceRuntime.Number(this, "PlayerMovement.AirState.1", 0.1f) ? 1 : -1;
     }
 
     public void Stop()

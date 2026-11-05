@@ -11,7 +11,7 @@ public sealed class ResonantStarOwlCombat : EnemyCombat
     private int jumps, emitted;
     private int samplingFrame = -1;
     private readonly float[] readyAt = new float[3];
-    private static readonly float[] Cooldowns = { 7f, 6f, 9f };
+    [SerializeField] private float[] Cooldowns = { 7f, 6f, 9f };
     private ResonantStarOwlEffect band;
     public event System.Action<int,int> SegmentReleased;
     public void BindTarget(PlayerController player) { fallback = player; party = null; resolveAt = Time.time+1f; }
@@ -27,7 +27,7 @@ public sealed class ResonantStarOwlCombat : EnemyCombat
             if (party != null && party.isActiveAndEnabled && Alive(party.CurrentPlayer)) return party.CurrentPlayer;
             if (Alive(fallback)) return fallback;
             if (Time.time < resolveAt) return null;
-            resolveAt = Time.time + 0.5f;
+            resolveAt = Time.time + BalanceRuntime.Number(this, "ResonantStarOwlCombat.Target.1", 0.5f);
             party = FindAnyObjectByType<PlayerManager>();
             if (party != null && Alive(party.CurrentPlayer)) return party.CurrentPlayer;
             foreach (PlayerController player in FindObjectsByType<PlayerController>())
@@ -45,8 +45,8 @@ public sealed class ResonantStarOwlCombat : EnemyCombat
             if (CurrentSkill >= 0 || health == null || health.Dead || health.Attacked
                 || health.Status != null && health.Status.BlocksActions || Target == null) return -1;
             float dx = Mathf.Abs(Target.transform.position.x - transform.position.x);
-            if (dx < 4f || dx > 7f) return -1;
-            if (jumps >= 2 && Time.time - lastJumpAt < 5f && Time.time >= readyAt[2]) return 2;
+            if (dx < BalanceRuntime.Number(this, "ResonantStarOwlCombat.ReadySkill.1", 4f) || dx > BalanceRuntime.Number(this, "ResonantStarOwlCombat.ReadySkill.2", 7f)) return -1;
+            if (jumps >= 2 && Time.time - lastJumpAt < BalanceRuntime.Number(this, "ResonantStarOwlCombat.ReadySkill.3", 5f) && Time.time >= readyAt[2]) return 2;
             bool air = !Target.GetComponent<PlayerMovement>().IsOnGroundNow();
             int first = air ? 1 : 0;
             if (Time.time >= readyAt[first]) return first;
@@ -57,7 +57,7 @@ public sealed class ResonantStarOwlCombat : EnemyCombat
     protected override void Awake() { base.Awake(); health = GetComponent<Health>(); }
     protected override void OnEnable()
     {
-        base.OnEnable(); CurrentSkill = -1; emitted = jumps = 0; wasJumping = false; lastJumpAt = -99f;
+        base.OnEnable(); CurrentSkill = -1; emitted = jumps = 0; wasJumping = false; lastJumpAt = -BalanceRuntime.Number(this, "ResonantStarOwlCombat.OnEnable.1", 99f);
         for (int i=0;i<3;i++) readyAt[i] = Time.time;
     }
     private void Update()
@@ -65,8 +65,8 @@ public sealed class ResonantStarOwlCombat : EnemyCombat
         var target = Target;
         bool jumping = target != null && ResonantStarOwlEffect.IsJumping(target);
         // Rising velocity catches a second jump without requiring a landing between jumps.
-        bool rising = jumping && target.GetComponent<Rigidbody2D>().linearVelocityY > 0.1f;
-        if (rising && !wasJumping) { jumps = Time.time-lastJumpAt < 5f ? jumps+1 : 1; lastJumpAt = Time.time; }
+        bool rising = jumping && target.GetComponent<Rigidbody2D>().linearVelocityY > BalanceRuntime.Number(this, "ResonantStarOwlCombat.Update.1", 0.1f);
+        if (rising && !wasJumping) { jumps = Time.time-lastJumpAt < BalanceRuntime.Number(this, "ResonantStarOwlCombat.Update.2", 5f) ? jumps+1 : 1; lastJumpAt = Time.time; }
         wasJumping = rising;
     }
     public bool BeginCast(int skill)
@@ -87,25 +87,25 @@ public sealed class ResonantStarOwlCombat : EnemyCombat
             if (samplingFrame >= 0) return samplingFrame;
             float t = Elapsed;
             int count = CurrentSkill == 0 ? 3 : CurrentSkill == 1 ? 2 : 1;
-            float interval = CurrentSkill == 0 ? 0.4f : 0.5f;
-            if (CurrentSkill >= 0 && emitted < count && t + 0.0001f >= 5f/16f + emitted*interval)
+            float interval = CurrentSkill == 0 ? BalanceRuntime.Number(this, "ResonantStarOwlCombat.AnimationFrame.1", 0.4f) : BalanceRuntime.Number(this, "ResonantStarOwlCombat.AnimationFrame.2", 0.5f);
+            if (CurrentSkill >= 0 && emitted < count && t + BalanceRuntime.Number(this, "ResonantStarOwlCombat.AnimationFrame.3", 0.0001f) >= BalanceRuntime.Number(this, "ResonantStarOwlCombat.AnimationFrame.4", 5f)/BalanceRuntime.Number(this, "ResonantStarOwlCombat.AnimationFrame.5", 16f) + emitted*interval)
                 return CurrentSkill == 0 ? 5+emitted*3 : CurrentSkill == 1 ? 5+emitted*5 : 5;
-            if (CurrentSkill == 0 && t >= 0.375f && t < 0.5875f) return 5;
-            if (CurrentSkill == 0 && t >= 0.775f && t < 0.9875f) return 8;
-            if (CurrentSkill == 1 && t >= 0.375f && t < 0.5625f) return 5;
-            if (CurrentSkill == 0) { t -= Mathf.Clamp(t-6f/16f,0f,0.2125f); t -= Mathf.Clamp(Elapsed-0.775f,0f,0.2125f); }
-            else if (CurrentSkill == 1) t -= Mathf.Clamp(t-6f/16f,0f,0.1875f);
-            else if (CurrentSkill == 2) t -= Mathf.Clamp(t-11f/16f,0f,1.5625f);
-            return Mathf.Clamp(Mathf.FloorToInt(t*16f+0.0001f),0,15);
+            if (CurrentSkill == 0 && t >= BalanceRuntime.Number(this, "ResonantStarOwlCombat.AnimationFrame.6", 0.375f) && t < BalanceRuntime.Number(this, "ResonantStarOwlCombat.AnimationFrame.7", 0.5875f)) return 5;
+            if (CurrentSkill == 0 && t >= BalanceRuntime.Number(this, "ResonantStarOwlCombat.AnimationFrame.8", 0.775f) && t < BalanceRuntime.Number(this, "ResonantStarOwlCombat.AnimationFrame.9", 0.9875f)) return 8;
+            if (CurrentSkill == 1 && t >= BalanceRuntime.Number(this, "ResonantStarOwlCombat.AnimationFrame.10", 0.375f) && t < BalanceRuntime.Number(this, "ResonantStarOwlCombat.AnimationFrame.11", 0.5625f)) return 5;
+            if (CurrentSkill == 0) { t -= Mathf.Clamp(t-BalanceRuntime.Number(this, "ResonantStarOwlCombat.AnimationFrame.12", 6f)/BalanceRuntime.Number(this, "ResonantStarOwlCombat.AnimationFrame.13", 16f),0f,BalanceRuntime.Number(this, "ResonantStarOwlCombat.AnimationFrame.14", 0.2125f)); t -= Mathf.Clamp(Elapsed-BalanceRuntime.Number(this, "ResonantStarOwlCombat.AnimationFrame.15", 0.775f),0f,BalanceRuntime.Number(this, "ResonantStarOwlCombat.AnimationFrame.16", 0.2125f)); }
+            else if (CurrentSkill == 1) t -= Mathf.Clamp(t-BalanceRuntime.Number(this, "ResonantStarOwlCombat.AnimationFrame.17", 6f)/BalanceRuntime.Number(this, "ResonantStarOwlCombat.AnimationFrame.18", 16f),0f,BalanceRuntime.Number(this, "ResonantStarOwlCombat.AnimationFrame.19", 0.1875f));
+            else if (CurrentSkill == 2) t -= Mathf.Clamp(t-BalanceRuntime.Number(this, "ResonantStarOwlCombat.AnimationFrame.20", 11f)/BalanceRuntime.Number(this, "ResonantStarOwlCombat.AnimationFrame.21", 16f),0f,BalanceRuntime.Number(this, "ResonantStarOwlCombat.AnimationFrame.22", 1.5625f));
+            return Mathf.Clamp(Mathf.FloorToInt(t*BalanceRuntime.Number(this, "ResonantStarOwlCombat.AnimationFrame.23", 16f)+BalanceRuntime.Number(this, "ResonantStarOwlCombat.AnimationFrame.24", 0.0001f)),0,15);
         }
     }
-    public bool Finished => CurrentSkill >= 0 && Elapsed >= (CurrentSkill == 0 ? 1.425f : CurrentSkill == 1 ? 1.1875f : 2.5625f);
+    public bool Finished => CurrentSkill >= 0 && Elapsed >= (CurrentSkill == 0 ? BalanceRuntime.Number(this, "ResonantStarOwlCombat.Finished.1", 1.425f) : CurrentSkill == 1 ? BalanceRuntime.Number(this, "ResonantStarOwlCombat.Finished.2", 1.1875f) : BalanceRuntime.Number(this, "ResonantStarOwlCombat.Finished.3", 2.5625f));
     public void SampleCast()
     {
         if (CurrentSkill < 0) return;
         int max = CurrentSkill == 0 ? 3 : CurrentSkill == 1 ? 2 : 1;
-        float interval = CurrentSkill == 0 ? 0.4f : 0.5f;
-        while (emitted < max && Elapsed + 0.0001f >= 5f/16f + emitted*interval)
+        float interval = CurrentSkill == 0 ? BalanceRuntime.Number(this, "ResonantStarOwlCombat.SampleCast.1", 0.4f) : BalanceRuntime.Number(this, "ResonantStarOwlCombat.SampleCast.2", 0.5f);
+        while (emitted < max && Elapsed + BalanceRuntime.Number(this, "ResonantStarOwlCombat.SampleCast.3", 0.0001f) >= BalanceRuntime.Number(this, "ResonantStarOwlCombat.SampleCast.4", 5f)/BalanceRuntime.Number(this, "ResonantStarOwlCombat.SampleCast.5", 16f) + emitted*interval)
         {
             int segment = emitted++;
             samplingFrame = CurrentSkill == 0 ? 5+segment*3 : CurrentSkill == 1 ? 5+segment*5 : 5;

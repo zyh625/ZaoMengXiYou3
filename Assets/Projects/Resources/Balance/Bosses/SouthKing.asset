@@ -1,0 +1,813 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ea7302a88f56248a1b33284c7df3cd, type: 3}
+  m_Name: SouthKing
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceProfile
+  displayName: "\u589E\u957F\u5929\u738B / SouthKing"
+  description: "\u4FEE\u6539\u540E\u91CD\u65B0\u8FDB\u5165\u573A\u666F/\u8BAD\u7EC3\u76EE\u6807\u751F\u6548\uFF1B\u4E0D\u5199\u5165\u5B58\u6863\uFF0C\u4E0D\u4FEE\u6539\u4E34\u65F6\u72B6\u6001\u3002"
+  components:
+  - objectPath: 
+    componentType: Health
+    componentIndex: 0
+    parameters:
+    - path: beginBlood
+      label: "\u57FA\u7840\u751F\u547D\u4E0A\u9650 \xB7 beginBlood"
+      value: 1000
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: EnemyRewards
+    componentIndex: 0
+    parameters:
+    - path: experienceReward
+      label: "\u51FB\u6740\u7ECF\u9A8C \xB7 experienceReward"
+      value: 200
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: ActorStatus
+    componentIndex: 0
+    parameters:
+    - path: frozenDuration
+      label: "frozenDuration \xB7 frozenDuration"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: meltFrameInterval
+      label: "meltFrameInterval \xB7 meltFrameInterval"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: frozenDamageMultiplier
+      label: "frozenDamageMultiplier \xB7 frozenDamageMultiplier"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: SouthKingCombat
+    componentIndex: 0
+    parameters:
+    - path: 'attackDelay.Array.data[0]'
+      label: "\u653B\u51FB\u51B7\u5374/\u95F4\u9694 \xB7 attackDelay.Array.data[0]"
+      value: 3
+      integer: 0
+      boolean: 0
+    - path: 'attackDelay.Array.data[1]'
+      label: "\u653B\u51FB\u51B7\u5374/\u95F4\u9694 \xB7 attackDelay.Array.data[1]"
+      value: 4
+      integer: 0
+      boolean: 0
+    - path: 'attackDelay.Array.data[2]'
+      label: "\u653B\u51FB\u51B7\u5374/\u95F4\u9694 \xB7 attackDelay.Array.data[2]"
+      value: 5
+      integer: 0
+      boolean: 0
+    - path: 'AttackOpenIdx.Array.data[0]'
+      label: "\u5F00\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackOpenIdx.Array.data[0]"
+      value: 6
+      integer: 1
+      boolean: 0
+    - path: 'AttackOpenIdx.Array.data[1]'
+      label: "\u5F00\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackOpenIdx.Array.data[1]"
+      value: 7
+      integer: 1
+      boolean: 0
+    - path: 'AttackOpenIdx.Array.data[2]'
+      label: "\u5F00\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackOpenIdx.Array.data[2]"
+      value: 10
+      integer: 1
+      boolean: 0
+    - path: 'AttackShutIdx.Array.data[0]'
+      label: "\u5173\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackShutIdx.Array.data[0]"
+      value: 10
+      integer: 1
+      boolean: 0
+    - path: 'AttackShutIdx.Array.data[1]'
+      label: "\u5173\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackShutIdx.Array.data[1]"
+      value: 11
+      integer: 1
+      boolean: 0
+    - path: 'AttackShutIdx.Array.data[2]'
+      label: "\u5173\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackShutIdx.Array.data[2]"
+      value: 13
+      integer: 1
+      boolean: 0
+    - path: angryFull
+      label: "angryFull \xB7 angryFull"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: angryRatio
+      label: "angryRatio \xB7 angryRatio"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: deltaAngry
+      label: "deltaAngry \xB7 deltaAngry"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: angryDuration
+      label: "angryDuration \xB7 angryDuration"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: delayRatio
+      label: "delayRatio \xB7 delayRatio"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: 'skillCooldowns.Array.data[0]'
+      label: "\u5404\u6280\u80FD\u51B7\u5374\uFF08\u79D2\uFF09 \xB7 skillCooldowns.Array.data[0]"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: 'skillCooldowns.Array.data[1]'
+      label: "\u5404\u6280\u80FD\u51B7\u5374\uFF08\u79D2\uFF09 \xB7 skillCooldowns.Array.data[1]"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: 'skillCooldowns.Array.data[2]'
+      label: "\u5404\u6280\u80FD\u51B7\u5374\uFF08\u79D2\uFF09 \xB7 skillCooldowns.Array.data[2]"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: 'skillCooldowns.Array.data[3]'
+      label: "\u5404\u6280\u80FD\u51B7\u5374\uFF08\u79D2\uFF09 \xB7 skillCooldowns.Array.data[3]"
+      value: 9
+      integer: 0
+      boolean: 0
+    - path: firstSkillDelay
+      label: "firstSkillDelay \xB7 firstSkillDelay"
+      value: 3
+      integer: 0
+      boolean: 0
+    - path: minimumAttackInterval
+      label: "minimumAttackInterval \xB7 minimumAttackInterval"
+      value: 0.75
+      integer: 0
+      boolean: 0
+    - path: spikesFrame
+      label: "spikesFrame \xB7 spikesFrame"
+      value: 8
+      integer: 1
+      boolean: 0
+    - path: swordFrame
+      label: "swordFrame \xB7 swordFrame"
+      value: 10
+      integer: 1
+      boolean: 0
+    - path: spikesOffset
+      label: "spikesOffset \xB7 spikesOffset"
+      value: 1.100000023841858
+      integer: 0
+      boolean: 0
+    - path: swordHeight
+      label: "swordHeight \xB7 swordHeight"
+      value: 8
+      integer: 0
+      boolean: 0
+    - path: counterWait
+      label: "counterWait \xB7 counterWait"
+      value: 1.2000000476837158
+      integer: 0
+      boolean: 0
+    - path: counterRange
+      label: "counterRange \xB7 counterRange"
+      value: 5
+      integer: 0
+      boolean: 0
+    - path: counterDamage
+      label: "counterDamage \xB7 counterDamage"
+      value: 22
+      integer: 0
+      boolean: 0
+    - path: counterHitFrame
+      label: "counterHitFrame \xB7 counterHitFrame"
+      value: 2
+      integer: 1
+      boolean: 0
+    - path: counterHitSize.x
+      label: "counterHitSize \xB7 counterHitSize.x"
+      value: 5.5
+      integer: 0
+      boolean: 0
+    - path: counterHitSize.y
+      label: "counterHitSize \xB7 counterHitSize.y"
+      value: 4
+      integer: 0
+      boolean: 0
+    - path: frostFull
+      label: "frostFull \xB7 frostFull"
+      value: 100
+      integer: 0
+      boolean: 0
+    - path: frostDuration
+      label: "frostDuration \xB7 frostDuration"
+      value: 8
+      integer: 0
+      boolean: 0
+    - path: frostOnHit
+      label: "frostOnHit \xB7 frostOnHit"
+      value: 5
+      integer: 0
+      boolean: 0
+    - path: frostOnMiss
+      label: "frostOnMiss \xB7 frostOnMiss"
+      value: 8
+      integer: 0
+      boolean: 0
+    - path: frostOnDamaged
+      label: "frostOnDamaged \xB7 frostOnDamaged"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: normalFreezeChance
+      label: "normalFreezeChance \xB7 normalFreezeChance"
+      value: 0.10000000149011612
+      integer: 0
+      boolean: 0
+    - path: frostFreezeChance
+      label: "frostFreezeChance \xB7 frostFreezeChance"
+      value: 0.5
+      integer: 0
+      boolean: 0
+    - path: freezeDuration
+      label: "freezeDuration \xB7 freezeDuration"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: frost
+      label: "frost \xB7 frost"
+      value: 0
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: SouthKingController
+    componentIndex: 0
+    parameters:
+    - path: Idle.loop
+      label: "Idle \xB7 Idle.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Idle.fps
+      label: "Idle \xB7 Idle.fps"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: Walk.loop
+      label: "Walk \xB7 Walk.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Walk.fps
+      label: "Walk \xB7 Walk.fps"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: Die.loop
+      label: "Die \xB7 Die.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: Die.fps
+      label: "Die \xB7 Die.fps"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: stopDistance
+      label: "\u505C\u6B62\u9760\u8FD1\u8DDD\u79BB \xB7 stopDistance"
+      value: 1.100000023841858
+      integer: 0
+      boolean: 0
+    - path: specialAttack
+      label: "specialAttack \xB7 specialAttack"
+      value: -1
+      integer: 1
+      boolean: 0
+    - path: stunnedFrame
+      label: "stunnedFrame \xB7 stunnedFrame"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: AttackOne.loop
+      label: "AttackOne \xB7 AttackOne.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: AttackOne.fps
+      label: "AttackOne \xB7 AttackOne.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: AttackTwo.loop
+      label: "AttackTwo \xB7 AttackTwo.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: AttackTwo.fps
+      label: "AttackTwo \xB7 AttackTwo.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: AttackThree.loop
+      label: "AttackThree \xB7 AttackThree.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: AttackThree.fps
+      label: "AttackThree \xB7 AttackThree.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: SkillOne.loop
+      label: "SkillOne \xB7 SkillOne.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: SkillOne.fps
+      label: "SkillOne \xB7 SkillOne.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: SkillTwo.loop
+      label: "SkillTwo \xB7 SkillTwo.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: SkillTwo.fps
+      label: "SkillTwo \xB7 SkillTwo.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: Counter.loop
+      label: "Counter \xB7 Counter.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: Counter.fps
+      label: "Counter \xB7 Counter.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: thrustStartFrame
+      label: "thrustStartFrame \xB7 thrustStartFrame"
+      value: 5
+      integer: 1
+      boolean: 0
+    - path: thrustEndFrame
+      label: "thrustEndFrame \xB7 thrustEndFrame"
+      value: 10
+      integer: 1
+      boolean: 0
+  - objectPath: 
+    componentType: SouthKingMovement
+    componentIndex: 0
+    parameters:
+    - path: moveSpeed
+      label: "\u79FB\u52A8\u901F\u5EA6 \xB7 moveSpeed"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: backSpeed
+      label: "\u53D7\u51FB\u540E\u9000\u901F\u5EA6 \xB7 backSpeed"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: upSpeed
+      label: "\u8DF3\u8DC3\u901F\u5EA6 \xB7 upSpeed"
+      value: 4
+      integer: 0
+      boolean: 0
+    - path: slowSpeed
+      label: "slowSpeed \xB7 slowSpeed"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: boostRatio
+      label: "boostRatio \xB7 boostRatio"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: minNormalY
+      label: "minNormalY \xB7 minNormalY"
+      value: 0.699999988079071
+      integer: 0
+      boolean: 0
+    - path: thrustSpeed
+      label: "thrustSpeed \xB7 thrustSpeed"
+      value: 6
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/AttackOne
+    componentType: SouthKingAttackBox
+    componentIndex: 0
+    parameters:
+    - path: Attack
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: launch
+      label: "launch \xB7 launch"
+      value: 0
+      integer: 0
+      boolean: 1
+  - objectPath: Combat/AttackTwo
+    componentType: SouthKingAttackBox
+    componentIndex: 0
+    parameters:
+    - path: Attack
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: launch
+      label: "launch \xB7 launch"
+      value: 1
+      integer: 0
+      boolean: 1
+  - objectPath: Combat/AttackThree
+    componentType: SouthKingAttackBox
+    componentIndex: 0
+    parameters:
+    - path: Attack
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack"
+      value: 24
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: launch
+      label: "launch \xB7 launch"
+      value: 0
+      integer: 0
+      boolean: 1
+  - objectPath: 
+    componentType: UnityEngine.Rigidbody2D
+    componentIndex: 0
+    parameters:
+    - path: m_Mass
+      label: "\u8D28\u91CF \xB7 m_Mass"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: m_GravityScale
+      label: "\u91CD\u529B\u500D\u7387 \xB7 m_GravityScale"
+      value: 0.8999999761581421
+      integer: 0
+      boolean: 0
+    - path: m_LinearDamping
+      label: "\u6C34\u5E73\u963B\u5C3C \xB7 m_LinearDamping"
+      value: 0
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 2.0399999618530273
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 3.4708409309387207
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 0.4876439571380615
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/AttackOneField
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 2.537139892578125
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 3.30975341796875
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: -1.2685699462890625
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: -0.04974365234375
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/AttackTwoField
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 4.199999809265137
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 1.75
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: -2.0999999046325684
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: -0.2799999713897705
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/AttackOne
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.3326551914215088
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 1.75
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: -1.3336724042892456
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: -0.2799999713897705
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/AttackTwo
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 2.09429931640625
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 1.4961190223693848
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: -0.9093282222747803
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: -0.1530594825744629
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/Attacked
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.2300000190734863
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 2.1600000858306885
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 0.009999999776482582
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/AttackThree
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 3
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 2.200000047683716
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 1.600000023841858
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: -0.20000000298023224
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/AttackThreeField
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 4.400000095367432
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 3.4000000953674316
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 2.200000047683716
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 0.20000000298023224
+      integer: 0
+      boolean: 0
+  numbers:
+  - key: SouthIceShield.OnLaunched.1
+    label: OnLaunched / remaining = Mathf.Max(0.01f, durability); fading = false;
+    source: Assets/Projects/Scripts/Boss/SouthKing/SouthIceShield.cs:17
+    value: 0.01
+  - key: SouthIceShield.Place.1
+    label: 'Place / float height = body.size.y * (bodyCollider != null ? Mathf.Max(0.1f,
+      bodyHeightRatio) : 1f);'
+    source: Assets/Projects/Scripts/Boss/SouthKing/SouthIceShield.cs:26
+    value: 0.1
+  - key: SouthIceShield.Place.2
+    label: Place / transform.position = new Vector3(body.center.x, body.min.y + height
+      * 0.5f, owner.transform.position.z);
+    source: Assets/Projects/Scripts/Boss/SouthKing/SouthIceShield.cs:27
+    value: 0.5
+  - key: SouthIceShield.Place.3
+    label: Place / float size = height * Mathf.Max(0.1f, sizeRatio);
+    source: Assets/Projects/Scripts/Boss/SouthKing/SouthIceShield.cs:28
+    value: 0.1
+  - key: SouthIceShield.Place.4
+    label: Place / float spriteSize = 0.01f;
+    source: Assets/Projects/Scripts/Boss/SouthKing/SouthIceShield.cs:30
+    value: 0.01
+  - key: SouthIceShield.Tick.1
+    label: Tick / float ratio = remaining / Mathf.Max(0.01f, durability);
+    source: Assets/Projects/Scripts/Boss/SouthKing/SouthIceShield.cs:57
+    value: 0.01
+  - key: SouthIceShield.Tick.2
+    label: 'Tick / int stage = ratio > 2f / 3f ? 0 : ratio > 1f / 3f ? 1 : 2;'
+    source: Assets/Projects/Scripts/Boss/SouthKing/SouthIceShield.cs:58
+    value: 2
+  - key: SouthIceShield.Tick.3
+    label: 'Tick / int stage = ratio > 2f / 3f ? 0 : ratio > 1f / 3f ? 1 : 2;'
+    source: Assets/Projects/Scripts/Boss/SouthKing/SouthIceShield.cs:58
+    value: 3
+  - key: SouthIceShield.Tick.4
+    label: 'Tick / int stage = ratio > 2f / 3f ? 0 : ratio > 1f / 3f ? 1 : 2;'
+    source: Assets/Projects/Scripts/Boss/SouthKing/SouthIceShield.cs:58
+    value: 3
+  - key: SouthIceSpikes.Freeze.1
+    label: Freeze / float remaining = Mathf.Max(0.1f, activeFrames / Fps - (Time.time
+      - beganAt) + 0.2f);
+    source: Assets/Projects/Scripts/Boss/SouthKing/SouthIceSpikes.cs:37
+    value: 0.1
+  - key: SouthIceSpikes.Freeze.2
+    label: Freeze / float remaining = Mathf.Max(0.1f, activeFrames / Fps - (Time.time
+      - beganAt) + 0.2f);
+    source: Assets/Projects/Scripts/Boss/SouthKing/SouthIceSpikes.cs:37
+    value: 0.2
+  - key: SouthKingCombat.MaxFrost.1
+    label: MaxFrost / public float MaxFrost => Mathf.Max(0.01f, frostFull);
+    source: Assets/Projects/Scripts/Boss/SouthKing/SouthKingCombat.cs:38
+    value: 0.01
+  - key: SouthKingCombat.Cooldown.1
+    label: 'Cooldown / ? Mathf.Max(0f, skillCooldowns[index]) : 10f) * RebirthCooldownMultiplier;'
+    source: Assets/Projects/Scripts/Boss/SouthKing/SouthKingCombat.cs:74
+    value: 10
+  - key: SouthKingCombat.EnterCounterGuard.1
+    label: EnterCounterGuard / Counter = CounterStage.Guard; guardUntil = Time.time
+      + Mathf.Max(0.01f, counterWait);
+    source: Assets/Projects/Scripts/Boss/SouthKing/SouthKingCombat.cs:132
+    value: 0.01
+  - key: SouthKingCombat.ProtectCounter.1
+    label: ProtectCounter / public void ProtectCounter(float duration) => health?.GrantInvincibility(this,
+      Mathf.Max(0.1f, duration));
+    source: Assets/Projects/Scripts/Boss/SouthKing/SouthKingCombat.cs:141
+    value: 0.1
+  - key: SouthKingCombat.BlockDamage.1
+    label: BlockDamage / if (Mathf.Abs(sourceX) > 0.01f) AttackFaceRight = sourceX
+      > 0f;
+    source: Assets/Projects/Scripts/Boss/SouthKing/SouthKingCombat.cs:150
+    value: 0.01
+  - key: SouthKingCombat.HitCounter.1
+    label: 'HitCounter / Vector3 center = transform.position + Vector3.right * (AttackFaceRight
+      ? 1f : -1f) * counterHitSize.x * 0.4f;'
+    source: Assets/Projects/Scripts/Boss/SouthKing/SouthKingCombat.cs:168
+    value: 0.4
+  - key: SouthKingCombat.HitCounter.2
+    label: HitCounter / Bounds area = new(center, new Vector3(Mathf.Max(0.1f, counterHitSize.x),
+      Mathf.Max(0.1f, counterHitSize.y), 1f));
+    source: Assets/Projects/Scripts/Boss/SouthKing/SouthKingCombat.cs:169
+    value: 0.1
+  - key: SouthKingCombat.HitCounter.3
+    label: HitCounter / Bounds area = new(center, new Vector3(Mathf.Max(0.1f, counterHitSize.x),
+      Mathf.Max(0.1f, counterHitSize.y), 1f));
+    source: Assets/Projects/Scripts/Boss/SouthKing/SouthKingCombat.cs:169
+    value: 0.1
+  - key: SouthKingCombat.AddFrost.1
+    label: AddFrost / if (frost >= MaxFrost) { frostActive = true; frostUntil = Time.time
+      + Mathf.Max(0.01f, frostDuration); }
+    source: Assets/Projects/Scripts/Boss/SouthKing/SouthKingCombat.cs:204
+    value: 0.01
+  - key: SouthKingController.OnCounterRecognized.1
+    label: OnCounterRecognized / combat.ProtectCounter(counterRiposte.sprites.Length
+      / Mathf.Max(1f, counterRiposte.fps) + Time.fixedDeltaTime * 2f)
+    source: Assets/Projects/Scripts/Boss/SouthKing/SouthKingController.cs:115
+    value: 2
+  - key: SouthKingController.RefreshFrost.1
+    label: RefreshFrost / outline.SetOutlineColor(new Color(0.15f, 0.65f, 1f, 1f));
+    source: Assets/Projects/Scripts/Boss/SouthKing/SouthKingController.cs:130
+    value: 0.15
+  - key: SouthKingController.RefreshFrost.2
+    label: RefreshFrost / outline.SetOutlineColor(new Color(0.15f, 0.65f, 1f, 1f));
+    source: Assets/Projects/Scripts/Boss/SouthKing/SouthKingController.cs:130
+    value: 0.65
+  - key: SouthKingEffect.Fps.1
+    label: 'Fps / protected float Fps => frames != null ? Mathf.Max(1f, frames.fps)
+      : 12f;'
+    source: Assets/Projects/Scripts/Boss/SouthKing/SouthKingEffect.cs:46
+    value: 12
+  - key: SouthKingEffect.GroundAt.1
+    label: GroundAt / RaycastHit2D ground = Physics2D.Raycast(position + Vector2.up
+      * 25f, Vector2.down, 100f, 1 << LayerMask.NameToLayer
+    source: Assets/Projects/Scripts/Boss/SouthKing/SouthKingEffect.cs:63
+    value: 25
+  - key: SouthKingEffect.GroundAt.2
+    label: GroundAt / RaycastHit2D ground = Physics2D.Raycast(position + Vector2.up
+      * 25f, Vector2.down, 100f, 1 << LayerMask.NameToLayer
+    source: Assets/Projects/Scripts/Boss/SouthKing/SouthKingEffect.cs:63
+    value: 100
+  - key: SouthSwordFormation.Tick.1
+    label: Tick / position.y = Mathf.Max(groundY, position.y - Mathf.Max(0.01f, fallSpeed)
+      * Time.deltaTime);
+    source: Assets/Projects/Scripts/Boss/SouthKing/SouthSwordFormation.cs:33
+    value: 0.01
+  - key: SouthIceShield.Tick.Parameter1
+    label: "Tick / \u4F24\u5BB3/\u5224\u5B9A\u53C2\u6570 16"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Boss/SouthKing/SouthIceShield.cs:53
+    value: 16
+  skills: []
+  relatedProfiles:
+  - {fileID: 11400000, guid: baddbb1859b3ab24e8fe8db032d35140, type: 2}
+  - {fileID: 11400000, guid: 57731e3c7d873d64b8ac511cb5c380d9, type: 2}
+  - {fileID: 11400000, guid: bb2a633b3a30eb941bb62751b7c13cbe, type: 2}

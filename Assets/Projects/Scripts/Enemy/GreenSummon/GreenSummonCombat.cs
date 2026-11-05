@@ -8,7 +8,7 @@ public sealed class GreenSummonCombat : EnemyCombat
     [SerializeField] private GreenSummonWarBanner bannerPrefab;
     [SerializeField] private Transform muzzle,bannerHand;
     [SerializeField] private float[] skillCooldowns={8f,6f,16f};
-    private static readonly int[] releaseFrames={9,7,15};
+[SerializeField]private int[] releaseFrames={9,7,15};
     private readonly float[] readyAt=new float[3];
     private Health health;
     private PlayerManager party;
@@ -31,7 +31,7 @@ public sealed class GreenSummonCombat : EnemyCombat
             if(party!=null && party.isActiveAndEnabled)return party.CurrentPlayer;
             if(fallback!=null && fallback.isActiveAndEnabled && !fallback.GetComponent<Health>().Dead)return fallback;
             if(Time.time<resolveAt)return null;
-            resolveAt=Time.time+0.5f;party=FindAnyObjectByType<PlayerManager>();
+            resolveAt=Time.time+BalanceRuntime.Number(this, "GreenSummonCombat.Target.1", 0.5f);party=FindAnyObjectByType<PlayerManager>();
             if(party!=null && party.isActiveAndEnabled)return party.CurrentPlayer;
             foreach(PlayerController player in FindObjectsByType<PlayerController>())
                 if(player.isActiveAndEnabled && !player.GetComponent<Health>().Dead){fallback=player;return player;}
@@ -39,7 +39,7 @@ public sealed class GreenSummonCombat : EnemyCombat
         }
     }
     public void BindTarget(PlayerController target){fallback=target;party=null;}
-    public bool InRange=>Target!=null && Mathf.Abs(Target.transform.position.x-transform.position.x) is >=4f and <=7f;
+    public bool InRange=>Target!=null && (Mathf.Abs(Target.transform.position.x-transform.position.x) >= BalanceRuntime.Number(this, "GreenSummonCombat.InRange.Range1.Minimum", 4f) && Mathf.Abs(Target.transform.position.x-transform.position.x) <= BalanceRuntime.Number(this, "GreenSummonCombat.InRange.Range1.Maximum", 7f));
     public int ReadySkill
     {
         get
@@ -82,11 +82,11 @@ public sealed class GreenSummonCombat : EnemyCombat
     public static void ResolveHammer(Transform source,Vector2 point,float multiplier,Collider2D[] hits,HashSet<Health> unique)
     {
         //单次圆形查询；命中记录在伤害回调之前提交，多个受击箱/反伤不会重入重复结算。
-        int count=Physics2D.OverlapCircle(point,2.5f,GreenSummonHitUtility.Players,hits);unique.Clear();
+        int count=Physics2D.OverlapCircle(point,BalanceRuntime.Number(typeof(GreenSummonCombat), "GreenSummonCombat.ResolveHammer.1", 2.5f),GreenSummonHitUtility.Players,hits);unique.Clear();
         for(int i=0;i<count;i++)
         {
             Health victim=GreenSummonHitUtility.Player(hits[i]);if(victim==null || !unique.Add(victim))continue;
-            victim.TakeDamage(new DamageInfo(source,22f*multiplier,false,false,null,false,false,DamageKind.Skill));
+            victim.TakeDamage(new DamageInfo(source,BalanceRuntime.Number(typeof(GreenSummonCombat), "GreenSummonCombat.ResolveHammer.2", 22f)*multiplier,false,false,null,false,false,DamageKind.Skill));
         }
     }
     public void CancelCast()

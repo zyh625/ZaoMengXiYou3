@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6188511519417838145}
   - component: {fileID: 4966331725090615419}
+  - component: {fileID: 334878746259727833}
   m_Layer: 0
   m_Name: ResonantStarOwlResonanceBand
   m_TagString: Untagged
@@ -67,6 +68,19 @@ MonoBehaviour:
     - {fileID: 676947325737253408, guid: c17133636d475654aec14a6d186e2273, type: 3}
     loop: 0
     fps: 16
+--- !u!114 &334878746259727833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6712967874905428688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 8c76dbb641110464ca4f4f3c3a188437, type: 2}
 --- !u!1 &7166079479530597212
 GameObject:
   m_ObjectHideFlags: 0

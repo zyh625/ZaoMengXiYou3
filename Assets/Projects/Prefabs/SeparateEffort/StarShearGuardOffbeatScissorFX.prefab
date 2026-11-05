@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 212000}
   - component: {fileID: 114100}
   - component: {fileID: 114200}
+  - component: {fileID: 4356275557694764548}
   m_Layer: 0
   m_Name: StarShearGuardOffbeatScissorFX
   m_TagString: Untagged
@@ -147,3 +148,16 @@ MonoBehaviour:
   completed:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4356275557694764548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 340155824dcc4d849907be7d96e9be55, type: 2}

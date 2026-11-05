@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7407413802135396981}
   - component: {fileID: 786740881921082009}
   - component: {fileID: 7546410184050418684}
+  - component: {fileID: 3135288658838140410}
   m_Layer: 0
   m_Name: PressureKettleSteam
   m_TagString: Untagged
@@ -165,6 +166,19 @@ PolygonCollider2D:
       - {x: -3.1620767, y: -1.5004236}
       - {x: -3.0310888, y: -1.7499999}
   m_UseDelaunayMesh: 1
+--- !u!114 &3135288658838140410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610071846238406861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 70c5d72b98c2c3f44b8f8b256af1ade8, type: 2}
 --- !u!1 &4542751841286749705
 GameObject:
   m_ObjectHideFlags: 0

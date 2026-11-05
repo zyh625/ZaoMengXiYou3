@@ -1,5 +1,121 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1001}
+  - component: {fileID: 1002}
+  - component: {fileID: 7355655816120458484}
+  m_Layer: 0
+  m_Name: WuxiangDijunRobeSweepArc
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2001}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fa9ca343e52592186c5b9d9094529f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LateStageEffect
+  frames:
+    sprites:
+    - {fileID: 2268492558696679027, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
+    - {fileID: 714236807200390550, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
+    - {fileID: -5252917157383764030, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
+    - {fileID: -325287586158927461, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
+    - {fileID: -5825295323318221824, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
+    - {fileID: -1211755271296495537, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
+    - {fileID: 3555908256364826058, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
+    - {fileID: -2182704836627156123, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
+    - {fileID: 828400646437826855, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
+    - {fileID: 1921646295795664611, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
+    - {fileID: 4997479082875990746, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
+    - {fileID: 6087396892579716520, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
+    - {fileID: -3372658464492627758, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
+    - {fileID: 5661389284045024598, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
+    - {fileID: -956607939309888220, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
+    - {fileID: -234903410332040239, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
+    loop: 0
+    fps: 16
+  spriteManager: {fileID: 2003}
+  visual: {fileID: 2002}
+  nativeWidth: 1.65
+  placeholderAspect: {x: 1, y: 1}
+--- !u!114 &7355655816120458484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 256d50ce4def67b438d2a6f471bd1927, type: 2}
+--- !u!1 &2000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001}
+  - component: {fileID: 2002}
+  - component: {fileID: 2003}
+  m_Layer: 0
+  m_Name: Visual
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2002
 SpriteRenderer:
   serializedVersion: 2
@@ -72,105 +188,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpriteManager
   sr: {fileID: 2002}
---- !u!114 &1002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fa9ca343e52592186c5b9d9094529f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LateStageEffect
-  frames:
-    sprites:
-    - {fileID: 2268492558696679027, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
-    - {fileID: 714236807200390550, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
-    - {fileID: -5252917157383764030, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
-    - {fileID: -325287586158927461, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
-    - {fileID: -5825295323318221824, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
-    - {fileID: -1211755271296495537, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
-    - {fileID: 3555908256364826058, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
-    - {fileID: -2182704836627156123, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
-    - {fileID: 828400646437826855, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
-    - {fileID: 1921646295795664611, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
-    - {fileID: 4997479082875990746, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
-    - {fileID: 6087396892579716520, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
-    - {fileID: -3372658464492627758, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
-    - {fileID: 5661389284045024598, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
-    - {fileID: -956607939309888220, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
-    - {fileID: -234903410332040239, guid: 29746a2ae9aa4903bae100433b47ad14, type: 3}
-    loop: 0
-    fps: 16
-  spriteManager: {fileID: 2003}
-  visual: {fileID: 2002}
-  nativeWidth: 1.65
-  placeholderAspect: {x: 1, y: 1}
---- !u!1 &1000
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1001}
-  - component: {fileID: 1002}
-  m_Layer: 0
-  m_Name: WuxiangDijunRobeSweepArc
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1001
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2001}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2000
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2001}
-  - component: {fileID: 2002}
-  - component: {fileID: 2003}
-  m_Layer: 0
-  m_Name: Visual
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2001
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2000}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1001}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

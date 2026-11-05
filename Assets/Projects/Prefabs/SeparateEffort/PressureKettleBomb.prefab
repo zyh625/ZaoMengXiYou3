@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6866105469496739424}
   - component: {fileID: 3214579965032195163}
+  - component: {fileID: 9110076011711863342}
   m_Layer: 0
   m_Name: PressureKettleBomb
   m_TagString: Untagged
@@ -92,6 +93,19 @@ MonoBehaviour:
   burstDamage: 11
   burstRadius: 4
   burstKnockback: 1
+--- !u!114 &9110076011711863342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2953223432158655361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 751a4b5cb7be45d43b799184f0fd7e51, type: 2}
 --- !u!1 &4646806055562383445
 GameObject:
   m_ObjectHideFlags: 0

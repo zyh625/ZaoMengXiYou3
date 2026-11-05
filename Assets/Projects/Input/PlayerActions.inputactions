@@ -70,7 +70,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SwitchPri",
+                    "name": "SwitchSlot1",
                     "type": "Button",
                     "id": "7bd77324-7473-4b6e-be4e-aebfe8e76b8d",
                     "expectedControlType": "",
@@ -79,9 +79,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SwitchNext",
+                    "name": "SwitchSlot2",
                     "type": "Button",
                     "id": "197f973f-7618-43e0-a031-abb5bce841dc",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SwitchSlot3",
+                    "type": "Button",
+                    "id": "10a03be6-a521-4e66-a9e6-124e177df695",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SwitchSlot4",
+                    "type": "Button",
+                    "id": "4ac4c550-d4f1-4f06-90fa-070cb8f059b7",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -209,22 +227,44 @@
                 {
                     "name": "",
                     "id": "e2616550-8483-4736-a4da-a2fb084c9f0a",
-                    "path": "<Keyboard>/q",
+                    "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SwitchPri",
+                    "action": "SwitchSlot1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "4f2df82c-339e-47df-90b5-40a7b60e46e0",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/2",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SwitchNext",
+                    "action": "SwitchSlot2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b549045c-9eae-46aa-8bb9-18982612b092",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchSlot3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8c612461-a286-40b6-b926-eeb203cf5527",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchSlot4",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

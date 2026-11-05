@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 3683369998468381380}
   - component: {fileID: 3928590275460439477}
   - component: {fileID: 2320806661853947972}
+  - component: {fileID: 2907983963143604655}
   m_Layer: 11
   m_Name: NorthKing
   m_TagString: Untagged
@@ -487,6 +488,7 @@ MonoBehaviour:
   - 9
   - 8
   - 12
+  releaseFrames: 0500000004000000070000000b000000
 --- !u!114 &2320806661853947972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -704,6 +706,19 @@ MonoBehaviour:
     - {fileID: 695748514482280494, guid: 7c427750163c45e6ad47b94782686d79, type: 3}
     loop: 0
     fps: 16
+--- !u!114 &2907983963143604655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7253822041155590193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 243cd2cbbc26dc64b815758889e19bb6, type: 2}
 --- !u!1 &8760369386484330886
 GameObject:
   m_ObjectHideFlags: 0

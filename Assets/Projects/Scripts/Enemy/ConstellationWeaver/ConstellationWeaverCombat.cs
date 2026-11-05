@@ -12,7 +12,7 @@ public sealed class ConstellationWeaverCombat : EnemyCombat
     private readonly ConstellationWeaverArea[] knots = new ConstellationWeaverArea[3];
     private readonly Vector2[] nodes = new Vector2[3], ends = new Vector2[2];
     private readonly float[] readyAt = new float[3];
-    private static readonly float[] cooldown = { 12f, 10f, 8f };
+    [SerializeField] private float[] cooldown = { 12f, 10f, 8f };
     private Transform pool;
     private ConstellationWeaverArea silk;
     private Health health;
@@ -34,7 +34,7 @@ public sealed class ConstellationWeaverCombat : EnemyCombat
             if (party != null && party.isActiveAndEnabled) return party.CurrentPlayer;
             if (fallback != null && fallback.isActiveAndEnabled && !fallback.GetComponent<Health>().Dead) return fallback;
             if (Time.time < resolveAt) return null;
-            resolveAt = Time.time + 0.5f; party = FindAnyObjectByType<PlayerManager>();
+            resolveAt = Time.time + BalanceRuntime.Number(this, "ConstellationWeaverCombat.Target.1", 0.5f); party = FindAnyObjectByType<PlayerManager>();
             if (party != null && party.isActiveAndEnabled) return party.CurrentPlayer;
             foreach (var player in FindObjectsByType<PlayerController>())
                 if (player.isActiveAndEnabled && !player.GetComponent<Health>().Dead) return fallback = player;
@@ -42,7 +42,7 @@ public sealed class ConstellationWeaverCombat : EnemyCombat
         }
     }
     public void BindTarget(PlayerController target) { fallback = target; party = null; }
-    public bool InRange => Target != null && Mathf.Abs(Target.transform.position.x - transform.position.x) is >= 3f and <= 6f;
+    public bool InRange => Target != null && (Mathf.Abs(Target.transform.position.x - transform.position.x) >= BalanceRuntime.Number(this, "ConstellationWeaverCombat.InRange.Range1.Minimum", 3f) && Mathf.Abs(Target.transform.position.x - transform.position.x) <= BalanceRuntime.Number(this, "ConstellationWeaverCombat.InRange.Range1.Maximum", 6f));
     public int ReadySkill
     {
         get
@@ -72,8 +72,8 @@ public sealed class ConstellationWeaverCombat : EnemyCombat
     // All ground points are sampled once at cast start, never from the moving target later.
     private Vector2 Ground(float x)
     {
-        var floor = Physics2D.Raycast(new Vector2(x, transform.position.y + 1f), Vector2.down, 4f, 1 << 6);
-        return new Vector2(x, floor.collider != null ? floor.point.y + 0.16f : transform.position.y + 0.16f);
+        var floor = Physics2D.Raycast(new Vector2(x, transform.position.y + 1f), Vector2.down, BalanceRuntime.Number(this, "ConstellationWeaverCombat.Ground.1", 4f), 1 << 6);
+        return new Vector2(x, floor.collider != null ? floor.point.y + BalanceRuntime.Number(this, "ConstellationWeaverCombat.Ground.2", 0.16f) : transform.position.y + BalanceRuntime.Number(this, "ConstellationWeaverCombat.Ground.3", 0.16f));
     }
     public bool BeginCast(int skill)
     {
@@ -88,13 +88,13 @@ public sealed class ConstellationWeaverCombat : EnemyCombat
         {
             silkOwner = this;
             float direction = FaceRight ? 1f : -1f;
-            ends[0] = Ground(transform.position.x + direction * 0.6f); ends[1] = Ground(transform.position.x + direction * 5.4f);
+            ends[0] = Ground(transform.position.x + direction * BalanceRuntime.Number(this, "ConstellationWeaverCombat.BeginCast.1", 0.6f)); ends[1] = Ground(transform.position.x + direction * BalanceRuntime.Number(this, "ConstellationWeaverCombat.BeginCast.2", 5.4f));
             for (int i = 0; i < 2; i++) knots[i].Show(this, ends[i], ends[i], false);
         }
         if (skill == 1)
         {
             float x = Target.transform.position.x;
-            for (int i = 0; i < 3; i++) { nodes[i] = Ground(x + (i - 1) * 1.5f); knots[i].Show(this, nodes[i], nodes[i], false); }
+            for (int i = 0; i < 3; i++) { nodes[i] = Ground(x + (i - 1) * BalanceRuntime.Number(this, "ConstellationWeaverCombat.BeginCast.3", 1.5f)); knots[i].Show(this, nodes[i], nodes[i], false); }
         }
         return true;
     }
@@ -103,7 +103,7 @@ public sealed class ConstellationWeaverCombat : EnemyCombat
         HoldingFrame = false;
         if (CurrentSkill < 0) return;
         if (health.Dead || health.Attacked || movement.IsExternallyControlled || health.Status.BlocksActions) { CancelCast(); return; }
-        if (CurrentSkill == 0 && !released && frame >= 4)
+        if (CurrentSkill == 0 && !released && frame >= BalanceRuntime.Number(this, "ConstellationWeaverCombat.SampleFrame.Parameter1", 4f))
         {
             released = true; ExpireSilk();
             silkOwner = this;
@@ -113,13 +113,13 @@ public sealed class ConstellationWeaverCombat : EnemyCombat
         if (CurrentSkill == 1 && node < 3 && frame >= (node == 0 ? 5 : node == 1 ? 7 : 10))
         {
             if (node == 0 || Time.time >= nextNodeAt)
-            { knots[node++].Pulse(); nextNodeAt = Time.time + 0.6f; }
+            { knots[node++].Pulse(); nextNodeAt = Time.time + BalanceRuntime.Number(this, "ConstellationWeaverCombat.SampleFrame.1", 0.6f); }
             else HoldingFrame = true;
         }
         if (CurrentSkill == 2)
         {
             if (!HasSilk || health.Status.BlocksMovement) { CancelCast(); return; }
-            if (!released && frame >= 4)
+            if (!released && frame >= BalanceRuntime.Number(this, "ConstellationWeaverCombat.SampleFrame.Parameter2", 4f))
             {
                 released = sliding = true; slideAt = Time.time; slideFrom = transform.position.x;
                 slideTo = Mathf.Abs(slideFrom - ends[0].x) < Mathf.Abs(slideFrom - ends[1].x) ? ends[1].x : ends[0].x;
@@ -131,14 +131,14 @@ public sealed class ConstellationWeaverCombat : EnemyCombat
         // MovePosition commits in the next physics simulation; lock recovery after arrival.
         if (recoverPending) { recoverPending = false; movement.Stop(); movement.Stun(this, 1f); return; }
         if (!sliding || CurrentSkill != 2) { movement.Stop(); return; }
-        float t = Mathf.Clamp01((Time.time - slideAt) / (6f / 16f));
+        float t = Mathf.Clamp01((Time.time - slideAt) / (BalanceRuntime.Number(this, "ConstellationWeaverCombat.MotionStep.1", 6f) / BalanceRuntime.Number(this, "ConstellationWeaverCombat.MotionStep.2", 16f)));
         if (!HasSilk || !movement.SlideTo(Mathf.Lerp(slideFrom, slideTo, t))) { CancelCast(); return; }
         if (t >= 1f) { sliding = false; recoverPending = true; }
     }
     public void AnchorBroken()
     {
         ExpireSilk(); CancelCast();
-        if (!health.Dead && isActiveAndEnabled) movement.Stun(this, 0.8f);
+        if (!health.Dead && isActiveAndEnabled) movement.Stun(this, BalanceRuntime.Number(this, "ConstellationWeaverCombat.AnchorBroken.1", 0.8f));
     }
     public void ExpireSilk()
     {

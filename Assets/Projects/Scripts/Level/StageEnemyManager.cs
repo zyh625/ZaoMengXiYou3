@@ -43,6 +43,17 @@ public class StageEnemyManager : LevelEnemyManager
 
     public override bool ValidateConfiguration(out string error)//供关卡启动前检查模板是否已经填好必要引用
     {
+        BalanceRuntime.ApplyLevel(this);
+        if(lungeLeft!=null&&lungeRight==lungeLeft)lungeRight=null;//A duplicated left reference is invalid; reuse the existing right marker.
+        if(lungeLeft==null||lungeRight==null)
+        {
+            var markers=transform.root.Find("transforms");
+            if(markers!=null)foreach(Transform marker in markers)
+            {
+                if(lungeLeft==null&&marker.name.EndsWith("Left",StringComparison.Ordinal))lungeLeft=marker;
+                if(lungeRight==null&&marker.name.EndsWith("Right",StringComparison.Ordinal))lungeRight=marker;
+            }
+        }
         if (!base.ValidateConfiguration(out error)) return false;
         bool hasEnemyPool = false;//至少一个非零权重、非空的池才能正常推进普通波次
         if (enemyPools != null)
@@ -211,7 +222,7 @@ public class StageEnemyManager : LevelEnemyManager
             if (pool.config.prefab != null)
             {
                 Health prefabHealth = pool.config.prefab.GetComponent<Health>();
-                if (prefabHealth != null) baseBlood = prefabHealth.BeginBlood;//始终以预制体为基准，池成员反复复用不会层层叠乘
+                if (prefabHealth != null) baseBlood = BalanceRuntime.BaseBlood(pool.config.prefab.gameObject, prefabHealth.BeginBlood);//资产提供基础HP，池复用仍只乘一次轮回/召唤倍率。
             }
             health.SetBaseBlood(baseBlood * (summoned ? Mathf.Clamp(summonedHpScale, 0.05f, 1f) : 1f) * RebirthScaling.Current.HP);
         }

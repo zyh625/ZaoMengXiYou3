@@ -1,0 +1,455 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ea7302a88f56248a1b33284c7df3cd, type: 3}
+  m_Name: EastKing
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceProfile
+  displayName: "\u6301\u56FD\u5929\u738B / EastKing"
+  description: "\u4FEE\u6539\u540E\u91CD\u65B0\u8FDB\u5165\u573A\u666F/\u8BAD\u7EC3\u76EE\u6807\u751F\u6548\uFF1B\u4E0D\u5199\u5165\u5B58\u6863\uFF0C\u4E0D\u4FEE\u6539\u4E34\u65F6\u72B6\u6001\u3002"
+  components:
+  - objectPath: 
+    componentType: Health
+    componentIndex: 0
+    parameters:
+    - path: beginBlood
+      label: "\u57FA\u7840\u751F\u547D\u4E0A\u9650 \xB7 beginBlood"
+      value: 640
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: EnemyRewards
+    componentIndex: 0
+    parameters:
+    - path: experienceReward
+      label: "\u51FB\u6740\u7ECF\u9A8C \xB7 experienceReward"
+      value: 180
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: ActorStatus
+    componentIndex: 0
+    parameters:
+    - path: frozenDuration
+      label: "frozenDuration \xB7 frozenDuration"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: meltFrameInterval
+      label: "meltFrameInterval \xB7 meltFrameInterval"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: frozenDamageMultiplier
+      label: "frozenDamageMultiplier \xB7 frozenDamageMultiplier"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: EastCombat
+    componentIndex: 0
+    parameters:
+    - path: angryFull
+      label: "angryFull \xB7 angryFull"
+      value: 100
+      integer: 0
+      boolean: 0
+    - path: angryRatio
+      label: "angryRatio \xB7 angryRatio"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: deltaAngry
+      label: "deltaAngry \xB7 deltaAngry"
+      value: 8
+      integer: 0
+      boolean: 0
+    - path: angryDuration
+      label: "angryDuration \xB7 angryDuration"
+      value: 7
+      integer: 0
+      boolean: 0
+    - path: delayRatio
+      label: "delayRatio \xB7 delayRatio"
+      value: 0.6000000238418579
+      integer: 0
+      boolean: 0
+    - path: 'noteCooldowns.Array.data[0]'
+      label: "noteCooldowns \xB7 noteCooldowns.Array.data[0]"
+      value: 2.5999999046325684
+      integer: 0
+      boolean: 0
+    - path: 'noteCooldowns.Array.data[1]'
+      label: "noteCooldowns \xB7 noteCooldowns.Array.data[1]"
+      value: 9
+      integer: 0
+      boolean: 0
+    - path: 'noteCooldowns.Array.data[2]'
+      label: "noteCooldowns \xB7 noteCooldowns.Array.data[2]"
+      value: 15
+      integer: 0
+      boolean: 0
+    - path: 'noteCooldowns.Array.data[3]'
+      label: "noteCooldowns \xB7 noteCooldowns.Array.data[3]"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: minimumAttackInterval
+      label: "minimumAttackInterval \xB7 minimumAttackInterval"
+      value: 1.600000023841858
+      integer: 0
+      boolean: 0
+    - path: firstAttackDelay
+      label: "firstAttackDelay \xB7 firstAttackDelay"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: shootFrame
+      label: "shootFrame \xB7 shootFrame"
+      value: 9
+      integer: 1
+      boolean: 0
+    - path: stringEnergyFull
+      label: "stringEnergyFull \xB7 stringEnergyFull"
+      value: 100
+      integer: 0
+      boolean: 0
+    - path: stringEnergyOnHit
+      label: "stringEnergyOnHit \xB7 stringEnergyOnHit"
+      value: 4
+      integer: 0
+      boolean: 0
+    - path: stringEnergyOnMiss
+      label: "stringEnergyOnMiss \xB7 stringEnergyOnMiss"
+      value: 5
+      integer: 0
+      boolean: 0
+    - path: stringEnergyOnDamaged
+      label: "stringEnergyOnDamaged \xB7 stringEnergyOnDamaged"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: rapidStringsDuration
+      label: "rapidStringsDuration \xB7 rapidStringsDuration"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: rapidStringsCooldownRatio
+      label: "rapidStringsCooldownRatio \xB7 rapidStringsCooldownRatio"
+      value: 0.699999988079071
+      integer: 0
+      boolean: 0
+    - path: stringEnergy
+      label: "stringEnergy \xB7 stringEnergy"
+      value: 0
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: EastController
+    componentIndex: 0
+    parameters:
+    - path: Idle.loop
+      label: "Idle \xB7 Idle.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Idle.fps
+      label: "Idle \xB7 Idle.fps"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: Walk.loop
+      label: "Walk \xB7 Walk.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Walk.fps
+      label: "Walk \xB7 Walk.fps"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: Die.loop
+      label: "Die \xB7 Die.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: Die.fps
+      label: "Die \xB7 Die.fps"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: stopDistance
+      label: "\u505C\u6B62\u9760\u8FD1\u8DDD\u79BB \xB7 stopDistance"
+      value: 100000
+      integer: 0
+      boolean: 0
+    - path: specialAttack
+      label: "specialAttack \xB7 specialAttack"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: stunnedFrame
+      label: "stunnedFrame \xB7 stunnedFrame"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: NormalAttack.loop
+      label: "NormalAttack \xB7 NormalAttack.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: NormalAttack.fps
+      label: "NormalAttack \xB7 NormalAttack.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: StunAttack.loop
+      label: "StunAttack \xB7 StunAttack.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: StunAttack.fps
+      label: "StunAttack \xB7 StunAttack.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: SummonAttack.loop
+      label: "SummonAttack \xB7 SummonAttack.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: SummonAttack.fps
+      label: "SummonAttack \xB7 SummonAttack.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: BuffAttack.loop
+      label: "BuffAttack \xB7 BuffAttack.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: BuffAttack.fps
+      label: "BuffAttack \xB7 BuffAttack.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: EastMovement
+    componentIndex: 0
+    parameters:
+    - path: moveSpeed
+      label: "\u79FB\u52A8\u901F\u5EA6 \xB7 moveSpeed"
+      value: 0.800000011920929
+      integer: 0
+      boolean: 0
+    - path: backSpeed
+      label: "\u53D7\u51FB\u540E\u9000\u901F\u5EA6 \xB7 backSpeed"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: upSpeed
+      label: "\u8DF3\u8DC3\u901F\u5EA6 \xB7 upSpeed"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: slowSpeed
+      label: "slowSpeed \xB7 slowSpeed"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: boostRatio
+      label: "boostRatio \xB7 boostRatio"
+      value: 1.600000023841858
+      integer: 0
+      boolean: 0
+    - path: minNormalY
+      label: "minNormalY \xB7 minNormalY"
+      value: 0.6000000238418579
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: UnityEngine.Rigidbody2D
+    componentIndex: 0
+    parameters:
+    - path: m_Mass
+      label: "\u8D28\u91CF \xB7 m_Mass"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: m_GravityScale
+      label: "\u91CD\u529B\u500D\u7387 \xB7 m_GravityScale"
+      value: 0.8999999761581421
+      integer: 0
+      boolean: 0
+    - path: m_LinearDamping
+      label: "\u6C34\u5E73\u963B\u5C3C \xB7 m_LinearDamping"
+      value: 0
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 2.0199999809265137
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 3.7599198818206787
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: -0.1900399923324585
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/Attacked
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.6200000047683716
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 3.612086296081543
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: -0.1857091784477234
+      integer: 0
+      boolean: 0
+  numbers:
+  - key: BuffNoteManager.OnLaunched.1
+    label: OnLaunched / apex = new Vector2(Mathf.Clamp(Mathf.Lerp(position.x, targetX,
+      0.5f), arenaBounds.x, arenaBounds.y),
+    source: Assets/Projects/Scripts/Boss/EastKing/BuffNoteManager.cs:23
+    value: 0.5
+  - key: BuffNoteManager.OnLaunched.2
+    label: OnLaunched / position.y + Mathf.Max(0.1f, riseHeight));
+    source: Assets/Projects/Scripts/Boss/EastKing/BuffNoteManager.cs:24
+    value: 0.1
+  - key: BuffNoteManager.FixedUpdate.1
+    label: FixedUpdate / Vector2 to = Vector2.MoveTowards(from, destination, Mathf.Max(0.01f,
+      speed) * Time.fixedDeltaTime);
+    source: Assets/Projects/Scripts/Boss/EastKing/BuffNoteManager.cs:73
+    value: 0.01
+  - key: BuffNoteManager.FixedUpdate.2
+    label: FixedUpdate / if ((to - destination).sqrMagnitude > 0.000001f) return;
+    source: Assets/Projects/Scripts/Boss/EastKing/BuffNoteManager.cs:91
+    value: 0.000001
+  - key: EastCombat.MaxStringEnergy.1
+    label: MaxStringEnergy / public float MaxStringEnergy => Mathf.Max(0.01f, stringEnergyFull);
+    source: Assets/Projects/Scripts/Boss/EastKing/EastCombat.cs:36
+    value: 0.01
+  - key: EastCombat.AddStringEnergy.1
+    label: AddStringEnergy / rapidStringsUntil = Time.time + Mathf.Max(0.01f, rapidStringsDuration);
+    source: Assets/Projects/Scripts/Boss/EastKing/EastCombat.cs:153
+    value: 0.01
+  - key: EastNoteManager.Launch.1
+    label: Launch / expiresAt = Time.time + Mathf.Max(0.01f, lifetime);
+    source: Assets/Projects/Scripts/Boss/EastKing/EastNoteManager.cs:52
+    value: 0.01
+  - key: EastNoteManager.Launch.2
+    label: Launch / if (aim.sqrMagnitude > 0.000001f) direction = aim.normalized;
+    source: Assets/Projects/Scripts/Boss/EastKing/EastNoteManager.cs:58
+    value: 0.000001
+  - key: EastNoteManager.FixedUpdate.1
+    label: FixedUpdate / Vector2 to = from + direction * (Mathf.Max(0.01f, flySpeed)
+      * Time.fixedDeltaTime);
+    source: Assets/Projects/Scripts/Boss/EastKing/EastNoteManager.cs:87
+    value: 0.01
+  - key: EastNoteManager.FixedUpdate.2
+    label: FixedUpdate / if (to.x < arenaBounds.x - 3f || to.x > arenaBounds.y +
+      3f) EndFlight(false);
+    source: Assets/Projects/Scripts/Boss/EastKing/EastNoteManager.cs:94
+    value: 3
+  - key: EastNoteManager.FixedUpdate.3
+    label: FixedUpdate / if (to.x < arenaBounds.x - 3f || to.x > arenaBounds.y +
+      3f) EndFlight(false);
+    source: Assets/Projects/Scripts/Boss/EastKing/EastNoteManager.cs:94
+    value: 3
+  - key: EastNoteManager.SweepBounds.1
+    label: SweepBounds / Vector2 size = HitHalfExtents * 2f;
+    source: Assets/Projects/Scripts/Boss/EastKing/EastNoteManager.cs:136
+    value: 2
+  - key: EastNoteManager.SweepBounds.2
+    label: SweepBounds / if (delta.sqrMagnitude <= 0.000001f) return false;
+    source: Assets/Projects/Scripts/Boss/EastKing/EastNoteManager.cs:142
+    value: 0.000001
+  - key: EastNoteManager.HitHalfExtents.1
+    label: HitHalfExtents / return new Vector2(Mathf.Max(minimumHitSize, visual.x
+      * hitWidthRatio) * 0.5f,
+    source: Assets/Projects/Scripts/Boss/EastKing/EastNoteManager.cs:153
+    value: 0.5
+  - key: EastNoteManager.HitHalfExtents.2
+    label: HitHalfExtents / Mathf.Max(minimumHitSize, visual.y * hitHeightRatio)
+      * 0.5f);
+    source: Assets/Projects/Scripts/Boss/EastKing/EastNoteManager.cs:154
+    value: 0.5
+  - key: EastNoteManager.FaceDirection.1
+    label: FaceDirection / if (sr != null && Mathf.Abs(value.x) > 0.0001f) sr.flipX
+      = (value.x > 0f) != sourceFacesRight;
+    source: Assets/Projects/Scripts/Boss/EastKing/EastNoteManager.cs:178
+    value: 0.0001
+  - key: StunNoteManager.FixedUpdate.1
+    label: FixedUpdate / if (aim.sqrMagnitude > 0.000001f) direction = aim.normalized;
+    source: Assets/Projects/Scripts/Boss/EastKing/StunNoteManager.cs:30
+    value: 0.000001
+  - key: StunNoteManager.FixedUpdate.2
+    label: FixedUpdate / Vector2 to = from + direction * (Mathf.Max(0.01f, trackingSpeed)
+      * Time.fixedDeltaTime);
+    source: Assets/Projects/Scripts/Boss/EastKing/StunNoteManager.cs:33
+    value: 0.01
+  - key: SummonNoteManager.OnLaunched.1
+    label: OnLaunched / float halfWidth = Mathf.Max(0f, (arenaBounds.y - arenaBounds.x)
+      * 0.5f);
+    source: Assets/Projects/Scripts/Boss/EastKing/SummonNoteManager.cs:20
+    value: 0.5
+  - key: SummonNoteManager.OnLaunched.2
+    label: OnLaunched / float top = Mathf.Max(position.y, fallbackGround) + Mathf.Max(0.1f,
+      apexHeight);
+    source: Assets/Projects/Scripts/Boss/EastKing/SummonNoteManager.cs:26
+    value: 0.1
+  - key: SummonNoteManager.FindGroundY.1
+    label: FindGroundY / if (groundHits[i].collider != null && groundHits[i].normal.y
+      > 0.5f)
+    source: Assets/Projects/Scripts/Boss/EastKing/SummonNoteManager.cs:41
+    value: 0.5
+  - key: SummonNoteManager.FixedUpdate.1
+    label: FixedUpdate / Vector2 to = Vector2.MoveTowards(from, destination, Mathf.Max(0.01f,
+      speed) * Time.fixedDeltaTime);
+    source: Assets/Projects/Scripts/Boss/EastKing/SummonNoteManager.cs:52
+    value: 0.01
+  - key: SummonNoteManager.FixedUpdate.2
+    label: FixedUpdate / if ((to - destination).sqrMagnitude > 0.000001f) return;
+    source: Assets/Projects/Scripts/Boss/EastKing/SummonNoteManager.cs:60
+    value: 0.000001
+  skills: []
+  relatedProfiles:
+  - {fileID: 11400000, guid: 199b425bfa2b92441ba2cf844518ecd8, type: 2}
+  - {fileID: 11400000, guid: 3eace0dfef925b847abfa1e001a77fb8, type: 2}
+  - {fileID: 11400000, guid: 2a2d69d2d1befe54198ab2e62c802d78, type: 2}
+  - {fileID: 11400000, guid: 70e6ee1328c66e64793675597817a9cc, type: 2}

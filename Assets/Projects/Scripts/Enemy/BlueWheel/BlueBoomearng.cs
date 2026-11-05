@@ -27,7 +27,7 @@ public class BlueBoomearng : MonoBehaviour
     private FlightMode mode;
     private readonly HashSet<Health> hitPlayers = new();//去、回两段分别去重，换人后读取实际上场角色。
     public bool IsFlying => flying;
-    public float FlySpeed => Mathf.Max(0.01f, flySpeed);
+    public float FlySpeed => Mathf.Max(BalanceRuntime.Number(this, "BlueBoomearng.FlySpeed.1", 0.01f), flySpeed);
     public bool BelongsTo(BlueWheelCombat source) => flying && owner == source && OwnerStillValid;
     private bool OwnerStillValid => owner != null && owner.isActiveAndEnabled && ownerHealth != null
         && !ownerHealth.Dead && ownerHealth.LifeVersion == ownerLifeVersion;
@@ -111,7 +111,7 @@ public class BlueBoomearng : MonoBehaviour
         }
         float step = FlySpeed * Time.fixedDeltaTime;
         if (hiddenCast && mode == FlightMode.Outbound)
-            step = Mathf.Min(step, Mathf.Max(0f, Mathf.Max(0.1f, outboundDistance) - travelled));
+            step = Mathf.Min(step, Mathf.Max(0f, Mathf.Max(BalanceRuntime.Number(this, "BlueBoomearng.FixedUpdate.1", 0.1f), outboundDistance) - travelled));
         to = from + direction * step;
         bool reachedEdge = false;
         if (mode == FlightMode.Outbound) to = ClampToBounds(to, out reachedEdge);
@@ -126,8 +126,8 @@ public class BlueBoomearng : MonoBehaviour
         }
         else if (mode == FlightMode.Outbound)
         {
-            if (hiddenCast && (reachedEdge || travelled >= Mathf.Max(0.1f, outboundDistance)))
-                BeginReturn(Vector2.Distance(to, TargetPosition) / Mathf.Max(0.01f, returnSpeed), true);
+            if (hiddenCast && (reachedEdge || travelled >= Mathf.Max(BalanceRuntime.Number(this, "BlueBoomearng.FixedUpdate.2", 0.1f), outboundDistance)))
+                BeginReturn(Vector2.Distance(to, TargetPosition) / Mathf.Max(BalanceRuntime.Number(this, "BlueBoomearng.FixedUpdate.3", 0.01f), returnSpeed), true);
             else if (reachedEdge) mode = FlightMode.WaitingReturn;
         }
     }
@@ -156,15 +156,15 @@ public class BlueBoomearng : MonoBehaviour
     {
         if (!started) { StopEffect(); return; }//尚未从隐身本体发出的延迟轮直接取消。
         mode = FlightMode.Free;
-        direction = new Vector2(Mathf.Abs(lastDirection.x) > 0.001f ? Mathf.Sign(lastDirection.x) : Mathf.Sign(direction.x), 0f);
+        direction = new Vector2(Mathf.Abs(lastDirection.x) > BalanceRuntime.Number(this, "BlueBoomearng.MakeFree.1", 0.001f) ? Mathf.Sign(lastDirection.x) : Mathf.Sign(direction.x), 0f);
         if (direction.x == 0f) direction = Vector2.right;
         //已去程/回程命中过的角色继续保持去重，离场不再凭空多结算一次。
     }
     private void SaveDirection(Vector2 from, Vector2 to)
     {
         Vector2 delta = to - from;
-        if (delta.sqrMagnitude > 0.000001f) lastDirection = delta.normalized;
-        if (sr != null && Mathf.Abs(lastDirection.x) > 0.001f) sr.flipX = (lastDirection.x > 0f) != sourceFacesRight;
+        if (delta.sqrMagnitude > BalanceRuntime.Number(this, "BlueBoomearng.SaveDirection.1", 1E-06f)) lastDirection = delta.normalized;
+        if (sr != null && Mathf.Abs(lastDirection.x) > BalanceRuntime.Number(this, "BlueBoomearng.SaveDirection.2", 0.001f)) sr.flipX = (lastDirection.x > 0f) != sourceFacesRight;
     }
     private bool OutsideBounds()
     {
@@ -177,7 +177,7 @@ public class BlueBoomearng : MonoBehaviour
         float offset = sr != null ? sr.bounds.center.x - transform.position.x : 0f;
         float left = bounds.x + half - offset;
         float right = bounds.y - half - offset;
-        if (left > right) left = right = (bounds.x + bounds.y) * 0.5f - offset;
+        if (left > right) left = right = (bounds.x + bounds.y) * BalanceRuntime.Number(this, "BlueBoomearng.ClampToBounds.1", 0.5f) - offset;
         reachedEdge = direction.x > 0f ? position.x >= right : position.x <= left;
         position.x = Mathf.Clamp(position.x, left, right);
         return position;
@@ -196,7 +196,7 @@ public class BlueBoomearng : MonoBehaviour
         Vector2 offset = sr != null ? (Vector2)sr.bounds.center - (Vector2)transform.position : Vector2.zero;
         Vector3 start = new(from.x + offset.x, from.y + offset.y, target.center.z);
         Vector2 delta = to - from;
-        if (!target.Contains(start) && (delta.sqrMagnitude <= 0.000001f
+        if (!target.Contains(start) && (delta.sqrMagnitude <= BalanceRuntime.Number(this, "BlueBoomearng.CheckPlayerHit.1", 1E-06f)
             || !target.IntersectRay(new Ray(start, delta.normalized), out float distance) || distance > delta.magnitude)) return;
         hitPlayers.Add(health);//护盾、切人无敌挡住也消耗本段接触机会，不逐帧重试。
         float before = health.CurBlood;

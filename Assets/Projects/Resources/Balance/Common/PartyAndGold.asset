@@ -1,0 +1,129 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ea7302a88f56248a1b33284c7df3cd, type: 3}
+  m_Name: PartyAndGold
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceProfile
+  displayName: "\u6362\u4EBA\u3001\u91D1\u5E01\u4E0E\u56E2\u961F\u89C4\u5219"
+  description: "\u4FEE\u6539\u540E\u91CD\u65B0\u8FDB\u5165\u573A\u666F/\u8BAD\u7EC3\u76EE\u6807\u751F\u6548\uFF1B\u4E0D\u5199\u5165\u5B58\u6863\uFF0C\u4E0D\u4FEE\u6539\u4E34\u65F6\u72B6\u6001\u3002"
+  components:
+  - objectPath: 
+    componentType: PlayerManager
+    componentIndex: 0
+    parameters:
+    - path: tangNormalAttackSpawnOffset.x
+      label: "tangNormalAttackSpawnOffset \xB7 tangNormalAttackSpawnOffset.x"
+      value: 2.200000047683716
+      integer: 0
+      boolean: 0
+    - path: tangNormalAttackSpawnOffset.y
+      label: "tangNormalAttackSpawnOffset \xB7 tangNormalAttackSpawnOffset.y"
+      value: 0.30000001192092896
+      integer: 0
+      boolean: 0
+    - path: skullSpawnOffset.x
+      label: "skullSpawnOffset \xB7 skullSpawnOffset.x"
+      value: 1.600000023841858
+      integer: 0
+      boolean: 0
+    - path: skullSpawnOffset.y
+      label: "skullSpawnOffset \xB7 skullSpawnOffset.y"
+      value: -0.11999999731779099
+      integer: 0
+      boolean: 0
+    - path: boomerangSpawnOffset.x
+      label: "boomerangSpawnOffset \xB7 boomerangSpawnOffset.x"
+      value: 1.5
+      integer: 0
+      boolean: 0
+    - path: boomerangSpawnOffset.y
+      label: "boomerangSpawnOffset \xB7 boomerangSpawnOffset.y"
+      value: -0.4000000059604645
+      integer: 0
+      boolean: 0
+    - path: poisonDuration
+      label: "poisonDuration \xB7 poisonDuration"
+      value: 5
+      integer: 0
+      boolean: 0
+    - path: poisonDamagePerStack
+      label: "poisonDamagePerStack \xB7 poisonDamagePerStack"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: groundSearchDistance
+      label: "groundSearchDistance \xB7 groundSearchDistance"
+      value: 30
+      integer: 0
+      boolean: 0
+    - path: effectPrewarmCount
+      label: "effectPrewarmCount \xB7 effectPrewarmCount"
+      value: 2
+      integer: 1
+      boolean: 0
+    - path: switchInvincibleDuration
+      label: "switchInvincibleDuration \xB7 switchInvincibleDuration"
+      value: 0.30000001192092896
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: GoldManager
+    componentIndex: 0
+    parameters:
+    - path: dropChance
+      label: "\u91D1\u5E01\u6389\u843D\u6982\u7387 \xB7 dropChance"
+      value: 0.5
+      integer: 0
+      boolean: 0
+    - path: maxGold
+      label: "\u5C0F\u602A\u91D1\u5E01\u4E0A\u9650 \xB7 maxGold"
+      value: 10
+      integer: 1
+      boolean: 0
+    - path: goldGrowthPerLevel
+      label: "goldGrowthPerLevel \xB7 goldGrowthPerLevel"
+      value: 2
+      integer: 1
+      boolean: 0
+    - path: goldGrowthStartLevel
+      label: "goldGrowthStartLevel \xB7 goldGrowthStartLevel"
+      value: 3
+      integer: 1
+      boolean: 0
+    - path: bossGold
+      label: "Boss\u9996\u6740\u91D1\u5E01 \xB7 bossGold"
+      value: 40
+      integer: 1
+      boolean: 0
+    - path: groundSearchDistance
+      label: "groundSearchDistance \xB7 groundSearchDistance"
+      value: 100
+      integer: 0
+      boolean: 0
+  numbers:
+  - key: PlayerManager.SwitchCooldown.WuKong
+    label: 孙悟空换下后冷却（秒）
+    source: Assets/Projects/Scripts/Level/PlayerManager.cs
+    value: 20
+  - key: PlayerManager.SwitchCooldown.BaJie
+    label: 猪八戒换下后冷却（秒）
+    source: Assets/Projects/Scripts/Level/PlayerManager.cs
+    value: 20
+  - key: PlayerManager.SwitchCooldown.Sha
+    label: 沙僧换下后冷却（秒）
+    source: Assets/Projects/Scripts/Level/PlayerManager.cs
+    value: 20
+  - key: PlayerManager.SwitchCooldown.Tang
+    label: 唐僧换下后冷却（秒）
+    source: Assets/Projects/Scripts/Level/PlayerManager.cs
+    value: 20
+  skills: []
+  relatedProfiles: []

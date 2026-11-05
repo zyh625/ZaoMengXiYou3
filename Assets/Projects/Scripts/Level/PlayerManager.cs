@@ -11,7 +11,9 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private BajieController Bajie;
     [SerializeField] private ShaController Sha;//沙僧加入前后切换名单，允许复用场景实例或填预制体
     [SerializeField] private TangController Tang;//唐僧与其他角色一样创建一次，换出后保留自己的资源和冷却
-    [SerializeField] private PlayerId[] switchOrder = { PlayerId.WuKong, PlayerId.BaJie, PlayerId.Sha, PlayerId.Tang };//E沿此顺序循环，Q反向；以后可从玩家设置传入新顺序
+    private const string SwitchOrderPreference = "CharacterSwitchOrder";
+    private const float DefaultSwitchCooldown = 20f;
+    [SerializeField] private PlayerId[] switchOrder = { PlayerId.WuKong, PlayerId.BaJie, PlayerId.Sha, PlayerId.Tang };
     [SerializeField] private YieldManager yieldManager;//领域预制体模板，每次施法从独立对象池取得实例
     [Header("独立技能特效预制体")]
     [SerializeField] private SkullManager skull;//麻痹药剂，由管理器按需创建并复用
@@ -39,9 +41,11 @@ public class PlayerManager : MonoBehaviour
     private ShaController sha;//只保留一个实例，换出后保留血量、法力与技能冷却
     private TangController tang;//唐僧实例由同一个管理器启用和停用，不单独订阅换人输入
     private readonly List<PlayerController> players = new();//根据switchOrder整理已配置角色，不依赖固定角色编号位置
+    private readonly (double readyAt, float duration)[] switchCooldowns = new (double, float)[4];
+    private IReadOnlyList<PlayerId> switchOrderView;
     private int curPlayer = 1;
     private bool initialized;//角色只创建一次，避免重复初始化生成多组玩家
-    private int lastSwitchFrame = -1;//同一帧只响应一次换人，防止新角色重复读取同一次Q/E
+    private int lastSwitchFrame = -1;//同一帧只响应一次成功的换人
     private InputReader currentInput;//只订阅当前角色的换人请求
     private Health currentHealth;//失败只监听当前角色，换出后退订旧角色
     [SerializeField] private string defeatScene = "DefeatScene";//当前角色死亡时进入的失败场景
@@ -50,8 +54,14 @@ public class PlayerManager : MonoBehaviour
 
     public PlayerController CurrentPlayer => curPlayer > 0 && curPlayer <= players.Count ? players[curPlayer - 1] : null;//关卡和敌人使用的唯一当前角色
     public bool TrainingMode {get;set;}//运行时练习专用，默认false；复用四角色切换与技能池。
+    public bool TrainingNoSwitchCooldown { get; set; }//训练场免除切换角色冷却，与技能无CD联动生效。
+
+    public void ClearSwitchCooldowns()
+    {
+        for (int i = 0; i < switchCooldowns.Length; i++) switchCooldowns[i] = (0, 0);
+    }
     public IReadOnlyList<PlayerController> Players => players;//结算读取四人真实资源，不启用备用角色的输入与动作
-    public IReadOnlyList<PlayerId> SwitchOrder => Array.AsReadOnly(switchOrder ?? Array.Empty<PlayerId>());//设置界面可读取当前顺序，通过SetSwitchOrder提交调整
+    public IReadOnlyList<PlayerId> SwitchOrder => switchOrderView ??= Array.AsReadOnly(switchOrder);
     public event Action<PlayerController> CurrentPlayerChanged;//切换完成后通知关卡更新追击目标等引用
     public static string LastBattleScene { get; private set; }//直接运行关卡时，失败界面也能找到正确的重试场景
 
@@ -116,7 +126,8 @@ public class PlayerManager : MonoBehaviour
             players.Add(tang);
             tang.GetComponent<TangCombat>().SetEffectManager(this);//角色只报告发射时机，不自行创建或持有场景投射物
         }
-        ApplySwitchOrder(switchOrder);//漏填、重复或未配置的角色不会使实际可切换名单丢失成员
+        LoadSwitchOrder();
+        ApplySwitchOrder(switchOrder);
         InitEffectPools();//五种独立效果都从模板预热，不再只创建一份八戒领域
         if (bajie != null) bajie.GetComponent<BajieCombat>().SetEffectManager(this);
         foreach (PlayerController player in players)
@@ -136,54 +147,112 @@ public class PlayerManager : MonoBehaviour
         CurrentPlayerChanged?.Invoke(wukong);
     }
 
-    public void SwitchPri() => SwitchRelative(-1);//Q向前循环，保留各角色自己的冷却时间
-    public void SwitchNext() => SwitchRelative(1);//E向后循环
+    public void SwitchPri() => SwitchRelative(-1);
+    public void SwitchNext() => SwitchRelative(1);
     private void SwitchRelative(int direction)//只有已初始化的实际角色参与切换
     {
         if (players.Count == 0) return;
         SwitchPlayer((curPlayer - 1 + direction + players.Count) % players.Count + 1);
     }
 
-    public bool SetSwitchOrder(IReadOnlyList<PlayerId> order)//以后设置界面传入完整新队列即可；重排不换人、不重置资源或冷却
+    public void SwitchSlot(int slotIndex)
     {
-        if (!initialized || order == null || order.Count != players.Count) return false;
-        HashSet<PlayerId> seen = new();//仅在玩家提交设置时校验，战斗中的Q/E仍直接按下标切换
-        foreach (PlayerId id in order)
+        if (!initialized || GamePause.IsPaused || slotIndex < 0 || slotIndex >= switchOrder.Length) return;
+        SwitchPlayer(players.IndexOf(GetCharacter(switchOrder[slotIndex])) + 1);
+    }
+
+    public PlayerController GetCharacter(PlayerId id) => id switch
+    {
+        PlayerId.WuKong => wukong,
+        PlayerId.BaJie => bajie,
+        PlayerId.Sha => sha,
+        PlayerId.Tang => tang,
+        _ => null
+    };
+
+    public float GetSwitchCooldownRemaining(PlayerId id, out float ratio)
+    {
+        if (TrainingNoSwitchCooldown)
         {
-            if (!seen.Add(id) || !players.Exists(player => player.GetComponent<PlayerResources>().Id == id)) return false;
+            ratio = 0f;
+            return 0f;
         }
-        ApplySwitchOrder(order);
+        var (readyAt, duration) = switchCooldowns[(int)id];
+        float remaining = Mathf.Max(0f, (float)(readyAt - Time.timeAsDouble));
+        ratio = duration > 0f ? Mathf.Clamp01(remaining / duration) : 0f;
+        return remaining;
+    }
+
+    private void StartSwitchCooldown(PlayerId id)
+    {
+        if (TrainingNoSwitchCooldown) return;
+        float duration = BalanceRuntime.Load("Common/PartyAndGold")?.Get($"PlayerManager.SwitchCooldown.{id}",
+            DefaultSwitchCooldown) ?? DefaultSwitchCooldown;
+        duration = float.IsFinite(duration) ? Mathf.Max(0f, duration) : DefaultSwitchCooldown;
+        switchCooldowns[(int)id] = (Time.timeAsDouble + duration, duration);
+    }
+
+    public bool SetSwitchOrder(IReadOnlyList<PlayerId> order)
+    {
+        if (!initialized || !IsValidSwitchOrder(order)) return false;
+        switchOrder = new[] { order[0], order[1], order[2], order[3] };
+        ApplySwitchOrder(switchOrder);
+        PlayerPrefs.SetString(SwitchOrderPreference, string.Concat(
+            (int)switchOrder[0], (int)switchOrder[1], (int)switchOrder[2], (int)switchOrder[3]));
+        PlayerPrefs.Save();
+        return true;
+    }
+
+    private void LoadSwitchOrder()
+    {
+        string saved = PlayerPrefs.GetString(SwitchOrderPreference);
+        if (saved.Length == 4)
+        {
+            var order = new PlayerId[4];
+            for (int i = 0; i < order.Length; i++) order[i] = (PlayerId)(saved[i] - '0');
+            if (IsValidSwitchOrder(order)) switchOrder = order;
+        }
+        if (!IsValidSwitchOrder(switchOrder))
+            switchOrder = new[] { PlayerId.WuKong, PlayerId.BaJie, PlayerId.Sha, PlayerId.Tang };
+    }
+
+    private static bool IsValidSwitchOrder(IReadOnlyList<PlayerId> order)
+    {
+        if (order == null || order.Count != 4) return false;
+        var seen = new HashSet<PlayerId>();
+        foreach (PlayerId id in order)
+            if (id < PlayerId.WuKong || id > PlayerId.Tang || !seen.Add(id)) return false;
         return true;
     }
 
     private void ApplySwitchOrder(IReadOnlyList<PlayerId> order)//保留当前角色引用，避免重排下标后把界面或敌人目标误指向别人
     {
+        switchOrderView = null;
         PlayerController current = CurrentPlayer;
         List<PlayerController> ordered = new(players.Count);//整理一次配置，不在每帧重新查找角色
         if (order != null)
             foreach (PlayerId id in order)
             {
-                PlayerController player = players.Find(candidate => candidate.GetComponent<PlayerResources>().Id == id);
+                PlayerController player = GetCharacter(id);
                 if (player != null && !ordered.Contains(player)) ordered.Add(player);
             }
         foreach (PlayerController player in players)
             if (!ordered.Contains(player)) ordered.Add(player);
         players.Clear();
         players.AddRange(ordered);
-        switchOrder = new PlayerId[players.Count];
-        for (int i = 0; i < players.Count; i++) switchOrder[i] = players[i].GetComponent<PlayerResources>().Id;
         if (current != null) curPlayer = players.IndexOf(current) + 1;
     }
 
     //先交接移动数据，再清理和隐藏旧角色；整个过程在一次输入回调内完成。
     private void SwitchPlayer(int nextPlayer)
     {
-        if (!initialized || defeatRequested || lastSwitchFrame == Time.frameCount || nextPlayer < 1 || nextPlayer > players.Count) return;
+        if (!initialized || GamePause.IsPaused || defeatRequested || lastSwitchFrame == Time.frameCount || nextPlayer < 1 || nextPlayer > players.Count) return;
         PlayerController previous = CurrentPlayer;//切换前仍在场上的角色
         PlayerController next = players[nextPlayer - 1];//即将接收控制权的角色
         if (previous == null || next == null || previous == next || !previous.gameObject.activeInHierarchy) return;
         if (previous.GetComponent<Health>().Status?.BlocksMovement == true) return;//冰冻和融化期间不能通过换人跳过位移限制或提前移除冰块
         if (previous.GetComponent<Health>().Dead || next.GetComponent<Health>().Dead) return;
+        if (GetSwitchCooldownRemaining(next.GetComponent<PlayerResources>().Id, out _) > 0f) return;
 
         lastSwitchFrame = Time.frameCount;
         float footY = previous.GetComponent<BoxCollider2D>().bounds.min.y;//保持脚底高度，避免不同碰撞箱切换时陷进地板
@@ -203,6 +272,7 @@ public class PlayerManager : MonoBehaviour
         ResetSwitchResources(next);
         next.GetComponent<Health>().GrantInvincibility(this, switchInvincibleDuration);//启用及位置交接完成后再授予，避免被OnEnable重置
         previous.GetComponent<Health>().PreserveForSwitch();
+        StartSwitchCooldown(previous.GetComponent<PlayerResources>().Id);
         curPlayer = nextPlayer;
         BattleRun.SetCurrentPlayer(next);//切换当下结清上一角色使用时长，不能用下一帧的角色代替
         BindInput(next);
@@ -220,17 +290,9 @@ public class PlayerManager : MonoBehaviour
     //始终只有当前角色能发起切换；切换、禁用管理器时及时退订旧输入。
     private void BindInput(PlayerController player)
     {
-        if (currentInput != null)
-        {
-            currentInput.SwitchPriPressed -= SwitchPri;
-            currentInput.SwitchNextPressed -= SwitchNext;
-        }
+        if (currentInput != null) currentInput.SwitchSlotPressed -= SwitchSlot;
         currentInput = player == null ? null : player.GetComponent<InputReader>();
-        if (currentInput != null)
-        {
-            currentInput.SwitchPriPressed += SwitchPri;
-            currentInput.SwitchNextPressed += SwitchNext;
-        }
+        if (currentInput != null) currentInput.SwitchSlotPressed += SwitchSlot;
     }
 
     private void BindHealth(PlayerController player)//不靠角色停用或死亡动画结束来判断失败

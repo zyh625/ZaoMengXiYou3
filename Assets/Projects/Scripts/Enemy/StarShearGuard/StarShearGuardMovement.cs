@@ -24,10 +24,10 @@ public sealed class StarShearGuardMovement : EnemyMovement
     {
         if (!Stepping) { Stop(); return; }
         float remaining = Mathf.Max(0f, distance - (body.position.x - startX) * direction);
-        if (remaining <= .001f || elapsed >= duration)
+        if (remaining <= BalanceRuntime.Number(this, "StarShearGuardMovement.TickStep.1", 0.001f) || elapsed >= duration)
         { CancelStep(); Stop(); return; }
         float speed = Mathf.Min(distance / duration, remaining / Time.fixedDeltaTime);
-        speedMultiplier = speed / Mathf.Max(.01f, motionBaseSpeed * RebirthScaling.Current.Movement);
+        speedMultiplier = speed / Mathf.Max(BalanceRuntime.Number(this, "StarShearGuardMovement.TickStep.2", 0.01f), motionBaseSpeed * RebirthScaling.Current.Movement);
         MoveAlong(direction, slow);
         elapsed += Time.fixedDeltaTime;
     }

@@ -63,7 +63,7 @@ public class TangNormalAttackManager : MonoBehaviour
         if (phase != Phase.Flying) return;
 
         Vector2 from = new(transform.position.x, origin.y);
-        float step = Mathf.Min(Mathf.Max(0.01f, flySpeed) * Time.fixedDeltaTime,
+        float step = Mathf.Min(Mathf.Max(BalanceRuntime.Number(this, "TangNormalAttackManager.FixedUpdate.1", 0.01f), flySpeed) * Time.fixedDeltaTime,
             Mathf.Max(0f, maxDistance - travelled));//最后一个物理步也不越过最大距离
         Vector2 direction = faceRight ? Vector2.right : Vector2.left;
         Vector2 to = from + direction * step;

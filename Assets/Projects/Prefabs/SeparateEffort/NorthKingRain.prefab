@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9052230054309408064}
   - component: {fileID: 709923157469862711}
+  - component: {fileID: 1214172470204049231}
   m_Layer: 0
   m_Name: NorthKingRain
   m_TagString: Untagged
@@ -86,6 +87,19 @@ MonoBehaviour:
     - {fileID: 171127957132705848, guid: 835676be59ef42b39f3003cce1bc29af, type: 3}
     loop: 0
     fps: 20
+--- !u!114 &1214172470204049231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302365959064376521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 61129a44d1ed4c4449f573d853074458, type: 2}
 --- !u!1 &3465242702878767247
 GameObject:
   m_ObjectHideFlags: 0

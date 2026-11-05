@@ -14,10 +14,10 @@ public sealed class ClampGuardBurn : MonoBehaviour
         if (victim == null || source == null || victim.Dead || !victim.isActiveAndEnabled || victim.IsInvincible) return;
         var effect = victim.GetComponent<ClampGuardBurn>() ?? victim.gameObject.AddComponent<ClampGuardBurn>();
         effect.epoch++;
-        interval = Mathf.Max(.01f, interval);//保留原定时结算流程，只替换本次灼烧参数。
+        interval = Mathf.Max(BalanceRuntime.Number(typeof(ClampGuardBurn), "ClampGuardBurn.Apply.1", 0.01f), interval);//保留原定时结算流程，只替换本次灼烧参数。
         var entry = new Burn { Source = source, SourceLife = source.LifeVersion, VictimLife = victim.LifeVersion,
             Began = Time.time, Damage = tickDamage * multiplier, Tick = 0, Interval = interval,
-            Limit = Mathf.Max(0, Mathf.FloorToInt(duration / interval + .0001f)) };
+            Limit = Mathf.Max(0, Mathf.FloorToInt(duration / interval + BalanceRuntime.Number(typeof(ClampGuardBurn), "ClampGuardBurn.Apply.2", 0.0001f))) };
         for (int i = 0; i < effect.burns.Count; i++)
             if (effect.burns[i].Source == source) { effect.burns[i] = entry; return; }
         effect.burns.Add(entry);
@@ -32,7 +32,7 @@ public sealed class ClampGuardBurn : MonoBehaviour
             var b = burns[i];
             if (b.Source == null || b.Source.LifeVersion != b.SourceLife || health.LifeVersion != b.VictimLife)
             { burns.RemoveAt(i); continue; }
-            while (b.Tick < b.Limit && Time.time + .0001f >= b.Began + (b.Tick + 1) * b.Interval)
+            while (b.Tick < b.Limit && Time.time + BalanceRuntime.Number(this, "ClampGuardBurn.Update.1", 0.0001f) >= b.Began + (b.Tick + 1) * b.Interval)
             {
                 b.Tick++;
                 // Publish before callbacks; a damage callback can dispel or refresh this source.

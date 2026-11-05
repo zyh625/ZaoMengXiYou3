@@ -52,9 +52,65 @@ public sealed class TrainingRuntimeValidation : MonoBehaviour
         float mana=resource.CurrentMana,vigor=resource.CurrentVigor;Check(resource.TrySpendMana(100000f) && resource.TrySpendVigor(100000f) && resource.DrainVigor(100000f) && resource.CurrentMana==mana && resource.CurrentVigor==vigor,"infinite mana and vigor accept all three spending paths without subtracting resources");
         training.SetInfiniteResources(false);Check(resource.TrySpendMana(10f) && Near(resource.CurrentMana,mana-10f) && resource.TrySpendVigor(10f) && Near(resource.CurrentVigor,vigor-10f),"turning infinite resources off restores ordinary spending");Check(!resource.TrySpendMana(100000f) && !resource.TrySpendVigor(100000f),"finite mode refuses unaffordable mana and one-shot vigor costs");training.SetInfiniteResources(true);
         training.SetNoCooldown(false);combat.Skilled=-1;combat.OnSkill(1);Check(combat.TryBeginSkill() && combat.GetSkillCooldownRemaining(1)>0f,"normal skill use starts its configured cooldown");training.SetNoCooldown(true);Check(combat.GetSkillCooldownRemaining(1)==0f,"no-cooldown switch immediately clears an existing cooldown");combat.Skilled=-1;combat.OnSkill(1);Check(combat.TryBeginSkill() && combat.GetSkillCooldownRemaining(1)==0f,"no-cooldown mode accepts another skill immediately");training.SetNoCooldown(false);combat.Skilled=-1;combat.OnSkill(1);Check(combat.TryBeginSkill() && combat.GetSkillCooldownRemaining(1)>0f,"disabling no-cooldown restores the next skill's ordinary cooldown");training.SetNoCooldown(true);training.ResetPlayer();yield return new WaitForSeconds(0.1f);
-        hero=training.Players.CurrentPlayer;health=hero.GetComponent<Health>();float hp=health.CurBlood;training.SetInvulnerable(true);health.TakeDamage(new DamageInfo(training.Target.transform,17f,true));Check(health.CurBlood==hp && health.Attacked,"training invulnerability prevents HP loss while preserving the hurt/knockback request");yield return new WaitForSeconds(0.08f);Check(hero.State()==PlayerState.Attacked,"invulnerable player still enters the actual hurt animation");training.ResetPlayer();training.SetInvulnerable(false);health.TakeDamage(new DamageInfo(training.Target.transform,7f,false));Check(Near(health.CurBlood,hp-7f),"turning invulnerability off restores ordinary incoming damage");training.SetInvulnerable(true);training.ResetPlayer();yield return new WaitForSeconds(0.08f);
-        var ids=new System.Collections.Generic.HashSet<PlayerId>();for(int i=0;i<4;i++){training.Players.SwitchNext();yield return new WaitForSeconds(0.06f);PlayerController current=training.Players.CurrentPlayer;ids.Add(current.GetComponent<PlayerResources>().Id);Check(current.GetComponent<PlayerResources>().TrainingInfiniteResources && current.GetComponent<PlayerCombat>().TrainingNoCooldown && current.GetComponent<Health>().TrainingPreventHealthLoss,"resource/cooldown/invulnerability options remain active after character switch "+i);}
-        Check(ids.Count==4,"all four characters cycle through the existing Q/E switching logic");hero=training.Players.CurrentPlayer;combat=hero.GetComponent<PlayerCombat>();
+        hero=training.Players.CurrentPlayer;health=hero.GetComponent<Health>();float hp=health.CurBlood;training.SetInvulnerable(true);health.TakeDamage(new DamageInfo(training.Target.transform,17f,true));Check(health.CurBlood==hp && health.Attacked,"training invulnerability prevents HP loss while preserving the hurt/knockback request");yield return new WaitForSeconds(0.08f);Check(hero.State()==PlayerState.Attacked,"invulnerable player still enters the actual hurt animation");training.ResetPlayer();training.SetInvulnerable(false);health.TakeDamage(new DamageInfo(training.Target.transform,7f,false));Check(Near(health.CurBlood,hp-7f),"turning invulnerability off restores ordinary incoming damage");training.SetInvulnerable(true);training.ResetPlayer();yield return new WaitForSeconds(0.08f);training.SetNoCooldown(false);
+        PlayerManager party=training.Players;
+        var order=party.SwitchOrder.ToArray();
+        PlayerId startingId=party.CurrentPlayer.GetComponent<PlayerResources>().Id;
+        for(int i=0;i<order.Length;i++)
+        {
+            if(order[i]==startingId)continue;
+            PlayerId outgoing=party.CurrentPlayer.GetComponent<PlayerResources>().Id;
+            party.SwitchSlot(i);
+            PlayerController current=party.CurrentPlayer;
+            Check(current.GetComponent<PlayerResources>().Id==order[i],"a ready character can enter while others cool down");
+            float expected=BalanceRuntime.Load("Common/PartyAndGold").Get($"PlayerManager.SwitchCooldown.{outgoing}",20f);
+            expected=float.IsFinite(expected)?Mathf.Max(0f,expected):20f;
+            Check(Near(party.GetSwitchCooldownRemaining(outgoing,out float ratio),expected)
+                && Near(ratio,expected>0f?1f:0f),"the outgoing character starts their configured switch cooldown");
+            Check(party.GetSwitchCooldownRemaining(order[i],out _)==0f,"the incoming character stays ready");
+            Check(current.GetComponent<PlayerResources>().TrainingInfiniteResources && current.GetComponent<PlayerCombat>().TrainingNoCooldown && current.GetComponent<Health>().TrainingPreventHealthLoss,"training options follow the active character");
+            yield return new WaitForSeconds(0.06f);
+            if(party.GetSwitchCooldownRemaining(outgoing,out _)>0f)
+            {
+                party.SwitchSlot(System.Array.IndexOf(order,outgoing));
+                Check(party.CurrentPlayer==current,"a cooling character cannot be switched back in");
+            }
+        }
+        training.SetNoCooldown(true);
+        PlayerId lastCurrent = party.CurrentPlayer.GetComponent<PlayerResources>().Id;
+        PlayerId targetOther = order.First(id => id != lastCurrent);
+        Check(party.GetSwitchCooldownRemaining(targetOther, out _) == 0f, "enabling no cooldown immediately clears switch cooldowns");
+        party.SwitchSlot(Array.IndexOf(order, targetOther));
+        Check(party.CurrentPlayer.GetComponent<PlayerResources>().Id == targetOther, "no cooldown allows switching immediately without switch cooldown");
+
+        training.SetInfiniteBoost(true);
+        for (int i = 0; i < order.Length; i++)
+        {
+            party.SwitchSlot(i);
+            PlayerController cur = party.CurrentPlayer;
+            PlayerId pid = cur.GetComponent<PlayerResources>().Id;
+            PlayerBoost pb = cur.GetComponent<PlayerBoost>();
+            Check(pb != null && pb.Active && pb.Energy == pb.MaxEnergy, "active character has infinite boost enabled");
+            switch (pid)
+            {
+                case PlayerId.WuKong:
+                    Check(cur.GetComponent<PlayerCombat>().CriticalChance >= 0.3f, "WuKong boost provides extra critical chance");
+                    break;
+                case PlayerId.BaJie:
+                    Check(Near(BalanceRuntime.Number(pb, "PlayerBoost.bajieDamageMultiplier", 0.5f), 0.5f), "BaJie boost provides damage reduction");
+                    break;
+                case PlayerId.Sha:
+                    Check(cur.GetComponent<Health>().Boost, "Sha boost provides super armor");
+                    break;
+                case PlayerId.Tang:
+                    Check(cur.GetComponent<PlayerCombat>().AttackMultiplier >= 1.2f, "Tang boost provides attack multiplier");
+                    break;
+            }
+        }
+        training.SetInfiniteBoost(false);
+        Check(!party.CurrentPlayer.GetComponent<PlayerBoost>().Active, "disabling infinite boost ends boost state");
+
+        hero = party.CurrentPlayer; combat = hero.GetComponent<PlayerCombat>();
         training.SetMode(TrainingManager.EnemyMode.Dummy);yield return new WaitForSeconds(0.1f);Health target=training.TargetHealth;Check(training.Target.TrainingPassive && !training.Target.GetComponent<EnemyCombat>().enabled,"dummy mode pauses AI while keeping the controller enabled for hurt and death animation");
         training.Statistics.Reset();combat.SetCriticalChanceBonus(this,1f);DamageInfo critical=combat.CreateAttackDamage(10f,false);target.TakeDamage(critical);combat.RemoveCriticalChanceBonus(this);target.TakeDamage(new DamageInfo(hero.transform,15f,false));
         Check(critical.IsCritical && training.Statistics.Hits==2 && training.Statistics.CriticalHits==1 && Near(training.Statistics.TotalDamage,35f) && Near(training.Statistics.MaximumHit,20f),"damage panel counts actual critical metadata, hits, total damage and maximum hit");

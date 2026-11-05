@@ -20,7 +20,7 @@ public class BlueWheelController : EnemyController
         int first = Mathf.Clamp(combat != null ? combat.HideStartFrame : 12, 0, Hide.sprites.Length - 1);
         int count = Hide.sprites.Length - first;
         hiddenLoop = new SpriteData { sprites = new Sprite[count], loop = true,
-            fps = count / (combat != null ? combat.ShadowInterval : 1.5f) };
+            fps = count / (combat != null ? combat.ShadowInterval : BalanceRuntime.Number(this, "BlueWheelController.BuildHiddenLoop.1", 1.5f)) };
         System.Array.Copy(Hide.sprites, first, hiddenLoop.sprites, 0, count);
     }
     protected override bool SkillReady => combat != null && movement != null && state != EnemyState.Skill
@@ -79,7 +79,7 @@ public class BlueWheelController : EnemyController
         if (combat.Action == BlueWheelCombat.WheelAction.Throw)
         {
             SpriteData returning = combat.DoubleThrow && HasFrames(DoubleBack) ? DoubleBack : SingleBack;
-            combat.BeginReturn(returning != null ? returning.fps : 16f);
+            combat.BeginReturn(returning != null ? returning.fps : BalanceRuntime.Number(this, "BlueWheelController.SkillOver.1", 16f));
             SM.ChangeState(returning);//基类保留新启动的收回动作，不在同帧覆盖为行走。
         }
         else

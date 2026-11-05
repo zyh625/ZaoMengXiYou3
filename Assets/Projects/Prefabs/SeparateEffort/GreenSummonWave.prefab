@@ -115,6 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5974020659107614175}
   - component: {fileID: 4694811544458318325}
+  - component: {fileID: 6081629275615697176}
   m_Layer: 0
   m_Name: GreenSummonWave
   m_TagString: Untagged
@@ -174,3 +175,16 @@ MonoBehaviour:
     fps: 16
   speed: 10
   maxDistance: 12
+--- !u!114 &6081629275615697176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6497356704673186024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 06d021b023c7f824b81b6a91e9544762, type: 2}

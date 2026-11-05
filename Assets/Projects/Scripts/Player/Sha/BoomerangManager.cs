@@ -55,12 +55,12 @@ public class BoomerangManager : MonoBehaviour
         Vector2 position = transform.position;
         Vector2 destination = returning ? origin : origin + Vector2.right * (faceRight ? travelDistance : -travelDistance);
         float speed = returning ? returnSpeed : flySpeed;
-        Vector2 next = Vector2.MoveTowards(position, destination, Mathf.Max(0.01f, speed) * Time.fixedDeltaTime);
+        Vector2 next = Vector2.MoveTowards(position, destination, Mathf.Max(BalanceRuntime.Number(this, "BoomerangManager.FixedUpdate.1", 0.01f), speed) * Time.fixedDeltaTime);
         transform.position = new Vector3(next.x, origin.y, transform.position.z);
         HitPath(position, next);
         if (!BattleRun.IsRunning) { StopEffect(); return; }//反伤等同步事件可能在本次命中时结束战斗
         if (returning) MoveEnemies();
-        if ((next - destination).sqrMagnitude > 0.000001f) return;
+        if ((next - destination).sqrMagnitude > BalanceRuntime.Number(this, "BoomerangManager.FixedUpdate.2", 1E-06f)) return;
         if (!returning) BeginReturn();
         else
         {
@@ -151,7 +151,7 @@ public class BoomerangManager : MonoBehaviour
                 removed.Add(enemy);
                 continue;
             }
-            Vector2 next = Vector2.MoveTowards(item.Value, origin, Mathf.Max(0.01f, returnSpeed) * Time.fixedDeltaTime);
+            Vector2 next = Vector2.MoveTowards(item.Value, origin, Mathf.Max(BalanceRuntime.Number(this, "BoomerangManager.MoveEnemies.1", 0.01f), returnSpeed) * Time.fixedDeltaTime);
             enemy.UpdateCarryTarget(this, next);
         }
         foreach (EnemyMovement enemy in removed)

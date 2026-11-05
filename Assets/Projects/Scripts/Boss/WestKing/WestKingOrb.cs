@@ -28,10 +28,10 @@ public sealed class WestKingOrb : EnemyController
     {
         PlayerController player=owner.Target;if(!Alive || player==null)return;
         start=muzzle.position;Vector2 target=player.GetComponent<Collider2D>().bounds.center;
-        Vector2 direction=(target-start).normalized;end=start+direction*20f;
-        RaycastHit2D wall=Physics2D.Raycast(start,direction,20f,1<<6);if(wall.collider!=null)end=wall.point-direction*0.02f;
-        remaining=0.8f;warningFrame=Time.frameCount;IsWarning=true;flash=0f;
-        ray.startWidth=ray.endWidth=0.035f;ray.startColor=ray.endColor=new Color(1f,0.1f,0.02f,0.95f);
+        Vector2 direction=(target-start).normalized;end=start+direction*BalanceRuntime.Number(this, "WestKingOrb.Warn.1", 20f);
+        RaycastHit2D wall=Physics2D.Raycast(start,direction,BalanceRuntime.Number(this, "WestKingOrb.Warn.2", 20f),1<<6);if(wall.collider!=null)end=wall.point-direction*BalanceRuntime.Number(this, "WestKingOrb.Warn.3", 0.02f);
+        remaining=BalanceRuntime.Number(this, "WestKingOrb.Warn.4", 0.8f);warningFrame=Time.frameCount;IsWarning=true;flash=0f;
+        ray.startWidth=ray.endWidth=BalanceRuntime.Number(this, "WestKingOrb.Warn.5", 0.035f);ray.startColor=ray.endColor=new Color(1f,BalanceRuntime.Number(this, "WestKingOrb.Warn.6", 0.1f),BalanceRuntime.Number(this, "WestKingOrb.Warn.7", 0.02f),BalanceRuntime.Number(this, "WestKingOrb.Warn.8", 0.95f));
         ray.SetPosition(0,start);ray.SetPosition(1,end);ray.enabled=true;
     }
     private void Update()
@@ -43,14 +43,14 @@ public sealed class WestKingOrb : EnemyController
         {
             if(Time.frameCount==warningFrame)return; //不能把起手前本帧已经流逝的时间计入0.8秒预警。
             remaining-=Time.deltaTime;if(remaining>0f)return;
-            IsWarning=false;Shots++;flash=0.15f;ray.startWidth=ray.endWidth=0.18f;
+            IsWarning=false;Shots++;flash=BalanceRuntime.Number(this, "WestKingOrb.Update.1", 0.15f);ray.startWidth=ray.endWidth=BalanceRuntime.Number(this, "WestKingOrb.Update.2", 0.18f);
             Vector2 direction=end-start;float angle=Mathf.Atan2(direction.y,direction.x)*Mathf.Rad2Deg;
-            int count=Physics2D.OverlapBox((start+end)/2f,new Vector2(direction.magnitude,0.4f),angle,WestHitUtility.Players,hits);unique.Clear();
+            int count=Physics2D.OverlapBox((start+end)/BalanceRuntime.Number(this, "WestKingOrb.Update.3", 2f),new Vector2(direction.magnitude,BalanceRuntime.Number(this, "WestKingOrb.Update.4", 0.4f)),angle,WestHitUtility.Players,hits);unique.Clear();
             float scale=owner.DamageMultiplier;
             for(int i=0;i<count;i++)
             {
                 Health victim=WestHitUtility.Player(hits[i]);if(victim==null || !unique.Add(victim))continue;
-                float before=victim.CurBlood;victim.TakeDamage(new DamageInfo(owner.transform,12f*scale,false,false,null,false,false,DamageKind.Skill));
+                float before=victim.CurBlood;victim.TakeDamage(new DamageInfo(owner.transform,BalanceRuntime.Number(this, "WestKingOrb.Update.5", 12f)*scale,false,false,null,false,false,DamageKind.Skill));
                 if(victim.CurBlood<before && !victim.Dead)WestKingBurn.Apply(victim,owner,scale);
             }
         }

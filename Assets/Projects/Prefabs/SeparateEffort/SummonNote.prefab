@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5533342578262911351}
   - component: {fileID: 3860262240068372809}
   - component: {fileID: 8910001003}
+  - component: {fileID: 2448212743576235228}
   m_Layer: 0
   m_Name: SummonNote
   m_TagString: Untagged
@@ -141,3 +142,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   groundSearchDepth: 100
+--- !u!114 &2448212743576235228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295599345565480209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 70e6ee1328c66e64793675597817a9cc, type: 2}

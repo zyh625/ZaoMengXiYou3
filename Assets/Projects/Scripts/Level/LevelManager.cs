@@ -127,6 +127,7 @@ public abstract class LevelManager : MonoBehaviour
 
     protected virtual void Awake()
     {
+        BalanceRuntime.ApplyLevel(this);
         ResolveSceneReferences();
         PrepareRebirthWaves();
     }
@@ -329,12 +330,17 @@ public abstract class LevelManager : MonoBehaviour
         enemyManager.SetTarget(player.transform);
         if (ui != null)
         {
-            ui.BindPlayer(player);
+            ui.BindPlayer(player, playerManager);
         }
     }
 
     public void ResolveSceneReferences()//共享预制体只保存内部引用，场景之间的管理器在启动时连接；已填写的引用保持原样
     {
+        // Scene cleanup can remove legacy marker duplicates. Reuse the authored markers, never recreate or move them.
+        if (tran == null)
+            foreach (GameObject root in gameObject.scene.GetRootGameObjects())
+                if (root.name == "PlayerSpawn") { tran = root.transform; break; }
+        if (exitLocation == null) exitLocation = transform.root.Find("transforms/exit");
         if (ui == null) ui = FindAnyObjectByType<UIManager>();
         if (bossUI == null && ui != null) bossUI = ui.GetComponentInChildren<BossUI>(true);
         if (bossUI == null) bossUI = FindAnyObjectByType<BossUI>(FindObjectsInactive.Include);//面板默认关闭，普通查找会漏掉

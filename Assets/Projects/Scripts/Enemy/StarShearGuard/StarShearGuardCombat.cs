@@ -66,7 +66,7 @@ public sealed class StarShearGuardCombat : EnemyCombat
     private void SampleWindow(int index, int frame)
     {
         if (closed[index] || frame < windowOpen[index]) return;
-        if (index == 1 && (!closed[0] || Time.time + .0001f < GapUntil)) return;
+        if (index == 1 && (!closed[0] || Time.time + BalanceRuntime.Number(this, "StarShearGuardCombat.SampleWindow.1", 0.0001f) < GapUntil)) return;
         if (!opened[index])
         {
             opened[index] = true;

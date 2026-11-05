@@ -18,7 +18,7 @@ public sealed class RedFurnaceLordUI : BossUI
     {
         if (specialState == null) return;
         specialState.fillAmount = combat != null && combat.IsCoreOpen
-            ? Mathf.Clamp01(combat.CoreRemaining / Mathf.Max(.01f, combat.CoreDuration)) : 0f;
+            ? Mathf.Clamp01(combat.CoreRemaining / Mathf.Max(BalanceRuntime.Number(this, "RedFurnaceLordUI.Refresh.1", 0.01f), combat.CoreDuration)) : 0f;
         specialState.color = exposedColor;
     }
     protected override void UnbindBoss()

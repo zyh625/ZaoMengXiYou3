@@ -49,13 +49,13 @@ public class EastNoteManager : MonoBehaviour
         players = playerManager;
         enemyManager = enemies;
         arenaBounds = new Vector2(Mathf.Min(bounds.x, bounds.y), Mathf.Max(bounds.x, bounds.y));
-        expiresAt = Time.time + Mathf.Max(0.01f, lifetime);
+        expiresAt = Time.time + Mathf.Max(BalanceRuntime.Number(this, "EastNoteManager.Launch.1", 0.01f), lifetime);
         flightDamage = Mathf.Max(0f, damage) * (source != null ? source.DamageMultiplier : 1f);
         direction = right ? Vector2.right : Vector2.left;
         if (TryGetPlayer(out _, out Collider2D body))
         {
             Vector2 aim = (Vector2)body.bounds.center - position;
-            if (aim.sqrMagnitude > 0.000001f) direction = aim.normalized;
+            if (aim.sqrMagnitude > BalanceRuntime.Number(this, "EastNoteManager.Launch.2", 1E-06f)) direction = aim.normalized;
         }
         if (sr != null)
         {
@@ -84,14 +84,14 @@ public class EastNoteManager : MonoBehaviour
     {
         if (!CanTick()) return;
         Vector2 from = transform.position;
-        Vector2 to = from + direction * (Mathf.Max(0.01f, flySpeed) * Time.fixedDeltaTime);
+        Vector2 to = from + direction * (Mathf.Max(BalanceRuntime.Number(this, "EastNoteManager.FixedUpdate.1", 0.01f), flySpeed) * Time.fixedDeltaTime);
         if (SweepPlayer(from, to, out Health player, out _))
         {
             OnPlayerContact(player);
             return;
         }
         SetPosition(to);
-        if (to.x < arenaBounds.x - 3f || to.x > arenaBounds.y + 3f) EndFlight(false);
+        if (to.x < arenaBounds.x - BalanceRuntime.Number(this, "EastNoteManager.FixedUpdate.2", 3f) || to.x > arenaBounds.y + BalanceRuntime.Number(this, "EastNoteManager.FixedUpdate.3", 3f)) EndFlight(false);
     }
 
     protected bool CanTick()//所有派生音符共同遵守终局、寿命及施法者生命边界
@@ -133,13 +133,13 @@ public class EastNoteManager : MonoBehaviour
     protected bool SweepBounds(Vector2 from, Vector2 to, Bounds target, out float fraction)//同一段轨迹比较玩家与治疗目标谁先接触
     {
         fraction = 0f;
-        Vector2 size = HitHalfExtents * 2f;
+        Vector2 size = HitHalfExtents * BalanceRuntime.Number(this, "EastNoteManager.SweepBounds.1", 2f);
         target.Expand(new Vector3(size.x, size.y, 1f));
         Vector2 offset = sr != null ? (Vector2)sr.bounds.center - (Vector2)transform.position : Vector2.zero;
         Vector3 start = new(from.x + offset.x, from.y + offset.y, target.center.z);
         if (target.Contains(start)) return true;
         Vector2 delta = to - from;
-        if (delta.sqrMagnitude <= 0.000001f) return false;
+        if (delta.sqrMagnitude <= BalanceRuntime.Number(this, "EastNoteManager.SweepBounds.2", 1E-06f)) return false;
         if (!target.IntersectRay(new Ray(start, delta.normalized), out float distance) || distance > delta.magnitude) return false;
         fraction = Mathf.Clamp01(distance / delta.magnitude);
         return true;
@@ -150,8 +150,8 @@ public class EastNoteManager : MonoBehaviour
         get
         {
             Vector2 visual = sr != null ? (Vector2)sr.bounds.size : Vector2.zero;
-            return new Vector2(Mathf.Max(minimumHitSize, visual.x * hitWidthRatio) * 0.5f,
-                Mathf.Max(minimumHitSize, visual.y * hitHeightRatio) * 0.5f);
+            return new Vector2(Mathf.Max(minimumHitSize, visual.x * hitWidthRatio) * BalanceRuntime.Number(this, "EastNoteManager.HitHalfExtents.1", 0.5f),
+                Mathf.Max(minimumHitSize, visual.y * hitHeightRatio) * BalanceRuntime.Number(this, "EastNoteManager.HitHalfExtents.2", 0.5f));
         }
     }
 
@@ -175,7 +175,7 @@ public class EastNoteManager : MonoBehaviour
 
     protected void FaceDirection(Vector2 value)//追踪只更新水平翻转，音符本身不因俯冲倒着显示
     {
-        if (sr != null && Mathf.Abs(value.x) > 0.0001f) sr.flipX = (value.x > 0f) != sourceFacesRight;
+        if (sr != null && Mathf.Abs(value.x) > BalanceRuntime.Number(this, "EastNoteManager.FaceDirection.1", 0.0001f)) sr.flipX = (value.x > 0f) != sourceFacesRight;
     }
 
     protected void SetPosition(Vector2 position)//统一保留预制体原本Z轴深度

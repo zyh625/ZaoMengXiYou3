@@ -16,8 +16,8 @@ public sealed class WestKingBurn : MonoBehaviour
         if(effect==null)effect=victim.gameObject.AddComponent<WestKingBurn>();
         Health owner=source.GetComponent<Health>();
         for(int i=0;i<effect.entries.Count;i++)if(effect.entries[i].Owner==owner)
-        {Burn b=effect.entries[i];b.Until=Time.time+2f;b.Damage=1.5f*scale;effect.entries[i]=b;return;}
-        effect.entries.Add(new Burn{Owner=owner,Until=Time.time+2f,Next=Time.time+0.5f,Damage=1.5f*scale});
+        {Burn b=effect.entries[i];b.Until=Time.time+BalanceRuntime.Number(typeof(WestKingBurn), "WestKingBurn.Apply.1", 2f);b.Damage=BalanceRuntime.Number(typeof(WestKingBurn), "WestKingBurn.Apply.2", 1.5f)*scale;effect.entries[i]=b;return;}
+        effect.entries.Add(new Burn{Owner=owner,Until=Time.time+BalanceRuntime.Number(typeof(WestKingBurn), "WestKingBurn.Apply.3", 2f),Next=Time.time+BalanceRuntime.Number(typeof(WestKingBurn), "WestKingBurn.Apply.4", 0.5f),Damage=BalanceRuntime.Number(typeof(WestKingBurn), "WestKingBurn.Apply.5", 1.5f)*scale});
     }
     private void Awake()=>health=GetComponent<Health>();
     private void OnEnable(){health.DebuffsCleared+=Clear;health.Died+=Died;}
@@ -28,9 +28,9 @@ public sealed class WestKingBurn : MonoBehaviour
         {
             Burn b=entries[i];
             if(b.Owner==null || b.Owner.Dead || !b.Owner.isActiveAndEnabled){entries.RemoveAt(i);continue;}
-            while(b.Next<=b.Until+0.0001f && Time.time>=b.Next)
+            while(b.Next<=b.Until+BalanceRuntime.Number(this, "WestKingBurn.Update.1", 0.0001f) && Time.time>=b.Next)
             {
-                b.Next+=0.5f;health.TakeDamage(new DamageInfo(b.Owner.transform,b.Damage,false,false,null,false,true,DamageKind.Skill));
+                b.Next+=BalanceRuntime.Number(this, "WestKingBurn.Update.2", 0.5f);health.TakeDamage(new DamageInfo(b.Owner.transform,b.Damage,false,false,null,false,true,DamageKind.Skill));
                 if(version!=epoch || health.Dead || !isActiveAndEnabled)return;
             }
             if(Time.time>=b.Until)entries.RemoveAt(i);else entries[i]=b;

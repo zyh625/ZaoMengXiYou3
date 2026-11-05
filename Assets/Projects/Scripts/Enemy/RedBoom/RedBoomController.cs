@@ -26,7 +26,7 @@ public sealed class RedBoomController : EnemyController
         movement.CheckIsGround();
         if (!movement.IsGround) return false;
         float delta = target.transform.position.x - transform.position.x;
-        if (Mathf.Abs(delta) < 3f && movement.TryBlink(delta))
+        if (Mathf.Abs(delta) < BalanceRuntime.Number(this, "RedBoomController.ProcessSpecialState.1", 3f) && movement.TryBlink(delta))
         {
             combat.CancelCast();
             SetState(EnemyState.Idle);
@@ -37,16 +37,16 @@ public sealed class RedBoomController : EnemyController
         SM.ChangeSpriteFace(delta > 0f);
         if (EH.Status != null && EH.Status.BlocksMovement)
         {
-            if (Mathf.Abs(delta) >= 4f && Mathf.Abs(delta) <= 7f && combat.ReadySkill >= 0) return false;
+            if (Mathf.Abs(delta) >= BalanceRuntime.Number(this, "RedBoomController.ProcessSpecialState.2", 4f) && Mathf.Abs(delta) <= BalanceRuntime.Number(this, "RedBoomController.ProcessSpecialState.3", 7f) && combat.ReadySkill >= 0) return false;
             movement.Stop(); SetState(EnemyState.Idle); return true;
         }
-        if (Mathf.Abs(delta) >= 4f && Mathf.Abs(delta) <= 7f)
+        if (Mathf.Abs(delta) >= BalanceRuntime.Number(this, "RedBoomController.ProcessSpecialState.4", 4f) && Mathf.Abs(delta) <= BalanceRuntime.Number(this, "RedBoomController.ProcessSpecialState.5", 7f))
         {
             if (combat.ReadySkill >= 0) return false;
             movement.Stop(); SetState(EnemyState.Idle); return true;
         }
         SetState(EnemyState.Walk);
-        movement.MoveInRange(delta, Mathf.Abs(delta) < 4f, EH.Slow);
+        movement.MoveInRange(delta, Mathf.Abs(delta) < BalanceRuntime.Number(this, "RedBoomController.ProcessSpecialState.6", 4f), EH.Slow);
         return true;
     }
 

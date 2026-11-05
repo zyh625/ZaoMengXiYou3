@@ -22,7 +22,7 @@ public class GameSession : MonoBehaviour
     public event Action DataChanged;//金币或技能购买真正发生变化后，当前打开的技能界面统一刷新
     private bool fileSelected;//必须真实调用SelectFile才允许写盘，序列化的curFile值不能当成选档授权
     public bool HasSelectedFile => fileSelected && curFile >= 0;
-    public int Rebirth => HasSelectedFile && data != null ? Math.Max(0, data.rebirth) : 0;
+    public int Rebirth => HasSelectedFile && data != null ? Math.Clamp(data.rebirth, 0, SaveData.MaxRebirth) : 0;
     public bool CanRebirth => !TrainingSession.Active && HasSelectedFile && data != null && data.rebirthAvailable;
 
     public void RegisterVictory(BattleData result)
@@ -48,13 +48,18 @@ public class GameSession : MonoBehaviour
     private bool CommitRebirth(string origin)
     {
         int previous = data.rebirth;
+        int previousLevel = data.gameLevel;
+        int previousMaxLevel = maxLevel;
         string previousDate = data.date;
         bool previousQualification=data.rebirthAvailable;
-        data.rebirth = previous < int.MaxValue ? previous + 1 : int.MaxValue;
+        data.rebirth = Math.Min(Rebirth + 1, SaveData.MaxRebirth);
+        data.gameLevel = 1;
         data.rebirthAvailable=false;
         if (!SaveSystem.TrySave())
         {
             data.rebirth = previous;
+            data.gameLevel = previousLevel;
+            maxLevel = previousMaxLevel;
             data.date = previousDate;
             data.rebirthAvailable=previousQualification;
             return false;

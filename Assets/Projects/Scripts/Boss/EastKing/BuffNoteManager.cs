@@ -20,8 +20,8 @@ public class BuffNoteManager : EastNoteManager
     {
         ChooseRecipient();
         float targetX = recipient != null ? RecipientCenter().x : position.x;
-        apex = new Vector2(Mathf.Clamp(Mathf.Lerp(position.x, targetX, 0.5f), arenaBounds.x, arenaBounds.y),
-            position.y + Mathf.Max(0.1f, riseHeight));
+        apex = new Vector2(Mathf.Clamp(Mathf.Lerp(position.x, targetX, BalanceRuntime.Number(this, "BuffNoteManager.OnLaunched.1", 0.5f)), arenaBounds.x, arenaBounds.y),
+            position.y + Mathf.Max(BalanceRuntime.Number(this, "BuffNoteManager.OnLaunched.2", 0.1f), riseHeight));
         descending = false;
     }
 
@@ -70,7 +70,7 @@ public class BuffNoteManager : EastNoteManager
         Vector2 from = transform.position;
         Vector2 destination = descending ? RecipientCenter() : apex;
         float speed = descending ? deliverySpeed : ascendSpeed;
-        Vector2 to = Vector2.MoveTowards(from, destination, Mathf.Max(0.01f, speed) * Time.fixedDeltaTime);
+        Vector2 to = Vector2.MoveTowards(from, destination, Mathf.Max(BalanceRuntime.Number(this, "BuffNoteManager.FixedUpdate.1", 0.01f), speed) * Time.fixedDeltaTime);
         FaceDirection(to - from);
         bool hitPlayer = SweepPlayer(from, to, out Health player, out float playerFraction);
         Collider2D recipientBody = recipient.GetComponent<Collider2D>();
@@ -88,7 +88,7 @@ public class BuffNoteManager : EastNoteManager
             return;
         }
         SetPosition(to);
-        if ((to - destination).sqrMagnitude > 0.000001f) return;
+        if ((to - destination).sqrMagnitude > BalanceRuntime.Number(this, "BuffNoteManager.FixedUpdate.2", 1E-06f)) return;
         if (!descending)
         {
             descending = true;

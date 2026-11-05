@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 898162233273969625}
   - component: {fileID: 124826457059038671}
   - component: {fileID: 7822926611516397990}
+  - component: {fileID: 5230744561948236561}
   m_Layer: 11
   m_Name: NormalArrow
   m_TagString: Untagged
@@ -119,9 +120,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NormalArrowManager
   SM: {fileID: 124826457059038671}
+  flight:
+    sprites: []
+    loop: 0
+    fps: 0
   damage: 10
   flySpeed: 10
   sourceFacesRight: 0
   knockback: 1
   hitWidthRatio: 0.25
   hitHeightRatio: 0.3
+--- !u!114 &5230744561948236561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186432894176749283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: c294663a1725931458c3f62ebf52270f, type: 2}

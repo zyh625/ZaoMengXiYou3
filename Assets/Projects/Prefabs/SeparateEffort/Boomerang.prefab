@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1158145672}
   - component: {fileID: 1158145671}
   - component: {fileID: 1158145674}
+  - component: {fileID: 4300493907431973953}
   m_Layer: 11
   m_Name: Boomerang
   m_TagString: Untagged
@@ -118,6 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 370b954cb58c4da39624f9cfe21d2df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoomerangManager
+  SM: {fileID: 1158145671}
   animation:
     sprites:
     - {fileID: 21300000, guid: d64bc310b0845f6b872c9837feb72d6a, type: 3}
@@ -138,9 +140,21 @@ MonoBehaviour:
     - {fileID: 21300030, guid: d64bc310b0845f6b872c9837feb72d6a, type: 3}
     loop: 1
     fps: 16
-  SM: {fileID: 1158145671}
   travelDistance: 6
   flySpeed: 8
   returnSpeed: 8
   hitRadius: 0.25
   damage: 10
+--- !u!114 &4300493907431973953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158145670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 303a8735865c2c04c925887ee8db62d0, type: 2}

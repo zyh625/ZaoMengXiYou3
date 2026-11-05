@@ -1,0 +1,654 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ea7302a88f56248a1b33284c7df3cd, type: 3}
+  m_Name: TitanSpirit
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceProfile
+  displayName: TitanSpirit
+  description: "\u4FEE\u6539\u540E\u91CD\u65B0\u8FDB\u5165\u573A\u666F/\u8BAD\u7EC3\u76EE\u6807\u751F\u6548\uFF1B\u4E0D\u5199\u5165\u5B58\u6863\uFF0C\u4E0D\u4FEE\u6539\u4E34\u65F6\u72B6\u6001\u3002"
+  components:
+  - objectPath: 
+    componentType: TitanController
+    componentIndex: 0
+    parameters:
+    - path: Idle.loop
+      label: "Idle \xB7 Idle.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Idle.fps
+      label: "Idle \xB7 Idle.fps"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: Walk.loop
+      label: "Walk \xB7 Walk.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Walk.fps
+      label: "Walk \xB7 Walk.fps"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: Die.loop
+      label: "Die \xB7 Die.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: Die.fps
+      label: "Die \xB7 Die.fps"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: stopDistance
+      label: "\u505C\u6B62\u9760\u8FD1\u8DDD\u79BB \xB7 stopDistance"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: specialAttack
+      label: "specialAttack \xB7 specialAttack"
+      value: 1
+      integer: 1
+      boolean: 0
+    - path: stunnedFrame
+      label: "stunnedFrame \xB7 stunnedFrame"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: Boost.loop
+      label: "Boost \xB7 Boost.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: Boost.fps
+      label: "Boost \xB7 Boost.fps"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: Lunge.loop
+      label: "Lunge \xB7 Lunge.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Lunge.fps
+      label: "Lunge \xB7 Lunge.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: Attack.loop
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: Attack.fps
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: Tremor.loop
+      label: "Tremor \xB7 Tremor.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: Tremor.fps
+      label: "Tremor \xB7 Tremor.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: skillCooldown
+      label: "skillCooldown \xB7 skillCooldown"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: boostRatio
+      label: "boostRatio \xB7 boostRatio"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: boostDuration
+      label: "boostDuration \xB7 boostDuration"
+      value: 8
+      integer: 0
+      boolean: 0
+    - path: 'bloodRatio.Array.data[0]'
+      label: "bloodRatio \xB7 bloodRatio.Array.data[0]"
+      value: 0.75
+      integer: 0
+      boolean: 0
+    - path: 'bloodRatio.Array.data[1]'
+      label: "bloodRatio \xB7 bloodRatio.Array.data[1]"
+      value: 0.44999998807907104
+      integer: 0
+      boolean: 0
+    - path: 'bloodRatio.Array.data[2]'
+      label: "bloodRatio \xB7 bloodRatio.Array.data[2]"
+      value: 0.10000000149011612
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: TitanMovement
+    componentIndex: 0
+    parameters:
+    - path: moveSpeed
+      label: "\u79FB\u52A8\u901F\u5EA6 \xB7 moveSpeed"
+      value: 1.2000000476837158
+      integer: 0
+      boolean: 0
+    - path: backSpeed
+      label: "\u53D7\u51FB\u540E\u9000\u901F\u5EA6 \xB7 backSpeed"
+      value: 3
+      integer: 0
+      boolean: 0
+    - path: upSpeed
+      label: "\u8DF3\u8DC3\u901F\u5EA6 \xB7 upSpeed"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: slowSpeed
+      label: "slowSpeed \xB7 slowSpeed"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: boostRatio
+      label: "boostRatio \xB7 boostRatio"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: minNormalY
+      label: "minNormalY \xB7 minNormalY"
+      value: 0.6000000238418579
+      integer: 0
+      boolean: 0
+    - path: lungeDuration
+      label: "lungeDuration \xB7 lungeDuration"
+      value: 8
+      integer: 0
+      boolean: 0
+    - path: lungeSpeed
+      label: "lungeSpeed \xB7 lungeSpeed"
+      value: 14
+      integer: 0
+      boolean: 0
+    - path: rageMoveMultiplier
+      label: "rageMoveMultiplier \xB7 rageMoveMultiplier"
+      value: 1.2999999523162842
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: TitanCombat
+    componentIndex: 0
+    parameters:
+    - path: 'attackDelay.Array.data[0]'
+      label: "\u653B\u51FB\u51B7\u5374/\u95F4\u9694 \xB7 attackDelay.Array.data[0]"
+      value: 5
+      integer: 0
+      boolean: 0
+    - path: 'attackDelay.Array.data[1]'
+      label: "\u653B\u51FB\u51B7\u5374/\u95F4\u9694 \xB7 attackDelay.Array.data[1]"
+      value: 25
+      integer: 0
+      boolean: 0
+    - path: 'attackDelay.Array.data[2]'
+      label: "\u653B\u51FB\u51B7\u5374/\u95F4\u9694 \xB7 attackDelay.Array.data[2]"
+      value: 13
+      integer: 0
+      boolean: 0
+    - path: 'AttackOpenIdx.Array.data[0]'
+      label: "\u5F00\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackOpenIdx.Array.data[0]"
+      value: 6
+      integer: 1
+      boolean: 0
+    - path: 'AttackOpenIdx.Array.data[1]'
+      label: "\u5F00\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackOpenIdx.Array.data[1]"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: 'AttackOpenIdx.Array.data[2]'
+      label: "\u5F00\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackOpenIdx.Array.data[2]"
+      value: 5
+      integer: 1
+      boolean: 0
+    - path: 'AttackShutIdx.Array.data[0]'
+      label: "\u5173\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackShutIdx.Array.data[0]"
+      value: 11
+      integer: 1
+      boolean: 0
+    - path: 'AttackShutIdx.Array.data[1]'
+      label: "\u5173\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackShutIdx.Array.data[1]"
+      value: 20
+      integer: 1
+      boolean: 0
+    - path: 'AttackShutIdx.Array.data[2]'
+      label: "\u5173\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackShutIdx.Array.data[2]"
+      value: 10
+      integer: 1
+      boolean: 0
+    - path: angryFull
+      label: "angryFull \xB7 angryFull"
+      value: 100
+      integer: 0
+      boolean: 0
+    - path: angryRatio
+      label: "angryRatio \xB7 angryRatio"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: deltaAngry
+      label: "deltaAngry \xB7 deltaAngry"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: angryDuration
+      label: "angryDuration \xB7 angryDuration"
+      value: 9
+      integer: 0
+      boolean: 0
+    - path: delayRatio
+      label: "delayRatio \xB7 delayRatio"
+      value: 0.800000011920929
+      integer: 0
+      boolean: 0
+    - path: rageFull
+      label: "rageFull \xB7 rageFull"
+      value: 100
+      integer: 0
+      boolean: 0
+    - path: rageOnHit
+      label: "rageOnHit \xB7 rageOnHit"
+      value: 5
+      integer: 0
+      boolean: 0
+    - path: rageOnMiss
+      label: "rageOnMiss \xB7 rageOnMiss"
+      value: 8
+      integer: 0
+      boolean: 0
+    - path: rageOnDamaged
+      label: "rageOnDamaged \xB7 rageOnDamaged"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: rageDuration
+      label: "rageDuration \xB7 rageDuration"
+      value: 8
+      integer: 0
+      boolean: 0
+    - path: rageAttackMultiplier
+      label: "rageAttackMultiplier \xB7 rageAttackMultiplier"
+      value: 1.2999999523162842
+      integer: 0
+      boolean: 0
+    - path: rage
+      label: "rage \xB7 rage"
+      value: 0
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: Health
+    componentIndex: 0
+    parameters:
+    - path: beginBlood
+      label: "\u57FA\u7840\u751F\u547D\u4E0A\u9650 \xB7 beginBlood"
+      value: 600
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: EnemyRewards
+    componentIndex: 0
+    parameters:
+    - path: experienceReward
+      label: "\u51FB\u6740\u7ECF\u9A8C \xB7 experienceReward"
+      value: 120
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: ActorStatus
+    componentIndex: 0
+    parameters:
+    - path: frozenDuration
+      label: "frozenDuration \xB7 frozenDuration"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: meltFrameInterval
+      label: "meltFrameInterval \xB7 meltFrameInterval"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: frozenDamageMultiplier
+      label: "frozenDamageMultiplier \xB7 frozenDamageMultiplier"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: ActorBoostTrail
+    componentIndex: 0
+    parameters:
+    - path: trailColor.r
+      label: "trailColor \xB7 trailColor.r"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: trailColor.g
+      label: "trailColor \xB7 trailColor.g"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: trailColor.b
+      label: "trailColor \xB7 trailColor.b"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: trailColor.a
+      label: "trailColor \xB7 trailColor.a"
+      value: 0.1599999964237213
+      integer: 0
+      boolean: 0
+    - path: afterimageDuration
+      label: "afterimageDuration \xB7 afterimageDuration"
+      value: 0.20000000298023224
+      integer: 0
+      boolean: 0
+    - path: minimumMoveSpeed
+      label: "minimumMoveSpeed \xB7 minimumMoveSpeed"
+      value: 0.029999999329447746
+      integer: 0
+      boolean: 0
+    - path: prewarmCount
+      label: "prewarmCount \xB7 prewarmCount"
+      value: 16
+      integer: 1
+      boolean: 0
+    - path: sortingOffset
+      label: "sortingOffset \xB7 sortingOffset"
+      value: -1
+      integer: 1
+      boolean: 0
+  - objectPath: Combat/Attack
+    componentType: EnemyAttackBox
+    componentIndex: 0
+    parameters:
+    - path: Attack
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: launch
+      label: "launch \xB7 launch"
+      value: 0
+      integer: 0
+      boolean: 1
+  - objectPath: Combat/Tremor
+    componentType: EnemyAttackBox
+    componentIndex: 0
+    parameters:
+    - path: Attack
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: launch
+      label: "launch \xB7 launch"
+      value: 0
+      integer: 0
+      boolean: 1
+  - objectPath: Combat/Lunge
+    componentType: EnemyAttackBox
+    componentIndex: 0
+    parameters:
+    - path: Attack
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack"
+      value: 15
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: launch
+      label: "launch \xB7 launch"
+      value: 0
+      integer: 0
+      boolean: 1
+  - objectPath: 
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.3700000047683716
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 2.759999990463257
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: -0.13499987125396729
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: UnityEngine.Rigidbody2D
+    componentIndex: 0
+    parameters:
+    - path: m_Mass
+      label: "\u8D28\u91CF \xB7 m_Mass"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: m_GravityScale
+      label: "\u91CD\u529B\u500D\u7387 \xB7 m_GravityScale"
+      value: 0.8999999761581421
+      integer: 0
+      boolean: 0
+    - path: m_LinearDamping
+      label: "\u6C34\u5E73\u963B\u5C3C \xB7 m_LinearDamping"
+      value: 0
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/AttackCheck
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 2.0999999046325684
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 2.5
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: -1.0499999523162842
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: -0.052434444427490234
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/TremorCheck
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 4.360000133514404
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 0.5861353874206543
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: -1.009366750717163
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/LungeCheck
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 2.7016196250915527
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: -8.100000381469727
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 0.04837536811828613
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/Attack
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.7999999523162842
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 1.5807275772094727
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: -0.8999999761581421
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: -0.055974483489990234
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/Tremor
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 4.400000095367432
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 1.0769634246826172
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: -1.0984859466552734
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/Lunge
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.399999976158142
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 2.4553184509277344
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: -0.699999988079071
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: -0.10145187377929688
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/Attacked
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.4800000190734863
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 2.363978385925293
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: -0.056163489818573
+      integer: 0
+      boolean: 0
+  numbers:
+  - key: TitanCombat.MaxRage.1
+    label: MaxRage / public float MaxRage => Mathf.Max(0.01f, rageFull);
+    source: Assets/Projects/Scripts/Boss/Titan/TitanCombat.cs:20
+    value: 0.01
+  - key: TitanCombat.AddRage.1
+    label: AddRage / rageBoostUntil = Time.time + Mathf.Max(0.01f, rageDuration);
+    source: Assets/Projects/Scripts/Boss/Titan/TitanCombat.cs:74
+    value: 0.01
+  skills: []
+  relatedProfiles: []

@@ -1,0 +1,241 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ea7302a88f56248a1b33284c7df3cd, type: 3}
+  m_Name: CombatRules
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceProfile
+  displayName: "\u516C\u5171\u6218\u6597\u4E0E\u63A7\u5236\u89C4\u5219"
+  description: "\u4FEE\u6539\u540E\u91CD\u65B0\u8FDB\u5165\u573A\u666F/\u8BAD\u7EC3\u76EE\u6807\u751F\u6548\uFF1B\u4E0D\u5199\u5165\u5B58\u6863\uFF0C\u4E0D\u4FEE\u6539\u4E34\u65F6\u72B6\u6001\u3002"
+  components: []
+  numbers:
+  - key: EnemyCombat.SetExternalDamageScale.1
+    label: SetExternalDamageScale / public void SetExternalDamageScale(float value)
+      => externalDamageScale = Mathf.Clamp(value, 0f, 10f);
+    source: Assets/Projects/Scripts/Enemy/EnemyCombat.cs:27
+    value: 10
+  - key: EnemyMovement.CheckGround.1
+    label: CheckGround / if (Mathf.Abs(y) > 0.1f)
+    source: Assets/Projects/Scripts/Enemy/EnemyMovement.cs:396
+    value: 0.1
+  - key: EnemyMovement.AirState.1
+    label: 'AirState / return body.linearVelocityY > 0.1f ? 1 : -1;'
+    source: Assets/Projects/Scripts/Enemy/EnemyMovement.cs:409
+    value: 0.1
+  - key: EnemyMovement.EndMotionStep.1
+    label: EndMotionStep / else if (Mathf.Abs(distance) < 0.001f && field.Value.Ratio
+      <= 0.001f) velocity = 0f;
+    source: Assets/Projects/Scripts/Enemy/EnemyMovement.cs:457
+    value: 0.001
+  - key: EnemyMovement.EndMotionStep.2
+    label: EndMotionStep / else if (Mathf.Abs(distance) < 0.001f && field.Value.Ratio
+      <= 0.001f) velocity = 0f;
+    source: Assets/Projects/Scripts/Enemy/EnemyMovement.cs:457
+    value: 0.001
+  - key: EnemyMovement.RemoveAppliedFieldVelocity.1
+    label: RemoveAppliedFieldVelocity / && Mathf.Abs(body.linearVelocityX - previousFieldResult)
+      < 0.001f)
+    source: Assets/Projects/Scripts/Enemy/EnemyMovement.cs:466
+    value: 0.001
+  - key: PlayerBoost.Update.1
+    label: Update / boostEnergy = Mathf.Max(0f, boostEnergy - MaxEnergy / Mathf.Max(0.01f,
+      boostTime) * Time.deltaTime);
+    source: Assets/Projects/Scripts/Player/PlayerBoost.cs:94
+    value: 0.01
+  - key: PlayerMovement.OnMove.1
+    label: 'OnMove / int dir = value > 0.5f ? 1 : value < -0.5f ? -1 : 0;'
+    source: Assets/Projects/Scripts/Player/PlayerMovement.cs:136
+    value: 0.5
+  - key: PlayerMovement.OnMove.2
+    label: 'OnMove / int dir = value > 0.5f ? 1 : value < -0.5f ? -1 : 0;'
+    source: Assets/Projects/Scripts/Player/PlayerMovement.cs:136
+    value: 0.5
+  - key: PlayerMovement.SyncMoveInput.1
+    label: 'SyncMoveInput / moveDirect = value > 0.5f ? 1 : value < -0.5f ? -1 :
+      0;'
+    source: Assets/Projects/Scripts/Player/PlayerMovement.cs:153
+    value: 0.5
+  - key: PlayerMovement.SyncMoveInput.2
+    label: 'SyncMoveInput / moveDirect = value > 0.5f ? 1 : value < -0.5f ? -1 :
+      0;'
+    source: Assets/Projects/Scripts/Player/PlayerMovement.cs:153
+    value: 0.5
+  - key: PlayerMovement.CheckGround.1
+    label: CheckGround / if (Mathf.Abs(y) > 0.1f)
+    source: Assets/Projects/Scripts/Player/PlayerMovement.cs:240
+    value: 0.1
+  - key: PlayerMovement.AirState.1
+    label: 'AirState / return body.linearVelocityY > 0.1f ? 1 : -1;'
+    source: Assets/Projects/Scripts/Player/PlayerMovement.cs:256
+    value: 0.1
+  - key: ActorStatus.Update.1
+    label: Update / nextMeltAt += Mathf.Max(0.01f, meltFrameInterval);
+    source: Assets/Projects/Scripts/Combat/ActorStatus.cs:113
+    value: 0.01
+  - key: ActorStatus.BeginMelting.1
+    label: BeginMelting / nextMeltAt = Time.time + Mathf.Max(0.01f, meltFrameInterval);
+    source: Assets/Projects/Scripts/Combat/ActorStatus.cs:123
+    value: 0.01
+  - key: StatusEffectView.FollowTarget.1
+    label: FollowTarget / size.x = Mathf.Min(size.x, bodyCollider.bounds.size.x *
+      1.5f);
+    source: Assets/Projects/Scripts/Combat/StatusEffectView.cs:104
+    value: 1.5
+  - key: StatusEffectView.FollowTarget.2
+    label: FollowTarget / size.y = Mathf.Min(size.y, bodyCollider.bounds.size.y *
+      0.6f);
+    source: Assets/Projects/Scripts/Combat/StatusEffectView.cs:105
+    value: 0.6
+  - key: StatusEffectView.FollowTarget.3
+    label: 'FollowTarget / transform.localScale = new Vector3(size.x / Mathf.Max(0.01f,
+      reference.x), size.y / Mathf.Max(0.01f, reference.y), '
+    source: Assets/Projects/Scripts/Combat/StatusEffectView.cs:107
+    value: 0.01
+  - key: StatusEffectView.FollowTarget.4
+    label: 'FollowTarget / transform.localScale = new Vector3(size.x / Mathf.Max(0.01f,
+      reference.x), size.y / Mathf.Max(0.01f, reference.y), '
+    source: Assets/Projects/Scripts/Combat/StatusEffectView.cs:107
+    value: 0.01
+  - key: LateStageCombat.CancelSkill.1
+    label: CancelSkill / if(Skill>=0){OnCancelled(Skill);Skill=-1;nextAttack=clock+.2f;events.Clear();}
+    source: Assets/Projects/Scripts/Level89/LateStageCombat.cs:90
+    value: 0.2
+  - key: LateStageCombat.Later.1
+    label: Later / {events.Add(new Scheduled{Due=clock+delay,Position=at,Size=size,Damage=damage,Radius=radius,Back=back,Tag=tag,Guard
+    source: Assets/Projects/Scripts/Level89/LateStageCombat.cs:139
+    value: 0.05
+  - key: LateStageCombat.LaterAction.1
+    label: LaterAction / protected void LaterAction(float delay,Action action){events.Add(new
+      Scheduled{Due=clock+delay,Action=action});minS
+    source: Assets/Projects/Scripts/Level89/LateStageCombat.cs:140
+    value: 0.05
+  - key: LateStageCombat.Fire.1
+    label: Fire / {shots.Add(new Shot{At=at,Velocity=velocity,Damage=damage,Remaining=life,Fx=FX(effect,at,.65f,life)});}
+    source: Assets/Projects/Scripts/Level89/LateStageCombat.cs:145
+    value: 0.65
+  - key: LateStageCombat.Ground.1
+    label: Ground / protected Vector2 Ground(Vector2 at)=>new(ClampArenaX(at.x),LateStageMovement.FindFloor(at)+.03f);
+    source: Assets/Projects/Scripts/Level89/LateStageCombat.cs:146
+    value: 0.03
+  - key: LateStageCombat.Update.1
+    label: Update / int n=Physics2D.CircleCast(s.At,.12f,delta.normalized,new ContactFilter2D{useTriggers=true},rayHits,delta.magnitude
+    source: Assets/Projects/Scripts/Level89/LateStageCombat.cs:164
+    value: 0.12
+  - key: LateStageEffect.Play.1
+    label: Play / transform.position=at; transform.localScale=Vector3.one*(width/Mathf.Max(.01f,nativeWidth));
+    source: Assets/Projects/Scripts/Level89/LateStageEffect.cs:16
+    value: 0.01
+  - key: LateStageEffect.Play.2
+    label: Play / if(placeholder==null)placeholder=Sprite.Create(Texture2D.whiteTexture,new
+      Rect(0,0,2,2),new Vector2(.5f,.5f),2);
+    source: Assets/Projects/Scripts/Level89/LateStageEffect.cs:22
+    value: 0.5
+  - key: LateStageEffect.Play.3
+    label: Play / if(placeholder==null)placeholder=Sprite.Create(Texture2D.whiteTexture,new
+      Rect(0,0,2,2),new Vector2(.5f,.5f),2);
+    source: Assets/Projects/Scripts/Level89/LateStageEffect.cs:22
+    value: 0.5
+  - key: LateStageMovement.FindFloor.1
+    label: FindFloor / {var hit=Physics2D.Raycast(at+Vector2.up*8f,Vector2.down,60f,1<<6);return
+      hit.collider!=null?hit.point.y:at.y;}
+    source: Assets/Projects/Scripts/Level89/LateStageMovement.cs:20
+    value: 8
+  - key: LateStageMovement.FindFloor.2
+    label: FindFloor / {var hit=Physics2D.Raycast(at+Vector2.up*8f,Vector2.down,60f,1<<6);return
+      hit.collider!=null?hit.point.y:at.y;}
+    source: Assets/Projects/Scripts/Level89/LateStageMovement.cs:20
+    value: 60
+  - key: LateStageMovement.SafeSpot.1
+    label: SafeSpot / Prepare();result=new Vector2(desired.x,FindFloor(desired)+.03f+(hovering?hoverHeight:0f));
+    source: Assets/Projects/Scripts/Level89/LateStageMovement.cs:23
+    value: 0.03
+  - key: LateStageMovement.SafeSpot.2
+    label: SafeSpot / var hits=new Collider2D[16];int n=Physics2D.OverlapBox(center,shape.size*.92f,0,filter,hits);
+    source: Assets/Projects/Scripts/Level89/LateStageMovement.cs:28
+    value: 0.92
+  - key: LateStageMovement.SafeSpot.3
+    label: SafeSpot / for(int i=0;i<n;i++)if(hits[i]!=null && hits[i].bounds.max.y>result.y+.15f)return
+      false;
+    source: Assets/Projects/Scripts/Level89/LateStageMovement.cs:29
+    value: 0.15
+  - key: LateStageMovement.FixedUpdate.1
+    label: FixedUpdate / float x=c.ClampArenaX(body.position.x,GetComponent<BoxCollider2D>().bounds.extents.x+.05f);
+    source: Assets/Projects/Scripts/Level89/LateStageMovement.cs:48
+    value: 0.05
+  - key: LateStageMovement.FixedUpdate.2
+    label: FixedUpdate / int n=GetComponent<BoxCollider2D>().Cast(Vector2.right*Mathf.Sign(dx),filter,castHits,Mathf.Abs(dx)+.02f);
+    source: Assets/Projects/Scripts/Level89/LateStageMovement.cs:58
+    value: 0.02
+  - key: LateStageMovement.FixedUpdate.3
+    label: FixedUpdate / for(int i=0;i<n;i++)if(castHits[i].normal.x*Mathf.Sign(dx)<-.1f)dx=Mathf.Sign(dx)*Mathf.Min(Mathf.Abs(dx),Mathf.Max
+    source: Assets/Projects/Scripts/Level89/LateStageMovement.cs:59
+    value: 0.1
+  - key: LateStageMovement.FixedUpdate.4
+    label: FixedUpdate / for(int i=0;i<n;i++)if(castHits[i].normal.x*Mathf.Sign(dx)<-.1f)dx=Mathf.Sign(dx)*Mathf.Min(Mathf.Abs(dx),Mathf.Max
+    source: Assets/Projects/Scripts/Level89/LateStageMovement.cs:59
+    value: 0.02
+  - key: LateStageMovement.FixedUpdate.5
+    label: FixedUpdate / if(c!=null)destination.x=c.ClampArenaX(destination.x,GetComponent<BoxCollider2D>().bounds.extents.x+.05f);
+    source: Assets/Projects/Scripts/Level89/LateStageMovement.cs:61
+    value: 0.05
+  - key: GoldCoin.Spawn.1
+    label: Spawn / lifetime = Mathf.Max(0.01f, existTime);
+    source: Assets/Projects/Scripts/Gold/GoldCoin.cs:33
+    value: 0.01
+  - key: GoldCoin.Spawn.2
+    label: Spawn / absorbDuration = Mathf.Max(0.01f, absorbTime);
+    source: Assets/Projects/Scripts/Gold/GoldCoin.cs:34
+    value: 0.01
+  - key: GoldCoin.LateUpdate.1
+    label: LateUpdate / float eased = progress * progress * (3f - 2f * progress);
+    source: Assets/Projects/Scripts/Gold/GoldCoin.cs:70
+    value: 3
+  - key: GoldCoin.LateUpdate.2
+    label: LateUpdate / float eased = progress * progress * (3f - 2f * progress);
+    source: Assets/Projects/Scripts/Gold/GoldCoin.cs:70
+    value: 2
+  - key: GoldCoin.LateUpdate.3
+    label: LateUpdate / position.y += Mathf.Sin(progress * Mathf.PI) * 0.2f;
+    source: Assets/Projects/Scripts/Gold/GoldCoin.cs:72
+    value: 0.2
+  - key: LateStageCombat.HoldFrame.Parameter1
+    label: "HoldFrame / \u4F24\u5BB3/\u5224\u5B9A\u53C2\u6570 15"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Level89/LateStageCombat.cs:85
+    value: 15
+  skills: []
+  relatedProfiles:
+  - {fileID: 11400000, guid: b0d3dd2b07ea13a488ac60327756b07a, type: 2}
+  - {fileID: 11400000, guid: d672a0c094103a8458e520ebba238102, type: 2}
+  - {fileID: 11400000, guid: 2ed3b0a7e6dacb0409440df45bdf44ac, type: 2}
+  - {fileID: 11400000, guid: 5c45432737681eb4f90e65864fa3a3e7, type: 2}
+  - {fileID: 11400000, guid: 186edcf38a4472345b437f7b922a7c7f, type: 2}
+  - {fileID: 11400000, guid: 5d70eb35082eaac4fa1bed4c8ce656ee, type: 2}
+  - {fileID: 11400000, guid: b87ff041531eae344bcc604e4dea2794, type: 2}
+  - {fileID: 11400000, guid: 0d9440adf2fd6594fb776ed9e250d565, type: 2}
+  - {fileID: 11400000, guid: 3a7e1a77360518f4b8d4b4958e22c2b2, type: 2}
+  - {fileID: 11400000, guid: c1b611c6ebfe89945b01476a14c94e79, type: 2}
+  - {fileID: 11400000, guid: 87131073f09bee744a1e460bd56b23f8, type: 2}
+  - {fileID: 11400000, guid: 07a0ff3e2cba05544b98d5918fec4a1c, type: 2}
+  - {fileID: 11400000, guid: e2d77d7a97e4c7d4da901c4d0fa28d9d, type: 2}
+  - {fileID: 11400000, guid: 73163898790bd5b42953b76871c90003, type: 2}
+  - {fileID: 11400000, guid: 956d7ded757d19a449a18e528d16f14a, type: 2}
+  - {fileID: 11400000, guid: 8bbf41b064f54ff4285e063d263a584c, type: 2}
+  - {fileID: 11400000, guid: 7159ee1256af3854fa0d16380db1cf73, type: 2}
+  - {fileID: 11400000, guid: deb893139e0d96d43933a4aaf52f1507, type: 2}
+  - {fileID: 11400000, guid: 15b9288abac260041891915861348c5b, type: 2}
+  - {fileID: 11400000, guid: 26d0839c99655c344ae416b8381460aa, type: 2}
+  - {fileID: 11400000, guid: e4a635a7a3ce51f42853000821203254, type: 2}
+  - {fileID: 11400000, guid: c1b9d52b4900ec541b8b00a12496f2d9, type: 2}
+  - {fileID: 11400000, guid: 256d50ce4def67b438d2a6f471bd1927, type: 2}
+  - {fileID: 11400000, guid: 7c287a275d8d7f849a56150953767a49, type: 2}
+  - {fileID: 11400000, guid: ac93a06f8e001d84985f7ccb4d708206, type: 2}
+  - {fileID: 11400000, guid: 4824c8fc3111afa42bc78618e78605a2, type: 2}
+  - {fileID: 11400000, guid: b20ee31d776fb6144bb6a1617d997412, type: 2}
+  - {fileID: 11400000, guid: 9b0b48d703dbfe94182a341a9e954fe8, type: 2}

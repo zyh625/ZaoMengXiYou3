@@ -73,7 +73,7 @@ public class PurpleRangedCombat : EnemyCombat
         if (Time.time - lastShotTime < Mathf.Max(0f, phaseCooldown)
             || Time.time - lastPhaseEnd < Mathf.Max(0f, phaseCooldown)) return;
         phaseActive = true;
-        phaseUntil = Time.time + Mathf.Max(0.01f, phaseDuration);
+        phaseUntil = Time.time + Mathf.Max(BalanceRuntime.Number(this, "PurpleRangedCombat.Update.1", 0.01f), phaseDuration);
         SetOpacity(true);
     }
     private void SetOpacity(bool phased)//仅修改alpha，保留其他脚本设置的本体颜色

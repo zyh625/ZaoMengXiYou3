@@ -1,5 +1,121 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1001}
+  - component: {fileID: 1002}
+  - component: {fileID: 4058231332711122174}
+  m_Layer: 0
+  m_Name: WuxiangDijunSunWheel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2001}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fa9ca343e52592186c5b9d9094529f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LateStageEffect
+  frames:
+    sprites:
+    - {fileID: -1273255884858762385, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
+    - {fileID: 2799086300134442926, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
+    - {fileID: -7065798984968426282, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
+    - {fileID: -2410908659838120953, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
+    - {fileID: 6813190058708687467, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
+    - {fileID: -4756896888709888339, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
+    - {fileID: -8447153841461388738, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
+    - {fileID: -774997002529648331, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
+    - {fileID: -2503715694924731319, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
+    - {fileID: 6870977937075082468, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
+    - {fileID: -6803340081579336433, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
+    - {fileID: 4951696728783420904, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
+    - {fileID: -6824866539777916173, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
+    - {fileID: 4243473191484120795, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
+    - {fileID: 8811353415682204791, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
+    - {fileID: 422974468018301674, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
+    loop: 0
+    fps: 16
+  spriteManager: {fileID: 2003}
+  visual: {fileID: 2002}
+  nativeWidth: 1.73
+  placeholderAspect: {x: 1, y: 1}
+--- !u!114 &4058231332711122174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 4824c8fc3111afa42bc78618e78605a2, type: 2}
+--- !u!1 &2000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001}
+  - component: {fileID: 2002}
+  - component: {fileID: 2003}
+  m_Layer: 0
+  m_Name: Visual
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2002
 SpriteRenderer:
   serializedVersion: 2
@@ -72,105 +188,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpriteManager
   sr: {fileID: 2002}
---- !u!114 &1002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fa9ca343e52592186c5b9d9094529f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LateStageEffect
-  frames:
-    sprites:
-    - {fileID: -1273255884858762385, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
-    - {fileID: 2799086300134442926, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
-    - {fileID: -7065798984968426282, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
-    - {fileID: -2410908659838120953, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
-    - {fileID: 6813190058708687467, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
-    - {fileID: -4756896888709888339, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
-    - {fileID: -8447153841461388738, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
-    - {fileID: -774997002529648331, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
-    - {fileID: -2503715694924731319, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
-    - {fileID: 6870977937075082468, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
-    - {fileID: -6803340081579336433, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
-    - {fileID: 4951696728783420904, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
-    - {fileID: -6824866539777916173, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
-    - {fileID: 4243473191484120795, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
-    - {fileID: 8811353415682204791, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
-    - {fileID: 422974468018301674, guid: 58c38dad42a44389bfa2f81b37e07932, type: 3}
-    loop: 0
-    fps: 16
-  spriteManager: {fileID: 2003}
-  visual: {fileID: 2002}
-  nativeWidth: 1.73
-  placeholderAspect: {x: 1, y: 1}
---- !u!1 &1000
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1001}
-  - component: {fileID: 1002}
-  m_Layer: 0
-  m_Name: WuxiangDijunSunWheel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1001
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2001}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2000
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2001}
-  - component: {fileID: 2002}
-  - component: {fileID: 2003}
-  m_Layer: 0
-  m_Name: Visual
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2001
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2000}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1001}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

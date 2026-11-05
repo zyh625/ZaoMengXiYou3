@@ -1,0 +1,871 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ea7302a88f56248a1b33284c7df3cd, type: 3}
+  m_Name: WuxiangDijun
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceProfile
+  displayName: "\u65E0\u76F8\u5E1D\u541B / WuxiangDijun"
+  description: "\u4FEE\u6539\u540E\u91CD\u65B0\u8FDB\u5165\u573A\u666F/\u8BAD\u7EC3\u76EE\u6807\u751F\u6548\uFF1B\u4E0D\u5199\u5165\u5B58\u6863\uFF0C\u4E0D\u4FEE\u6539\u4E34\u65F6\u72B6\u6001\u3002"
+  components:
+  - objectPath: 
+    componentType: Health
+    componentIndex: 0
+    parameters:
+    - path: beginBlood
+      label: "\u57FA\u7840\u751F\u547D\u4E0A\u9650 \xB7 beginBlood"
+      value: 1670
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: ActorStatus
+    componentIndex: 0
+    parameters:
+    - path: frozenDuration
+      label: "frozenDuration \xB7 frozenDuration"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: meltFrameInterval
+      label: "meltFrameInterval \xB7 meltFrameInterval"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: frozenDamageMultiplier
+      label: "frozenDamageMultiplier \xB7 frozenDamageMultiplier"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: EnemyRewards
+    componentIndex: 0
+    parameters:
+    - path: experienceReward
+      label: "\u51FB\u6740\u7ECF\u9A8C \xB7 experienceReward"
+      value: 300
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: WuxiangMovement
+    componentIndex: 0
+    parameters:
+    - path: moveSpeed
+      label: "\u79FB\u52A8\u901F\u5EA6 \xB7 moveSpeed"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: backSpeed
+      label: "\u53D7\u51FB\u540E\u9000\u901F\u5EA6 \xB7 backSpeed"
+      value: 3.5
+      integer: 0
+      boolean: 0
+    - path: upSpeed
+      label: "\u8DF3\u8DC3\u901F\u5EA6 \xB7 upSpeed"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: slowSpeed
+      label: "slowSpeed \xB7 slowSpeed"
+      value: 0.5
+      integer: 0
+      boolean: 0
+    - path: boostRatio
+      label: "boostRatio \xB7 boostRatio"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: minNormalY
+      label: "minNormalY \xB7 minNormalY"
+      value: 0.6000000238418579
+      integer: 0
+      boolean: 0
+    - path: hovering
+      label: "hovering \xB7 hovering"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: hoverHeight
+      label: "hoverHeight \xB7 hoverHeight"
+      value: 1.600000023841858
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: WuxiangCombat
+    componentIndex: 0
+    parameters:
+    - path: 'attackDelay.Array.data[0]'
+      label: "\u653B\u51FB\u51B7\u5374/\u95F4\u9694 \xB7 attackDelay.Array.data[0]"
+      value: 7
+      integer: 0
+      boolean: 0
+    - path: 'AttackOpenIdx.Array.data[0]'
+      label: "\u5F00\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackOpenIdx.Array.data[0]"
+      value: 6
+      integer: 1
+      boolean: 0
+    - path: 'AttackShutIdx.Array.data[0]'
+      label: "\u5173\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackShutIdx.Array.data[0]"
+      value: 11
+      integer: 1
+      boolean: 0
+    - path: angryFull
+      label: "angryFull \xB7 angryFull"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: angryRatio
+      label: "angryRatio \xB7 angryRatio"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: deltaAngry
+      label: "deltaAngry \xB7 deltaAngry"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: angryDuration
+      label: "angryDuration \xB7 angryDuration"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: delayRatio
+      label: "delayRatio \xB7 delayRatio"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: attackInterval
+      label: "\u666E\u901A\u62DB\u5F0F\u95F4\u9694 \xB7 attackInterval"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: 'cooldowns.Array.data[0]'
+      label: "\u5404\u6280\u80FD\u51B7\u5374\uFF08\u79D2\uFF09 \xB7 cooldowns.Array.data[0]"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: 'cooldowns.Array.data[1]'
+      label: "\u5404\u6280\u80FD\u51B7\u5374\uFF08\u79D2\uFF09 \xB7 cooldowns.Array.data[1]"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: 'cooldowns.Array.data[2]'
+      label: "\u5404\u6280\u80FD\u51B7\u5374\uFF08\u79D2\uFF09 \xB7 cooldowns.Array.data[2]"
+      value: 7
+      integer: 0
+      boolean: 0
+    - path: 'cooldowns.Array.data[3]'
+      label: "\u5404\u6280\u80FD\u51B7\u5374\uFF08\u79D2\uFF09 \xB7 cooldowns.Array.data[3]"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: 'cooldowns.Array.data[4]'
+      label: "\u5404\u6280\u80FD\u51B7\u5374\uFF08\u79D2\uFF09 \xB7 cooldowns.Array.data[4]"
+      value: 16
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: WuxiangController
+    componentIndex: 0
+    parameters:
+    - path: Idle.loop
+      label: "Idle \xB7 Idle.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Idle.fps
+      label: "Idle \xB7 Idle.fps"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: Walk.loop
+      label: "Walk \xB7 Walk.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Walk.fps
+      label: "Walk \xB7 Walk.fps"
+      value: 14
+      integer: 0
+      boolean: 0
+    - path: Die.loop
+      label: "Die \xB7 Die.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: Die.fps
+      label: "Die \xB7 Die.fps"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: stopDistance
+      label: "\u505C\u6B62\u9760\u8FD1\u8DDD\u79BB \xB7 stopDistance"
+      value: 3
+      integer: 0
+      boolean: 0
+    - path: specialAttack
+      label: "specialAttack \xB7 specialAttack"
+      value: -1
+      integer: 1
+      boolean: 0
+    - path: stunnedFrame
+      label: "stunnedFrame \xB7 stunnedFrame"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: skillAnimations.Array.data[0].loop
+      label: "skillAnimations \xB7 skillAnimations.Array.data[0].loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: skillAnimations.Array.data[0].fps
+      label: "skillAnimations \xB7 skillAnimations.Array.data[0].fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: skillAnimations.Array.data[1].loop
+      label: "skillAnimations \xB7 skillAnimations.Array.data[1].loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: skillAnimations.Array.data[1].fps
+      label: "skillAnimations \xB7 skillAnimations.Array.data[1].fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: skillAnimations.Array.data[2].loop
+      label: "skillAnimations \xB7 skillAnimations.Array.data[2].loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: skillAnimations.Array.data[2].fps
+      label: "skillAnimations \xB7 skillAnimations.Array.data[2].fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: skillAnimations.Array.data[3].loop
+      label: "skillAnimations \xB7 skillAnimations.Array.data[3].loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: skillAnimations.Array.data[3].fps
+      label: "skillAnimations \xB7 skillAnimations.Array.data[3].fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: skillAnimations.Array.data[4].loop
+      label: "skillAnimations \xB7 skillAnimations.Array.data[4].loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: skillAnimations.Array.data[4].fps
+      label: "skillAnimations \xB7 skillAnimations.Array.data[4].fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: skillAnimations.Array.data[5].loop
+      label: "skillAnimations \xB7 skillAnimations.Array.data[5].loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: skillAnimations.Array.data[5].fps
+      label: "skillAnimations \xB7 skillAnimations.Array.data[5].fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: skillAnimations.Array.data[6].loop
+      label: "skillAnimations \xB7 skillAnimations.Array.data[6].loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: skillAnimations.Array.data[6].fps
+      label: "skillAnimations \xB7 skillAnimations.Array.data[6].fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: skillAnimations.Array.data[7].loop
+      label: "skillAnimations \xB7 skillAnimations.Array.data[7].loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: skillAnimations.Array.data[7].fps
+      label: "skillAnimations \xB7 skillAnimations.Array.data[7].fps"
+      value: 16
+      integer: 0
+      boolean: 0
+  - objectPath: Attack1
+    componentType: LateStageAttackBox
+    componentIndex: 0
+    parameters:
+    - path: Attack
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack"
+      value: 25
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: launch
+      label: "launch \xB7 launch"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: index
+      label: "index \xB7 index"
+      value: 0
+      integer: 1
+      boolean: 0
+  - objectPath: SealMarkPool
+    componentType: LateStageEffectPool
+    componentIndex: 0
+    parameters:
+    - path: prewarm
+      label: "prewarm \xB7 prewarm"
+      value: 4
+      integer: 1
+      boolean: 0
+  - objectPath: SuppressionPillarPool
+    componentType: LateStageEffectPool
+    componentIndex: 0
+    parameters:
+    - path: prewarm
+      label: "prewarm \xB7 prewarm"
+      value: 4
+      integer: 1
+      boolean: 0
+  - objectPath: SpaceLockWallPool
+    componentType: LateStageEffectPool
+    componentIndex: 0
+    parameters:
+    - path: prewarm
+      label: "prewarm \xB7 prewarm"
+      value: 4
+      integer: 1
+      boolean: 0
+  - objectPath: SunWheelPool
+    componentType: LateStageEffectPool
+    componentIndex: 0
+    parameters:
+    - path: prewarm
+      label: "prewarm \xB7 prewarm"
+      value: 4
+      integer: 1
+      boolean: 0
+  - objectPath: MirrorSplitPool
+    componentType: LateStageEffectPool
+    componentIndex: 0
+    parameters:
+    - path: prewarm
+      label: "prewarm \xB7 prewarm"
+      value: 4
+      integer: 1
+      boolean: 0
+  - objectPath: FinalRingsPool
+    componentType: LateStageEffectPool
+    componentIndex: 0
+    parameters:
+    - path: prewarm
+      label: "prewarm \xB7 prewarm"
+      value: 4
+      integer: 1
+      boolean: 0
+  - objectPath: RobeSweepArcPool
+    componentType: LateStageEffectPool
+    componentIndex: 0
+    parameters:
+    - path: prewarm
+      label: "prewarm \xB7 prewarm"
+      value: 4
+      integer: 1
+      boolean: 0
+  - objectPath: 
+    componentType: UnityEngine.Rigidbody2D
+    componentIndex: 0
+    parameters:
+    - path: m_Mass
+      label: "\u8D28\u91CF \xB7 m_Mass"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: m_GravityScale
+      label: "\u91CD\u529B\u500D\u7387 \xB7 m_GravityScale"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: m_LinearDamping
+      label: "\u6C34\u5E73\u963B\u5C3C \xB7 m_LinearDamping"
+      value: 0
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.5
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 3
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  - objectPath: Attacked
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.649999976158142
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 3
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  - objectPath: Attack1
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 8
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 1.100000023841858
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 4
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 0.550000011920929
+      integer: 0
+      boolean: 0
+  - objectPath: Check1
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1
+      integer: 0
+      boolean: 0
+  numbers:
+  - key: WuxiangBossUI.Refresh.1
+    label: Refresh / private void Refresh(){if(specialState!=null){specialState.fillAmount=combat!=null?combat.SpecialFraction:0;special
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangBossUI.cs:10
+    value: 0.9
+  - key: WuxiangBossUI.Refresh.2
+    label: Refresh / private void Refresh(){if(specialState!=null){specialState.fillAmount=combat!=null?combat.SpecialFraction:0;special
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangBossUI.cs:10
+    value: 0.15
+  - key: WuxiangBossUI.Refresh.3
+    label: Refresh / private void Refresh(){if(specialState!=null){specialState.fillAmount=combat!=null?combat.SpecialFraction:0;special
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangBossUI.cs:10
+    value: 0.25
+  - key: WuxiangCombat.HitFactor.1
+    label: HitFactor / protected override float HitFactor(PlayerController p)=>ResolvingTag==1&&clock<sealUntil&&Vector2.Distance(p.transf
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:33
+    value: 2.5
+  - key: WuxiangCombat.HitFactor.2
+    label: HitFactor / protected override float HitFactor(PlayerController p)=>ResolvingTag==1&&clock<sealUntil&&Vector2.Distance(p.transf
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:33
+    value: 1.5
+  - key: WuxiangCombat.DamageResolved.1
+    label: DamageResolved / if(hp.ratio<=.7f&&(thresholds&1)==0){thresholds|=1;pending|=1;}
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:37
+    value: 0.7
+  - key: WuxiangCombat.DamageResolved.2
+    label: DamageResolved / if(hp.ratio<=.5f&&(thresholds&2)==0){thresholds|=2;pending|=2;}
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:38
+    value: 0.5
+  - key: WuxiangCombat.DamageResolved.3
+    label: DamageResolved / if(hp.ratio<=.2f&&(thresholds&4)==0){thresholds|=4;pending|=4;}
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:39
+    value: 0.2
+  - key: WuxiangCombat.OnBegin.1
+    label: OnBegin / for(int j=-1;j<=1;j++){var p=Ground(at+Vector2.right*j*2.4f);FX(1,p,2,.7f+(.3f*(j+1)),Color.yellow);Later(.7f+.3f*(
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:48
+    value: 2.4
+  - key: WuxiangCombat.OnBegin.2
+    label: OnBegin / for(int j=-1;j<=1;j++){var p=Ground(at+Vector2.right*j*2.4f);FX(1,p,2,.7f+(.3f*(j+1)),Color.yellow);Later(.7f+.3f*(
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:48
+    value: 0.7
+  - key: WuxiangCombat.OnBegin.3
+    label: OnBegin / for(int j=-1;j<=1;j++){var p=Ground(at+Vector2.right*j*2.4f);FX(1,p,2,.7f+(.3f*(j+1)),Color.yellow);Later(.7f+.3f*(
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:48
+    value: 0.3
+  - key: WuxiangCombat.OnBegin.4
+    label: OnBegin / for(int j=-1;j<=1;j++){var p=Ground(at+Vector2.right*j*2.4f);FX(1,p,2,.7f+(.3f*(j+1)),Color.yellow);Later(.7f+.3f*(
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:48
+    value: 0.7
+  - key: WuxiangCombat.OnBegin.5
+    label: OnBegin / for(int j=-1;j<=1;j++){var p=Ground(at+Vector2.right*j*2.4f);FX(1,p,2,.7f+(.3f*(j+1)),Color.yellow);Later(.7f+.3f*(
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:48
+    value: 0.3
+  - key: WuxiangCombat.OnBegin.6
+    label: OnBegin / for(int j=-1;j<=1;j++){var p=Ground(at+Vector2.right*j*2.4f);FX(1,p,2,.7f+(.3f*(j+1)),Color.yellow);Later(.7f+.3f*(
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:48
+    value: 0.7
+  - key: WuxiangCombat.OnBegin.7
+    label: OnBegin / for(int j=-1;j<=1;j++){var p=Ground(at+Vector2.right*j*2.4f);FX(1,p,2,.7f+(.3f*(j+1)),Color.yellow);Later(.7f+.3f*(
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:48
+    value: 2
+  - key: WuxiangCombat.OnBegin.8
+    label: OnBegin / for(int j=-1;j<=1;j++){var p=Ground(at+Vector2.right*j*2.4f);FX(1,p,2,.7f+(.3f*(j+1)),Color.yellow);Later(.7f+.3f*(
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:48
+    value: 1.4
+  - key: WuxiangCombat.OnBegin.9
+    label: OnBegin / if(i==3){nextWheel=clock+.5f;minSkillEnd=clock+6;FX(3,Position+Vector2.up,5,6);}
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:50
+    value: 0.5
+  - key: WuxiangCombat.OnBegin.10
+    label: OnBegin / if(i==4){minSkillEnd=clock+1.2f;SpawnMirror();}
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:51
+    value: 1.2
+  - key: WuxiangCombat.OnFrame.1
+    label: OnFrame / {sealUntil=clock+12;Area(sealAt,new Vector2(5,5),28,2.5f,true);FX(0,sealAt,5,12);}
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:56
+    value: 5
+  - key: WuxiangCombat.OnFrame.2
+    label: OnFrame / {sealUntil=clock+12;Area(sealAt,new Vector2(5,5),28,2.5f,true);FX(0,sealAt,5,12);}
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:56
+    value: 5
+  - key: WuxiangCombat.OnFrame.3
+    label: OnFrame / {sealUntil=clock+12;Area(sealAt,new Vector2(5,5),28,2.5f,true);FX(0,sealAt,5,12);}
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:56
+    value: 28
+  - key: WuxiangCombat.OnFrame.4
+    label: OnFrame / {sealUntil=clock+12;Area(sealAt,new Vector2(5,5),28,2.5f,true);FX(0,sealAt,5,12);}
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:56
+    value: 2.5
+  - key: WuxiangCombat.OnFrame.5
+    label: OnFrame / {Window(0,f,7,11,25,new Vector2(8,1.1f),new Vector2(4,.55f),true);if(Once(0,f>=7))FX(6,Position+new
+      Vector2(Face*4,
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:58
+    value: 25
+  - key: WuxiangCombat.OnFrame.6
+    label: OnFrame / {Window(0,f,7,11,25,new Vector2(8,1.1f),new Vector2(4,.55f),true);if(Once(0,f>=7))FX(6,Position+new
+      Vector2(Face*4,
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:58
+    value: 8
+  - key: WuxiangCombat.OnFrame.7
+    label: OnFrame / {Window(0,f,7,11,25,new Vector2(8,1.1f),new Vector2(4,.55f),true);if(Once(0,f>=7))FX(6,Position+new
+      Vector2(Face*4,
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:58
+    value: 1.1
+  - key: WuxiangCombat.OnFrame.8
+    label: OnFrame / {Window(0,f,7,11,25,new Vector2(8,1.1f),new Vector2(4,.55f),true);if(Once(0,f>=7))FX(6,Position+new
+      Vector2(Face*4,
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:58
+    value: 4
+  - key: WuxiangCombat.OnFrame.9
+    label: OnFrame / {Window(0,f,7,11,25,new Vector2(8,1.1f),new Vector2(4,.55f),true);if(Once(0,f>=7))FX(6,Position+new
+      Vector2(Face*4,
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:58
+    value: 0.55
+  - key: WuxiangCombat.OnFrame.10
+    label: OnFrame / {Window(0,f,7,11,25,new Vector2(8,1.1f),new Vector2(4,.55f),true);if(Once(0,f>=7))FX(6,Position+new
+      Vector2(Face*4,
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:58
+    value: 0.4
+  - key: WuxiangCombat.OnFrame.11
+    label: OnFrame / {Window(0,f,7,11,25,new Vector2(8,1.1f),new Vector2(4,.55f),true);if(Once(0,f>=7))FX(6,Position+new
+      Vector2(Face*4,
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:58
+    value: 0.7
+  - key: WuxiangCombat.SpawnMirror.1
+    label: SpawnMirror / var guard=mirror.Health;int guardLife=guard.LifeVersion;int
+      copy=lastOrdinary;FX(4,at+Vector2.up,2.5f,1);
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:66
+    value: 2.5
+  - key: WuxiangCombat.SpawnMirror.2
+    label: SpawnMirror / LaterAction(.8f,()=>
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:67
+    value: 0.8
+  - key: WuxiangCombat.SpawnMirror.3
+    label: SpawnMirror / if(copy==0){FX(0,targetAt,5,.8f);Area(targetAt,new Vector2(5,5),14,2.5f,true);}
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:71
+    value: 0.8
+  - key: WuxiangCombat.SpawnMirror.4
+    label: SpawnMirror / if(copy==0){FX(0,targetAt,5,.8f);Area(targetAt,new Vector2(5,5),14,2.5f,true);}
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:71
+    value: 5
+  - key: WuxiangCombat.SpawnMirror.5
+    label: SpawnMirror / if(copy==0){FX(0,targetAt,5,.8f);Area(targetAt,new Vector2(5,5),14,2.5f,true);}
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:71
+    value: 5
+  - key: WuxiangCombat.SpawnMirror.6
+    label: SpawnMirror / if(copy==0){FX(0,targetAt,5,.8f);Area(targetAt,new Vector2(5,5),14,2.5f,true);}
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:71
+    value: 14
+  - key: WuxiangCombat.SpawnMirror.7
+    label: SpawnMirror / if(copy==0){FX(0,targetAt,5,.8f);Area(targetAt,new Vector2(5,5),14,2.5f,true);}
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:71
+    value: 2.5
+  - key: WuxiangCombat.SpawnMirror.8
+    label: SpawnMirror / else if(copy==1)for(int j=-1;j<=1;j++)Later(.25f*(j+1),Ground(targetAt+Vector2.right*j*2.4f)+Vector2.up*.7f,new
+      Vec
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:72
+    value: 0.25
+  - key: WuxiangCombat.SpawnMirror.9
+    label: SpawnMirror / else if(copy==1)for(int j=-1;j<=1;j++)Later(.25f*(j+1),Ground(targetAt+Vector2.right*j*2.4f)+Vector2.up*.7f,new
+      Vec
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:72
+    value: 2.4
+  - key: WuxiangCombat.SpawnMirror.10
+    label: SpawnMirror / else if(copy==1)for(int j=-1;j<=1;j++)Later(.25f*(j+1),Ground(targetAt+Vector2.right*j*2.4f)+Vector2.up*.7f,new
+      Vec
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:72
+    value: 0.7
+  - key: WuxiangCombat.SpawnMirror.11
+    label: SpawnMirror / else if(copy==1)for(int j=-1;j<=1;j++)Later(.25f*(j+1),Ground(targetAt+Vector2.right*j*2.4f)+Vector2.up*.7f,new
+      Vec
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:72
+    value: 2
+  - key: WuxiangCombat.SpawnMirror.12
+    label: SpawnMirror / else if(copy==1)for(int j=-1;j<=1;j++)Later(.25f*(j+1),Ground(targetAt+Vector2.right*j*2.4f)+Vector2.up*.7f,new
+      Vec
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:72
+    value: 1.4
+  - key: WuxiangCombat.SpawnMirror.13
+    label: SpawnMirror / else if(copy==2){FX(6,at+new Vector2(Face*4,.4f),8,.7f);Area(at+new
+      Vector2(Face*4,.55f),new Vector2(8,1.1f),12.5f)
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:73
+    value: 0.4
+  - key: WuxiangCombat.SpawnMirror.14
+    label: SpawnMirror / else if(copy==2){FX(6,at+new Vector2(Face*4,.4f),8,.7f);Area(at+new
+      Vector2(Face*4,.55f),new Vector2(8,1.1f),12.5f)
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:73
+    value: 0.7
+  - key: WuxiangCombat.SpawnMirror.15
+    label: SpawnMirror / else if(copy==2){FX(6,at+new Vector2(Face*4,.4f),8,.7f);Area(at+new
+      Vector2(Face*4,.55f),new Vector2(8,1.1f),12.5f)
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:73
+    value: 0.55
+  - key: WuxiangCombat.SpawnMirror.16
+    label: SpawnMirror / else if(copy==2){FX(6,at+new Vector2(Face*4,.4f),8,.7f);Area(at+new
+      Vector2(Face*4,.55f),new Vector2(8,1.1f),12.5f)
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:73
+    value: 8
+  - key: WuxiangCombat.SpawnMirror.17
+    label: SpawnMirror / else if(copy==2){FX(6,at+new Vector2(Face*4,.4f),8,.7f);Area(at+new
+      Vector2(Face*4,.55f),new Vector2(8,1.1f),12.5f)
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:73
+    value: 1.1
+  - key: WuxiangCombat.SpawnMirror.18
+    label: SpawnMirror / else if(copy==2){FX(6,at+new Vector2(Face*4,.4f),8,.7f);Area(at+new
+      Vector2(Face*4,.55f),new Vector2(8,1.1f),12.5f)
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:73
+    value: 12.5
+  - key: WuxiangCombat.SpawnMirror.19
+    label: SpawnMirror / else for(int j=1;j<=12;j++)Later(j*.5f,at+Vector2.up,new
+      Vector2(5,5),6,0,2.5f,false,guard);
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:74
+    value: 0.5
+  - key: WuxiangCombat.SpawnMirror.20
+    label: SpawnMirror / else for(int j=1;j<=12;j++)Later(j*.5f,at+Vector2.up,new
+      Vector2(5,5),6,0,2.5f,false,guard);
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:74
+    value: 5
+  - key: WuxiangCombat.SpawnMirror.21
+    label: SpawnMirror / else for(int j=1;j<=12;j++)Later(j*.5f,at+Vector2.up,new
+      Vector2(5,5),6,0,2.5f,false,guard);
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:74
+    value: 5
+  - key: WuxiangCombat.SpawnMirror.22
+    label: SpawnMirror / else for(int j=1;j<=12;j++)Later(j*.5f,at+Vector2.up,new
+      Vector2(5,5),6,0,2.5f,false,guard);
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:74
+    value: 2.5
+  - key: WuxiangCombat.TickActor.1
+    label: TickActor / {hp.RemoveInvincibility(this);Area(new Vector2((arenaLeft+arenaRight)/2,move.FloorY+4),new
+      Vector2(arenaRight-arena
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:88
+    value: 12
+  - key: WuxiangCombat.TickActor.2
+    label: TickActor / {hp.RemoveInvincibility(this);Area(new Vector2((arenaLeft+arenaRight)/2,move.FloorY+4),new
+      Vector2(arenaRight-arena
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:88
+    value: 20
+  - key: WuxiangCombat.TickActor.3
+    label: TickActor / int ring=Mathf.FloorToInt((clock-phaseStart-.7f)/.45f);
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:92
+    value: 0.7
+  - key: WuxiangCombat.TickActor.4
+    label: TickActor / int ring=Mathf.FloorToInt((clock-phaseStart-.7f)/.45f);
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:92
+    value: 0.45
+  - key: WuxiangCombat.TickActor.5
+    label: TickActor / {float outer=2.2f+j*2.5f;Area(Position,new Vector2(outer*2,outer*2),40,outer,false,false,outer-1.1f);FinalRingHits+
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:94
+    value: 2.2
+  - key: WuxiangCombat.TickActor.6
+    label: TickActor / {float outer=2.2f+j*2.5f;Area(Position,new Vector2(outer*2,outer*2),40,outer,false,false,outer-1.1f);FinalRingHits+
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:94
+    value: 2.5
+  - key: WuxiangCombat.TickActor.7
+    label: TickActor / {float outer=2.2f+j*2.5f;Area(Position,new Vector2(outer*2,outer*2),40,outer,false,false,outer-1.1f);FinalRingHits+
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:94
+    value: 40
+  - key: WuxiangCombat.TickActor.8
+    label: TickActor / {float outer=2.2f+j*2.5f;Area(Position,new Vector2(outer*2,outer*2),40,outer,false,false,outer-1.1f);FinalRingHits+
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:94
+    value: 1.1
+  - key: WuxiangCombat.TickActor.9
+    label: TickActor / {float outer=2.2f+j*2.5f;Area(Position,new Vector2(outer*2,outer*2),40,outer,false,false,outer-1.1f);FinalRingHits+
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:94
+    value: 0.5
+  - key: WuxiangCombat.TickActor.10
+    label: TickActor / if(clock-phaseStart>=2.1f){phase=0;SpecialVersion++;}
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:95
+    value: 2.1
+  - key: WuxiangCombat.TickActor.11
+    label: TickActor / if(Skill==3)while(clock>=nextWheel&&clock-skillStart<=6.01f)
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:97
+    value: 6.01
+  - key: WuxiangCombat.TickActor.12
+    label: TickActor / {nextWheel+=.5f;Area(Position+Vector2.up,new Vector2(6,6),12,3,false,true);}
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:98
+    value: 0.5
+  - key: WuxiangCombat.TickActor.13
+    label: TickActor / {nextWheel+=.5f;Area(Position+Vector2.up,new Vector2(6,6),12,3,false,true);}
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:98
+    value: 6
+  - key: WuxiangCombat.TickActor.14
+    label: TickActor / {nextWheel+=.5f;Area(Position+Vector2.up,new Vector2(6,6),12,3,false,true);}
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:98
+    value: 6
+  - key: WuxiangCombat.TickActor.15
+    label: TickActor / {nextWheel+=.5f;Area(Position+Vector2.up,new Vector2(6,6),12,3,false,true);}
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:98
+    value: 12
+  - key: WuxiangCombat.StartPhase.1
+    label: StartPhase / else{FinalBursts++;FX(5,Position,14,2.1f,Color.yellow);}
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:106
+    value: 2.1
+  - key: WuxiangCombat.Wall.1
+    label: Wall / {var go=new GameObject(name){layer=6};var box=go.AddComponent<BoxCollider2D>();box.size=new
+      Vector2(.16f,10);return
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:115
+    value: 0.16
+  - key: WuxiangCombat.Wall.2
+    label: Wall / {var go=new GameObject(name){layer=6};var box=go.AddComponent<BoxCollider2D>();box.size=new
+      Vector2(.16f,10);return
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:115
+    value: 10
+  - key: WuxiangCombat.UpdateWalls.1
+    label: UpdateWalls / float inset=active?(arenaRight-arenaLeft)*.125f:0;
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:120
+    value: 0.125
+  - key: WuxiangCombat.UpdateWalls.2
+    label: UpdateWalls / leftWall.transform.position=new Vector2(EffectiveLeft,move.FloorY+4.5f);rightWall.transform.position=new
+      Vector2(Ef
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:124
+    value: 4.5
+  - key: WuxiangCombat.UpdateWalls.3
+    label: UpdateWalls / leftWall.transform.position=new Vector2(EffectiveLeft,move.FloorY+4.5f);rightWall.transform.position=new
+      Vector2(Ef
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:124
+    value: 4.5
+  - key: WuxiangCombat.UpdateWalls.4
+    label: UpdateWalls / var rb=p.GetComponent<Rigidbody2D>();var shape=p.GetComponent<BoxCollider2D>();float
+      half=shape.bounds.extents.x+.1
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:129
+    value: 0.12
+  - key: WuxiangCombat.UpdateWalls.5
+    label: UpdateWalls / if(clock>=wallFxUntil){wallFxUntil=clock+2;wallFxLeft=FX(2,leftWall.transform.position,1,2.1f);wallFxRight=FX(2,rig
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:135
+    value: 2.1
+  - key: WuxiangCombat.UpdateWalls.6
+    label: UpdateWalls / if(clock>=wallFxUntil){wallFxUntil=clock+2;wallFxLeft=FX(2,leftWall.transform.position,1,2.1f);wallFxRight=FX(2,rig
+    source: Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:135
+    value: 2.1
+  - key: WuxiangCombat.OnBegin.Parameter1
+    label: "OnBegin / \u4F24\u5BB3/\u5224\u5B9A\u53C2\u6570 22"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:48
+    value: 22
+  - key: WuxiangCombat.OnFrame.Parameter1
+    label: "OnFrame / \u4F24\u5BB3/\u5224\u5B9A\u53C2\u6570 9"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:55
+    value: 9
+  - key: WuxiangCombat.OnFrame.Parameter2
+    label: "OnFrame / \u5E27\u7D22\u5F15 7"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:58
+    value: 7
+  - key: WuxiangCombat.OnFrame.Parameter3
+    label: "OnFrame / \u5E27\u7D22\u5F15 11"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:58
+    value: 11
+  - key: WuxiangCombat.OnFrame.Parameter4
+    label: "OnFrame / \u4F24\u5BB3/\u5224\u5B9A\u53C2\u6570 7"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:58
+    value: 7
+  - key: WuxiangCombat.SpawnMirror.Parameter1
+    label: "SpawnMirror / \u4F24\u5BB3/\u5224\u5B9A\u53C2\u6570 11"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:72
+    value: 11
+  - key: WuxiangCombat.SpawnMirror.Parameter2
+    label: "SpawnMirror / \u4F24\u5BB3/\u5224\u5B9A\u53C2\u6570 6"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Boss/WuxiangDijun/WuxiangCombat.cs:74
+    value: 6
+  skills: []
+  relatedProfiles:
+  - {fileID: 11400000, guid: e4a635a7a3ce51f42853000821203254, type: 2}
+  - {fileID: 11400000, guid: c1b9d52b4900ec541b8b00a12496f2d9, type: 2}
+  - {fileID: 11400000, guid: 256d50ce4def67b438d2a6f471bd1927, type: 2}
+  - {fileID: 11400000, guid: 7c287a275d8d7f849a56150953767a49, type: 2}
+  - {fileID: 11400000, guid: ac93a06f8e001d84985f7ccb4d708206, type: 2}
+  - {fileID: 11400000, guid: 4824c8fc3111afa42bc78618e78605a2, type: 2}
+  - {fileID: 11400000, guid: b20ee31d776fb6144bb6a1617d997412, type: 2}

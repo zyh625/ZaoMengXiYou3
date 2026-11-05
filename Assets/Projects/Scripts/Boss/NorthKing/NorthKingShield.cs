@@ -12,6 +12,6 @@ public sealed class NorthKingShield : MonoBehaviour
         if(owner==null || !owner.isActiveAndEnabled || !owner.IsGuarding || !BattleRun.IsRunning){gameObject.SetActive(false);return;}
         Follow();if(owner.GuardTimerPaused)spriteManager.Pause();else spriteManager.Resume();
     }
-    private void Follow(){transform.position=owner.transform.position+new Vector3(owner.GuardFaceRight?1f:-1f,0.15f);}
+    private void Follow(){transform.position=owner.transform.position+new Vector3(owner.GuardFaceRight?1f:-1f,BalanceRuntime.Number(this, "NorthKingShield.Follow.1", 0.15f));}
     private void OnDisable(){spriteManager.Pause();owner=null;}
 }

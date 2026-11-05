@@ -1,0 +1,747 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ea7302a88f56248a1b33284c7df3cd, type: 3}
+  m_Name: RollingFurnace
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceProfile
+  displayName: RollingFurnace
+  description: "\u4FEE\u6539\u540E\u91CD\u65B0\u8FDB\u5165\u573A\u666F/\u8BAD\u7EC3\u76EE\u6807\u751F\u6548\uFF1B\u4E0D\u5199\u5165\u5B58\u6863\uFF0C\u4E0D\u4FEE\u6539\u4E34\u65F6\u72B6\u6001\u3002"
+  components:
+  - objectPath: 
+    componentType: ActorStatus
+    componentIndex: 0
+    parameters:
+    - path: frozenDuration
+      label: "frozenDuration \xB7 frozenDuration"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: meltFrameInterval
+      label: "meltFrameInterval \xB7 meltFrameInterval"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: frozenDamageMultiplier
+      label: "frozenDamageMultiplier \xB7 frozenDamageMultiplier"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: Health
+    componentIndex: 0
+    parameters:
+    - path: beginBlood
+      label: "\u57FA\u7840\u751F\u547D\u4E0A\u9650 \xB7 beginBlood"
+      value: 144
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: EnemyRewards
+    componentIndex: 0
+    parameters:
+    - path: experienceReward
+      label: "\u51FB\u6740\u7ECF\u9A8C \xB7 experienceReward"
+      value: 22
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: RollingFurnaceMovement
+    componentIndex: 0
+    parameters:
+    - path: moveSpeed
+      label: "\u79FB\u52A8\u901F\u5EA6 \xB7 moveSpeed"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: backSpeed
+      label: "\u53D7\u51FB\u540E\u9000\u901F\u5EA6 \xB7 backSpeed"
+      value: 3.5
+      integer: 0
+      boolean: 0
+    - path: upSpeed
+      label: "\u8DF3\u8DC3\u901F\u5EA6 \xB7 upSpeed"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: slowSpeed
+      label: "slowSpeed \xB7 slowSpeed"
+      value: 0.5
+      integer: 0
+      boolean: 0
+    - path: boostRatio
+      label: "boostRatio \xB7 boostRatio"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: minNormalY
+      label: "minNormalY \xB7 minNormalY"
+      value: 0.6000000238418579
+      integer: 0
+      boolean: 0
+    - path: rollSpeed
+      label: "rollSpeed \xB7 rollSpeed"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: jumpSpeed
+      label: "jumpSpeed \xB7 jumpSpeed"
+      value: 6
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: RollingFurnaceCombat
+    componentIndex: 0
+    parameters:
+    - path: 'attackDelay.Array.data[0]'
+      label: "\u653B\u51FB\u51B7\u5374/\u95F4\u9694 \xB7 attackDelay.Array.data[0]"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: 'attackDelay.Array.data[1]'
+      label: "\u653B\u51FB\u51B7\u5374/\u95F4\u9694 \xB7 attackDelay.Array.data[1]"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: 'attackDelay.Array.data[2]'
+      label: "\u653B\u51FB\u51B7\u5374/\u95F4\u9694 \xB7 attackDelay.Array.data[2]"
+      value: 8
+      integer: 0
+      boolean: 0
+    - path: 'AttackOpenIdx.Array.data[0]'
+      label: "\u5F00\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackOpenIdx.Array.data[0]"
+      value: 5
+      integer: 1
+      boolean: 0
+    - path: 'AttackOpenIdx.Array.data[1]'
+      label: "\u5F00\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackOpenIdx.Array.data[1]"
+      value: 1
+      integer: 1
+      boolean: 0
+    - path: 'AttackOpenIdx.Array.data[2]'
+      label: "\u5F00\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackOpenIdx.Array.data[2]"
+      value: 11
+      integer: 1
+      boolean: 0
+    - path: 'AttackShutIdx.Array.data[0]'
+      label: "\u5173\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackShutIdx.Array.data[0]"
+      value: 12
+      integer: 1
+      boolean: 0
+    - path: 'AttackShutIdx.Array.data[1]'
+      label: "\u5173\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackShutIdx.Array.data[1]"
+      value: 6
+      integer: 1
+      boolean: 0
+    - path: 'AttackShutIdx.Array.data[2]'
+      label: "\u5173\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackShutIdx.Array.data[2]"
+      value: 14
+      integer: 1
+      boolean: 0
+    - path: angryFull
+      label: "angryFull \xB7 angryFull"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: angryRatio
+      label: "angryRatio \xB7 angryRatio"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: deltaAngry
+      label: "deltaAngry \xB7 deltaAngry"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: angryDuration
+      label: "angryDuration \xB7 angryDuration"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: delayRatio
+      label: "delayRatio \xB7 delayRatio"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: rollCooldown
+      label: "rollCooldown \xB7 rollCooldown"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: slamCooldown
+      label: "slamCooldown \xB7 slamCooldown"
+      value: 8
+      integer: 0
+      boolean: 0
+    - path: ventCooldown
+      label: "ventCooldown \xB7 ventCooldown"
+      value: 12
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: RollingFurnaceController
+    componentIndex: 0
+    parameters:
+    - path: Idle.loop
+      label: "Idle \xB7 Idle.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Idle.fps
+      label: "Idle \xB7 Idle.fps"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: Walk.loop
+      label: "Walk \xB7 Walk.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Walk.fps
+      label: "Walk \xB7 Walk.fps"
+      value: 14
+      integer: 0
+      boolean: 0
+    - path: Die.loop
+      label: "Die \xB7 Die.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: Die.fps
+      label: "Die \xB7 Die.fps"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: stopDistance
+      label: "\u505C\u6B62\u9760\u8FD1\u8DDD\u79BB \xB7 stopDistance"
+      value: 2.5
+      integer: 0
+      boolean: 0
+    - path: specialAttack
+      label: "specialAttack \xB7 specialAttack"
+      value: -1
+      integer: 1
+      boolean: 0
+    - path: stunnedFrame
+      label: "stunnedFrame \xB7 stunnedFrame"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: RollCharge.loop
+      label: "RollCharge \xB7 RollCharge.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: RollCharge.fps
+      label: "RollCharge \xB7 RollCharge.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: BounceSlam.loop
+      label: "BounceSlam \xB7 BounceSlam.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: BounceSlam.fps
+      label: "BounceSlam \xB7 BounceSlam.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: ShellVent.loop
+      label: "ShellVent \xB7 ShellVent.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: ShellVent.fps
+      label: "ShellVent \xB7 ShellVent.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/RollContact
+    componentType: RollingFurnaceAttackBox
+    componentIndex: 0
+    parameters:
+    - path: Attack
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack"
+      value: 17
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: launch
+      label: "launch \xB7 launch"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: landingOnly
+      label: "landingOnly \xB7 landingOnly"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: landingRadius
+      label: "landingRadius \xB7 landingRadius"
+      value: 2.5
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/ReboundContact
+    componentType: RollingFurnaceAttackBox
+    componentIndex: 0
+    parameters:
+    - path: Attack
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack"
+      value: 9
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: launch
+      label: "launch \xB7 launch"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: landingOnly
+      label: "landingOnly \xB7 landingOnly"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: landingRadius
+      label: "landingRadius \xB7 landingRadius"
+      value: 2.5
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/LandingRadius
+    componentType: RollingFurnaceAttackBox
+    componentIndex: 0
+    parameters:
+    - path: Attack
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack"
+      value: 15
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: launch
+      label: "launch \xB7 launch"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: landingOnly
+      label: "landingOnly \xB7 landingOnly"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: landingRadius
+      label: "landingRadius \xB7 landingRadius"
+      value: 2.5
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: UnityEngine.Rigidbody2D
+    componentIndex: 0
+    parameters:
+    - path: m_Mass
+      label: "\u8D28\u91CF \xB7 m_Mass"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: m_GravityScale
+      label: "\u91CD\u529B\u500D\u7387 \xB7 m_GravityScale"
+      value: 0.8999999761581421
+      integer: 0
+      boolean: 0
+    - path: m_LinearDamping
+      label: "\u6C34\u5E73\u963B\u5C3C \xB7 m_LinearDamping"
+      value: 0
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.5
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 1.2000000476837158
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 0.6000000238418579
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/Attacked
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.649999976158142
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 1.2999999523162842
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 0.6499999761581421
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/RollContact
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.399999976158142
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 1.2000000476837158
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0.6000000238418579
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 0.10000000149011612
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/RollContactCheck
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 4
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/ReboundContact
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.2000000476837158
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0.4000000059604645
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 0.10000000149011612
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/ReboundContactCheck
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 4
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/LandingRadius
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 2.5999999046325684
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 1.399999976158142
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0.4000000059604645
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: -0.30000001192092896
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/LandingRadiusCheck
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 8
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 4
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: EnemyHealthBar
+    componentIndex: 0
+    parameters:
+    - path: seeDuration
+      label: "\u8840\u6761\u53D7\u4F24\u540E\u663E\u793A\u79D2\u6570"
+      value: 3.5
+      integer: 0
+      boolean: 0
+    - path: fadeDuration
+      label: "\u8840\u6761\u6DE1\u51FA\u79D2\u6570"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  numbers:
+  - key: RollingFurnaceCombat.VentReady.1
+    label: VentReady / public bool VentReady => accumulatedDamage >= 40f && Time.time
+      >= ventReadyAt;
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceCombat.cs:13
+    value: 40
+  - key: RollingFurnaceCombat.Land.1
+    label: Land / slamBox.gameObject.SetActive(false); shockwaves.Emit(position,
+      5f);
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceCombat.cs:39
+    value: 5
+  - key: RollingFurnaceCombat.BeginVent.1
+    label: BeginVent / health.SetDamageMultiplier(this, .2f); health.SetSuperArmor(this,
+      true); return true;
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceCombat.cs:46
+    value: 0.2
+  - key: RollingFurnaceCombat.AdvanceVent.1
+    label: AdvanceVent / if (now >= ventStartedAt + 3f) { EndVent(); return; }
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceCombat.cs:51
+    value: 3
+  - key: RollingFurnaceCombat.AdvanceVent.2
+    label: AdvanceVent / if (now >= ventStartedAt + 2f && Vent == VentPhase.Closed)
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceCombat.cs:52
+    value: 2
+  - key: RollingFurnaceCombat.AdvanceVent.3
+    label: AdvanceVent / Vent = VentPhase.Open; health.SetDamageMultiplier(this,
+      1.5f);
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceCombat.cs:54
+    value: 1.5
+  - key: RollingFurnaceController.ProcessSpecialState.1
+    label: ProcessSpecialState / if (distance >= 3f && distance <= 8f && BeginRoll(movement.DeltaX))
+      return true;
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceController.cs:61
+    value: 3
+  - key: RollingFurnaceController.ProcessSpecialState.2
+    label: ProcessSpecialState / if (distance >= 3f && distance <= 8f && BeginRoll(movement.DeltaX))
+      return true;
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceController.cs:61
+    value: 8
+  - key: RollingFurnaceController.ProcessSpecialState.3
+    label: ProcessSpecialState / if (distance >= 2f && distance <= 4f && BeginSlam())
+      return true;
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceController.cs:62
+    value: 2
+  - key: RollingFurnaceController.ProcessSpecialState.4
+    label: ProcessSpecialState / if (distance >= 2f && distance <= 4f && BeginSlam())
+      return true;
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceController.cs:62
+    value: 4
+  - key: RollingFurnaceController.ProcessSpecialState.5
+    label: ProcessSpecialState / if (distance < 2f)
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceController.cs:63
+    value: 2
+  - key: RollingFurnaceController.ProcessSpecialState.6
+    label: ProcessSpecialState / movement.HoldStill(); Pose(RollCharge, (int)(elapsed
+      * 16f));
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceController.cs:77
+    value: 16
+  - key: RollingFurnaceController.ProcessSpecialState.7
+    label: ProcessSpecialState / if (elapsed >= .5f) { movement.BeginRoll(direction);
+      combat.OpenRoll(false); Enter(FurnaceAction.Rolling); }
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceController.cs:78
+    value: 0.5
+  - key: RollingFurnaceController.ProcessSpecialState.8
+    label: ProcessSpecialState / Pose(RollCharge, 8 + (int)(elapsed * 24f) % 4);
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceController.cs:81
+    value: 24
+  - key: RollingFurnaceController.ProcessSpecialState.9
+    label: ProcessSpecialState / if (!rebound && movement.Remaining > .001f)
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceController.cs:91
+    value: 0.001
+  - key: RollingFurnaceController.ProcessSpecialState.10
+    label: ProcessSpecialState / Pose(RollCharge, 12 + (int)(elapsed * 16f)); if
+      (elapsed >= .25f) Finish(); break;
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceController.cs:100
+    value: 16
+  - key: RollingFurnaceController.ProcessSpecialState.11
+    label: ProcessSpecialState / Pose(RollCharge, 12 + (int)(elapsed * 16f)); if
+      (elapsed >= .25f) Finish(); break;
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceController.cs:100
+    value: 0.25
+  - key: RollingFurnaceController.ProcessSpecialState.12
+    label: ProcessSpecialState / movement.Stop(); Pose(BounceSlam, (int)(elapsed
+      * 16f));
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceController.cs:102
+    value: 16
+  - key: RollingFurnaceController.ProcessSpecialState.13
+    label: ProcessSpecialState / if (elapsed >= 5f / 16f) { movement.Jump(); Enter(FurnaceAction.SlamAir);
+      }
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceController.cs:103
+    value: 5
+  - key: RollingFurnaceController.ProcessSpecialState.14
+    label: ProcessSpecialState / if (elapsed >= 5f / 16f) { movement.Jump(); Enter(FurnaceAction.SlamAir);
+      }
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceController.cs:103
+    value: 16
+  - key: RollingFurnaceController.ProcessSpecialState.15
+    label: ProcessSpecialState / Pose(BounceSlam, Mathf.Min(10, 5 + (int)(elapsed
+      * 10f)));
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceController.cs:107
+    value: 10
+  - key: RollingFurnaceController.ProcessSpecialState.16
+    label: ProcessSpecialState / if (elapsed > .08f && !movement.IsOnGroundNow())
+      jumped = true;
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceController.cs:108
+    value: 0.08
+  - key: RollingFurnaceController.ProcessSpecialState.17
+    label: ProcessSpecialState / else if (elapsed > 5f) CancelAction();
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceController.cs:111
+    value: 5
+  - key: RollingFurnaceController.ProcessSpecialState.18
+    label: ProcessSpecialState / Pose(BounceSlam, 11 + (int)(elapsed * 16f)); if
+      (elapsed >= 5f / 16f) Finish(); break;
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceController.cs:114
+    value: 16
+  - key: RollingFurnaceController.ProcessSpecialState.19
+    label: ProcessSpecialState / Pose(BounceSlam, 11 + (int)(elapsed * 16f)); if
+      (elapsed >= 5f / 16f) Finish(); break;
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceController.cs:114
+    value: 5
+  - key: RollingFurnaceController.ProcessSpecialState.20
+    label: ProcessSpecialState / Pose(BounceSlam, 11 + (int)(elapsed * 16f)); if
+      (elapsed >= 5f / 16f) Finish(); break;
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceController.cs:114
+    value: 16
+  - key: RollingFurnaceController.ProcessSpecialState.21
+    label: 'ProcessSpecialState / Pose(ShellVent, combat.Vent == RollingFurnaceCombat.VentPhase.Closed
+      ? Mathf.Min(11, (int)(elapsed * 16f)) : Mathf.'
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceController.cs:117
+    value: 16
+  - key: RollingFurnaceController.ProcessSpecialState.22
+    label: 'ProcessSpecialState / Pose(ShellVent, combat.Vent == RollingFurnaceCombat.VentPhase.Closed
+      ? Mathf.Min(11, (int)(elapsed * 16f)) : Mathf.'
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceController.cs:117
+    value: 2
+  - key: RollingFurnaceController.ProcessSpecialState.23
+    label: 'ProcessSpecialState / Pose(ShellVent, combat.Vent == RollingFurnaceCombat.VentPhase.Closed
+      ? Mathf.Min(11, (int)(elapsed * 16f)) : Mathf.'
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceController.cs:117
+    value: 16
+  - key: RollingFurnaceMovement.ResetMotion.1
+    label: ResetMotion / body.gravityScale = .9f; body.linearVelocity = Vector2.zero;
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceMovement.cs:19
+    value: 0.9
+  - key: RollingFurnaceMovement.BeginRoll.1
+    label: BeginRoll / direction = sign; remaining = 8f; previousX = body.position.x;
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceMovement.cs:35
+    value: 8
+  - key: RollingFurnaceMovement.StepRoll.1
+    label: StepRoll / if (remaining <= .001f) { StopRoll(); return 2; }
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceMovement.cs:43
+    value: 0.001
+  - key: RollingFurnaceMovement.StepRoll.2
+    label: StepRoll / int count = shell.Cast(Vector2.right * direction, filter, wallHits,
+      step + .02f);
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceMovement.cs:53
+    value: 0.02
+  - key: RollingFurnaceMovement.StepRoll.3
+    label: StepRoll / bool wall = clearance <= step + .02f;
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceMovement.cs:54
+    value: 0.02
+  - key: RollingFurnaceMovement.StepRoll.4
+    label: StepRoll / if (wallHits[i].normal.x * direction < -.5f) wall = true;
+    source: Assets/Projects/Scripts/Enemy/RollingFurnace/RollingFurnaceMovement.cs:56
+    value: 0.5
+  skills: []
+  relatedProfiles:
+  - {fileID: 11400000, guid: 0b5a9d169eb808c448e57cdd8969fc12, type: 2}
+  - {fileID: 11400000, guid: c99d2a57e8d461145baeb9599dc1f0e3, type: 2}

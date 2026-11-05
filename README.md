@@ -146,6 +146,8 @@ output/                        本地验收日志、截图与独立 QA 工程（
 
 ## 存档与资源编辑
 
+角色、敌人和战斗参数现统一从 [BalanceCatalog.asset](Assets/Projects/Resources/Balance/BalanceCatalog.asset) 查找，分类放在 `Resources/Balance` 下。四角色和每种敌人/Boss 各有独立资产；技能蓝耗、冷却和费用已拆入各角色表。使用方法见 [数值资产调试指南](Docs/数值资产调试指南.md)，日常优先改这些资产。
+
 存档由 [SaveSystem.cs](Assets/Projects/Scripts/Save/SaveSystem.cs) 统一读写，默认位于 `Application.persistentDataPath` 下的 `save<槽位号>.json`。具体目录取决于运行平台及 Player Settings，不保存在工程的 `Assets` 下。旧存档缺少 `rebirth` 时按 0 处理，伙伴解锁根据已有进度和养成记录兼容补齐。
 
 既有 UI 保留可编辑的场景对象；新的地图轮回入口提供未放置的 [RebirthEntry.prefab](Assets/Projects/Prefabs/UI/RebirthEntry.prefab)，由场景作者拖入 Canvas，自行替换 Image 的 Sprite 和调整 RectTransform。可选确认面板及文字引用在 `RebirthEntry` 的 Inspector 中指定，不指定确认面板时点击按钮直接轮回。运行时不覆盖 Sprite 或布局。既有 UI 编辑位置如下：

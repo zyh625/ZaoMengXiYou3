@@ -43,7 +43,7 @@ public class PurpleHeavenlyCombat : EnemyCombat
         if (!consecutive) return;
 
         parryActive = parryArmed = true;
-        parryUntil = now + Mathf.Max(0.01f, parryDuration);
+        parryUntil = now + Mathf.Max(BalanceRuntime.Number(this, "PurpleHeavenlyCombat.OnDamageResolved.1", 0.01f), parryDuration);
         lastHitTime = float.NegativeInfinity;
         AttackEnd();
         AttackOver();//打断本次出招，不把主动弹反算成攻击落空

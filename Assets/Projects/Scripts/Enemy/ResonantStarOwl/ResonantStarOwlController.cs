@@ -25,8 +25,8 @@ public sealed class ResonantStarOwlController : EnemyController
         float dx = target.transform.position.x - transform.position.x;
         SM.ChangeSpriteFace(dx >= 0f);
         if (combat.ReadySkill >= 0) return false;
-        float direction = Mathf.Abs(dx) < 4f ? -Mathf.Sign(dx) : Mathf.Abs(dx) > 7f ? Mathf.Sign(dx) : 0f;
-        movement.Hover(direction, EH.Slow, Mathf.Abs(dx) < 3f);
+        float direction = Mathf.Abs(dx) < BalanceRuntime.Number(this, "ResonantStarOwlController.ProcessSpecialState.1", 4f) ? -Mathf.Sign(dx) : Mathf.Abs(dx) > BalanceRuntime.Number(this, "ResonantStarOwlController.ProcessSpecialState.2", 7f) ? Mathf.Sign(dx) : 0f;
+        movement.Hover(direction, EH.Slow, Mathf.Abs(dx) < BalanceRuntime.Number(this, "ResonantStarOwlController.ProcessSpecialState.3", 3f));
         SetState(direction == 0f ? EnemyState.Idle : EnemyState.Walk); return true;
     }
     protected override bool SkillReady => state != EnemyState.Skill && combat.ReadySkill >= 0

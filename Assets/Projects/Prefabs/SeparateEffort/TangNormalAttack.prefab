@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9049399506963221599}
   - component: {fileID: 5707886387498067627}
   - component: {fileID: 728102800001}
+  - component: {fileID: 3990470401936827007}
   m_Layer: 0
   m_Name: TangNormalAttack
   m_TagString: Untagged
@@ -145,45 +146,58 @@ MonoBehaviour:
     fps: 12
   flightBounds:
   - serializedVersion: 2
-    x: -1.685000
-    y: -0.795000
-    width: 3.370000
-    height: 1.580000
+    x: -1.685
+    y: -0.795
+    width: 3.37
+    height: 1.58
   - serializedVersion: 2
-    x: -1.665000
-    y: -0.835000
-    width: 3.370000
-    height: 1.600000
+    x: -1.665
+    y: -0.835
+    width: 3.37
+    height: 1.6
   - serializedVersion: 2
-    x: -1.665000
-    y: -0.825000
-    width: 3.380000
-    height: 1.610000
+    x: -1.665
+    y: -0.825
+    width: 3.38
+    height: 1.61
   - serializedVersion: 2
-    x: -1.615000
-    y: -0.785000
-    width: 3.370000
-    height: 1.560000
+    x: -1.615
+    y: -0.785
+    width: 3.37
+    height: 1.56
   - serializedVersion: 2
-    x: -1.685000
-    y: -0.705000
-    width: 3.400000
-    height: 1.610000
+    x: -1.685
+    y: -0.705
+    width: 3.4
+    height: 1.61
   - serializedVersion: 2
-    x: -1.635000
-    y: -0.725000
-    width: 3.410000
-    height: 1.690000
+    x: -1.635
+    y: -0.725
+    width: 3.41
+    height: 1.69
   - serializedVersion: 2
-    x: -1.635000
-    y: -0.695000
-    width: 3.420000
-    height: 1.690000
+    x: -1.635
+    y: -0.695
+    width: 3.42
+    height: 1.69
   - serializedVersion: 2
-    x: -1.835000
-    y: -0.665000
-    width: 3.620000
-    height: 1.660000
+    x: -1.835
+    y: -0.665
+    width: 3.62
+    height: 1.66
   damage: 10
   flySpeed: 10
   maxDistance: 12
+--- !u!114 &3990470401936827007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142501170392657805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 0b65ae1d7dda6894e9b16f261d6d3cf1, type: 2}

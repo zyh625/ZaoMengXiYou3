@@ -96,7 +96,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 40
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -148,12 +148,12 @@ TextureImporter:
       name: AttackTwo_0
       rect:
         serializedVersion: 2
-        x: 130
-        y: 1182
-        width: 93
-        height: 89
+        x: 132
+        y: 1184
+        width: 89
+        height: 85
       alignment: 9
-      pivot: {x: 0.58064516, y: 0.02247191}
+      pivot: {x: 0.584269661573, y: -1.17645814659e-10}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData:
       outline: []
@@ -170,12 +170,12 @@ TextureImporter:
       name: AttackTwo_1
       rect:
         serializedVersion: 2
-        x: 402
-        y: 1182
-        width: 103
-        height: 89
+        x: 404
+        y: 1184
+        width: 99
+        height: 85
       alignment: 9
-      pivot: {x: 0.36893204, y: 0.02247191}
+      pivot: {x: 0.363636364848, y: -1.17645814659e-10}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData:
       outline: []
@@ -192,12 +192,12 @@ TextureImporter:
       name: AttackTwo_2
       rect:
         serializedVersion: 2
-        x: 610
-        y: 1182
-        width: 125
-        height: 90
+        x: 612
+        y: 1184
+        width: 121
+        height: 86
       alignment: 9
-      pivot: {x: 0.68800000, y: 0.02222222}
+      pivot: {x: 0.694214876033, y: -2.32558059631e-09}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData:
       outline: []
@@ -214,12 +214,12 @@ TextureImporter:
       name: AttackTwo_3
       rect:
         serializedVersion: 2
-        x: 873
-        y: 1182
-        width: 145
-        height: 89
+        x: 875
+        y: 1184
+        width: 141
+        height: 85
       alignment: 9
-      pivot: {x: 0.54482759, y: 0.02247191}
+      pivot: {x: 0.546099294681, y: -1.17645814659e-10}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData:
       outline: []
@@ -236,12 +236,12 @@ TextureImporter:
       name: AttackTwo_4
       rect:
         serializedVersion: 2
-        x: 80
-        y: 798
-        width: 142
-        height: 90
+        x: 82
+        y: 800
+        width: 138
+        height: 86
       alignment: 9
-      pivot: {x: 0.73239437, y: 0.02222222}
+      pivot: {x: 0.739130438696, y: -2.32558191825e-09}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData:
       outline: []
@@ -258,12 +258,12 @@ TextureImporter:
       name: AttackTwo_5
       rect:
         serializedVersion: 2
-        x: 360
-        y: 798
-        width: 144
-        height: 89
+        x: 362
+        y: 800
+        width: 140
+        height: 85
       alignment: 9
-      pivot: {x: 0.55555556, y: 0.02247191}
+      pivot: {x: 0.557142861714, y: -1.17647152151e-10}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData:
       outline: []
@@ -280,12 +280,12 @@ TextureImporter:
       name: AttackTwo_6
       rect:
         serializedVersion: 2
-        x: 560
-        y: 798
-        width: 174
-        height: 90
+        x: 562
+        y: 800
+        width: 170
+        height: 86
       alignment: 9
-      pivot: {x: 0.78160920, y: 0.02222222}
+      pivot: {x: 0.788235298824, y: -2.32558191825e-09}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData:
       outline: []
@@ -302,12 +302,12 @@ TextureImporter:
       name: AttackTwo_7
       rect:
         serializedVersion: 2
-        x: 850
-        y: 798
-        width: 140
-        height: 89
+        x: 852
+        y: 800
+        width: 136
+        height: 85
       alignment: 9
-      pivot: {x: 0.72857143, y: 0.02247191}
+      pivot: {x: 0.735294119118, y: -1.17647152151e-10}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData:
       outline: []
@@ -324,12 +324,12 @@ TextureImporter:
       name: AttackTwo_8
       rect:
         serializedVersion: 2
-        x: 2
-        y: 414
-        width: 220
-        height: 90
+        x: 4
+        y: 416
+        width: 216
+        height: 86
       alignment: 9
-      pivot: {x: 0.82727273, y: 0.02222222}
+      pivot: {x: 0.833333336111, y: -2.32558125728e-09}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData:
       outline: []
@@ -346,12 +346,12 @@ TextureImporter:
       name: AttackTwo_9
       rect:
         serializedVersion: 2
-        x: 349
-        y: 414
-        width: 130
-        height: 89
+        x: 351
+        y: 416
+        width: 126
+        height: 85
       alignment: 9
-      pivot: {x: 0.70000000, y: 0.02247191}
+      pivot: {x: 0.706349206349, y: -1.17647152151e-10}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData:
       outline: []
@@ -368,12 +368,12 @@ TextureImporter:
       name: AttackTwo_10
       rect:
         serializedVersion: 2
-        x: 586
-        y: 414
-        width: 148
-        height: 90
+        x: 588
+        y: 416
+        width: 144
+        height: 86
       alignment: 9
-      pivot: {x: 0.74324324, y: 0.02222222}
+      pivot: {x: 0.749999996667, y: -2.32558125728e-09}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData:
       outline: []
@@ -390,12 +390,12 @@ TextureImporter:
       name: AttackTwo_11
       rect:
         serializedVersion: 2
-        x: 879
-        y: 414
-        width: 112
-        height: 89
+        x: 881
+        y: 416
+        width: 108
+        height: 85
       alignment: 9
-      pivot: {x: 0.65178571, y: 0.02247191}
+      pivot: {x: 0.657407402963, y: -1.17647152151e-10}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData:
       outline: []
@@ -412,12 +412,12 @@ TextureImporter:
       name: AttackTwo_12
       rect:
         serializedVersion: 2
-        x: 112
-        y: 30
-        width: 110
-        height: 90
+        x: 114
+        y: 32
+        width: 106
+        height: 86
       alignment: 9
-      pivot: {x: 0.65454545, y: 0.02222222}
+      pivot: {x: 0.660377353774, y: -2.32558138122e-09}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData:
       outline: []
@@ -434,12 +434,12 @@ TextureImporter:
       name: AttackTwo_13
       rect:
         serializedVersion: 2
-        x: 400
-        y: 30
-        width: 79
-        height: 89
+        x: 402
+        y: 32
+        width: 75
+        height: 85
       alignment: 9
-      pivot: {x: 0.50632911, y: 0.02247191}
+      pivot: {x: 0.506666662533, y: -1.17647068558e-10}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData:
       outline: []
@@ -456,12 +456,12 @@ TextureImporter:
       name: AttackTwo_14
       rect:
         serializedVersion: 2
-        x: 640
-        y: 30
-        width: 95
-        height: 90
+        x: 642
+        y: 32
+        width: 91
+        height: 86
       alignment: 9
-      pivot: {x: 0.58947368, y: 0.02222222}
+      pivot: {x: 0.593406589011, y: -2.32558138122e-09}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData:
       outline: []
@@ -478,12 +478,12 @@ TextureImporter:
       name: AttackTwo_15
       rect:
         serializedVersion: 2
-        x: 912
-        y: 30
-        width: 76
-        height: 89
+        x: 914
+        y: 32
+        width: 72
+        height: 85
       alignment: 9
-      pivot: {x: 0.52631579, y: 0.02247191}
+      pivot: {x: 0.527777778333, y: -1.17647068558e-10}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData:
       outline: []

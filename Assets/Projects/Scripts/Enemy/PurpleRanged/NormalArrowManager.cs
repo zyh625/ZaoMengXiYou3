@@ -68,7 +68,7 @@ public class NormalArrowManager : MonoBehaviour
             return;
         }
         Vector2 from = new(transform.position.x, flightY);
-        Vector2 to = from + (faceRight ? Vector2.right : Vector2.left) * (Mathf.Max(0.01f, flySpeed) * Time.fixedDeltaTime);
+        Vector2 to = from + (faceRight ? Vector2.right : Vector2.left) * (Mathf.Max(BalanceRuntime.Number(this, "NormalArrowManager.FixedUpdate.1", 0.01f), flySpeed) * Time.fixedDeltaTime);
         CheckPlayerHit(from, to);//扫过完整位移，快速箭也不会跳过较薄的玩家碰撞箱
         if (!gameObject.activeSelf) return;
         transform.position = new Vector3(to.x, flightY, transform.position.z);
@@ -83,9 +83,9 @@ public class NormalArrowManager : MonoBehaviour
         Collider2D body = player.GetComponent<Collider2D>();
         if (health == null || health.Dead || hitPlayers.Contains(health) || body == null || !body.enabled) return;
         Bounds image = sr.bounds;
-        Vector2 size = new(Mathf.Max(0.01f, image.size.x * hitWidthRatio), Mathf.Max(0.01f, image.size.y * hitHeightRatio));
+        Vector2 size = new(Mathf.Max(BalanceRuntime.Number(this, "NormalArrowManager.CheckPlayerHit.1", 0.01f), image.size.x * hitWidthRatio), Mathf.Max(BalanceRuntime.Number(this, "NormalArrowManager.CheckPlayerHit.2", 0.01f), image.size.y * hitHeightRatio));
         Vector2 headOffset = (Vector2)image.center - (Vector2)transform.position
-            + (faceRight ? Vector2.right : Vector2.left) * (image.size.x * (1f - hitWidthRatio) * 0.5f);
+            + (faceRight ? Vector2.right : Vector2.left) * (image.size.x * (1f - hitWidthRatio) * BalanceRuntime.Number(this, "NormalArrowManager.CheckPlayerHit.3", 0.5f));
         Bounds target = body.bounds;
         target.Expand(new Vector3(size.x, size.y, 1f));
         Vector2 delta = to - from;

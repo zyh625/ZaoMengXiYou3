@@ -42,6 +42,7 @@ public class PlayerData
 public class SaveData
 {
     public const int InitialGold = 10000;//只在新建存档时发放，读取旧档不会覆盖已有金币
+    public const int MaxRebirth = 81;
     public List<PlayerData> players = new();
     public int gameLevel = 1;//最高可进入的关卡
     public int rebirth = 0;//完成第9关后自愿再开一轮；旧JSON缺少此字段时为0。
@@ -74,7 +75,7 @@ public class SaveData
     public void Normalize()//读取旧JSON后补齐四角色和新增字段，不改动原本有效的等级、技能与金币
     {
         gameLevel = Math.Max(1, gameLevel);
-        rebirth = Math.Max(0, rebirth);
+        rebirth = Math.Clamp(rebirth, 0, MaxRebirth);
         gold = Math.Max(0, gold);
         name = name ?? string.Empty;
         date = date ?? string.Empty;

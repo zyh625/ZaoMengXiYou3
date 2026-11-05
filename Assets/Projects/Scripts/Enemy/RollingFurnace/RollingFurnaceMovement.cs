@@ -16,7 +16,7 @@ public sealed class RollingFurnaceMovement : EnemyMovement, IEnemyArenaBounds
     {
         if (body == null) body = GetComponent<Rigidbody2D>();
         rolling = gravityOwned = gravityRecoveryPending = false;
-        body.gravityScale = .9f; body.linearVelocity = Vector2.zero;
+        body.gravityScale = BalanceRuntime.Number(this, "RollingFurnaceMovement.ResetMotion.1", 0.9f); body.linearVelocity = Vector2.zero;
     }
     private void FixedUpdate()
     { if (rolling) { body.gravityScale = 0f; body.linearVelocity = rollVelocity; } }
@@ -32,7 +32,7 @@ public sealed class RollingFurnaceMovement : EnemyMovement, IEnemyArenaBounds
     public void WalkDirection(float sign, bool slow) => MoveAlong(sign, slow);
     public void BeginRoll(float sign)
     {
-        direction = sign; remaining = 8f; previousX = body.position.x;
+        direction = sign; remaining = BalanceRuntime.Number(this, "RollingFurnaceMovement.BeginRoll.1", 8f); previousX = body.position.x;
         savedRollGravity = body.gravityScale; gravityOwned = true; body.gravityScale = 0f; rolling = true;
         rollVelocity = Vector2.zero; body.linearVelocity = Vector2.zero;
     }
@@ -40,7 +40,7 @@ public sealed class RollingFurnaceMovement : EnemyMovement, IEnemyArenaBounds
     public int StepRoll()
     {
         remaining = Mathf.Max(0f, remaining - Mathf.Abs(body.position.x - previousX)); previousX = body.position.x;
-        if (remaining <= .001f) { StopRoll(); return 2; }
+        if (remaining <= BalanceRuntime.Number(this, "RollingFurnaceMovement.StepRoll.1", 0.001f)) { StopRoll(); return 2; }
         float step = Mathf.Min(rollSpeed * Time.fixedDeltaTime, remaining);
         Collider2D shell = BodyCollider;
         float left = float.NegativeInfinity, right = float.PositiveInfinity;
@@ -50,10 +50,10 @@ public sealed class RollingFurnaceMovement : EnemyMovement, IEnemyArenaBounds
         if (arenaSet) { left = Mathf.Max(left, arenaLeft); right = Mathf.Min(right, arenaRight); }
         float clearance = direction > 0f ? right - shell.bounds.max.x : shell.bounds.min.x - left;
         ContactFilter2D filter = new(); filter.SetLayerMask(1 << 6); filter.useTriggers = false;
-        int count = shell.Cast(Vector2.right * direction, filter, wallHits, step + .02f);
-        bool wall = clearance <= step + .02f;
+        int count = shell.Cast(Vector2.right * direction, filter, wallHits, step + BalanceRuntime.Number(this, "RollingFurnaceMovement.StepRoll.2", 0.02f));
+        bool wall = clearance <= step + BalanceRuntime.Number(this, "RollingFurnaceMovement.StepRoll.3", 0.02f);
         for (int i = 0; i < count; i++)
-            if (wallHits[i].normal.x * direction < -.5f) wall = true; // Ground contact is never a wall.
+            if (wallHits[i].normal.x * direction < -BalanceRuntime.Number(this, "RollingFurnaceMovement.StepRoll.4", 0.5f)) wall = true; // Ground contact is never a wall.
         if (wall) { body.linearVelocity = Vector2.zero; rolling = false; return 1; }
         body.gravityScale = 0f; rollVelocity = new Vector2(direction * step / Time.fixedDeltaTime, 0f);
         body.linearVelocity = rollVelocity; return 0;

@@ -43,7 +43,7 @@ public abstract class SouthKingEffect : MonoBehaviour
         Tick(Mathf.Max(0f, Time.time - beganAt));
     }
     protected int Count => frames != null && frames.sprites != null ? frames.sprites.Length : 0;
-    protected float Fps => frames != null ? Mathf.Max(1f, frames.fps) : 12f;
+    protected float Fps => frames != null ? Mathf.Max(1f, frames.fps) : BalanceRuntime.Number(this, "SouthKingEffect.Fps.1", 12f);
     protected void Show(int frame)
     {
         if (sr != null && Count > 0) sr.sprite = frames.sprites[Mathf.Clamp(frame, 0, Count - 1)];
@@ -60,7 +60,7 @@ public abstract class SouthKingEffect : MonoBehaviour
     }
     public static float GroundAt(Vector2 position)
     {
-        RaycastHit2D ground = Physics2D.Raycast(position + Vector2.up * 25f, Vector2.down, 100f, 1 << LayerMask.NameToLayer("Ground"));
+        RaycastHit2D ground = Physics2D.Raycast(position + Vector2.up * BalanceRuntime.Number(typeof(SouthKingEffect), "SouthKingEffect.GroundAt.1", 25f), Vector2.down, BalanceRuntime.Number(typeof(SouthKingEffect), "SouthKingEffect.GroundAt.2", 100f), 1 << LayerMask.NameToLayer("Ground"));
         return ground.collider != null ? ground.point.y : position.y;//独立测试缺少地板时保持调用者给定高度。
     }
     public void StopEffect()

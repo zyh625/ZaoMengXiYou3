@@ -1,0 +1,699 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ea7302a88f56248a1b33284c7df3cd, type: 3}
+  m_Name: GreenHammer
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceProfile
+  displayName: "\u9752\u7389\u9524\u5352 / GreenHammer"
+  description: "\u4FEE\u6539\u540E\u91CD\u65B0\u8FDB\u5165\u573A\u666F/\u8BAD\u7EC3\u76EE\u6807\u751F\u6548\uFF1B\u4E0D\u5199\u5165\u5B58\u6863\uFF0C\u4E0D\u4FEE\u6539\u4E34\u65F6\u72B6\u6001\u3002"
+  components:
+  - objectPath: 
+    componentType: ActorStatus
+    componentIndex: 0
+    parameters:
+    - path: frozenDuration
+      label: "frozenDuration \xB7 frozenDuration"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: meltFrameInterval
+      label: "meltFrameInterval \xB7 meltFrameInterval"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: frozenDamageMultiplier
+      label: "frozenDamageMultiplier \xB7 frozenDamageMultiplier"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: Health
+    componentIndex: 0
+    parameters:
+    - path: beginBlood
+      label: "\u57FA\u7840\u751F\u547D\u4E0A\u9650 \xB7 beginBlood"
+      value: 150
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: EnemyRewards
+    componentIndex: 0
+    parameters:
+    - path: experienceReward
+      label: "\u51FB\u6740\u7ECF\u9A8C \xB7 experienceReward"
+      value: 20
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: GreenHammerMovement
+    componentIndex: 0
+    parameters:
+    - path: moveSpeed
+      label: "\u79FB\u52A8\u901F\u5EA6 \xB7 moveSpeed"
+      value: 0.800000011920929
+      integer: 0
+      boolean: 0
+    - path: backSpeed
+      label: "\u53D7\u51FB\u540E\u9000\u901F\u5EA6 \xB7 backSpeed"
+      value: 3.5
+      integer: 0
+      boolean: 0
+    - path: upSpeed
+      label: "\u8DF3\u8DC3\u901F\u5EA6 \xB7 upSpeed"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: slowSpeed
+      label: "slowSpeed \xB7 slowSpeed"
+      value: 0.4000000059604645
+      integer: 0
+      boolean: 0
+    - path: boostRatio
+      label: "boostRatio \xB7 boostRatio"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: minNormalY
+      label: "minNormalY \xB7 minNormalY"
+      value: 0.6000000238418579
+      integer: 0
+      boolean: 0
+    - path: leapUpSpeed
+      label: "leapUpSpeed \xB7 leapUpSpeed"
+      value: 5
+      integer: 0
+      boolean: 0
+    - path: leapAcceleration
+      label: "leapAcceleration \xB7 leapAcceleration"
+      value: 28
+      integer: 0
+      boolean: 0
+    - path: maxLeapAdvance
+      label: "maxLeapAdvance \xB7 maxLeapAdvance"
+      value: 3
+      integer: 0
+      boolean: 0
+    - path: spawnGravity
+      label: "spawnGravity \xB7 spawnGravity"
+      value: 0.8999999761581421
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: GreenHammerCombat
+    componentIndex: 0
+    parameters:
+    - path: 'attackDelay.Array.data[0]'
+      label: "\u653B\u51FB\u51B7\u5374/\u95F4\u9694 \xB7 attackDelay.Array.data[0]"
+      value: 4
+      integer: 0
+      boolean: 0
+    - path: 'attackDelay.Array.data[1]'
+      label: "\u653B\u51FB\u51B7\u5374/\u95F4\u9694 \xB7 attackDelay.Array.data[1]"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: 'attackDelay.Array.data[2]'
+      label: "\u653B\u51FB\u51B7\u5374/\u95F4\u9694 \xB7 attackDelay.Array.data[2]"
+      value: 9
+      integer: 0
+      boolean: 0
+    - path: 'AttackOpenIdx.Array.data[0]'
+      label: "\u5F00\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackOpenIdx.Array.data[0]"
+      value: 5
+      integer: 1
+      boolean: 0
+    - path: 'AttackOpenIdx.Array.data[1]'
+      label: "\u5F00\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackOpenIdx.Array.data[1]"
+      value: 9
+      integer: 1
+      boolean: 0
+    - path: 'AttackOpenIdx.Array.data[2]'
+      label: "\u5F00\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackOpenIdx.Array.data[2]"
+      value: 9
+      integer: 1
+      boolean: 0
+    - path: 'AttackShutIdx.Array.data[0]'
+      label: "\u5173\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackShutIdx.Array.data[0]"
+      value: 9
+      integer: 1
+      boolean: 0
+    - path: 'AttackShutIdx.Array.data[1]'
+      label: "\u5173\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackShutIdx.Array.data[1]"
+      value: 12
+      integer: 1
+      boolean: 0
+    - path: 'AttackShutIdx.Array.data[2]'
+      label: "\u5173\u7BB1\u5E27\u7D22\u5F15 \xB7 AttackShutIdx.Array.data[2]"
+      value: 14
+      integer: 1
+      boolean: 0
+    - path: angryFull
+      label: "angryFull \xB7 angryFull"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: angryRatio
+      label: "angryRatio \xB7 angryRatio"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: deltaAngry
+      label: "deltaAngry \xB7 deltaAngry"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: angryDuration
+      label: "angryDuration \xB7 angryDuration"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: delayRatio
+      label: "delayRatio \xB7 delayRatio"
+      value: 0
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: GreenHammerController
+    componentIndex: 0
+    parameters:
+    - path: Idle.loop
+      label: "Idle \xB7 Idle.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Idle.fps
+      label: "Idle \xB7 Idle.fps"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: Walk.loop
+      label: "Walk \xB7 Walk.loop"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: Walk.fps
+      label: "Walk \xB7 Walk.fps"
+      value: 14
+      integer: 0
+      boolean: 0
+    - path: Die.loop
+      label: "Die \xB7 Die.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: Die.fps
+      label: "Die \xB7 Die.fps"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: stopDistance
+      label: "\u505C\u6B62\u9760\u8FD1\u8DDD\u79BB \xB7 stopDistance"
+      value: 3.200000047683716
+      integer: 0
+      boolean: 0
+    - path: specialAttack
+      label: "specialAttack \xB7 specialAttack"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: stunnedFrame
+      label: "stunnedFrame \xB7 stunnedFrame"
+      value: 0
+      integer: 1
+      boolean: 0
+    - path: HammerSweep.loop
+      label: "HammerSweep \xB7 HammerSweep.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: HammerSweep.fps
+      label: "HammerSweep \xB7 HammerSweep.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: LeapSlam.loop
+      label: "LeapSlam \xB7 LeapSlam.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: LeapSlam.fps
+      label: "LeapSlam \xB7 LeapSlam.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: GroundPound.loop
+      label: "GroundPound \xB7 GroundPound.loop"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: GroundPound.fps
+      label: "GroundPound \xB7 GroundPound.fps"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: recoveryDuration
+      label: "recoveryDuration \xB7 recoveryDuration"
+      value: 1.399999976158142
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/HammerSweep
+    componentType: GreenHammerAttackBox
+    componentIndex: 0
+    parameters:
+    - path: Attack
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack"
+      value: 19
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 1
+      integer: 0
+      boolean: 1
+    - path: launch
+      label: "launch \xB7 launch"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: instantOnly
+      label: "instantOnly \xB7 instantOnly"
+      value: 0
+      integer: 0
+      boolean: 1
+  - objectPath: Combat/LeapSlam
+    componentType: GreenHammerAttackBox
+    componentIndex: 0
+    parameters:
+    - path: Attack
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack"
+      value: 26
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: launch
+      label: "launch \xB7 launch"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: instantOnly
+      label: "instantOnly \xB7 instantOnly"
+      value: 1
+      integer: 0
+      boolean: 1
+  - objectPath: Combat/GroundPound
+    componentType: GreenHammerAttackBox
+    componentIndex: 0
+    parameters:
+    - path: Attack
+      label: "\u57FA\u7840\u4F24\u5BB3 \xB7 Attack"
+      value: 18
+      integer: 0
+      boolean: 0
+    - path: knockback
+      label: "knockback \xB7 knockback"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: launch
+      label: "launch \xB7 launch"
+      value: 0
+      integer: 0
+      boolean: 1
+    - path: instantOnly
+      label: "instantOnly \xB7 instantOnly"
+      value: 1
+      integer: 0
+      boolean: 1
+  - objectPath: 
+    componentType: UnityEngine.Rigidbody2D
+    componentIndex: 0
+    parameters:
+    - path: m_Mass
+      label: "\u8D28\u91CF \xB7 m_Mass"
+      value: 1
+      integer: 0
+      boolean: 0
+    - path: m_GravityScale
+      label: "\u91CD\u529B\u500D\u7387 \xB7 m_GravityScale"
+      value: 0.8999999761581421
+      integer: 0
+      boolean: 0
+    - path: m_LinearDamping
+      label: "\u6C34\u5E73\u963B\u5C3C \xB7 m_LinearDamping"
+      value: 0
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.0499999523162842
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 2.049999952316284
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1.024999976158142
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/Attacked
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 1.25
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 2.200000047683716
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1.100000023841858
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/HammerSweep
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 4.5
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 2.200000047683716
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 2.7750000953674316
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1.100000023841858
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/HammerSweepCheck
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 4
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1.2000000476837158
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/LeapSlam
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 6
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 0
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/LeapSlamCheck
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 12
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 4
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1.2000000476837158
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/GroundPound
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 0.8999999761581421
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 2
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 0.44999998807907104
+      integer: 0
+      boolean: 0
+  - objectPath: Combat/GroundPoundCheck
+    componentType: UnityEngine.BoxCollider2D
+    componentIndex: 0
+    parameters:
+    - path: m_Size.x
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
+      value: 16
+      integer: 0
+      boolean: 0
+    - path: m_Size.y
+      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
+      value: 4
+      integer: 0
+      boolean: 0
+    - path: m_Offset.x
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
+      value: 0
+      integer: 0
+      boolean: 0
+    - path: m_Offset.y
+      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
+      value: 1.2000000476837158
+      integer: 0
+      boolean: 0
+  - objectPath: 
+    componentType: EnemyHealthBar
+    componentIndex: 0
+    parameters:
+    - path: seeDuration
+      label: "\u8840\u6761\u53D7\u4F24\u540E\u663E\u793A\u79D2\u6570"
+      value: 3.5
+      integer: 0
+      boolean: 0
+    - path: fadeDuration
+      label: "\u8840\u6761\u6DE1\u51FA\u79D2\u6570"
+      value: 1.5
+      integer: 0
+      boolean: 0
+  numbers:
+  - key: GreenHammerAttackBox.TryAttack.1
+    label: TryAttack / if((hit.ClosestPoint(center)-center).sqrMagnitude>9f)return;
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerAttackBox.cs:32
+    value: 9
+  - key: GreenHammerCombat.EligibleMask.1
+    label: EligibleMask / if(distance>=2.5f && distance<=6f && (readyMask&1)!=0)eligible|=1;
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerCombat.cs:24
+    value: 2.5
+  - key: GreenHammerCombat.EligibleMask.2
+    label: EligibleMask / if(distance>=2.5f && distance<=6f && (readyMask&1)!=0)eligible|=1;
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerCombat.cs:24
+    value: 6
+  - key: GreenHammerCombat.EligibleMask.3
+    label: EligibleMask / if(distance<=6f && (readyMask&2)!=0)eligible|=2;
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerCombat.cs:25
+    value: 6
+  - key: GreenHammerCombat.EligibleMask.4
+    label: EligibleMask / if(distance>=3f && distance<=8f && (readyMask&4)!=0)eligible|=4;
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerCombat.cs:26
+    value: 3
+  - key: GreenHammerCombat.EligibleMask.5
+    label: EligibleMask / if(distance>=3f && distance<=8f && (readyMask&4)!=0)eligible|=4;
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerCombat.cs:26
+    value: 8
+  - key: GreenHammerCombat.SelectRequest.1
+    label: SelectRequest / else if(mask==6)chosen=Random.value<0.5f?1:2;
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerCombat.cs:37
+    value: 0.5
+  - key: GreenHammerCombat.GroundPoint.1
+    label: GroundPoint / RaycastHit2D floor=Physics2D.Raycast(new Vector2(x,y+0.8f),Vector2.down,2f,1<<6);
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerCombat.cs:45
+    value: 0.8
+  - key: GreenHammerCombat.GroundPoint.2
+    label: GroundPoint / RaycastHit2D floor=Physics2D.Raycast(new Vector2(x,y+0.8f),Vector2.down,2f,1<<6);
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerCombat.cs:45
+    value: 2
+  - key: GreenHammerCombat.SampleFrame.1
+    label: SampleFrame / if(Attack==1)shockwave.Emit(this,GroundPoint(transform.position.x),6f,false,DamageMultiplier);
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerCombat.cs:58
+    value: 6
+  - key: GreenHammerCombat.SampleFrame.2
+    label: SampleFrame / SegmentsEmitted=1;segmentTimes[0]=Time.time;pending=2;nextSegment=Time.time+0.15f;
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerCombat.cs:62
+    value: 0.15
+  - key: GreenHammerCombat.SampleFrame.3
+    label: SampleFrame / shockwave.Emit(this,GroundPoint(groundOrigin.x+(groundRight?2f:-2f)),2f,false,segmentScale);
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerCombat.cs:63
+    value: 2
+  - key: GreenHammerCombat.SampleFrame.4
+    label: SampleFrame / shockwave.Emit(this,GroundPoint(groundOrigin.x+(groundRight?2f:-2f)),2f,false,segmentScale);
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerCombat.cs:63
+    value: 2
+  - key: GreenHammerCombat.SampleFrame.5
+    label: SampleFrame / shockwave.Emit(this,GroundPoint(groundOrigin.x+(groundRight?2f:-2f)),2f,false,segmentScale);
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerCombat.cs:63
+    value: 2
+  - key: GreenHammerCombat.SampleFrame.6
+    label: SampleFrame / int segment=3-pending;pending--;nextSegment=Time.time+0.15f;
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerCombat.cs:68
+    value: 0.15
+  - key: GreenHammerCombat.SampleFrame.7
+    label: SampleFrame / Vector2 position=GroundPoint(groundOrigin.x+(groundRight?1f:-1f)*2f*(segment+1));
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerCombat.cs:70
+    value: 2
+  - key: GreenHammerCombat.SampleFrame.8
+    label: SampleFrame / shockwave.Emit(this,position,2f,true,segmentScale);
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerCombat.cs:71
+    value: 2
+  - key: GreenHammerMovement.BeginLeap.1
+    label: BeginLeap / float duration=2f*leapUpSpeed/leapAcceleration;
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerMovement.cs:23
+    value: 2
+  - key: GreenHammerMovement.BeginLeap.2
+    label: BeginLeap / float advance=Mathf.Clamp(Mathf.Abs(delta)-1.6f,0f,maxLeapAdvance);
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerMovement.cs:25
+    value: 1.6
+  - key: GreenHammerMovement.BeginLeap.3
+    label: BeginLeap / int count=BodyCollider.Cast(Vector2.right*direction,filter,casts,advance+0.025f);
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerMovement.cs:28
+    value: 0.025
+  - key: GreenHammerMovement.BeginLeap.4
+    label: BeginLeap / for(int i=0;i<count;i++)if(Vector2.Dot(casts[i].normal,Vector2.right*direction)<-0.1f)advance=Mathf.Min(advance,Mat
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerMovement.cs:29
+    value: 0.1
+  - key: GreenHammerMovement.BeginLeap.5
+    label: BeginLeap / for(int i=0;i<count;i++)if(Vector2.Dot(casts[i].normal,Vector2.right*direction)<-0.1f)advance=Mathf.Min(advance,Mat
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerMovement.cs:29
+    value: 0.025
+  - key: GreenHammerMovement.BeginLeap.6
+    label: BeginLeap / RaycastHit2D ground=Physics2D.Raycast(new Vector2(bounds.center.x+direction*advance,bounds.min.y+1f),Vector2.down,2
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerMovement.cs:30
+    value: 2
+  - key: GreenHammerMovement.BeginLeap.7
+    label: BeginLeap / if(ground.collider==null || ground.normal.y<0.6f)advance=0f;
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerMovement.cs:31
+    value: 0.6
+  - key: GreenHammerMovement.StepLeap.1
+    label: StepLeap / if(Time.time-leapAt>1.2f){LeapTimedOut=true;CancelLeap();return;}
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerMovement.cs:38
+    value: 1.2
+  - key: GreenHammerMovement.StepLeap.2
+    label: StepLeap / if(Mathf.Abs(velocity.x)>0.01f)
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerMovement.cs:40
+    value: 0.01
+  - key: GreenHammerMovement.StepLeap.3
+    label: StepLeap / int count=BodyCollider.Cast(direction,filter,casts,Mathf.Abs(velocity.x)*Time.fixedDeltaTime+0.025f);
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerMovement.cs:44
+    value: 0.025
+  - key: GreenHammerMovement.StepLeap.4
+    label: StepLeap / for(int i=0;i<count;i++)if(Vector2.Dot(casts[i].normal,direction)<-0.1f){velocity.x=0f;break;}
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerMovement.cs:45
+    value: 0.1
+  - key: GreenHammerMovement.StepLeap.5
+    label: StepLeap / RaycastHit2D floor=Physics2D.Raycast(new Vector2(bounds.center.x,bounds.min.y+0.04f),Vector2.down,-velocity.y*Time.
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerMovement.cs:50
+    value: 0.04
+  - key: GreenHammerMovement.StepLeap.6
+    label: StepLeap / RaycastHit2D floor=Physics2D.Raycast(new Vector2(bounds.center.x,bounds.min.y+0.04f),Vector2.down,-velocity.y*Time.
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerMovement.cs:50
+    value: 0.08
+  - key: GreenHammerMovement.StepLeap.7
+    label: StepLeap / if(floor.collider!=null && floor.normal.y>=0.6f)
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerMovement.cs:51
+    value: 0.6
+  - key: GreenHammerMovement.StepLeap.8
+    label: StepLeap / Vector2 position=body.position;position.y+=floor.point.y-bounds.min.y+0.015f;
+    source: Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerMovement.cs:53
+    value: 0.015
+  - key: GreenHammerCombat.SampleFrame.Parameter1
+    label: "SampleFrame / \u4F24\u5BB3/\u5224\u5B9A\u53C2\u6570 4"
+    source: D:/Unity/Project/ZaoMengXiYou3/Assets/Projects/Scripts/Enemy/GreenHammer/GreenHammerCombat.cs:52
+    value: 4
+  skills: []
+  relatedProfiles:
+  - {fileID: 11400000, guid: 36dd23a55d9e7874fb611fa4bf9ab2c5, type: 2}

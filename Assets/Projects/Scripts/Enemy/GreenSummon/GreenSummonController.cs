@@ -22,14 +22,14 @@ public sealed class GreenSummonController : EnemyController
             SM.ChangeSpriteFace(delta>0f);SetState(movement.IsRetreating?EnemyState.Walk:EnemyState.Idle);return true;
         }
         movement.CheckIsGround();if(!movement.IsGround)return false;
-        if(Mathf.Abs(delta)<3f && movement.TryRetreat(delta))
+        if(Mathf.Abs(delta)<BalanceRuntime.Number(this, "GreenSummonController.ProcessSpecialState.1", 3f) && movement.TryRetreat(delta))
         {combat.CancelCast();SM.ChangeSpriteFace(delta>0f);SetState(EnemyState.Walk);return true;}
         if(state==EnemyState.Skill)return false;
         SM.ChangeSpriteFace(delta>0f);
-        if(Mathf.Abs(delta) is >=4f and <=7f)
+        if((Mathf.Abs(delta) >= BalanceRuntime.Number(this, "GreenSummonController.ProcessSpecialState.Range1.Minimum", 4f) && Mathf.Abs(delta) <= BalanceRuntime.Number(this, "GreenSummonController.ProcessSpecialState.Range1.Maximum", 7f)))
         {if(combat.ReadySkill>=0)return false;movement.Stop();SetState(EnemyState.Idle);return true;}
         if(EH.Status!=null && EH.Status.BlocksMovement){movement.Stop();SetState(EnemyState.Idle);return true;}
-        SetState(EnemyState.Walk);movement.MoveInRange(delta,Mathf.Abs(delta)<4f,EH.Slow);return true;
+        SetState(EnemyState.Walk);movement.MoveInRange(delta,Mathf.Abs(delta)<BalanceRuntime.Number(this, "GreenSummonController.ProcessSpecialState.2", 4f),EH.Slow);return true;
     }
     protected override bool SkillReady=>state!=EnemyState.Skill && combat!=null && combat.ReadySkill>=0 && combat.InRange
         && !movement.IsRetreating && !EH.Attacked && (state!=EnemyState.Attacked || SM.IsFinished);

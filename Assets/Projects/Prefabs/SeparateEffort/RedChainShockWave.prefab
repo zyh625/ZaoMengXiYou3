@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5731676861326647833}
   - component: {fileID: 3243534621743306006}
   - component: {fileID: 2747658108406839562}
+  - component: {fileID: 7504278060723750548}
   m_Layer: 0
   m_Name: RedChainShockWave
   m_TagString: Untagged
@@ -140,3 +141,16 @@ MonoBehaviour:
     fps: 16
   spriteManager: {fileID: 3243534621743306006}
   lifetime: 1.5
+--- !u!114 &7504278060723750548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5876949318031455135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 6e31f79ac2758c446814cea412bf4f6d, type: 2}

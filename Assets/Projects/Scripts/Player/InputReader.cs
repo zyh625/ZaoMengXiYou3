@@ -13,8 +13,7 @@ public class InputReader : MonoBehaviour
     public event Action<InputAction.CallbackContext> MovePressed;
     public event Action JumpPressed, AttackPressed, BoostPressed;
     public event Action <int>SkillOnePressed, SkillTwoPressed, SkillThreePressed;
-    public event Action SwitchPriPressed;//切换上一个角色
-    public event Action SwitchNextPressed;//切换下一个角色
+    public event Action<int> SwitchSlotPressed;
     public event Action InteractPressed;//W，从出口出去
     public event Action QuickDownPressed;//S,从空中快速下降
     public event Action QuickDownReleased;//S松开，供需要持续按住的组合技结束使用
@@ -23,7 +22,7 @@ public class InputReader : MonoBehaviour
     private InputAction moveButton, jumpButton;
     private InputAction attackButton, boostButton;
     private InputAction skillOneButton, skillTwoButton, skillThreeButton;
-    private InputAction switchPriButton, switchNextButton;
+    private readonly InputAction[] switchSlots = new InputAction[4];
     private InputAction interactButton, quickDownButton;
     private ActorStatus status;//冻结时舍弃操作事件，不在恢复后补放之前按过的攻击和技能
     private ActorStun stun;//普通眩晕同样挡住动作输入，空格无双仍保留单独驱散入口
@@ -55,8 +54,8 @@ public class InputReader : MonoBehaviour
         skillOneButton = playerMap.FindAction("SkillOne", true);
         skillTwoButton = playerMap.FindAction("SkillTwo", true);
         skillThreeButton = playerMap.FindAction("SkillThree", true);
-        switchPriButton = playerMap.FindAction("SwitchPri", true);
-        switchNextButton = playerMap.FindAction("SwitchNext", true);
+        for (int i = 0; i < switchSlots.Length; i++)
+            switchSlots[i] = playerMap.FindAction($"SwitchSlot{i + 1}", true);
         interactButton = playerMap.FindAction("Interact", true);
         quickDownButton = playerMap.FindAction("QuickDown", true);
     }
@@ -151,20 +150,16 @@ public class InputReader : MonoBehaviour
         {
             SyncResumedInput();
             resumeInputSync = false;
-            return;//舍弃这一帧的WasPressedThisFrame，不把菜单期间的空格、技能或Q/E带回战斗
+            return;//舍弃恢复当帧按下的技能、无双和换人键
         }
         if (boostButton.WasPressedThisFrame())
             BoostPressed?.Invoke();//异常状态下仍可申请无双驱散，暂停菜单与恢复首帧仍在上面拦截
         if (ActionsBlocked) return;
-        if (switchPriButton.WasPressedThisFrame())
+        for (int i = 0; i < switchSlots.Length; i++)
         {
-            SwitchPriPressed?.Invoke();
+            if (!switchSlots[i].WasPressedThisFrame()) continue;
+            SwitchSlotPressed?.Invoke(i);
             return;//换人可能已停用当前对象，不再继续处理旧角色本帧的输入
-        }
-        if (switchNextButton.WasPressedThisFrame())
-        {
-            SwitchNextPressed?.Invoke();
-            return;
         }
         if (interactButton.WasPressedThisFrame())
             InteractPressed?.Invoke();

@@ -17,7 +17,7 @@ public class TitanCombat : BossCombat
     private float rageBoostUntil;//满怒强化的结束时刻
     private bool rageBoostActive, deadFrozen;//死亡冻结怒气和强化计时，不能在死亡动画期间归零
     public float Rage => Mathf.Clamp(rage, 0f, MaxRage);
-    public float MaxRage => Mathf.Max(0.01f, rageFull);
+    public float MaxRage => Mathf.Max(BalanceRuntime.Number(this, "TitanCombat.MaxRage.1", 0.01f), rageFull);
     public bool RageBoostActive => rageBoostActive;
     public event Action RageChanged;//特殊状态UI只订阅本Boss的数据变化
     public event Action<bool> RageBoostChanged;//Controller统一处理霸体、移速、残影以及结束时的动作与技能冷却
@@ -71,7 +71,7 @@ public class TitanCombat : BossCombat
         if (rage >= MaxRage)
         {
             rageBoostActive = true;
-            rageBoostUntil = Time.time + Mathf.Max(0.01f, rageDuration);
+            rageBoostUntil = Time.time + Mathf.Max(BalanceRuntime.Number(this, "TitanCombat.AddRage.1", 0.01f), rageDuration);
             RageBoostChanged?.Invoke(true);
         }
         RageChanged?.Invoke();

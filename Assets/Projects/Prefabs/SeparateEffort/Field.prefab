@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1186024396}
   - component: {fileID: 1186024399}
   - component: {fileID: 1186024398}
+  - component: {fileID: 6401367252810356141}
   m_Layer: 11
   m_Name: Field
   m_TagString: Untagged
@@ -131,3 +132,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpriteManager
   sr: {fileID: 1186024399}
+--- !u!114 &6401367252810356141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186024395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: c436dae9dbf133e4d98ace4984dc3b25, type: 2}

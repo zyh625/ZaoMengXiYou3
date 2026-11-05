@@ -17,13 +17,13 @@ public class SummonNoteManager : EastNoteManager
 
     protected override void OnLaunched(Vector2 position, bool right)
     {
-        float halfWidth = Mathf.Max(0f, (arenaBounds.y - arenaBounds.x) * 0.5f);
+        float halfWidth = Mathf.Max(0f, (arenaBounds.y - arenaBounds.x) * BalanceRuntime.Number(this, "SummonNoteManager.OnLaunched.1", 0.5f));
         float margin = Mathf.Min(Mathf.Max(0f, arenaMargin), halfWidth);
         float x = Random.Range(arenaBounds.x + margin, arenaBounds.y - margin);
         float fallbackGround = position.y;
         Collider2D sourceBody = owner != null ? owner.GetComponent<Collider2D>() : null;
         if (sourceBody != null) fallbackGround = sourceBody.bounds.min.y;
-        float top = Mathf.Max(position.y, fallbackGround) + Mathf.Max(0.1f, apexHeight);
+        float top = Mathf.Max(position.y, fallbackGround) + Mathf.Max(BalanceRuntime.Number(this, "SummonNoteManager.OnLaunched.2", 0.1f), apexHeight);
         groundPoint = new Vector2(x, FindGroundY(x, top + 1f, fallbackGround));
         apex = new Vector2(x, Mathf.Max(top, groundPoint.y + apexHeight));
         descending = false;
@@ -38,7 +38,7 @@ public class SummonNoteManager : EastNoteManager
             Mathf.Max(1f, groundSearchDepth));
         float highest = float.NegativeInfinity;
         for (int i = 0; i < count; i++)
-            if (groundHits[i].collider != null && groundHits[i].normal.y > 0.5f)
+            if (groundHits[i].collider != null && groundHits[i].normal.y > BalanceRuntime.Number(this, "SummonNoteManager.FindGroundY.1", 0.5f))
                 highest = Mathf.Max(highest, groundHits[i].point.y);
         return float.IsNegativeInfinity(highest) ? fallback : highest;
     }
@@ -49,7 +49,7 @@ public class SummonNoteManager : EastNoteManager
         Vector2 from = transform.position;
         Vector2 destination = descending ? new Vector2(groundPoint.x, groundPoint.y + HitHalfExtents.y) : apex;
         float speed = descending ? descendSpeed : ascendSpeed;
-        Vector2 to = Vector2.MoveTowards(from, destination, Mathf.Max(0.01f, speed) * Time.fixedDeltaTime);
+        Vector2 to = Vector2.MoveTowards(from, destination, Mathf.Max(BalanceRuntime.Number(this, "SummonNoteManager.FixedUpdate.1", 0.01f), speed) * Time.fixedDeltaTime);
         FaceDirection(to - from);
         if (SweepPlayer(from, to, out Health player, out _))
         {
@@ -57,7 +57,7 @@ public class SummonNoteManager : EastNoteManager
             return;
         }
         SetPosition(to);
-        if ((to - destination).sqrMagnitude > 0.000001f) return;
+        if ((to - destination).sqrMagnitude > BalanceRuntime.Number(this, "SummonNoteManager.FixedUpdate.2", 1E-06f)) return;
         if (!descending)
         {
             descending = true;

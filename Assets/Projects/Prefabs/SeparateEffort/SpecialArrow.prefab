@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5399998556919280681}
   - component: {fileID: 3941315942269191932}
   - component: {fileID: 7027283379985741797}
+  - component: {fileID: 3442255415780959935}
   m_Layer: 11
   m_Name: SpecialArrow
   m_TagString: Untagged
@@ -119,6 +120,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpecialArrowManager
   SM: {fileID: 3941315942269191932}
+  flight:
+    sprites: []
+    loop: 0
+    fps: 0
   damage: 10
   flySpeed: 10
   sourceFacesRight: 0
@@ -128,3 +133,16 @@ MonoBehaviour:
   poisonStacks: 3
   poisonDuration: 5
   poisonDamagePerStack: 1
+--- !u!114 &3442255415780959935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6371675995589068466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: e497513496a3c124da778f721f89af9f, type: 2}

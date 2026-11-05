@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 3831089574178133849}
   - component: {fileID: 8002353765007634745}
   - component: {fileID: 4115874720828122085}
-  - component: {fileID: 8990002001}
+  - component: {fileID: 5443371068722468348}
+  - component: {fileID: 5971001855341389908}
   m_Layer: 9
   m_Name: AttackTwo
   m_TagString: Untagged
@@ -92,10 +93,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a3102d7fa29c949bf6c3889653d8e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackBox
-  Attack: 7
+  Attack: 9
   knockback: 1
   launch: 0
   effects: []
+--- !u!114 &5443371068722468348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149102887512256350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f60275e7f7a84198ac9dd54df86fff3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActorStatus
+  frozenPrefab: {fileID: 0}
+  poisonPrefab: {fileID: 0}
+  frozenDuration: 2
+  meltFrameInterval: 1
+  frozenDamageMultiplier: 1.5
+--- !u!114 &5971001855341389908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149102887512256350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c25ea03d8aaa61a41b5c9155fe6f68df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  beginBlood: 0
+  curBlood: 0
+  attackedUp: 0
 --- !u!1 &1871957818372096186
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,6 +442,8 @@ GameObject:
   - component: {fileID: 392999079778442644}
   - component: {fileID: 721026002002}
   - component: {fileID: 381027001}
+  - component: {fileID: 2873355525317678273}
+  - component: {fileID: 4240565390543801649}
   m_Layer: 11
   m_Name: WolfEnemy
   m_TagString: Untagged
@@ -495,7 +530,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.023986816}
+  m_Offset: {x: 0, y: -0.06708145}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -682,7 +717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25ea03d8aaa61a41b5c9155fe6f68df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  beginBlood: 100
+  beginBlood: 70
   curBlood: 0
   attackedUp: 0
 --- !u!114 &392999079778442644
@@ -729,7 +764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84f52c93662e4554ad3cb1f943419bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyRewards
-  experienceReward: 1
+  experienceReward: 8
   isBoss: 0
 --- !u!114 &381027001
 MonoBehaviour:
@@ -748,6 +783,34 @@ MonoBehaviour:
   frozenDuration: 2
   meltFrameInterval: 1
   frozenDamageMultiplier: 1.5
+--- !u!114 &2873355525317678273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3703578361063996720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 1dfd18dfd95d14f42b338e3975ddbd09, type: 2}
+--- !u!114 &4240565390543801649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3703578361063996720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17948b3ea05c4b178854a40dff66eac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthBar
+  blood: {fileID: 1383166033731480194}
+  seeDuration: 3.5
+  fadeDuration: 1.5
 --- !u!1 &5030277500237741400
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,22 +1198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a3102d7fa29c949bf6c3889653d8e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackBox
-  Attack: 5
+  Attack: 6
   knockback: 1
   launch: 0
   effects: []
---- !u!114 &8990002001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1149102887512256350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17948b3ea05c4b178854a40dff66eac9, type: 3}
-  m_Name:
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthBar
-  blood: {fileID: 1383166033731480194}
-  seeDuration: 3.5
-  fadeDuration: 1.5

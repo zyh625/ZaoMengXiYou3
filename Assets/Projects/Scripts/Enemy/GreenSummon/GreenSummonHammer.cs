@@ -18,7 +18,7 @@ public sealed class GreenSummonHammer : MonoBehaviour
     public Vector2 Position { get; private set; }
     public float StrikeAt=>strikeAt;
     public static bool HasWarningAt(Vector2 point)
-    {foreach(GreenSummonHammer h in active)if(h!=null && h.gameObject.activeInHierarchy && !h.HasStruck && (h.Position-point).sqrMagnitude<=6.25f)return true;return false;}
+    {foreach(GreenSummonHammer h in active)if(h!=null && h.gameObject.activeInHierarchy && !h.HasStruck && (h.Position-point).sqrMagnitude<=BalanceRuntime.Number(typeof(GreenSummonHammer), "GreenSummonHammer.HasWarningAt.1", 6.25f))return true;return false;}
     public void Warn(GreenSummonCombat source,Vector2 position)
     {
         sourceHealth=source.GetComponent<Health>();sourceLife=sourceHealth.LifeVersion;

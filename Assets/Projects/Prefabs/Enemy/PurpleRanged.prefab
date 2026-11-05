@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 7086125660576107035}
   - component: {fileID: 2178668362146189018}
   - component: {fileID: 8990002001}
+  - component: {fileID: 2913173013845050266}
   m_Layer: 11
   m_Name: PurpleRanged
   m_TagString: Untagged
@@ -128,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25ea03d8aaa61a41b5c9155fe6f68df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  beginBlood: 200
+  beginBlood: 85
   curBlood: 0
   attackedUp: 0
 --- !u!114 &6238770725704032450
@@ -143,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84f52c93662e4554ad3cb1f943419bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyRewards
-  experienceReward: 1
+  experienceReward: 10
   isBoss: 0
 --- !u!114 &4718534199111026847
 MonoBehaviour:
@@ -352,6 +353,19 @@ MonoBehaviour:
   blood: {fileID: 6434977025100703007}
   seeDuration: 3.5
   fadeDuration: 1.5
+--- !u!114 &2913173013845050266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483825893722126305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: a421658158cb7e74bab7d6118470f0d9, type: 2}
 --- !u!1 &2811130780454052635
 GameObject:
   m_ObjectHideFlags: 0

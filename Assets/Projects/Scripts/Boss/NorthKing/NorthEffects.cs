@@ -12,7 +12,7 @@ public sealed class NorthEffects : MonoBehaviour
     {
         for(int i=0;i<count;i++)
         {
-            float angle=Mathf.Lerp(count==3?-18f:-24f,count==3?18f:24f,i/(float)(count-1))*Mathf.Deg2Rad;
+            float angle=Mathf.Lerp(count==3?-BalanceRuntime.Number(this, "NorthEffects.Fan.1", 18f):-BalanceRuntime.Number(this, "NorthEffects.Fan.2", 24f),count==3?BalanceRuntime.Number(this, "NorthEffects.Fan.3", 18f):BalanceRuntime.Number(this, "NorthEffects.Fan.4", 24f),i/(float)(count-1))*Mathf.Deg2Rad;
             NorthEffectPool.GetOrCreate().Rib(ribPrefab,source,from,new Vector2(Mathf.Cos(angle)*(right?1f:-1f),Mathf.Sin(angle)));RibsEmitted++;
         }
     }
@@ -20,8 +20,8 @@ public sealed class NorthEffects : MonoBehaviour
     {
         for(int i=0;i<6;i++)
         {
-            float x=Mathf.Lerp(arena.x+1f,arena.y-1f,(i+0.5f)/6f);RaycastHit2D ground=Physics2D.Raycast(new Vector2(x,source.transform.position.y+15f),Vector2.down,40f,1<<6);
-            if(ground.collider==null){x=source.transform.position.x;ground=Physics2D.Raycast((Vector2)source.transform.position+Vector2.up*2f,Vector2.down,40f,1<<6);}
+            float x=Mathf.Lerp(arena.x+1f,arena.y-1f,(i+BalanceRuntime.Number(this, "NorthEffects.Rain.1", 0.5f))/BalanceRuntime.Number(this, "NorthEffects.Rain.2", 6f));RaycastHit2D ground=Physics2D.Raycast(new Vector2(x,source.transform.position.y+BalanceRuntime.Number(this, "NorthEffects.Rain.3", 15f)),Vector2.down,BalanceRuntime.Number(this, "NorthEffects.Rain.4", 40f),1<<6);
+            if(ground.collider==null){x=source.transform.position.x;ground=Physics2D.Raycast((Vector2)source.transform.position+Vector2.up*BalanceRuntime.Number(this, "NorthEffects.Rain.5", 2f),Vector2.down,BalanceRuntime.Number(this, "NorthEffects.Rain.6", 40f),1<<6);}
             NorthEffectPool.GetOrCreate().Rain(rainPrefab,source,new Vector2(x,ground.collider!=null?ground.point.y:source.transform.position.y));RainEmitted++;
         }
     }

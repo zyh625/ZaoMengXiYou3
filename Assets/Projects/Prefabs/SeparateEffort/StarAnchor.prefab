@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1132551850392061539}
   - component: {fileID: 156819500976471855}
   - component: {fileID: 7747366835842697626}
+  - component: {fileID: 9222149256691462081}
   m_Layer: 7
   m_Name: StarAnchor
   m_TagString: Untagged
@@ -154,6 +155,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcd7376016044f54ea438437a119b2c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarAnchor
+--- !u!114 &9222149256691462081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573881575620873857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69cce8df327344aa7e76404dc16140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalanceBinding
+  profile: {fileID: 11400000, guid: 15b9288abac260041891915861348c5b, type: 2}
 --- !u!1 &7555309890286434147
 GameObject:
   m_ObjectHideFlags: 0

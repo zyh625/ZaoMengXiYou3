@@ -30,7 +30,7 @@ public class SouthSwordFormation : SouthKingEffect
         int fallingFrame = Mathf.Min(5, Mathf.FloorToInt(elapsed * Fps));
         Area(fallingFrame, out Bounds before);
         Vector3 position = transform.position;
-        position.y = Mathf.Max(groundY, position.y - Mathf.Max(0.01f, fallSpeed) * Time.deltaTime);
+        position.y = Mathf.Max(groundY, position.y - Mathf.Max(BalanceRuntime.Number(this, "SouthSwordFormation.Tick.1", 0.01f), fallSpeed) * Time.deltaTime);
         transform.position = position; Show(fallingFrame);
         if (Area(fallingFrame, out Bounds area))
         {
