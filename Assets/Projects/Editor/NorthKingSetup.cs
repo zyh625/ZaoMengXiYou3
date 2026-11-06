@@ -146,7 +146,7 @@ public static class NorthKingSetup
                 SerializedProperty p=new SerializedObject(component).GetIterator();while(p.Next(true))if(p.propertyType==SerializedPropertyType.ObjectReference)
                 {
 #pragma warning disable CS0618
-                    Require(p.objectReferenceValue!=null || p.objectReferenceInstanceIDValue==0,path+" "+p.propertyPath);
+                    Require(p.objectReferenceValue!=null || p.objectReferenceEntityIdValue==default,path+" "+p.propertyPath);
 #pragma warning restore CS0618
                 }
             }

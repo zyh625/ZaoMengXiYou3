@@ -1975,7 +1975,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1633174106}
-  - component: {fileID: 1633174105}
   m_Layer: 0
   m_Name: LevelThree_Layout
   m_TagString: Untagged
@@ -1983,36 +1982,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1633174105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1633174104}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21c4f07ba2d88bd418d3a3f3751f87b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LevelManager
-  ui: {fileID: 0}
-  bossUI: {fileID: 0}
-  playerManager: {fileID: 0}
-  enemyManager: {fileID: 0}
-  curWave: 0
-  CM: {fileID: 0}
-  leftEnemyMax: 03000000040000000700000007000000
-  rightEnemyMax: 03000000050000000600000008000000
-  enemyDelay: 10
-  enemyMax: 6
-  playerInNextWave: 0
-  tran: {fileID: 0}
-  firstEnemyDelay: 5
-  waveStartTime: -1
-  maxWave: 4
-  bossBornDelay: 5
-  exitLocation: {fileID: 0}
-  exit: {fileID: 1350784591338734564, guid: 204de914fd0dee543b3a52363ca2e172, type: 3}
 --- !u!4 &1633174106
 Transform:
   m_ObjectHideFlags: 0

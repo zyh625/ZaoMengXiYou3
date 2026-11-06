@@ -317,7 +317,7 @@ public static class RedChainSetup
             SerializedProperty p = so.GetIterator();
             while (p.Next(true))
                 if (p.propertyType == SerializedPropertyType.ObjectReference)
-                    Check(p.objectReferenceValue != null || p.objectReferenceInstanceIDValue == 0, "Missing reference: " + component.name + "." + p.propertyPath);
+                    Check(p.objectReferenceValue != null || p.objectReferenceEntityIdValue == default, "Missing reference: " + component.name + "." + p.propertyPath);
         }
         Check(prefab.GetComponent<Health>().BeginBlood == 135f, "HP 135");
         Check(new SerializedObject(prefab.GetComponent<EnemyRewards>()).FindProperty("experienceReward").floatValue == 18f, "XP 18");

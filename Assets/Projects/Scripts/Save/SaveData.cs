@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 public enum PlayerId
 {
     WuKong=0,
@@ -77,7 +78,7 @@ public class SaveData
         gameLevel = Math.Max(1, gameLevel);
         rebirth = Math.Clamp(rebirth, 0, MaxRebirth);
         gold = Math.Max(0, gold);
-        name = name ?? string.Empty;
+        name = RepairName(name ?? string.Empty);
         date = date ?? string.Empty;
         if (players == null) players = new List<PlayerData>();
         players.RemoveAll(player => player == null);
@@ -93,6 +94,27 @@ public class SaveData
         if (defeatedBossLevels == null) defeatedBossLevels = new List<int>();
         HashSet<int> seen = new();//只在读盘或写盘前整理，掉落时直接读取记录
         defeatedBossLevels.RemoveAll(level => level < 1 || !seen.Add(level));
+    }
+
+    //旧版本在中文系统上可能把 UTF-8 名字按 Latin-1 解码后再次保存；这里在读取时还原一次。
+    private static string RepairName(string value)
+    {
+        if (string.IsNullOrEmpty(value) || HasCjk(value)) return value;
+        try
+        {
+            byte[] bytes = Encoding.GetEncoding("ISO-8859-1").GetBytes(value);
+            string decoded = Encoding.UTF8.GetString(bytes);
+            if (decoded != value && !decoded.Contains('\uFFFD') && HasCjk(decoded)) return decoded;
+        }
+        catch (Exception) { }
+        return value;
+    }
+
+    private static bool HasCjk(string value)
+    {
+        foreach (char c in value)
+            if (c >= '\u4E00' && c <= '\u9FFF') return true;
+        return false;
     }
 
     public bool HasDefeatedBoss(int level) => level > 0 && defeatedBossLevels != null && defeatedBossLevels.Contains(level);

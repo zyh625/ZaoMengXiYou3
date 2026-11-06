@@ -35,7 +35,7 @@ public abstract class LevelManager : MonoBehaviour
     protected bool initialized;//对象池建立后才处理换人通知
     private PlayerManager subscribedPlayerManager;//记录实际订阅对象，自动查找和重新启用时不会重复订阅
     public int WaveCount => maxWave;//供关卡创建工具核对波次配置
-    protected virtual bool HasBossPhase => true;
+    protected virtual bool HasBossPhase => enemyManager != null && enemyManager.HasBoss;//按本关是否配置Boss自动决定，无Boss的教程关直接开放出口
     private bool rebirthPrepared;
     public float RuntimeEnemyDelay => enemyDelay * RebirthScaling.Current.SpawnDelay;
     public float RuntimeEnemyMax => enemyMax + RebirthScaling.Current.ExtraAlive;

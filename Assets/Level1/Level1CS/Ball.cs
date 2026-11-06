@@ -16,10 +16,8 @@ public class Ball : MonoBehaviour
     private SpriteRenderer sr;
     private bool hasHit = false;
     private float left, right;
-    private Player player;
     void Awake()//只执行一次
     {
-        player = Player.tran.GetComponent<Player>();
         sr = GetComponent<SpriteRenderer>();
     }
     void OnEnable()//每次开启都重置
@@ -41,7 +39,7 @@ public class Ball : MonoBehaviour
     {
         if (hasHit) return;
         if (!other.CompareTag("Player")) return;
-        player.TakeDamage(attack * (1 + Boss1.engry / 100f));
+        Player.TakeDamage(attack * (1 + Boss1.engry / 100f), transform);
         hasHit = true;
         trail = false;
         curTime = 0;

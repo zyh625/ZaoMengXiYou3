@@ -33,7 +33,7 @@ public static class RebirthValidationBridge
                     while (property.Next(true))
                     {
 #pragma warning disable CS0618
-                        if (property.propertyType == SerializedPropertyType.ObjectReference && property.objectReferenceValue == null && property.objectReferenceInstanceIDValue != 0)
+                        if (property.propertyType == SerializedPropertyType.ObjectReference && property.objectReferenceValue == null && property.objectReferenceEntityIdValue != default)
                             throw new InvalidOperationException(path + ": missing reference " + node.name + "." + property.propertyPath);
 #pragma warning restore CS0618
                     }

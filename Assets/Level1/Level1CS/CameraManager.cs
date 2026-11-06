@@ -38,6 +38,7 @@ namespace zmxy.Legacy
 
         public void UpdateBg()
         {
+            if (Player.tran == null) return;
             if (bossReady) return;
             if (Player.tran.position.y >= topY)
                 enterBoss = true;

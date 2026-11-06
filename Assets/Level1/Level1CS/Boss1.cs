@@ -36,7 +36,6 @@ public class Boss1 : MonoBehaviour,IDamageable
     private Vector2 attackDirect= Vector2.zero;
     private int act = 0; //0待机，1行走，2攻击招式一，3攻击招式二，4站立受击，5站立死亡，6切换飞行，7飞行，8飞行攻击，9飞行受击，10飞行死亡
     [SerializeField] private float attackOneDis = 5f;//近战触发距离
-    private Player player;
     private Vector2 ballBeginPlace;//刚开始光球相对于boss的位置
     private float attackOneY;//近战触发y值
     private bool hasHit = false;//是否攻击到
@@ -52,10 +51,12 @@ public class Boss1 : MonoBehaviour,IDamageable
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        blood = beginBlood;
+        var scale = RebirthScaling.Current;//轮回后 Boss 血量与伤害同步提升
+        blood = beginBlood * scale.HP;
+        beginBlood = blood;
+        attackOne = 18f * scale.Damage;
         ball2BeginPlace = ball2.transform.localPosition;
         ballBeginPlace = Ball.transform.localPosition;
-        player=Player.tran.GetComponent<Player>();
         attackOneCol = attackOneBox.GetComponent<Collider2D>();
         attackOneDis = attackOneCol.bounds.size.x * 2;//近战攻击水平检测范围是碰撞箱的两倍
         attackOneY = attackOneCol.bounds.size.y/2;
@@ -63,6 +64,7 @@ public class Boss1 : MonoBehaviour,IDamageable
     }
     void Update()
     {
+        if (Player.tran == null) return;
         if (act < 6&&act!=5 && engry >= 100f)
             InitBoss(6);
         curTime += Time.deltaTime;
@@ -112,7 +114,7 @@ public class Boss1 : MonoBehaviour,IDamageable
             if (!hasHit && attackOneCol.Distance(Player.box).isOverlapped)
             {
                 hasHit = true;//已经攻击过了
-                player.TakeDamage(attackOne*(1f+engry/100f));
+                Player.TakeDamage(attackOne*(1f+engry/100f), transform);
                 Player.attackedDirect = r;//boss朝哪边攻击，玩家被击退向哪边
             }
         }
@@ -164,7 +166,7 @@ public class Boss1 : MonoBehaviour,IDamageable
             InitDelay();
             if (curFrame == 0)//boss死亡，游戏结束
             {
-                player.UpdateExp(20f);
+                Player.UpdateExp(20f);
                 gameObject.SetActive(false);
             }
         }
@@ -225,7 +227,7 @@ public class Boss1 : MonoBehaviour,IDamageable
             InitDelay();
             if(curFrame == 0)
             {
-                player.UpdateExp(20f);
+                Player.UpdateExp(20f);
                 gameObject.SetActive(false);
             }
         }

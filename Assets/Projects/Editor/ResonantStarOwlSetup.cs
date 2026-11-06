@@ -155,7 +155,7 @@ public static class ResonantStarOwlSetup
                 while (p.Next(true)) if (p.propertyType == SerializedPropertyType.ObjectReference)
                 {
 #pragma warning disable CS0618
-                    if (p.objectReferenceValue == null && p.objectReferenceInstanceIDValue != 0) throw new InvalidOperationException(path + " missing " + p.propertyPath);
+                    if (p.objectReferenceValue == null && p.objectReferenceEntityIdValue != default) throw new InvalidOperationException(path + " missing " + p.propertyPath);
 #pragma warning restore CS0618
                 }
             }

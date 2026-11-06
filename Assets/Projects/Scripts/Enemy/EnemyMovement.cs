@@ -58,6 +58,7 @@ public class EnemyMovement : MonoBehaviour
     public bool IsGround => isGround;
     public bool LandedThisFrame = false;
     private Transform player;
+    protected Transform Target => player;
     public float DeltaX => player.position.x - transform.position.x;
 
     void Awake()

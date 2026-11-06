@@ -123,6 +123,22 @@ public class GameSession : MonoBehaviour
         curFile = -1;
     }
 
+    public void ResetForAccountChange()//切换或注销账号：清空当前选档、存档数据和本轮战斗统计，下个账号从空会话开始
+    {
+        if (instance != null && instance != this)
+        {
+            instance.ResetForAccountChange();
+            return;
+        }
+        data = null;
+        battle = new BattleData();
+        priScene = string.Empty;
+        maxLevel = 0;
+        BattleRun.Cancel();
+        ClearSelectedFile();
+        NotifyDataChanged();
+    }
+
     public void DiscardUnsavedProgress()//返回主菜单只读恢复上次存档，丢弃本次未保存的金币、技能、经验和关卡进度
     {
         if (instance != null && instance != this)

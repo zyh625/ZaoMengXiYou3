@@ -27,7 +27,6 @@ public class Bird : MonoBehaviour, IDamageable
     [SerializeField] private float initAttack = 2f;//初始攻击力
     public static float attack = 2f;//当前鸟怪攻击力
     [SerializeField] private float backSpeed = 5f;//被击退的速度
-    private Player player;
     private bool damageActive = false;//是否处于有效攻击帧
     private bool hasHit = false;//是否已经命中
     [SerializeField] private float fadeDuration = 1.5f;//血条ui淡出需要的时间
@@ -41,7 +40,7 @@ public class Bird : MonoBehaviour, IDamageable
     private Vector3 trophyLocate;//王冠相对主体的位置
     private Vector3 trophyScale;//朝向
     private bool missTrophy = false;//当前是否正在让王冠逐渐消失
-    private float startMissTrophy;//开始消失的时刻
+    private float startMissTrophy = 0f;//开始消失的时刻
     [SerializeField] private float trophyDuration = 1f;//消失持续时长
     [SerializeField] private GameObject splitTrophy;//提供反转后的王冠相对位置
     private Vector3 splitLocate;//反转后的相对位置
@@ -49,7 +48,6 @@ public class Bird : MonoBehaviour, IDamageable
     {
         HP.gameObject.SetActive(false);
         attackCol = attackBox.GetComponent<Collider2D>();
-        player = Player.tran.GetComponent<Player>();
         birdCol = GetComponent<Collider2D>();
         sr = GetComponent<SpriteRenderer>();
         trophyLocate = Trophy.rectTransform.localPosition;
@@ -58,21 +56,22 @@ public class Bird : MonoBehaviour, IDamageable
     }
     private void CheckHit()
     {
-        if (hasHit) return;//没到有效攻击帧或已经攻击了
+        if (hasHit || Player.col == null) return;//没到有效攻击帧或已经攻击了
         Physics2D.SyncTransforms();
         ColliderDistance2D result = attackCol.Distance(Player.col);
         if (!result.isValid || !result.isOverlapped) return;//无效重叠或未重叠
         hasHit = true;
         damageActive = false;
         Player.attackedDirect = r;//击退方向与攻击方向一致
-        player.TakeDamage(attack);
+        Player.TakeDamage(attack, transform);
     }
     public void InitBird(Vector2 pos)//初始化鸟怪
     {
         transform.position = pos;
         waitTime = initWaitTime;
-        attack = initAttack;
-        blood = initBlood;
+        var scale = RebirthScaling.Current;//轮回后鸟怪同样变强
+        attack = initAttack * scale.Damage;
+        blood = initBlood * scale.HP;
         act = 0;
         curFrame = 0;
         time = 0f;
@@ -184,7 +183,7 @@ public class Bird : MonoBehaviour, IDamageable
     void Die()
     {
         Level1Enemy.curBirds--;
-        player.UpdateExp(5f);
+        Player.UpdateExp(5f);
         gameObject.SetActive(false);
     }
     private void InitEnemy(int a)//转变状态
@@ -203,6 +202,7 @@ public class Bird : MonoBehaviour, IDamageable
     }
     private void Act0()//飞行
     {
+        if (Player.tran == null || Player.box == null) return;//角色尚未创建完成时保持待机
         float r = Random.Range(0f, 10f);
         Vector2 dir;
         if (r <= 6)//大概率追击玩家

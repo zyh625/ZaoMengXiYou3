@@ -16,7 +16,8 @@ public abstract class LevelEnemyManager : MonoBehaviour
 
     public Transform CurBoss => curBoss;
     public int EnemyExtraOrder => enemyExtraOrder;
-    protected virtual bool RequiresBoss => true;
+    public bool HasBoss => boss != null;//本关是否配置了Boss，决定是否需要Boss阶段与出生点
+    protected virtual bool RequiresBoss => boss != null;//没有Boss的教程关不再需要单独的RequiresBoss子类
 
 #if UNITY_EDITOR
     public Transform BossPrefab => boss;//关卡测试窗口只读取本关配置，不自行维护敌人名单。

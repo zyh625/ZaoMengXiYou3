@@ -1,6 +1,4 @@
-// Level7 currently has no boss prefab. Still validate all pool entries using the common implementation.
+//第 7 关已接入赤炉灵尊，是否进入 Boss 阶段统一由基类按 boss 是否配置判断。
 public sealed class RollingFurnaceStageEnemyManager : StageEnemyManager
 {
-    public bool HasBoss => boss != null;
-    protected override bool RequiresBoss => HasBoss;
 }

@@ -7,6 +7,46 @@ using UnityEngine;
 public static class SaveSystem
 {
     public static string path = Application.persistentDataPath;
+
+    //本地存档是当前账号云端存档的副本：登录后读写 accounts/<账号ID>/，不同账号互不可见；
+    //未登录（编辑器直接运行场景、自动化验收）时仍使用根目录 path，行为与以前一致。
+    private const string AccountsFolder = "accounts";
+    private static int accountId;
+    public static string SaveDirectory => accountId > 0
+        ? Path.Combine(path, AccountsFolder, accountId.ToString(CultureInfo.InvariantCulture))
+        : path;
+
+    public static void SetAccount(int playerId) => accountId = Math.Max(0, playerId);
+    public static void ClearAccount() => accountId = 0;
+
+    //注销账号时删除该账号的全部本地存档（只删 save*.json 及其备份、临时文件，不递归，不跟随链接）
+    public static bool DeleteAccountSaves(int playerId)
+    {
+        if (playerId <= 0) return false;
+        string root = Path.GetFullPath(Path.Combine(path, AccountsFolder));
+        string folder = Path.GetFullPath(Path.Combine(root, playerId.ToString(CultureInfo.InvariantCulture)));
+        if (!folder.StartsWith(root + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase)) return false;
+        if (!Directory.Exists(folder)) return true;
+        bool ok = true;
+        try
+        {
+            if ((File.GetAttributes(folder) & FileAttributes.ReparsePoint) != 0) return false;
+            foreach (string file in Directory.GetFiles(folder, "save*.json*", SearchOption.TopDirectoryOnly))
+            {
+                try { File.Delete(file); }
+                catch (Exception error) when (IsFileError(error)) { ok = false; Debug.LogWarning($"本地存档删除失败：{error.Message}"); }
+            }
+            if (Directory.GetFileSystemEntries(folder).Length == 0) Directory.Delete(folder, false);
+        }
+        catch (Exception error) when (IsFileError(error))
+        {
+            Debug.LogWarning($"账号存档目录清理失败：{error.Message}");
+            return false;
+        }
+        return ok;
+    }
+
+    public static event Action<int, SaveData> LocalSaveSucceeded;
     public static void Save()
     {
         TrySave();
@@ -21,7 +61,7 @@ public static class SaveSystem
         string temporary = p + ".tmp";//先完整写临时文件，再替换目标，避免写到一半破坏正式存档
         try
         {
-            Directory.CreateDirectory(path);
+            Directory.CreateDirectory(SaveDirectory);
             session.data.Normalize();
             session.maxLevel = session.data.gameLevel;
             session.data.date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
@@ -37,6 +77,20 @@ public static class SaveSystem
                 }
             }
             else File.Move(temporary, p);
+
+            // 本地保存成功后，通知云端同步模块
+            try
+            {
+                LocalSaveSucceeded?.Invoke(
+                    session.curFile,
+                    session.data);
+            }
+            catch (Exception error)
+            {
+                Debug.LogWarning(
+                    $"本地存档成功，但云端同步通知失败：{error.Message}");
+            }
+
             return true;
         }
         catch (Exception error) when (IsFileError(error))
@@ -50,6 +104,87 @@ public static class SaveSystem
             catch (Exception error) when (IsFileError(error)) { Debug.LogWarning($"存档临时文件清理失败：{error.Message}"); }
         }
     }
+
+    public static bool TryRestoreToSlot(int num, SaveData data)
+    {
+        if (TrainingSession.Active)
+        {
+            TrainingSession.BlockWrite();
+            return false;
+        }
+
+        if (num < 0 || data == null)
+            return false;
+
+        // 禁止覆盖当前正在使用的存档槽位
+        GameSession session = GameSession.instance;
+
+        if (session != null &&
+            session.HasSelectedFile &&
+            session.curFile == num)
+        {
+            Debug.LogWarning("不能覆盖当前正在使用的存档，请先返回存档选择界面。");
+            return false;
+        }
+
+        string p = FilePath(num);
+        string temporary = p + ".tmp";
+
+        try
+        {
+            Directory.CreateDirectory(SaveDirectory);
+
+            data.Normalize();
+
+            // 保留云端存档原有的日期，不在恢复时修改
+            string json = JsonUtility.ToJson(data, true);
+
+            File.WriteAllText(
+                temporary,
+                json,
+                new UTF8Encoding(false)
+            );
+
+            if (File.Exists(p))
+            {
+                try
+                {
+                    File.Replace(temporary, p, p + ".bak");
+                }
+                catch (NotSupportedException)
+                {
+                    File.Copy(p, p + ".bak", true);
+                    File.Copy(temporary, p, true);
+                    File.Delete(temporary);
+                }
+            }
+            else
+            {
+                File.Move(temporary, p);
+            }
+
+            return true;
+        }
+        catch (Exception error) when (IsFileError(error))
+        {
+            Debug.LogWarning($"云端存档恢复失败：{error.Message}");
+            return false;
+        }
+        finally
+        {
+            try
+            {
+                if (File.Exists(temporary))
+                    File.Delete(temporary);
+            }
+            catch (Exception error) when (IsFileError(error))
+            {
+                Debug.LogWarning($"临时文件清理失败：{error.Message}");
+            }
+        }
+    }
+
+
     public static SaveData Load(int num)
     {
         if(TrainingSession.Active){TrainingSession.BlockRead();return null;}
@@ -71,14 +206,28 @@ public static class SaveSystem
             GameSession.instance.ClearSelectedFile();
     }
 
-    private static string FilePath(int num) => Path.Combine(path, "save" + num.ToString(CultureInfo.InvariantCulture) + ".json");
+    private static string FilePath(int num) => Path.Combine(SaveDirectory, "save" + num.ToString(CultureInfo.InvariantCulture) + ".json");
+
+    //旧版本在中文系统上可能用 GBK 写过存档名；UTF-8 解码失败时回退到 GB18030，避免用户名显示为乱码。
+    private static string ReadText(string file)
+    {
+        byte[] bytes = File.ReadAllBytes(file);
+        if (bytes.Length >= 3 && bytes[0] == 0xEF && bytes[1] == 0xBB && bytes[2] == 0xBF)
+            return Encoding.UTF8.GetString(bytes, 3, bytes.Length - 3);
+        try { return new UTF8Encoding(false, true).GetString(bytes); }
+        catch (DecoderFallbackException)
+        {
+            try { return Encoding.GetEncoding("GB18030").GetString(bytes); }
+            catch (Exception) { return Encoding.UTF8.GetString(bytes); }
+        }
+    }
 
     private static SaveData ReadFile(string file)//不存在静默返回；损坏与权限问题不能阻断选档界面和其他槽读取
     {
         if (!File.Exists(file)) return null;
         try
         {
-            string json = File.ReadAllText(file, Encoding.UTF8).Trim();
+            string json = ReadText(file).Trim();
             if (!json.StartsWith("{") || !json.EndsWith("}")
                 || !(json.Contains("\"players\"") || json.Contains("\"gameLevel\"") || json.Contains("\"name\"")))
                 throw new ArgumentException("文件不是有效的游戏存档");

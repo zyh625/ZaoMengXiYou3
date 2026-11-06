@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3861766184825966326}
   - component: {fileID: 8883103366126604637}
+  - component: {fileID: 9000012}
   m_Layer: 7
   m_Name: attack1
   m_TagString: Untagged
@@ -121,6 +122,7 @@ GameObject:
   - component: {fileID: 8951138776209949823}
   - component: {fileID: 6777168856751528953}
   - component: {fileID: 885110480160935786}
+  - component: {fileID: 9000002}
   m_Layer: 7
   m_Name: Boss1
   m_TagString: Enemy
@@ -658,3 +660,29 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.0739522, y: 1.7933419}
   m_EdgeRadius: 0
+
+--- !u!114 &9000002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3698579611274582323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 131137390adeb8c46a25d1e95d39a84f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LegacyDamageAdapter
+
+--- !u!114 &9000012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96882207221745433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 131137390adeb8c46a25d1e95d39a84f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LegacyDamageAdapter

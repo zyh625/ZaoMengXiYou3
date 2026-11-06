@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3588631992145064433}
   - component: {fileID: 7882004024877189468}
   - component: {fileID: 4582666702183677486}
+  - component: {fileID: 9000011}
   m_Layer: 5
   m_Name: blood
   m_TagString: Untagged
@@ -380,6 +381,7 @@ GameObject:
   - component: {fileID: 2459832944854416063}
   - component: {fileID: 4319281388145980228}
   - component: {fileID: 3448969687010592660}
+  - component: {fileID: 9000001}
   m_Layer: 7
   m_Name: BirdEnemy
   m_TagString: Enemy
@@ -600,3 +602,29 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3.74, y: 1.54}
   m_EdgeRadius: 0
+
+--- !u!114 &9000001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7007277539994529739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 131137390adeb8c46a25d1e95d39a84f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LegacyDamageAdapter
+
+--- !u!114 &9000011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521422204041967465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 131137390adeb8c46a25d1e95d39a84f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LegacyDamageAdapter

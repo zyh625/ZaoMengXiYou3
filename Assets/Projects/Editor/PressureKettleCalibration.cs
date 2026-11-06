@@ -203,7 +203,7 @@ public static class PressureKettleCalibration
                 while (p.NextVisible(true))
                     if (p.propertyType == SerializedPropertyType.ObjectReference)
 #pragma warning disable CS0618
-                        Require(p.objectReferenceValue != null || p.objectReferenceInstanceIDValue == 0, path + " resolved " + p.propertyPath);
+                        Require(p.objectReferenceValue != null || p.objectReferenceEntityIdValue == default, path + " resolved " + p.propertyPath);
 #pragma warning restore CS0618
             }
     }

@@ -1,19 +1,21 @@
+using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 /// <summary>
 /// 训练场控制面板：
-/// - 按钮大尺寸、高对比度、100% 完全不透明实色底色，拒绝半透明；
-/// - 带有醒目金边/红边/绿边外框（Outline），无论任何场景背景均一目了然；
-/// - 底部角色状态与技能监控字号大幅加大（20~22px Bold），色彩鲜明；
-/// - 严格遵守左上角色开关、右上敌人控件、右中伤害统计、底部状态栏布局。
+/// - 面板与按键半透明、尺寸紧凑，尽量少遮挡战斗画面；按键文字自动取能放下的最大字号；
+/// - 左上角色开关、右上敌人控件、右侧伤害统计、底部角色状态栏（底部栏保持原样）；
+/// - 按 H（可在 Inspector 改）隐藏/显示全部面板。
 /// </summary>
 public sealed class TrainingHUD : MonoBehaviour
 {
     [SerializeField] private TrainingManager manager;
     [SerializeField] private TrainingHitboxDebug hitboxes;
+    [SerializeField] private Key toggleKey = Key.H;//隐藏/显示训练面板
 
     // 左上方：角色控制控件
     private Button btnInvulnerable;
@@ -31,8 +33,6 @@ public sealed class TrainingHUD : MonoBehaviour
 
     // 右上方：敌人控制控件
     private Text txtEnemyName;
-    private Button btnSpawnEnemy;
-    private Button btnClearEnemies;
     private Button btnEnemyPassive;
     private Button btnEnemyInfiniteHp;
     private Text txtEnemyPassive;
@@ -43,26 +43,34 @@ public sealed class TrainingHUD : MonoBehaviour
     // 辅助监控面板
     private Text txtStats;
     private Text txtPlayerStatus;
+    private Text txtToggleHint;
+    private readonly List<GameObject> panels = new();
+    private bool panelsVisible = true;
 
     private readonly StringBuilder sb = new(512);
     private float refreshAt;
 
     private static UnityEngine.Font cachedFont;
 
-    // 经典不透明配色方案（Alpha = 1.0f 纯实色）
-    private static readonly Color PanelBgColor = new(0.08f, 0.11f, 0.17f, 1f);       // 深墨青石底板（100%实色）
-    private static readonly Color PanelBorderColor = new(0.96f, 0.80f, 0.28f, 1f);   // 辉光灿金双线框
-    private static readonly Color BtnNormalColor = new(0.14f, 0.18f, 0.25f, 1f);     // 常态石青实色按键
-    private static readonly Color BtnNormalBorder = new(0.40f, 0.55f, 0.72f, 1f);    // 银蓝边框
-    private static readonly Color BtnActiveColor = new(0.06f, 0.52f, 0.32f, 1f);     // 浓厚翡翠绿开启按键
-    private static readonly Color BtnActiveBorder = new(1.0f, 0.90f, 0.35f, 1f);     // 金光亮线框
-    private static readonly Color BtnDangerColor = new(0.72f, 0.12f, 0.12f, 1f);     // 浓厚朱砂红危险按键
-    private static readonly Color BtnDangerBorder = new(1.0f, 0.45f, 0.45f, 1f);     // 鲜红亮线框
-    private static readonly Color BtnActionColor = new(0.78f, 0.48f, 0.08f, 1f);     // 琥珀流金动作按键
-    private static readonly Color BtnActionBorder = new(1.0f, 0.88f, 0.35f, 1f);     // 金光亮线框
+    // 半透明配色：面板淡、按键稍实，开关开启时为绿色
+    private static readonly Color PanelBgColor = new(0.06f, 0.09f, 0.14f, 0.38f);
+    private static readonly Color PanelBorderColor = new(0.96f, 0.80f, 0.28f, 0.35f);
+    private static readonly Color BtnNormalColor = new(0.14f, 0.18f, 0.25f, 0.55f);
+    private static readonly Color BtnNormalBorder = new(0.40f, 0.55f, 0.72f, 0.45f);
+    private static readonly Color BtnActiveColor = new(0.06f, 0.52f, 0.32f, 0.65f);
+    private static readonly Color BtnActiveBorder = new(1.0f, 0.90f, 0.35f, 0.55f);
+    private static readonly Color BtnDangerColor = new(0.72f, 0.12f, 0.12f, 0.6f);
+    private static readonly Color BtnDangerBorder = new(1.0f, 0.45f, 0.45f, 0.5f);
+    private static readonly Color BtnActionColor = new(0.78f, 0.48f, 0.08f, 0.6f);
+    private static readonly Color BtnActionBorder = new(1.0f, 0.88f, 0.35f, 0.5f);
+    // 底部状态栏沿用原来的不透明配色
+    private static readonly Color BarBgColor = new(0.08f, 0.11f, 0.17f, 1f);
+    private static readonly Color BarBorderColor = new(0.96f, 0.80f, 0.28f, 1f);
 
-    private static readonly Color GoldTitle = new(1f, 0.88f, 0.40f, 1f);
+    private static readonly Color GoldTitle = new(1f, 0.88f, 0.40f, 0.95f);
     private static readonly Color TextWhite = new(1f, 1f, 1f, 1f);
+    private const float Row = 38f, BtnH = 32f;//按键行距与高度
+    private const float Header = 36f;//面板标题高度
 
     public static UnityEngine.Font GetSafeFont()
     {
@@ -89,9 +97,9 @@ public sealed class TrainingHUD : MonoBehaviour
         return cachedFont;
     }
 
-    private RectTransform CreatePanel(string name, Vector2 anchor, Vector2 pivot, Vector2 pos, Vector2 size)
+    private RectTransform CreatePanel(string name, Vector2 anchor, Vector2 pivot, Vector2 pos, Vector2 size, bool faded = true)
     {
-        GameObject go = new(name, typeof(RectTransform), typeof(Image), typeof(Outline), typeof(Shadow));
+        GameObject go = new(name, typeof(RectTransform), typeof(Image), typeof(Outline));
         go.transform.SetParent(transform, false);
 
         RectTransform rt = go.GetComponent<RectTransform>();
@@ -100,21 +108,17 @@ public sealed class TrainingHUD : MonoBehaviour
         rt.anchoredPosition = pos;
         rt.sizeDelta = size;
 
-        Image img = go.GetComponent<Image>();
-        img.color = PanelBgColor;
-
+        go.GetComponent<Image>().color = faded ? PanelBgColor : BarBgColor;
         Outline outline = go.GetComponent<Outline>();
-        outline.effectColor = PanelBorderColor;
-        outline.effectDistance = new Vector2(3f, -3f);
+        outline.effectColor = faded ? PanelBorderColor : BarBorderColor;
+        outline.effectDistance = faded ? new Vector2(1.5f, -1.5f) : new Vector2(3f, -3f);
 
-        Shadow shadow = go.GetComponent<Shadow>();
-        shadow.effectColor = new Color(0f, 0f, 0f, 0.75f);
-        shadow.effectDistance = new Vector2(4f, -4f);
-
+        panels.Add(go);
         return rt;
     }
 
-    private Text CreateText(Transform parent, string content, Vector2 anchorMin, Vector2 anchorMax, Vector2 pivot, Vector2 pos, Vector2 size, int fontSize = 18, FontStyle style = FontStyle.Normal, TextAnchor align = TextAnchor.MiddleCenter, Color? color = null)
+    private Text CreateText(Transform parent, string content, Vector2 anchorMin, Vector2 anchorMax, Vector2 pivot, Vector2 pos, Vector2 size,
+        int fontSize = 18, FontStyle style = FontStyle.Normal, TextAnchor align = TextAnchor.MiddleCenter, Color? color = null, bool bestFit = false)
     {
         GameObject go = new("Text", typeof(RectTransform), typeof(Text));
         go.transform.SetParent(parent, false);
@@ -135,12 +139,19 @@ public sealed class TrainingHUD : MonoBehaviour
         txt.color = color ?? TextWhite;
         txt.supportRichText = true;
         txt.raycastTarget = false;
+        if (bestFit)//在框内取能放下的最大字号，上限为 fontSize
+        {
+            txt.resizeTextForBestFit = true;
+            txt.resizeTextMinSize = 10;
+            txt.resizeTextMaxSize = fontSize;
+        }
 
         go.AddComponent<RebirthText>();
         return txt;
     }
 
-    private Button CreateButton(Transform parent, string title, Vector2 pos, Vector2 size, UnityAction onClick, Color bgColor, Color borderColor, out Text buttonText, out Outline buttonOutline, int fontSize = 18)
+    private Button CreateButton(Transform parent, string title, Vector2 pos, Vector2 size, UnityAction onClick, Color bgColor, Color borderColor,
+        out Text buttonText, out Outline buttonOutline, int fontSize = 22)
     {
         GameObject go = new("Btn_" + title, typeof(RectTransform), typeof(Image), typeof(Button), typeof(Outline));
         go.transform.SetParent(parent, false);
@@ -156,132 +167,122 @@ public sealed class TrainingHUD : MonoBehaviour
 
         buttonOutline = go.GetComponent<Outline>();
         buttonOutline.effectColor = borderColor;
-        buttonOutline.effectDistance = new Vector2(2f, -2f);
+        buttonOutline.effectDistance = new Vector2(1f, -1f);
 
         Button btn = go.GetComponent<Button>();
         btn.navigation = new Navigation { mode = Navigation.Mode.None };
         btn.targetGraphic = img;
         btn.onClick.AddListener(onClick);
 
-        buttonText = CreateText(go.transform, title, Vector2.zero, Vector2.one, new Vector2(0.5f, 0.5f), Vector2.zero, Vector2.zero, fontSize, FontStyle.Bold, TextAnchor.MiddleCenter);
+        //文字区比按键四周略缩进，字号取能放下的最大值
+        buttonText = CreateText(go.transform, title, Vector2.zero, Vector2.one, new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(-8f, -4f),
+            fontSize, FontStyle.Bold, TextAnchor.MiddleCenter, null, true);
         return btn;
     }
+
+    private static Vector2 RowPos(int row, float x = 0f) => new(x, -Header - row * Row);
+
+    private Text Title(RectTransform panel, string text, float width) =>
+        CreateText(panel, text, new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -4f),
+            new Vector2(width, 28f), 22, FontStyle.Bold, TextAnchor.MiddleCenter, GoldTitle, true);
 
     private void Awake()
     {
         if (manager == null) manager = FindAnyObjectByType<TrainingManager>();
         if (hitboxes == null) hitboxes = FindAnyObjectByType<TrainingHitboxDebug>();
+        Text t;
+        Outline o;
+        float panelHeight = Header + 5 * Row + 6f;
 
-        // ==========================================
-        // 1. 左上方屏幕：角色相关开关（大按钮、清晰醒目、实色无透明）
-        // ==========================================
-        RectTransform leftPanel = CreatePanel("PlayerControlPanel", new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(20f, -20f), new Vector2(310f, 345f));
-        CreateText(leftPanel, "✦ 角色模式开关 ✦", new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -10f), new Vector2(290f, 30f), 20, FontStyle.Bold, TextAnchor.MiddleCenter, GoldTitle);
+        // 1. 左上：角色开关
+        const float leftWidth = 230f, leftInner = 214f;
+        RectTransform leftPanel = CreatePanel("PlayerControlPanel", new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(14f, -14f), new Vector2(leftWidth, panelHeight));
+        Title(leftPanel, "角色", leftInner);
+        btnInvulnerable = CreateButton(leftPanel, "无敌", RowPos(0), new Vector2(leftInner, BtnH),
+            () => manager.SetInvulnerable(!manager.Invulnerable), BtnNormalColor, BtnNormalBorder, out txtInvulnerable, out outInvulnerable);
+        btnNoCooldown = CreateButton(leftPanel, "技能/换人无冷却", RowPos(1), new Vector2(leftInner, BtnH),
+            () => manager.SetNoCooldown(!manager.NoCooldown), BtnNormalColor, BtnNormalBorder, out txtNoCooldown, out outNoCooldown);
+        btnInfiniteResources = CreateButton(leftPanel, "无消耗", RowPos(2), new Vector2(leftInner, BtnH),
+            () => manager.SetInfiniteResources(!manager.InfiniteResources), BtnNormalColor, BtnNormalBorder, out txtInfiniteResources, out outInfiniteResources);
+        btnBoost = CreateButton(leftPanel, "无双常驻", RowPos(3), new Vector2(leftInner, BtnH),
+            () => manager.SetInfiniteBoost(!manager.InfiniteBoost), BtnNormalColor, BtnNormalBorder, out txtBoost, out outBoost);
+        CreateButton(leftPanel, "满状态重置", RowPos(4), new Vector2(leftInner, BtnH), manager.ResetPlayer, BtnNormalColor, BtnNormalBorder, out t, out o);
 
-        btnInvulnerable = CreateButton(leftPanel, "是否无敌: 关", new Vector2(0f, -48f), new Vector2(275f, 48f),
-            () => manager.SetInvulnerable(!manager.Invulnerable), BtnNormalColor, BtnNormalBorder, out txtInvulnerable, out outInvulnerable, 18);
+        // 2. 右上：敌人控件
+        const float rightWidth = 280f, inner = 264f, half = 130f;
+        RectTransform rightPanel = CreatePanel("EnemyControlPanel", new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(-14f, -14f), new Vector2(rightWidth, panelHeight));
+        Title(rightPanel, "敌人", inner);
+        CreateButton(rightPanel, "◀", RowPos(0, -115f), new Vector2(34f, BtnH), manager.PreviousEnemy, BtnNormalColor, BtnNormalBorder, out t, out o);
+        txtEnemyName = CreateText(rightPanel, "加载中...", new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), RowPos(0),
+            new Vector2(190f, BtnH), 22, FontStyle.Bold, TextAnchor.MiddleCenter, GoldTitle, true);
+        CreateButton(rightPanel, "▶", RowPos(0, 115f), new Vector2(34f, BtnH), manager.NextEnemy, BtnNormalColor, BtnNormalBorder, out t, out o);
+        CreateButton(rightPanel, "出生当前怪", RowPos(1, -67f), new Vector2(half, BtnH), manager.SpawnSelectedEnemy, BtnActionColor, BtnActionBorder, out t, out o);
+        CreateButton(rightPanel, "敌人清空", RowPos(1, 67f), new Vector2(half, BtnH), manager.ClearAllEnemies, BtnDangerColor, BtnDangerBorder, out t, out o);
+        btnEnemyPassive = CreateButton(rightPanel, "敌人待机", RowPos(2), new Vector2(inner, BtnH),
+            manager.ToggleAI, BtnNormalColor, BtnNormalBorder, out txtEnemyPassive, out outEnemyPassive);
+        btnEnemyInfiniteHp = CreateButton(rightPanel, "敌人血量无限", RowPos(3), new Vector2(inner, BtnH),
+            () => manager.SetInfiniteHealth(!manager.InfiniteHealth), BtnActiveColor, BtnActiveBorder, out txtEnemyInfiniteHp, out outEnemyInfiniteHp);
+        CreateButton(rightPanel, "碰撞盒显示", RowPos(4, -67f), new Vector2(half, BtnH),
+            () => { if (hitboxes != null) hitboxes.Visible = !hitboxes.Visible; }, BtnNormalColor, BtnNormalBorder, out t, out o);
+        CreateButton(rightPanel, "返回地图", RowPos(4, 67f), new Vector2(half, BtnH), manager.ExitTraining, BtnNormalColor, BtnNormalBorder, out t, out o);
 
-        btnNoCooldown = CreateButton(leftPanel, "技能与换人无冷却: 关", new Vector2(0f, -104f), new Vector2(275f, 48f),
-            () => manager.SetNoCooldown(!manager.NoCooldown), BtnNormalColor, BtnNormalBorder, out txtNoCooldown, out outNoCooldown, 17);
+        // 3. 右侧：伤害统计，紧贴敌人面板下方
+        RectTransform statsPanel = CreatePanel("StatsPanel", new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(-14f, -14f - panelHeight - 8f), new Vector2(rightWidth, 196f));
+        Title(statsPanel, "伤害统计", inner);
+        txtStats = CreateText(statsPanel, "等待伤害输入...", Vector2.zero, Vector2.one, new Vector2(0.5f, 0.5f), new Vector2(0f, -16f), new Vector2(-16f, -40f),
+            20, FontStyle.Bold, TextAnchor.UpperLeft, TextWhite, true);
+        CreateButton(statsPanel, "重置统计", new Vector2(88f, -6f), new Vector2(86f, 24f), manager.Statistics.Reset, BtnNormalColor, BtnNormalBorder, out t, out o, 16);
 
-        btnInfiniteResources = CreateButton(leftPanel, "是否无消耗: 关", new Vector2(0f, -160f), new Vector2(275f, 48f),
-            () => manager.SetInfiniteResources(!manager.InfiniteResources), BtnNormalColor, BtnNormalBorder, out txtInfiniteResources, out outInfiniteResources, 18);
+        // 4. 底部：角色状态栏（保持原样）
+        RectTransform playerBar = CreatePanel("PlayerBar", new Vector2(0.5f, 0f), new Vector2(0.5f, 0f), new Vector2(0f, 18f), new Vector2(1180f, 115f), false);
+        txtPlayerStatus = CreateText(playerBar, "玩家状态加载中...", new Vector2(0f, 0f), new Vector2(1f, 1f), new Vector2(0.5f, 0.5f), Vector2.zero,
+            new Vector2(-30f, -12f), 20, FontStyle.Bold, TextAnchor.MiddleCenter, TextWhite);
 
-        btnBoost = CreateButton(leftPanel, "角色无双状态: 关", new Vector2(0f, -216f), new Vector2(275f, 48f),
-            () => manager.SetInfiniteBoost(!manager.InfiniteBoost), BtnNormalColor, BtnNormalBorder, out txtBoost, out outBoost, 18);
+        // 5. 左下角快捷键提示（面板隐藏后也保留，方便再次打开）
+        txtToggleHint = CreateText(transform, "", Vector2.zero, Vector2.zero, Vector2.zero, new Vector2(14f, 8f), new Vector2(220f, 24f),
+            16, FontStyle.Bold, TextAnchor.LowerLeft, new Color(1f, 1f, 1f, 0.55f));
+        RefreshToggleHint();
+    }
 
-        Text txtReset;
-        Outline outReset;
-        CreateButton(leftPanel, "↺ 满状态重置角色", new Vector2(0f, -274f), new Vector2(275f, 44f),
-            manager.ResetPlayer, BtnNormalColor, BtnNormalBorder, out txtReset, out outReset, 17);
+    private void SetPanelsVisible(bool visible)
+    {
+        panelsVisible = visible;
+        foreach (GameObject panel in panels)
+            if (panel != null) panel.SetActive(visible);
+        RefreshToggleHint();
+    }
 
-        // ==========================================
-        // 2. 右上方屏幕：敌人相关控件（大尺寸、大间距、红金对比）
-        // ==========================================
-        RectTransform rightPanel = CreatePanel("EnemyControlPanel", new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(-20f, -20f), new Vector2(390f, 350f));
-        CreateText(rightPanel, "✦ 敌人生成与控制 ✦", new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -10f), new Vector2(370f, 30f), 20, FontStyle.Bold, TextAnchor.MiddleCenter, GoldTitle);
-
-        // 敌人选择行（大箭头 ◀、居中大字、大箭头 ▶）
-        Text prevTxt, nextTxt;
-        Outline prevOut, nextOut;
-        CreateButton(rightPanel, "◀", new Vector2(-155f, -48f), new Vector2(56f, 48f), manager.PreviousEnemy, BtnNormalColor, BtnNormalBorder, out prevTxt, out prevOut, 22);
-        txtEnemyName = CreateText(rightPanel, "加载中...", new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -48f), new Vector2(240f, 48f), 18, FontStyle.Bold, TextAnchor.MiddleCenter, GoldTitle);
-        CreateButton(rightPanel, "▶", new Vector2(155f, -48f), new Vector2(56f, 48f), manager.NextEnemy, BtnNormalColor, BtnNormalBorder, out nextTxt, out nextOut, 22);
-
-        // 出生当前怪 & 敌人清空（大尺寸动作按钮）
-        Text spawnTxt, clearTxt;
-        Outline spawnOut, clearOut;
-        btnSpawnEnemy = CreateButton(rightPanel, "⚡ 出生当前怪", new Vector2(-90f, -104f), new Vector2(174f, 48f),
-            manager.SpawnSelectedEnemy, BtnActionColor, BtnActionBorder, out spawnTxt, out spawnOut, 17);
-
-        btnClearEnemies = CreateButton(rightPanel, "💥 敌人清空", new Vector2(90f, -104f), new Vector2(174f, 48f),
-            manager.ClearAllEnemies, BtnDangerColor, BtnDangerBorder, out clearTxt, out clearOut, 18);
-
-        // 敌人状态大开关
-        btnEnemyPassive = CreateButton(rightPanel, "敌人是否保持待机: 关", new Vector2(0f, -160f), new Vector2(354f, 48f),
-            manager.ToggleAI, BtnNormalColor, BtnNormalBorder, out txtEnemyPassive, out outEnemyPassive, 18);
-
-        btnEnemyInfiniteHp = CreateButton(rightPanel, "敌人是否血量无限: 开", new Vector2(0f, -216f), new Vector2(354f, 48f),
-            () => manager.SetInfiniteHealth(!manager.InfiniteHealth), BtnActiveColor, BtnActiveBorder, out txtEnemyInfiniteHp, out outEnemyInfiniteHp, 18);
-
-        // 辅助工具（判定框 & 返回地图）
-        Text hitboxesTxt, returnTxt;
-        Outline hitboxesOut, returnOut;
-        CreateButton(rightPanel, "🎯 碰撞盒显示", new Vector2(-90f, -280f), new Vector2(174f, 44f),
-            () => { if (hitboxes != null) hitboxes.Visible = !hitboxes.Visible; }, BtnNormalColor, BtnNormalBorder, out hitboxesTxt, out hitboxesOut, 16);
-
-        CreateButton(rightPanel, "🚪 返回地图", new Vector2(90f, -280f), new Vector2(174f, 44f),
-            manager.ExitTraining, BtnNormalColor, BtnNormalBorder, out returnTxt, out returnOut, 16);
-
-        // ==========================================
-        // 3. 右中下方：伤害监控面板（大号字体、直观清晰）
-        // ==========================================
-        RectTransform statsPanel = CreatePanel("StatsPanel", new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(-20f, -385f), new Vector2(390f, 245f));
-        CreateText(statsPanel, "✦ 伤害数据监控 ✦", new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -10f), new Vector2(370f, 28f), 18, FontStyle.Bold, TextAnchor.MiddleCenter, GoldTitle);
-        txtStats = CreateText(statsPanel, "等待伤害输入...", new Vector2(0f, 0f), new Vector2(1f, 1f), new Vector2(0.5f, 0.5f), new Vector2(0f, -10f), new Vector2(-28f, -50f), 17, FontStyle.Bold, TextAnchor.UpperLeft, TextWhite);
-
-        Text resetStatsTxt;
-        Outline resetStatsOut;
-        CreateButton(statsPanel, "重置统计", new Vector2(125f, -200f), new Vector2(110f, 34f), manager.Statistics.Reset, BtnNormalColor, BtnNormalBorder, out resetStatsTxt, out resetStatsOut, 15);
-
-        // ==========================================
-        // 4. 底部中央：大尺寸角色状态监控栏（大字体、色彩鲜明、一目了然）
-        // ==========================================
-        RectTransform playerBar = CreatePanel("PlayerBar", new Vector2(0.5f, 0f), new Vector2(0.5f, 0f), new Vector2(0f, 18f), new Vector2(1180f, 115f));
-        txtPlayerStatus = CreateText(playerBar, "玩家状态加载中...", new Vector2(0f, 0f), new Vector2(1f, 1f), new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(-30f, -12f), 20, FontStyle.Bold, TextAnchor.MiddleCenter, TextWhite);
+    private void RefreshToggleHint()
+    {
+        if (txtToggleHint != null) txtToggleHint.text = $"[{toggleKey}] {(panelsVisible ? "隐藏面板" : "显示面板")}";
     }
 
     private void UpdateSwitchVisual(Button btn, Text label, Outline outline, string title, bool isOn)
     {
         if (label != null)
-        {
-            label.text = $"{title}: {(isOn ? "<color=#FFEE44>【✔ 已开启】</color>" : "<color=#99AAB8>【● 已关闭】</color>")}";
-        }
+            label.text = $"{title}  {(isOn ? "<color=#FFEE44>开</color>" : "<color=#99AAB8>关</color>")}";
         if (btn != null)
         {
             Image img = btn.GetComponent<Image>();
-            if (img != null)
-            {
-                img.color = isOn ? BtnActiveColor : BtnNormalColor;
-            }
+            if (img != null) img.color = isOn ? BtnActiveColor : BtnNormalColor;
         }
-        if (outline != null)
-        {
-            outline.effectColor = isOn ? BtnActiveBorder : BtnNormalBorder;
-        }
+        if (outline != null) outline.effectColor = isOn ? BtnActiveBorder : BtnNormalBorder;
     }
 
     private void Update()
     {
+        Keyboard keyboard = Keyboard.current;
+        if (keyboard != null && keyboard[toggleKey].wasPressedThisFrame) SetPanelsVisible(!panelsVisible);
+
         if (manager == null) manager = FindAnyObjectByType<TrainingManager>();
-        if (manager == null || !manager.Ready || Time.unscaledTime < refreshAt) return;
+        if (!panelsVisible || manager == null || !manager.Ready || Time.unscaledTime < refreshAt) return;//隐藏时不刷新文字
         refreshAt = Time.unscaledTime + 0.08f;
 
         // 1. 左上角色开关状态
-        UpdateSwitchVisual(btnInvulnerable, txtInvulnerable, outInvulnerable, "是否无敌", manager.Invulnerable);
-        UpdateSwitchVisual(btnNoCooldown, txtNoCooldown, outNoCooldown, "技能与换人无冷却", manager.NoCooldown);
-        UpdateSwitchVisual(btnInfiniteResources, txtInfiniteResources, outInfiniteResources, "是否无消耗", manager.InfiniteResources);
-        UpdateSwitchVisual(btnBoost, txtBoost, outBoost, "角色无双状态", manager.InfiniteBoost);
+        UpdateSwitchVisual(btnInvulnerable, txtInvulnerable, outInvulnerable, "无敌", manager.Invulnerable);
+        UpdateSwitchVisual(btnNoCooldown, txtNoCooldown, outNoCooldown, "技能/换人无冷却", manager.NoCooldown);
+        UpdateSwitchVisual(btnInfiniteResources, txtInfiniteResources, outInfiniteResources, "无消耗", manager.InfiniteResources);
+        UpdateSwitchVisual(btnBoost, txtBoost, outBoost, "无双常驻", manager.InfiniteBoost);
 
         // 2. 右上敌人控件状态
         if (manager.Catalog != null && manager.Catalog.Count > 0)
@@ -290,16 +291,16 @@ public sealed class TrainingHUD : MonoBehaviour
             txtEnemyName.text = $"[{idx + 1}/{manager.Catalog.Count}] {manager.Catalog.enemies[idx].displayName}";
         }
 
-        UpdateSwitchVisual(btnEnemyPassive, txtEnemyPassive, outEnemyPassive, "敌人保持待机", manager.EnemyPassive);
+        UpdateSwitchVisual(btnEnemyPassive, txtEnemyPassive, outEnemyPassive, "敌人待机", manager.EnemyPassive);
         UpdateSwitchVisual(btnEnemyInfiniteHp, txtEnemyInfiniteHp, outEnemyInfiniteHp, "敌人血量无限", manager.InfiniteHealth);
 
-        // 3. 统计面板刷新（大号字体加粗呈现）
+        // 3. 统计面板刷新
         TrainingStatistics s = manager.Statistics;
         sb.Clear();
-        sb.Append("实时秒伤 (DPS): <color=#FFDD44>").Append(s.Dps.ToString("0.0")).Append("</color>\n")
-          .Append("累计总伤害: <color=#FF9933>").Append(s.TotalDamage.ToString("0.0")).Append("</color>\n")
-          .Append("连击数: <color=#33FF88>").Append(s.Hits).Append("</color> 次  (暴击: <color=#FF4444>").Append(s.CriticalHits).Append("</color> 次)\n")
-          .Append("暴击率: <color=#FFAA00>").Append((s.CriticalRate * 100f).ToString("0.0")).Append("%</color>  最高单次: <color=#FF6633>").Append(s.MaximumHit.ToString("0.0")).Append("</color>\n")
+        sb.Append("秒伤 DPS: <color=#FFDD44>").Append(s.Dps.ToString("0.0")).Append("</color>\n")
+          .Append("总伤害: <color=#FF9933>").Append(s.TotalDamage.ToString("0.0")).Append("</color>\n")
+          .Append("命中: <color=#33FF88>").Append(s.Hits).Append("</color>  暴击: <color=#FF4444>").Append(s.CriticalHits).Append("</color>\n")
+          .Append("暴击率: <color=#FFAA00>").Append((s.CriticalRate * 100f).ToString("0.0")).Append("%</color>  最高: <color=#FF6633>").Append(s.MaximumHit.ToString("0.0")).Append("</color>\n")
           .Append("击杀用时: ").Append(s.KillTime < 0f ? "--" : s.KillTime.ToString("0.00") + "s").Append('\n');
 
         if (manager.Target != null && manager.TargetHealth != null)
@@ -313,7 +314,7 @@ public sealed class TrainingHUD : MonoBehaviour
         }
         txtStats.text = sb.ToString();
 
-        // 4. 底部角色状态栏（超大号高亮字号）
+        // 4. 底部角色状态栏（内容与原来一致）
         PlayerController p = manager.Players != null ? manager.Players.CurrentPlayer : null;
         if (p == null) return;
 
@@ -323,7 +324,6 @@ public sealed class TrainingHUD : MonoBehaviour
         PlayerBoost pb = p.GetComponent<PlayerBoost>();
 
         sb.Clear();
-        // 第一行：角色核心属性大字
         sb.Append("<color=#FFD700>【出战角色】</color> ").Append(r != null ? r.Id.ToString() : "Player")
           .Append("   |   <color=#33FF88>生命:</color> ").Append(h != null ? h.CurBlood.ToString("0") : "0")
           .Append("   |   <color=#33CCFF>法力:</color> ").Append(r != null ? r.CurrentMana.ToString("0") : "0")
@@ -348,20 +348,13 @@ public sealed class TrainingHUD : MonoBehaviour
         }
         sb.Append("\n");
 
-        // 第二行：技能状态与快捷键提示
         if (c != null)
         {
             for (int k = 1; k <= c.SkillCount; k++)
             {
                 float cd = c.GetSkillCooldownRemaining(k);
-                if (cd > 0f)
-                {
-                    sb.Append("技").Append(k).Append(": <color=#FF5555>[").Append(cd.ToString("0.0")).Append("s]</color>   ");
-                }
-                else
-                {
-                    sb.Append("技").Append(k).Append(": <color=#33FF66>[就绪]</color>   ");
-                }
+                if (cd > 0f) sb.Append("技").Append(k).Append(": <color=#FF5555>[").Append(cd.ToString("0.0")).Append("s]</color>   ");
+                else sb.Append("技").Append(k).Append(": <color=#33FF66>[就绪]</color>   ");
             }
         }
         sb.Append(manager.NoCooldown ? " |   [1/2/3/4] 切人<color=#33FF66>[免CD]</color>   [U/I/O] 释放技能   [空格] 爆发无双" : " |   [1/2/3/4] 切换角色   [U/I/O] 释放技能   [空格] 爆发无双");

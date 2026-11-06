@@ -6,8 +6,8 @@ using UnityEngine;
 
 public static class Level7EffectsValidation
 {
-    [Serializable] private sealed class Entry { public string key, texture, prefab; public float[] pivot; }
-    [Serializable] private sealed class Manifest { public Entry[] effects; }
+    [Serializable] private sealed class Entry { public string key = "", texture = "", prefab = ""; public float[] pivot = Array.Empty<float>(); }
+    [Serializable] private sealed class Manifest { public Entry[] effects = Array.Empty<Entry>(); }
     [Serializable] private sealed class Report
     {
         public string status, unityVersion, error;

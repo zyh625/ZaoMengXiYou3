@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CloudSaveClient))]
 public class CloudSaveLoginTester : MonoBehaviour
@@ -39,14 +40,23 @@ public class CloudSaveLoginTester : MonoBehaviour
             client.Login(username, password, (success, message) =>
             {
                 isRequesting = false;
-                status = success
-                    ? $"登录成功！Player ID: {client.PlayerId}"
-                    : $"登录失败：{message}";
 
                 if (success)
+                {
+                    status = $"登录成功！Player ID: {client.PlayerId}";
                     Debug.Log(status);
+
+                    // 关闭临时登录测试界面
+                    enabled = false;
+
+                    // 进入主菜单
+                    SceneManager.LoadScene("MenuScene");
+                }
                 else
+                {
+                    status = $"登录失败：{message}";
                     Debug.LogWarning(status);
+                }
             });
         }
 
@@ -85,6 +95,80 @@ public class CloudSaveLoginTester : MonoBehaviour
                 Debug.Log($"云端存档上传成功，槽位：{slot + 1}");
             else
                 Debug.LogError($"云端存档上传失败：{message}");
+        });
+    }
+    public void DownloadCurrentSave()
+    {
+        GameSession session = GameSession.instance;
+
+        if (session == null || !session.HasSelectedFile)
+        {
+            Debug.LogWarning("当前没有选中的存档");
+            return;
+        }
+
+        int slot = session.curFile;
+
+        client.DownloadSave(slot, (success, data, message) =>
+        {
+            if (!success)
+            {
+                Debug.LogError($"云端下载失败：{message}");
+                return;
+            }
+
+            Debug.Log(
+                $"云端下载成功！" +
+                $"槽位：{slot + 1}，" +
+                $"存档名：{data.name}，" +
+                $"金币：{data.gold}，" +
+                $"最高关卡：{data.gameLevel}");
+        });
+    }
+    public void RestoreCloudSaveToSlot(int localSlotNumber)
+    {
+        if (localSlotNumber < 0)
+        {
+            Debug.LogWarning("无效的本地存档槽位");
+            return;
+        }
+
+        GameSession session = GameSession.instance;
+
+        // 防止覆盖当前正在游玩的存档
+        if (session != null &&
+            session.HasSelectedFile &&
+            session.curFile == localSlotNumber)
+        {
+            Debug.LogWarning("不能覆盖当前正在使用的存档，请先返回选档界面");
+            return;
+        }
+
+        client.DownloadSave(localSlotNumber, (success, data, message) =>
+        {
+            if (!success)
+            {
+                Debug.LogError($"云端下载失败：{message}");
+                return;
+            }
+
+            // 将下载的数据写入本地指定槽位
+            bool restored = SaveSystem.TryRestoreToSlot(
+                localSlotNumber, data);
+
+            if (restored)
+            {
+                Debug.Log(
+                    $"云端存档恢复成功！\n" +
+                    $"本地槽位：{localSlotNumber}\n" +
+                    $"存档名称：{data.name}\n" +
+                    $"金币：{data.gold}\n" +
+                    $"最高关卡：{data.gameLevel}");
+            }
+            else
+            {
+                Debug.LogError("云端存档下载成功，但本地写入失败");
+            }
         });
     }
 }

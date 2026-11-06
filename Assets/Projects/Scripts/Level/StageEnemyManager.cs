@@ -165,13 +165,18 @@ public class StageEnemyManager : LevelEnemyManager
         }
 
         EnemyController enemy = selectedPool.spareEnemy;
-        enemy.transform.position = new Vector2((r ? CM.EdgeR : CM.EdgeL) + (r ? 1f : -1f) * selectedPool.spawnOffset, createY);
+        Vector2 position = new((r ? CM.EdgeR : CM.EdgeL) + (r ? 1f : -1f) * selectedPool.spawnOffset, createY);
+        enemy.transform.position = GetWaveSpawnPosition(enemy, r, position);
         enemy.SetSpawnSide(r);
         summons.Remove(enemy);//普通波次复用池成员时恢复预制体基础数值
         ApplyStatScales(enemy, selectedPool, false);
+        PrepareWaveEnemy(enemy);
         enemy.gameObject.SetActive(true);
         return true;
     }
+
+    protected virtual Vector2 GetWaveSpawnPosition(EnemyController enemy, bool right, Vector2 position) => position;
+    protected virtual void PrepareWaveEnemy(EnemyController enemy) { }
 
     private static EnemyController FindSpareEnemy(PoolData pool)//停用实例才可以复用，已被删除的实例不参与选择
     {

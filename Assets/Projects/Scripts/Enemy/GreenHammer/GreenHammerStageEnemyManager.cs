@@ -1,7 +1,6 @@
-//第六关小怪演示沿用StageEnemyManager；以后填入Boss便自动使用标准Boss初始化。
+//第 6 关已接入多闻天王，是否进入 Boss 阶段统一由基类按 boss 是否配置判断。
 public sealed class GreenHammerStageEnemyManager : StageEnemyManager
 {
-    public bool HasBoss=>boss!=null;
     public override bool ValidateConfiguration(out string error)
     {
         if(HasBoss)return base.ValidateConfiguration(out error);

@@ -161,7 +161,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.023462534}
+  m_Offset: {x: 0, y: -0.0017875433}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -171,7 +171,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.77124166, y: 1.6921396}
+  m_Size: {x: 0.77124166, y: 1.7426398}
   m_EdgeRadius: 0
 --- !u!1 &2203271335799191973
 GameObject:
@@ -467,7 +467,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.07967317}
+  m_Offset: {x: 0, y: -0.046006322}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -477,7 +477,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.7321663, y: 1.6766536}
+  m_Size: {x: 0.7321663, y: 1.6093199}
   m_EdgeRadius: 0
 --- !u!50 &6729396878342245254
 Rigidbody2D:
@@ -1106,7 +1106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBoost
   boostFull: 100
   deltaBoost: 10
-  boostReduce: 0.01
+  boostReduce: 1.2
   boostTime: 10
   bajieDamageMultiplier: 0.5
   moveMultiplier: 1.3

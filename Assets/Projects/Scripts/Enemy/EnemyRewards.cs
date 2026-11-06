@@ -9,6 +9,7 @@ public class EnemyRewards : MonoBehaviour
     private bool rewarded;//同一次生命最多结算一次，重新出池后才允许再次奖励
     [SerializeField] private bool isBoss;//首杀金币与波次击杀统计区分Boss和普通池成员
     private GoldManager goldManager;//每次死亡只产生一个承载完整金额的金币对象
+    public float? ExperienceOverride { get; set; }
 
     private void Awake() => health = GetComponent<Health>();
 
@@ -37,6 +38,6 @@ public class EnemyRewards : MonoBehaviour
         PlayerController player = playerManager == null ? null : playerManager.CurrentPlayer;
         if (player == null) return;
         PlayerResources resources = player.GetComponent<PlayerResources>();//切换不会转移或清空其他角色已有的经验
-        if (resources != null) resources.AddExperience(experienceReward * RebirthScaling.Current.Experience);
+        if (resources != null) resources.AddExperience((ExperienceOverride ?? experienceReward) * RebirthScaling.Current.Experience);
     }
 }

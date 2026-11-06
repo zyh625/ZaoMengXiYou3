@@ -48,23 +48,6 @@ public static class RebirthSetup
             Text label = Label(canvas.transform, "RebirthLabel", Vector2.one, new Vector2(-150f, -35f), new Vector2(280f, 48f), 26);
             Ref(map, "rebirthLabel", label);
         });
-        EditScene("MenuScene", scene =>
-        {
-            MenuButton menu = Find<MenuButton>(scene); SerializedObject so = new(menu);
-            SerializedProperty buttons = so.FindProperty("fileButtons"), labels = so.FindProperty("rebirthLabels"); labels.arraySize = buttons.arraySize;
-            for (int i = 0; i < buttons.arraySize; i++)
-            {
-                Button button = (Button)buttons.GetArrayElementAtIndex(i).objectReferenceValue;
-                Text label = Label(button.transform, "RebirthLabel", new Vector2(0.5f, 0f), new Vector2(0f, 18f), new Vector2(260f, 30f), 19);
-                label.color = new Color(0.12f, 0.16f, 0.2f);
-                labels.GetArrayElementAtIndex(i).objectReferenceValue = label;
-                TMPro.TextMeshProUGUI info = (TMPro.TextMeshProUGUI)so.FindProperty("fileInformantion").GetArrayElementAtIndex(i).objectReferenceValue;
-                //原有存档框下方留出独立一行，昵称/日期仍使用原字体。
-                info.enableAutoSizing = true; info.fontSizeMin = 12f; info.fontSizeMax = 22f;
-                RectTransform rect = info.rectTransform; rect.offsetMin = new Vector2(rect.offsetMin.x, 32f);
-            }
-            so.ApplyModifiedPropertiesWithoutUndo();
-        });
         EditScene("VictoryScene", scene =>
         {
             VictoryControl victory = Find<VictoryControl>(scene); Canvas canvas = Find<Canvas>(scene);

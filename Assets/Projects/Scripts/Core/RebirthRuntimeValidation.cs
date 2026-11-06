@@ -312,8 +312,8 @@ public sealed class RebirthRuntimeValidation : MonoBehaviour
         PlayerManager retainedParty = FindAnyObjectByType<PlayerManager>();
         Check(retainedParty != null && retainedParty.Players.Count == 4 && retainedParty.CurrentPlayer.GetComponent<PlayerResources>().Level == 8,
             "reborn modern Level1 retains all four unlocked characters and their level");
-        Check(FindObjectsByType<Player>().Length == 0 && FindAnyObjectByType<Level1Enemy>() == null && FindAnyObjectByType<GameManager>() == null,
-            "refactored Level1 has no active legacy player, bird generator or game loop");
+        Check(FindAnyObjectByType<StageManager>() != null && FindAnyObjectByType<PlayerManager>() != null,
+            "Level1 runs on the shared stage flow and PlayerManager");
 
         //新档从悟空开始，真正清完第一关并通过出口交互结算，随后逐关验证加入次序。
         File.WriteAllText(Path.Combine(SaveSystem.path, "save1.json"), JsonUtility.ToJson(SaveData.CreatNew("NewCampaign")));
@@ -321,7 +321,7 @@ public sealed class RebirthRuntimeValidation : MonoBehaviour
         Check(session.data.unlocked == 1 && !session.TryLearnSkill(PlayerId.BaJie, 1) && !session.TryLearnSkill(PlayerId.Tang, 1),
             "fresh save unlocks only Wukong and cannot purchase locked companions' skills");
         yield return SceneManager.LoadSceneAsync("Level1Scene"); yield return null; yield return null;
-        TutorialStageManager tutorial = FindAnyObjectByType<TutorialStageManager>(); tutorial.enabled = false;
+        StageManager tutorial = FindAnyObjectByType<StageManager>(); tutorial.enabled = false;
         PlayerManager freshParty = FindAnyObjectByType<PlayerManager>(); PlayerController firstHero = freshParty.CurrentPlayer;
         Check(freshParty.Players.Count == 1 && firstHero.GetComponent<PlayerResources>().Id == PlayerId.WuKong,
             "fresh first level creates only Wukong through the shared PlayerManager");
@@ -362,8 +362,8 @@ public sealed class RebirthRuntimeValidation : MonoBehaviour
         Check("再入轮回第".All(c => mapLabel.font.HasCharacter(c)), "runtime Chinese font contains every character in rebirth labels and button");
         Capture("map-rebirth");
         SaveSystem.TrySave(); yield return SceneManager.LoadSceneAsync("MenuScene"); yield return null;
-        Text[] slotLabels = Get<Text[]>(FindAnyObjectByType<MenuButton>(), "rebirthLabels");
-        Check(slotLabels.Length == 6 && slotLabels[0].text == "第 3 轮回" && slotLabels[5].text == "第 0 轮回", "save slots display stored rebirth and zero for empty slots");
+        TMPro.TextMeshProUGUI[] slotLabels = Get<TMPro.TextMeshProUGUI[]>(FindAnyObjectByType<MenuButton>(), "fileInformantion");
+        Check(slotLabels.Length == 6 && slotLabels[0].text.Contains("第 3 轮回") && !slotLabels[5].text.Contains("轮回"), "save slots display stored rebirth and hide zero in one text");
         FindAnyObjectByType<MenuButton>().ContinueGame(); Capture("save-slots");
         session.ClearSelectedFile(); yield return SceneManager.LoadSceneAsync("MapScene"); yield return null;
         Check(Get<Text>(FindAnyObjectByType<Map>(), "rebirthLabel").text == "第 0 轮回", "unselected MapScene displays rebirth zero even if old data remains in memory");

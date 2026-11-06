@@ -162,6 +162,9 @@ public class UIManager : MonoBehaviour
             if (slot?.timer == null) continue;
             PlayerId id = order[i];
             PlayerController character = party.GetCharacter(id);
+            GameObject slotRoot = slot.portrait.transform.parent != null ? slot.portrait.transform.parent.gameObject : slot.portrait.gameObject;
+            if (slotRoot.activeSelf != (character != null)) slotRoot.SetActive(character != null);//未解锁的角色不创建实例，对应槽位整体隐藏
+            if (character == null) continue;
             bool available = character != null && !character.GetComponent<Health>().Dead;
             bool active = available && character == party.CurrentPlayer;
             float remaining = party.GetSwitchCooldownRemaining(id, out float ratio);

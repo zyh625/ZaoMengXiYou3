@@ -23,6 +23,7 @@ public class Level1Enemy : MonoBehaviour
     }
     public void CreatBird()
     {
+        if (Player.tran == null) return;//角色尚未由新框架创建完成
         if (curBirds == 10 || (curBirds >= 4 && Boss1.alive)) return;//Boss出现后鸟怪生成数量上限下降
         creat += Time.deltaTime;
         if (creat >= 8f)//每8秒在玩家上方随机生成一个鸟怪
