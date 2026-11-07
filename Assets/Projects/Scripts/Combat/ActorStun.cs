@@ -13,7 +13,10 @@ public class ActorStun : MonoBehaviour
     [SerializeField, Min(0f)] private float immunityAfterStun = 2.5f;//一次眩晕结束后短暂免疫新的普通眩晕，避免被连续控制锁死
     private float immuneUntil;//免疫结束时刻，只在本次眩晕真正结束时刷新
     public event Action Changed;//控制器收到变化后立即中断旧动作或恢复输入
-    public bool IsStunned => isActiveAndEnabled && health != null && !health.Dead && !health.Boost && Time.time < stunUntil;
+    private float forcedUntil;//强制眩晕（如链锤勾回）：无双和霸体都不能驱散，也不受眩晕后免疫影响
+    public bool HoldSuspended { get; set; }//被拖拽期间由拖拽方控制位置，暂不定身
+    public bool IsStunned => isActiveAndEnabled && health != null && !health.Dead
+        && (Time.time < forcedUntil || !health.Boost && Time.time < stunUntil);
 
     private void Awake()//动态挂载和预制体挂载使用同一初始化入口
     {
@@ -23,7 +26,7 @@ public class ActorStun : MonoBehaviour
     }
     private void OnEnable()//所有驱散共用Health事件，未来无双新增来源也不漏清眩晕
     {
-        health.DebuffsCleared += Clear;
+        health.DebuffsCleared += OnDebuffsCleared;
         health.Died += OnDied;
     }
     public bool Apply(UnityEngine.Object source, float duration)//普通眩晕不越过无敌、死亡或霸体，返回是否真正生效
@@ -37,6 +40,23 @@ public class ActorStun : MonoBehaviour
         HoldPosition();
         return true;
     }
+    public bool ApplyForced(UnityEngine.Object source, float duration)//无双/霸体期间同样生效，只有无敌和死亡能挡住
+    {
+        if (source == null || duration <= 0f || float.IsNaN(duration) || float.IsInfinity(duration)
+            || !isActiveAndEnabled || health.Dead || health.IsInvincible) return false;
+        if (!IsStunned) heldPosition = body.position;
+        forcedUntil = Mathf.Max(forcedUntil, Time.time + duration);
+        stunUntil = Mathf.Max(stunUntil, forcedUntil);
+        Changed?.Invoke();
+        HoldPosition();
+        return true;
+    }
+    public void Rehold() { if (body != null) heldPosition = body.position; }//拖拽结束后在新位置继续定身
+    private void OnDebuffsCleared()//无双驱散普通眩晕，强制眩晕保留到结束
+    {
+        if (Time.time < forcedUntil) { stunUntil = forcedUntil; return; }
+        Clear();
+    }
     private void Update()//到期或获得普通霸体时结束，死亡由事件即时清理
     {
         if (stunUntil > 0f && !IsStunned) Clear();
@@ -45,22 +65,23 @@ public class ActorStun : MonoBehaviour
     private void LateUpdate() => HoldPosition();//物理重力产生的本帧偏移在渲染前收束，不修改其他状态的刚体设置
     private void HoldPosition()//冰冻和融化的位置约束优先，避免多来源控制互相恢复旧的刚体约束
     {
-        if (!IsStunned || body == null) return;
+        if (!IsStunned || body == null || HoldSuspended) return;
         if (status != null && status.BlocksMovement) status.EnforcePosition();
         else body.position = heldPosition;
         body.linearVelocity = Vector2.zero;
     }
     public void Clear()//驱散、死亡和退场均不积压到下次登场
     {
-        if (stunUntil <= 0f) return;
-        stunUntil = 0f;
+        if (stunUntil <= 0f && forcedUntil <= 0f) return;
+        stunUntil = forcedUntil = 0f;
+        HoldSuspended = false;
         immuneUntil = Time.time + Mathf.Max(0f, immunityAfterStun);//自然结束、被无双驱散、死亡都从结束时刻开始计算保护窗口
         Changed?.Invoke();
     }
     private void OnDied(DamageInfo damage) => Clear();//死亡不等待眩晕计时结束
     private void OnDisable()//只退订自己的来源，不改变其他控制状态
     {
-        health.DebuffsCleared -= Clear;
+        health.DebuffsCleared -= OnDebuffsCleared;
         health.Died -= OnDied;
         Clear();
     }

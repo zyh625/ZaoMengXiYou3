@@ -4,7 +4,10 @@ using UnityEngine;
 // Line and knot placeholders share a query path; each query deduplicates multi-collider players.
 public sealed class ConstellationWeaverArea : MonoBehaviour
 {
-    [SerializeField] private LineRenderer line;
+    [SerializeField] private LineRenderer line;//没有配置帧图时使用的线条占位
+    [SerializeField] private EffectFramePlayer visual;//星结：地面星环；星丝：按两端距离横向拉伸的丝线
+    private Vector3 visualOffset, visualScale;
+    private bool visualCached;
     private ConstellationWeaverCombat owner;
     private bool silk, pulsed;
     private float expiry, scale;
@@ -22,12 +25,43 @@ public sealed class ConstellationWeaverArea : MonoBehaviour
         else for (int i = 0; i < 33; i++)
         { float angle = i * Mathf.PI / BalanceRuntime.Number(this, "ConstellationWeaverArea.Show.2", 16f); line.SetPosition(i, a + new Vector2(Mathf.Cos(angle) * BalanceRuntime.Number(this, "ConstellationWeaverArea.Show.3", 0.75f), Mathf.Sin(angle) * BalanceRuntime.Number(this, "ConstellationWeaverArea.Show.4", 0.08f))); }
         SetColor(BalanceRuntime.Number(this, "ConstellationWeaverArea.Show.5", 0.25f));
+        if (UseFrames()) ShowFrames(a, b);//有帧图时隐藏线条占位
+    }
+    private bool UseFrames()
+    {
+        if (visual == null || !visual.HasFrames) { if (visual != null) visual.gameObject.SetActive(false); return false; }
+        if (!visualCached)//预制体上 Visual 的位置和缩放作为基准：星结直接使用，星丝的横向缩放按长度计算
+        { visualCached = true; visualOffset = visual.transform.localPosition; visualScale = visual.transform.localScale; }
+        line.enabled = false; visual.gameObject.SetActive(true);
+        return true;
+    }
+    private void ShowFrames(Vector2 a, Vector2 b)
+    {
+        Transform t = visual.transform;
+        if (silk)
+        {
+            Vector2 d = b - a; if (d.x < 0f) d = -d;//始终从左到右，避免丝线弧度上下颠倒
+            float tile = visual.FirstFrame.bounds.size.x;//一格丝线的世界宽度（200px / PPU100 = 2）
+            float angle = Mathf.Atan2(d.y, d.x) * Mathf.Rad2Deg;
+            t.rotation = Quaternion.Euler(0f, 0f, angle);
+            t.position = (Vector3)((a + b) * 0.5f) + t.rotation * visualOffset;
+            t.localScale = new Vector3(Mathf.Max(0.1f, d.magnitude) / Mathf.Max(0.01f, tile), visualScale.y, 1f);
+            visual.Play(0, 11, 4, 11);//出现(F1–4)后星光沿丝线来回流动
+        }
+        else
+        {
+            t.localPosition = visualOffset; t.localRotation = Quaternion.identity; t.localScale = visualScale;
+            visual.Play(0, 6, 3, 6);//预警：星环亮起后保持
+        }
     }
     private void SetColor(float alpha) => line.startColor = line.endColor = new Color(BalanceRuntime.Number(this, "ConstellationWeaverArea.SetColor.1", 0.15f), BalanceRuntime.Number(this, "ConstellationWeaverArea.SetColor.2", 0.85f), 1f, alpha);
     public void Pulse()
     {
         if (pulsed || !gameObject.activeSelf) return;
-        pulsed = true; expiry = Time.time + BalanceRuntime.Number(this, "ConstellationWeaverArea.Pulse.1", 0.25f); SetColor(BalanceRuntime.Number(this, "ConstellationWeaverArea.Pulse.2", 0.55f)); Query(true);
+        pulsed = true; expiry = Time.time + BalanceRuntime.Number(this, "ConstellationWeaverArea.Pulse.1", 0.25f); SetColor(BalanceRuntime.Number(this, "ConstellationWeaverArea.Pulse.2", 0.55f));
+        if (visual != null && visual.HasFrames && visual.gameObject.activeSelf)
+            visual.Play(7, 15, -1, -1, 9f / Mathf.Max(0.05f, expiry - Time.time));//亮峰到消散在结算时间内播完
+        Query(true);
     }
     private void FixedUpdate()
     {

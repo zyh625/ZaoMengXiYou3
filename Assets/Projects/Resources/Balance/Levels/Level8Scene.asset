@@ -118,14 +118,29 @@ MonoBehaviour:
       value: 0.3400000035762787
       integer: 0
       boolean: 0
-    - path: enemyPools.Array.data[2].poolSize
-      label: "\u7B2C3\u79CD\u654C\u4EBA / \u9884\u70ED\u6570\u91CF"
-      value: 10
+    - path: timedEnemies.Array.data[0].maxAlive
+      label: "\u5B9A\u65F6\u654C\u4EBA1 / \u540C\u65F6\u5B58\u6D3B\u4E0A\u9650"
+      value: 2
       integer: 1
       boolean: 0
-    - path: enemyPools.Array.data[2].weight
-      label: "\u7B2C3\u79CD\u654C\u4EBA / \u751F\u6210\u6743\u91CD"
-      value: 0.33000001311302185
+    - path: timedEnemies.Array.data[0].interval
+      label: "\u5B9A\u65F6\u654C\u4EBA1 / \u751F\u6210\u95F4\u9694\uFF08\u79D2\uFF09"
+      value: 15
+      integer: 0
+      boolean: 0
+    - path: timedEnemies.Array.data[0].firstDelay
+      label: "\u5B9A\u65F6\u654C\u4EBA1 / \u9996\u6B21\u751F\u6210\u5EF6\u8FDF\uFF08\u79D2\uFF09"
+      value: 10
+      integer: 0
+      boolean: 0
+    - path: timedEnemies.Array.data[0].spawnHeight
+      label: "\u5B9A\u65F6\u654C\u4EBA1 / \u51FA\u751F\u9AD8\u5EA6\uFF08\u9AD8\u4E8E\u73A9\u5BB6\uFF09"
+      value: 4
+      integer: 0
+      boolean: 0
+    - path: timedEnemies.Array.data[0].spawnSideDistance
+      label: "\u5B9A\u65F6\u654C\u4EBA1 / \u51FA\u751F\u5DE6\u53F3\u504F\u79FB"
+      value: 4
       integer: 0
       boolean: 0
   numbers: []

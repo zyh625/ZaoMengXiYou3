@@ -10,12 +10,14 @@ public abstract class LevelEnemyManager : MonoBehaviour
     protected int enemyExtraOrder = 0;
     protected CameraManager CM;
     private readonly List<EnemyController> enemies = new();//登记所有小怪池成员，统计与换人不依赖具体敌人类型
+    private readonly HashSet<EnemyController> outsideWaves = new();//定时生成的敌人：参与换人目标与清场，但不计入波次存活数
     private Transform currentTarget;//创建对象池及Boss时共用的追击目标
     private PlayerManager currentPlayers;//创建奖励组件时注入当前使用角色的来源
     private bool initialized;//防止同一个管理器重复建立对象池
 
     public Transform CurBoss => curBoss;
     public int EnemyExtraOrder => enemyExtraOrder;
+    protected Transform CurrentTarget => currentTarget;
     public bool HasBoss => boss != null;//本关是否配置了Boss，决定是否需要Boss阶段与出生点
     protected virtual bool RequiresBoss => boss != null;//没有Boss的教程关不再需要单独的RequiresBoss子类
 
@@ -70,12 +72,13 @@ public abstract class LevelEnemyManager : MonoBehaviour
 
     protected abstract void InitEnemyPools();//子类决定敌人种类、池大小和创建顺序
 
-    protected T CreateEnemy<T>(T prefab) where T : EnemyController//统一初始化新池成员，保留子类所需的具体类型
+    protected T CreateEnemy<T>(T prefab, bool countsForWaves = true) where T : EnemyController//统一初始化新池成员，保留子类所需的具体类型
     {
         T enemy = Instantiate(prefab);
         enemy.GetComponent<BalanceBinding>()?.ApplyOnce();
         ApplyRebirthStats(enemy.gameObject, prefab.gameObject);
         enemies.Add(enemy);
+        if (!countsForWaves) outsideWaves.Add(enemy);
         BindRewards(enemy.gameObject, currentPlayers);
         enemy.GetComponentInChildren<SpriteRenderer>(true).sortingOrder += enemyExtraOrder++;
         SetEnemyTarget(enemy.gameObject, currentTarget);
@@ -118,9 +121,11 @@ public abstract class LevelEnemyManager : MonoBehaviour
     {
         int ans = 0;
         foreach (EnemyController enemy in enemies)
-            if (enemy != null && enemy.gameObject.activeSelf) ans++;
+            if (enemy != null && enemy.gameObject.activeSelf && !outsideWaves.Contains(enemy)) ans++;
         return ans;
     }
+
+    public virtual void UpdateTimedSpawns() { }//关卡每个物理帧调用；有定时生成配置的管理器在这里按间隔补怪
 
     public abstract bool TryCreateEnemy(bool r, float createY);//选择哪种敌人以及出生方式由具体关卡决定
 

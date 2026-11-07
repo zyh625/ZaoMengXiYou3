@@ -24,8 +24,8 @@ public sealed class ResonantStarOwlEffect : MonoBehaviour
         kind = skill; segment = part; multiplier = source.DamageMultiplier; victims.Clear();
         beganAt = Time.time; duration = kind == 0 ? BalanceRuntime.Number(this, "ResonantStarOwlEffect.Begin.1", 1.2f) : kind == 1 ? BalanceRuntime.Number(this, "ResonantStarOwlEffect.Begin.2", 0.35f) : BalanceRuntime.Number(this, "ResonantStarOwlEffect.Begin.3", 2f);
         previousRadius = BalanceRuntime.Number(this, "ResonantStarOwlEffect.Begin.4", 1.6f);
-        float sign = source.FaceRight ? 1f : -1f;
-        transform.position = kind == 0 ? source.CastOrigin : new Vector2(source.CastOrigin.x + sign*(kind == 1 ? BalanceRuntime.Number(this, "ResonantStarOwlEffect.Begin.5", 3.9f) : BalanceRuntime.Number(this, "ResonantStarOwlEffect.Begin.6", 4f)),
+        //声环以星鸮为中心扩散；高低鸣和共振带以施法瞬间玩家的位置为中心（星鸮在头顶，不再固定放在身前4格）
+        transform.position = kind == 0 ? source.CastOrigin : new Vector2(source.CastTargetX,
             source.CastFloor + (kind == 1 ? (segment == 0 ? BalanceRuntime.Number(this, "ResonantStarOwlEffect.Begin.7", 0.55f) : BalanceRuntime.Number(this, "ResonantStarOwlEffect.Begin.8", 2.6f)) : BalanceRuntime.Number(this, "ResonantStarOwlEffect.Begin.9", 2.5f)));
         size = kind == 1 ? new Vector2(BalanceRuntime.Number(this, "ResonantStarOwlEffect.Begin.10", 6.2f),BalanceRuntime.Number(this, "ResonantStarOwlEffect.Begin.11", 0.55f)) : new Vector2(BalanceRuntime.Number(this, "ResonantStarOwlEffect.Begin.12", 0.55f),BalanceRuntime.Number(this, "ResonantStarOwlEffect.Begin.13", 1.6f));
         gameObject.SetActive(true); spriteManager.ChangeState(appearance); spriteManager.Pause();

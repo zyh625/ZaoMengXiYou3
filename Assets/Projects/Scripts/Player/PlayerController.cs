@@ -5,6 +5,9 @@ public class PlayerController : MonoBehaviour
 {
     [Header("动作帧素材")]
     [SerializeField] private SpriteData Idle;
+    public SpriteData IdleAnimation => Idle;//背包等界面展示当前角色待机，只读不改变动画状态
+    private void OnSkillKey(int key)//U、I、O 按玩家的按键配置换成技能编号；同一技能绑多个键也共用一份冷却
+        => PC.OnSkill(KeyBindings.SkillFor(resources != null ? resources.Id : PlayerId.WuKong, key));
     [SerializeField] private SpriteData Walk;
     [SerializeField] private SpriteData Run;
     [SerializeField] private SpriteData JumpOne;
@@ -77,9 +80,9 @@ public class PlayerController : MonoBehaviour
         IR.MovePressed += PM.OnMove;
         IR.AttackPressed += PC.OnAttack;
         IR.InteractPressed += PI.OnInteract;
-        IR.SkillOnePressed += PC.OnSkill;
-        IR.SkillTwoPressed += PC.OnSkill;
-        IR.SkillThreePressed += PC.OnSkill;
+        IR.SkillOnePressed += OnSkillKey;
+        IR.SkillTwoPressed += OnSkillKey;
+        IR.SkillThreePressed += OnSkillKey;
         IR.QuickDownPressed += PM.OnQuickDown;
         IR.BoostPressed += PB.RequestBoost;
         if (status != null) status.Changed += OnStatusChanged;
@@ -92,9 +95,9 @@ public class PlayerController : MonoBehaviour
         IR.MovePressed -= PM.OnMove;
         IR.AttackPressed -= PC.OnAttack;
         IR.InteractPressed -= PI.OnInteract;
-        IR.SkillOnePressed -= PC.OnSkill;
-        IR.SkillTwoPressed -= PC.OnSkill;
-        IR.SkillThreePressed -= PC.OnSkill;
+        IR.SkillOnePressed -= OnSkillKey;
+        IR.SkillTwoPressed -= OnSkillKey;
+        IR.SkillThreePressed -= OnSkillKey;
         IR.QuickDownPressed -= PM.OnQuickDown;
         IR.BoostPressed -= PB.RequestBoost;
         if (status != null) status.Changed -= OnStatusChanged;

@@ -15,6 +15,8 @@ public class PlayerData
     public int playerLevel = 1;
     public float exp = 0f;
     public int[] skillLevels = new int[3];//技能等级
+    public int[] passiveLevels = new int[PassiveSkills.Count];//被动技能等级，顺序见 PassiveStat
+    public int weaponUid, armorUid, accessoryUid, treasureUid;//当前装备在 SaveData.equipment 里的编号，0 表示空
 
     public void Normalize()//兼容旧存档未填写的角色属性，技能数组只扩充、不截断以后新增的技能
     {
@@ -23,6 +25,9 @@ public class PlayerData
         if (skillLevels == null) skillLevels = new int[3];
         else if (skillLevels.Length < 3) Array.Resize(ref skillLevels, 3);
         for (int i = 0; i < skillLevels.Length; i++) skillLevels[i] = Math.Max(0, skillLevels[i]);
+        if (passiveLevels == null) passiveLevels = new int[PassiveSkills.Count];
+        else if (passiveLevels.Length < PassiveSkills.Count) Array.Resize(ref passiveLevels, PassiveSkills.Count);
+        for (int i = 0; i < passiveLevels.Length; i++) passiveLevels[i] = Math.Max(0, passiveLevels[i]);
     }
 
     public int GetSkillLevel(int skillNumber)//技能编号与战斗脚本一致，从1开始，0级表示尚未学习
@@ -42,7 +47,7 @@ public class PlayerData
 [Serializable]
 public class SaveData
 {
-    public const int InitialGold = 10000;//只在新建存档时发放，读取旧档不会覆盖已有金币
+    public const int InitialGold = 1000;//只在新建存档时发放，读取旧档不会覆盖已有金币
     public const int MaxRebirth = 81;
     public List<PlayerData> players = new();
     public int gameLevel = 1;//最高可进入的关卡
@@ -58,7 +63,9 @@ public class SaveData
     public string name;//存档名字,最多12个字母
     public string date;//最近一次游玩
     public int gold;//已经完整拾取入账的金币，地上和吸附中的金币不写进这里
-    public List<int> defeatedBossLevels = new();//按关卡记录Boss首杀，重新挑战不会重复获得首杀掉落
+    public List<int> defeatedBossLevels = new();//按“轮回×10+关卡”记录Boss首杀，每次轮回各Boss重新有一次首杀奖励；第0轮仍是1～9，兼容旧档
+    public List<EquipmentItem> equipment = new();//拥有的全部装备实例（含已装备的）
+    public int nextEquipmentUid = 1;
     public PlayerData GetPlayer(PlayerId id)
     {
         if (!Enum.IsDefined(typeof(PlayerId), id)) return null;
@@ -92,8 +99,12 @@ public class SaveData
             if (player.playerLevel > 1 || player.exp > 0f || Array.Exists(player.skillLevels, level => level > 0)) joined |= 1 << (int)player.id;
         unlocked = (Math.Max(0, unlocked) | joined) & 15;
         if (defeatedBossLevels == null) defeatedBossLevels = new List<int>();
+        if (equipment == null) equipment = new List<EquipmentItem>();
+        equipment.RemoveAll(item => item == null || string.IsNullOrEmpty(item.id));
+        foreach (EquipmentItem item in equipment) if (item.uid >= nextEquipmentUid) nextEquipmentUid = item.uid + 1;
+        nextEquipmentUid = Math.Max(1, nextEquipmentUid);
         HashSet<int> seen = new();//只在读盘或写盘前整理，掉落时直接读取记录
-        defeatedBossLevels.RemoveAll(level => level < 1 || !seen.Add(level));
+        defeatedBossLevels.RemoveAll(level => level < 1 || level % 10 == 0 || !seen.Add(level));
     }
 
     //旧版本在中文系统上可能把 UTF-8 名字按 Latin-1 解码后再次保存；这里在读取时还原一次。

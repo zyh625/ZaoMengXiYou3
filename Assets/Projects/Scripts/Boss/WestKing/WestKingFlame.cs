@@ -50,7 +50,8 @@ public sealed class WestKingFlame : MonoBehaviour
             if(streamTick)StreamTicks++;else GroundTicks++;
             //地面箱允许跳跃离开；持续阶段每个Health每半秒只结算一次。
             Vector2 center=anchor+new Vector2((right?1f:-1f)*length/BalanceRuntime.Number(this, "WestKingFlame.FixedUpdate.4", 2f),streamTick?BalanceRuntime.Number(this, "WestKingFlame.FixedUpdate.5", 0.65f):BalanceRuntime.Number(this, "WestKingFlame.FixedUpdate.6", 0.3f));
-            WestHitUtility.Area(owner,center,new Vector2(length,streamTick?BalanceRuntime.Number(this, "WestKingFlame.FixedUpdate.7", 1.3f):BalanceRuntime.Number(this, "WestKingFlame.FixedUpdate.8", 0.6f)),0f,BalanceRuntime.Number(this, "WestKingFlame.FixedUpdate.9", 10f)*scale,true,hits,unique);
+            //喷吐阶段是正常命中（有受击反应，不击退）；落地火焰按持续灼烧结算
+            WestHitUtility.Area(owner,center,new Vector2(length,streamTick?BalanceRuntime.Number(this, "WestKingFlame.FixedUpdate.7", 1.3f):BalanceRuntime.Number(this, "WestKingFlame.FixedUpdate.8", 0.6f)),0f,BalanceRuntime.Number(this, "WestKingFlame.FixedUpdate.9", 10f)*scale,!streamTick,hits,unique);
             if(!gameObject.activeSelf)return;
         }
         if(!fire && Time.time>=streamEnd)StartGround();

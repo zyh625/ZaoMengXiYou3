@@ -11,16 +11,16 @@ public static class RebirthScaling
     {
         public readonly int N;
         public Multipliers(int rebirth) => N = Mathf.Clamp(rebirth, 0, Cap);
-        public float HP => 1f + Rule("HPPerRound",.35f) * N;
-        public float Damage => 1f + Rule("DamagePerRound",.15f) * N;
+        public float HP => 1f + Rule("HPPerRound",.25f) * N;
+        public float Damage => 1f + Rule("DamagePerRound",.14f) * N;
         public float Gold => 1f + Rule("GoldPerRound",.25f) * N;
-        public float Experience => 1f + Rule("ExperiencePerRound",.20f) * N;
-        public float Quantity => 1f + Rule("QuantityPerRound",.08f) * N;
-        public float AttackCooldown => Mathf.Max(Rule("MinimumAttackCooldown",.75f),1f-Rule("AttackCooldownPerRound",.03f)*N);
+        public float Experience => 1f + Rule("ExperiencePerRound",.15f) * N;
+        public float Quantity => 1f + Rule("QuantityPerRound",.06f) * N;
+        public float AttackCooldown => Mathf.Max(Rule("MinimumAttackCooldown",.80f),1f-Rule("AttackCooldownPerRound",.02f)*N);
         public float Movement => 1f + Rule("MovementPerRound",.02f)*N;
         public float SpawnDelay => Mathf.Max(Rule("MinimumSpawnDelay",.70f),1f-Rule("SpawnDelayPerRound",.03f)*N);
         public int ExtraAlive => Mathf.Clamp(Mathf.CeilToInt(Rule("AlivePerRound",.1f)*N),0,Mathf.RoundToInt(Rule("MaximumExtraAlive",1)));
-        private long QuantityStep=>Mathf.RoundToInt(Rule("QuantityPerRound",.08f)*10000);
+        private long QuantityStep=>Mathf.RoundToInt(Rule("QuantityPerRound",.06f)*10000);
         private long GoldStep=>Mathf.RoundToInt(Rule("GoldPerRound",.25f)*10000);
 
         public int EnemyCount(int baseline)//数量向上取整，用整数避免浮点误差多生一只。

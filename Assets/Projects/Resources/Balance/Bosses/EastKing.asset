@@ -293,54 +293,6 @@ MonoBehaviour:
       value: 0
       integer: 0
       boolean: 0
-  - objectPath: 
-    componentType: UnityEngine.BoxCollider2D
-    componentIndex: 0
-    parameters:
-    - path: m_Size.x
-      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
-      value: 2.0199999809265137
-      integer: 0
-      boolean: 0
-    - path: m_Size.y
-      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
-      value: 3.7599198818206787
-      integer: 0
-      boolean: 0
-    - path: m_Offset.x
-      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
-      value: 0
-      integer: 0
-      boolean: 0
-    - path: m_Offset.y
-      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
-      value: -0.1900399923324585
-      integer: 0
-      boolean: 0
-  - objectPath: Combat/Attacked
-    componentType: UnityEngine.BoxCollider2D
-    componentIndex: 0
-    parameters:
-    - path: m_Size.x
-      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
-      value: 1.6200000047683716
-      integer: 0
-      boolean: 0
-    - path: m_Size.y
-      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
-      value: 3.612086296081543
-      integer: 0
-      boolean: 0
-    - path: m_Offset.x
-      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
-      value: 0
-      integer: 0
-      boolean: 0
-    - path: m_Offset.y
-      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
-      value: -0.1857091784477234
-      integer: 0
-      boolean: 0
   numbers:
   - key: BuffNoteManager.OnLaunched.1
     label: OnLaunched / apex = new Vector2(Mathf.Clamp(Mathf.Lerp(position.x, targetX,

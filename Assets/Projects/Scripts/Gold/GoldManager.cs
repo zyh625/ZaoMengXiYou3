@@ -45,7 +45,10 @@ public class GoldManager : MonoBehaviour
         int amount;
         if (isBoss)
         {
-            if (!data.MarkBossDefeated(level)) return;//在死亡时就记录首杀，避免退出重进后反复刷首杀奖励
+            int rebirth = GameSession.instance != null ? GameSession.instance.Rebirth : 0;
+            bool firstKill = data.MarkBossDefeated(level + 10 * rebirth);//每次轮回各Boss各有一次首杀；在死亡时记录，退出重进不能反复刷
+            EquipmentService.BossDrop(data, level, rebirth, firstKill);//首杀保底掉落，重复击杀按概率掉落
+            if (!firstKill) return;
             amount = Mathf.Max(0, bossGold);
         }
         else

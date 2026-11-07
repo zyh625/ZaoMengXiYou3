@@ -24,6 +24,16 @@ public class Health : MonoBehaviour,IDamage
         beginBlood = Mathf.Max(0f, value);
         if (curBlood > beginBlood) curBlood = beginBlood;
     }
+    public void SetMaxBloodKeepRatio(float value)//角色升级或换装备时改上限，当前血量按原比例缩放
+    {
+        value = Mathf.Max(1f, value);
+        if (Mathf.Approximately(value, beginBlood)) return;
+        float ratio = beginBlood > 0f ? Mathf.Clamp01(curBlood / beginBlood) : 1f;
+        beginBlood = value;
+        if (!die) curBlood = ratio * value;
+        HealthChanged?.Invoke(curBlood, beginBlood);
+    }
+    public static event System.Action<Health, DamageInfo, float> AnyDamageReceived;//全局命中通知，装备品质特效用来在被打者身上放火花
     public int LifeVersion { get; private set; }//对象池每次真正重生递增，投射物可区分同一实例的新旧生命
     private ActorStatus status;//生命与通用状态共用一次命中结算，新人物自动拥有状态组件
     public ActorStatus Status => status != null ? status : status = GetComponent<ActorStatus>();
@@ -141,6 +151,16 @@ public class Health : MonoBehaviour,IDamage
     public void SetDamageMultiplier(Object source, float multiplier)
     {
         if (source != null) damageMultipliers[source] = Mathf.Max(0f, multiplier);//保留原有0～1减伤语义，同时允许按来源叠加易伤。
+    }
+    public float DamageTakenMultiplier//界面读取当前承伤倍率，与结算使用同一套乘法叠加；小于1表示减伤
+    {
+        get
+        {
+            float multiplier = 1f;
+            foreach (KeyValuePair<Object, float> modifier in damageMultipliers)
+                if (modifier.Key != null) multiplier *= modifier.Value;
+            return multiplier;
+        }
     }
     public void RemoveDamageMultiplier(Object source)//仅移除指定来源的减伤
     {
@@ -294,6 +314,7 @@ public class Health : MonoBehaviour,IDamage
         float actualDamage = previousBlood - curBlood;//回调可能修改其他状态，整次命中始终保留同一笔实际伤害
         bool trainingFeedback=originalDamage>0f && (TrainingPreventHealthLoss || TrainingMinimumBlood>0f);
         if (actualDamage > 0f || trainingFeedback) DamageReceived?.Invoke(damage, actualDamage);
+        if (actualDamage > 0f || trainingFeedback) AnyDamageReceived?.Invoke(this, damage, actualDamage);
 
         if (!die && !damage.IsReflected && !damage.IsPeriodic && damage.Effects != null)
             foreach (AttackEffect effect in damage.Effects)

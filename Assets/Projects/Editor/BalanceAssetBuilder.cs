@@ -103,7 +103,7 @@ public static class BalanceAssetBuilder
     static bool ValidParameter(string typeName,string path)
     {
         if(path.Contains(".m_")||excluded.Contains(path.Split('.')[0]))return false;
-        Type type=BalanceBinding.ResolveType(typeName);if(type==typeof(Rigidbody2D)||type==typeof(BoxCollider2D))return true;
+        Type type=BalanceBinding.ResolveType(typeName);if(type==typeof(Rigidbody2D))return true;if(BalanceBinding.ControlsSize(type))return false;//碰撞箱、缩放只由预制体控制
         foreach(var token in path.Replace(".Array.data[","[").Split('.'))
         {
             string field=token.Split('[')[0];System.Reflection.FieldInfo member=null;
@@ -216,13 +216,13 @@ public static class BalanceAssetBuilder
                 if(destination==null){existing.Add(source);continue;}
                 var keys=new HashSet<string>(destination.parameters.Select(p=>p.path));destination.parameters=destination.parameters.Concat(source.parameters.Where(p=>!keys.Contains(p.path))).ToArray();
             }
-            foreach(var physics in prefab.GetComponentsInChildren<Component>(true).Where(c=>c is Rigidbody2D||c is BoxCollider2D))
+            foreach(var physics in prefab.GetComponentsInChildren<Component>(true).Where(c=>c is Rigidbody2D))//只导出刚体手感数值；碰撞箱尺寸由预制体控制
             {
                 string relative=AnimationUtility.CalculateTransformPath(physics.transform,prefab.transform);
                 if(existing.Any(g=>g.componentType==physics.GetType().FullName&&g.objectPath==relative))continue;
-                string[] properties=physics is Rigidbody2D?new[]{"m_Mass","m_GravityScale","m_LinearDamping"}:new[]{"m_Size.x","m_Size.y","m_Offset.x","m_Offset.y"};
+                string[] properties={"m_Mass","m_GravityScale","m_LinearDamping"};
                 var so=new SerializedObject(physics);var values=new List<BalanceProfile.Parameter>();
-                foreach(string name in properties){var property=so.FindProperty(name);if(property!=null)values.Add(new BalanceProfile.Parameter{path=name,label=(name.Contains("Size")?"碰撞箱尺寸":name.Contains("Offset")?"碰撞箱偏移":name.Contains("Gravity")?"重力倍率":name.Contains("Mass")?"质量":"水平阻尼")+" · "+name,value=property.doubleValue});}
+                foreach(string name in properties){var property=so.FindProperty(name);if(property!=null)values.Add(new BalanceProfile.Parameter{path=name,label=(name.Contains("Gravity")?"重力倍率":name.Contains("Mass")?"质量":"水平阻尼")+" · "+name,value=property.doubleValue});}
                 existing.Add(new BalanceProfile.ComponentSettings{objectPath=relative,componentType=physics.GetType().FullName,componentIndex=Array.IndexOf(physics.GetComponents(physics.GetType()),physics),parameters=values.ToArray()});
             }
             asset.components=existing.ToArray();EditorUtility.SetDirty(asset);

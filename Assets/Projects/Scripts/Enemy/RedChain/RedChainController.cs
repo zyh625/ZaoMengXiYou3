@@ -5,10 +5,8 @@ public sealed class RedChainController : EnemyController
 {
     [SerializeField] private SpriteData AttackOne, AttackTwo, AttackThree;
     [SerializeField, Min(0f)] private float recoveryDuration = 1.2f;
-    [SerializeField, Min(0.01f)] private float chainVisualScale = 2.55f;
     private RedChainCombat combat;
     private RedChainMovement movement;
-    private Transform visual;
     private float resumeAt, recoveryUntil;
     private bool casting, waiting;
 
@@ -22,7 +20,6 @@ public sealed class RedChainController : EnemyController
         base.Awake();
         combat = GetComponent<RedChainCombat>();
         movement = GetComponent<RedChainMovement>();
-        visual = SM.transform;
     }
 
     protected override void OnEnable()
@@ -34,17 +31,7 @@ public sealed class RedChainController : EnemyController
         EH.Died += OnDied;
     }
 
-    protected override SpriteData ResolveStateAnimation(EnemyState next, SpriteData fallback)
-    {
-        SetVisualScale(1f);
-        return fallback;
-    }
-
-    private void SetVisualScale(float scale)
-    {
-        //原图朝左，Visual 镜像后继续使用基类 flipX 的朝右语义；不翻转物理箱。
-        if (visual != null) visual.localScale = new Vector3(-scale, scale, 1f);
-    }
+    //本体大小只由预制体 Visual 的缩放（原图朝左，x 为负）和各动作图片的 PPU 决定，运行时不再缩放。
 
     protected override void HandleAttack(int attack)
     {
@@ -53,7 +40,6 @@ public sealed class RedChainController : EnemyController
         EH.SetSuperArmor(this, true);
         combat.BeginCast();
         SM.ChangeState(data);
-        SetVisualScale(attack == 1 ? chainVisualScale : 1f);
         //保留原图的落地/伸链帧；补足前摇后才开始播放，数值不随美术帧数改变。
         float hold = Mathf.Max(0f, combat.Windup - combat.OpenFrame / Mathf.Max(1f, data.fps));
         resumeAt = Time.time + hold;

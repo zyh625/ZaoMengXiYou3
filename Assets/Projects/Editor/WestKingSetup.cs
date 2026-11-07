@@ -110,7 +110,7 @@ public static class WestKingSetup
         WestEffectPool pool=root.AddComponent<WestEffectPool>();Ref(pool,"pearlPrefab",AssetDatabase.LoadAssetAtPath<GameObject>(PearlPath).GetComponent<WestKingPearl>());
         Ref(pool,"flamePrefab",AssetDatabase.LoadAssetAtPath<GameObject>(FlamePath).GetComponent<WestKingFlame>());Ref(pool,"orbPrefab",AssetDatabase.LoadAssetAtPath<GameObject>(OrbPath).GetComponent<WestKingOrb>());
         Visual(root,"Idle",out SpriteRenderer sr);sr.sortingOrder=2;sr.transform.localScale=new Vector3(-1f,1f,1f);sr.gameObject.AddComponent<SpriteOutlineController>();
-        WestController controller=root.AddComponent<WestController>();Num(controller,"stopDistance",5.5f);Num(controller,"visualHeight",2.9f);
+        WestController controller=root.AddComponent<WestController>();Num(controller,"stopDistance",5.5f);
         GameObject boxes=Child(root,"Combat"),hurt=Child(boxes,"Attacked",7);BoxCollider2D hurtBox=hurt.AddComponent<BoxCollider2D>();hurtBox.size=new Vector2(1.55f,2.8f);hurtBox.offset=Vector2.up*1.4f;hurtBox.isTrigger=true;Ref(controller,"attackedBox",hurtBox);
         GameObject hit=Child(boxes,"DragonClaw",8);BoxCollider2D hitBox=hit.AddComponent<BoxCollider2D>();hitBox.size=new Vector2(7f,2.2f);hitBox.offset=new Vector2(4.2f,1.2f);hitBox.isTrigger=true;
         WestClawBox claw=hit.AddComponent<WestClawBox>();Num(claw,"Attack",25f);Flag(claw,"knockback",true);Ref(combat,"claw",claw);hit.SetActive(false);

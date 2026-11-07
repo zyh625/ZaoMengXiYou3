@@ -53,6 +53,7 @@ public sealed class SealWardenCombat : LateStageCombat
     private void Deploy()
     {
         if(!move.SafeSpot(center+Vector2.left*BalanceRuntime.Number(this, "SealWardenCombat.Deploy.1", 1.8f),out var a)||!move.SafeSpot(center+Vector2.right*BalanceRuntime.Number(this, "SealWardenCombat.Deploy.2", 1.8f),out var b))return;
+        a=move.FeetPoint(a);b=move.FeetPoint(b);//楔子立在地面上
         ClearWedges();if(left==null)left=NewWedge();if(right==null)right=NewWedge();
         left.Activate(a,BalanceRuntime.Number(this, "SealWardenCombat.Deploy.3", 3f),LostWedge);right.Activate(b,BalanceRuntime.Number(this, "SealWardenCombat.Deploy.4", 3f),LostWedge);
     }

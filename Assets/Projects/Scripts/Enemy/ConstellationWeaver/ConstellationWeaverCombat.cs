@@ -56,12 +56,27 @@ public sealed class ConstellationWeaverCombat : EnemyCombat
     protected override void Awake()
     {
         base.Awake(); health = GetComponent<Health>(); movement = GetComponent<ConstellationWeaverMovement>();
+        EnsurePool();
+    }
+    //特效池是场景根节点，训练场切换目标时会清掉场景里的临时根节点；被删后在下次出招前重建。
+    private bool PoolIntact()
+    {
+        if (pool == null || silk == null) return false;
+        foreach (var anchor in anchors) if (anchor == null) return false;
+        foreach (var knot in knots) if (knot == null) return false;
+        return true;
+    }
+    private void EnsurePool()
+    {
+        if (PoolIntact()) return;
+        if (pool != null) Destroy(pool.gameObject);
         pool = new GameObject("ConstellationWeaverEffectPool").transform;
         pool.gameObject.SetActive(false);
         for (int i = 0; i < 2; i++) { anchors[i] = Instantiate(starAnchorPrefab, pool); anchors[i].gameObject.SetActive(false); }
         silk = Instantiate(silkLinePrefab, pool); silk.gameObject.SetActive(false);
         for (int i = 0; i < 3; i++) { knots[i] = Instantiate(starKnotPrefab, pool); knots[i].gameObject.SetActive(false); }
         pool.gameObject.SetActive(true);
+        if (silkOwner == this) silkOwner = null;//旧星丝已随池销毁
     }
     protected override void OnEnable()
     {
@@ -81,6 +96,8 @@ public sealed class ConstellationWeaverCombat : EnemyCombat
             || health.Dead || health.Attacked || movement.IsExternallyControlled || health.Status.BlocksActions
             || skill == 0 && silkOwner != null && silkOwner != this
             || skill == 2 && (!HasSilk || health.Status.BlocksMovement)) return false;
+        EnsurePool();
+        if (skill == 2 && !HasSilk) return false;
         CurrentSkill = skill; released = sliding = HoldingFrame = false; node = 0;
         readyAt[skill] = Time.time + cooldown[skill]; FaceRight = Target.transform.position.x >= transform.position.x;
         health.Status.NotifyAttackStarted();
@@ -102,7 +119,7 @@ public sealed class ConstellationWeaverCombat : EnemyCombat
     {
         HoldingFrame = false;
         if (CurrentSkill < 0) return;
-        if (health.Dead || health.Attacked || movement.IsExternallyControlled || health.Status.BlocksActions) { CancelCast(); return; }
+        if (health.Dead || health.Attacked || movement.IsExternallyControlled || health.Status.BlocksActions || !PoolIntact()) { CancelCast(); return; }
         if (CurrentSkill == 0 && !released && frame >= BalanceRuntime.Number(this, "ConstellationWeaverCombat.SampleFrame.Parameter1", 4f))
         {
             released = true; ExpireSilk();

@@ -76,7 +76,7 @@ public sealed class BalanceRuntimeValidation:MonoBehaviour
         }
         var bird=BalanceRuntime.Load("Bosses/JiuyaoXuanhuang");float old=bird.Get("JiuyaoCombat.OnFrame.8",12);BalanceProfile.Number number=Array.Find(bird.numbers,n=>n.key=="JiuyaoCombat.OnFrame.8");number.value=29;bird.Invalidate();
         Check(BalanceRuntime.Number(typeof(JiuyaoCombat),number.key,12)==29,"Hardcoded skill damage now reads boss asset");number.value=old;bird.Invalidate();
-        Check(RebirthScaling.For(1).HP==1.35f&&RebirthScaling.For(10).Damage==2.5f&&RebirthScaling.For(11).HP==RebirthScaling.For(10).HP,"Default rebirth multipliers and cap preserved");
+        Check(Mathf.Approximately(RebirthScaling.For(1).HP,1.25f)&&Mathf.Approximately(RebirthScaling.For(10).Damage,2.4f)&&RebirthScaling.For(11).HP==RebirthScaling.For(10).HP,"Default rebirth multipliers and cap preserved");
         Check(RebirthScaling.For(1).EnemyCount(24)==26&&RebirthScaling.For(10).EnemyCount(24)==44,"Quantity rounding preserved after data extraction");
     }
 }

@@ -23,7 +23,13 @@ public class LateStageController : EnemyController
             return true;
         }
         if(showingSpecial){showingSpecial=false;SM.Resume();SetState(EnemyState.Idle);}
-        if(combat.Recovering && !EH.Attacked && (state!=EnemyState.Attacked||SM.IsFinished)){move.Stop();SetState(EnemyState.Idle);return true;}
+        //技能动画已离开 Skill 状态但技能本身没结束（例如换位后的收招硬直把状态改成了待机）：立即结算，否则移动会一直被锁住而原地踏步
+        if(state!=EnemyState.Skill && combat.Skill>=0)combat.FinishSkill();
+        //动画比保持窗口短、已经播完：停在最后一帧等保持时间结束，再交给通用流程收招，不能先进入行走
+        if(state==EnemyState.Skill && combat.Skill>=0 && SM.IsFinished && !combat.Frozen && !(EH.Attacked&&!EH.Boost) && combat.HoldFrame(16))
+        {move.Stop();combat.SampleFrame(16);return true;}
+        //收招硬直只在技能结束后生效；技能进行中的硬直（换位落地）由技能自己的保持时间处理
+        if(combat.Recovering && combat.Skill<0 && !EH.Attacked && (state!=EnemyState.Attacked||SM.IsFinished)){move.Stop();SetState(EnemyState.Idle);return true;}
         if(move.Hovering && combat.Skill<0 && !combat.Frozen && !EH.Attacked && (state!=EnemyState.Attacked||SM.IsFinished))
         {
             if(combat.ReadySkill>=0)return false;

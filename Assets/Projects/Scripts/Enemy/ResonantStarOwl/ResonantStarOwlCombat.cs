@@ -19,6 +19,7 @@ public sealed class ResonantStarOwlCombat : EnemyCombat
     public bool FaceRight { get; private set; }
     public Vector2 CastOrigin { get; private set; }
     public float CastFloor { get; private set; }
+    public float CastTargetX { get; private set; }//高低鸣与共振带落在施法瞬间玩家所在的位置
     protected override bool UsesAnger => false;
     public PlayerController Target
     {
@@ -44,8 +45,9 @@ public sealed class ResonantStarOwlCombat : EnemyCombat
         {
             if (CurrentSkill >= 0 || health == null || health.Dead || health.Attacked
                 || health.Status != null && health.Status.BlocksActions || Target == null) return -1;
+            //在玩家头顶盘旋，只要水平距离不太远就能施法
             float dx = Mathf.Abs(Target.transform.position.x - transform.position.x);
-            if (dx < BalanceRuntime.Number(this, "ResonantStarOwlCombat.ReadySkill.1", 4f) || dx > BalanceRuntime.Number(this, "ResonantStarOwlCombat.ReadySkill.2", 7f)) return -1;
+            if (dx > BalanceRuntime.Number(this, "ResonantStarOwlCombat.ReadySkill.2", 7f)) return -1;
             if (jumps >= 2 && Time.time - lastJumpAt < BalanceRuntime.Number(this, "ResonantStarOwlCombat.ReadySkill.3", 5f) && Time.time >= readyAt[2]) return 2;
             bool air = !Target.GetComponent<PlayerMovement>().IsOnGroundNow();
             int first = air ? 1 : 0;
@@ -74,7 +76,8 @@ public sealed class ResonantStarOwlCombat : EnemyCombat
         if (skill < 0 || skill > 2 || CurrentSkill >= 0 || health.Dead || health.Attacked || health.Status != null && health.Status.BlocksActions || Target == null || Time.time < readyAt[skill]) return false;
         CurrentSkill = skill; castAt = Time.time; emitted = 0; readyAt[skill] = Time.time + Cooldowns[skill];
         FaceRight = Target.transform.position.x >= transform.position.x;
-        CastOrigin = transform.position; CastFloor = GetComponent<ResonantStarOwlMovement>().FloorY;
+        CastOrigin = transform.position; CastTargetX = Target.transform.position.x;
+        CastFloor = GetComponent<ResonantStarOwlMovement>().FindFloor(Target.transform.position);//以玩家脚下的地面为准
         if (skill == 2) jumps = 0;
         health.Status?.NotifyAttackStarted(); return true;
     }

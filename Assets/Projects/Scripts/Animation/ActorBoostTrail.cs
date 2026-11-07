@@ -97,6 +97,7 @@ public class ActorBoostTrail : MonoBehaviour
 
     private void LateUpdate()//在人物切完动画和更新位置之后，每个渲染帧最多留下一张当时的精灵
     {
+        ForgetLostVisual();
         float deltaTime = Time.deltaTime;
         if (deltaTime <= 0f) return;//暂停时不生成残影，已有残影的淡出计时也一起暂停
         FadeAfterimages(deltaTime);
@@ -137,8 +138,18 @@ public class ActorBoostTrail : MonoBehaviour
         return frameMoving || physicsMoving;
     }
 
+    //残影容器是独立的场景根物体，可能被外部清理（如训练场切换敌人时清空场景根物体）。
+    //容器丢失后丢弃旧记录，下次需要残影时重新创建，避免访问已销毁的SpriteRenderer。
+    private void ForgetLostVisual()
+    {
+        if (visual != null || afterimages.Count == 0) return;
+        afterimages.Clear();
+        available.Clear();
+    }
+
     private void LeaveAfterimage(float deltaTime)//复制的是此刻的精灵和变换，之后不会再跟随本体切帧或翻转
     {
+        if (visual == null && !CreateVisual()) return;
         Afterimage afterimage = available.Count > 0 ? available.Pop() : CreateAfterimage();
         SpriteRenderer renderer = afterimage.renderer;
         Transform source = bodyRenderer.transform;
@@ -170,7 +181,7 @@ public class ActorBoostTrail : MonoBehaviour
         foreach (Afterimage afterimage in afterimages)
         {
             SpriteRenderer renderer = afterimage.renderer;
-            if (!renderer.enabled) continue;
+            if (renderer == null || !renderer.enabled) continue;
             afterimage.age += deltaTime;
             if (afterimage.age >= afterimage.duration)
             {
@@ -188,8 +199,10 @@ public class ActorBoostTrail : MonoBehaviour
     private void ClearAfterimages()//换人、死亡或对象池回收时不能留下旧角色的残影
     {
         available.Clear();
+        ForgetLostVisual();
         foreach (Afterimage afterimage in afterimages)
         {
+            if (afterimage.renderer == null) continue;
             afterimage.renderer.enabled = false;
             afterimage.renderer.sprite = null;
             available.Push(afterimage);

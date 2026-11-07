@@ -1,0 +1,395 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a78601783414adb955a4fe63f6db172, type: 3}
+  m_Name: EquipmentDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::EquipmentDatabase
+  items:
+  - id: wukong_w0
+    displayName: "\u9554\u94C1\u68CD"
+    slot: 0
+    owner: 0
+    tier: 0
+    grade: 0.0
+    icon: {fileID: -3164809056393425246, guid: f19ff3cca803bbf4a890b8b5f59e1d6c, type: 3}
+    starter: 1
+  - id: wukong_w1
+    displayName: "\u9752\u950B\u67AA"
+    slot: 0
+    owner: 0
+    tier: 1
+    grade: 0.3333
+    icon: {fileID: -2966200626249415253, guid: 1f228f8a90139434cb177399fb7834f5, type: 3}
+    starter: 0
+  - id: wukong_w2
+    displayName: "\u8D64\u7130\u67AA"
+    slot: 0
+    owner: 0
+    tier: 2
+    grade: 0.6667
+    icon: {fileID: -5750353039905602045, guid: 14160fcd5f58d48499a60fe11132d4c9, type: 3}
+    starter: 0
+  - id: wukong_w3
+    displayName: "\u7384\u51A5\u7834\u5929\u67AA"
+    slot: 0
+    owner: 0
+    tier: 3
+    grade: 1.0
+    icon: {fileID: -30749221642623036, guid: f84b08903281c6742a1df550dacfc5f6, type: 3}
+    starter: 0
+  - id: wukong_a0
+    displayName: "\u884C\u8005\u5E03\u8863"
+    slot: 1
+    owner: 0
+    tier: 0
+    grade: 0.0
+    icon: {fileID: -5225540622116197949, guid: 1871dc7957bbb6e42932b9b89ddeaee8, type: 3}
+    starter: 1
+  - id: wukong_a1
+    displayName: "\u91D1\u7EB9\u6218\u888D"
+    slot: 1
+    owner: 0
+    tier: 1
+    grade: 0.25
+    icon: {fileID: -1540426309290004842, guid: 2e2715a58d994104aa2852aaadf2eb87, type: 3}
+    starter: 0
+  - id: wukong_a2
+    displayName: "\u70C8\u7130\u6218\u7532"
+    slot: 1
+    owner: 0
+    tier: 2
+    grade: 0.5
+    icon: {fileID: -7371509505491802261, guid: 92818a8e2d63ffc4ebc157f279a5fcca, type: 3}
+    starter: 0
+  - id: wukong_a3
+    displayName: "\u5E7D\u51A5\u9B54\u94E0"
+    slot: 1
+    owner: 0
+    tier: 3
+    grade: 0.75
+    icon: {fileID: 5272401415994956661, guid: 708f6c9c8d055f64abf0b218161ee3b6, type: 3}
+    starter: 0
+  - id: wukong_a4
+    displayName: "\u7D2B\u7535\u5929\u738B\u7532"
+    slot: 1
+    owner: 0
+    tier: 4
+    grade: 1.0
+    icon: {fileID: 7059393366267629080, guid: 510b38f0b7e6f7a48b293f64b09dd23c, type: 3}
+    starter: 0
+  - id: bajie_w0
+    displayName: "\u4E5D\u9F7F\u9489\u8019"
+    slot: 0
+    owner: 1
+    tier: 0
+    grade: 0.0
+    icon: {fileID: -3164809056393425246, guid: aeb583fb628fefc4980a74bd0816db8e, type: 3}
+    starter: 1
+  - id: bajie_w1
+    displayName: "\u78A7\u7389\u7985\u6756"
+    slot: 0
+    owner: 1
+    tier: 1
+    grade: 0.25
+    icon: {fileID: -2966200626249415253, guid: 1526a58cf93becc4eabdfea27dd6ba71, type: 3}
+    starter: 0
+  - id: bajie_w2
+    displayName: "\u91D1\u874E\u94A9"
+    slot: 0
+    owner: 1
+    tier: 2
+    grade: 0.5
+    icon: {fileID: -5750353039905602045, guid: 2f4140f725928a747af3768461606813, type: 3}
+    starter: 0
+  - id: bajie_w3
+    displayName: "\u8D64\u9B42\u65A7"
+    slot: 0
+    owner: 1
+    tier: 3
+    grade: 0.75
+    icon: {fileID: -30749221642623036, guid: 53af254c9a1f8804eb7666a7200391f1, type: 3}
+    starter: 0
+  - id: bajie_w4
+    displayName: "\u5929\u84EC\u6218\u65A7"
+    slot: 0
+    owner: 1
+    tier: 4
+    grade: 1.0
+    icon: {fileID: -8419024768148562069, guid: cf39a66ded967c44d9b769114dd5e170, type: 3}
+    starter: 0
+  - id: bajie_a0
+    displayName: "\u5929\u84EC\u65E7\u7532"
+    slot: 1
+    owner: 1
+    tier: 0
+    grade: 0.0
+    icon: {fileID: -5225540622116197949, guid: b59ec1abd41739d4e89e5e6b5f1a12ba, type: 3}
+    starter: 1
+  - id: bajie_a1
+    displayName: "\u8D64\u9CDE\u94E0"
+    slot: 1
+    owner: 1
+    tier: 1
+    grade: 0.5
+    icon: {fileID: -1540426309290004842, guid: e1bb2952f9e313a4fa92ab5c63845067, type: 3}
+    starter: 0
+  - id: bajie_a2
+    displayName: "\u5929\u6CB3\u795E\u94E0"
+    slot: 1
+    owner: 1
+    tier: 2
+    grade: 1.0
+    icon: {fileID: -7371509505491802261, guid: b55e4b13aa9b3ba408bc89a878f4f055, type: 3}
+    starter: 0
+  - id: sha_w0
+    displayName: "\u964D\u5996\u5B9D\u6756"
+    slot: 0
+    owner: 2
+    tier: 0
+    grade: 0.0
+    icon: {fileID: -3164809056393425246, guid: 499b495b778fcb8448bed80d89e9b504, type: 3}
+    starter: 1
+  - id: sha_w1
+    displayName: "\u8D64\u68D8\u9524\u6756"
+    slot: 0
+    owner: 2
+    tier: 1
+    grade: 0.5
+    icon: {fileID: -2966200626249415253, guid: 2f2d3b466650ffa46a46f7e6193c3964, type: 3}
+    starter: 0
+  - id: sha_w2
+    displayName: "\u8840\u6708\u9B54\u6756"
+    slot: 0
+    owner: 2
+    tier: 2
+    grade: 1.0
+    icon: {fileID: -5750353039905602045, guid: c0ac4c93975d704449ce025bc55cd425, type: 3}
+    starter: 0
+  - id: sha_a0
+    displayName: "\u7D2B\u7EB1\u50E7\u888D"
+    slot: 1
+    owner: 2
+    tier: 0
+    grade: 0.0
+    icon: {fileID: -5225540622116197949, guid: c7f8203819d74694a85c4299221f271a, type: 3}
+    starter: 1
+  - id: sha_a1
+    displayName: "\u9752\u9CDE\u62A4\u7532"
+    slot: 1
+    owner: 2
+    tier: 1
+    grade: 0.2
+    icon: {fileID: -1540426309290004842, guid: a1216641d0871ce4c9872e42c42513e4, type: 3}
+    starter: 0
+  - id: sha_a2
+    displayName: "\u78A7\u6D77\u9CDE\u7532"
+    slot: 1
+    owner: 2
+    tier: 2
+    grade: 0.4
+    icon: {fileID: -7371509505491802261, guid: 425217e7e35fae54989ae3080c325707, type: 3}
+    starter: 0
+  - id: sha_a3
+    displayName: "\u7FE0\u85E4\u5B9D\u7532"
+    slot: 1
+    owner: 2
+    tier: 3
+    grade: 0.6
+    icon: {fileID: 5272401415994956661, guid: a361776cc3e8b884bb3f220ad8fd1848, type: 3}
+    starter: 0
+  - id: sha_a4
+    displayName: "\u5E7D\u5F71\u6218\u94E0"
+    slot: 1
+    owner: 2
+    tier: 4
+    grade: 0.8
+    icon: {fileID: 7059393366267629080, guid: 43b83a929d9640f428bec8af3723953f, type: 3}
+    starter: 0
+  - id: sha_a5
+    displayName: "\u94F6\u6708\u795E\u94E0"
+    slot: 1
+    owner: 2
+    tier: 5
+    grade: 1.0
+    icon: {fileID: -1485282433491618599, guid: 6659df75efe835746b75d2c1f92b39e6, type: 3}
+    starter: 0
+  - id: tang_w0
+    displayName: "\u4E5D\u73AF\u9521\u6756"
+    slot: 0
+    owner: 3
+    tier: 0
+    grade: 0.0
+    icon: {fileID: -3164809056393425246, guid: e13680230e28bfe43b9a428a65ef8c0e, type: 3}
+    starter: 1
+  - id: tang_w1
+    displayName: "\u91D1\u83B2\u6756"
+    slot: 0
+    owner: 3
+    tier: 1
+    grade: 0.25
+    icon: {fileID: -2966200626249415253, guid: 6cdd66b49974c9344814273b6dd8d56a, type: 3}
+    starter: 0
+  - id: tang_w2
+    displayName: "\u7D2B\u9704\u6CD5\u6756"
+    slot: 0
+    owner: 3
+    tier: 2
+    grade: 0.5
+    icon: {fileID: -5750353039905602045, guid: 4a133ca9f88a4a248b37b2bf95d41665, type: 3}
+    starter: 0
+  - id: tang_w3
+    displayName: "\u65E5\u8F6E\u6CD5\u6756"
+    slot: 0
+    owner: 3
+    tier: 3
+    grade: 0.75
+    icon: {fileID: -30749221642623036, guid: 3a8b2b9ef129b6a409962152996ea24b, type: 3}
+    starter: 0
+  - id: tang_w4
+    displayName: "\u661F\u8FB0\u6CD5\u6756"
+    slot: 0
+    owner: 3
+    tier: 4
+    grade: 1.0
+    icon: {fileID: -8419024768148562069, guid: 19cfddf15d25416428438c3a40ffbb37, type: 3}
+    starter: 0
+  - id: tang_a0
+    displayName: "\u9526\u6593\u8888\u88DF"
+    slot: 1
+    owner: 3
+    tier: 0
+    grade: 0.0
+    icon: {fileID: -5225540622116197949, guid: 37e7127fc0bb47541a92d25b49ff46d7, type: 3}
+    starter: 1
+  - id: tang_a1
+    displayName: "\u9752\u83B2\u6CD5\u8863"
+    slot: 1
+    owner: 3
+    tier: 1
+    grade: 0.5
+    icon: {fileID: -1540426309290004842, guid: 68e433db32bbe79479be5021b0cca3df, type: 3}
+    starter: 0
+  - id: tang_a2
+    displayName: "\u5B9D\u5149\u8888\u88DF"
+    slot: 1
+    owner: 3
+    tier: 2
+    grade: 1.0
+    icon: {fileID: -7371509505491802261, guid: b9b62048217f7d34391e5d2e63453823, type: 3}
+    starter: 0
+  - id: acc_1
+    displayName: "\u706B\u7EB9\u9879\u94FE"
+    slot: 2
+    owner: -1
+    tier: 1
+    grade: 0.0
+    icon: {fileID: -855298285791758126, guid: 293cb6f37218db14fb1e1afada65df90, type: 3}
+    starter: 0
+  - id: acc_2
+    displayName: "\u9752\u7389\u540A\u5760"
+    slot: 2
+    owner: -1
+    tier: 2
+    grade: 0.25
+    icon: {fileID: 6937817954938267909, guid: e4d87a47e9dbd0d418da49a1266b8b07, type: 3}
+    starter: 0
+  - id: acc_3
+    displayName: "\u53E4\u5377\u753B\u8F74"
+    slot: 2
+    owner: -1
+    tier: 3
+    grade: 0.5
+    icon: {fileID: -6470460504253458178, guid: f81ac58b031c10841a0e3f070cbd1364, type: 3}
+    starter: 0
+  - id: acc_4
+    displayName: "\u7D2B\u7075\u5B9D\u73E0"
+    slot: 2
+    owner: -1
+    tier: 4
+    grade: 0.75
+    icon: {fileID: -4178046375966092550, guid: 22e1310b8ea84224b8a00968c34af695, type: 3}
+    starter: 0
+  - id: acc_5
+    displayName: "\u4ED9\u9E64\u7FCE\u7FBD"
+    slot: 2
+    owner: -1
+    tier: 5
+    grade: 1.0
+    icon: {fileID: 4130640169021434097, guid: dc9b4f802d66b4b4f84b97ffc87546c4, type: 3}
+    starter: 0
+  - id: treasure_1
+    displayName: "\u82AD\u8549\u6247"
+    slot: 3
+    owner: -1
+    tier: 1
+    grade: 0.0
+    icon: {fileID: -855298285791758126, guid: 5ebf9eb8b0ddbbb4d8d6e33489bb5f99, type: 3}
+    starter: 0
+  - id: treasure_2
+    displayName: "\u7D2B\u91D1\u846B\u82A6"
+    slot: 3
+    owner: -1
+    tier: 2
+    grade: 0.25
+    icon: {fileID: 6937817954938267909, guid: 70096788b4e01a7459d97ba131b1f991, type: 3}
+    starter: 0
+  - id: treasure_3
+    displayName: "\u51B0\u9B44\u795E\u5251"
+    slot: 3
+    owner: -1
+    tier: 3
+    grade: 0.5
+    icon: {fileID: -6470460504253458178, guid: 4260bee8b13a7b6419d7b247021dcfac, type: 3}
+    starter: 0
+  - id: treasure_4
+    displayName: "\u9752\u9F99\u4F1E"
+    slot: 3
+    owner: -1
+    tier: 4
+    grade: 0.75
+    icon: {fileID: -4178046375966092550, guid: 1bdb4f1952e781f46bdf76f6f88fcc4b, type: 3}
+    starter: 0
+  - id: treasure_5
+    displayName: "\u7D2B\u91D1\u94C3"
+    slot: 3
+    owner: -1
+    tier: 5
+    grade: 1.0
+    icon: {fileID: 4130640169021434097, guid: afc991e7a21e98a4584de07e373c9fcd, type: 3}
+    starter: 0
+  bossDrops:
+  - level: 1
+    slot: 0
+    owner: 0
+  - level: 2
+    slot: 0
+    owner: 1
+  - level: 3
+    slot: 0
+    owner: 2
+  - level: 4
+    slot: 0
+    owner: 3
+  - level: 5
+    slot: 1
+    owner: 0
+  - level: 6
+    slot: 1
+    owner: 1
+  - level: 7
+    slot: 1
+    owner: 2
+  - level: 8
+    slot: 1
+    owner: 3
+  - level: 9
+    slot: 2
+    owner: -1

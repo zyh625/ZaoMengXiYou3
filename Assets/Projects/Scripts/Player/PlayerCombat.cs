@@ -261,7 +261,7 @@ public class PlayerCombat : MonoBehaviour
             float chance = criticalChance;
             foreach (KeyValuePair<Object, float> item in criticalChanceBonuses)
                 if (item.Key != null) chance += item.Value;
-            return Mathf.Clamp01(chance);
+            return Mathf.Clamp(chance, 0f, EquipmentRules.CritCap);//装备、无双等全部加成合计不超过上限
         }
     }
 

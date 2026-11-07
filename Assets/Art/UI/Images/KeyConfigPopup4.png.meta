@@ -5,12 +5,6 @@ TextureImporter:
   - first:
       213: 4981030840919702337
     second: KeyConfigPopup4_0
-  - first:
-      213: -8672574092529372158
-    second: KeyConfigPopup4_1
-  - first:
-      213: 5582554683448629388
-    second: KeyConfigPopup4_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,12 +103,12 @@ TextureImporter:
       name: KeyConfigPopup4_0
       rect:
         serializedVersion: 2
-        x: 700
-        y: 817
-        width: 12
-        height: 10
+        x: 0
+        y: 0
+        width: 1902
+        height: 827
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -123,50 +117,6 @@ TextureImporter:
       bones: []
       spriteID: 14bb840c82d202540800000000000000
       internalID: 4981030840919702337
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: KeyConfigPopup4_1
-      rect:
-        serializedVersion: 2
-        x: 715
-        y: 815
-        width: 11
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 204f786efc3d4a780800000000000000
-      internalID: -8672574092529372158
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: KeyConfigPopup4_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1887
-        height: 805
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c88162e28e7397d40800000000000000
-      internalID: 5582554683448629388
       vertices: []
       indices: 
       edges: []
@@ -186,8 +136,6 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       KeyConfigPopup4_0: 4981030840919702337
-      KeyConfigPopup4_1: -8672574092529372158
-      KeyConfigPopup4_2: 5582554683448629388
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

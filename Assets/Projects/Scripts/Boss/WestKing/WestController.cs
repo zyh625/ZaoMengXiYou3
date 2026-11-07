@@ -3,7 +3,6 @@ using UnityEngine;
 public sealed class WestController : BossController
 {
     [SerializeField] private SpriteData DragonClaw,PearlToss,DragonBreath,PearlOrbit,Ward,HitReaction;
-    [SerializeField] private float visualHeight=2.9f;
     private WestCombat combat;
     private WestMovement movement;
     private WestCombat.WardPhase shownPhase;
@@ -13,13 +12,7 @@ public sealed class WestController : BossController
     protected override bool UsesAnger=>false;
     protected override bool CanStartNormalAttack=>false;
     protected override void Awake(){base.Awake();combat=GetComponent<WestCombat>();movement=GetComponent<WestMovement>();}
-    private void Scale(SpriteData clip)
-    {
-        if(clip?.sprites==null || clip.sprites.Length==0)return;
-        float scale=visualHeight/Mathf.Max(BalanceRuntime.Number(this, "WestController.Scale.1", 0.1f),clip.sprites[0].bounds.size.y);
-        SM.transform.localScale=new Vector3(-scale,scale,1f); //各成品图画幅占比不同，只在换动作时校准本体高度，脚底不变。
-    }
-    protected override SpriteData ResolveStateAnimation(EnemyState next,SpriteData fallback){Scale(fallback);return fallback;}
+    //本体大小只由预制体 Visual 的缩放和各动作图片的 PPU 决定，运行时不再按动作重新缩放。
     protected override bool ProcessSpecialState()
     {
         if(combat.IsSpecial)
@@ -41,10 +34,10 @@ public sealed class WestController : BossController
     protected override void HandleSkill()
     {
         if(combat.IsSpecial)
-        {SpriteData pose=combat.IsWarding?Ward:HitReaction;Scale(pose);SM.ChangeState(pose);return;}
+        {SpriteData pose=combat.IsWarding?Ward:HitReaction;SM.ChangeState(pose);return;}
         if(!combat.BeginAttack(pending)){SetState(EnemyState.Idle);return;}
         SpriteData clip=pending==0?DragonClaw:pending==1?PearlToss:pending==2?DragonBreath:PearlOrbit;
-        Scale(clip);SM.ChangeSpriteFace(combat.AttackFaceRight);SM.ChangeState(clip);
+        SM.ChangeSpriteFace(combat.AttackFaceRight);SM.ChangeState(clip);
         float hold=Mathf.Max(0f,combat.Windup-combat.ReleaseFrame/clip.fps);resumeAt=Time.time+hold;waiting=hold>0f;if(waiting)SM.Pause();
     }
     protected override void CheckSkill()

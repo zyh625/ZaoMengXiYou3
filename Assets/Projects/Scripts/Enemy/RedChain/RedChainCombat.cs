@@ -5,6 +5,8 @@ public sealed class RedChainCombat : EnemyCombat
     [SerializeField] private RedChainAttackBox[] hitBoxes;
     [SerializeField] private RedChainShockWaveEmitter shockWave;
     private bool sampled;
+    private SpriteRenderer visual;
+    private const int ChainAttack = 1;//向前甩链再收回
 [SerializeField]private int[] openFrames = { 6, 8, 8 };
 [SerializeField]private float[] windups = { 0.6f, 0.8f, 0.9f };
     protected override bool UsesAnger => false;
@@ -30,7 +32,16 @@ public sealed class RedChainCombat : EnemyCombat
         return chosen >= 0;
     }
 
-    public void BeginCast() => sampled = false;
+    public void BeginCast() { sampled = false; hitBoxes[ChainAttack].ResetChain(); }
+
+    private float ChainTipX(float bodyX)//当前帧链头位置：动画图（紧切片）朝攻击方向的外缘
+    {
+        if (visual == null) visual = GetComponentInChildren<SpriteRenderer>();
+        Rect limit = hitBoxes[ChainAttack].WorldRect;
+        bool right = limit.center.x >= bodyX;
+        if (visual == null || visual.sprite == null) return right ? limit.xMax : limit.xMin;
+        return right ? visual.bounds.max.x : visual.bounds.min.x;
+    }
 
     public void SampleFrame(int frame)
     {
@@ -42,7 +53,13 @@ public sealed class RedChainCombat : EnemyCombat
             AttackBegin();
             Physics2D.SyncTransforms();
             if (Attack == 2) shockWave.Emit(this);
-            hitBoxes[Attack].SampleNow();
+            if (Attack != ChainAttack) hitBoxes[Attack].SampleNow();
+        }
+        //链子出手后每个物理帧按当前链长采样，碰到即勾回；同一次出招只命中一次
+        if (sampled && Attack == ChainAttack)
+        {
+            float bodyX = transform.position.x;
+            hitBoxes[ChainAttack].SampleChain(bodyX, ChainTipX(bodyX));
         }
         if (AttackShut(frame)) AttackEnd();
         else if (sampled && AttackOpen(frame)) AttackBegin();

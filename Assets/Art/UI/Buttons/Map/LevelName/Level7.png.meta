@@ -5,9 +5,6 @@ TextureImporter:
   - first:
       213: -4818828517769353882
     second: Level7_0
-  - first:
-      213: -8688203723111521268
-    second: Level7_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -106,14 +103,14 @@ TextureImporter:
       name: Level7_0
       rect:
         serializedVersion: 2
-        x: 1432
-        y: 665
-        width: 35
-        height: 37
+        x: 69
+        y: 121
+        width: 2034
+        height: 453
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
@@ -121,29 +118,7 @@ TextureImporter:
       spriteID: 665e5dc8ef4102db0800000000000000
       internalID: -4818828517769353882
       vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Level7_1
-      rect:
-        serializedVersion: 2
-        x: 66
-        y: 23
-        width: 2077
-        height: 556
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c0426b3febc4d6780800000000000000
-      internalID: -8688203723111521268
-      vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     outline: []
@@ -161,7 +136,6 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       Level7_0: -4818828517769353882
-      Level7_1: -8688203723111521268
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

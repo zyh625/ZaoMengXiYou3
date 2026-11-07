@@ -130,9 +130,9 @@ public sealed class RebirthRuntimeValidation : MonoBehaviour
         foreach (int n in new[] { 0, 1, 10, 11 })
         {
             RebirthScaling.Multipliers m = RebirthScaling.For(n); int capped = Math.Min(n, 10);
-            Check(Near(m.HP, 1 + 0.35 * capped) && Near(m.Damage, 1 + 0.15 * capped)
-                && Near(m.Gold, 1 + 0.25 * capped) && Near(m.Experience, 1 + 0.2 * capped)
-                && Near(m.Quantity, 1 + 0.08 * capped) && Near(m.AttackCooldown, Math.Max(0.75, 1 - 0.03 * capped))
+            Check(Near(m.HP, 1 + 0.25 * capped) && Near(m.Damage, 1 + 0.14 * capped)
+                && Near(m.Gold, 1 + 0.25 * capped) && Near(m.Experience, 1 + 0.15 * capped)
+                && Near(m.Quantity, 1 + 0.06 * capped) && Near(m.AttackCooldown, Math.Max(0.8, 1 - 0.02 * capped))
                 && Near(m.SpawnDelay, Math.Max(0.70, 1 - 0.03 * capped)) && Near(m.Movement, 1 + 0.02 * capped)
                 && m.ExtraAlive == (n == 0 ? 0 : 1), $"all nine formulas match at rebirth {n}");
             int[] input = { 0, 10, 25 }; int[] scaled = m.EnemyCounts(input);
@@ -239,7 +239,7 @@ public sealed class RebirthRuntimeValidation : MonoBehaviour
                     north.CancelAttack(); Check(Near(north.NextAttackAt - Time.time, 2.2f * m.AttackCooldown), $"boss public attack interval scales at rebirth {n}");
                     manager.CurBoss.gameObject.SetActive(false);
                     //实际完整小怪波次：每次出池、扣血死亡、奖励、退池、推进都走生产入口。
-                    float beforeWavesXP = hero.GetComponent<PlayerResources>().Experience;
+                    float beforeWavesXP = hero.GetComponent<PlayerResources>().TotalExperience;
                     for (int wave = 0; wave < left.Length; wave++)
                     {
                         Set(level, "curWave", wave); Set(level, "leftEnemy", 0); Set(level, "rightEnemy", 0); Call(level, "UpdateWaveProgress");
@@ -257,26 +257,26 @@ public sealed class RebirthRuntimeValidation : MonoBehaviour
                             && Progress() == Mathf.FloorToInt(70f / left.Length * (wave + 1)), $"scaled wave {wave + 1} spawned and killed exactly its planned total (N={n})");
                         Call(level, "TryNextWave");
                     }
-                    Check(Near(hero.GetComponent<PlayerResources>().Experience - beforeWavesXP, (left.Sum() + right.Sum()) * 20f * m.Experience, 0.2),
-                        $"every scaled wave kill awards scaled experience exactly once (N={n}, actual={hero.GetComponent<PlayerResources>().Experience-beforeWavesXP}, expected={(left.Sum()+right.Sum())*20f*m.Experience})");
+                    Check(Near(hero.GetComponent<PlayerResources>().TotalExperience - beforeWavesXP, (left.Sum() + right.Sum()) * 20f * m.Experience, 0.2),
+                        $"every scaled wave kill awards scaled experience exactly once (N={n}, actual={hero.GetComponent<PlayerResources>().TotalExperience-beforeWavesXP}, expected={(left.Sum()+right.Sum())*20f*m.Experience})");
                     Check(Get<bool>(level, "bossStart") && manager.AliveNum() == 0, $"scaled waves reach boss phase without leftovers (N={n})");
-                    //保证落币在真实地面，首杀基础40金币。
-                    GoldManager gold = party.GetComponent<GoldManager>(); session.data.defeatedBossLevels.Remove(6);
+                    //保证落币在真实地面，首杀基础150金币；首杀记录按“轮回×10+关卡”。
+                    GoldManager gold = party.GetComponent<GoldManager>(); session.data.defeatedBossLevels.Remove(6 + 10 * GameSession.instance.Rebirth);
                     manager.CurBoss.position = hero.transform.position + Vector3.right * 3f; manager.CurBoss.gameObject.SetActive(true);
                     manager.CurBoss.GetComponent<EnemyController>().enabled = false;
-                    float experience = hero.GetComponent<PlayerResources>().Experience;
+                    float experience = hero.GetComponent<PlayerResources>().TotalExperience;
                     int beforeGold = session.data.gold; gold.Drop(manager.CurBoss, true);
-                    GoldCoin coin = gold.GetComponentsInChildren<GoldCoin>(true).FirstOrDefault(c => c.gameObject.activeSelf && c.Amount == m.GoldAmount(40));
-                    Check(coin != null && coin.Amount == m.GoldAmount(40), $"boss gold amount scales once before pickup to {m.GoldAmount(40)} (N={n})");
+                    GoldCoin coin = gold.GetComponentsInChildren<GoldCoin>(true).FirstOrDefault(c => c.gameObject.activeSelf && c.Amount == m.GoldAmount(150));
+                    Check(coin != null && coin.Amount == m.GoldAmount(150), $"boss gold amount scales once before pickup to {m.GoldAmount(150)} (N={n})");
                     Call(gold, "CompletePickup", coin);
-                    Check(session.data.gold == beforeGold + m.GoldAmount(40) && !coin.gameObject.activeSelf, $"scaled gold is credited only on completed pickup (N={n})");
+                    Check(session.data.gold == beforeGold + m.GoldAmount(150) && !coin.gameObject.activeSelf, $"scaled gold is credited only on completed pickup (N={n})");
                     manager.CurBoss.GetComponent<Health>().TakeDamage(new DamageInfo(hero.transform, 1000000f, false));
-                    Check(Near(hero.GetComponent<PlayerResources>().Experience - experience, 240f * m.Experience, 0.1), $"boss experience reward is scaled exactly once (N={n})");
+                    Check(Near(hero.GetComponent<PlayerResources>().TotalExperience - experience, 240f * m.Experience, 0.1), $"boss experience reward is scaled exactly once (N={n})");
                     Check(manager.CurBoss.GetComponent<Health>().Dead && Progress() == 100, $"scaled boss death produces 100-percent progress (N={n})");
                     manager.CurBoss.gameObject.SetActive(false); Call(level, "CheckBossOver");
                     Check(Get<ExitManager>(level, "curExit").gameObject.activeSelf, $"exit opens after scaled boss death (N={n})");
                     Check(BattleRun.Finish(true).victory && BattleRun.LastResult.progress == 100, $"scaled battle victory freezes correct settlement (N={n})");
-                    report.AppendLine($"DATA N={n}: GreenHammer HP={150 * m.HP:0.##}, sweep={19 * m.Damage:0.##}, XP={rewards[0]:0.##}; NorthKing HP={1400 * m.HP:0.##}, bash={25 * m.Damage:0.##}, XP={rewards[1]:0.##}; bossGold={m.GoldAmount(40)}; waveTotal={left.Sum() + right.Sum()}; delay={level.RuntimeEnemyDelay:0.###}; cap={level.RuntimeEnemyMax:0.##}"); Flush();
+                    report.AppendLine($"DATA N={n}: GreenHammer HP={150 * m.HP:0.##}, sweep={19 * m.Damage:0.##}, XP={rewards[0]:0.##}; NorthKing HP={1400 * m.HP:0.##}, bash={25 * m.Damage:0.##}, XP={rewards[1]:0.##}; bossGold={m.GoldAmount(150)}; waveTotal={left.Sum() + right.Sum()}; delay={level.RuntimeEnemyDelay:0.###}; cap={level.RuntimeEnemyMax:0.##}"); Flush();
                 }
             }
         }

@@ -90,7 +90,8 @@ public class BlueWheelController : EnemyController
     }
     protected override bool ProcessSpecialState()//不抢死亡、冻结、吸附和受击的优先级。
     {
-        if (combat == null || !combat.IsHidden) return false;
+        if (combat == null) return false;
+        if (!combat.IsHidden) return KeepDistance();
         if (!combat.CanAct || state != EnemyState.Skill)
         {
             combat.InterruptAction();
@@ -104,6 +105,27 @@ public class BlueWheelController : EnemyController
         if (movement.PatrolDirection != 0f) SM.ChangeSpriteFace(movement.PatrolDirection > 0f);
         return true;
     }
+    //远程怪：只在通用流程本来会“走路或站立”时接管移动，改为与玩家保持距离；
+    //冻结、吸附、怒气、技能、受击、空中仍按通用流程的原有优先级处理。
+    private bool KeepDistance()
+    {
+        if (movement == null || !movement.HasTarget) return false;
+        if (EH.Status != null && (EH.Status.BlocksActions || EH.Status.BlocksMovement)) return false;
+        if (movement.IsExternallyControlled) return false;
+        if (UsesAnger && (EC.AngryRequest || EC.Angry && EC.AngryEnd)) return false;
+        if (state == EnemyState.Skill || SkillReady) return false;
+        if (EH.Attacked || state == EnemyState.Attacked && !SM.IsFinished) return false;
+        if (EC.Attack != -1) return false;
+        movement.CheckIsGround();
+        if (!movement.IsGround) return false;
+
+        movement.KeepDistance(EH.Slow);
+        float direction = movement.KeepDistanceDirection;
+        SM.ChangeSpriteFace(direction != 0f ? direction > 0f : movement.DeltaX > 0f);//走动时面向前进方向，站定时面向玩家
+        SetState(direction != 0f ? EnemyState.Walk : EnemyState.Idle);
+        return true;
+    }
+
     protected override void SpecialAttackOver() => combat?.InterruptAction();//死亡和受控时已出手飞轮不再回手。
     private void LateUpdate() => CheckActionFrame();
     protected override void OnDisable()

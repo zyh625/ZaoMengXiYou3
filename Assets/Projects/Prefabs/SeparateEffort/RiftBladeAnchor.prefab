@@ -47,13 +47,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LateStageEffect
   frames:
-    sprites: []
+    sprites:
+    - {fileID: 5868693634803062653, guid: 0c968fbef92b41008ae1aaedf6b3551d, type: 3}
+    - {fileID: -7382034270093820326, guid: 0c968fbef92b41008ae1aaedf6b3551d, type: 3}
+    - {fileID: -948886723123320583, guid: 0c968fbef92b41008ae1aaedf6b3551d, type: 3}
+    - {fileID: 3058534248158656785, guid: 0c968fbef92b41008ae1aaedf6b3551d, type: 3}
+    - {fileID: -777967487655366807, guid: 0c968fbef92b41008ae1aaedf6b3551d, type: 3}
+    - {fileID: -1960325549010541286, guid: 0c968fbef92b41008ae1aaedf6b3551d, type: 3}
+    - {fileID: 3752823636680354979, guid: 0c968fbef92b41008ae1aaedf6b3551d, type: 3}
+    - {fileID: -82707788588590418, guid: 0c968fbef92b41008ae1aaedf6b3551d, type: 3}
+    - {fileID: 3025632508740685721, guid: 0c968fbef92b41008ae1aaedf6b3551d, type: 3}
+    - {fileID: -9132360112115019676, guid: 0c968fbef92b41008ae1aaedf6b3551d, type: 3}
+    - {fileID: 2109566199411047597, guid: 0c968fbef92b41008ae1aaedf6b3551d, type: 3}
+    - {fileID: -6750896789050479529, guid: 0c968fbef92b41008ae1aaedf6b3551d, type: 3}
+    - {fileID: -4714246127566918069, guid: 0c968fbef92b41008ae1aaedf6b3551d, type: 3}
+    - {fileID: 2306483749247485839, guid: 0c968fbef92b41008ae1aaedf6b3551d, type: 3}
+    - {fileID: -4368665418082662208, guid: 0c968fbef92b41008ae1aaedf6b3551d, type: 3}
+    - {fileID: 6953210019934551561, guid: 0c968fbef92b41008ae1aaedf6b3551d, type: 3}
     loop: 0
-    fps: 1
+    fps: 16
   spriteManager: {fileID: 2003}
   visual: {fileID: 2002}
-  nativeWidth: 1
-  placeholderAspect: {x: 0.3, y: 0.3}
+  nativeWidth: 1.37
+  placeholderAspect: {x: 1, y: 1}
 --- !u!114 &7887279924340896884
 MonoBehaviour:
   m_ObjectHideFlags: 0

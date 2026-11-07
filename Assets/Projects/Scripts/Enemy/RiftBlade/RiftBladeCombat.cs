@@ -11,11 +11,12 @@ public sealed class RiftBladeCombat : LateStageCombat
     protected override void OnBegin(int i)
     {
         firstHitAt=-1;
-        if(i==1){mark=Ground(Position+Vector2.right*Face*BalanceRuntime.Number(this, "RiftBladeCombat.OnBegin.1", 2.5f));FX(0,mark+Vector2.up, BalanceRuntime.Number(this, "RiftBladeCombat.OnBegin.2", 0.7f),BalanceRuntime.Number(this, "RiftBladeCombat.OnBegin.3", 0.7f),Color.yellow);}
+        if(i==1)mark=Ground(Position+Vector2.right*Face*BalanceRuntime.Number(this, "RiftBladeCombat.OnBegin.1", 2.5f));
         if(i==2)
         {
             anchor=Ground(Position+Vector2.right*Face*BalanceRuntime.Number(this, "RiftBladeCombat.OnBegin.4", 3f));
-            FX(1,Ground(Position)+Vector2.up*BalanceRuntime.Number(this, "RiftBladeCombat.OnBegin.5", 0.2f),BalanceRuntime.Number(this, "RiftBladeCombat.OnBegin.6", 0.8f),BalanceRuntime.Number(this, "RiftBladeCombat.OnBegin.7", 0.9f),Color.yellow);FX(1,anchor+Vector2.up*BalanceRuntime.Number(this, "RiftBladeCombat.OnBegin.8", 0.2f),BalanceRuntime.Number(this, "RiftBladeCombat.OnBegin.9", 0.8f),BalanceRuntime.Number(this, "RiftBladeCombat.OnBegin.10", 0.9f),Color.yellow);
+            Vector2 origin=Ground(Position);
+            FX(1,(origin+anchor)*0.5f,Mathf.Max(0.5f,Mathf.Abs(anchor.x-origin.x)),BalanceRuntime.Number(this, "RiftBladeCombat.OnBegin.7", 0.9f));
             minSkillEnd=clock+BalanceRuntime.Number(this, "RiftBladeCombat.OnBegin.11", 1.3f);
         }
     }
@@ -32,13 +33,17 @@ public sealed class RiftBladeCombat : LateStageCombat
                 Window(1,f,Mathf.RoundToInt(BalanceRuntime.Number(this, "RiftBladeCombat.OnFrame.Parameter5", 11f)),Mathf.RoundToInt(BalanceRuntime.Number(this, "RiftBladeCombat.OnFrame.Parameter6", 14f)),BalanceRuntime.Number(this, "RiftBladeCombat.OnFrame.8", 12f),new Vector2(BalanceRuntime.Number(this, "RiftBladeCombat.OnFrame.9", 1.6f),BalanceRuntime.Number(this, "RiftBladeCombat.OnFrame.10", 0.9f)),new Vector2(BalanceRuntime.Number(this, "RiftBladeCombat.OnFrame.11", 1.1f),-BalanceRuntime.Number(this, "RiftBladeCombat.OnFrame.12", 0.1f)));
             }
         }
-        else if(Skill==1&&Once(0,f>=BalanceRuntime.Number(this, "RiftBladeCombat.OnFrame.Parameter7", 5f)))Later(BalanceRuntime.Number(this, "RiftBladeCombat.OnFrame.13", 0.7f),mark+Vector2.up*BalanceRuntime.Number(this, "RiftBladeCombat.OnFrame.14", 1.1f),new Vector2(BalanceRuntime.Number(this, "RiftBladeCombat.OnFrame.15", 0.7f),BalanceRuntime.Number(this, "RiftBladeCombat.OnFrame.16", 2.2f)),BalanceRuntime.Number(this, "RiftBladeCombat.OnFrame.Parameter8", 18f),1);
+        else if(Skill==1&&Once(0,f>=BalanceRuntime.Number(this, "RiftBladeCombat.OnFrame.Parameter7", 5f)))
+        {
+            FX(0,mark+Vector2.up*BalanceRuntime.Number(this, "RiftBladeCombat.OnFrame.14", 1.1f),BalanceRuntime.Number(this, "RiftBladeCombat.OnBegin.2", 0.7f),1f);//16帧/16fps，约0.7秒合拢时正处于红色刃口
+            Later(BalanceRuntime.Number(this, "RiftBladeCombat.OnFrame.13", 0.7f),mark+Vector2.up*BalanceRuntime.Number(this, "RiftBladeCombat.OnFrame.14", 1.1f),new Vector2(BalanceRuntime.Number(this, "RiftBladeCombat.OnFrame.15", 0.7f),BalanceRuntime.Number(this, "RiftBladeCombat.OnFrame.16", 2.2f)),BalanceRuntime.Number(this, "RiftBladeCombat.OnFrame.Parameter8", 18f),1);
+        }
         else if(Skill==2&&Once(0,Elapsed>=BalanceRuntime.Number(this, "RiftBladeCombat.OnFrame.17", 0.8f)))
         {
             if(move.SafeSpot(anchor,out var destination))
-            {FX(2,Position+Vector2.up,BalanceRuntime.Number(this, "RiftBladeCombat.OnFrame.18", 1.2f),BalanceRuntime.Number(this, "RiftBladeCombat.OnFrame.19", 0.4f));move.Teleport(destination);recoveryUntil=clock+BalanceRuntime.Number(this, "RiftBladeCombat.OnFrame.20", 0.5f);}
+            {FX(2,Position,BalanceRuntime.Number(this, "RiftBladeCombat.OnFrame.18", 2.5f),1f);move.Teleport(destination);recoveryUntil=clock+BalanceRuntime.Number(this, "RiftBladeCombat.OnFrame.20", 0.5f);}
         }
     }
-    protected override void EventResolved(int tag){if(tag==1){SeamResolutions++;FX(0,mark+Vector2.up, BalanceRuntime.Number(this, "RiftBladeCombat.EventResolved.1", 0.8f),BalanceRuntime.Number(this, "RiftBladeCombat.EventResolved.2", 0.3f),Color.red);}}
+    protected override void EventResolved(int tag){if(tag==1)SeamResolutions++;}//合拢的红色刃口已包含在折痕特效里
     protected override void OnFinished(int i){if(i==0&&!BoxHit(1))recoveryUntil=Mathf.Max(recoveryUntil,clock+BalanceRuntime.Number(this, "RiftBladeCombat.OnFinished.1", 0.45f));}
 }

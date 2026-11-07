@@ -14,8 +14,12 @@ public sealed class RedBoomRay : MonoBehaviour
     {
         transform.position = (from+to)/BalanceRuntime.Number(this, "RedBoomRay.Warn.1", 2f);
         transform.localScale = Vector3.one;
-        visual.transform.localScale = new Vector3(Mathf.Abs(to.x-from.x)/nativeWidth,1f,1f);
-        visual.flipX = to.x>from.x; //原图射线朝左。
+        Vector2 line = to-from;
+        visual.transform.localScale = new Vector3(line.magnitude/nativeWidth,1f,1f);
+        visual.flipX = line.x>0f; //原图射线朝左。
+        //斜向射线：朝右时按射线方向旋转，朝左时按反方向旋转（图片本身朝左）
+        Vector2 axis = line.x>0f ? line : -line;
+        transform.rotation = Quaternion.Euler(0f,0f,Mathf.Atan2(axis.y,axis.x)*Mathf.Rad2Deg);
         if (source != null)
         {
             visual.sortingLayerID=source.sortingLayerID;visual.sortingOrder=source.sortingOrder+2;

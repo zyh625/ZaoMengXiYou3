@@ -15,18 +15,10 @@ public class PlayerButtonManager : MonoBehaviour
     private HudState[] hudStates;
     private bool uiVisible = true;
     private static float volumeBeforeMute = 1f;
-    private static readonly string[] characterNames = { "悟空", "八戒", "沙僧", "唐僧" };
-    private static readonly Color slotColor = new(0.32f, 0.20f, 0.10f);
-    private static readonly Color selectedSlotColor = new(0.65f, 0.40f, 0.15f);
-    private readonly Text[] slotLabels = new Text[4];
-    private GameObject switchOrderPage;
-    private PlayerManager playerManager;
-    private int selectedSlot = -1;
 
     private void Awake()
     {
         ResolveSettingsReferences();
-        CreateSwitchOrderControls();
         UpdateInstructionLabel();
         hudStates = new HudState[hudGroups != null ? hudGroups.Length : 0];
         ShowSettingsContent();
@@ -112,7 +104,6 @@ public class PlayerButtonManager : MonoBehaviour
         ResolveSettingsReferences();
         if (intro == null) return;
         OpenPanel(settings);
-        if (switchOrderPage != null) switchOrderPage.SetActive(false);
         if (settingsButtons != null) settingsButtons.SetActive(false);
         if (settingsVisual != null) settingsVisual.SetActive(false);
         intro.SetActive(true);
@@ -122,67 +113,9 @@ public class PlayerButtonManager : MonoBehaviour
 
     private void ShowSettingsContent()
     {
-        if (switchOrderPage != null) switchOrderPage.SetActive(false);
         if (intro != null) intro.SetActive(false);
         if (settingsButtons != null) settingsButtons.SetActive(true);
         if (settingsVisual != null) settingsVisual.SetActive(true);
-    }
-
-    private void CreateSwitchOrderControls()
-    {
-        if (settings == null || settingsButtons == null) return;
-        CreateSettingsButton(settingsButtons.transform, "换人顺序", -211f, 34f, OpenSwitchOrder);
-
-        switchOrderPage = new GameObject("CharacterSwitchOrder", typeof(RectTransform));
-        switchOrderPage.SetActive(false);
-        switchOrderPage.transform.SetParent(settings.transform, false);
-        CreateLabel(switchOrderPage.transform, "换人顺序", new Vector2(0f, 148f), new Vector2(220f, 36f), 26);
-        CreateLabel(switchOrderPage.transform, "选择两个槽位互换，自动保存", new Vector2(0f, 105f), new Vector2(244f, 36f), 16);
-        for (int i = 0; i < slotLabels.Length; i++)
-        {
-            int slot = i;
-            slotLabels[i] = CreateSettingsButton(switchOrderPage.transform, "", 55f - i * 50f, 38f,
-                () => SelectSwitchSlot(slot));
-        }
-        CreateSettingsButton(switchOrderPage.transform, "返回设置", -166f, 38f, BackSettings);
-    }
-
-    private void OpenSwitchOrder()
-    {
-        playerManager = FindAnyObjectByType<PlayerManager>();
-        if (playerManager == null || playerManager.CurrentPlayer == null) return;
-        selectedSlot = -1;
-        RefreshSwitchSlots();
-        settingsButtons.SetActive(false);
-        switchOrderPage.SetActive(true);
-    }
-
-    private void SelectSwitchSlot(int slot)
-    {
-        if (selectedSlot < 0) selectedSlot = slot;
-        else
-        {
-            if (selectedSlot != slot)
-            {
-                var order = new PlayerId[slotLabels.Length];
-                var currentOrder = playerManager.SwitchOrder;
-                for (int i = 0; i < order.Length; i++) order[i] = currentOrder[i];
-                (order[selectedSlot], order[slot]) = (order[slot], order[selectedSlot]);
-                playerManager.SetSwitchOrder(order);
-            }
-            selectedSlot = -1;
-        }
-        RefreshSwitchSlots();
-    }
-
-    private void RefreshSwitchSlots()
-    {
-        var order = playerManager.SwitchOrder;
-        for (int i = 0; i < slotLabels.Length; i++)
-        {
-            slotLabels[i].text = $"{i + 1}    {characterNames[(int)order[i]]}";
-            slotLabels[i].transform.parent.GetComponent<Image>().color = i == selectedSlot ? selectedSlotColor : slotColor;
-        }
     }
 
     private void UpdateInstructionLabel()
@@ -199,22 +132,6 @@ public class PlayerButtonManager : MonoBehaviour
         image.color = new Color(0.071f, 0.068f, 0.068f);
         image.raycastTarget = false;
         CreateLabel(cover.transform, "1 / 2 / 3 / 4    切换出场角色", Vector2.zero, new Vector2(310f, 42f), 24);
-    }
-
-    private static Text CreateSettingsButton(Transform parent, string title, float y, float height,
-        UnityEngine.Events.UnityAction click)
-    {
-        var button = new GameObject(title.Length > 0 ? title : "Slot", typeof(RectTransform), typeof(Image), typeof(Button));
-        button.transform.SetParent(parent, false);
-        var rect = (RectTransform)button.transform;
-        rect.anchoredPosition = new Vector2(0f, y);
-        rect.sizeDelta = new Vector2(160f, height);
-        var image = button.GetComponent<Image>();
-        image.color = slotColor;
-        var control = button.GetComponent<Button>();
-        control.targetGraphic = image;
-        control.onClick.AddListener(click);
-        return CreateLabel(button.transform, title, Vector2.zero, rect.sizeDelta, 20);
     }
 
     private static Text CreateLabel(Transform parent, string title, Vector2 position, Vector2 size, int fontSize)

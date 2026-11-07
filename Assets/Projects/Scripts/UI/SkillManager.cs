@@ -17,6 +17,19 @@ public class SkillManager : MonoBehaviour
     private readonly List<SkillView> skillViews = new();//缓存每个技能的遮罩与数值，不在刷新时反复遍历层级
     private GameSession session;//只在界面启用期间订阅金币与技能数据变化
     private bool initialized;//反复打开界面也只给购买按钮绑定一次
+    [Header("被动技能")]
+    [SerializeField] private PassiveSkillPanel passivePanel;
+    [SerializeField] private Button modeButton;//“被动技能 / 主动技能”切换按钮
+    [SerializeField] private Sprite passiveButtonSprite, activeButtonSprite;//按钮上显示的是将要切到的那一页
+    [SerializeField] private Image background;
+    [SerializeField] private Sprite activeBackground, passiveBackground;
+    [Header("按键配置")]
+    [SerializeField] private KeyConfigPanel keyConfigPanel;
+    [SerializeField] private Button keyConfigButton;//只在地图上显示，关卡内不能改按键
+    [SerializeField] private Sprite keyConfigBackground;
+    private enum Page { Active, Passive, Keys }
+    private Page page;
+    private readonly Dictionary<PlayerId, Sprite> portraits = new();//角色页签原本的头像图，悬停换图前记录
 
     private sealed class PurchaseButton//按钮与实际显示角色绑定，重复占位面板不能误购另一个角色的技能
     {
@@ -41,6 +54,8 @@ public class SkillManager : MonoBehaviour
     {
         Initialize();
         BindSession();
+        page = Page.Active;//每次打开都从主动技能页开始
+        if (keyConfigButton != null) keyConfigButton.gameObject.SetActive(FindAnyObjectByType<PlayerManager>() == null);//关卡内有角色管理器，隐藏按键配置
         ShowCurrentPanel();
         RefreshButtons();
     }
@@ -54,11 +69,16 @@ public class SkillManager : MonoBehaviour
         if (goldNum != null)
             goldDisplay = new SkillNumberDisplay(goldNum, 7, numberSprites, firstDigit: 1);//固定使用num1到num7，从第一位开始显示
         BindPurchaseButtons();
+        if (background != null && activeBackground == null) activeBackground = background.sprite;
+        if (modeButton != null) modeButton.onClick.AddListener(ToggleSkillMode);
+        if (keyConfigButton != null) keyConfigButton.onClick.AddListener(OpenKeyConfig);
         foreach (Button tab in GetComponentsInChildren<Button>(true))
         {
             PlayerId? id = tab.name.ToLowerInvariant() switch
             { "wukong" => PlayerId.WuKong, "bajie" => PlayerId.BaJie, "tang" => PlayerId.Tang, "sha" => PlayerId.Sha, _ => null };
-            if (id.HasValue) characterTabs.Add((tab, id.Value));
+            if (!id.HasValue) continue;
+            characterTabs.Add((tab, id.Value));
+            if (tab.targetGraphic is Image portrait && portrait.sprite != null) portraits[id.Value] = portrait.sprite;
         }
     }
 
@@ -122,12 +142,62 @@ public class SkillManager : MonoBehaviour
         return upgraded;
     }
 
+    public void ToggleSkillMode()//主动、被动两页互相切换；在按键配置页时回到主动页。角色选择保持不变
+    {
+        page = page == Page.Active ? Page.Passive : Page.Active;
+        ShowCurrentPanel();
+        RefreshButtons();
+    }
+
+    public void OpenKeyConfig()
+    {
+        page = Page.Keys;
+        ShowCurrentPanel();
+    }
+
+    public Sprite SkillIcon(PlayerId player, int skillNumber)//按键配置页用技能面板里各技能的图标
+    {
+        Initialize();
+        if (Skills == null || (int)player >= Skills.Length || Skills[(int)player] == null) return null;
+        foreach (Transform row in Skills[(int)player].transform)
+            if (SkillNumber(row.name, player) == skillNumber)
+                return row.Find("skill")?.GetComponent<Image>()?.sprite;
+        return null;
+    }
+
+    public Sprite Portrait(PlayerId player)
+    {
+        Initialize();
+        return portraits.TryGetValue(player, out Sprite sprite) ? sprite : null;
+    }
+
     private void ShowCurrentPanel()//场景中存在重复引用时只处理一次，不让后一个重复项把当前面板再次关闭
     {
         if (Skills == null || curCharactor >= Skills.Length) return;
         HashSet<GameObject> shown = new();
         foreach (GameObject panel in Skills)
-            if (panel != null && shown.Add(panel)) panel.SetActive(panel == Skills[curCharactor]);
+            if (panel != null && shown.Add(panel)) panel.SetActive(page == Page.Active && panel == Skills[curCharactor]);
+        if (passivePanel != null)
+        {
+            passivePanel.gameObject.SetActive(page == Page.Passive);
+            if (page == Page.Passive) passivePanel.Show((PlayerId)curCharactor);
+        }
+        if (keyConfigPanel != null)
+        {
+            keyConfigPanel.gameObject.SetActive(page == Page.Keys);
+            if (page == Page.Keys) keyConfigPanel.Show(this, (PlayerId)curCharactor);
+        }
+        if (curGold != null) curGold.gameObject.SetActive(page != Page.Keys);//按键配置页不涉及金币
+        if (background != null)
+        {
+            Sprite sprite = page == Page.Passive ? passiveBackground : page == Page.Keys ? keyConfigBackground : activeBackground;
+            if (sprite != null) background.sprite = sprite;
+        }
+        if (modeButton != null && modeButton.targetGraphic is Image label)
+        {
+            Sprite sprite = page == Page.Active ? passiveButtonSprite : activeButtonSprite;//按钮显示的是点了之后去的页
+            if (sprite != null) label.sprite = sprite;
+        }
     }
 
     private void BindPurchaseButtons()//按实际技能对象绑定，角色选择和返回按钮继续使用原Inspector事件

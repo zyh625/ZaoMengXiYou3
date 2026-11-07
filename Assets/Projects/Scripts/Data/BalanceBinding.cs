@@ -18,6 +18,8 @@ public sealed class BalanceBinding : MonoBehaviour
         types[name]=found;return found;
     }
     private void Awake()=>ApplyOnce();
+    //数值资产只保存数值：本体缩放、碰撞箱尺寸与偏移一律以预制体为准，资产里即使残留这类条目也不应用。
+    public static bool ControlsSize(Type type)=>type!=null&&(typeof(Collider2D).IsAssignableFrom(type)||typeof(Transform).IsAssignableFrom(type));
     // Never reapply on OnEnable: doing so would erase rebirth/scaled HP when an enemy leaves its pool.
     public void ApplyOnce()
     {
@@ -28,6 +30,7 @@ public sealed class BalanceBinding : MonoBehaviour
             if(node==null){Debug.LogError($"数值配置路径失效：{profile.name}/{group.objectPath}",this);continue;}
             Type type=ResolveType(group.componentType);
             if(type==null){Debug.LogError("数值配置组件失效："+group.componentType,this);continue;}
+            if(ControlsSize(type))continue;
             var matches=node.GetComponents(type);
             if(group.componentIndex>=matches.Length){Debug.LogError("数值配置组件缺失："+group.componentType,this);continue;}
             foreach(var parameter in group.parameters)

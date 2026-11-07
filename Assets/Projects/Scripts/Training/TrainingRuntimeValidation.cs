@@ -65,6 +65,7 @@ public sealed class TrainingRuntimeValidation : MonoBehaviour
             Check(current.GetComponent<PlayerResources>().Id==order[i],"a ready character can enter while others cool down");
             float expected=BalanceRuntime.Load("Common/PartyAndGold").Get($"PlayerManager.SwitchCooldown.{outgoing}",20f);
             expected=float.IsFinite(expected)?Mathf.Max(0f,expected):20f;
+            expected*=EquipmentRules.SwitchCooldownScale(party.GetCharacter(outgoing).GetComponent<PlayerResources>().Level);//换人冷却随换下角色的等级缩短
             Check(Near(party.GetSwitchCooldownRemaining(outgoing,out float ratio),expected)
                 && Near(ratio,expected>0f?1f:0f),"the outgoing character starts their configured switch cooldown");
             Check(party.GetSwitchCooldownRemaining(order[i],out _)==0f,"the incoming character stays ready");

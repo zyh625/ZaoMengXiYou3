@@ -23,11 +23,11 @@ MonoBehaviour:
   - key: HPPerRound
     label: "\u6BCF\u8F6E\u751F\u547D\u589E\u957F"
     source: 
-    value: 0.35
+    value: 0.25
   - key: DamagePerRound
     label: "\u6BCF\u8F6E\u4F24\u5BB3\u589E\u957F"
     source: 
-    value: 0.15
+    value: 0.14
   - key: GoldPerRound
     label: "\u6BCF\u8F6E\u91D1\u5E01\u589E\u957F"
     source: 
@@ -35,19 +35,19 @@ MonoBehaviour:
   - key: ExperiencePerRound
     label: "\u6BCF\u8F6E\u7ECF\u9A8C\u589E\u957F"
     source: 
-    value: 0.2
+    value: 0.15
   - key: QuantityPerRound
     label: "\u6BCF\u8F6E\u6570\u91CF\u589E\u957F"
     source: 
-    value: 0.08
+    value: 0.06
   - key: MinimumAttackCooldown
     label: "\u653B\u51FB\u51B7\u5374\u6700\u4F4E\u500D\u7387"
     source: 
-    value: 0.75
+    value: 0.8
   - key: AttackCooldownPerRound
     label: "\u6BCF\u8F6E\u653B\u51FB\u51B7\u5374\u51CF\u5C11"
     source: 
-    value: 0.03
+    value: 0.02
   - key: MovementPerRound
     label: "\u6BCF\u8F6E\u79FB\u901F\u589E\u957F"
     source: 

@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.079, y: -0.008}
+  m_AnchoredPosition: {x: -0.09, y: -0.008}
   m_SizeDelta: {x: 1, y: 0.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9165474853627695461
@@ -103,8 +103,8 @@ Transform:
   m_GameObject: {fileID: 2031643116252917615}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.4053, y: -0.9743, z: 0}
+  m_LocalScale: {x: -1.3025, y: 1.4996, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7725946660736122249}
@@ -260,7 +260,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 1.2}
+  m_Offset: {x: 0, y: 0.508566}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -270,7 +270,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 14, y: 4}
+  m_Size: {x: 14, y: 2.9314196}
   m_EdgeRadius: 0
 --- !u!114 &6472073720946159427
 MonoBehaviour:
@@ -525,7 +525,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 1.025}
+  m_Offset: {x: -0.2750023, y: 0.46713805}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -535,7 +535,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.05, y: 2.05}
+  m_Size: {x: 1.6000046, y: 2.7571492}
   m_EdgeRadius: 0
 --- !u!114 &3500947523703857950
 MonoBehaviour:
@@ -949,7 +949,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 1.125}
+  m_Offset: {x: -0.27500296, y: 0.43356574}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -959,5 +959,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.3, y: 2.25}
+  m_Size: {x: 1.4100008, y: 2.7528617}
   m_EdgeRadius: 0

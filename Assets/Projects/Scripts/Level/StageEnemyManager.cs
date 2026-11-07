@@ -23,7 +23,29 @@ public class StageEnemyManager : LevelEnemyManager
         public EnemyController spareEnemy;//本次随机选择时找到的空闲成员
     }
 
+    //不走波次的敌人：从进关开始每隔一段时间生成一只，Boss战期间也继续，只受同时存活上限限制，也不阻挡波次推进。
+    [Serializable]
+    public sealed class TimedEnemy
+    {
+        public EnemyController prefab;
+        [Min(1)] public int maxAlive = 2;//同时存活的上限，满员时等有一只死亡后再按间隔补
+        [Min(0.5f)] public float interval = 15f;//两次生成之间的秒数
+        [Min(0f)] public float firstDelay = 10f;//进关后多久生成第一只
+        [Min(0f)] public float spawnHeight = 4f;//出生点高于玩家身体中心的高度
+        [Min(0f)] public float spawnSideDistance = 4f;//出生点相对玩家左右偏移的最大值（左右交替）
+    }
+
+    private sealed class TimedData
+    {
+        public TimedEnemy config;
+        public readonly List<EnemyController> enemies = new();
+        public float nextAt = -1f;
+        public bool right;
+    }
+
     [SerializeField] private EnemyPool[] enemyPools = Array.Empty<EnemyPool>();//按顺序配置任意种类的敌人
+    [Header("定时生成")]
+    [SerializeField] private TimedEnemy[] timedEnemies = Array.Empty<TimedEnemy>();
     [SerializeField] private Transform lungeLeft, lungeRight;//有场地边界接口的Boss共用的左右边界
     [Header("Boss 召唤")]
     [SerializeField, Min(0)] private int maxSummonedEnemies = 2;//同时存在的召唤天兵上限，0表示禁止召唤
@@ -31,6 +53,7 @@ public class StageEnemyManager : LevelEnemyManager
     [SerializeField, Range(0f, 1f)] private float summonedDamageScale = 0.7f;//召唤天兵的伤害倍率
     private readonly List<EnemyController> summons = new();//当前仍在场的召唤单位，用于数量上限与数值恢复
     private readonly List<PoolData> pools = new();//只收集有效配置，空配置不会参与出生选择
+    private readonly List<TimedData> timed = new();
 
 #if UNITY_EDITOR
     public override IEnumerable<EnemyController> GetEnemyPrefabs()//直接使用关卡Inspector中的池配置，新增类型无需修改测试窗口。
@@ -38,6 +61,9 @@ public class StageEnemyManager : LevelEnemyManager
         if (enemyPools == null) yield break;
         foreach (EnemyPool pool in enemyPools)
             if (pool != null && pool.prefab != null) yield return pool.prefab;
+        if (timedEnemies == null) yield break;
+        foreach (TimedEnemy entry in timedEnemies)
+            if (entry != null && entry.prefab != null) yield return entry.prefab;
     }
 #endif
 
@@ -124,6 +150,62 @@ public class StageEnemyManager : LevelEnemyManager
                 pool.enemies.Add(enemy);
             }
         }
+        InitTimedPools();
+    }
+
+    private void InitTimedPools()
+    {
+        timed.Clear();
+        if (timedEnemies == null) return;
+        foreach (TimedEnemy config in timedEnemies)
+        {
+            if (config == null || config.prefab == null) continue;
+            var data = new TimedData { config = config };
+            for (int i = 0; i < config.maxAlive; i++)
+            {
+                EnemyController enemy = CreateEnemy(config.prefab, false);
+                if (!enemy.gameObject.activeSelf) enemy.gameObject.SetActive(true);//先完成Awake再停用
+                enemy.gameObject.SetActive(false);
+                data.enemies.Add(enemy);
+            }
+            timed.Add(data);
+        }
+    }
+
+    public override void UpdateTimedSpawns()
+    {
+        if (!BattleRun.IsRunning) return;
+        foreach (TimedData data in timed)
+        {
+            if (data.nextAt < 0f) data.nextAt = Time.time + data.config.firstDelay;
+            if (Time.time < data.nextAt) continue;
+            EnemyController enemy = null;
+            foreach (EnemyController candidate in data.enemies)
+                if (candidate != null && !candidate.gameObject.activeSelf) { enemy = candidate; break; }
+            if (enemy == null) continue;//满员：有一只死亡后立即补
+            SpawnTimed(enemy, data);
+            data.right = !data.right;
+            data.nextAt = Time.time + data.config.interval;
+        }
+    }
+
+    private void SpawnTimed(EnemyController enemy, TimedData data)
+    {
+        Transform player = CurrentTarget;
+        Vector2 center = player != null ? player.position : Vector2.zero;
+        if (player != null && player.GetComponent<Collider2D>() is Collider2D body) center = body.bounds.center;
+        float offset = UnityEngine.Random.Range(data.config.spawnSideDistance * 0.25f, data.config.spawnSideDistance) * (data.right ? 1f : -1f);
+        float x = center.x + offset;
+        if (CM != null && CM.CameraHalf > 1f)//留在画面内，飞行敌人不会被场地墙挡在外面
+            x = Mathf.Clamp(x, CM.CameraCenter - CM.CameraHalf + 1f, CM.CameraCenter + CM.CameraHalf - 1f);
+        enemy.transform.position = new Vector3(x, center.y + data.config.spawnHeight, enemy.transform.position.z);
+        enemy.SetSpawnSide(data.right);
+        Health health = enemy.GetComponent<Health>();
+        Health prefabHealth = data.config.prefab.GetComponent<Health>();
+        if (health != null && prefabHealth != null)
+            health.SetBaseBlood(BalanceRuntime.BaseBlood(data.config.prefab.gameObject, prefabHealth.BeginBlood) * RebirthScaling.Current.HP);
+        enemy.GetComponent<EnemyCombat>()?.SetExternalDamageScale(RebirthScaling.Current.Damage);
+        enemy.gameObject.SetActive(true);
     }
 
     protected override void ConfigureBoss()

@@ -146,10 +146,15 @@ public class UIManager : MonoBehaviour
 
     private void OnEnable()
     {
+        KeyBindings.Changed += RefreshSkillBar;
         if (currentPlayer != null) BindPlayer(currentPlayer);
     }
 
-    private void OnDisable() => UnbindPlayer();
+    private void OnDisable()
+    {
+        KeyBindings.Changed -= RefreshSkillBar;
+        UnbindPlayer();
+    }
 
     private void RefreshCharacterBar()
     {
@@ -186,32 +191,37 @@ public class UIManager : MonoBehaviour
         if (skillIcons != null)
             for (int i = 0; i < skillIcons.Length; i++)
                 if (skillIcons[i] != null)
-                    skillIcons[i].sprite = combat != null ? combat.GetSkillIcon(i + 1) : null;
+                    skillIcons[i].sprite = combat != null ? combat.GetSkillIcon(SlotSkill(i)) : null;//显示该按键绑定的技能
         int count = skillBlocks != null ? skillBlocks.Length : 0;//显示槽数由场景配置决定，与角色技能总数分开
         previousSkillRatios = new float[count];
         completionFlashFrames = new int[count];
         for (int i = 0; i < count; i++)
         {
             completionFlashFrames[i] = -1;
-            float ratio = combat != null ? combat.GetSkillCooldownRatio(i + 1) : 0f;//首次绑定直接同步，不把已就绪当作刚冷却结束
+            float ratio = combat != null ? combat.GetSkillCooldownRatio(SlotSkill(i)) : 0f;//首次绑定直接同步，不把已就绪当作刚冷却结束
             previousSkillRatios[i] = ratio;
             Image block = skillBlocks[i];
             if (block == null) continue;
             block.type = Image.Type.Filled;
             block.fillMethod = Image.FillMethod.Vertical;
             block.fillOrigin = (int)Image.OriginVertical.Bottom;//剩余阴影留在底部，减少时从顶部向下露出技能图标
-            block.fillAmount = combat != null && !combat.IsSkillLearned(i + 1) ? 1f : ratio;//未学习的技能保持遮挡，购买成功后立即可以进入正常冷却显示
+            block.fillAmount = combat != null && !combat.IsSkillLearned(SlotSkill(i)) ? 1f : ratio;//未学习的技能保持遮挡，购买成功后立即可以进入正常冷却显示
         }
     }
-    private void OnSkillCooldownStarted(int k)//真正接受技能立即盖满，不等待下一次冷却比例轮询
+    private void OnSkillCooldownStarted(int k)//真正接受技能立即盖满，不等待下一次冷却比例轮询；绑定同一技能的按键一起盖满
     {
-        int index = k - 1;//战斗技能从1编号，技能栏数组从0编号
-        if (skillBlocks == null || index < 0 || index >= skillBlocks.Length) return;
+        if (skillBlocks == null) return;
         if (previousSkillRatios == null || previousSkillRatios.Length != skillBlocks.Length) RefreshSkillBar();
-        previousSkillRatios[index] = 1f;
-        completionFlashFrames[index] = -1;
-        if (skillBlocks[index] != null) skillBlocks[index].fillAmount = 1f;
+        for (int index = 0; index < skillBlocks.Length; index++)
+        {
+            if (SlotSkill(index) != k) continue;
+            previousSkillRatios[index] = 1f;
+            completionFlashFrames[index] = -1;
+            if (skillBlocks[index] != null) skillBlocks[index].fillAmount = 1f;
+        }
     }
+
+    private int SlotSkill(int slot) => KeyBindings.SkillFor(resources != null ? resources.Id : PlayerId.WuKong, slot + 1);//技能栏第slot格对应的技能编号
     private void LateUpdate()//使用渲染帧更新倒计时，冷却完成的闪烁才会真正显示一帧
     {
         RefreshCharacterBar();
@@ -220,14 +230,14 @@ public class UIManager : MonoBehaviour
         for (int i = 0; i < skillBlocks.Length; i++)
         {
             Image block = skillBlocks[i];
-            if (!combat.IsSkillLearned(i + 1))
+            if (!combat.IsSkillLearned(SlotSkill(i)))
             {
                 if (block != null) block.fillAmount = 1f;
                 previousSkillRatios[i] = 0f;//未学遮挡不算技能冷却，学习时不会误触发冷却完成闪烁
                 completionFlashFrames[i] = -1;
                 continue;
             }
-            float ratio = combat.GetSkillCooldownRatio(i + 1);//备用角色的时间在战斗组件里继续推进，切回时直接读取
+            float ratio = combat.GetSkillCooldownRatio(SlotSkill(i));//备用角色的时间在战斗组件里继续推进，切回时直接读取
             if (ratio > 0f)
             {
                 completionFlashFrames[i] = -1;

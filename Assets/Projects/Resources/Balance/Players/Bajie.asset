@@ -30,7 +30,7 @@ MonoBehaviour:
     parameters:
     - path: beginBlood
       label: "\u57FA\u7840\u751F\u547D\u4E0A\u9650 \xB7 beginBlood"
-      value: 100
+      value: 170
       integer: 0
       boolean: 0
   - objectPath: 
@@ -374,7 +374,7 @@ MonoBehaviour:
       boolean: 0
     - path: criticalChance
       label: "\u66B4\u51FB\u6982\u7387 \xB7 criticalChance"
-      value: 0
+      value: 0.05
       integer: 0
       boolean: 0
     - path: criticalMultiplier
@@ -621,7 +621,7 @@ MonoBehaviour:
     parameters:
     - path: maxMana
       label: "\u6700\u5927\u6CD5\u529B \xB7 maxMana"
-      value: 100
+      value: 90
       integer: 0
       boolean: 0
     - path: experienceToNextLevel
@@ -853,30 +853,6 @@ MonoBehaviour:
       integer: 0
       boolean: 0
   - objectPath: 
-    componentType: UnityEngine.BoxCollider2D
-    componentIndex: 0
-    parameters:
-    - path: m_Size.x
-      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
-      value: 0.7321662902832031
-      integer: 0
-      boolean: 0
-    - path: m_Size.y
-      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
-      value: 1.6766536235809326
-      integer: 0
-      boolean: 0
-    - path: m_Offset.x
-      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
-      value: 0
-      integer: 0
-      boolean: 0
-    - path: m_Offset.y
-      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
-      value: -0.10177314281463623
-      integer: 0
-      boolean: 0
-  - objectPath: 
     componentType: UnityEngine.Rigidbody2D
     componentIndex: 0
     parameters:
@@ -893,78 +869,6 @@ MonoBehaviour:
     - path: m_LinearDamping
       label: "\u6C34\u5E73\u963B\u5C3C \xB7 m_LinearDamping"
       value: 0
-      integer: 0
-      boolean: 0
-  - objectPath: CombatBox/NormalAttack
-    componentType: UnityEngine.BoxCollider2D
-    componentIndex: 0
-    parameters:
-    - path: m_Size.x
-      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
-      value: 1.0694713592529297
-      integer: 0
-      boolean: 0
-    - path: m_Size.y
-      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
-      value: 1.6343038082122803
-      integer: 0
-      boolean: 0
-    - path: m_Offset.x
-      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
-      value: 0.5699999928474426
-      integer: 0
-      boolean: 0
-    - path: m_Offset.y
-      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
-      value: -0.028694748878479004
-      integer: 0
-      boolean: 0
-  - objectPath: CombatBox/RiseAttack
-    componentType: UnityEngine.BoxCollider2D
-    componentIndex: 0
-    parameters:
-    - path: m_Size.x
-      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
-      value: 1.0377326011657715
-      integer: 0
-      boolean: 0
-    - path: m_Size.y
-      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
-      value: 1.792398452758789
-      integer: 0
-      boolean: 0
-    - path: m_Offset.x
-      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
-      value: 0.6320321559906006
-      integer: 0
-      boolean: 0
-    - path: m_Offset.y
-      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
-      value: 0.009433507919311523
-      integer: 0
-      boolean: 0
-  - objectPath: CombatBox/Attacked
-    componentType: UnityEngine.BoxCollider2D
-    componentIndex: 0
-    parameters:
-    - path: m_Size.x
-      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
-      value: 0.7712416648864746
-      integer: 0
-      boolean: 0
-    - path: m_Size.y
-      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
-      value: 1.6921396255493164
-      integer: 0
-      boolean: 0
-    - path: m_Offset.x
-      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
-      value: 0
-      integer: 0
-      boolean: 0
-    - path: m_Offset.y
-      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
-      value: 0.023462533950805664
       integer: 0
       boolean: 0
   numbers:

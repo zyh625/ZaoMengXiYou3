@@ -6,6 +6,8 @@ public sealed class RedChainPull : MonoBehaviour
 {
     public static float Duration => BalanceRuntime.Number(typeof(RedChainPull), "RedChainPull.Duration", 0.35f);
     private static float Skin => BalanceRuntime.Number(typeof(RedChainPull), "RedChainPull.Skin", 0.025f);
+    public static float StunAfter => BalanceRuntime.Number(typeof(RedChainPull), "RedChainPull.StunAfter", 0.6f);//拉到身前后继续眩晕的秒数
+    private ActorStun stun;
     private Rigidbody2D body;
     private Collider2D bodyCollider;
     private Health health, sourceHealth;
@@ -21,7 +23,8 @@ public sealed class RedChainPull : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         bodyCollider = GetComponent<Collider2D>();
         health = GetComponent<Health>();
-        if (owner == null || body == null || bodyCollider == null || health == null || !health.CanReceiveControl(ControlStrength.Strong)) return;
+        //链锤勾回无视无双和霸体，只有无敌和死亡能挡住
+        if (owner == null || body == null || bodyCollider == null || health == null || health.Dead || health.IsInvincible) return;
         Health ownerHealth = owner.GetComponent<Health>();
         if (ownerHealth == null || ownerHealth.Dead) return;
         Collider2D ownBox = bodyCollider;
@@ -34,8 +37,12 @@ public sealed class RedChainPull : MonoBehaviour
         float nextDestination = faceX - centerOffset;
         //已经站在身前时不反向推开玩家，更不能穿过武卒。
         float distance = side * (body.position.x - nextDestination);
+        stun = GetComponent<ActorStun>();
+        if (stun == null) stun = gameObject.AddComponent<ActorStun>();
+        stun.ApplyForced(owner, Duration + StunAfter);//已经贴身时也会眩晕，只是不需要拖动
         if (distance <= 0f) return;
         Cancel();
+        stun.HoldSuspended = true;
         source = owner;
         sourceHealth = ownerHealth;
         sourceLife = sourceHealth.LifeVersion;
@@ -79,6 +86,7 @@ public sealed class RedChainPull : MonoBehaviour
     {
         if (pulling && body != null && Mathf.Abs(body.linearVelocityX - lastVelocity) < BalanceRuntime.Number(this, "RedChainPull.Cancel.1", 0.001f))
             body.linearVelocity = new Vector2(0f, body.linearVelocityY);
+        if (pulling && stun != null) { stun.HoldSuspended = false; stun.Rehold(); }//在被拉到的位置继续眩晕
         pulling = ending = false;
         source = null;
     }

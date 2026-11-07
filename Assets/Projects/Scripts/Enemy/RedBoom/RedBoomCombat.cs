@@ -85,7 +85,10 @@ public sealed class RedBoomCombat : EnemyCombat
         if (skill == 0)
         {
             rayFrom = Origin;
-            Vector2 direction = FaceRight ? Vector2.right : Vector2.left;
+            //起手时锁定玩家身体中心（被标记的玩家即当前目标），射线沿这条斜线发射；之后玩家移动可以躲开
+            Collider2D body = target.GetComponent<Collider2D>();
+            Vector2 aim = (body != null ? (Vector2)body.bounds.center : (Vector2)target.transform.position) - rayFrom;
+            Vector2 direction = aim.sqrMagnitude > 0.01f ? aim.normalized : (FaceRight ? Vector2.right : Vector2.left);
             rayTo = rayFrom + direction * rayRange;
             RaycastHit2D wall = Physics2D.Raycast(rayFrom, direction, rayRange, 1 << 6);
             if (wall.collider != null) rayTo = wall.point - direction * BalanceRuntime.Number(this, "RedBoomCombat.BeginCast.1", 0.02f);
@@ -105,9 +108,11 @@ public sealed class RedBoomCombat : EnemyCombat
         {
             RayShots++;
             warning?.Flash();
-            Vector2 size = new(Mathf.Abs(rayTo.x - rayFrom.x), rayHeight);
+            Vector2 line = rayTo - rayFrom;
+            Vector2 size = new(line.magnitude, rayHeight);
+            float angle = Mathf.Atan2(line.y, line.x) * Mathf.Rad2Deg;//判定框沿射线方向旋转
             ContactFilter2D filter = RedBoomHitUtility.PlayerFilter;
-            int count = Physics2D.OverlapBox((rayFrom + rayTo) / BalanceRuntime.Number(this, "RedBoomCombat.SampleFrame.1", 2f), size, 0f, filter, hits);
+            int count = Physics2D.OverlapBox((rayFrom + rayTo) / BalanceRuntime.Number(this, "RedBoomCombat.SampleFrame.1", 2f), size, angle, filter, hits);
             hitHealths.Clear();
             float scale = DamageMultiplier;
             for (int i = 0; i < count; i++)

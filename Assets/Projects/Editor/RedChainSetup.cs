@@ -177,7 +177,6 @@ public static class RedChainSetup
         Number(controller, "stopDistance", 1.8f);
         Integer(controller, "specialAttack", 2);
         Number(controller, "recoveryDuration", 1.2f);
-        Number(controller, "chainVisualScale", 2.55f);
         Clip(controller, "Idle", "Idle", 10f, true);
         Clip(controller, "Walk", "Walk", 14f, true);
         Clip(controller, "Attacked", "Attacked", 18f, false);

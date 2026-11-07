@@ -24,14 +24,38 @@ public class PlayerResources : MonoBehaviour
     public float MaxMana { get { Initialize(); return maxMana; } }
     public float Experience { get { Initialize(); return experience; } }
     public int Level { get { Initialize(); return playerData != null ? playerData.playerLevel : 1; } }//等级与经验均直接对应当前角色存档
-    public float ExperienceToNextLevel { get { Initialize(); return experienceToNextLevel; } }
+    public float TotalExperience//从1级起累计获得的经验；升级会扣掉当前经验，统计奖励时用它
+    {
+        get
+        {
+            Initialize();
+            float total = experience;
+            for (int level = 1; level < Level; level++) total += EquipmentRules.ExperienceToNext(level);
+            return total;
+        }
+    }
+    public float ExperienceToNextLevel { get { Initialize(); return EquipmentRules.ExperienceToNext(Level); } }//升级曲线统一在EquipmentRules
     public float CurrentVigor { get { Initialize(); return currentVigor; } }
     public float MaxVigor { get { Initialize(); return maxVigor; } }
     public bool VigorLocked { get { Initialize(); return TrainingInfiniteResources || playerBoost != null && playerBoost.Active; } }//零气力开启无双后也能正常跑跳和释放组合技
     public float RunVigorPerSecond => Mathf.Max(0f, runVigorPerSecond);//移动系统读取配置，资源组件不自行判断动作
     public float JumpVigorCost => Mathf.Max(0f, jumpVigorCost);
-    public float IdleVigorRecovery => Mathf.Max(0f, idleVigorRecovery);
-    public float AttackedVigorRecovery => Mathf.Max(0f, attackedVigorRecovery);
+    public float IdleVigorRecovery => Mathf.Max(0f, idleVigorRecovery) + vigorRecoveryBonus;
+    public float AttackedVigorRecovery => Mathf.Max(0f, attackedVigorRecovery) + vigorRecoveryBonus;
+    private float baseMaxVigor = -1f, vigorRecoveryBonus;//被动技能加成，不写回预制体字段的基础值
+
+    public void SetVigorBonus(float maxBonus, float recoveryBonus)//被动技能的气力上限与气力恢复，当前气力按原比例缩放
+    {
+        Initialize();
+        if (baseMaxVigor < 0f) baseMaxVigor = maxVigor;
+        vigorRecoveryBonus = Mathf.Max(0f, recoveryBonus);
+        float value = baseMaxVigor + Mathf.Max(0f, maxBonus);
+        if (Mathf.Approximately(value, maxVigor)) return;
+        float ratio = maxVigor > 0f ? Mathf.Clamp01(currentVigor / maxVigor) : 1f;
+        maxVigor = value;
+        currentVigor = ratio * value;
+        Changed?.Invoke();
+    }
     public event Action Changed;//法力、经验或气力变化时只通知当前绑定的UI
 
     private void Awake() => Initialize();
@@ -41,6 +65,7 @@ public class PlayerResources : MonoBehaviour
         if (initialized) return;
         initialized = true;
         playerBoost = GetComponent<PlayerBoost>();
+        if (GetComponent<PlayerStats>() == null) gameObject.AddComponent<PlayerStats>();//等级与装备属性由该组件统一套用
         maxMana = Mathf.Max(0f, maxMana);
         experienceToNextLevel = Mathf.Max(1f, experienceToNextLevel);
         currentMana = maxMana;
@@ -72,11 +97,33 @@ public class PlayerResources : MonoBehaviour
         Changed?.Invoke();
     }
 
-    public void AddExperience(float amount)//经验立即回写现有存档对象，由原有保存流程统一写盘
+    public void AddExperience(float amount)//经验立即回写现有存档对象，由原有保存流程统一写盘；够了就升级，多出的经验带到下一级
     {
         Initialize();
         if (amount <= 0f || float.IsNaN(amount) || float.IsInfinity(amount)) return;
-        SetExperience(Mathf.Min(float.MaxValue, experience + amount));
+        float total = Mathf.Min(float.MaxValue, experience + amount);
+        if (playerData != null)
+        {
+            while (playerData.playerLevel < EquipmentRules.MaxLevel && total >= EquipmentRules.ExperienceToNext(playerData.playerLevel))
+            {
+                total -= EquipmentRules.ExperienceToNext(playerData.playerLevel);
+                playerData.playerLevel++;
+            }
+            if (playerData.playerLevel >= EquipmentRules.MaxLevel) total = Mathf.Min(total, EquipmentRules.ExperienceToNext(EquipmentRules.MaxLevel));//满级后经验条停在满格
+        }
+        experience = -1f;//确保下面一定发出变化通知（等级可能变了）
+        SetExperience(total);
+    }
+
+    public void SetMaxMana(float value)//等级成长改变法力上限，当前法力按原比例缩放
+    {
+        Initialize();
+        value = Mathf.Max(0f, value);
+        if (Mathf.Approximately(value, maxMana)) return;
+        float ratio = maxMana > 0f ? Mathf.Clamp01(currentMana / maxMana) : 1f;
+        maxMana = value;
+        currentMana = ratio * value;
+        Changed?.Invoke();
     }
 
     public void SetExperience(float amount)//这里只同步数据，不擅自设计经验升级曲线；以后升级系统可以统一调用

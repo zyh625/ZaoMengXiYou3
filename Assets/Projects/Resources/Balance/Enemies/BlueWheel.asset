@@ -327,54 +327,6 @@ MonoBehaviour:
       value: 0
       integer: 0
       boolean: 0
-  - objectPath: 
-    componentType: UnityEngine.BoxCollider2D
-    componentIndex: 0
-    parameters:
-    - path: m_Size.x
-      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
-      value: 1.7427606582641602
-      integer: 0
-      boolean: 0
-    - path: m_Size.y
-      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
-      value: 3.190620183944702
-      integer: 0
-      boolean: 0
-    - path: m_Offset.x
-      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
-      value: 0.04990243911743164
-      integer: 0
-      boolean: 0
-    - path: m_Offset.y
-      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
-      value: -0.12376844882965088
-      integer: 0
-      boolean: 0
-  - objectPath: Combat/Attacked
-    componentType: UnityEngine.BoxCollider2D
-    componentIndex: 0
-    parameters:
-    - path: m_Size.x
-      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
-      value: 1.6200000047683716
-      integer: 0
-      boolean: 0
-    - path: m_Size.y
-      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
-      value: 3.4600000381469727
-      integer: 0
-      boolean: 0
-    - path: m_Offset.x
-      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
-      value: 0
-      integer: 0
-      boolean: 0
-    - path: m_Offset.y
-      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
-      value: 0.009999999776482582
-      integer: 0
-      boolean: 0
   numbers:
   - key: BlueBoomearng.FlySpeed.1
     label: FlySpeed / public float FlySpeed => Mathf.Max(0.01f, flySpeed);

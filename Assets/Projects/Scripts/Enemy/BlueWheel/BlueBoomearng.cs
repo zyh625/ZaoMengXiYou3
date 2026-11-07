@@ -9,7 +9,7 @@ public class BlueBoomearng : MonoBehaviour
     [SerializeField] private SpriteData flight;
     [SerializeField, Min(0f)] private float damage = 10f;//每次发射保存伤害倍率，发出后不随持有者的增幅变化。
     [SerializeField, Min(0.01f)] private float flySpeed = 10f;
-    [SerializeField, Min(0.1f)] private float outboundDistance = 9f;//隐身投掷的自动折返距离。
+    [SerializeField, Min(0.1f)] private float outboundDistance = 9f;//最远飞行距离：飞向玩家中心时超出这个距离就停在最远处折返
     [SerializeField, Min(0.01f)] private float returnSpeed = 14f;//无本体收回动画时的回程速度。
     [SerializeField, Min(1f)] private float maxLifetime = 20f;//异常配置或无边界场景的回收兜底。
     [SerializeField] private bool knockback = true;
@@ -22,7 +22,7 @@ public class BlueBoomearng : MonoBehaviour
     private int ownerLifeVersion;//同一个池成员重生不能取回或反弹到上一条生命留下的轮。
     private PlayerManager players;
     private Vector2 bounds, direction, returnFrom, lastDirection;
-    private float launchAt, expiresAt, travelled, flightDamage, returnStarted, returnDuration;
+    private float launchAt, expiresAt, travelled, flightDamage, returnStarted, returnDuration, aimDistance;
     private bool flying, started, hiddenCast, catchOnArrival;
     private FlightMode mode;
     private readonly HashSet<Health> hitPlayers = new();//去、回两段分别去重，换人后读取实际上场角色。
@@ -70,6 +70,7 @@ public class BlueBoomearng : MonoBehaviour
             else SM.Pause();
         }
         SetPosition(ClampToBounds(transform.position, out _));//场边生成也保留完整轮形，不在回程前提前回池。
+        if (started) Aim();
         if (!BattleRun.IsRunning || !OwnerStillValid) StopEffect();
     }
     private void FixedUpdate()
@@ -84,6 +85,7 @@ public class BlueBoomearng : MonoBehaviour
             started = true;
             if (hiddenCast && owner != null) SetPosition(owner.transform.position);
             if (sr != null) sr.enabled = true;
+            Aim();
         }
         Vector2 from = transform.position;
         if (mode == FlightMode.WaitingCatch)
@@ -110,8 +112,7 @@ public class BlueBoomearng : MonoBehaviour
             return;
         }
         float step = FlySpeed * Time.fixedDeltaTime;
-        if (hiddenCast && mode == FlightMode.Outbound)
-            step = Mathf.Min(step, Mathf.Max(0f, Mathf.Max(BalanceRuntime.Number(this, "BlueBoomearng.FixedUpdate.1", 0.1f), outboundDistance) - travelled));
+        if (mode == FlightMode.Outbound) step = Mathf.Min(step, Mathf.Max(0f, aimDistance - travelled));//飞到出手时锁定的玩家中心为止
         to = from + direction * step;
         bool reachedEdge = false;
         if (mode == FlightMode.Outbound) to = ClampToBounds(to, out reachedEdge);
@@ -126,10 +127,26 @@ public class BlueBoomearng : MonoBehaviour
         }
         else if (mode == FlightMode.Outbound)
         {
-            if (hiddenCast && (reachedEdge || travelled >= Mathf.Max(BalanceRuntime.Number(this, "BlueBoomearng.FixedUpdate.2", 0.1f), outboundDistance)))
+            bool arrived = reachedEdge || travelled >= aimDistance - 0.0001f;
+            if (hiddenCast && arrived)
                 BeginReturn(Vector2.Distance(to, TargetPosition) / Mathf.Max(BalanceRuntime.Number(this, "BlueBoomearng.FixedUpdate.3", 0.01f), returnSpeed), true);
-            else if (reachedEdge) mode = FlightMode.WaitingReturn;
+            else if (arrived) mode = FlightMode.WaitingReturn;//在目标点旋转，等本体收回
         }
+    }
+    //出手瞬间锁定当前玩家身体中心，飞轮沿直线飞到该点；没有玩家时按原方向飞出 outboundDistance
+    private void Aim()
+    {
+        travelled = 0f;
+        PlayerController player = players != null ? players.CurrentPlayer : null;
+        Collider2D body = player != null ? player.GetComponent<Collider2D>() : null;
+        if (player == null || !player.isActiveAndEnabled)
+        { aimDistance = Mathf.Max(BalanceRuntime.Number(this, "BlueBoomearng.FixedUpdate.1", 0.1f), outboundDistance); return; }
+        Vector2 center = body != null ? (Vector2)body.bounds.center : (Vector2)player.transform.position;
+        Vector2 offset = sr != null ? (Vector2)sr.bounds.center - (Vector2)transform.position : Vector2.zero;
+        Vector2 delta = center - ((Vector2)transform.position + offset);//让轮心（而不是轴心）对准玩家中心
+        aimDistance = Mathf.Min(delta.magnitude, Mathf.Max(BalanceRuntime.Number(this, "BlueBoomearng.FixedUpdate.2", 0.1f), outboundDistance));
+        if (delta.sqrMagnitude > 0.0001f) direction = lastDirection = delta.normalized;
+        if (sr != null && Mathf.Abs(direction.x) > 0.001f) sr.flipX = (direction.x > 0f) != sourceFacesRight;
     }
     public void BeginReturn(float seconds, bool autoCatch)//普通回程由本体收回帧定时，隐身回程到本体即可回池。
     {

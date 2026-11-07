@@ -304,11 +304,6 @@ MonoBehaviour:
       value: 18
       integer: 0
       boolean: 0
-    - path: visualHeight
-      label: "visualHeight \xB7 visualHeight"
-      value: 2.9000000953674316
-      integer: 0
-      boolean: 0
   - objectPath: Combat/DragonClaw
     componentType: WestClawBox
     componentIndex: 0
@@ -345,102 +340,6 @@ MonoBehaviour:
     - path: m_LinearDamping
       label: "\u6C34\u5E73\u963B\u5C3C \xB7 m_LinearDamping"
       value: 0
-      integer: 0
-      boolean: 0
-  - objectPath: 
-    componentType: UnityEngine.BoxCollider2D
-    componentIndex: 0
-    parameters:
-    - path: m_Size.x
-      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
-      value: 1.399999976158142
-      integer: 0
-      boolean: 0
-    - path: m_Size.y
-      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
-      value: 2.6500000953674316
-      integer: 0
-      boolean: 0
-    - path: m_Offset.x
-      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
-      value: 0
-      integer: 0
-      boolean: 0
-    - path: m_Offset.y
-      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
-      value: 1.3250000476837158
-      integer: 0
-      boolean: 0
-  - objectPath: Combat/Attacked
-    componentType: UnityEngine.BoxCollider2D
-    componentIndex: 0
-    parameters:
-    - path: m_Size.x
-      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
-      value: 1.5499999523162842
-      integer: 0
-      boolean: 0
-    - path: m_Size.y
-      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
-      value: 2.799999952316284
-      integer: 0
-      boolean: 0
-    - path: m_Offset.x
-      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
-      value: 0
-      integer: 0
-      boolean: 0
-    - path: m_Offset.y
-      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
-      value: 1.399999976158142
-      integer: 0
-      boolean: 0
-  - objectPath: Combat/DragonClaw
-    componentType: UnityEngine.BoxCollider2D
-    componentIndex: 0
-    parameters:
-    - path: m_Size.x
-      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
-      value: 7
-      integer: 0
-      boolean: 0
-    - path: m_Size.y
-      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
-      value: 2.200000047683716
-      integer: 0
-      boolean: 0
-    - path: m_Offset.x
-      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
-      value: 4.199999809265137
-      integer: 0
-      boolean: 0
-    - path: m_Offset.y
-      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
-      value: 1.2000000476837158
-      integer: 0
-      boolean: 0
-  - objectPath: Combat/ClawCheck
-    componentType: UnityEngine.BoxCollider2D
-    componentIndex: 0
-    parameters:
-    - path: m_Size.x
-      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.x"
-      value: 14
-      integer: 0
-      boolean: 0
-    - path: m_Size.y
-      label: "\u78B0\u649E\u7BB1\u5C3A\u5BF8 \xB7 m_Size.y"
-      value: 4
-      integer: 0
-      boolean: 0
-    - path: m_Offset.x
-      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.x"
-      value: 0
-      integer: 0
-      boolean: 0
-    - path: m_Offset.y
-      label: "\u78B0\u649E\u7BB1\u504F\u79FB \xB7 m_Offset.y"
-      value: 1.5
       integer: 0
       boolean: 0
   numbers:
@@ -515,10 +414,6 @@ MonoBehaviour:
       DamageInfo(transform,35f*Damag
     source: Assets/Projects/Scripts/Boss/WestKing/WestCombat.cs:177
     value: 35
-  - key: WestController.Scale.1
-    label: Scale / float scale=visualHeight/Mathf.Max(0.1f,clip.sprites[0].bounds.size.y);
-    source: Assets/Projects/Scripts/Boss/WestKing/WestController.cs:19
-    value: 0.1
   - key: WestEffectPool.SpawnOrbs.1
     label: SpawnOrbs / Vector2 position=new(Mathf.Lerp(limits.x+1.5f,limits.y-1.5f,(i+0.5f)/3f),floor+Random.Range(2.6f,4.2f));
     source: Assets/Projects/Scripts/Boss/WestKing/WestEffectPool.cs:40

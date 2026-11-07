@@ -192,6 +192,7 @@ public abstract class LevelManager : MonoBehaviour
             playerManager.FailCurrentPlayer();
             return;
         }
+        enemyManager.UpdateTimedSpawns();//定时生成的敌人不受波次和Boss阶段影响，全程按间隔出现
         if (bossOver)
         {
             CheckGameOver();

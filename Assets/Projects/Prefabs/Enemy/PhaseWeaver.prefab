@@ -110,7 +110,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.088481426}
+  m_Offset: {x: -0.31336117, y: -0.5489303}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -120,7 +120,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.8, y: 2}
+  m_Size: {x: 1.2988186, y: 3.9696996}
   m_EdgeRadius: 0
 --- !u!114 &1003
 MonoBehaviour:
@@ -459,8 +459,8 @@ Transform:
   m_GameObject: {fileID: 2000}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.005759, z: 0}
-  m_LocalScale: {x: -1.151832, y: 1.151832, z: 1}
+  m_LocalPosition: {x: -0.4541, y: -0.5015, z: 0}
+  m_LocalScale: {x: -1.7493162, y: 2.0357757, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1001}
@@ -603,7 +603,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.26859426, y: -0.48603046}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -613,7 +613,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.88, y: 2}
+  m_Size: {x: 1.1613855, y: 3.6115735}
   m_EdgeRadius: 0
 --- !u!1 &5000
 GameObject:
@@ -682,7 +682,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.033271194}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -692,7 +692,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 18, y: 6}
+  m_Size: {x: 18, y: 4.9665804}
   m_EdgeRadius: 0
 --- !u!114 &5003
 MonoBehaviour:
@@ -926,7 +926,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1.4115176}
+  m_AnchoredPosition: {x: -0.39, y: 1.71}
   m_SizeDelta: {x: 1.761, y: 0.339}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7624798882210622924

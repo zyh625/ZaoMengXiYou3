@@ -47,13 +47,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LateStageEffect
   frames:
-    sprites: []
+    sprites:
+    - {fileID: 7458339159232054602, guid: 656663eb12314fc68872e83446624173, type: 3}
+    - {fileID: 9042876099680408556, guid: 656663eb12314fc68872e83446624173, type: 3}
+    - {fileID: -7867077522419856337, guid: 656663eb12314fc68872e83446624173, type: 3}
+    - {fileID: -4890643402226803979, guid: 656663eb12314fc68872e83446624173, type: 3}
+    - {fileID: 1759649616963958364, guid: 656663eb12314fc68872e83446624173, type: 3}
+    - {fileID: -1918477496734516831, guid: 656663eb12314fc68872e83446624173, type: 3}
+    - {fileID: -4738878097462636187, guid: 656663eb12314fc68872e83446624173, type: 3}
+    - {fileID: -6960705861804965899, guid: 656663eb12314fc68872e83446624173, type: 3}
+    - {fileID: -3450450017290030501, guid: 656663eb12314fc68872e83446624173, type: 3}
+    - {fileID: 5391112964466259318, guid: 656663eb12314fc68872e83446624173, type: 3}
+    - {fileID: 2602149684581074963, guid: 656663eb12314fc68872e83446624173, type: 3}
+    - {fileID: -4455775657843809304, guid: 656663eb12314fc68872e83446624173, type: 3}
+    - {fileID: 7646166327955717867, guid: 656663eb12314fc68872e83446624173, type: 3}
+    - {fileID: 7164352078332290026, guid: 656663eb12314fc68872e83446624173, type: 3}
+    - {fileID: 2859682788097660811, guid: 656663eb12314fc68872e83446624173, type: 3}
+    - {fileID: 4196756569313725072, guid: 656663eb12314fc68872e83446624173, type: 3}
     loop: 0
-    fps: 1
+    fps: 16
   spriteManager: {fileID: 2003}
   visual: {fileID: 2002}
-  nativeWidth: 1
-  placeholderAspect: {x: 0.5, y: 1.2}
+  nativeWidth: 0.95
+  placeholderAspect: {x: 1, y: 1}
 --- !u!114 &1853515529137756312
 MonoBehaviour:
   m_ObjectHideFlags: 0

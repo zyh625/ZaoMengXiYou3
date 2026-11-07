@@ -2408,9 +2408,13 @@ MonoBehaviour:
   - prefab: {fileID: 4908222533477743828, guid: b5e0845dfd2a2f646a79a1d68aa9a628, type: 3}
     poolSize: 10
     weight: 0.34
+  timedEnemies:
   - prefab: {fileID: 1591944423024096039, guid: 640175fdb81b4c44f9c270d48d25a506, type: 3}
-    poolSize: 10
-    weight: 0.33
+    maxAlive: 2
+    interval: 15
+    firstDelay: 10
+    spawnHeight: 4
+    spawnSideDistance: 4
   lungeLeft: {fileID: 1055450764}
   lungeRight: {fileID: 1678680404}
   maxSummonedEnemies: 2

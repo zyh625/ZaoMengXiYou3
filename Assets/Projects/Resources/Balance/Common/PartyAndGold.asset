@@ -80,17 +80,17 @@ MonoBehaviour:
     parameters:
     - path: dropChance
       label: "\u91D1\u5E01\u6389\u843D\u6982\u7387 \xB7 dropChance"
-      value: 0.5
+      value: 0.6
       integer: 0
       boolean: 0
     - path: maxGold
       label: "\u5C0F\u602A\u91D1\u5E01\u4E0A\u9650 \xB7 maxGold"
-      value: 10
+      value: 12
       integer: 1
       boolean: 0
     - path: goldGrowthPerLevel
       label: "goldGrowthPerLevel \xB7 goldGrowthPerLevel"
-      value: 2
+      value: 3
       integer: 1
       boolean: 0
     - path: goldGrowthStartLevel
@@ -100,7 +100,7 @@ MonoBehaviour:
       boolean: 0
     - path: bossGold
       label: "Boss\u9996\u6740\u91D1\u5E01 \xB7 bossGold"
-      value: 40
+      value: 150
       integer: 1
       boolean: 0
     - path: groundSearchDistance
