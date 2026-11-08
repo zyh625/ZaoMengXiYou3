@@ -46,13 +46,21 @@ public class GoldManager : MonoBehaviour
         if (isBoss)
         {
             int rebirth = GameSession.instance != null ? GameSession.instance.Rebirth : 0;
-            bool firstKill = data.MarkBossDefeated(level + 10 * rebirth);//每次轮回各Boss各有一次首杀；在死亡时记录，退出重进不能反复刷
-            EquipmentService.BossDrop(data, level, rebirth, firstKill);//首杀保底掉落，重复击杀按概率掉落
-            if (!firstKill) return;
-            amount = Mathf.Max(0, bossGold);
+            bool firstKill = data.MarkBossDefeated(level + 10 * rebirth);//每次轮回各Boss的首杀仍单独记录，首杀掉的装备品质直接到本轮上限
+            amount = Mathf.Max(0, bossGold);//Boss每次死亡都掉金币
+            if (EquipmentService.RollBossDrop(level, rebirth, firstKill, out EquipmentDatabase.Item item, out int rarity))
+                SpawnEquipment(enemy, item, rarity, 0.9f);//与金币错开一点
+            if (EquipmentService.RollTreasureDrop(data, rebirth, out EquipmentDatabase.Item treasure))
+                SpawnEquipment(enemy, treasure, 0, 1.8f);//法宝再错开一些，避免和装备叠在一起
         }
         else
         {
+            int rebirth = GameSession.instance != null ? GameSession.instance.Rebirth : 0;
+            if (CanCollect && EquipmentService.RollMinionDrop(data, rebirth, out EquipmentDatabase.Item white))
+            {
+                SpawnEquipment(enemy, white, (int)EquipRarity.Common, 0f);//小怪掉了白装就不再掉金币
+                return;
+            }
             if (!CanCollect || dropChance <= 0f || (dropChance < 1f && Random.value >= dropChance)) return;
             int extraLevels = Mathf.Max(0, level - Mathf.Max(1, goldGrowthStartLevel) + 1);
             long upper = (long)Mathf.Max(0, maxGold) + (long)extraLevels * Mathf.Max(0, goldGrowthPerLevel);
@@ -67,6 +75,17 @@ public class GoldManager : MonoBehaviour
         if (ground.collider == null) return;//没有实际落脚地面时不制造悬浮或场景外的金币
         GoldCoin coin = GetCoin();
         if (coin != null) coin.Spawn(this, ground.point, amount);//金币的动画、寿命与吸附参数均由预制体自身维护
+    }
+
+    private void SpawnEquipment(Transform enemy, EquipmentDatabase.Item item, int rarity, float sideOffset)
+    {
+        if (item == null || !CanCollect) return;
+        Collider2D enemyBody = enemy.GetComponent<Collider2D>();
+        Vector2 origin = enemyBody != null ? (Vector2)enemyBody.bounds.center : (Vector2)enemy.position;
+        RaycastHit2D landing = Physics2D.Raycast(origin, Vector2.down, groundSearchDistance, groundLayers);
+        if (landing.collider == null) return;//没有落脚地面就不掉，和金币规则一致
+        float side = sideOffset > 0f ? (Random.value < 0.5f ? -sideOffset : sideOffset) : 0f;
+        EquipmentPickup.Spawn(this, landing.point + Vector2.right * side, item, rarity);
     }
 
     private GoldCoin GetCoin()//只在所有缓存都忙碌时才扩充对象池
@@ -105,6 +124,7 @@ public class GoldManager : MonoBehaviour
         coin.Cancel();//隐藏渲染器并停用对象，完成拾取表现才算成功
         if (!CanCollect || amount <= 0) return;
         data.AddGold(amount);
+        EquipmentToast.Gold(amount);//屏幕上方显示“金币 +数量”，连续拾取会合并成一行
         GameSession.instance?.NotifyDataChanged();//真实入账后刷新已打开的技能购买面板，不把吸附中的金币算进去
     }
 

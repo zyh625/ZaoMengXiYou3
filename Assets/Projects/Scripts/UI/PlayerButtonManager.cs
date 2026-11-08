@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerButtonManager : MonoBehaviour
 {
-    [SerializeField] private GameObject bag, settings, skills;
+    [SerializeField] private GameObject bag, settings, skills, treasure;
     [Header("设置子页面")]
     [SerializeField] private GameObject settingsButtons, settingsVisual, intro;
     [Header("成对的开关按钮")]
@@ -37,6 +38,24 @@ public class PlayerButtonManager : MonoBehaviour
         if (closeUI == null) closeUI = settings.transform.Find("buttons/CloseUI")?.gameObject;
     }
 
+    //快捷键：C 背包、V 技能、B 法宝、N 设置。界面已经开着时再按同一个键就关闭并继续游戏；开着别的界面时直接切换过去。
+    private void Update()
+    {
+        Keyboard keyboard = Keyboard.current;
+        if (keyboard == null) return;
+        if (keyboard.cKey.wasPressedThisFrame) Toggle(bag, OnBag);
+        else if (keyboard.vKey.wasPressedThisFrame) Toggle(skills, OnSkills);
+        else if (keyboard.bKey.wasPressedThisFrame) Toggle(treasure, OnTreasure);
+        else if (keyboard.nKey.wasPressedThisFrame) Toggle(settings, OnSettings);
+    }
+
+    private void Toggle(GameObject panel, System.Action open)
+    {
+        if (panel == null) return;
+        if (panel.activeSelf) BackGame();
+        else open();
+    }
+
     public void OnBag() => OpenPanel(bag);
     public void OnSettings()
     {
@@ -46,6 +65,7 @@ public class PlayerButtonManager : MonoBehaviour
         OpenPanel(settings);
     }
     public void OnSkills() => OpenPanel(skills);
+    public void OnTreasure() => OpenPanel(treasure);
 
     public void CloseAudio()
     {
@@ -158,6 +178,7 @@ public class PlayerButtonManager : MonoBehaviour
         if (bag != null && bag != panel) bag.SetActive(false);
         if (settings != null && settings != panel) settings.SetActive(false);
         if (skills != null && skills != panel) skills.SetActive(false);
+        if (treasure != null && treasure != panel) treasure.SetActive(false);
         GamePause.Pause();//统一暂停游戏时间和角色输入，界面的鼠标操作继续可用
         panel.SetActive(true);
     }
@@ -193,6 +214,7 @@ public class PlayerButtonManager : MonoBehaviour
         if (bag != null) bag.SetActive(false);
         if (settings != null) settings.SetActive(false);
         if (skills != null) skills.SetActive(false);
+        if (treasure != null) treasure.SetActive(false);
     }
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]

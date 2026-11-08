@@ -2,6 +2,7 @@ using System.Collections;
 using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -32,6 +33,7 @@ public sealed class LoginPanel : MonoBehaviour
     private static TMP_FontAsset chineseFont;
     private bool registering, busy;
     private Coroutine fading;
+    private int submittedFrame = -1;//同一帧里回车可能同时被输入框和键盘检测到，只提交一次
 
     private void Awake()
     {
@@ -40,7 +42,11 @@ public sealed class LoginPanel : MonoBehaviour
         registerButton.onClick.AddListener(() => SetMode(true));
         confirmRegisterButton.onClick.AddListener(Register);
         cancelButton.onClick.AddListener(() => SetMode(false));
+        foreach (Button button in new[] { loginButton, registerButton, confirmRegisterButton, cancelButton })
+            button.onClick.AddListener(ClearButtonSelection);//点过的按钮不保持选中，之后的回车只走 Submit
         password.contentType = TMP_InputField.ContentType.Password;
+        account.onSubmit.AddListener(_ => Submit());//输入框里按回车
+        password.onSubmit.AddListener(_ => Submit());
         SetMode(false);
         HideErrorImmediately();
     }
@@ -56,11 +62,23 @@ public sealed class LoginPanel : MonoBehaviour
             TMP_InputField next = account.isFocused ? password : account;
             next.ActivateInputField();
         }
-        if (keyboard.enterKey.wasPressedThisFrame || keyboard.numpadEnterKey.wasPressedThisFrame)//回车提交
-        {
-            if (registering) Register();
-            else Login();
-        }
+        if (keyboard.enterKey.wasPressedThisFrame || keyboard.numpadEnterKey.wasPressedThisFrame) Submit();//焦点不在输入框时按回车
+    }
+
+    private static void ClearButtonSelection()
+    {
+        if (EventSystem.current != null && EventSystem.current.currentSelectedGameObject != null
+            && EventSystem.current.currentSelectedGameObject.GetComponent<Button>() != null)
+            EventSystem.current.SetSelectedGameObject(null);
+    }
+
+    private void Submit()//回车 = 点击当前模式左下角的按钮（登录模式点“登录”，注册模式点“注册”）
+    {
+        if (busy || submittedFrame == Time.frameCount) return;
+        submittedFrame = Time.frameCount;
+        if (EventSystem.current != null) EventSystem.current.SetSelectedGameObject(null);//避免回车同时“按下”之前被选中的其他按钮
+        if (registering) Register();
+        else Login();
     }
 
     private void SetMode(bool register)

@@ -29,6 +29,8 @@ public sealed class PlayerStats : MonoBehaviour
         combat = GetComponent<PlayerCombat>();
         id = resources != null ? resources.Id : PlayerId.WuKong;
         if (GetComponent<EquipmentAura>() == null) gameObject.AddComponent<EquipmentAura>();
+        if (GetComponent<TreasureUser>() == null) gameObject.AddComponent<TreasureUser>();//法宝：脑后跟随、按 H 使用
+        if (GetComponent<PlayerFx>() == null) gameObject.AddComponent<PlayerFx>();//升级、上场特效
     }
 
     private void OnEnable()
@@ -57,6 +59,8 @@ public sealed class PlayerStats : MonoBehaviour
 
     public void Apply()
     {
+        //停用过程中（换人、退出场景）Health 也会发出驱散通知；此时不重算，避免退出时重新创建已销毁的 GameSession
+        if (!isActiveAndEnabled || GameSession.instance == null && !Application.isPlaying) return;
         int level = resources != null ? resources.Level : 1;
         appliedLevel = level;
         SaveData data = GameSession.EnsureSession().EnsureRuntimeData();
@@ -86,6 +90,21 @@ public sealed class PlayerStats : MonoBehaviour
             mpRegen = EquipmentRules.AccessoryMPRegen * p / EquipmentRules.RegenPeriod;
         });
 
+        //法宝的常驻灵蕴：按等级给一项小属性；主动功能以后单独实现
+        float treasureAttack = 0f, treasureReduction = 0f;
+        EquipmentItem treasureItem = EquipmentService.Equipped(data, id, EquipSlot.Treasure);
+        EquipmentDatabase.Item treasureDef = treasureItem != null ? EquipmentDatabase.Instance?.Find(treasureItem.id) : null;
+        if (TreasureRules.Is(treasureDef))
+        {
+            TreasureKind kind = TreasureRules.Kind(treasureDef);
+            int tl = TreasureRules.Level(treasureItem);
+            treasureAttack = TreasureRules.AttackBonus(kind, tl);
+            treasureReduction = TreasureRules.ReductionBonus(kind, tl);
+            crit += TreasureRules.CritBonus(kind, tl);
+            hpRegen += TreasureRules.HPRegenPer5s(kind, tl) / EquipmentRules.RegenPeriod;
+            mpRegen += TreasureRules.MPRegenPer5s(kind, tl) / EquipmentRules.RegenPeriod;
+        }
+
         //被动技能：生命、法力按基础值比例加到等级成长上，再乘装备；暴击、回复直接相加
         PlayerData passive = data.GetPlayer(id);
         int Lv(PassiveStat stat) => PassiveSkills.Level(passive, stat);
@@ -97,9 +116,9 @@ public sealed class PlayerStats : MonoBehaviour
             + PassiveSkills.BonusRatio(id, PassiveStat.MaxHP, Lv(PassiveStat.MaxHP))) * (1f + armorHP);
         MaxMP = EquipmentRules.MP(id) * (EquipmentRules.LevelScale(level, EquipmentRules.MPPerLevel)
             + PassiveSkills.BonusRatio(id, PassiveStat.MaxMP, Lv(PassiveStat.MaxMP)));
-        AttackScale = EquipmentRules.Attack(id) * EquipmentRules.LevelScale(level, EquipmentRules.AttackPerLevel) * (1f + weaponAttack);
+        AttackScale = EquipmentRules.Attack(id) * EquipmentRules.LevelScale(level, EquipmentRules.AttackPerLevel) * (1f + weaponAttack + treasureAttack);
         CritBonus = crit;
-        Reduction = Mathf.Min(EquipmentRules.ReductionCap, EquipmentRules.Reduction(id) + armorReduction);
+        Reduction = Mathf.Min(EquipmentRules.ReductionCap, EquipmentRules.Reduction(id) + armorReduction + treasureReduction);
 
         if (health != null)
         {

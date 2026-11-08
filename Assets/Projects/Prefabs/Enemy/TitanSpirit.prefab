@@ -205,7 +205,7 @@ MonoBehaviour:
     - {fileID: -1228245784, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
     - {fileID: 807900489, guid: a1e93283fba84608bf0ec898b1fbf1e5, type: 3}
     loop: 0
-    fps: 16
+    fps: 28
   Die:
     sprites:
     - {fileID: -1815625823664879899, guid: 58fc0497f327434d8e0c6cdfd6779045, type: 3}
@@ -377,7 +377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TitanMovement
   moveSpeed: 1.2
-  backSpeed: 3
+  backSpeed: 2.58
   upSpeed: 6
   slowSpeed: 1
   boostRatio: 2

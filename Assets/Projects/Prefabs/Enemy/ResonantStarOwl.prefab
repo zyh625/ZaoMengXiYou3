@@ -407,7 +407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ResonantStarOwlMovement
   moveSpeed: 0.9
-  backSpeed: 3.5
+  backSpeed: 2
   upSpeed: 6
   slowSpeed: 0.45
   boostRatio: 1
@@ -520,7 +520,7 @@ MonoBehaviour:
     - {fileID: 37567957733092298, guid: 743d46128b60554b817913be3fbdafaa, type: 3}
     - {fileID: 676947325737253408, guid: 743d46128b60554b817913be3fbdafaa, type: 3}
     loop: 0
-    fps: 18
+    fps: 20
   Die:
     sprites:
     - {fileID: 631774157117113904, guid: 2a81f61d37e75d98bf32b0a9a864b0bd, type: 3}

@@ -372,7 +372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConstellationWeaverMovement
   moveSpeed: 0.9
-  backSpeed: 3.5
+  backSpeed: 2.7
   upSpeed: 6
   slowSpeed: 0.4
   boostRatio: 1
@@ -485,7 +485,7 @@ MonoBehaviour:
     - {fileID: 6916146767585117994, guid: f2d941b0c5e8f9d49b9cad4817f27dba, type: 3}
     - {fileID: -4720361859230866483, guid: f2d941b0c5e8f9d49b9cad4817f27dba, type: 3}
     loop: 0
-    fps: 18
+    fps: 24
   Die:
     sprites:
     - {fileID: -1815625823664879899, guid: 00e7c9635fb6b734cbd5661cc34751c3, type: 3}

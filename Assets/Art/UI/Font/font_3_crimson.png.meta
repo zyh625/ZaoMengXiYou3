@@ -1,7 +1,37 @@
 fileFormatVersion: 2
-guid: WywfsSquBnNbuUfPAXJIUcOdnJ+JON5BK+HENUqwYManzladZXQ2tWA=
+guid: 56737a481efd70a0267468d211c0fa1f
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -4603836079025106910
+    second: font_3_crimson_0
+  - first:
+      213: -1866981354904791995
+    second: font_3_crimson_1
+  - first:
+      213: 1883867960622731265
+    second: font_3_crimson_2
+  - first:
+      213: 1577617477953056307
+    second: font_3_crimson_3
+  - first:
+      213: 2474250012140867355
+    second: font_3_crimson_4
+  - first:
+      213: 3238669637006074466
+    second: font_3_crimson_5
+  - first:
+      213: -7904365477775519
+    second: font_3_crimson_6
+  - first:
+      213: 247128980244093115
+    second: font_3_crimson_7
+  - first:
+      213: -1173777138679782832
+    second: font_3_crimson_8
+  - first:
+      213: -4181472281462343497
+    second: font_3_crimson_9
   externalObjects: {}
   serializedVersion: 14
   mipmaps:
@@ -46,7 +76,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -156,7 +186,227 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: font_3_crimson_1
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 74
+        width: 24
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39c28029e4e6e32e24070394a7a91c15
+      internalID: -1866981354904791995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_3_crimson_2
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 74
+        width: 32
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52bcd3b14dae96f3767415e244d61474
+      internalID: 1883867960622731265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_3_crimson_3
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 74
+        width: 32
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 843586e65c84734f3b80ea835e6f6edc
+      internalID: 1577617477953056307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_3_crimson_4
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 74
+        width: 33
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 684c6aef2d52931d35d8fe5815513522
+      internalID: 2474250012140867355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_3_crimson_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 37
+        width: 32
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f6523ece84d81c3132c4e5b98b27308
+      internalID: 3238669637006074466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_3_crimson_6
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 37
+        width: 32
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1dbdeea4bcadd3ceffb20bada5f80d0e
+      internalID: -7904365477775519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_3_crimson_7
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 37
+        width: 31
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56e82922aa44f9248a4e537375046b1b
+      internalID: 247128980244093115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_3_crimson_8
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 37
+        width: 32
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d03a7e66dd80a3d0406478280a49f5e2
+      internalID: -1173777138679782832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_3_crimson_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 33
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79e55d0300861297322d7f57083ad14c
+      internalID: -4181472281462343497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_3_crimson_0
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 0
+        width: 32
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ff9a6926141603f8c2cb3dd08517596
+      internalID: -4603836079025106910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -167,7 +417,17 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      font_3_crimson_0: -4603836079025106910
+      font_3_crimson_1: -1866981354904791995
+      font_3_crimson_2: 1883867960622731265
+      font_3_crimson_3: 1577617477953056307
+      font_3_crimson_4: 2474250012140867355
+      font_3_crimson_5: 3238669637006074466
+      font_3_crimson_6: -7904365477775519
+      font_3_crimson_7: 247128980244093115
+      font_3_crimson_8: -1173777138679782832
+      font_3_crimson_9: -4181472281462343497
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   doOverrideTextureManagerOperations: 0

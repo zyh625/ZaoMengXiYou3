@@ -23,6 +23,16 @@ namespace zmxy.GamePlay
         public float EdgeL => edgeL;
         public float EdgeR => edgeR;
         private float baseY;//镜头在关卡中的基准高度，垂直跟随结束后回到这里
+        private bool lockedToTop;//第一关登顶后：镜头升到最高处（Boss 战场）并固定，不再跟随角色上下
+        private float lockSpeed = 3f;
+        public bool TopLockReached { get; private set; }
+
+        public void LockToTop(float speed = 3f)//沿用旧版第一关：每秒上升 3 个单位，平滑升到 基准高度 + maxRise
+        {
+            lockedToTop = true;
+            lockSpeed = Mathf.Max(0.01f, speed);
+            TopLockReached = _camera != null && Mathf.Approximately(_camera.transform.position.y, baseY + Mathf.Max(0f, maxRise));
+        }
         private bool configurationValid;//边界配置不完整时停止跟随，避免持续抛出空引用
 
         private void Awake()
@@ -94,6 +104,13 @@ namespace zmxy.GamePlay
 
         private float VerticalStep(float currentY, float playerY)//只在上方跟随，落地后缓慢回到底部基准高度
         {
+            if (lockedToTop)
+            {
+                float top = baseY + Mathf.Max(0f, maxRise);
+                float y = Mathf.MoveTowards(currentY, top, lockSpeed * Time.deltaTime);
+                TopLockReached = Mathf.Approximately(y, top);
+                return y;
+            }
             float targetY = baseY;
             if (playerY > baseY + verticalTriggerOffset)
                 targetY = Mathf.Clamp(playerY, baseY, baseY + Mathf.Max(0f, maxRise));

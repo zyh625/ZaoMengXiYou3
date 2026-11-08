@@ -1,7 +1,25 @@
 fileFormatVersion: 2
-guid: Wygbsyj8V31VWNH6Ka+fGQAqZXLE80UgMUB8Bz6ZMsF6sLLlsJGCOu4=
+guid: 97a93853a02897cdca5066202b693239
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -1225511536711976309
+    second: role_1_bul_1131_0
+  - first:
+      213: 4447041815700985002
+    second: role_1_bul_1131_1
+  - first:
+      213: 3676874286073493530
+    second: role_1_bul_1131_2
+  - first:
+      213: 1830698126861501503
+    second: role_1_bul_1131_3
+  - first:
+      213: 1514885955546536476
+    second: role_1_bul_1131_4
+  - first:
+      213: -424729491913545980
+    second: role_1_bul_1131_5
   externalObjects: {}
   serializedVersion: 14
   mipmaps:
@@ -46,7 +64,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -156,7 +174,139 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: role_1_bul_1131_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 358
+        width: 157
+        height: 148
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d19c3fff4480aa2bcec102e2de60e6cb
+      internalID: -1225511536711976309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: role_1_bul_1131_1
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 360
+        width: 157
+        height: 145
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e91c038e360d121bf3e82e6e9ff2a7c
+      internalID: 4447041815700985002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: role_1_bul_1131_2
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 350
+        width: 145
+        height: 154
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58d2968ddbad50a259ea04752bc58c07
+      internalID: 3676874286073493530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: role_1_bul_1131_3
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 220
+        width: 127
+        height: 121
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0ccd7d29436c2650ba0ff6304ca1ea6
+      internalID: 1830698126861501503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: role_1_bul_1131_4
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 219
+        width: 145
+        height: 127
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f357ee894b9f28e977de6c26d762364
+      internalID: 1514885955546536476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: role_1_bul_1131_5
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 262
+        width: 64
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d74aab2f51518f4a96648cec73d1184b
+      internalID: -424729491913545980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -167,7 +317,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      role_1_bul_1131_0: -1225511536711976309
+      role_1_bul_1131_1: 4447041815700985002
+      role_1_bul_1131_2: 3676874286073493530
+      role_1_bul_1131_3: 1830698126861501503
+      role_1_bul_1131_4: 1514885955546536476
+      role_1_bul_1131_5: -424729491913545980
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   doOverrideTextureManagerOperations: 0

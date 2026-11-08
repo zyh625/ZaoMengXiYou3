@@ -9,9 +9,19 @@ public sealed class BagUI : MonoBehaviour
     [SerializeField] private SpriteNumber level;
     [SerializeField] private SpriteNumber hp, mp, xp, attack, reduction, critical, hpRegen, mpRegen, gold;
     [SerializeField] private UISpriteLoop figure;//展示台里的角色待机动画
+    [Header("右下角按钮（普通 / 鼠标悬停）")]
+    [SerializeField] private Sprite sellWhite, sellWhiteLight, sortBag, sortBagLight;
 
     private PlayerManager party;
     private PlayerController shownPlayer;
+    private BagInventory inventory;//右侧格子、装备栏、装备/出售菜单和悬停说明
+
+    private void Awake()
+    {
+        inventory = GetComponent<BagInventory>();
+        if (inventory == null) inventory = gameObject.AddComponent<BagInventory>();
+        inventory.Build(transform.Find("data") as RectTransform, sellWhite, sellWhiteLight, sortBag, sortBagLight);
+    }
 
     private void OnEnable()
     {
@@ -41,6 +51,7 @@ public sealed class BagUI : MonoBehaviour
         var resources = player.GetComponent<PlayerResources>();
         var combat = player.GetComponent<PlayerCombat>();
         var stats = player.GetComponent<PlayerStats>();
+        if (resources != null) inventory?.Refresh(resources.Id);
 
         level?.SetValue(resources != null ? Mathf.Clamp(resources.Level, 1, 99) : 1);
         if (health != null) hp?.SetText(Ratio(health.CurBlood, health.BeginBlood));

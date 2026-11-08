@@ -93,6 +93,7 @@ public abstract class LevelEnemyManager : MonoBehaviour
         ApplyRebirthStats(curBoss.gameObject, boss.gameObject);
         BindRewards(curBoss.gameObject, currentPlayers);
         curBoss.GetComponent<EnemyRewards>().SetBoss(true);//同一套奖励组件，Boss只使用已选存档的首杀掉落
+        BossComboGuard.Attach(curBoss.gameObject);//连击保护：被连续打中一定次数后短暂霸体
         curBoss.transform.position = bossBornLocation.transform.position;
         ConfigureBoss();
         curBoss.gameObject.SetActive(false);

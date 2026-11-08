@@ -349,7 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GreenHammerMovement
   moveSpeed: 0.8
-  backSpeed: 3.5
+  backSpeed: 2.8
   upSpeed: 6
   slowSpeed: 0.4
   boostRatio: 1
@@ -473,7 +473,7 @@ MonoBehaviour:
     - {fileID: 82228714456707826, guid: 89760b82e90f487f99c7945e6cda2baf, type: 3}
     - {fileID: 491462384283833406, guid: 89760b82e90f487f99c7945e6cda2baf, type: 3}
     loop: 0
-    fps: 18
+    fps: 20
   Die:
     sprites:
     - {fileID: 673050206208444164, guid: cc49632ab1bf4373887b740b29cd8a17, type: 3}

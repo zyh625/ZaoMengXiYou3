@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SealWardenMovement
   moveSpeed: 0.7
-  backSpeed: 3.5
+  backSpeed: 2.3
   upSpeed: 6
   slowSpeed: 0.35
   boostRatio: 1
@@ -310,7 +310,7 @@ MonoBehaviour:
     - {fileID: 1000000001153387, guid: 0118521a42be476bb29733a680807517, type: 3}
     - {fileID: 1000000001153758, guid: 0118521a42be476bb29733a680807517, type: 3}
     loop: 0
-    fps: 18
+    fps: 24
   Die:
     sprites:
     - {fileID: 1000000246086036, guid: eaaf994b15a74c3d933f023264b4214f, type: 3}

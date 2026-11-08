@@ -8,6 +8,8 @@ public sealed class Level1StageManager : StageManager
     [Header("向上闯关")]
     [Tooltip("玩家脚底到达该高度（顶层平台）时开始Boss战")]
     [SerializeField] private Transform bossTrigger;
+    [Tooltip("登顶后镜头自动上升到 Boss 战场的速度（单位/秒）")]
+    [SerializeField, Min(0.1f)] private float cameraRiseSpeed = 3f;
     private const int ProgressSteps = 10;//失败结算按攀爬高度估算进度，分10档
     private float nextSpawnTime = -1f;
     private bool spawnRight;
@@ -40,11 +42,13 @@ public sealed class Level1StageManager : StageManager
         }
         if (bossStart)
         {
+            if (!CM.TopLockReached) bossStartTime = Time.time;//和旧版一样：镜头升到 Boss 战场后才开始计 Boss 出场的等待
             CheckBossBorn();
             return;
         }
         UpdateClimbProgress();
         if (!Reached(bossTrigger)) return;
+        CM.LockToTop(cameraRiseSpeed);//登上顶层：镜头自动升到 Boss 战场并固定
         if (HasBossPhase)
         {
             bossStart = true;

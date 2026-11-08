@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JiuyaoMovement
   moveSpeed: 1.2
-  backSpeed: 3.5
+  backSpeed: 2.3
   upSpeed: 6
   slowSpeed: 0.6
   boostRatio: 1
@@ -328,7 +328,7 @@ MonoBehaviour:
     - {fileID: 828830795544334411, guid: c200b45fa54d42608be5b342cf7d7cd3, type: 3}
     - {fileID: 98387118292766392, guid: c200b45fa54d42608be5b342cf7d7cd3, type: 3}
     loop: 0
-    fps: 18
+    fps: 20
   Die:
     sprites:
     - {fileID: 70445902535065826, guid: 8140ce6db2974461905d8d7f14060efe, type: 3}

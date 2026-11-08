@@ -59,86 +59,211 @@ public static class EquipmentService
         return def != null ? EquipmentRules.Power(def.grade, item.rarity) : 0f;
     }
 
-    //Boss死亡时调用：首杀给保底装备，重复击杀按概率随机掉落。返回获得的装备（可能为空）。
-    public static EquipmentItem BossDrop(SaveData data, int level, int rebirth, bool firstKill)
+    //Boss死亡时调用：按数据库里的概率决定是否掉落，以及掉哪一件、什么品质。只决定掉什么，拾取时才真正入包。
+    public static bool RollBossDrop(int level, int rebirth, bool firstKill, out EquipmentDatabase.Item def, out int rarity)
     {
+        def = null; rarity = 0;
         EquipmentDatabase.BossDrop rule = DB?.DropFor(level);
-        if (data == null || rule == null) return null;
+        if (rule == null || UnityEngine.Random.value >= DB.bossDropChance) return false;
         rebirth = Mathf.Max(0, rebirth);
-        EquipmentDatabase.Item def;
-        int rarity;
-        if (firstKill)
-        {
-            def = DB.BestUnlocked(rule.slot, rule.owner, rebirth);
-            rarity = EquipmentRules.RarityCap(rebirth);
-        }
-        else
-        {
-            if (UnityEngine.Random.value >= EquipmentRules.RepeatDropChance) return null;
-            def = DB.RandomUnlocked(rule.slot, rule.owner, rebirth);
-            rarity = EquipmentRules.RollRarity(rebirth);
-        }
-        return def != null ? Grant(data, def, rarity) : null;
+        def = UnityEngine.Random.value < DB.bestItemChance ? DB.BestUnlocked(rule.slot, rule.owner, rebirth) : DB.RandomUnlocked(rule.slot, rule.owner, rebirth);
+        rarity = firstKill ? EquipmentRules.RarityCap(rebirth) : EquipmentRules.RollRarity(rebirth);//本轮首杀掉落时品质直接到本轮上限
+        if (def != null && !EquipmentRules.HasCommon(def.slot)) rarity = Mathf.Max(rarity, (int)EquipRarity.Fine);//饰品没有普通品质
+        if (TreasureRules.Is(def)) rarity = 0;//法宝不分品质
+        return def != null;
     }
 
+    //Boss死亡时另掷一次法宝：从本轮已开放、且还没拥有的法宝里随机一件。每件法宝只会有一个，靠升级变强。
+    public static bool RollTreasureDrop(SaveData data, int rebirth, out EquipmentDatabase.Item def)
+    {
+        def = null;
+        if (DB == null || data == null || UnityEngine.Random.value >= DB.treasureDropChance) return false;
+        var pool = new List<EquipmentDatabase.Item>();
+        foreach (EquipmentDatabase.Item item in DB.items)
+            if (TreasureRules.Is(item) && item.UnlockRebirth <= Mathf.Max(0, rebirth) && !data.equipment.Exists(e => e.id == item.id))
+                pool.Add(item);
+        if (pool.Count == 0) return false;
+        def = pool[UnityEngine.Random.Range(0, pool.Count)];
+        return true;
+    }
+
+    public static void NotifyChanged() => Changed?.Invoke();//法宝升级后让角色属性和界面刷新
+
+    //【临时调试】一键通关用：先把没有的法宝放进背包，再给四个角色各穿上最高档的传说武器、防具和饰品。
+    //换下来的旧装备放回背包；背包满了就直接丢弃，不会出现看不见的多余装备。返回因背包已满没放下的法宝数。
+    public static int DebugGrantAll(SaveData data)
+    {
+        if (data == null || DB == null) return 0;
+        data.equipment ??= new List<EquipmentItem>();
+        int skipped = 0;
+        foreach (EquipmentDatabase.Item def in DB.items)
+        {
+            if (!TreasureRules.Is(def) || data.equipment.Exists(e => e.id == def.id)) continue;
+            if (LooseCount(data) >= EquipmentRules.BagCapacity) { skipped++; continue; }
+            Add(data, def.id, 0).level = 1;
+        }
+        EquipmentDatabase.Item accessory = DB.BestUnlocked(EquipSlot.Accessory, -1, int.MaxValue);
+        for (int i = 0; i < 4; i++)
+        {
+            PlayerData player = data.GetPlayer((PlayerId)i);
+            if (player == null) continue;
+            DebugEquipTop(data, player, DB.BestUnlocked(EquipSlot.Weapon, i, int.MaxValue));
+            DebugEquipTop(data, player, DB.BestUnlocked(EquipSlot.Armor, i, int.MaxValue));
+            DebugEquipTop(data, player, accessory);
+        }
+        Changed?.Invoke();
+        GameSession.instance?.NotifyDataChanged();
+        return skipped;
+    }
+
+    private static void DebugEquipTop(SaveData data, PlayerData player, EquipmentDatabase.Item def)
+    {
+        if (def == null) return;
+        const int top = (int)EquipRarity.Legendary;
+        int uid = GetUid(player, def.slot);
+        EquipmentItem old = uid != 0 ? data.equipment.Find(e => e.uid == uid) : null;
+        if (old != null && old.id == def.id && old.rarity == top) return;//已经穿着同一件传说，重复点击不再发放
+        SetUid(player, def.slot, Add(data, def.id, top).uid);
+        if (old != null && LooseCount(data) > EquipmentRules.BagCapacity) data.equipment.Remove(old);//旧装备放不下就丢弃
+    }
+
+    //小怪：按概率掉一件普通品质装备，从当前轮回已开放、且属于已解锁角色（或通用饰品）的武器、防具、饰品里随机
+    public static bool RollMinionDrop(SaveData data, int rebirth, out EquipmentDatabase.Item def)
+    {
+        def = null;
+        if (DB == null || data == null || UnityEngine.Random.value >= DB.minionDropChance) return false;
+        var pool = new List<EquipmentDatabase.Item>();
+        foreach (EquipmentDatabase.Item item in DB.items)
+            if (item != null && EquipmentRules.HasCommon(item.slot) && item.UnlockRebirth <= Mathf.Max(0, rebirth)
+                && (item.owner < 0 || data.IsPlayerUnlocked((PlayerId)item.owner)))
+                pool.Add(item);
+        if (pool.Count == 0) return false;
+        def = pool[UnityEngine.Random.Range(0, pool.Count)];
+        return true;
+    }
+
+    public static int LooseCount(SaveData data)
+    {
+        int n = 0;
+        foreach (EquipmentItem e in data.equipment) if (!IsEquipped(data, e)) n++;
+        return n;
+    }
+
+    public static List<EquipmentItem> LooseItems(SaveData data)//背包格子里的装备，按获得 / 卸下的先后排列
+    {
+        EnsureStarters(data);
+        var list = new List<EquipmentItem>();
+        foreach (EquipmentItem e in data.equipment) if (!IsEquipped(data, e)) list.Add(e);
+        return list;
+    }
+
+    //拾取：放进背包末尾，不自动穿戴。背包已满时返回 null，掉落物留在地上。
     public static EquipmentItem Grant(SaveData data, EquipmentDatabase.Item def, int rarity)
     {
         EnsureStarters(data);
-        rarity = Mathf.Clamp(rarity, 0, 4);
-        bool generic = def.owner < 0;
-        //专属装备已经有同等或更好的同款时直接换成金币；通用饰品可以给其他角色穿，保留
-        if (!generic && data.equipment.Exists(e => e.id == def.id && e.rarity >= rarity))
-            return Sell(data, def, rarity);
-        EquipmentItem item = Add(data, def.id, rarity);
-        AutoEquip(data, def, item);
-        TrimBag(data);
-        bool kept = data.equipment.Contains(item);
-        Obtained?.Invoke(item, def, kept ? 0 : EquipmentRules.SellValue(def.grade, rarity));
+        if (def == null) return null;
+        bool treasure = TreasureRules.Is(def);
+        EquipmentItem owned = treasure ? data.equipment.Find(e => e.id == def.id) : null;
+        if (owned != null)//法宝每件只有一个：两个Boss先后掉了同一件、或捡起前已经拥有时，重复的换成金币
+        {
+            int gold = TreasureRules.SellValue(1);
+            data.AddGold(gold);
+            Obtained?.Invoke(owned, def, gold);
+            GameSession.instance?.NotifyDataChanged();
+            return owned;
+        }
+        if (LooseCount(data) >= EquipmentRules.BagCapacity) return null;
+        EquipmentItem item = Add(data, def.id, treasure ? 0 : Mathf.Clamp(rarity, 0, 4));
+        if (treasure) item.level = 1;
+        Obtained?.Invoke(item, def, 0);
         GameSession.instance?.NotifyDataChanged();
         return item;
     }
 
-    private static EquipmentItem Sell(SaveData data, EquipmentDatabase.Item def, int rarity)
+    //从背包穿到当前角色身上；原来那件被挤回背包末尾
+    public static bool EquipFromBag(SaveData data, PlayerId id, EquipmentItem item)
     {
-        int gold = EquipmentRules.SellValue(def.grade, rarity);
+        EquipmentDatabase.Item def = item != null ? DB?.Find(item.id) : null;
+        if (data == null || def == null || def.owner >= 0 && def.owner != (int)id) return false;
+        if (def.slot == EquipSlot.Treasure && TreasureUser.IsLocked(id)) return false;//法宝冷却中不能更换
+        EquipmentItem old = Equipped(data, id, def.slot);
+        if (!Equip(data, id, item)) return false;
+        if (old != null && old != item) MoveToEnd(data, old);
+        GameSession.instance?.NotifyDataChanged();
+        return true;
+    }
+
+    public static bool Unequip(SaveData data, PlayerId id, EquipSlot slot)//卸下放到背包末尾；背包满了不能卸
+    {
+        EquipmentItem item = Equipped(data, id, slot);
+        if (item == null || LooseCount(data) >= EquipmentRules.BagCapacity) return false;
+        if (slot == EquipSlot.Treasure && TreasureUser.IsLocked(id)) return false;//法宝冷却中不能卸下
+        SetUid(data.GetPlayer(id), slot, 0);
+        MoveToEnd(data, item);
+        Changed?.Invoke();
+        GameSession.instance?.NotifyDataChanged();
+        return true;
+    }
+
+    public static int SellItem(SaveData data, EquipmentItem item)//只卖背包里的；返回卖得的金币
+    {
+        EquipmentDatabase.Item def = item != null ? DB?.Find(item.id) : null;
+        if (data == null || def == null || IsEquipped(data, item) || !data.equipment.Remove(item)) return 0;
+        int gold = SellPrice(item);
         data.AddGold(gold);
-        var item = new EquipmentItem { uid = 0, id = def.id, rarity = rarity };
-        Obtained?.Invoke(item, def, gold);
         GameSession.instance?.NotifyDataChanged();
-        return item;
+        return gold;
     }
 
-    private static void AutoEquip(SaveData data, EquipmentDatabase.Item def, EquipmentItem item)//比当前装备更好就自动换上
+    public static int SellAllCommon(SaveData data, out int count)//“出售白装”：卖掉背包里全部普通品质装备（已穿着的不动）
     {
-        if (def.slot == EquipSlot.Treasure) return;//法宝属性以后再定，先只放进背包
-        PlayerId target;
-        if (def.owner >= 0) target = (PlayerId)def.owner;
-        else
+        count = 0;
+        int gold = 0;
+        foreach (EquipmentItem item in LooseItems(data))
         {
-            target = PlayerId.WuKong;//饰品给当前饰品最弱的已解锁角色
-            float weakest = float.MaxValue;
-            foreach (PlayerId id in Enum.GetValues(typeof(PlayerId)))
-            {
-                if (!data.IsPlayerUnlocked(id)) continue;
-                float score = Score(Equipped(data, id, def.slot));
-                if (score < weakest) { weakest = score; target = id; }
-            }
+            if (item.rarity != (int)EquipRarity.Common || TreasureRules.Is(DB?.Find(item.id))) continue;//法宝品质字段为0，但不是白装
+            int sold = SellItem(data, item);
+            if (sold <= 0) continue;
+            gold += sold;
+            count++;
         }
-        if (Score(item) > Score(Equipped(data, target, def.slot))) Equip(data, target, item);
+        return gold;
     }
 
-    private static void TrimBag(SaveData data)//未装备的超过背包格数时，把最弱的换成金币
+    //“整理背包”：法宝不分品质，排在最前（等级从高到低）；其余品质从高到低；同品质按饰品、武器、防具；再按档次从高到低
+    private static readonly int[] SlotOrder = { 2, 3, 1, 0 };//按 EquipSlot 下标：武器2、防具3、饰品1、法宝0
+    public static void SortBag(SaveData data)
     {
-        var loose = new List<EquipmentItem>();
-        foreach (EquipmentItem e in data.equipment) if (!IsEquipped(data, e)) loose.Add(e);
-        if (loose.Count <= EquipmentRules.BagCapacity) return;
-        loose.Sort((a, b) => Score(a).CompareTo(Score(b)));
-        for (int i = 0; i < loose.Count - EquipmentRules.BagCapacity; i++)
+        List<EquipmentItem> loose = LooseItems(data);
+        loose.Sort((a, b) =>
         {
-            EquipmentDatabase.Item def = DB.Find(loose[i].id);
-            if (def != null) data.AddGold(EquipmentRules.SellValue(def.grade, loose[i].rarity));
-            data.equipment.Remove(loose[i]);
-        }
+            EquipmentDatabase.Item da = DB?.Find(a.id), db = DB?.Find(b.id);
+            bool ta = TreasureRules.Is(da), tb = TreasureRules.Is(db);
+            if (ta != tb) return ta ? -1 : 1;
+            if (ta) { int la = TreasureRules.Level(a), lb = TreasureRules.Level(b); if (la != lb) return lb.CompareTo(la); }
+            else if (a.rarity != b.rarity) return b.rarity.CompareTo(a.rarity);
+            int sa = da != null ? SlotOrder[(int)da.slot] : 9, sb = db != null ? SlotOrder[(int)db.slot] : 9;
+            if (sa != sb) return sa.CompareTo(sb);
+            float ga = da != null ? da.grade : 0f, gb = db != null ? db.grade : 0f;
+            if (!Mathf.Approximately(ga, gb)) return gb.CompareTo(ga);
+            return a.uid.CompareTo(b.uid);
+        });
+        foreach (EquipmentItem item in loose) data.equipment.Remove(item);
+        data.equipment.AddRange(loose);//已穿着的留在前面，背包格子按新顺序显示
+        Changed?.Invoke();
+        GameSession.instance?.NotifyDataChanged();
+    }
+
+    public static int SellPrice(EquipmentItem item)
+    {
+        EquipmentDatabase.Item def = item != null ? DB?.Find(item.id) : null;
+        if (def == null) return 0;
+        return TreasureRules.Is(def) ? TreasureRules.SellValue(TreasureRules.Level(item)) : EquipmentRules.SellValue(def.grade, item.rarity);
+    }
+
+    private static void MoveToEnd(SaveData data, EquipmentItem item)
+    {
+        if (data.equipment.Remove(item)) data.equipment.Add(item);
     }
 
     private static EquipmentItem Add(SaveData data, string id, int rarity)

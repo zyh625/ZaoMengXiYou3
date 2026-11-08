@@ -476,7 +476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RedFurnaceLordMovement
   moveSpeed: 0.9
-  backSpeed: 3.5
+  backSpeed: 2
   upSpeed: 6
   slowSpeed: 0.45
   boostRatio: 1
@@ -640,7 +640,7 @@ MonoBehaviour:
     - {fileID: -202748195920838185, guid: c8f7cbb3458b44f4aa3950f61b4388d1, type: 3}
     - {fileID: 6282012047797736354, guid: c8f7cbb3458b44f4aa3950f61b4388d1, type: 3}
     loop: 0
-    fps: 18
+    fps: 19
   Die:
     sprites:
     - {fileID: 6991849013916550155, guid: b1b7dc6b5b92eb74284e1510df82c102, type: 3}

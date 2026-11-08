@@ -101,9 +101,24 @@ public class GameSession : MonoBehaviour
         NotifyDataChanged();//选择另一份存档后，已显示的数据也跟随当前存档切换
     }
 
+    private static bool quitting;
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    private static void TrackQuit()
+    {
+        quitting = false;
+        Application.quitting -= OnQuitting;
+        Application.quitting += OnQuitting;
+    }
+    private static void OnQuitting() => quitting = true;
+
     public static GameSession EnsureSession()//直接运行战斗场景也有完整内存数据，但不会创建或覆盖任何存档文件
     {
-        if (instance == null) new GameObject("GameSession").AddComponent<GameSession>();
+        if (instance == null)
+        {
+            var go = new GameObject("GameSession");
+            if (quitting) go.hideFlags = HideFlags.HideAndDontSave;//退出过程中被调用时只给一个临时对象，不留在场景里
+            go.AddComponent<GameSession>();
+        }
         instance.EnsureRuntimeData();
         return instance;
     }

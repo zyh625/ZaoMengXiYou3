@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfceb11ce3264d3b9ac4126abaab080a, type: 3}
+  m_Name: FxLibrary
+  m_EditorClassIdentifier: Assembly-CSharp::FxLibrary
+  clips:
+  - name: explosion
+    fps: 18
+    frames:
+    - {fileID: 3822497428397300955, guid: 389cae0688be775472588d8b3b5dd934, type: 3}
+    - {fileID: 3021599740148425294, guid: 389cae0688be775472588d8b3b5dd934, type: 3}
+    - {fileID: -3921886730789335689, guid: 389cae0688be775472588d8b3b5dd934, type: 3}
+    - {fileID: 844888891562485572, guid: 389cae0688be775472588d8b3b5dd934, type: 3}
+    - {fileID: 454414458060438561, guid: 389cae0688be775472588d8b3b5dd934, type: 3}
+    - {fileID: 3595532589148984074, guid: 389cae0688be775472588d8b3b5dd934, type: 3}
+    - {fileID: 3901924364184314877, guid: 389cae0688be775472588d8b3b5dd934, type: 3}
+  - name: ring
+    fps: 1
+    frames:
+    - {fileID: -2156955939953020605, guid: bebd73d81f10cb5f29c74b7155253825, type: 3}
+  - name: hex_break
+    fps: 14
+    frames:
+    - {fileID: 583412331459141157, guid: f55e7dd1f18ff4d4dc70d0528b663773, type: 3}
+    - {fileID: -232847528647409266, guid: f55e7dd1f18ff4d4dc70d0528b663773, type: 3}
+    - {fileID: 3645869404893670078, guid: f55e7dd1f18ff4d4dc70d0528b663773, type: 3}
+    - {fileID: -449415332881135802, guid: f55e7dd1f18ff4d4dc70d0528b663773, type: 3}
+    - {fileID: 3869377232721876982, guid: f55e7dd1f18ff4d4dc70d0528b663773, type: 3}
+  - name: gold_burst
+    fps: 1
+    frames:
+    - {fileID: -452760461054572319, guid: fcb237d83cea7ddbd7965a8da81c8523, type: 3}
+  - name: gold_orb
+    fps: 1
+    frames:
+    - {fileID: 1356390842554652952, guid: fcb237d83cea7ddbd7965a8da81c8523, type: 3}
+  - name: gold_spark
+    fps: 1
+    frames:
+    - {fileID: 430640370230252215, guid: fcb237d83cea7ddbd7965a8da81c8523, type: 3}
+  - name: stars
+    fps: 12
+    frames:
+    - {fileID: -1225511536711976309, guid: 97a93853a02897cdca5066202b693239, type: 3}
+    - {fileID: 4447041815700985002, guid: 97a93853a02897cdca5066202b693239, type: 3}
+    - {fileID: 3676874286073493530, guid: 97a93853a02897cdca5066202b693239, type: 3}
+    - {fileID: 1830698126861501503, guid: 97a93853a02897cdca5066202b693239, type: 3}
+    - {fileID: 1514885955546536476, guid: 97a93853a02897cdca5066202b693239, type: 3}
+  - name: portal
+    fps: 10
+    frames:
+    - {fileID: -3978196258661628607, guid: ecd1e72f5be14fd4137d372cbf92927c, type: 3}
+    - {fileID: -4068164670642155245, guid: ecd1e72f5be14fd4137d372cbf92927c, type: 3}
+  - name: sun
+    fps: 14
+    frames:
+    - {fileID: 1041133631848283253, guid: 09a2bab073df5c82046fbdf429279856, type: 3}
+    - {fileID: 2601234394701596624, guid: 09a2bab073df5c82046fbdf429279856, type: 3}
+    - {fileID: 2530110467589525164, guid: 09a2bab073df5c82046fbdf429279856, type: 3}
+    - {fileID: 2505237133615387140, guid: 09a2bab073df5c82046fbdf429279856, type: 3}
+    - {fileID: -495307867256050259, guid: 09a2bab073df5c82046fbdf429279856, type: 3}
+    - {fileID: 4269200470358128544, guid: 09a2bab073df5c82046fbdf429279856, type: 3}
+    - {fileID: 3959371492609034032, guid: 09a2bab073df5c82046fbdf429279856, type: 3}
+    - {fileID: -4060942131347813789, guid: 09a2bab073df5c82046fbdf429279856, type: 3}
+    - {fileID: -463797985294757092, guid: 09a2bab073df5c82046fbdf429279856, type: 3}
+  - name: rune_green
+    fps: 12
+    frames:
+    - {fileID: 3313376674981676088, guid: 9ebccbdf11825702341ee1b7b301f218, type: 3}
+    - {fileID: 167518186109389409, guid: 9ebccbdf11825702341ee1b7b301f218, type: 3}
+    - {fileID: -1067862830906053793, guid: 9ebccbdf11825702341ee1b7b301f218, type: 3}
+    - {fileID: 4598728614738167947, guid: 9ebccbdf11825702341ee1b7b301f218, type: 3}
+    - {fileID: 1881784067188811998, guid: 9ebccbdf11825702341ee1b7b301f218, type: 3}
+    - {fileID: 607492340375522694, guid: 9ebccbdf11825702341ee1b7b301f218, type: 3}
+  - name: ice_shatter
+    fps: 1
+    frames:
+    - {fileID: 386731039369647709, guid: bb16a9532a52ad55ddbb5e76ec71c7df, type: 3}
+  - name: sword_glow
+    fps: 1
+    frames:
+    - {fileID: 2037120817534264460, guid: 3ccf437d0566a524e9164ac6f108a91d, type: 3}
+  - name: umbrella_bubble
+    fps: 1
+    frames:
+    - {fileID: -4060339134492186001, guid: aaddc2e4bea067d4e8ad8fdeeedaad02, type: 3}

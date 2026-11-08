@@ -45,9 +45,10 @@ public class SouthKingCombat : BossCombat
         && movement != null && !movement.IsExternallyControlled;
     public bool CanStartAttack => CanAct && Skill == KingSkill.None && Time.time >= nextActionAt;
     public event Action FrostChanged;//槽和描边只在数据变化时更新。
-    public event Action CounterRecognized;//扣血前识破后立即切动画，本次伤害不结算。
+    public event Action CounterRecognized;
+    public event Action<KingSkill, Vector2> SkillReleased;//冰锥、剑阵、护盾真正放出时通知特效（位置为生成点）//扣血前识破后立即切动画，本次伤害不结算。
 
-    protected override void Awake() { base.Awake(); ResolveReferences(); }
+    protected override void Awake() { base.Awake(); ResolveReferences(); if (GetComponent<SouthKingFx>() == null) gameObject.AddComponent<SouthKingFx>(); }
     private void ResolveReferences()
     {
         if (health == null) health = GetComponent<Health>();
@@ -116,15 +117,20 @@ public class SouthKingCombat : BossCombat
             position.x += (AttackFaceRight ? 1f : -1f) * Mathf.Max(0f, spikesOffset);
             position.y = SouthKingEffect.GroundAt(position);
             pool.Fire(spikesPrefab, this, players, position, AttackFaceRight);
+            SkillReleased?.Invoke(Skill, position);
         }
         else if (Skill == KingSkill.SwordFormation)
         {
             if (CurrentPlayer != null) position.x = CurrentPlayer.transform.position.x;
             position.y = SouthKingEffect.GroundAt(position) + Mathf.Max(0f, swordHeight);
             pool.Fire(swordsPrefab, this, players, position, AttackFaceRight);
+            SkillReleased?.Invoke(Skill, position);
         }
         else if (Skill == KingSkill.IceShield)
+        {
             shield = pool.Fire(shieldPrefab, this, players, position, AttackFaceRight) as SouthIceShield;
+            SkillReleased?.Invoke(Skill, position);
+        }
     }
     public void EnterCounterGuard()
     {

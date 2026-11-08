@@ -14,6 +14,9 @@ public class CloudSaveLoginTester : MonoBehaviour
 
     private void Awake()
     {
+#if !UNITY_EDITOR && !DEVELOPMENT_BUILD
+        enabled = false;//临时登录测试框，正式包里不显示
+#endif
         client = GetComponent<CloudSaveClient>();
     }
 

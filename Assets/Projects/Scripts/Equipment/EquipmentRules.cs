@@ -9,7 +9,8 @@ public class EquipmentItem//存档里的一件装备实例；同一种装备可�
 {
     public int uid;
     public string id;
-    public int rarity;
+    public int rarity;//法宝没有品质，固定为 0
+    public int level;//只有法宝用：1～10，0 视为 1
 }
 
 //装备、等级与角色基础属性的全部数值规则。数值推导见 Docs/装备与数值方案.md。
@@ -57,9 +58,9 @@ public static class EquipmentRules
 
     //第N次轮回时首杀保底掉落的品质，以及重复击杀随机掉落允许的最高品质
     private static readonly int[] RarityCapByRebirth = { 1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 4 };
+    public static bool HasCommon(EquipSlot slot) => slot == EquipSlot.Weapon || slot == EquipSlot.Armor;//饰品和法宝没有普通（白色）品质
     public static int RarityCap(int rebirth) => RarityCapByRebirth[Mathf.Clamp(rebirth, 0, RarityCapByRebirth.Length - 1)];
     public static int UnlockRebirth(float grade) => Mathf.FloorToInt(Mathf.Clamp01(grade) * 9f + 0.5f);//最高档在第9次轮回开放
-    public const float RepeatDropChance = 0.25f;//同一轮回内重复击杀Boss的随机掉落概率
     private static readonly float[] RepeatRarityWeights = { 40f, 30f, 18f, 9f, 3f };
     public static int RollRarity(int rebirth)
     {
@@ -72,7 +73,7 @@ public static class EquipmentRules
     }
 
     public const int BagCapacity = 25;//背包格数；已装备的不占格子
-    public static int SellValue(float grade, int rarity) => Mathf.RoundToInt(60f * Power(grade, rarity));//重复或放不下的装备自动换成金币
+    public static int SellValue(float grade, int rarity) => Mathf.Max(1, Mathf.RoundToInt(20f * Power(grade, rarity)));//出售价偏低：普通最低档约8金币，传说最高档约70金币
 
     private static readonly string[] RarityNames = { "普通", "优秀", "精良", "史诗", "传说" };
     private static readonly Color[] RarityColors =
@@ -81,4 +82,5 @@ public static class EquipmentRules
     };
     public static string RarityName(int rarity) => RarityNames[Mathf.Clamp(rarity, 0, 4)];
     public static Color RarityColor(int rarity) => RarityColors[Mathf.Clamp(rarity, 0, 4)];
+    public static Color ItemColor(EquipmentDatabase.Item def, int rarity) => TreasureRules.Is(def) ? TreasureRules.Color : RarityColor(rarity);//法宝不分品质
 }

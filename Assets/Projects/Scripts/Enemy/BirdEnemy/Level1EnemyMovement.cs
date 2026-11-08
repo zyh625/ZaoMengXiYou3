@@ -14,7 +14,16 @@ public sealed class Level1EnemyMovement : EnemyMovement
         }
     }
 
+    public Collider2D TargetBody => Target != null ? Target.GetComponent<Collider2D>() : null;
+
     public Vector2 Velocity => body.linearVelocity;
+
+    public void Teleport(Vector2 position)//突刺结束或被打断时回到起点
+    {
+        body.position = position;
+        transform.position = position;
+        body.linearVelocity = Vector2.zero;
+    }
 
     public void Fly(Vector2 velocity)
     {

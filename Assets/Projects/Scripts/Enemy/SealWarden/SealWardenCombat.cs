@@ -15,7 +15,7 @@ public sealed class SealWardenCombat : LateStageCombat
     protected override void OnBegin(int i)
     {
         punchAt=-1;
-        if(i==1){center=Ground(Position+Vector2.right*Face*BalanceRuntime.Number(this, "SealWardenCombat.OnBegin.1", 3f));FX(0,center,4,BalanceRuntime.Number(this, "SealWardenCombat.OnBegin.2", 0.8f),Color.yellow);minSkillEnd=clock+1f;}
+        if(i==1){center=Ground(Position+Vector2.right*Face*BalanceRuntime.Number(this, "SealWardenCombat.OnBegin.1", 3f));FX(0,Position+new Vector2(Face*BalanceRuntime.Number(this, "SealWardenCombat.OnBegin.SealOffsetX", 3.24f),BalanceRuntime.Number(this, "SealWardenCombat.OnBegin.SealOffsetY", -2.77f)),4,BalanceRuntime.Number(this, "SealWardenCombat.OnBegin.2", 0.8f),Color.yellow);minSkillEnd=clock+1f;}//边界封印特效相对本体：朝左时 (-3.24, -2.77)，朝右时 x 取反；楔子和压缩仍以 center 为准
         if(i==2){compressing=true;minSkillEnd=clock+BalanceRuntime.Number(this, "SealWardenCombat.OnBegin.3", 1.1f);FX(1,center+Vector2.up*BalanceRuntime.Number(this, "SealWardenCombat.OnBegin.4", 0.5f),4,BalanceRuntime.Number(this, "SealWardenCombat.OnBegin.5", 0.8f),Color.yellow);}
     }
     public override bool HoldFrame(int f)=>Skill==0&&f>=BalanceRuntime.Number(this, "SealWardenCombat.HoldFrame.Parameter1", 10f)&&punchAt>=0&&clock<punchAt+BalanceRuntime.Number(this, "SealWardenCombat.HoldFrame.1", 0.5f) || base.HoldFrame(f);

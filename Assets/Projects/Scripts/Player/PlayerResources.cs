@@ -56,7 +56,8 @@ public class PlayerResources : MonoBehaviour
         currentVigor = ratio * value;
         Changed?.Invoke();
     }
-    public event Action Changed;//法力、经验或气力变化时只通知当前绑定的UI
+    public event Action Changed;
+    public event Action<int> LeveledUp;//升级时通知（参数为新等级），用于升级特效//法力、经验或气力变化时只通知当前绑定的UI
 
     private void Awake() => Initialize();
 
@@ -102,6 +103,7 @@ public class PlayerResources : MonoBehaviour
         Initialize();
         if (amount <= 0f || float.IsNaN(amount) || float.IsInfinity(amount)) return;
         float total = Mathf.Min(float.MaxValue, experience + amount);
+        int levelBefore = playerData != null ? playerData.playerLevel : 0;
         if (playerData != null)
         {
             while (playerData.playerLevel < EquipmentRules.MaxLevel && total >= EquipmentRules.ExperienceToNext(playerData.playerLevel))
@@ -113,6 +115,7 @@ public class PlayerResources : MonoBehaviour
         }
         experience = -1f;//确保下面一定发出变化通知（等级可能变了）
         SetExperience(total);
+        if (playerData != null && playerData.playerLevel > levelBefore) LeveledUp?.Invoke(playerData.playerLevel);
     }
 
     public void SetMaxMana(float value)//等级成长改变法力上限，当前法力按原比例缩放

@@ -1,43 +1,40 @@
 using UnityEngine;
 
-//鸟怪：平时在玩家头顶区域随机盘旋；玩家位于左下或右下方且攻击冷却结束时俯冲。
-//俯冲用突击动画的时长：前半段冲到玩家位置，后半段飞回出发点，速度按距离自动换算。
+//鸟怪，行为与重构前的 Bird.cs 一致，只是接入了通用敌人框架（受击、冰冻、对象池、轮回倍率与后面关卡相同）：
+//· 飞行：每个物理步大概率朝玩家身体中心飞、小概率随机方向，速度慢，所以会在玩家身边抖动着贴近。
+//· 攻击：身体碰到玩家且冷却结束时，锁定方向快速突刺；突刺动画前半段冲出、后半段退回，结束时回到起点。
 public sealed class BirdEnemyController : EnemyController
 {
     [SerializeField] private SpriteData dash;
     [SerializeField] private SpriteRenderer crown;
-    [Header("盘旋")]
-    [SerializeField, Min(0f)] private float chaseSpeed = 3f;//盘旋时的最大飞行速度
-    [SerializeField, Min(0.1f)] private float steering = 6f;//转向加速度，越小飞行轨迹越圆滑
-    [SerializeField, Min(0f)] private float hoverHalfWidth = 3f;//盘旋区域相对玩家的左右半宽
-    [SerializeField] private Vector2 hoverHeight = new(2.2f, 3.4f);//盘旋区域高于玩家身体中心的范围
-    [SerializeField] private Vector2 retargetTime = new(1.2f, 2.6f);//多久换一个盘旋点
-    [Header("俯冲")]
-    [SerializeField, Min(0f)] private float minDrop = 0.8f;//玩家至少低于鸟这么多才会俯冲
-    [SerializeField, Min(0f)] private float minSide = 0.4f;//玩家至少偏左/偏右这么多，正下方不攻击
-    [SerializeField, Range(10f, 85f)] private float minAngle = 20f, maxAngle = 75f;//俯冲方向与水平线的夹角范围
-    [SerializeField, Min(0.5f)] private float maxReach = 4.5f;//最远俯冲距离
-    [SerializeField] private Vector2 hitWindow = new(0.3f, 0.65f);//攻击框在整段俯冲中打开的进度区间（0.5为到达玩家）
+    [Header("飞行")]
+    [SerializeField, Min(0f)] private float flySpeed = 1.5f;
+    [SerializeField, Range(0f, 1f)] private float chaseChance = 0.6f;//每步朝玩家飞的概率，其余随机方向
+    [Header("突刺")]
+    [SerializeField, Min(0f)] private float lungeSpeed = 16f;
+    [SerializeField, Min(1f)] private float lungeFps = 60f;//原版每帧换一张突刺图，约60帧每秒
+    [SerializeField] private Vector2Int hitFrames = new(4, 13);//攻击框打开的帧区间（含首不含尾）
     private Level1EnemyMovement flight;
-    private BirdEnemyCombat combat;
-    private bool diving;
-    private float diveStarted, diveDuration, nextRetarget;
-    private Vector2 diveOrigin, diveTarget, hoverOffset, hoverVelocity;
+    private Collider2D body;
+    private bool lunging;
+    private float lungeStarted, lungeDuration;
+    private Vector2 lungeOrigin, lungeDirection;
     protected override bool UsesAnger => false;
+    private BirdEnemyCombat combat;
 
     protected override void Awake()
     {
         base.Awake();
         flight = GetComponent<Level1EnemyMovement>();
         combat = GetComponent<BirdEnemyCombat>();
+        body = GetComponent<Collider2D>();
+        if (dash != null) dash.fps = lungeFps;//动画与位移同步，整段突刺约0.27秒
     }
 
     protected override void OnEnable()
     {
         base.OnEnable();
-        diving = false;
-        hoverVelocity = Vector2.zero;
-        PickHoverPoint();
+        lunging = false;
         crown.sortingOrder = SM.GetComponent<SpriteRenderer>().sortingOrder + 1;
         crown.gameObject.SetActive(combat.IsElite);
     }
@@ -48,23 +45,22 @@ public sealed class BirdEnemyController : EnemyController
     {
         if (EH.Status.BlocksActions || EH.Attacked || (state == EnemyState.Attacked && !SM.IsFinished))
         {
-            CancelDive();//冰冻或受击打断俯冲，由通用流程处理击退和受击动画
+            CancelLunge();//原版受击时回到突刺起点，再由通用流程处理击退和受击动画
             return false;
         }
         if (flight.ProcessExternalControl())
         {
-            CancelDive();
+            CancelLunge();
             EH.AttackedEnd();
             return true;
         }
-        if (diving)
+        if (lunging)
         {
-            UpdateDive();
+            UpdateLunge();
             return true;
         }
         if (!flight.HasTarget)
         {
-            hoverVelocity = Vector2.zero;
             flight.Fly(Vector2.zero);
             SetState(EnemyState.Idle);
             return true;
@@ -73,87 +69,83 @@ public sealed class BirdEnemyController : EnemyController
         Vector2 player = flight.TargetCenter;
         SM.ChangeSpriteFace(player.x >= transform.position.x);
         EC.CheckAttack();
-        if (EC.AttackReady() && !EH.Status.BlocksMovement && InDiveCone(player))
+        if (EC.AttackReady() && !EH.Status.BlocksMovement && TouchingTarget())
         {
-            StartDive(player);
+            StartLunge(player);
             return true;
         }
-        Hover(player);
+        Wander(player);
         SetState(EnemyState.Walk);
         return true;
     }
 
-    private void Hover(Vector2 player)
+    private void Wander(Vector2 player)
     {
         if (EH.Status.BlocksMovement)
         {
             EH.Status.EnforcePosition();
             return;
         }
-        Vector2 point = player + hoverOffset;
-        Vector2 toPoint = point - (Vector2)transform.position;
-        if (Time.time >= nextRetarget || toPoint.sqrMagnitude < 0.09f) PickHoverPoint();
-        float speed = chaseSpeed * RebirthScaling.Current.Movement * (EH.Slow ? 0.5f : 1f);
-        Vector2 desired = Vector2.ClampMagnitude(toPoint * 1.5f, speed);//靠近目标点时自然减速
-        hoverVelocity = Vector2.MoveTowards(hoverVelocity, desired, steering * Time.fixedDeltaTime);
-        flight.Fly(hoverVelocity);
+        Vector2 dir = Random.value < chaseChance ? player - (Vector2)transform.position : Random.insideUnitCircle;
+        float speed = flySpeed * RebirthScaling.Current.Movement * (EH.Slow ? 0.5f : 1f);
+        flight.Fly(dir.sqrMagnitude > 0.0001f ? dir.normalized * speed : Vector2.zero);
     }
 
-    private void PickHoverPoint()
+    private bool TouchingTarget()//身体与玩家碰撞箱重叠
     {
-        hoverOffset = new Vector2(Random.Range(-hoverHalfWidth, hoverHalfWidth), Random.Range(hoverHeight.x, hoverHeight.y));
-        nextRetarget = Time.time + Random.Range(retargetTime.x, retargetTime.y);
+        Collider2D target = flight.TargetBody;
+        if (body == null || target == null) return false;
+        ColliderDistance2D d = body.Distance(target);
+        return d.isValid && d.isOverlapped;
     }
 
-    private bool InDiveCone(Vector2 player)//只攻击左下方或右下方的玩家
-    {
-        Vector2 delta = player - (Vector2)transform.position;
-        float drop = -delta.y, side = Mathf.Abs(delta.x);
-        if (drop < minDrop || side < minSide || delta.magnitude > maxReach) return false;
-        float angle = Mathf.Atan2(drop, side) * Mathf.Rad2Deg;
-        return angle >= minAngle && angle <= maxAngle;
-    }
-
-    private void StartDive(Vector2 player)
+    private void StartLunge(Vector2 player)
     {
         bool right = player.x >= transform.position.x;
         EC.HasAtatck(right);
-        diving = true;
-        diveOrigin = transform.position;
-        diveTarget = player;//起手时锁定位置，俯冲途中不再追踪
-        diveStarted = Time.time;
-        diveDuration = dash != null && dash.fps > 0f && dash.sprites != null && dash.sprites.Length > 0
-            ? dash.sprites.Length / dash.fps : 0.6f;
+        lunging = true;
+        lungeOrigin = transform.position;
+        lungeDirection = (player - lungeOrigin).sqrMagnitude > 0.0001f ? (player - lungeOrigin).normalized : (right ? Vector2.right : Vector2.left);
+        lungeStarted = Time.time;
+        int frames = dash != null && dash.sprites != null && dash.sprites.Length > 0 ? dash.sprites.Length : 16;
+        lungeDuration = frames / lungeFps;
         SM.ChangeSpriteFace(right);
-        SetState(EnemyState.Attacking);//播放突击动画
-        UpdateDive();
+        SetState(EnemyState.Attacking);//播放突刺动画
+        UpdateLunge();
     }
 
-    private void UpdateDive()
+    private void UpdateLunge()
     {
-        float progress = Mathf.Clamp01((Time.time - diveStarted) / diveDuration);
-        if (progress >= hitWindow.x && progress <= hitWindow.y) EC.AttackBegin();
+        int frames = Mathf.Max(2, Mathf.RoundToInt(lungeDuration * lungeFps));
+        float elapsed = Time.time - lungeStarted;
+        int frame = Mathf.FloorToInt(elapsed * lungeFps);
+        if (frame >= hitFrames.x && frame < hitFrames.y) EC.AttackBegin();
         else EC.AttackEnd();
+        if (elapsed >= lungeDuration)
+        {
+            FinishLunge();
+            return;
+        }
+        bool outward = frame < frames / 2;//前一半帧冲向玩家，后一半帧退回
+        flight.Fly((outward ? 1f : -1f) * lungeSpeed * lungeDirection);
+    }
 
-        //sin(π·t)：0→1→0，前半段冲向玩家、后半段原路返回，折返点速度为零，过渡平滑。
-        float next = Mathf.Clamp01(progress + Time.fixedDeltaTime / diveDuration);
-        Vector2 position = diveOrigin + (diveTarget - diveOrigin) * Mathf.Sin(Mathf.PI * next);
-        flight.Fly((position - (Vector2)transform.position) / Time.fixedDeltaTime);
-
-        if (progress < 1f) return;
-        diving = false;
-        AttackOver(true);
-        hoverVelocity = Vector2.zero;
+    private void FinishLunge()
+    {
+        lunging = false;
+        EC.AttackEnd();
         flight.Fly(Vector2.zero);
-        PickHoverPoint();
+        flight.Teleport(lungeOrigin);//原版结束时准确回到起点，不留下帧间误差
+        AttackOver(true);
         SetState(EnemyState.Walk);
     }
 
-    private void CancelDive()
+    private void CancelLunge()
     {
-        if (!diving) return;
-        diving = false;
-        hoverVelocity = flight.Velocity;//受击后从当前速度平滑接回盘旋
+        if (!lunging) return;
+        lunging = false;
+        EC.AttackEnd();
+        flight.Teleport(lungeOrigin);
     }
 
     protected override void HandleAttack(int attack) => SM.ChangeState(dash);

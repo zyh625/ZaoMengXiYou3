@@ -187,6 +187,8 @@ public sealed class TrainingManager : LevelEnemyManager
 
         Vector2 spawnPos = GetTargetSpawnPosition();
         target = Create(catalog.enemies[selected].prefab, spawnPos);
+        if (target != null && catalog.enemies[selected].displayName != null && catalog.enemies[selected].displayName.Contains("[BOSS]"))
+            BossComboGuard.Attach(target.gameObject);//训练场的 Boss 同样有连击保护
         targetHealth = target.GetComponent<Health>();
         targetHealth.DamageReceived += Damage;
         targetHealth.Died += Died;

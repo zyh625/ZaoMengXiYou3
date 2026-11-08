@@ -528,7 +528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WestMovement
   moveSpeed: 1
-  backSpeed: 3.5
+  backSpeed: 2.8
   upSpeed: 6
   slowSpeed: 0.5
   boostRatio: 1
@@ -666,7 +666,7 @@ MonoBehaviour:
     - {fileID: 21300028, guid: 27113a3064f1f7b43a717f1c3e9d2ab0, type: 3}
     - {fileID: 21300030, guid: 27113a3064f1f7b43a717f1c3e9d2ab0, type: 3}
     loop: 0
-    fps: 18
+    fps: 20
   Die:
     sprites:
     - {fileID: 21300000, guid: 0134511f343de284e925ecabf9a3cf49, type: 3}

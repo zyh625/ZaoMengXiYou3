@@ -10,10 +10,11 @@ public sealed class EquipmentDatabase : ScriptableObject
     {
         public string id;
         public string displayName;
+        [TextArea(2, 4)] public string description;//背包悬停时显示的背景介绍
         public EquipSlot slot;
         [Tooltip("所属角色；-1 表示通用（饰品、法宝）")] public int owner = -1;
         [Tooltip("素材上的档次编号，0 为初始装备")] public int tier;
-        [Tooltip("在该角色同部位中的位置，0～1；决定属性和开放的轮回")] [Range(0f, 1f)] public float grade;
+        [Tooltip("在该角色同部位中的位置，0～1；决定属性和开放的轮回（法宝只用来决定开放轮回）")] [Range(0f, 1f)] public float grade;
         public Sprite icon;
         public bool starter;//新存档自动获得并装备
         public int UnlockRebirth => EquipmentRules.UnlockRebirth(grade);
@@ -27,6 +28,12 @@ public sealed class EquipmentDatabase : ScriptableObject
         [Tooltip("掉落给哪个角色；饰品填 -1")] public int owner = -1;
     }
 
+    [Header("Boss 掉落")]
+    [Range(0f, 1f), Tooltip("每次击杀Boss掉落装备的概率，所有Boss相同")] public float bossDropChance = 0.4f;
+    [Range(0f, 1f), Tooltip("掉落时给该部位当前轮回已开放最高档的概率，其余随机给已开放的档次")] public float bestItemChance = 0.6f;
+    [Range(0f, 1f), Tooltip("每次击杀Boss另外掉一件法宝的概率；只掉本轮已开放、还没拥有的法宝")] public float treasureDropChance = 0.12f;
+    [Header("小怪掉落")]
+    [Range(0f, 1f), Tooltip("小怪死亡时掉一件普通（白色）装备的概率；掉了装备就不再掉金币")] public float minionDropChance = 0.04f;
     public Item[] items = Array.Empty<Item>();
     public BossDrop[] bossDrops = Array.Empty<BossDrop>();
 

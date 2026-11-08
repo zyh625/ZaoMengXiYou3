@@ -582,7 +582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarShearGuardMovement
   moveSpeed: 1
-  backSpeed: 3.5
+  backSpeed: 2.7
   upSpeed: 6
   slowSpeed: 0.5
   boostRatio: 1
@@ -725,7 +725,7 @@ MonoBehaviour:
     - {fileID: 585252662780363864, guid: e95722445fe5456fba3801de124984cd, type: 3}
     - {fileID: 1126697718134409492, guid: e95722445fe5456fba3801de124984cd, type: 3}
     loop: 0
-    fps: 18
+    fps: 20
   Die:
     sprites:
     - {fileID: 406175402477242726, guid: 952c456a74d0423b9aafe28cc5a8b043, type: 3}

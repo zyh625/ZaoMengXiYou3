@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClampGuardMovement
   moveSpeed: 0.9
-  backSpeed: 3.5
+  backSpeed: 2.7
   upSpeed: 6
   slowSpeed: 0.45
   boostRatio: 1
@@ -396,7 +396,7 @@ MonoBehaviour:
     - {fileID: 850397398036389147, guid: 371290e889e45614eb7a1212f88d9c71, type: 3}
     - {fileID: 880502375019714453, guid: 371290e889e45614eb7a1212f88d9c71, type: 3}
     loop: 0
-    fps: 10
+    fps: 18
   Die:
     sprites:
     - {fileID: 1080268099037952931, guid: 48718b662e7fc114c80b904de7468020, type: 3}

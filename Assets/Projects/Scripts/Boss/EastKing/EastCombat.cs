@@ -42,6 +42,7 @@ public class EastCombat : BossCombat
     {
         base.Awake();
         ResolveReferences();
+        if (GetComponent<EastKingFx>() == null) gameObject.AddComponent<EastKingFx>();//琵琶声波、急弦光环等表现，只读状态不改战斗
     }
 
     protected override void OnEnable()

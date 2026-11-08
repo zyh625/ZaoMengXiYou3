@@ -100,6 +100,6 @@ public class Map : MonoBehaviour
         if (!Application.CanStreamedLevelBeLoaded(sceneName)) return;
         instance.battle.curLevel = level;
         instance.priScene = "MapScene";
-        SceneManager.LoadScene(sceneName);
+        LevelLoader.Load(sceneName);//先进加载界面
     }
 }

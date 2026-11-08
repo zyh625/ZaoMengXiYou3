@@ -785,7 +785,7 @@ MonoBehaviour:
     - {fileID: 21300028, guid: 65d0a37aa729501f8416c0d6b9cee602, type: 3}
     - {fileID: 21300030, guid: 65d0a37aa729501f8416c0d6b9cee602, type: 3}
     loop: 0
-    fps: 16
+    fps: 18
   Die:
     sprites:
     - {fileID: 21300000, guid: f0f9277e086254bfb68fb3fa70ebb688, type: 3}
@@ -946,7 +946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SouthKingMovement
   moveSpeed: 2
-  backSpeed: 2
+  backSpeed: 3
   upSpeed: 4
   slowSpeed: 1
   boostRatio: 1

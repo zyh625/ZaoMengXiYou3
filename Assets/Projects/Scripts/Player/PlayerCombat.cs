@@ -279,6 +279,7 @@ public class PlayerCombat : MonoBehaviour
         AttackEffect[] effects = null, Transform source = null, DamageKind kind = DamageKind.Skill)//所有玩家主动伤害只在实际命中入口投掷一次暴击
     {
         float amount = Mathf.Max(0f, baseDamage) * AttackMultiplier;
+        if (DebugCheats.OneHitKill && amount > 0f) amount = 1e7f;//调试：地图一键通关后一击必杀
         float chance = CriticalChance;
         bool critical=amount > 0f && chance > 0f && (chance >= 1f || Random.value < chance);
         if (critical)

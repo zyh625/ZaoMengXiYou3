@@ -354,7 +354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlueMovement
   moveSpeed: 1.3
-  backSpeed: 3.5
+  backSpeed: 2.8
   upSpeed: 6
   slowSpeed: 1
   boostRatio: 1.6
@@ -479,7 +479,7 @@ MonoBehaviour:
     - {fileID: 21300028, guid: b2edc62d6a8b5d54be793cf2aed28309, type: 3}
     - {fileID: 21300030, guid: b2edc62d6a8b5d54be793cf2aed28309, type: 3}
     loop: 0
-    fps: 16
+    fps: 27
   Die:
     sprites:
     - {fileID: 21300000, guid: 1f88800e65b25fcbbeaf0ca38284c520, type: 3}

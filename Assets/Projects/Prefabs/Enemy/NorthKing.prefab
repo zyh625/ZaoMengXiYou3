@@ -427,7 +427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NorthMovement
   moveSpeed: 1
-  backSpeed: 3.5
+  backSpeed: 2.5
   upSpeed: 6
   slowSpeed: 0.5
   boostRatio: 1
@@ -560,7 +560,7 @@ MonoBehaviour:
     - {fileID: 322466593849828978, guid: e41451440a184eea9b35bed541654609, type: 3}
     - {fileID: 175247999448463905, guid: e41451440a184eea9b35bed541654609, type: 3}
     loop: 0
-    fps: 18
+    fps: 21
   Die:
     sprites:
     - {fileID: 450696159228583601, guid: 02e3de00f5bb4f41a9efbdd88e7e4486, type: 3}

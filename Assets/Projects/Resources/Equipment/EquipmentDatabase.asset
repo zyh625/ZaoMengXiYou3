@@ -12,17 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a78601783414adb955a4fe63f6db172, type: 3}
   m_Name: EquipmentDatabase
   m_EditorClassIdentifier: Assembly-CSharp::EquipmentDatabase
+  bossDropChance: 0.4
+  bestItemChance: 0.6
+  treasureDropChance: 0.12
+  minionDropChance: 0.04
   items:
   - id: wukong_w0
     displayName: "\u9554\u94C1\u68CD"
+    description: "\u82B1\u679C\u5C71\u77F3\u7334\u521D\u5F97\u4E4B\u5175\uFF0C\u4EE5\u51E1\u94C1\u767E\u70BC\u800C\u6210\uFF0C\u867D\u65E0\u795E\u5F02\uFF0C\u6325\u4E4B\u4EA6\u6709\u98CE\u96F7\u4E4B\u58F0\u3002"
     slot: 0
     owner: 0
     tier: 0
     grade: 0.0
     icon: {fileID: -3164809056393425246, guid: f19ff3cca803bbf4a890b8b5f59e1d6c, type: 3}
-    starter: 1
+    starter: 0
   - id: wukong_w1
     displayName: "\u9752\u950B\u67AA"
+    description: "\u4E1C\u6D77\u9F99\u5BAB\u6240\u85CF\u65E7\u67AA\uFF0C\u67AA\u5934\u6DEC\u4EE5\u5BD2\u6CC9\uFF0C\u51FA\u5219\u9752\u8292\u4E00\u7EBF\uFF0C\u53EF\u7834\u5996\u96FE\u3002"
     slot: 0
     owner: 0
     tier: 1
@@ -31,6 +37,7 @@ MonoBehaviour:
     starter: 0
   - id: wukong_w2
     displayName: "\u8D64\u7130\u67AA"
+    description: "\u706B\u7130\u5C71\u5730\u8109\u4E4B\u94C1\uFF0C\u7ECF\u4E09\u6627\u771F\u706B\u71AC\u70BC\u4E03\u4E03\u4E4B\u6570\uFF0C\u67AA\u950B\u5E38\u5E26\u4F59\u70EC\u3002"
     slot: 0
     owner: 0
     tier: 2
@@ -39,6 +46,7 @@ MonoBehaviour:
     starter: 0
   - id: wukong_w3
     displayName: "\u7384\u51A5\u7834\u5929\u67AA"
+    description: "\u4F20\u4E3A\u5317\u51A5\u7384\u6B66\u9000\u7532\u6240\u5316\uFF0C\u592A\u4E0A\u8001\u541B\u4EB2\u4EE5\u516B\u5366\u7089\u953B\u4E4B\uFF0C\u4E00\u67AA\u65E2\u51FA\uFF0C\u5929\u5E55\u4E3A\u88C2\u3002"
     slot: 0
     owner: 0
     tier: 3
@@ -47,14 +55,16 @@ MonoBehaviour:
     starter: 0
   - id: wukong_a0
     displayName: "\u884C\u8005\u5E03\u8863"
+    description: "\u53D6\u7ECF\u8DEF\u4E0A\u6240\u7740\u7C97\u5E03\u77ED\u8863\uFF0C\u7F1D\u8865\u591A\u5904\uFF0C\u5374\u968F\u5927\u5723\u5386\u5C3D\u5343\u5C71\u3002"
     slot: 1
     owner: 0
     tier: 0
     grade: 0.0
     icon: {fileID: -5225540622116197949, guid: 1871dc7957bbb6e42932b9b89ddeaee8, type: 3}
-    starter: 1
+    starter: 0
   - id: wukong_a1
     displayName: "\u91D1\u7EB9\u6218\u888D"
+    description: "\u5929\u5BAB\u8D50\u5F3C\u9A6C\u6E29\u4E4B\u888D\uFF0C\u91D1\u7EBF\u7EE3\u4E91\u7EB9\uFF0C\u7A7F\u4E4B\u8EAB\u8F7B\u5982\u71D5\u3002"
     slot: 1
     owner: 0
     tier: 1
@@ -63,6 +73,7 @@ MonoBehaviour:
     starter: 0
   - id: wukong_a2
     displayName: "\u70C8\u7130\u6218\u7532"
+    description: "\u4EE5\u706B\u9F20\u4E4B\u6BDB\u7EC7\u5C31\uFF0C\u6C34\u706B\u96BE\u4FB5\uFF0C\u7532\u53F6\u95F4\u5E38\u6709\u8D64\u5149\u6D41\u8F6C\u3002"
     slot: 1
     owner: 0
     tier: 2
@@ -71,6 +82,7 @@ MonoBehaviour:
     starter: 0
   - id: wukong_a3
     displayName: "\u5E7D\u51A5\u9B54\u94E0"
+    description: "\u9634\u5C71\u6DF1\u5904\u6240\u5F97\u53E4\u94E0\uFF0C\u66FE\u5C5E\u4E00\u65B9\u9B54\u738B\uFF0C\u5BD2\u6C14\u68EE\u68EE\uFF0C\u767E\u90AA\u8F9F\u6613\u3002"
     slot: 1
     owner: 0
     tier: 3
@@ -79,6 +91,7 @@ MonoBehaviour:
     starter: 0
   - id: wukong_a4
     displayName: "\u7D2B\u7535\u5929\u738B\u7532"
+    description: "\u6258\u5854\u5929\u738B\u9EBE\u4E0B\u795E\u5C06\u6240\u62AB\uFF0C\u7532\u4E0A\u954C\u6709\u96F7\u90E8\u7B26\u7B93\uFF0C\u4E34\u654C\u5219\u7D2B\u7535\u73AF\u8EAB\u3002"
     slot: 1
     owner: 0
     tier: 4
@@ -87,14 +100,16 @@ MonoBehaviour:
     starter: 0
   - id: bajie_w0
     displayName: "\u4E5D\u9F7F\u9489\u8019"
+    description: "\u5929\u84EC\u5143\u5E05\u4E0B\u754C\u65F6\u968F\u8EAB\u4E4B\u5668\uFF0C\u867D\u7ECF\u9508\u8680\uFF0C\u7B51\u5730\u72B9\u80FD\u5F00\u5C71\u3002"
     slot: 0
     owner: 1
     tier: 0
     grade: 0.0
     icon: {fileID: -3164809056393425246, guid: aeb583fb628fefc4980a74bd0816db8e, type: 3}
-    starter: 1
+    starter: 0
   - id: bajie_w1
     displayName: "\u78A7\u7389\u7985\u6756"
+    description: "\u5357\u6D77\u666E\u9640\u5C71\u4E00\u7985\u50E7\u9057\u7269\uFF0C\u78A7\u7389\u4E3A\u9996\uFF0C\u6572\u4E4B\u5219\u6E05\u97F3\u7ED5\u6881\u3002"
     slot: 0
     owner: 1
     tier: 1
@@ -103,6 +118,7 @@ MonoBehaviour:
     starter: 0
   - id: bajie_w2
     displayName: "\u91D1\u874E\u94A9"
+    description: "\u7435\u7436\u6D1E\u874E\u7CBE\u4E4B\u5C3E\u94A9\u6240\u94F8\uFF0C\u94A9\u5C16\u5267\u6BD2\u5DF2\u51C0\uFF0C\u552F\u4F59\u950B\u5229\u65E0\u5339\u3002"
     slot: 0
     owner: 1
     tier: 2
@@ -111,6 +127,7 @@ MonoBehaviour:
     starter: 0
   - id: bajie_w3
     displayName: "\u8D64\u9B42\u65A7"
+    description: "\u725B\u9B54\u738B\u65E7\u90E8\u6240\u7528\u5F00\u5C71\u5DE8\u65A7\uFF0C\u65A7\u5203\u996E\u8840\u65E2\u591A\uFF0C\u591C\u4E2D\u81EA\u6CDB\u8D64\u5149\u3002"
     slot: 0
     owner: 1
     tier: 3
@@ -119,6 +136,7 @@ MonoBehaviour:
     starter: 0
   - id: bajie_w4
     displayName: "\u5929\u84EC\u6218\u65A7"
+    description: "\u5929\u6CB3\u6C34\u519B\u4E4B\u5E05\u5668\uFF0C\u592A\u4E0A\u8001\u541B\u4EE5\u5929\u6CB3\u795E\u94C1\u91CD\u94F8\uFF0C\u4E00\u65A7\u53EF\u65AD\u94F6\u6CB3\u6CE2\u6D9B\u3002"
     slot: 0
     owner: 1
     tier: 4
@@ -127,14 +145,16 @@ MonoBehaviour:
     starter: 0
   - id: bajie_a0
     displayName: "\u5929\u84EC\u65E7\u7532"
+    description: "\u6614\u65E5\u5929\u6CB3\u5143\u5E05\u4E4B\u7532\uFF0C\u867D\u5DF2\u6591\u9A73\uFF0C\u62A4\u5FC3\u955C\u72B9\u660E\u4EAE\u5982\u521D\u3002"
     slot: 1
     owner: 1
     tier: 0
     grade: 0.0
     icon: {fileID: -5225540622116197949, guid: b59ec1abd41739d4e89e5e6b5f1a12ba, type: 3}
-    starter: 1
+    starter: 0
   - id: bajie_a1
     displayName: "\u8D64\u9CDE\u94E0"
+    description: "\u4EE5\u8D64\u9CDE\u5DE8\u87D2\u4E4B\u76AE\u5C42\u5C42\u53E0\u6210\uFF0C\u5200\u5251\u52A0\u8EAB\uFF0C\u53EA\u95FB\u53EE\u5F53\u4E4B\u58F0\u3002"
     slot: 1
     owner: 1
     tier: 1
@@ -143,6 +163,7 @@ MonoBehaviour:
     starter: 0
   - id: bajie_a2
     displayName: "\u5929\u6CB3\u795E\u94E0"
+    description: "\u5929\u6CB3\u4E07\u9877\u4E4B\u6C34\u7CBE\u51DD\u800C\u6210\u94E0\uFF0C\u67D4\u82E5\u6D41\u6CE2\uFF0C\u575A\u80DC\u91D1\u77F3\u3002"
     slot: 1
     owner: 1
     tier: 2
@@ -151,14 +172,16 @@ MonoBehaviour:
     starter: 0
   - id: sha_w0
     displayName: "\u964D\u5996\u5B9D\u6756"
+    description: "\u6708\u5BAB\u68AD\u7F57\u4ED9\u6728\u6240\u524A\uFF0C\u9C81\u73ED\u4EB2\u624B\u9020\u5C31\uFF0C\u5377\u5E18\u5927\u5C06\u53D7\u8D50\u4E8E\u51CC\u9704\u6BBF\u4E0A\u3002"
     slot: 0
     owner: 2
     tier: 0
     grade: 0.0
     icon: {fileID: -3164809056393425246, guid: 499b495b778fcb8448bed80d89e9b504, type: 3}
-    starter: 1
+    starter: 0
   - id: sha_w1
     displayName: "\u8D64\u68D8\u9524\u6756"
+    description: "\u6D41\u6C99\u6CB3\u5E95\u5343\u5E74\u8D64\u68D8\u7F20\u94C1\u800C\u6210\uFF0C\u4E00\u51FB\u4E4B\u4E0B\uFF0C\u5996\u9AA8\u7686\u788E\u3002"
     slot: 0
     owner: 2
     tier: 1
@@ -167,6 +190,7 @@ MonoBehaviour:
     starter: 0
   - id: sha_w2
     displayName: "\u8840\u6708\u9B54\u6756"
+    description: "\u53D6\u8840\u6708\u4E4B\u591C\u6240\u9668\u661F\u94C1\uFF0C\u4EE5\u6D41\u6C99\u4E3A\u7827\u953B\u70BC\u767E\u65E5\uFF0C\u6756\u5934\u5BD2\u5149\u5982\u6708\u3002"
     slot: 0
     owner: 2
     tier: 2
@@ -175,14 +199,16 @@ MonoBehaviour:
     starter: 0
   - id: sha_a0
     displayName: "\u7D2B\u7EB1\u50E7\u888D"
+    description: "\u89C2\u97F3\u83E9\u8428\u70B9\u5316\u65F6\u6240\u8D50\u50E7\u8863\uFF0C\u7D2B\u7EB1\u8F7B\u8584\uFF0C\u80FD\u907F\u6D41\u6C99\u98CE\u5C18\u3002"
     slot: 1
     owner: 2
     tier: 0
     grade: 0.0
     icon: {fileID: -5225540622116197949, guid: c7f8203819d74694a85c4299221f271a, type: 3}
-    starter: 1
+    starter: 0
   - id: sha_a1
     displayName: "\u9752\u9CDE\u62A4\u7532"
+    description: "\u6D41\u6C99\u6CB3\u4E2D\u9752\u9CDE\u5927\u9C7C\u8715\u4E0B\u4E4B\u7532\uFF0C\u6C34\u4E2D\u884C\u8D70\u5982\u5C65\u5E73\u5730\u3002"
     slot: 1
     owner: 2
     tier: 1
@@ -191,6 +217,7 @@ MonoBehaviour:
     starter: 0
   - id: sha_a2
     displayName: "\u78A7\u6D77\u9CDE\u7532"
+    description: "\u4E1C\u6D77\u9F99\u738B\u6240\u8D60\uFF0C\u7247\u7247\u9CDE\u7532\u6620\u51FA\u6CE2\u5149\uFF0C\u53EF\u5FA1\u6C34\u65CF\u4E4B\u5203\u3002"
     slot: 1
     owner: 2
     tier: 2
@@ -199,6 +226,7 @@ MonoBehaviour:
     starter: 0
   - id: sha_a3
     displayName: "\u7FE0\u85E4\u5B9D\u7532"
+    description: "\u897F\u725B\u8D3A\u6D32\u53E4\u85E4\u6797\u4E2D\u6240\u751F\u795E\u85E4\u7F16\u7ED3\uFF0C\u5200\u780D\u4E0D\u65AD\uFF0C\u706B\u70E7\u4E0D\u7126\u3002"
     slot: 1
     owner: 2
     tier: 3
@@ -207,6 +235,7 @@ MonoBehaviour:
     starter: 0
   - id: sha_a4
     displayName: "\u5E7D\u5F71\u6218\u94E0"
+    description: "\u65E0\u5E95\u6D1E\u4E2D\u6697\u94C1\u6240\u94F8\uFF0C\u62AB\u4E4B\u5219\u8EAB\u5F62\u82E5\u9690\u82E5\u73B0\uFF0C\u654C\u96BE\u8FA8\u5176\u6240\u5728\u3002"
     slot: 1
     owner: 2
     tier: 4
@@ -215,6 +244,7 @@ MonoBehaviour:
     starter: 0
   - id: sha_a5
     displayName: "\u94F6\u6708\u795E\u94E0"
+    description: "\u5E7F\u5BD2\u5BAB\u7389\u5154\u6363\u836F\u4E4B\u6775\u4F59\u6599\u6240\u5236\uFF0C\u94F6\u8F89\u5982\u6708\uFF0C\u62A4\u4F53\u751F\u5BD2\u3002"
     slot: 1
     owner: 2
     tier: 5
@@ -223,14 +253,16 @@ MonoBehaviour:
     starter: 0
   - id: tang_w0
     displayName: "\u4E5D\u73AF\u9521\u6756"
+    description: "\u5982\u6765\u4F5B\u7956\u6240\u8D50\u5723\u50E7\u4E4B\u6756\uFF0C\u4E5D\u73AF\u76F8\u51FB\uFF0C\u53EF\u9A71\u5C71\u7CBE\u6C34\u602A\u3002"
     slot: 0
     owner: 3
     tier: 0
     grade: 0.0
     icon: {fileID: -3164809056393425246, guid: e13680230e28bfe43b9a428a65ef8c0e, type: 3}
-    starter: 1
+    starter: 0
   - id: tang_w1
     displayName: "\u91D1\u83B2\u6756"
+    description: "\u6756\u5934\u751F\u91D1\u83B2\u4E00\u6735\uFF0C\u4E43\u897F\u5929\u7075\u5C71\u6C60\u4E2D\u6240\u91C7\uFF0C\u5E38\u653E\u6BEB\u5149\u3002"
     slot: 0
     owner: 3
     tier: 1
@@ -239,6 +271,7 @@ MonoBehaviour:
     starter: 0
   - id: tang_w2
     displayName: "\u7D2B\u9704\u6CD5\u6756"
+    description: "\u7D2B\u9704\u5BAB\u9053\u7956\u8BB2\u7ECF\u65F6\u6240\u6267\u4E4B\u6756\uFF0C\u6756\u8EAB\u81EA\u6709\u9053\u97F5\u6D41\u8F6C\u3002"
     slot: 0
     owner: 3
     tier: 2
@@ -247,6 +280,7 @@ MonoBehaviour:
     starter: 0
   - id: tang_w3
     displayName: "\u65E5\u8F6E\u6CD5\u6756"
+    description: "\u91C7\u5927\u65E5\u521D\u5347\u4E4B\u7CBE\u94F8\u6210\u91D1\u8F6E\u4E8E\u6756\u9996\uFF0C\u7167\u5904\u9634\u90AA\u5C3D\u6563\u3002"
     slot: 0
     owner: 3
     tier: 3
@@ -255,6 +289,7 @@ MonoBehaviour:
     starter: 0
   - id: tang_w4
     displayName: "\u661F\u8FB0\u6CD5\u6756"
+    description: "\u592A\u4E0A\u8001\u541B\u89C2\u5468\u5929\u661F\u6597\uFF0C\u4EE5\u4E8C\u5341\u516B\u5BBF\u4E4B\u8F89\u953B\u5165\u6756\u4E2D\uFF0C\u6325\u4E4B\u5219\u7FA4\u661F\u5E94\u548C\u3002"
     slot: 0
     owner: 3
     tier: 4
@@ -263,14 +298,16 @@ MonoBehaviour:
     starter: 0
   - id: tang_a0
     displayName: "\u9526\u6593\u8888\u88DF"
+    description: "\u89C2\u97F3\u83E9\u8428\u6240\u732E\u4F5B\u5B9D\uFF0C\u7A7F\u4E4B\u4E0D\u5165\u6C89\u6CA6\uFF0C\u4E0D\u5815\u5730\u72F1\uFF0C\u4E0D\u906D\u6076\u6BD2\u4E4B\u96BE\u3002"
     slot: 1
     owner: 3
     tier: 0
     grade: 0.0
     icon: {fileID: -5225540622116197949, guid: 37e7127fc0bb47541a92d25b49ff46d7, type: 3}
-    starter: 1
+    starter: 0
   - id: tang_a1
     displayName: "\u9752\u83B2\u6CD5\u8863"
+    description: "\u9752\u83B2\u6C60\u7554\u7EC7\u5973\u6240\u7EBA\uFF0C\u8863\u4E0A\u83B2\u7EB9\u968F\u6B65\u800C\u5F00\uFF0C\u9759\u5FC3\u5B81\u795E\u3002"
     slot: 1
     owner: 3
     tier: 1
@@ -279,6 +316,7 @@ MonoBehaviour:
     starter: 0
   - id: tang_a2
     displayName: "\u5B9D\u5149\u8888\u88DF"
+    description: "\u7075\u5C71\u8BF8\u4F5B\u4EE5\u820D\u5229\u4E4B\u5149\u7EC7\u6210\uFF0C\u5B9D\u5149\u6240\u81F3\uFF0C\u4E07\u9B54\u4E0D\u4FB5\u3002"
     slot: 1
     owner: 3
     tier: 2
@@ -287,6 +325,7 @@ MonoBehaviour:
     starter: 0
   - id: acc_1
     displayName: "\u706B\u7EB9\u9879\u94FE"
+    description: "\u706B\u7130\u5C71\u571F\u5730\u6240\u732E\u4E4B\u94FE\uFF0C\u5760\u4E00\u679A\u706B\u7EB9\u77F3\uFF0C\u4F69\u4E4B\u5468\u8EAB\u6E29\u6696\u3002"
     slot: 2
     owner: -1
     tier: 1
@@ -295,6 +334,7 @@ MonoBehaviour:
     starter: 0
   - id: acc_2
     displayName: "\u9752\u7389\u540A\u5760"
+    description: "\u6606\u4ED1\u5C71\u9752\u7389\u96D5\u6210\uFF0C\u4F20\u4E3A\u897F\u738B\u6BCD\u7476\u6C60\u4E4B\u7269\uFF0C\u53EF\u6E05\u5FC3\u660E\u76EE\u3002"
     slot: 2
     owner: -1
     tier: 2
@@ -303,6 +343,7 @@ MonoBehaviour:
     starter: 0
   - id: acc_3
     displayName: "\u53E4\u5377\u753B\u8F74"
+    description: "\u753B\u4E2D\u85CF\u4E00\u65B9\u5C0F\u5929\u5730\uFF0C\u4E43\u67D0\u4F4D\u6563\u4ED9\u9057\u4E0B\u7684\u4FEE\u884C\u5377\u8F74\u3002"
     slot: 2
     owner: -1
     tier: 3
@@ -311,6 +352,7 @@ MonoBehaviour:
     starter: 0
   - id: acc_4
     displayName: "\u7D2B\u7075\u5B9D\u73E0"
+    description: "\u7D2B\u4E91\u6D1E\u5343\u5E74\u7075\u7269\u6240\u5B55\uFF0C\u73E0\u4E2D\u7D2B\u6C14\u6C24\u6C32\uFF0C\u4F69\u8005\u7CBE\u795E\u500D\u957F\u3002"
     slot: 2
     owner: -1
     tier: 4
@@ -319,6 +361,7 @@ MonoBehaviour:
     starter: 0
   - id: acc_5
     displayName: "\u4ED9\u9E64\u7FCE\u7FBD"
+    description: "\u5357\u6781\u4ED9\u7FC1\u5EA7\u4E0B\u767D\u9E64\u4E4B\u7FCE\uFF0C\u8F7B\u82E5\u65E0\u7269\uFF0C\u6301\u4E4B\u5982\u4E58\u4E91\u800C\u884C\u3002"
     slot: 2
     owner: -1
     tier: 5
@@ -326,43 +369,48 @@ MonoBehaviour:
     icon: {fileID: 4130640169021434097, guid: dc9b4f802d66b4b4f84b97ffc87546c4, type: 3}
     starter: 0
   - id: treasure_1
-    displayName: "\u82AD\u8549\u6247"
+    displayName: "\u56DE\u6625\u7075\u53F6"
+    description: "\u4E94\u5E84\u89C2\u4EBA\u53C2\u679C\u6811\u4E0A\u5343\u5E74\u4E00\u843D\u7684\u7075\u53F6\uFF0C\u9547\u5143\u5927\u4ED9\u4EE5\u6668\u9732\u6E29\u517B\u3002\u4F69\u4E8E\u8EAB\u4FA7\uFF0C\u4F24\u5904\u81EA\u751F\u65B0\u808C\uFF0C\u67AF\u6728\u4EA6\u80FD\u9022\u6625\u3002"
     slot: 3
     owner: -1
     tier: 1
-    grade: 0.0
+    grade: 0
     icon: {fileID: -855298285791758126, guid: 5ebf9eb8b0ddbbb4d8d6e33489bb5f99, type: 3}
     starter: 0
   - id: treasure_2
-    displayName: "\u7D2B\u91D1\u846B\u82A6"
+    displayName: "\u7D2B\u91D1\u7EA2\u846B\u82A6"
+    description: "\u592A\u4E0A\u8001\u541B\u76DB\u4E39\u7684\u5B9D\u5668\uFF0C\u540E\u843D\u5165\u91D1\u89D2\u5927\u738B\u4E4B\u624B\u3002\u58F6\u4E2D\u5C1A\u5B58\u4E5D\u8F6C\u4F59\u4E39\uFF0C\u996E\u4E0B\u6C14\u8840\u7FFB\u6D8C\u3001\u529B\u80FD\u625B\u9F0E\uFF0C\u53EA\u662F\u5468\u8EAB\u6C89\u91CD\uFF0C\u6B65\u5C65\u8FDF\u7F13\u3002"
     slot: 3
     owner: -1
     tier: 2
-    grade: 0.25
+    grade: 0.1111
     icon: {fileID: 6937817954938267909, guid: 70096788b4e01a7459d97ba131b1f991, type: 3}
     starter: 0
   - id: treasure_3
-    displayName: "\u51B0\u9B44\u795E\u5251"
+    displayName: "\u51B0\u9B44\u98DE\u5251"
+    description: "\u4EE5\u5317\u6D77\u7384\u51B0\u4E4B\u9B44\u6DEC\u70BC\u4E03\u4E03\u56DB\u5341\u4E5D\u65E5\u800C\u6210\uFF0C\u5251\u6210\u4E4B\u65E5\u81EA\u80FD\u79BB\u624B\u800C\u98DE\u3002\u6301\u8005\u8E0F\u5251\u51CC\u865A\uFF0C\u5FA1\u98CE\u800C\u884C\uFF0C\u4E00\u65E5\u53EF\u8D8A\u5343\u5C71\u3002"
     slot: 3
     owner: -1
     tier: 3
-    grade: 0.5
+    grade: 0.2222
     icon: {fileID: -6470460504253458178, guid: 4260bee8b13a7b6419d7b247021dcfac, type: 3}
     starter: 0
   - id: treasure_4
-    displayName: "\u9752\u9F99\u4F1E"
+    displayName: "\u6DF7\u5143\u4F1E"
+    description: "\u9B54\u793C\u7EA2\u6240\u6267\u7684\u6DF7\u5143\u73CD\u73E0\u4F1E\uFF0C\u4F1E\u9762\u7F00\u6EE1\u660E\u73E0\uFF0C\u6491\u5F00\u65F6\u971E\u5149\u62A4\u4F53\uFF0C\u5200\u5175\u96BE\u8FD1\u3002\u4F1E\u5F00\u4E00\u77AC\u63A5\u4E0B\u7684\u653B\u52BF\uFF0C\u7686\u88AB\u4F1E\u4E2D\u6DF7\u5143\u4E4B\u6C14\u5316\u53BB\u3002"
     slot: 3
     owner: -1
     tier: 4
-    grade: 0.75
+    grade: 0.3333
     icon: {fileID: -4178046375966092550, guid: 1bdb4f1952e781f46bdf76f6f88fcc4b, type: 3}
     starter: 0
   - id: treasure_5
     displayName: "\u7D2B\u91D1\u94C3"
+    description: "\u8D5B\u592A\u5C81\u79C1\u5E26\u4E0B\u754C\u7684\u5B9D\u94C3\uFF0C\u6447\u52A8\u65F6\u58F0\u9707\u9B42\u9B44\uFF0C\u65B9\u5706\u4E4B\u5185\u5996\u90AA\u4FF1\u98A4\u3001\u52A8\u5F39\u4E0D\u5F97\uFF1B\u552F\u6709\u5FC3\u5FD7\u5982\u94C1\u8005\u65B9\u80FD\u4E0D\u4E3A\u6240\u52A8\u3002"
     slot: 3
     owner: -1
     tier: 5
-    grade: 1.0
+    grade: 0.4444
     icon: {fileID: 4130640169021434097, guid: afc991e7a21e98a4584de07e373c9fcd, type: 3}
     starter: 0
   bossDrops:

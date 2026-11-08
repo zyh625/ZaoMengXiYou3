@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RiftBladeMovement
   moveSpeed: 1.1
-  backSpeed: 3.5
+  backSpeed: 2.5
   upSpeed: 6
   slowSpeed: 0.55
   boostRatio: 1
@@ -309,7 +309,7 @@ MonoBehaviour:
     - {fileID: -202748195920838185, guid: f24fc56a33936154a967a70231212552, type: 3}
     - {fileID: 6282012047797736354, guid: f24fc56a33936154a967a70231212552, type: 3}
     loop: 0
-    fps: 18
+    fps: 24
   Die:
     sprites:
     - {fileID: 6991849013916550155, guid: 5424f0b4c8deed14cbd871a90b1a6296, type: 3}

@@ -2,13 +2,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//用图片字体显示数字串（支持0-9、"/"、"%"），在自身矩形里水平、垂直居中。
+//用图片字体显示数字串（支持0-9、"/"、"%"，"L"显示“Lv”字样），在自身矩形里水平、垂直居中。
 //字高等于矩形高度，总宽度超出矩形时整体等比缩小；"/"和"%"未指定图片时显示白色占位块。
 [RequireComponent(typeof(RectTransform))]
 public sealed class SpriteNumber : MonoBehaviour
 {
     [SerializeField] private Sprite[] digits = new Sprite[10];//下标即数字
     [SerializeField] private Sprite slash, percent;//以后替换成正式图片即可
+    [SerializeField] private Sprite levelMark;//“Lv”字样，文本里用字母 L 表示
     [SerializeField] private float spacing = 0.06f;//字间距，按字高比例；负数可让留白较多的字图靠拢
     [SerializeField] private float placeholderWidth = 0.35f;//白色占位块宽度，按字高比例
     [SerializeField] private Color color = Color.white;
@@ -60,7 +61,7 @@ public sealed class SpriteNumber : MonoBehaviour
     private Sprite SpriteFor(char c)
     {
         if (c >= '0' && c <= '9') return digits != null && c - '0' < digits.Length ? digits[c - '0'] : null;
-        return c == '/' ? slash : c == '%' ? percent : null;
+        return c == '/' ? slash : c == '%' ? percent : c == 'L' ? levelMark : null;
     }
 
     private Image Glyph(int index)//运行时按需创建子物体，之后重复使用

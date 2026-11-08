@@ -76,7 +76,7 @@ public class VictoryControl : MonoBehaviour
             instance.battle = new BattleData { curLevel = next };//不把已展示的上一轮统计当作下一轮可写数据
             instance.priScene = "VictoryScene";
         }
-        SceneManager.LoadScene(sceneName);
+        LevelLoader.Load(sceneName);//先进加载界面
     }
     public void EnterRebirth()
     {

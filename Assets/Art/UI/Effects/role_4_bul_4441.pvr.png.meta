@@ -1,7 +1,28 @@
 fileFormatVersion: 2
-guid: B3scsi2oBSmk6y4KjcWmLU8tHm/I/7ftFVovXX5tf0+J8PwrkI8yRo4=
+guid: 9ebccbdf11825702341ee1b7b301f218
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 3313376674981676088
+    second: role_4_bul_4441_0
+  - first:
+      213: 167518186109389409
+    second: role_4_bul_4441_1
+  - first:
+      213: -1067862830906053793
+    second: role_4_bul_4441_2
+  - first:
+      213: 4598728614738167947
+    second: role_4_bul_4441_3
+  - first:
+      213: 1881784067188811998
+    second: role_4_bul_4441_4
+  - first:
+      213: 607492340375522694
+    second: role_4_bul_4441_5
+  - first:
+      213: -2570349364371673414
+    second: role_4_bul_4441_6
   externalObjects: {}
   serializedVersion: 14
   mipmaps:
@@ -46,7 +67,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -156,7 +177,161 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: role_4_bul_4441_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 360
+        width: 143
+        height: 148
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 739b46e7c24d38679bdc94b9d2cfa854
+      internalID: 3313376674981676088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: role_4_bul_4441_1
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 372
+        width: 110
+        height: 135
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5da835bb07a02716d2a3b268cac4a43c
+      internalID: 167518186109389409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: role_4_bul_4441_2
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 214
+        width: 139
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c625b2fd79bd6b07dbd8f3fc0cc6b20e
+      internalID: -1067862830906053793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: role_4_bul_4441_3
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 218
+        width: 138
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7fcaabd4d49c260a3d78cfda67498db
+      internalID: 4598728614738167947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: role_4_bul_4441_4
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 68
+        width: 138
+        height: 143
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6da375850a7c96beee16a7eed02ca81
+      internalID: 1881784067188811998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: role_4_bul_4441_5
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 68
+        width: 136
+        height: 143
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a37fcb05d58e5bd65b47f4010e207c8
+      internalID: 607492340375522694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: role_4_bul_4441_6
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 12
+        width: 87
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f6ba6a72ea099aaaa2c8a656d78b6d8
+      internalID: -2570349364371673414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -167,7 +342,14 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      role_4_bul_4441_0: 3313376674981676088
+      role_4_bul_4441_1: 167518186109389409
+      role_4_bul_4441_2: -1067862830906053793
+      role_4_bul_4441_3: 4598728614738167947
+      role_4_bul_4441_4: 1881784067188811998
+      role_4_bul_4441_5: 607492340375522694
+      role_4_bul_4441_6: -2570349364371673414
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   doOverrideTextureManagerOperations: 0

@@ -39,7 +39,7 @@ public class Defeat : MonoBehaviour
     {
         if (instance != null) instance.priScene = "DefeatScene";
         string sceneName = GetBattleScene();//有有效会话时沿用原关卡，否则重新载入实际测试关卡
-        SceneManager.LoadScene(sceneName);
+        LevelLoader.Load(sceneName);//先进加载界面
     }
 
     private string GetBattleScene()//不创建临时存档，直接运行时仅使用当前进程中的关卡记录

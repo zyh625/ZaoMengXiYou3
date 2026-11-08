@@ -986,7 +986,7 @@ Transform:
   m_GameObject: {fileID: 347035946}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 43.971413, y: 0.33, z: 0}
+  m_LocalPosition: {x: 43.971413, y: 1.52, z: 0}
   m_LocalScale: {x: 2.002731, y: 2.002731, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2236,6 +2236,7 @@ MonoBehaviour:
   - prefab: {fileID: 7291829130179572860, guid: 26df7848be107d143b2f8a40a789b359, type: 3}
     poolSize: 10
     weight: 0.33
+  timedEnemies: []
   lungeLeft: {fileID: 1515934179}
   lungeRight: {fileID: 1515934178}
   maxSummonedEnemies: 2
@@ -2905,7 +2906,7 @@ Transform:
   m_GameObject: {fileID: 3300000000}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.792075, y: 0.33, z: 0}
+  m_LocalPosition: {x: 7.792075, y: 1.52, z: 0}
   m_LocalScale: {x: 2.002731, y: 2.002731, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
